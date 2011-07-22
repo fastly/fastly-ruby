@@ -5,6 +5,7 @@ require 'lib/fastly'
 require 'pp'
 
 #opts = { :base_url => 'localhost', :base_port => 8080, :api_key => '0xDEADBEEF' }
+#opts = { :base_url => 'app-1', :base_port => 5500, :api_key => 'TESTAPIKEY' }
 opts = { :base_url => 'app-1', :base_port => 5500, :user => 'artur@fastly.com', :password => 'password' }
 #opts = { :base_url => 'ci.fastly.net', :user => 'artur@fastly.com', :password => 'password' }
 
@@ -19,6 +20,9 @@ opts = { :base_url => 'app-1', :base_port => 5500, :user => 'artur@fastly.com', 
 
 
 fastly = Fastly.new(opts)
+fastly.purge('foo')
+#fastly.purge_all('foo')
+
 current_user = fastly.current_user
 pp current_user
 

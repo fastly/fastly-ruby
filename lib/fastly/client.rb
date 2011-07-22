@@ -29,7 +29,7 @@ class Fastly
     
     
     def authed?
-      !api_key.nil?
+      !api_key.nil? || fully_authed?
     end
 
     # Some methods require full username and password rather than just auth token
@@ -43,9 +43,9 @@ class Fastly
       JSON.parse(resp.body)
     end
     
-    def post(path, params)
+    def post(path, params={})
       query = make_params(params)
-      resp  = self.http.get(path, params, headers)
+      resp  = self.http.post(path, query, headers)
       raise Fastly::Error, resp.message unless Net::HTTPSuccess === resp
       JSON.parse(resp.body)
     end

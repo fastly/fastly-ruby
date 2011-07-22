@@ -62,7 +62,13 @@ class Fastly
   end
 
   def purge(path)
-    raise  Fastly::AuthRequired unless self.authed?
     res = client.post("/purge/#{path}")
+    #res = client.post("/purge/", :path => path)
+  end
+  
+  def purge_all(service)
+    raise  Fastly::AuthRequired unless self.authed?
+    res = client.post("/purge_all/#{service}")
+    #res = client.post("/purge_all/", :service => service)
   end
 end
