@@ -1,4 +1,6 @@
 class Fastly
+  VERSION = "0.0.1"
+    
   require 'fastly/base'
   require 'fastly/fetcher'
   require 'fastly/client'
@@ -15,7 +17,7 @@ class Fastly
 
   include Fastly::Fetcher
 
-  VERSION = "0.0.1"
+
 
   # TODO should we support Auth key and/or OAuth2.0a as well
   def initialize(opts)

@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby 
 
 require 'rubygems'
-require 'lib/fastly'
+#require 'lib/fastly'
 require 'pp'
 
 #opts = { :base_url => 'localhost', :base_port => 8080, :api_key => '0xDEADBEEF' }
@@ -23,15 +23,30 @@ fastly = Fastly.new(opts)
 fastly.purge('foo')
 #fastly.purge_all('foo')
 
+
 current_user = fastly.current_user
-pp current_user
+puts "\nCurrent user:"
+pp current_user.as_hash
 
-pp fastly.get_user(current_user.id)
+puts "\nCurrent user again:"
+pp fastly.get_user(current_user.id).as_hash
 
-pp fastly.get_customer(current_user.customer_id)
+puts "\nCurrent user's customer:"
+pp fastly.get_customer(current_user.customer_id).as_hash
 
+puts "\nCurrent user's customer again:"
+pp current_user.customer.as_hash
+
+puts "\nCurrent Customer:"
 current_customer = fastly.current_customer
+pp current_customer.as_hash
 pp current_customer.created_at
-pp current_customer
-pp fastly.get_customer(current_customer.id)
-pp fastly.get_user(current_customer.owner_id)
+puts "\nCurrent Customer again:"
+pp current_customer.as_hash
+puts "\nCurrent Customer once more:"
+pp fastly.get_customer(current_customer.id).as_hash
+
+puts "\nCurrent Customer's owner:"
+pp fastly.get_user(current_customer.owner_id).as_hash
+puts "\nCurrent Customer's owner again:"
+pp current_customer.owner.as_hash

@@ -7,9 +7,7 @@ class Fastly
     def client(opts={})
       @client ||= Fastly::Client.new(opts)
     end
-
-    private
-
+    
     def list(klass, &block)
       raise Fastly::FullAuthRequired unless self.fully_authed?
     end
@@ -22,7 +20,7 @@ class Fastly
       else
         hash = client.get("/#{path}/#{id}")
       end
-      return klass.new(hash)
+      return klass.new(hash, self)
     end
 
     def update(klass, obj)
