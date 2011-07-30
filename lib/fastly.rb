@@ -54,6 +54,10 @@ class Fastly
       get(klass, id)
     end
     
+    self.send :define_method, "create_#{type}".to_sym do |obj|
+      create(klass, obj)
+    end
+    
     self.send :define_method, "update_#{type}".to_sym do |obj|
       update(klass, obj)
     end

@@ -1,6 +1,7 @@
 class Fastly
   class Base
     attr_accessor :fetcher
+ 
     def initialize(opts, fetcher)
       @keys = []
       opts.each do |key,val|
@@ -9,6 +10,7 @@ class Fastly
       end
       self.fetcher = fetcher
      end
+     
      def as_hash
        ret = {}
        @keys.each do |key|

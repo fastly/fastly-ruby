@@ -44,13 +44,28 @@ class Fastly
     end
     
     def post(path, params={})
-      query = make_params(params)
-      resp  = self.http.post(path, query, headers)
-      raise Fastly::Error, resp.message unless Net::HTTPSuccess === resp
-      JSON.parse(resp.body)
+      post_and_put(:post, path, params)
+    end
+    
+    def put(path, params={})
+      post_and_put(:put, path, params)
+    end
+    
+    def delete(path)
+      resp  = self.http.delete(path, headers)
+      require 'pp'
+      pp resp
+      return Net::HTTPSuccess === resp
     end
     
     private
+    
+    def post_and_put(method, path, params={})
+      query = make_params(params)
+      resp  = self.http.send(method, path, query, headers)
+      raise Fastly::Error, resp.message unless Net::HTTPSuccess === resp
+      JSON.parse(resp.body)
+    end
     
     def headers
       (fully_authed? ? { 'Cookie' => cookie } : { 'X-Fastly-Key' => api_key }).merge( 'Content-Accept' => 'application/json')
