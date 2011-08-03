@@ -44,7 +44,8 @@ class ApiKeyTest < Test::Unit::TestCase
   
   
   def test_purging
-    #assert @fastly.purge('foo')
+    assert @fastly.purge('foo')
+    # TODO Won't work until we get fixtures in Heavenly
     #assert @fastly.purge_all('foo')
   end
 end

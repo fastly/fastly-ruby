@@ -39,6 +39,7 @@ class Fastly
     
     def get(path)
       resp = self.http.get(path, headers)
+      return nil if Net::HTTPNotFound === resp
       raise Fastly::Error, resp.message unless Net::HTTPSuccess === resp
       JSON.parse(resp.body)
     end
@@ -53,8 +54,6 @@ class Fastly
     
     def delete(path)
       resp  = self.http.delete(path, headers)
-      require 'pp'
-      pp resp
       return Net::HTTPSuccess === resp
     end
     

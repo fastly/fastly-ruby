@@ -22,6 +22,7 @@ class Fastly
       else
         hash = client.get("/#{path}/#{id}")
       end
+      return nil if hash.nil?
       return klass.new(hash, self)
     end
     
