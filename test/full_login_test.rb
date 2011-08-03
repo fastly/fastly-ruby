@@ -6,12 +6,13 @@ require File.expand_path(File.dirname(__FILE__) + '/helper')
 
 class FullLoginTest < Test::Unit::TestCase
   def setup
-    opts = login_opts(:full)
+    opts = login_opts(:full).merge(:use_curb => false)
     begin
       @client = Fastly::Client.new(opts)
       @fastly = Fastly.new(opts)
     rescue Exception => e
-      pp e
+      warn e.inspect
+      warn e.backtrace.join("\n")
       exit(-1)
     end
   end
@@ -70,11 +71,12 @@ class FullLoginTest < Test::Unit::TestCase
   
   def test_creating_and_updating
     customer = @fastly.current_customer
-    user     = @fastly.create_user(:user_email => "new@example.com", :user_name => "New User")
+    email    = "fastly-ruby-test-#{Process.pid}-#{Kernel.rand}-new@example.com"
+    user     = @fastly.create_user(:user_email => email, :user_name => "New User")
     assert user
     assert_equal customer.id, user.customer_id
     assert_equal "New User", user.name 
-    assert_equal "new@example.com", user.login
+    assert_equal email, user.login
 
     tmp       = @fastly.get_user(user.id)
 
