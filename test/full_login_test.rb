@@ -6,7 +6,7 @@ require File.expand_path(File.dirname(__FILE__) + '/helper')
 
 class FullLoginTest < Test::Unit::TestCase
   def setup
-    opts = login_opts(:full).merge(:use_curb => true)
+    opts = login_opts(:full).merge(:use_curb => false)
     begin
       @client = Fastly::Client.new(opts)
       @fastly = Fastly.new(opts)
@@ -111,7 +111,7 @@ class FullLoginTest < Test::Unit::TestCase
     assert version2
     assert_equal = version_num.to_i+1, version2.number.to_i 
     
-    backend = @fastly.create_backend(:service => service.id, :version => version2.number, :address => '127.0.0.1', :port => "9092", :name => "fastly-test-backend-#{get_rand}")
+    backend = @fastly.create_backend(:service => service.id, :version => version2.number, :ipv4 => '127.0.0.1', :port => "9092", :name => "fastly-test-backend-#{get_rand}")
     assert backend
     assert_equal service.id.to_s, backend.service.to_s
    
