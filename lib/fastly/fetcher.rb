@@ -28,8 +28,6 @@ class Fastly
     def create(klass, opts)
       raise Fastly::FullAuthRequired unless self.fully_authed?
       hash = client.post(klass.post_path(opts),opts)
-      require 'pp'
-      pp hash
       # FIXME should create and update return the same response
       return klass.new(hash, self)
     end

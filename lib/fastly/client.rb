@@ -52,12 +52,12 @@ class Fastly
       JSON.parse(resp.body)
     end
     
-    def post(path, params={})
-      post_and_put(:post, path, params)
+    def post(path, params={},debug=false)
+      post_and_put(:post, path, params,debug)
     end
     
-    def put(path, params={})
-      post_and_put(:put, path, params)
+    def put(path, params={}, debug=false)
+      post_and_put(:put, path, params,debug)
     end
     
     def delete(path)
@@ -67,10 +67,10 @@ class Fastly
     
     private
     
-    def post_and_put(method, path, params={})
+    def post_and_put(method, path, params={}, debug=false)
       query = make_params(params)
       resp  = self.http.send(method, path, query, headers)
-      #pp resp if :post == method
+      pp resp if debug
       raise Fastly::Error, resp.message unless resp.success?
       JSON.parse(resp.body)
     end

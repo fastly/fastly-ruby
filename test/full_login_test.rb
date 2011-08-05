@@ -106,22 +106,22 @@ class FullLoginTest < Test::Unit::TestCase
     
     version     = @fastly.create_version(:service => service.id)
     assert version
-    version_num = version.version
+    version_num = version.number
     version2    = @fastly.create_version(:service => service.id)
     assert version2
-    assert_equal = version_num.to_i+1, version2.version.to_i 
+    assert_equal = version_num.to_i+1, version2.number.to_i 
     
-    backend = @fastly.create_backend(:service => service.id, :version => version2.version, :address => '127.0.0.1', :port => "9092", :name => "fastly-test-backend-#{get_rand}")
+    backend = @fastly.create_backend(:service => service.id, :version => version2.number, :address => '127.0.0.1', :port => "9092", :name => "fastly-test-backend-#{get_rand}")
     assert backend
     assert_equal service.id.to_s, backend.service.to_s
    
     domain_name = "fastly-test-domain-#{get_rand}"
-    domain  = @fastly.create_domain(:service => service.id, :version => version2.version, :name => domain_name)
+    domain  = @fastly.create_domain(:service => service.id, :version => version2.number, :name => domain_name)
     assert domain
     assert_equal domain_name, domain.name
     
-    assert @fastly.activate_version(:service => service.id, :version => version2.version)
-    assert @fastly.deactivate_version(:service => service.id, :version => version2.version)
+    assert version2.activate!
+    #assert @fastly.deactivate_version(version2)
   end
 
   def get_rand
