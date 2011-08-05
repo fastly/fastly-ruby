@@ -6,7 +6,7 @@ require File.expand_path(File.dirname(__FILE__) + '/helper')
 
 class FullLoginTest < Test::Unit::TestCase
   def setup
-    opts = login_opts(:full).merge(:use_curb => false)
+    opts = login_opts(:full).merge(:use_curb => true)
     begin
       @client = Fastly::Client.new(opts)
       @fastly = Fastly.new(opts)
@@ -69,9 +69,9 @@ class FullLoginTest < Test::Unit::TestCase
     assert_equal current_customer.name, customer.name
   end
   
-  def test_creating_and_updating
+  def test_creating_and_updating_user
     customer = @fastly.current_customer
-    email    = "fastly-ruby-test-#{Process.pid}-#{Kernel.rand}-new@example.com"
+    email    = "fastly-ruby-test-#{get_rand}-new@example.com"
     user     = @fastly.create_user(:user_email => email, :user_name => "New User")
     assert user
     assert_equal customer.id, user.customer_id
@@ -93,6 +93,39 @@ class FullLoginTest < Test::Unit::TestCase
     assert @fastly.delete_user(user)
     tmp       = @fastly.get_user(user.id)
     assert_equal nil, tmp
+  end
+  
+  def test_creating_service_and_backend
+    name        = "fastly-test-service-#{get_rand}"
+    service     = @fastly.create_service(:name => name)
+    assert service
+    assert_equal name, service.name
+    tmp         = @fastly.get_service(service.id)
+    assert tmp
+    assert_equal name, tmp.name
+    
+    version     = @fastly.create_version(:service => service.id)
+    assert version
+    version_num = version.version
+    version2    = @fastly.create_version(:service => service.id)
+    assert version2
+    assert_equal = version_num.to_i+1, version2.version.to_i 
+    
+    backend = @fastly.create_backend(:service => service.id, :version => version2.version, :address => '127.0.0.1', :port => "9092", :name => "fastly-test-backend-#{get_rand}")
+    assert backend
+    assert_equal service.id.to_s, backend.service.to_s
+   
+    domain_name = "fastly-test-domain-#{get_rand}"
+    domain  = @fastly.create_domain(:service => service.id, :version => version2.version, :name => domain_name)
+    assert domain
+    assert_equal domain_name, domain.name
+    
+    assert @fastly.activate_version(:service => service.id, :version => version2.version)
+    assert @fastly.deactivate_version(:service => service.id, :version => version2.version)
+  end
+
+  def get_rand
+    "#{Process.pid}-#{Time.now.to_i}-#{Kernel.rand(1000)}"
   end
   
 end

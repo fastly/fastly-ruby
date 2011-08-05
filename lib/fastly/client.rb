@@ -70,6 +70,7 @@ class Fastly
     def post_and_put(method, path, params={})
       query = make_params(params)
       resp  = self.http.send(method, path, query, headers)
+      #pp resp if :post == method
       raise Fastly::Error, resp.message unless resp.success?
       JSON.parse(resp.body)
     end

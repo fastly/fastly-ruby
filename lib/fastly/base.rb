@@ -1,6 +1,10 @@
 class Fastly
   class Base
     attr_accessor :fetcher
+    
+    def primary_keys
+      return [:id]
+    end
  
     def initialize(opts, fetcher)
       @keys = []
@@ -18,6 +22,26 @@ class Fastly
        end
        ret
      end
-
+     
+     def self.path
+       self.to_s.downcase.split("::")[-1]
+     end
+     
+     def self.get_path(id)
+       "/#{path}/#{id}"
+     end
+     
+     def self.post_path(opts={})
+       "/#{path}"
+     end
+     
+     def self.put_path(obj)
+       get_path(obj.id)
+     end
+     
+     def self.delete_path(obj)
+       put_path(obj)
+     end
+     
   end
 end

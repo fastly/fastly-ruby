@@ -14,41 +14,36 @@ class Fastly
       raise Fastly::FullAuthRequired unless self.fully_authed?
     end
 
-    def get(klass, id=nil)
+    def get(klass, *args)
       raise Fastly::FullAuthRequired unless self.fully_authed?
-      path = class_to_path(klass)
-      if [User, Customer].include?(klass) && id.nil?
-        hash = client.get("/current_#{path}")
+      if [User, Customer].include?(klass) && args.empty?
+        hash = client.get("/current_#{klass.path}")
       else
-        hash = client.get("/#{path}/#{id}")
+        hash = client.get(klass.get_path(args))
       end
       return nil if hash.nil?
       return klass.new(hash, self)
     end
     
-    def create(klass, obj)
+    def create(klass, opts)
       raise Fastly::FullAuthRequired unless self.fully_authed?
-      path = class_to_path(klass)
-      hash = client.post("/#{path}", obj)
+      hash = client.post(klass.post_path(opts),opts)
+      require 'pp'
+      pp hash
       # FIXME should create and update return the same response
-      return klass.new(hash[path], self)
+      return klass.new(hash, self)
     end
 
     def update(klass, obj)
       raise Fastly::FullAuthRequired unless self.fully_authed?
-      path = class_to_path(klass)
-      hash = client.put("/#{path}/#{obj.id}", obj.as_hash)
+      hash = client.put(klass.put_path(obj), obj)
       return klass.new(hash, self)
     end
 
     def delete(klass, obj)
       raise Fastly::FullAuthRequired unless self.fully_authed?
-      path = class_to_path(klass)
-      return client.delete("/#{path}/#{obj.id}")
+      return client.delete(klass.delete_path(obj))
     end
-    
-    def class_to_path(klass)
-      klass.to_s.downcase.split("::")[-1]
-    end
+
   end
 end

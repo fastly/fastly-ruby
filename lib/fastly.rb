@@ -2,6 +2,7 @@ class Fastly
   VERSION = "0.0.1"
     
   require 'fastly/base'
+  require 'fastly/belongs_to_service_and_version'
   require 'fastly/fetcher'
   require 'fastly/client'
   require 'fastly/backend'
@@ -46,10 +47,10 @@ class Fastly
 
   [Backend, Customer, Director, Domain, Origin, Service, User, Vcl, Version].each do |klass|   
     type = klass.to_s.downcase.split("::")[-1]
-    self.send :define_method, "list_#{type}s".to_sym do |&block|
-      list(klass, block)
-    end
-    
+    # self.send :define_method, "list_#{type}s".to_sym do |&block|
+    #      list(klass, block)
+    # end
+
     self.send :define_method, "get_#{type}".to_sym do |id|
       get(klass, id)
     end
