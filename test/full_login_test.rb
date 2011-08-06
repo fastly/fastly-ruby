@@ -104,9 +104,6 @@ class FullLoginTest < Test::Unit::TestCase
     assert tmp
     assert_equal name, tmp.name
     
-    #pp @fastly.client.get("/service/#{service.id}/stats/all")
-    
-    
     version     = @fastly.create_version(:service => service.id)
     assert version
     version_num = version.number
@@ -128,6 +125,16 @@ class FullLoginTest < Test::Unit::TestCase
   end
   
   def test_stats
+    name        = "fastly-test-service-#{get_rand}"
+    service     = @fastly.create_service(:name => name)
+    assert service
+    assert_equal name, service.name
+    tmp         = @fastly.get_service(service.id)
+    assert tmp
+    assert_equal name, tmp.name
+    
+    stats       = service.stats
+    pp stats
   end
 
   def get_rand
