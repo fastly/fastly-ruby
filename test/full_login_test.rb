@@ -134,7 +134,7 @@ class FullLoginTest < Test::Unit::TestCase
     assert_equal name, tmp.name
     
     stats       = service.stats
-    pp stats
+    assert stats
   end
 
   def get_rand
