@@ -32,5 +32,32 @@ class Fastly
        hash = fetcher.client.put(Fastly::Version.put_path(self)+"/deactivate")
        return !hash.nil?
     end
+    
+    def clone
+      raise Fastly::FullAuthRequired unless fetcher.fully_authed?
+      hash = fetcher.client.put(Fastly::Version.put_path(self)+"/clone")
+      return nil if hash.nil?
+      return Fastly::Version.new(hash, fetcher)
+    end
+    
+    def generated_vcl
+      raise Fastly::FullAuthRequired unless fetcher.fully_authed?
+      hash = fetcher.client.get(Fastly::Version.put_path(self)+"/generated_vcl")
+      opts = {
+        'content'    => hash['vcl'],
+        'name'       => hash['md5'],
+        'created_at' => hash['updated'],
+        'updated_at' => hash['updated'],   
+        'version'    => hash['version'],
+        'service'    => hash['service']     
+      }
+      return Fastly::Vcl.new(opts, fetcher)
+    end
+    
+    def validate
+      raise Fastly::FullAuthRequired unless fetcher.fully_authed?
+      hash = fetcher.client.get(Fastly::Version.put_path(self)+"/validate")
+      return !hash.nil?
+    end
   end 
 end
