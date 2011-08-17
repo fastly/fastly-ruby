@@ -104,14 +104,33 @@ class FullLoginTest < Test::Unit::TestCase
     assert tmp
     assert_equal name, tmp.name
     
-    version     = @fastly.create_version(:service => service.id)
+    version     = service.version
     assert version
-    version_num = version.number
+    
+    services = @fastly.list_services
+    assert !services.empty?
+    assert !services.select { |s| s.name == name }.empty?
+    
+    service = @fastly.search_services( :name => name )
+    assert service
+    assert name, service.name
+    
+    
+    service = @fastly.search_services( :name => name, :version => version.number )
+    assert service
+    assert name, service.name
+    
     version2    = @fastly.create_version(:service => service.id)
     assert version2
-    assert_equal = version_num.to_i+1, version2.number.to_i 
+    assert_equal = version.number.to_i+1, version2.number.to_i 
     
-    backend = @fastly.create_backend(:service => service.id, :version => version2.number, :ipv4 => '127.0.0.1', :port => "9092", :name => "fastly-test-backend-#{get_rand}")
+    version3 = version2.clone
+    assert version3
+    assert_equal = version2.number.to_i+1, version3.number.to_i 
+    
+    number = version3.number.to_i
+    
+    backend = @fastly.create_backend(:service => service.id, :version => number, :ipv4 => '127.0.0.1', :port => "9092", :name => "fastly-test-backend-#{get_rand}")
     assert backend
     assert_equal service.id.to_s, backend.service.to_s
    
@@ -120,7 +139,15 @@ class FullLoginTest < Test::Unit::TestCase
     assert domain
     assert_equal domain_name, domain.name
 
-    assert version2.activate!
+    assert version3.activate!
+    
+    generated = version3.generated_vcl
+    assert generated
+    assert !generated.content.empty?
+    assert generated.content.match(/\.port = "9092"/ms)
+    
+    assert version3.validate
+    
     #assert @fastly.deactivate_version(version2)
   end
   
