@@ -10,8 +10,11 @@ class Fastly
       @client ||= Fastly::Client.new(opts)
     end
     
-    def list(klass, &block)
+    def list(klass, opts={})
       raise Fastly::FullAuthRequired unless self.fully_authed?
+      list = client.get(klass.post_path, opts)
+      return [] if list.nil?
+      list.map { |hash| klass.new(hash, self) }
     end
 
     def get(klass, *args)

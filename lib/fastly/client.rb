@@ -45,8 +45,9 @@ class Fastly
       !(user.nil? || password.nil?)
     end
     
-    def get(path)
-      resp = self.http.get(path, headers)
+    def get(path, params={})
+      path += "?"+make_params(params) unless params.empty? 
+      resp  = self.http.get(path, headers)
       return nil if 404 == resp.status
       raise Fastly::Error, resp.message unless resp.success?
       JSON.parse(resp.body)

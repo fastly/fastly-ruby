@@ -47,9 +47,9 @@ class Fastly
 
   [Backend, Customer, Director, Domain, Origin, Service, User, Vcl, Version].each do |klass|   
     type = klass.to_s.downcase.split("::")[-1]
-    # self.send :define_method, "list_#{type}s".to_sym do |&block|
-    #      list(klass, block)
-    # end
+    self.send :define_method, "list_#{type}s".to_sym do
+      list(klass)
+    end
 
     self.send :define_method, "get_#{type}".to_sym do |id|
       get(klass, id)
@@ -67,15 +67,13 @@ class Fastly
       delete(klass, obj)
     end
   end
+  
+  def commands
+    client.get('/commands')
+  end
 
   def purge(path)
     res = client.post("/purge/#{path}")
     #res = client.post("/purge/", :path => path)
-  end
-  
-  def purge_all(service)
-    raise  Fastly::AuthRequired unless self.authed?
-    res = client.post("/purge_all/#{service}")
-    #res = client.post("/purge_all/", :service => service)
   end
 end
