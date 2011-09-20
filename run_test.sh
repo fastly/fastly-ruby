@@ -13,8 +13,8 @@ export FASTLY_TEST_PASSWORD=password
 export FASTLY_TEST_API_KEY=TESTAPIKEY
 
 
-#for f in `ls test/*_test.rb`; 
-for f in `ls test/full_login_test.rb`; 
+for f in `ls test/*_test.rb`; 
+#for f in `ls test/full_login_test.rb`; 
 do
     bundle exec ruby "$f" $*
 done

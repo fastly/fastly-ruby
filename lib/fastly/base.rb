@@ -1,6 +1,7 @@
 class Fastly
   class Base
     attr_accessor :fetcher
+    require 'pp'
     
     def primary_keys
       return [:id]

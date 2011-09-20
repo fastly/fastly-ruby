@@ -68,7 +68,7 @@ class FullLoginTest < Test::Unit::TestCase
     assert_equal current_customer.id, customer.id
     assert_equal current_customer.name, customer.name
   end
-  
+
   def test_creating_and_updating_user
     customer = @fastly.current_customer
     email    = "fastly-ruby-test-#{get_rand}-new@example.com"
