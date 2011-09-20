@@ -5,7 +5,7 @@
 
 
 #export FASTLY_TEST_BASE_URL=localhost
-export FASTLY_TEST_BASE_URL=app-1-simon
+export FASTLY_TEST_BASE_URL="app-1-$USER"
 export FASTLY_TEST_BASE_PORT=5500
 
 export FASTLY_TEST_USER=testowner@example.com
