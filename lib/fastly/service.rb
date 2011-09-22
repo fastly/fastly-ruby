@@ -22,8 +22,8 @@ class Fastly
     def versions
       raise  Fastly::FullAuthRequired unless fetcher.fully_authed?
       @versions.map { |version|
-        Fastly::Version.new(version, fetcher)
-      }.sort {|x,y| x.number <=> y.number }
+        Fastly::Version.new({ :number => version[0], :created_at => version[1], :service => self.id }, fetcher)
+      }.sort {|x,y| x.number.to_i <=> y.number.to_i }
     end
 
     def version(number=-1)
