@@ -1,0 +1,54 @@
+#!/bin/env ruby
+
+require 'rubygems'
+require 'fastly'
+
+def die(message)
+  warn message
+  exit -1
+end
+
+params  = {}
+configs = ["#{ENV['HOME']}/.fastly", "/etc/fastly"]
+while ARGV.size>0 && ARGV[0] =~ /^-/
+  key = ARGV.shift
+  val = ARGV.shift
+  if key =~ /^-+config/
+    configs = [val]
+  else
+    die("Unknown param #{key}")
+  end
+end
+service_id  = ARGV.shift || die("You must pass in a service id")
+vcl_file    = ARGV.shift || die("You must pass in a vcl file")
+
+
+configs.each do |config|
+  next unless File.file?(config)
+  file = File.new(config, "r")
+  while (line = file.gets)
+      next if line =~ /^#/;
+      next if line =~ /^\s*$/;
+      next unless line =~ /=/;
+      line.strip!
+      key, val = line.split(/\s*=\s*/, 2)
+      params[key.to_sym] = val
+  end
+  file.close
+end
+
+die("Couldn't find any of the config files - #{configs.join(',')}") unless params.keys.size>0
+die("Couldn't find vcl file #{vcl_file}") unless File.file?(vcl_file)
+
+fastly  = Fastly.new(params) 
+service = fastly.get_service(service_id) || die "Couldn't find service #{service_id}"
+old     = service.version
+updated = version.clone
+puts "Bumping version from #{old.number} to #{updated.number}"
+begin
+  service.upload_vcl(:file => vcl_file, :version => updated)
+  updated.activate!
+rescue => e
+  die "Couldn't upload and activate vcl: #{e}"
+end
+puts "Done!"
