@@ -163,9 +163,4 @@ class FullLoginTest < Test::Unit::TestCase
     stats       = service.stats
     assert stats
   end
-
-  def get_rand
-    "#{Process.pid}-#{Time.now.to_i}-#{Kernel.rand(1000)}"
-  end
-  
 end

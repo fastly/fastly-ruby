@@ -18,7 +18,7 @@ class AdminTest < Test::Unit::TestCase
   end
   
   def test_creating_and_updating_customer
-    return @fastly.current_user.can_do?(:admin)
+    return unless @fastly.current_user.can_do?(:admin)
     customer = @fastly.create_customer(:name => "fastly-ruby-test-customer-#{get_rand}")
     email    = "fastly-ruby-test-#{get_rand}-new@example.com"
     user     = @fastly.create_user(:login => email, :name => "New User")
@@ -29,4 +29,13 @@ class AdminTest < Test::Unit::TestCase
     assert_equal customer.id, tmp.id
     assert_equal customer.owner.id, tmp.owner.id
   end
+  
+  def test_creating_and_updating_customer_with_owner
+    return unless @fastly.current_user.can_do?(:admin)
+    email    = "fastly-ruby-test-#{get_rand}-new@example.com"
+    customer = @fastly.create_customer(:name => "fastly-ruby-test-customer-#{get_rand}", :owner => { :login => email, :name => "Test NewOwner" })
+    assert customer
+    assert_equal customer.owner.login, email
+  end
+  
 end

@@ -16,3 +16,7 @@ def login_opts(mode=:full)
   end
   opts
 end
+
+def get_rand
+  "#{Process.pid}-#{Time.now.to_i}-#{Kernel.rand(1000)}"
+end
