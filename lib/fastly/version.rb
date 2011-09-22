@@ -51,9 +51,16 @@ class Fastly
         'version'    => hash['version'],
         'service'    => hash['service']     
       }
-      return Fastly::Vcl.new(opts, fetcher)
+      return Fastly::VCL.new(opts, fetcher)
     end
-    
+
+    def upload_vcl(name, content)
+      raise Fastly::FullAuthRequired unless fetcher.fully_authed?
+      hash = fetcher.client.post(Fastly::Version.put_path(self)+"/vcl", :name => name, :content => content)
+      return nil if hash.nil?
+      return Fastly::VCL.new(hash, fetcher)
+    end
+
     def validate
       raise Fastly::FullAuthRequired unless fetcher.fully_authed?
       hash = fetcher.client.get(Fastly::Version.put_path(self)+"/validate")
