@@ -53,12 +53,12 @@ class Fastly
       JSON.parse(resp.body)
     end
     
-    def post(path, params={},debug=false)
-      post_and_put(:post, path, params,debug)
+    def post(path, params={})
+      post_and_put(:post, path, params)
     end
     
-    def put(path, params={}, debug=false)
-      post_and_put(:put, path, params,debug)
+    def put(path, params={})
+      post_and_put(:put, path, params)
     end
     
     def delete(path)
@@ -68,10 +68,9 @@ class Fastly
     
     private
     
-    def post_and_put(method, path, params={}, debug=false)
+    def post_and_put(method, path, params={})
       query = make_params(params)
       resp  = self.http.send(method, path, query, headers)
-      pp resp if debug
       raise Fastly::Error, resp.message unless resp.success?
       JSON.parse(resp.body)
     end
@@ -81,7 +80,16 @@ class Fastly
     end
     
     def make_params(params)
-      params.map{|k,v| "#{CGI.escape(k.to_s)}=#{CGI.escape(v.to_s)}"}.join("&")
+      params.map { |key,val| 
+        unless val.is_a?(Hash)
+          "#{CGI.escape(key.to_s)}=#{CGI.escape(val.to_s)}" 
+        else 
+          val.map { |sub_key, sub_val|
+            new_key = "#{key}[#{sub_key}]"
+            "#{CGI.escape(new_key)}=#{CGI.escape(sub_val.to_s)}"
+          } 
+        end
+      }.flatten.join("&")
     end
     
     class Net::HTTPResponse
