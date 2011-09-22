@@ -45,7 +45,7 @@ class Fastly
     get(User)
   end
 
-  [Backend, Customer, Director, Domain, Origin, Service, User, Vcl, Version].each do |klass|   
+  [Backend, Customer, Director, Domain, Origin, Service, User, VCL, Version].each do |klass|   
     type = klass.to_s.downcase.split("::")[-1]
     self.send :define_method, "list_#{type}s".to_sym do
       list(klass)
