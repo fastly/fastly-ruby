@@ -1,5 +1,5 @@
 class Fastly
   class Domain < BelongsToServiceAndVersion
-    attr_accessor :service, :version, :name, :created_at, :updated_at, :id, :owner_id
+    attr_accessor :service_id, :name, :comment
   end
 end

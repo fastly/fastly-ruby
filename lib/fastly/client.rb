@@ -3,6 +3,7 @@ require 'net/https'
 require 'json'
 require 'cgi'
 require 'pp'
+require 'uri'
 
 begin 
   require 'curb-fu'
@@ -22,17 +23,23 @@ class Fastly
       [:api_key, :user, :password].each do |key|
         self.send("#{key}=", opts[key]) if opts.has_key?(key)
       end
-      base = opts[:base_url]      || "api.fastly.com"
-      port = opts[:base_port]     || 80
+      base   = opts[:base_url]      || "https://api.fastly.com"
+      port   = opts[:base_port]     || 80
+      uri    = URI.parse(base)
+      scheme = uri.scheme
+      host   = uri.host
       curb = opts.has_key?(:use_curb) ? !!opts[:use_curb] && CURB_FU : CURB_FU
-      self.http = curb ? Fastly::Client::Curl.new(base, port) : Net::HTTP.new(base, port)
+      self.http = curb ? Fastly::Client::Curl.new(host, port) : Net::HTTP.new(host, port)
+      self.http.use_ssl = (scheme == "https")
       return self unless fully_authed?
 
        # If we're fully authed (i.e username and password ) then we need to log in
       resp = self.http.post('/login', make_params(:user => user, :password => password))
       raise Fastly::Unauthorized unless resp.success?
       self.cookie = resp['set-cookie']
-      return self
+      content     = JSON.parse(resp.body)
+      #return self, content['user'], content['content']
+      self
     end
     
     
@@ -70,7 +77,7 @@ class Fastly
     
     def post_and_put(method, path, params={})
       query = make_params(params)
-      resp  = self.http.send(method, path, query, headers)
+      resp  = self.http.send(method, path, query, headers.merge( 'Content-Type' =>  "application/x-www-form-urlencoded"))
       raise Fastly::Error, resp.message unless resp.success?
       JSON.parse(resp.body)
     end
@@ -81,15 +88,16 @@ class Fastly
     
     def make_params(params)
       params.map { |key,val| 
+        next if val.nil?
         unless val.is_a?(Hash)
-          "#{CGI.escape(key.to_s)}=#{CGI.escape(val.to_s)}" 
+          "#{CGI.escape(key.to_s)}=#{CGI.escape(val.to_s)}"
         else 
           val.map { |sub_key, sub_val|
             new_key = "#{key}[#{sub_key}]"
             "#{CGI.escape(new_key)}=#{CGI.escape(sub_val.to_s)}"
           } 
         end
-      }.flatten.join("&")
+      }.flatten.delete_if { |v| v.nil? }.join("&")
     end
     
     class Net::HTTPResponse
@@ -103,27 +111,32 @@ class Fastly
     end
     
     class Curl
-      attr_accessor :host, :port
+      attr_accessor :host, :port, :protocol
       
       def initialize(host, port=80)
-        self.host = host
-        self.port = port
+        self.host     = host
+        self.port     = port
+        self.protocol = 'https'
       end
     
       def get(path, headers={})
-        CurbFu.get({ :host => self.host, :port => port, :path => path, :headers => headers })
+        CurbFu.get({ :host => host, :port => port, :path => path, :headers => headers, :protocol => protocol })
       end
       
-      def post(path, query, headers={})
-        CurbFu.post({ :host => self.host, :port => port, :path => path, :headers => headers }, query)
+      def post(path, params, headers={})
+        CurbFu.post({ :host => host, :port => port, :path => path, :headers => headers, :protocol => protocol }, params)
       end
       
-      def put(path, query, headers={})
-        CurbFu.put({ :host => self.host, :port => port, :path => path, :headers => headers }, "?#{query}")
+      def put(path, params, headers={})
+        CurbFu.put({ :host => host, :port => port, :path => path, :headers => headers, :params => params, :protocol => protocol }, params)
       end
       
       def delete(path, headers={})
-        CurbFu.delete({ :host => self.host, :port => port, :path => path, :headers => headers })
+        CurbFu.delete({ :host => host, :port => port, :path => path, :headers => headers, :protocol => protocol })
+      end
+      
+      def use_ssl=(ssl)
+        self.protocol = ssl ? 'https' : 'http'
       end
     end
     

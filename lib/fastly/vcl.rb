@@ -1,5 +1,5 @@
 class Fastly
   class VCL < BelongsToServiceAndVersion
-    attr_accessor :service, :version, :name, :content, :created_at, :updated_at, :deleted_at
+    attr_accessor :service_id, :name, :content, :comment
   end
 end

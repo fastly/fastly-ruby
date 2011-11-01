@@ -1,16 +1,12 @@
 class Fastly
   class Base
     attr_accessor :fetcher
-    require 'pp'
-    
-    def primary_keys
-      return [:id]
-    end
  
     def initialize(opts, fetcher)
       @keys = []
       opts.each do |key,val|
-        self.send("#{key}=", val) if respond_to? "#{key}="
+        next unless self.respond_to? "#{key}="
+        self.send("#{key}=", val)
         @keys.push(key)
       end
       self.fetcher = fetcher
@@ -19,7 +15,7 @@ class Fastly
      def as_hash
        ret = {}
        @keys.each do |key|
-         ret[key] = self.send("#{key}")
+         ret[key] = self.send("#{key}") unless key =~ /^_/;
        end
        ret
      end
@@ -36,6 +32,10 @@ class Fastly
        "/#{path}"
      end
      
+     def self.list_path(opts={})
+       post_path(opts)
+     end
+     
      def self.put_path(obj)
        get_path(obj.id)
      end
@@ -44,5 +44,12 @@ class Fastly
        put_path(obj)
      end
      
+     def save!
+       fetcher.update(self.class, self)
+     end
+
+     def delete!
+       fetcher.delete(self.class, self)
+     end
   end
 end

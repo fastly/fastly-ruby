@@ -1,6 +1,6 @@
 class Fastly
   class Service < Base
-    attr_accessor :id, :customer, :name, :created_at, :updated_at, :deleted_at, :versions
+    attr_accessor :id, :customer, :name, :comment
     @versions = []
 
     def stats(type=:all)
@@ -8,6 +8,16 @@ class Fastly
       raise Fastly::Error "Unknown stats type #{type}" unless [:minutely,:hourly,:daily,:all].include?(type.to_sym)
       hash = fetcher.client.get(Fastly::Service.get_path(self.id)+"/stats/#{type}")
       return hash
+    end
+
+    def invoice(year=nil, month=nil)
+      raise Fastly::FullAuthRequired unless fetcher.fully_authed?
+      opts = { :service_id => self.id }
+      unless year.nil? || month.nil?
+        opts[:year]  = year
+        opts[:month] = month
+      end
+      fetcher.get(Fastly::Invoice, opts)
     end
 
     def purge_all
@@ -18,12 +28,14 @@ class Fastly
     def versions=(versions)
       @versions = versions
     end
-    
+
     def versions
       raise  Fastly::FullAuthRequired unless fetcher.fully_authed?
-      @versions.map { |version|
-        Fastly::Version.new({ :number => version[0], :created_at => version[1], :service => self.id }, fetcher)
-      }.sort {|x,y| x.number.to_i <=> y.number.to_i }
+      versions = []
+      @versions.each_pair { |number, version|
+        versions.push Fastly::Version.new({ :number => number, :service_id => self.id, :comment => version['comment'] || "" }, fetcher)
+      }
+      versions.sort {|a,b| a.number.to_i <=> b.number.to_i }
     end
 
     def version(number=-1)
@@ -33,9 +45,9 @@ class Fastly
 
   end
 
-  # def list_services(&block)
-  #    list(Fastly::Service, block)
-  #  end
+  def list_services(opts={})
+     list(Fastly::Service, opts)
+  end
   
   def search_services(opts)
     raise  Fastly::FullAuthRequired unless self.fully_authed?

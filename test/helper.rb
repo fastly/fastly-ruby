@@ -1,3 +1,5 @@
+require File.expand_path(File.dirname(__FILE__) + '/common')
+
 def login_opts(mode=:full)
   opts = { }
   [:url,:port].each do |what|
@@ -5,7 +7,7 @@ def login_opts(mode=:full)
     opts["base_#{what}".to_sym] = ENV[key] if ENV.has_key?(key)
   end
   
-  required = :full == mode ? [:user, :password] : [:api_key]
+  required = :full == mode ? [:user, :name, :password, :customer] : [:api_key]
   required.each do |what|
       key ="FASTLY_TEST_#{what.to_s.upcase}"
       unless ENV.has_key?(key)

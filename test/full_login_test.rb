@@ -5,11 +5,13 @@ require 'test/unit'
 require File.expand_path(File.dirname(__FILE__) + '/helper')
 
 class FullLoginTest < Test::Unit::TestCase
+  include CommonTests
+  
   def setup
-    opts = login_opts(:full).merge(:use_curb => false)
+    @opts = login_opts(:full).merge(:use_curb => false)
     begin
-      @client = Fastly::Client.new(opts)
-      @fastly = Fastly.new(opts)
+      @client = Fastly::Client.new(@opts)
+      @fastly = Fastly.new(@opts)
     rescue Exception => e
       warn e.inspect
       warn e.backtrace.join("\n")
@@ -20,24 +22,24 @@ class FullLoginTest < Test::Unit::TestCase
   def test_raw_client
     user     = @client.get('/current_user')
     assert user
-    assert_equal 'testowner@example.com', user['login']
-    assert_equal 'Test Owner', user['name']
+    assert_equal @opts[:user], user['login']
+    assert_equal @opts[:name], user['name']
 
     customer = @client.get('/current_customer')
     assert customer
-    assert_equal 'Test Account', customer['name']
+    assert_equal @opts[:customer], customer['name']
   end
   
   
   def test_current_user_and_customer
     user     = @fastly.current_user
     assert user
-    assert_equal 'testowner@example.com', user.login
-    assert_equal 'Test Owner', user.name
+    assert_equal @opts[:user], user.login
+    assert_equal @opts[:name], user.name
 
     customer = @fastly.current_customer
     assert customer
-    assert_equal 'Test Account', customer.name
+    assert_equal @opts[:customer], customer.name
     
     tmp_customer = user.customer
     assert_equal customer.id, tmp_customer.id
@@ -54,7 +56,6 @@ class FullLoginTest < Test::Unit::TestCase
     id_user = @fastly.get_user(current_user.id)
     assert_equal current_user.id, id_user.id
     assert_equal current_user.name, id_user.name
-    assert_equal 'superuser', current_user.role
     
     # FIXME looking up by login doesn't work yet
     #login_user = @fastly.get_user(current_user.login)
@@ -93,74 +94,5 @@ class FullLoginTest < Test::Unit::TestCase
     assert @fastly.delete_user(user)
     tmp       = @fastly.get_user(user.id)
     assert_equal nil, tmp
-  end
-  
-  def test_creating_service_and_backend
-    name        = "fastly-test-service-#{get_rand}"
-    service     = @fastly.create_service(:name => name)
-    assert service
-    assert_equal name, service.name
-    tmp         = @fastly.get_service(service.id)
-    assert tmp
-    assert_equal name, tmp.name
-    
-    version     = service.version
-    assert version
-    
-    services = @fastly.list_services
-    assert !services.empty?
-    assert !services.select { |s| s.name == name }.empty?
-    
-    service = @fastly.search_services( :name => name )
-    assert service
-    assert name, service.name
-    
-    
-    service = @fastly.search_services( :name => name, :version => version.number )
-    assert service
-    assert name, service.name
-    
-    version2    = @fastly.create_version(:service => service.id)
-    assert version2
-    assert_equal = version.number.to_i+1, version2.number.to_i 
-    
-    version3 = version2.clone
-    assert version3
-    assert_equal = version2.number.to_i+1, version3.number.to_i 
-    
-    number = version3.number.to_i
-    
-    backend = @fastly.create_backend(:service => service.id, :version => number, :ipv4 => '127.0.0.1', :port => "9092", :name => "fastly-test-backend-#{get_rand}")
-    assert backend
-    assert_equal service.id.to_s, backend.service.to_s
-   
-    domain_name = "fastly-test-domain-#{get_rand}"
-    domain  = @fastly.create_domain(:service => service.id, :version => version2.number, :name => domain_name)
-    assert domain
-    assert_equal domain_name, domain.name
-
-    assert version3.activate!
-    
-    generated = version3.generated_vcl
-    assert generated
-    assert !generated.content.empty?
-    assert generated.content.match(/\.port = "9092"/ms)
-    
-    assert version3.validate
-    
-    #assert @fastly.deactivate_version(version2)
-  end
-  
-  def test_stats
-    name        = "fastly-test-service-#{get_rand}"
-    service     = @fastly.create_service(:name => name)
-    assert service
-    assert_equal name, service.name
-    tmp         = @fastly.get_service(service.id)
-    assert tmp
-    assert_equal name, tmp.name
-    
-    stats       = service.stats
-    assert stats
   end
 end
