@@ -1,6 +1,44 @@
 class Fastly
+  # An invoice for a time period
   class Invoice < Base
     attr_accessor :service_id, :service_name, :start_time, :end_time, :total, :regions
+    
+    ## 
+    # :attr: service_id
+    # 
+    # The id of the service this invoice is for
+    # 
+
+    ## 
+    # :attr: service_name
+    # 
+    # The id of the service this invoice is for
+    # 
+
+    ## 
+    # :attr: start_time
+    # 
+    # The earliest date and time this invoice covers
+    # 
+
+    ## 
+    # :attr: end_time
+    # 
+    # The latest date and time this invoice covers
+    # 
+
+    ## 
+    # :attr: total
+    # 
+    # The total for this invoice in US dollars
+    # 
+
+    ## 
+    # :attr: regions
+    # 
+    # A hash reference with all the different regions and their subtotals
+    
+    private
     
     def self.get_path(*args)
       opts = args.size>0 ? args[0] : {}
@@ -39,6 +77,12 @@ class Fastly
     end
   end
   
+
+  # Return an array of Invoice objects representing invoices for all services.
+  # 
+  # If a year and month are passed in returns the invoices for that whole month. 
+  # 
+  # Otherwise it returns the invoices for the current month so far.
   def list_invoices(year=nil, month=nil)
     opts = {}
     unless year.nil? || month.nil?

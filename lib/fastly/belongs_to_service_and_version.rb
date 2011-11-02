@@ -1,5 +1,27 @@
 class Fastly
   class BelongsToServiceAndVersion < Base
+    # Return the Service object this belongs to
+    def service
+      @service ||= fetcher.get(Fastly::Service, service_id)
+    end
+    
+    # Set the Version object this belongs to
+    def version=(version)
+      @version = version
+    end
+    
+    # Get the Version object this belongs to
+    def version
+      @version_obj ||= fetcher.get(Fastly::Version, service_id, version_number)
+    end
+    
+    # Get the number of the Version this belongs to
+    def version_number
+      @version
+    end
+    
+    private
+    
     def self.get_path(service, version, name)
       "/service/#{service}/version/#{version}/#{path}/#{name}"
     end
@@ -16,20 +38,5 @@ class Fastly
       put_path(obj)
     end
     
-    def service
-      @service ||= fetcher.get(Fastly::Service, service_id)
-    end
-    
-    def version=(version)
-      @version = version
-    end
-    
-    def version
-      @version_obj ||= fetcher.get(Fastly::Version, service_id, version_number)
-    end
-    
-    def version_number
-      @version
-    end
   end
 end

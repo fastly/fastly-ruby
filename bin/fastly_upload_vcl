@@ -1,8 +1,8 @@
 #!/bin/env ruby
-
 require 'rubygems'
 require 'fastly'
 
+# :nodoc:
 def die(message)
   warn message
   exit -1

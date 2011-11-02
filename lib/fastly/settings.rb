@@ -1,7 +1,27 @@
 class Fastly
+  # Represent arbitary key value settings for a given Version
   class Settings < Base
     attr_accessor :service_id, :version, :settings
+    ## 
+    # :attr: service_id
+    # 
+    # The id of the service this belongs to.
+    # 
 
+    ## 
+    # :attr: version
+    # 
+    # The number of the version this belongs to.
+    # 
+
+    ##
+    # :attr: service
+    #
+    # Return a hash containing key/value pairs of settings
+    #
+    
+    private
+    
     def self.get_path(service, number)
       "/service/#{service}/version/#{number}/settings"
     end
@@ -31,10 +51,12 @@ class Fastly
     end
   end
   
+  # Get the Settings object for the specified Version
   def get_settings(service, number)
     get(Fastly::Settings, service, number)
   end
 
+  # Update the Settings object for the specified Version
   def update_settings(opts={})
     update(Fastly::Settings, opts)
   end

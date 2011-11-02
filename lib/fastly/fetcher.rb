@@ -1,9 +1,10 @@
-class Fastly
-  module Fetcher
-    class Fastly::AuthRequired < RuntimeError; end
-    class Fastly::FullAuthRequired <  Fastly::AuthRequired; end
+class Fastly # :nodoc: all
+  class AuthRequired < RuntimeError; end
+  class FullAuthRequired <  Fastly::AuthRequired; end
+  
+  module Fetcher 
 
-
+    # Get the current Fastly::Client
     def client(opts={})
       opts[:base_url]  ||= 'api.fastly.com'
       opts[:base_port] ||= 80
