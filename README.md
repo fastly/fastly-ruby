@@ -1,5 +1,3 @@
-# Name
-
 Fastly - client library for interacting with the Fastly web acceleration service
 
 # Example
