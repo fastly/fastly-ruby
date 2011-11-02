@@ -5,7 +5,6 @@ require 'cgi'
 require 'pp'
 require 'uri'
 
-# :nodoc: all
 class Fastly
   # The UserAgent to communicate with the API
   class Client #:nodoc: all

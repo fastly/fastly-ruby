@@ -1,8 +1,10 @@
-class Fastly # :nodoc: all
+class Fastly 
+  # :nodoc: all
   class AuthRequired < RuntimeError; end
+  # :nodoc: all
   class FullAuthRequired <  Fastly::AuthRequired; end
   
-  module Fetcher 
+  module Fetcher # :nodoc: all 
 
     # Get the current Fastly::Client
     def client(opts={})

@@ -1,7 +1,7 @@
-# :nodoc: all
+
 class Fastly
   # Base class for all Fastly objects
-  class Base 
+  class Base # :nodoc: all
     attr_accessor :fetcher
     
     def initialize(opts, fetcher)
