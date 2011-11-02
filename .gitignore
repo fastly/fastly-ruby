@@ -2,3 +2,5 @@
 .bundle
 Gemfile.lock
 pkg/*
+run_test.sh
+doc/*
