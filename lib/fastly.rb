@@ -323,7 +323,7 @@ class Fastly
         next if     line =~ /^\s*$/;
         next unless line =~ /=/;
         line.strip!
-        key, val = line.split(\s*=\s*, 2)
+        key, val = line.split(/\s*=\s*/, 2)
         options[key] = val;
       end
     end

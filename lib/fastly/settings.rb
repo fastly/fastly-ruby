@@ -20,32 +20,38 @@ class Fastly
     # Return a hash containing key/value pairs of settings
     #
     
-    private
-    
+
+    # :nodoc:
     def self.get_path(service, number)
       "/service/#{service}/version/#{number}/settings"
     end
 
+    # :nodoc:
     def self.put_path(obj)
       get_path(obj.service_id, obj.version)
     end
 
+    # :nodoc:
     def self.list_path(opts={})
       raise "You can't list settings"
     end
 
+    # :nodoc:
     def self.post_path 
       raise "You can't POST to an invoice"
     end
 
+    # :nodoc:
     def self.delete_path
       raise "You can't DELETE to an invoice"
     end
-
+    
+    # :nodoc:
     def delete!
       raise "You can't delete an invoice"
     end
     
+    # :nodoc:
     def as_hash 
       settings
     end

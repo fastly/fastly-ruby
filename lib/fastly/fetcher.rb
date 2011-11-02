@@ -1,8 +1,10 @@
 class Fastly 
-  # :nodoc: all
+  # :nodoc:
   class AuthRequired < RuntimeError; end
-  # :nodoc: all
+  # :nodoc:
   class FullAuthRequired <  Fastly::AuthRequired; end
+  # :nodoc: 
+  class Error < RuntimeError; end
   
   module Fetcher # :nodoc: all 
 
