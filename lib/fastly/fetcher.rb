@@ -5,7 +5,9 @@ class Fastly
   class FullAuthRequired <  Fastly::AuthRequired; end
   # :nodoc: 
   class Error < RuntimeError; end
-  
+  # :nodoc:
+  class Unauthorized < AuthRequired; end 
+      
   module Fetcher # :nodoc: all 
 
     # Get the current Fastly::Client
