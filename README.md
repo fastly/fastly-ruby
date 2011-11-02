@@ -54,6 +54,6 @@ Mail support at fastly dot com if you have problems.
  
 # Developers
 
-http://github.com/fastly/fastl-ruby
+http://github.com/fastly/fastly-ruby
 
 http://www.fastly.com/documentation
