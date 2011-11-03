@@ -16,11 +16,13 @@ class Fastly
   require 'fastly/customer'
   require 'fastly/director'  
   require 'fastly/domain'
+  require 'fastly/healthcheck'
   require 'fastly/invoice'
   require 'fastly/match'
   require 'fastly/origin'
   require 'fastly/service'
   require 'fastly/settings'
+  require 'fastly/syslog'
   require 'fastly/user'
   require 'fastly/vcl'
   require 'fastly/version'
@@ -79,7 +81,7 @@ class Fastly
   end
 
 
-  [User, Customer, Backend, Director, Domain, Match, Origin, Service, VCL, Version].each do |klass|   
+  [User, Customer, Backend, Director, Domain, Healthcheck, Match, Origin, Service, Syslog, VCL, Version].each do |klass|   
     type = klass.to_s.downcase.split("::")[-1]
     # unless the class doesn't have a list path or it already exists
     unless klass.list_path.nil? || klass.respond_to?("list_#{type}s".to_sym)
@@ -127,6 +129,14 @@ class Fastly
 
   ##
   # :method: create_origin(opts)
+  # opts must contain service_id, version and name params
+  
+  ##
+  # :method: create_healthcheck(opts)
+  # opts must contain service_id, version and name params
+  
+  ##
+  # :method: create_syslog(opts)
   # opts must contain service_id, version and name params
 
   ##
@@ -180,6 +190,14 @@ class Fastly
   ## 
   # :method: get_settings(service_id, number, name)
   # Get a Settings
+  
+  ## 
+  # :method: get_healthcheck(service_id, number, name)
+  # Get a Healthcheck
+  
+  ## 
+  # :method: get_syslog(service_id, number, name)
+  # Get a Syslog
 
   ##
   # :method: update_user(user)
@@ -240,6 +258,16 @@ class Fastly
   # :method: update_settings(settings)
   # You can also call
   #    settings.save!
+  
+  ## 
+  # :method: update_healthcheck(healthcheck)
+  # You can also call
+  #    healthcheck.save!
+  
+  ## 
+  # :method: update_syslog(syslog)
+  # You can also call
+  #    syslog.save!
 
 
   ## 
@@ -304,6 +332,16 @@ class Fastly
   # :method: delete_version(version)
   # You can also call
   #    version.delete!
+
+  ## 
+  # :method: delete_healthcheck(healthcheck)
+  # You can also call
+  #    healthcheck.delete!
+  
+  ## 
+  # :method: delete_syslog(syslog)
+  # You can also call
+  #    syslog.delete!
 
 
 
