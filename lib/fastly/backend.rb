@@ -2,7 +2,7 @@ class Fastly
   # An individual host you want to serve assets off
   class Backend < BelongsToServiceAndVersion
     attr_accessor :service_id, :name, :address, :ipv4, :ipv6, :hostname, :use_ssl, :client_cert, :port, 
-                  :connect_timeout, :first_byte_timeout, :between_bytes_timeout, :error_threshold, :max_conn, :weight, :comment
+                  :connect_timeout, :first_byte_timeout, :between_bytes_timeout, :error_threshold, :max_conn, :weight, :comment, :healthcheck
 
     ## 
     # :attr: service_id
@@ -94,6 +94,11 @@ class Fastly
     # :attr: weight
     # 
     # the weight assigned to this backend (default 100)
+    
+    ##
+    # :attr: healthcheck
+    #
+    # the name of a healthcheck to associate with this backend. See the Healthcheck object
 
   end
 end
