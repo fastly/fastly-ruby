@@ -5,7 +5,7 @@
 # A client library for interacting with the Fastly web acceleration service
 class Fastly
   # The current version of the library
-  VERSION = "0.5"
+  VERSION = "0.6"
 
   require 'fastly/fetcher'
   require 'fastly/client'
