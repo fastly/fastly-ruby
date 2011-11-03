@@ -33,7 +33,7 @@ class Fastly
 
     # :nodoc:
     def self.list_path(opts={})
-      raise "You can't list settings"
+      nil
     end
 
     # :nodoc:

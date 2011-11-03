@@ -81,10 +81,13 @@ class Fastly
 
   [User, Customer, Backend, Director, Domain, Match, Origin, Service, VCL, Version].each do |klass|   
     type = klass.to_s.downcase.split("::")[-1]
-    # self.send :define_method, "list_#{type}s".to_sym do
-    #   list(klass)
-    # end
-
+    # unless the class doesn't have a list path or it already exists
+    unless klass.list_path.nil? || klass.respond_to?("list_#{type}s".to_sym)
+        self.send :define_method, "list_#{type}s".to_sym do
+            list(klass)
+        end
+    end
+    
     self.send :define_method, "get_#{type}".to_sym do |*args|
       get(klass, *args)
     end

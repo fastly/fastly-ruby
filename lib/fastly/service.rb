@@ -88,11 +88,6 @@ class Fastly
 
   end
 
-  # Get a list of all the services that the current customer has.
-  def list_services(opts={})
-     list(Fastly::Service, opts)
-  end
-
   # Search all the services that the current customer has.
   # 
   # In general you'll want to do
