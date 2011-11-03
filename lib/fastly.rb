@@ -342,6 +342,60 @@ class Fastly
   # :method: delete_syslog(syslog)
   # You can also call
   #    syslog.delete!
+  
+  
+  # :method: list_users
+  # 
+  # Get a list of all users
+
+  # :method: list_customers 
+  # 
+  # Get a list of all customers
+
+  # :method: list_versions
+  # 
+  # Get a list of all versions
+
+  # :method: list_services 
+  # 
+  # Get a list of all services
+
+  # :method: list_backends 
+  # 
+  # Get a list of all backends
+
+  # :method: list_directors 
+  # 
+  # Get a list of all directors
+
+  # :method: list_domains 
+  # 
+  # Get a list of all domains
+
+  # :method: list_healthchecks
+  # 
+  # Get a list of all healthchecks
+
+  # :method: list_matchs 
+  # 
+  # Get a list of all matches
+
+  # :method: list_origins 
+  # 
+  # Get a list of all origins
+
+  # :method: list_syslogs
+  # 
+  # Get a list of all syslogs
+
+  # :method: list_vcls 
+  # 
+  # Get a list of all vcls
+
+  
+  # :method: list_versions 
+  # 
+  # Get a list of all versions
 
 
 
