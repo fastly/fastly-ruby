@@ -43,5 +43,21 @@ class Fastly
     # :attr: comment 
     # 
     # a free form comment field
+    
+    # Add a Backend object to a Director
+    #
+    # Return true on success and false on failure
+    def add_backend(backend) 
+      hash = fetcher.client.post(Fastly::Director.put_path(self)+"/backend/#{backend.name}")
+      return !hash.nil?
+    end
+    
+    # Delete a Backend object from a Director
+    #
+    # Return true on success and false on failure
+    def delete_backend(backend) 
+      hash = fetcher.client.delete(Fastly::Director.put_path(self)+"/backend/#{backend.name}")
+      return !hash.nil?
+    end
   end
 end

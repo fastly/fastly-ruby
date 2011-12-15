@@ -19,5 +19,22 @@ class Fastly
     # :attr: name
     # 
     # The domain name of this domain
+    
+    
+    # Add a Director object to an Origin
+    #
+    # Return true on success and false on failure
+    def add_director(director) 
+      hash = fetcher.client.post(Fastly::Origin.put_path(self)+"/director/#{director.name}")
+      return !hash.nil?
+    end
+    
+    # Delete a Director object from an Origin
+    #
+    # Return true on success and false on failure
+    def delete_director(director) 
+      hash = fetcher.client.delete(Fastly::Origin.put_path(self)+"/director/#{director.name}")
+      return !hash.nil?
+    end
   end
 end
