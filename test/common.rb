@@ -14,20 +14,20 @@ module CommonTests
     settings    = @fastly.get_settings(service.id, version.number)
     assert settings
     assert_equal settings.service_id, service.id
-    assert_equal settings.version, version.number
+    assert_equal settings.version.to_s, version.number.to_s
 
     default_ttl = settings.settings['general.default_ttl']
     settings    = version.settings
     assert settings
     assert_equal settings.service_id, service.id
-    assert_equal settings.version, version.number
+    assert_equal settings.version.to_s, version.number.to_s
     assert_equal settings.settings['general.default_ttl'], default_ttl
     
     settings.settings['general.default_ttl'] = default_ttl = "888888888"
     settings.save!;
 
     settings = version.settings
-    assert_equal settings.settings['general.default_ttl'], default_ttl;
+    assert_equal settings.settings['general.default_ttl'].to_s, default_ttl;
     
     services = @fastly.list_services
     assert !services.empty?
@@ -62,19 +62,19 @@ module CommonTests
     backend = @fastly.create_backend(:service_id => service.id, :version => number, :address => '74.125.224.146', :name => backend_name)
     assert backend
     assert_equal backend.service_id, service.id
-    assert_equal backend.ipv4, '74.125.224.146'
+    #assert_equal backend.ipv4, '74.125.224.146'
     assert_equal backend.address, '74.125.224.146'
-    assert_equal backend.port, '80'
+    assert_equal backend.port.to_s, '80'
     
-    backend.hostname = 'thegestalt.org'
+    backend.address  = 'thegestalt.org'
     backend.port     = '9092'
     @fastly.update_backend(backend)
     backend          = @fastly.get_backend(service.id, number, backend_name)
     
     assert backend
     assert_equal backend.address, 'thegestalt.org'
-    assert_equal backend.hostname, 'thegestalt.org'
-    assert_equal backend.port, '9092'
+    #assert_equal backend.hostname, 'thegestalt.org'
+    assert_equal backend.port.to_s, '9092'
     
     
     domain_name = "fastly-test-domain-#{get_rand}-example.com"
@@ -98,6 +98,9 @@ module CommonTests
     assert_equal director.service.id, service.id
     assert_equal director.version_number.to_s, number.to_s
     assert_equal director.version.number.to_s, number.to_s
+    
+    assert director.add_backend(backend)
+    generated2  = version3.generated_vcl
     
     origin_name = "fastly-test-origin-#{get_rand}"
     origin      = @fastly.create_origin(:service_id => service.id, :version => number, :name => origin_name)
@@ -144,9 +147,15 @@ module CommonTests
     assert invoice
     assert invoice.regions
     assert_equal invoice.service_id, service.id
-        
+    
     invoices    = @fastly.list_invoices
     services    = @fastly.list_services
+    begin
+      customer  = @fastly.current_customer
+      services  = services.select { |s| s.customer_id == customer.id }
+    rescue
+    end
+    
     assert_equal invoices.size, services.size
     assert_equal Fastly::Invoice, invoices[0].class
     assert       invoices[0].service_id
