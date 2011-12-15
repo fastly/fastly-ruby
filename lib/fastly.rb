@@ -170,6 +170,10 @@ class Fastly
   ## 
   # :method: get_domain(service_id, number, name)
   # Get a Domain
+  
+  ## 
+  # :method: get_healthcheck(service_id, number, name)
+  # Get a Healthcheck
 
   ## 
   # :method: get_match(service_id, number, name)
@@ -178,6 +182,10 @@ class Fastly
   ## 
   # :method: get_origin(service_id, number, name)
   # Get an Origin
+  
+  ## 
+  # :method: get_syslog(service_id, number, name)
+  # Get a Syslog
 
   ## 
   # :method: get_vcl(service_id, number, name)
@@ -190,14 +198,6 @@ class Fastly
   ## 
   # :method: get_settings(service_id, number, name)
   # Get a Settings
-  
-  ## 
-  # :method: get_healthcheck(service_id, number, name)
-  # Get a Healthcheck
-  
-  ## 
-  # :method: get_syslog(service_id, number, name)
-  # Get a Syslog
 
   ##
   # :method: update_user(user)
@@ -233,6 +233,11 @@ class Fastly
   # :method: update_domain(domain)
   # You can also call
   #    domain.save!
+  
+  ## 
+  # :method: update_healthcheck(healthcheck)
+  # You can also call
+  #    healthcheck.save!
 
   ## 
   # :method: update_match(match)
@@ -243,6 +248,16 @@ class Fastly
   # :method: update_origin(origin)
   # You can also call
   #    origin.save!
+  
+  ## 
+  # :method: update_settings(settings)
+  # You can also call
+  #    settings.save!
+
+  ## 
+  # :method: update_syslog(syslog)
+  # You can also call
+  #    syslog.save!
 
   ## 
   # :method: update_vcl(vcl)
@@ -253,21 +268,6 @@ class Fastly
   # :method: update_version(version)
   # You can also call
   #    version.save!
-
-  ## 
-  # :method: update_settings(settings)
-  # You can also call
-  #    settings.save!
-  
-  ## 
-  # :method: update_healthcheck(healthcheck)
-  # You can also call
-  #    healthcheck.save!
-  
-  ## 
-  # :method: update_syslog(syslog)
-  # You can also call
-  #    syslog.save!
 
 
   ## 
@@ -309,6 +309,10 @@ class Fastly
   # You can also call
   #    domain.delete!
 
+  ## 
+  # :method: delete_healthcheck(healthcheck)
+  # You can also call
+  #    healthcheck.delete!
 
   ## 
   # :method: delete_match(match)
@@ -321,29 +325,22 @@ class Fastly
   # You can also call
   #    origin.delete!
 
+  ## 
+  # :method: delete_syslog(syslog)
+  # You can also call
+  #    syslog.delete!
+
 
   ## 
   # :method: delete_vcl(vcl)
   # You can also call
   #    vcl.delete!
 
-
   ## 
   # :method: delete_version(version)
   # You can also call
   #    version.delete!
 
-  ## 
-  # :method: delete_healthcheck(healthcheck)
-  # You can also call
-  #    healthcheck.delete!
-  
-  ## 
-  # :method: delete_syslog(syslog)
-  # You can also call
-  #    syslog.delete!
-  
-  
   # :method: list_users
   # 
   # Get a list of all users
@@ -392,7 +389,6 @@ class Fastly
   # 
   # Get a list of all vcls
 
-  
   # :method: list_versions 
   # 
   # Get a list of all versions
