@@ -85,8 +85,8 @@ class Fastly
     type = klass.to_s.downcase.split("::")[-1]
     # unless the class doesn't have a list path or it already exists
     unless klass.list_path.nil? || klass.respond_to?("list_#{type}s".to_sym)
-        self.send :define_method, "list_#{type}s".to_sym do
-            list(klass)
+        self.send :define_method, "list_#{type}s".to_sym do |*args|
+            list(klass, *args)
         end
     end
     

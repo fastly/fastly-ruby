@@ -159,6 +159,18 @@ module CommonTests
     assert_equal invoices.size, services.size
     assert_equal Fastly::Invoice, invoices[0].class
     assert       invoices[0].service_id
+    
+    invoices    = @fastly.list_invoices(Time.now.year, Time.now.month)
+    services    = @fastly.list_services
+    begin
+      customer  = @fastly.current_customer
+      services  = services.select { |s| s.customer_id == customer.id }
+    rescue
+    end
+    
+    assert_equal invoices.size, services.size
+    assert_equal Fastly::Invoice, invoices[0].class
+    assert       invoices[0].service_id
   end
 
 end
