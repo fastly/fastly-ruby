@@ -1,7 +1,7 @@
 class Fastly
   # Represents something you want to serve - this can be, for example, a whole web site, a Wordpress site, or just your image servers
   class Service < Base
-    attr_accessor :id, :customer, :name, :comment
+    attr_accessor :id, :customer_id, :name, :comment
     @versions = []
     
     ## 
@@ -11,7 +11,7 @@ class Fastly
     # 
 
     ## 
-    # :attr: customer
+    # :attr: customer_id
     # 
     # The id of the customer this belongs to
     # 
@@ -73,11 +73,7 @@ class Fastly
     # Get a sorted array of all the versions that this service has had.
     def versions
       raise  Fastly::FullAuthRequired unless fetcher.fully_authed?
-      versions = []
-      @versions.each_pair { |number, version|
-        versions.push Fastly::Version.new({ :number => number, :service_id => self.id, :comment => version['comment'] || "" }, fetcher)
-      }
-      versions.sort {|a,b| a.number.to_i <=> b.number.to_i }
+      @versions.map { |v| Fastly::Version.new(v, fetcher) }.sort { |a,b| a.number.to_i <=> b.number.to_i }
     end
 
     # Get an individual Version object. By default returns the latest version
@@ -85,7 +81,11 @@ class Fastly
       raise  Fastly::FullAuthRequired unless fetcher.fully_authed?
       versions[number]
     end
-
+    
+    # Get the Customer object for this Service
+    def customer
+      fetcher.get(Fastly::Customer, customer_id)
+    end
   end
 
   # Search all the services that the current customer has.
