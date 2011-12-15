@@ -2,7 +2,7 @@ Fastly - client library for interacting with the Fastly web acceleration service
 
 # Example
  
-    fastly = Net::Fastly.new(%login_opts);
+    fastly = Fastly.new(login_opts);
 
     current_user     = fastly.current_user;
     current_customer = fastly.current_customer;
