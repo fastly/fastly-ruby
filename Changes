@@ -1,3 +1,7 @@
+2011-12-19 v0.95
+
+Fix the way invoices and stats are fetched
+
 2011-12-15 v0.9
 
 Add mapping from backends to directors and directors to origins
