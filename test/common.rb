@@ -163,7 +163,11 @@ module CommonTests
     assert_equal Fastly::Invoice, invoices[0].class
     assert       invoices[0].service_id
     
-    invoices    = @fastly.list_invoices(Time.now.year, Time.now.month-1)
+    year        = Time.now.year
+    month       = Time.now.month-1
+    month       = 12 if month == 0
+    
+    invoices    = @fastly.list_invoices(year, month)
     services    = @fastly.list_services
     begin
       customer  = @fastly.current_customer
@@ -173,11 +177,11 @@ module CommonTests
     
     assert_equal invoices.size, services.size
     assert_equal Fastly::Invoice,  invoices[0].class
-    assert_equal Time.now.year,    invoices[0].start.year
-    assert_equal Time.now.month-1, invoices[0].start.month
-    assert_equal 1,                invoices[0].start.day    
-    assert_equal Time.now.year,    invoices[0].end.year
-    assert_equal Time.now.month-1, invoices[0].end.month
+    assert_equal year,  invoices[0].start.year
+    assert_equal month, invoices[0].start.month
+    assert_equal 1,     invoices[0].start.day    
+    assert_equal year,  invoices[0].end.year
+    assert_equal month, invoices[0].end.month
     assert       invoices[0].service_id
   end
 
