@@ -135,6 +135,9 @@ module CommonTests
 
     stats       = service.stats
     assert stats
+    
+    stats       = service.stats(:all, :year => 2011, :month => 10)
+    assert stats    
   end
   
   def test_invoices

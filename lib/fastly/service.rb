@@ -37,10 +37,10 @@ class Fastly
     # * hourly
     # * daily
     # * all
-    def stats(type=:all)
+    def stats(type=:all, opts={})
       raise Fastly::FullAuthRequired unless fetcher.fully_authed?
       raise Fastly::Error "Unknown stats type #{type}" unless [:minutely,:hourly,:daily,:all].include?(type.to_sym)
-      hash = fetcher.client.get(Fastly::Service.get_path(self.id)+"/stats/#{type}")
+      hash = fetcher.client.get(Fastly::Service.get_path(self.id)+"/stats/#{type}", opts)
       return hash
     end
 
