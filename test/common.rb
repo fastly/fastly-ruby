@@ -170,6 +170,12 @@ module CommonTests
     
     assert_equal invoices.size, services.size
     assert_equal Fastly::Invoice, invoices[0].class
+    assert_equal '2011', invoices[0].start.year.to_s
+    assert_equal '12',   invoices[0].start.month.to_s
+    assert_equal '1',    invoices[0].start.day.to_s    
+    assert_equal '2011', invoices[0].end.year.to_s
+    assert_equal '12',   invoices[0].end.month.to_s
+    assert_equal '31',   invoices[0].end.day.to_s
     assert       invoices[0].service_id
   end
 

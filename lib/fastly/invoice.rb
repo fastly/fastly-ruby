@@ -38,6 +38,17 @@ class Fastly
     # 
     # A hash reference with all the different regions and their subtotals
     
+    
+    # Get the start time of this invoice as a DateTime object in UTC
+    def start
+      DateTime.parse(start_time).new_offset(0)
+    end
+    
+    # Get the end time of this invoice as a DateTime object in UTC
+    def end
+      DateTime.parse(end_time).new_offset(0)
+    end
+    
     private
     
     def self.get_path(*args)
@@ -89,7 +100,9 @@ class Fastly
       opts[:year]  = year
       opts[:month] = month
     end
-    list(Fastly::Invoice, opts)
+    list = client.get(Fastly::Invoice.list_path(opts))
+    return [] if list.nil?
+    list.map { |hash| Fastly::Invoice.new(hash, self) }
   end
   
 end
