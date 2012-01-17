@@ -409,13 +409,14 @@ class Fastly
     return options unless File.exist?(file)
 
     File.open(file, "r") do |infile|
-      while (line = infile.gets.chomp) do
+      while (line = infile.gets) do
+        line.chomp!
         next if     line =~ /^#/;
         next if     line =~ /^\s*$/;
         next unless line =~ /=/;
         line.strip!
         key, val = line.split(/\s*=\s*/, 2)
-        options[key] = val;
+        options[key.to_sym] = val;
       end
     end
     options;
@@ -430,16 +431,16 @@ class Fastly
   # 
   #     --<key>=<value>
   #
-  def self.get_options(files)
+  def self.get_options(*files)
     options = {}
     files.each do |file|
       next unless File.exist?(file)
-      options = load_options(file)
+      options = load_config(file)
       break
     end
 
     while (ARGV.size>0 && ARGV[0] =~ /^-+(\w+)\=(\w+)$/) do
-      options[$1] = $2;
+      options[$1.to_sym] = $2;
       @ARGV.shift;
     end
     raise"Couldn't find options from command line arguments or #{files.join(', ')}" unless options.size>0
