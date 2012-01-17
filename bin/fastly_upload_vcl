@@ -46,22 +46,23 @@ die("Couldn't find any of the config files - #{configs.join(',')}") unless param
 die("Couldn't find vcl file #{vcl_file}") unless File.file?(vcl_file)
 
 fastly  = Fastly.new(params) 
+
 service = fastly.get_service(service_id) || die("Couldn't find service #{service_id}")
-old     = service.version
-updated = old.clone
-puts "Uploading #{vcl_file} and bumping version from #{old.number} to #{updated.number}"
+version = service.version
+die "Can't upload a vcl file to the last (#{version.number}) version of #{service.name} (#{service.id}) because it's locked" if version.locked?
+puts "Uploading #{vcl_file} to version #{version.number}"
 begin
   name    = File.basename(vcl_file, ".vcl")
   content = File.new(vcl_file, "r").read
-  vcl     = updated.vcl(name)
+  vcl     = version.vcl(name)
   if vcl
     vcl.content = content
     vcl.save!
   else
-    updated.upload_vcl(name, content)
+    version.upload_vcl(name, content)
   end
-  updated.activate!
+  # version.activate!
 rescue => e
-  die("Couldn't upload and activate vcl: #{e}")
+  die("Couldn't upload vcl: #{e}")
 end
-puts "Done!"
+puts "Done! You should now go and activate it at https://app.fastly.com/#configure"
