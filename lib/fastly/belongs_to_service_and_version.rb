@@ -22,7 +22,7 @@ class Fastly
     
     private
     
-    def self.get_path(service, version, name)
+    def self.get_path(service, version, name, options={})
       "/service/#{service}/version/#{version}/#{path}/#{name}"
     end
     
