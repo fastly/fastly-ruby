@@ -1,7 +1,7 @@
 class Fastly
   # An iteration of your configuration
   class Version < Base
-    attr_accessor :service_id, :number, :name, :active, :locked, :staging, :testing, :deployed, :comment
+    attr_accessor :service_id, :number, :name, :active, :staging, :testing, :deployed, :comment
     
     ## 
     # :attr: service_id
@@ -52,6 +52,15 @@ class Fastly
     #
     # a free form comment field
     
+    # Is this Version locked
+    def locked?
+      return @locked.to_i > 1
+    end
+    
+    # Set whether this Version is locked
+    def locked=(is_locked)
+      @locked = is_locked ? "1" : "0"
+    end
     
     # Get the Service object this Version belongs to
     def service 
