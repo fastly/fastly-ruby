@@ -150,39 +150,20 @@ module CommonTests
     assert invoice
     assert invoice.regions
     assert_equal invoice.service_id, service.id
-    
-    invoices    = @fastly.list_invoices
-    services    = @fastly.list_services
-    begin
-      customer  = @fastly.current_customer
-      services  = services.select { |s| s.customer_id == customer.id }
-    rescue
-    end
-    
-    assert_equal invoices.size, services.size
-    assert_equal Fastly::Invoice, invoices[0].class
-    assert       invoices[0].service_id
+ 
+    invoice     = @fastly.get_invoice
+    assert_equal Fastly::Invoice,  invoice.class
     
     year        = Time.now.year
-    month       = Time.now.month-1
-    month       = 12 if month == 0
+    month       = Time.now.month
     
-    invoices    = @fastly.list_invoices(year, month)
-    services    = @fastly.list_services
-    begin
-      customer  = @fastly.current_customer
-      services  = services.select { |s| s.customer_id == customer.id }
-    rescue
-    end
-    
-    assert_equal invoices.size, services.size
-    assert_equal Fastly::Invoice,  invoices[0].class
-    assert_equal year,  invoices[0].start.year
-    assert_equal month, invoices[0].start.month
-    assert_equal 1,     invoices[0].start.day    
-    assert_equal year,  invoices[0].end.year
-    assert_equal month, invoices[0].end.month
-    assert       invoices[0].service_id
-  end
+    invoice     = @fastly.get_invoice(year, month)
+    assert_equal Fastly::Invoice,  invoice.class
+    assert_equal year,  invoice.start.year
+    assert_equal month, invoice.start.month
+    assert_equal 1,     invoice.start.day    
+    assert_equal year,  invoice.end.year
+    assert_equal month, invoice.end.month
+  end                              
 
 end

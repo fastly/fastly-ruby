@@ -94,15 +94,13 @@ class Fastly
   # If a year and month are passed in returns the invoices for that whole month. 
   # 
   # Otherwise it returns the invoices for the current month so far.
-  def list_invoices(year=nil, month=nil)
+  def get_invoice(year=nil, month=nil)
     opts = {}
     unless year.nil? || month.nil?
       opts[:year]  = year
       opts[:month] = month
     end
-    list = client.get(Fastly::Invoice.list_path(opts))
-    return [] if list.nil?
-    list.map { |hash| Fastly::Invoice.new(hash, self) }
+    get(Fastly::Invoice, opts)
   end
   
 end
