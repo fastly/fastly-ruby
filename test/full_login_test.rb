@@ -45,6 +45,7 @@ class FullLoginTest < Test::Unit::TestCase
     assert_equal customer.id, tmp_customer.id
     
     tmp_user = customer.owner
+    assert tmp_user
     assert_equal user.id, tmp_user.id
   end
   
