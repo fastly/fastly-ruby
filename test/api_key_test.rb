@@ -23,10 +23,10 @@ class ApiKeyTest < Test::Unit::TestCase
       user     = @client.get('/current_user')
     }
     assert_equal nil, user    
-    assert_raise(Fastly::Error) {
-      customer = @client.get('/current_customer')
-    }
-    assert_equal nil, customer
+
+    customer = @client.get('/current_customer')
+    assert customer
+    assert_equal @opts[:customer], customer['name']
   end
   
   
@@ -37,10 +37,9 @@ class ApiKeyTest < Test::Unit::TestCase
     }
     assert_equal nil, current_user
 
-    assert_raise(Fastly::Error) {
-      current_customer = @fastly.current_customer
-    }
-    assert_equal nil, current_customer    
+    customer = @fastly.current_customer
+    assert customer
+    assert_equal @opts[:customer], customer.name
   end 
   
   
