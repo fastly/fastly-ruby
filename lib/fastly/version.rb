@@ -79,12 +79,12 @@ class Fastly
       return !hash.nil?
     end
 
-    # XXX Not currently
-    # def deactivate!
-    #    raise Fastly::FullAuthRequired unless fetcher.fully_authed?
-    #    hash = fetcher.client.put(Fastly::Version.put_path(self)+"/deactivate")
-    #    return !hash.nil?
-    # end
+    # Deactivate this version
+    def deactivate!
+       raise Fastly::FullAuthRequired unless fetcher.fully_authed?
+       hash = fetcher.client.put(Fastly::Version.put_path(self)+"/deactivate")
+       return !hash.nil?
+    end
 
     # Clone this Version
     def clone
