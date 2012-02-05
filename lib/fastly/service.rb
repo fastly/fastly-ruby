@@ -65,6 +65,13 @@ class Fastly
       res = client.put(get_path(self.id)+"/purge_all")
     end
 
+
+    # Purge anything with the specific key from the given service.
+    def purge_by_key(key)
+      raise  Fastly::AuthRequired unless self.authed?
+      res = client.post("/key_purge/#{key}", :service_id => id);
+    end
+
     # Set all the versions that this service has had.
     def versions=(versions)
       @versions = versions
