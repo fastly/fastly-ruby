@@ -54,7 +54,7 @@ class Fastly
     
     # Is this Version locked
     def locked?
-      return @locked.to_i > 1
+      return @locked.to_i > 0
     end
     
     # Set whether this Version is locked
@@ -70,6 +70,11 @@ class Fastly
     # Get the Settings object for this Version
     def settings
       fetcher.get_settings(service_id, number)
+    end
+
+    # Is version active?
+    def active?
+      return @active.to_i > 0
     end
 
     # Activate this version

@@ -113,8 +113,10 @@ module CommonTests
     assert version3.activate!
     assert version3.deactivate!
     assert !@fastly.get_service(version3.service_id).version.active
+    assert !@fastly.get_service(version3.service_id).version.active?
     assert version3.activate!
     assert @fastly.get_service(version3.service_id).version.active
+    assert @fastly.get_service(version3.service_id).version.active?
     
     generated = version3.generated_vcl
     assert generated
