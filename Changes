@@ -1,3 +1,18 @@
+2012-02-02 v0.98
+
+Make deactivate! work
+Add active?
+Add Service.purge_by_key
+
+2012-01-27 v0.97
+
+Fix invoice tests with new billing API
+
+2012-01-16 v0.96
+
+Fix version.locked?
+Make fastly_upload_vcl work
+
 2011-12-19 v0.95
 
 Fix the way invoices and stats are fetched
