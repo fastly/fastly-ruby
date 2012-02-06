@@ -89,6 +89,12 @@ class Fastly
       versions[number]
     end
     
+    # A deep hash of nested details
+    def details(opts={})
+      raise  Fastly::FullAuthRequired unless fetcher.fully_authed?
+      client.get(get_path(self.id)+"/details", opts);
+    end
+    
     # Get the Customer object for this Service
     def customer
       fetcher.get(Fastly::Customer, customer_id)
