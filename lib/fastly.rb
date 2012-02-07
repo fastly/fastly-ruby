@@ -51,17 +51,17 @@ class Fastly
   # Whether or not we're fully (username and password) authed
   # Some methods require full username and password rather than just auth token
   def fully_authed?
-    client.authed? # for now
-    #client.fully_authed?
+    client.fully_authed?
   end
 
   # Return a Customer object representing the customer of the current logged in user.
   def current_customer
-    raise Fastly::FullAuthRequired unless self.fully_authed?
+    raise Fastly::AuthRequired unless self.authed?
     @current_customer ||= get(Customer)
   end
 
   # Return a User object representing the current logged in user.
+  # NOTE: requires you to be fully authed - will not work with only an API key
   def current_user
     raise Fastly::FullAuthRequired unless self.fully_authed?
     @current_user ||= get(User)

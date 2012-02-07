@@ -32,7 +32,7 @@ class ApiKeyTest < Test::Unit::TestCase
   
   def test_current_user_and_customer 
     current_user  = current_customer = nil
-    assert_raise(Fastly::Error) {
+    assert_raise(Fastly::FullAuthRequired) {
       current_user = @fastly.current_user
     }
     assert_equal nil, current_user

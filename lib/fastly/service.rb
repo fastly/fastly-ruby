@@ -2,7 +2,7 @@ class Fastly
   # Represents something you want to serve - this can be, for example, a whole web site, a Wordpress site, or just your image servers
   class Service < Base
     attr_accessor :id, :customer_id, :name, :comment
-    @versions = []
+    @versions = {}
     
     ## 
     # :attr: id
@@ -38,7 +38,6 @@ class Fastly
     # * daily
     # * all
     def stats(type=:all, opts={})
-      raise Fastly::FullAuthRequired unless fetcher.fully_authed?
       raise Fastly::Error "Unknown stats type #{type}" unless [:minutely,:hourly,:daily,:all].include?(type.to_sym)
       hash = fetcher.client.get(Fastly::Service.get_path(self.id)+"/stats/#{type}", opts)
       return hash
@@ -50,7 +49,6 @@ class Fastly
     # 
     # Otherwise it returns the invoice for the current month so far.
     def invoice(year=nil, month=nil)
-      raise Fastly::FullAuthRequired unless fetcher.fully_authed?
       opts = { :service_id => self.id }
       unless year.nil? || month.nil?
         opts[:year]  = year
@@ -61,14 +59,12 @@ class Fastly
 
     # Purge all assets from this service.
     def purge_all
-      raise  Fastly::AuthRequired unless self.authed?
       res = client.put(get_path(self.id)+"/purge_all")
     end
 
 
     # Purge anything with the specific key from the given service.
     def purge_by_key(key)
-      raise  Fastly::AuthRequired unless self.authed?
       res = client.post("/key_purge/#{key}", :service_id => id);
     end
 
@@ -79,19 +75,16 @@ class Fastly
 
     # Get a sorted array of all the versions that this service has had.
     def versions
-      raise  Fastly::FullAuthRequired unless fetcher.fully_authed?
       @versions.values.map { |v| Fastly::Version.new(v, fetcher) }.sort { |a,b| a.number.to_i <=> b.number.to_i }
     end
 
     # Get an individual Version object. By default returns the latest version
     def version(number=-1)
-      raise  Fastly::FullAuthRequired unless fetcher.fully_authed?
       versions[number]
     end
     
     # A deep hash of nested details
     def details(opts={})
-      raise  Fastly::FullAuthRequired unless fetcher.fully_authed?
       client.get(get_path(self.id)+"/details", opts);
     end
     
@@ -111,7 +104,6 @@ class Fastly
   # 
   #   service = fastly.search_services(:name => name, :version => number)  
   def search_services(opts)
-    raise  Fastly::FullAuthRequired unless self.fully_authed?
     klass = Fastly::Service
     hash  = client.get(klass.post_path+"/search", opts)
     return nil if hash.nil?
