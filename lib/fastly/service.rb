@@ -80,7 +80,7 @@ class Fastly
     # Get a sorted array of all the versions that this service has had.
     def versions
       raise  Fastly::FullAuthRequired unless fetcher.fully_authed?
-      @versions.map { |v| Fastly::Version.new(v, fetcher) }.sort { |a,b| a.number.to_i <=> b.number.to_i }
+      @versions.values.map { |v| Fastly::Version.new(v, fetcher) }.sort { |a,b| a.number.to_i <=> b.number.to_i }
     end
 
     # Get an individual Version object. By default returns the latest version
