@@ -2,7 +2,7 @@ class Fastly
   # Represents something you want to serve - this can be, for example, a whole web site, a Wordpress site, or just your image servers
   class Service < Base
     attr_accessor :id, :customer_id, :name, :comment
-    @versions = {}
+    @versions = []
     
     ## 
     # :attr: id
@@ -75,7 +75,7 @@ class Fastly
 
     # Get a sorted array of all the versions that this service has had.
     def versions
-      @versions.values.map { |v| Fastly::Version.new(v, fetcher) }.sort { |a,b| a.number.to_i <=> b.number.to_i }
+      @versions.map { |v| Fastly::Version.new(v, fetcher) }.sort { |a,b| a.number.to_i <=> b.number.to_i }
     end
 
     # Get an individual Version object. By default returns the latest version
