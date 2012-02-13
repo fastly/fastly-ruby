@@ -118,10 +118,10 @@ module CommonTests
     assert @fastly.get_service(version3.service_id).version.active
     assert @fastly.get_service(version3.service_id).version.active?
     
-    generated = version3.generated_vcl
+    generated = version3.generated_vcl(:no_content => true)
     assert generated
     assert generated.content.nil?
-    generated = version3.generated_vcl(:include_content => true)
+    generated = version3.generated_vcl
     assert !generated.content.nil?
     assert generated.content.match(/\.port = "9092"/ms)
     
