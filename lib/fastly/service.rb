@@ -65,7 +65,7 @@ class Fastly
 
     # Purge anything with the specific key from the given service.
     def purge_by_key(key)
-      res = client.post("/key_purge/#{key}", :service_id => id);
+       res = client.put(get_path(self.id)+"/purge/#{key}")
     end
 
     # Set all the versions that this service has had.
