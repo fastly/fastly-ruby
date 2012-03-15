@@ -67,6 +67,15 @@ class Fastly
     @current_user ||= get(User)
   end
 
+  # Set the current customer to act as.
+  # NOTE: this will only work if you're an admin
+  def set_customer(id)
+      raise Fastly::FullAuthRequired "You must be fully authed to set the customer" unless self.fully_authed?;
+      raise Fastly::AdminRequired "You must be an admin to set the customer" unless self.current_user.can_do?(:admin);
+      @current_customer = nil 
+      client.set_customer(id);
+  }
+
   # Return a hash representing all commands available.
   #
   # Useful for information.

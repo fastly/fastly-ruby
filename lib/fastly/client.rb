@@ -15,18 +15,19 @@ class Fastly
             CURB_FU=false
         end
 
-        attr_accessor :http, :api_key, :user, :password, :cookie
+        attr_accessor :http, :api_key, :user, :password, :cookie, :customer
 
         def initialize(opts)
             [:api_key, :user, :password].each do |key|
                 self.send("#{key}=", opts[key]) if opts.has_key?(key)
             end
-            base   = opts[:base_url]      || "https://api.fastly.com"
-            port   = opts[:base_port]     || 80
-            uri    = URI.parse(base)
-            scheme = uri.scheme
-            host   = uri.host
-            curb = opts.has_key?(:use_curb) ? !!opts[:use_curb] && CURB_FU : CURB_FU
+            base     = opts[:base_url]      || "https://api.fastly.com"
+            port     = opts[:base_port]     || 80
+            customer = opts[:customer]
+            uri      = URI.parse(base)
+            scheme   = uri.scheme
+            host     = uri.host
+            curb     = opts.has_key?(:use_curb) ? !!opts[:use_curb] && CURB_FU : CURB_FU
             self.http = curb ? Fastly::Client::Curl.new(host, port) : Net::HTTP.new(host, port)
             self.http.use_ssl = (scheme == "https")
             return self unless fully_authed?
@@ -48,6 +49,10 @@ class Fastly
         # Some methods require full username and password rather than just auth token
         def fully_authed?
             !(user.nil? || password.nil?)
+        end
+        
+        def set_customer(id)
+          
         end
 
         def get(path, params={})
@@ -81,7 +86,9 @@ class Fastly
         end
 
         def headers
-            (fully_authed? ? { 'Cookie' => cookie } : { 'X-Fastly-Key' => api_key }).merge( 'Content-Accept' => 'application/json')
+            headers = fully_authed? ? { 'Cookie' => cookie } : { 'X-Fastly-Key' => api_key }
+            headers.merge( 'Fastly-Explicit-Customer' => customer ) if customer
+            headers.merge( 'Content-Accept' => 'application/json')
         end
 
         def make_params(params)
