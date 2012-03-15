@@ -7,6 +7,8 @@ class Fastly
   class Error < RuntimeError; end
   # :nodoc:
   class Unauthorized < AuthRequired; end 
+  # :nodoc:
+  class AdminRequired < AuthRequired; end
       
   module Fetcher # :nodoc: all 
 
