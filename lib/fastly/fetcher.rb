@@ -12,8 +12,8 @@ class Fastly
 
     # Get the current Fastly::Client
     def client(opts={})
-      opts[:base_url]  ||= 'api.fastly.com'
-      opts[:base_port] ||= 80
+      opts[:base_url]  ||= 'https://api.fastly.com'
+      opts[:base_port] ||= 443
       @client ||= Fastly::Client.new(opts)
     end
     
