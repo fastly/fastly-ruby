@@ -22,7 +22,7 @@ class Fastly
                 self.send("#{key}=", opts[key]) if opts.has_key?(key)
             end
             base   = opts[:base_url]      || "https://api.fastly.com"
-            port   = opts[:base_port]     || 80
+            port   = opts[:base_port]     || 443
             uri    = URI.parse(base)
             scheme = uri.scheme
             host   = uri.host
@@ -102,7 +102,7 @@ class Fastly
         class Curl
             attr_accessor :host, :port, :protocol
 
-            def initialize(host, port=80)
+            def initialize(host, port=443)
                 self.host     = host
                 self.port     = port
                 self.protocol = 'https'
