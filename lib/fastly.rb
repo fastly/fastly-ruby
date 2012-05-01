@@ -74,7 +74,7 @@ class Fastly
       raise Fastly::AdminRequired "You must be an admin to set the customer" unless self.current_user.can_do?(:admin);
       @current_customer = nil 
       client.set_customer(id);
-  }
+  end
 
   # Return a hash representing all commands available.
   #
