@@ -1,3 +1,8 @@
+2012-05-01 v0.99
+
+Fix some SSL issues
+Allow some admin functionality
+
 2012-02-02 v0.98
 
 Make deactivate! work
