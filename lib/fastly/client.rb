@@ -21,13 +21,14 @@ class Fastly
             [:api_key, :user, :password].each do |key|
                 self.send("#{key}=", opts[key]) if opts.has_key?(key)
             end
-            base     = opts[:base_url]      || "https://api.fastly.com"
-            port     = opts[:base_port]     || 80
-            customer = opts[:customer]
-            uri      = URI.parse(base)
-            scheme   = uri.scheme
-            host     = uri.host
-            curb     = opts.has_key?(:use_curb) ? !!opts[:use_curb] && CURB_FU : CURB_FU
+            base      = opts[:base_url]      || "https://api.fastly.com"
+            customer  = opts[:customer]
+            uri       = URI.parse(base)
+            scheme    = uri.scheme
+            host      = uri.host
+            curb      = opts.has_key?(:use_curb) ? !!opts[:use_curb] && CURB_FU : CURB_FU
+            port      = opts[:base_port]     || (scheme == "https") ? 443 : 80
+            warn "Doing port #{port}"
             self.http = curb ? Fastly::Client::Curl.new(host, port) : Net::HTTP.new(host, port)
             self.http.use_ssl = (scheme == "https")
             return self unless fully_authed?
@@ -109,7 +110,7 @@ class Fastly
         class Curl
             attr_accessor :host, :port, :protocol
 
-            def initialize(host, port=80)
+            def initialize(host, port=443)
                 self.host     = host
                 self.port     = port
                 self.protocol = 'https'
