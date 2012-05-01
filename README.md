@@ -30,7 +30,7 @@ Fastly - client library for interacting with the Fastly web acceleration service
 
     # Create a domain and a backend for the service ...
     domain         = fastly.create_domain(:service_id => service.id, :version => latest_version.number, :name => "www.example.com")
-    backend        = fastly.create_backend(:service_id => service.id, :version => latest_version.number, :ipv4 => "127.0.0.1", :port => 80)
+    backend        = fastly.create_backend(:service_id => service.id, :version => latest_version.number, :name => "Backend 1", :ipv4 => "192.0.43.10", :port => 80)
 
     # ... and activate it. You're now hosted on Fastly.
     latest_version.activate
@@ -42,8 +42,12 @@ Fastly - client library for interacting with the Fastly web acceleration service
     # Now let's create a new version ...
     new_version    = latest_version.clone
     # ... add a new backend ...
-    new_backend    = fastly.create_backend(:service_id => service.id, :version => new_version.number, :ipv4 => "192.168.0.1", :port => 8080)
-    # ... and upload some custome vcl (presuming we have permissions)
+    new_backend    = fastly.create_backend(:service_id => service.id, :version => new_version.number, :name => "Backend 2", :ipv4 => "74.125.224.136", :port => 8080)
+    # ... add a director to switch between them
+    director       = fastly.create_director(:service_id => service.id, :version => new_version.number, :name => "My Director")
+    director.add_backend(backend)
+    director.add_backend(new_backend)
+    # ... and upload some custom vcl (presuming we have permissions)
     new_version.upload_vcl(vcl_name, File.read(vcl_file))
 
     new_version.activate
