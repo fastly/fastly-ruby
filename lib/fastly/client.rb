@@ -26,8 +26,8 @@ class Fastly
             uri       = URI.parse(base)
             scheme    = uri.scheme
             host      = uri.host
-            curb      = opts.has_key?(:use_curb) ? !!opts[:use_curb] && CURB_FU : CURB_FU
-            port      = opts[:base_port]     || (scheme == "https") ? 443 : 80
+            curb      = opts.has_key?(:use_curb)  ? !!opts[:use_curb] && CURB_FU : CURB_FU
+            port      = opts.has_key?(:base_port) ?   opts[:base_port]           : (scheme == "https") ? 443 : 80
             self.http = curb ? Fastly::Client::Curl.new(host, port) : Net::HTTP.new(host, port)
             self.http.use_ssl = (scheme == "https")
             return self unless fully_authed?
