@@ -59,13 +59,13 @@ class Fastly
 
     # Purge all assets from this service.
     def purge_all
-      res = client.put(get_path(self.id)+"/purge_all")
+      res = fetcher.client.post(self.class.get_path(self.id)+"/purge_all")
     end
 
 
     # Purge anything with the specific key from the given service.
     def purge_by_key(key)
-       res = client.put(get_path(self.id)+"/purge/#{key}")
+      res = fetcher.client.post(self.class.get_path(self.id)+"/purge/#{key}")
     end
 
     # Set all the versions that this service has had.
