@@ -128,6 +128,13 @@ class Fastly
       fetcher.get_vcl(service_id, number, name, opts)
     end
 
+    # Delete a VCL file for this Version
+    def delete_vcl(name)
+      hash = fetcher.client.delete(Fastly::Version.put_path(self)+"/vcl/" + name )
+      return nil if hash.nil?
+      return hash
+    end
+
     # Validate this Version
     def validate
       hash = fetcher.client.get(Fastly::Version.put_path(self)+"/validate")
