@@ -50,7 +50,7 @@ Fastly - client library for interacting with the Fastly web acceleration service
     # ... and upload some custom vcl (presuming we have permissions)
     new_version.upload_vcl(vcl_name, File.read(vcl_file))
 
-    new_version.activate
+    new_version.activate!
 
 # Copyright
  
