@@ -139,9 +139,12 @@ module CommonTests
     assert tmp
     assert_equal name, tmp.name
 
-    stats       = service.stats
-    assert stats
-    
+    begin
+      stats       = service.stats
+    rescue Fastly::Error => e
+    end
+    assert stats.nil?
+       
     stats       = service.stats(:all, :year => 2011, :month => 10)
     assert stats    
   end
