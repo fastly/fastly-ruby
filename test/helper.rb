@@ -1,3 +1,4 @@
+require 'fastly'
 require File.expand_path(File.dirname(__FILE__) + '/common')
 
 def login_opts(mode=:full)
