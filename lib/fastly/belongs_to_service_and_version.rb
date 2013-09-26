@@ -19,6 +19,11 @@ class Fastly
     def version_number
       @version
     end
+
+    # :nodoc:
+    def as_hash 
+      super.delete_if { |var| ["service_id", "version"].include?(var) }
+    end
     
     private
     
