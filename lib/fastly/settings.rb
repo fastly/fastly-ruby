@@ -19,7 +19,6 @@ class Fastly
     #
     # Return a hash containing key/value pairs of settings
     #
-    
 
     # :nodoc:
     def self.get_path(service, number)
@@ -38,12 +37,12 @@ class Fastly
 
     # :nodoc:
     def self.post_path 
-      raise "You can't POST to an invoice"
+      raise "You can't POST to an setting"
     end
 
     # :nodoc:
     def self.delete_path
-      raise "You can't DELETE to an invoice"
+      raise "You can't DELETE to an setting"
     end
     
     # :nodoc:
@@ -59,7 +58,13 @@ class Fastly
   
   # Get the Settings object for the specified Version
   def get_settings(service, number)
-    get(Fastly::Settings, service, number)
+    klass            = Fastly::Settings
+    hash             = client.get(Fastly::Settings.get_path(service, number))
+    
+    return nil if hash.nil?
+    hash["settings"] = Hash[["general.default_host", "general.default_ttl"].collect { |var| [var, hash.delete(var)] }]
+    
+    return klass.new(hash, self)
   end
 
   # Update the Settings object for the specified Version
