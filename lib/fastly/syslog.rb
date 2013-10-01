@@ -1,7 +1,7 @@
 class Fastly
     # An endpoint to stream syslogs to 
     class Syslog < BelongsToServiceAndVersion
-        attr_accessor :service_id, :name, :comment, :ipv4, :ipv6, :hostname, :port, :format
+        attr_accessor :service_id, :name, :comment, :ipv4, :ipv6, :hostname, :port, :format, :response_conditions
 
         ## 
         # :attr: service_id
@@ -61,5 +61,10 @@ class Fastly
         # :attr: format
         # 
         # Format to log like in apache format
+        
+        ## 
+        # :attr: response_condition
+        #
+        # name of a response_condition to filter the log on, if empty it always logs
     end
 end

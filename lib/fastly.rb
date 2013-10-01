@@ -207,6 +207,10 @@ class Fastly
   ##
   # :method: create_vcl(opts)
   # opts must contain service_id, version and name params
+  
+  ##
+  # :method: create_condition(opts)
+  # opts must contain service_id, version and name params
 
   ##
   # :method: get_user(id)
@@ -330,6 +334,11 @@ class Fastly
   #    vcl.save!
 
   ## 
+  # :method: update_condition(condition)
+  # You can also call
+  #    condition.save!
+
+  ## 
   # :method: update_version(version)
   # You can also call
   #    version.save!
@@ -402,6 +411,11 @@ class Fastly
   #    vcl.delete!
 
   ## 
+  # :method: delete_condition(condition)
+  # You can also call
+  #    condition.delete!
+
+  ## 
   # :method: delete_version(version)
   # You can also call
   #    version.delete!
@@ -453,6 +467,10 @@ class Fastly
   # :method: list_vcls 
   # 
   # Get a list of all vcls
+  
+  # :method: list_conditions 
+  # 
+  # Get a list of all conditions
 
   # :method: list_versions 
   # 
