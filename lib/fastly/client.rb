@@ -62,6 +62,12 @@ class Fastly
             raise Fastly::Error, resp.message unless resp.success?
             JSON.parse(resp.body)
         end
+        
+        def get_stats(path, params={})
+            content = get(path, params)
+            raise Fastly::Error, content["message"] unless content["status"] == 'success'
+            content["data"]
+        end
 
         def post(path, params={})
             post_and_put(:post, path, params)

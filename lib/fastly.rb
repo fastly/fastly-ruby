@@ -87,6 +87,64 @@ class Fastly
     #res = client.post("/purge/", :path => path)
   end
 
+  # Fetches historical stats for each of your fastly services and groups the results by service id.
+  #
+  # If you pass in a :field opt then fetches only the specified field.
+  # If you pass in a :service opt then fetches only the specified service.
+  # The :field and :service opts can be combined.
+  #
+  # If you pass in an :aggregate flag then fetches historical stats information aggregated across all of your Fastly services. This cannot be combined with :field and :service.
+  #
+  # Other options available are:
+  #
+  # from:: earliest time from which to fetch historical statistics
+  # to:: latest time from which to fetch historical statistics
+  # by:: the sampling rate used to produce the result set (minute, hour, day)
+  # region:: restrict query to a particular region
+  #
+  # See http://docs.fastly.com/docs/stats for details.
+  def stats(opts)
+    raise Fastly::Error.new("You can't specify a field or a service for an aggregate request") if opts[:aggregate] && (opts[:field] || opts[:service])
+    
+    url  = "/stats"
+
+    if opts.delete(:aggregate)
+      url += "/aggregate"
+    end
+    
+    if service = opts.delete(:service)
+      url += "/service/#{service}"
+    end
+      
+    if field = opts.delete(:field)
+      url += "/field/#{field}"
+    end
+      
+    client.get_stats(url, opts);
+  end
+
+  # Returns usage information aggregated across all Fastly services and grouped by region.
+  #
+  # If the :by_service flag is passed then teturns usage information aggregated by service and grouped by service & region.
+  #
+  # Other options available are:
+  #
+  # from:: earliest time from which to fetch historical statistics
+  # to:: latest time from which to fetch historical statistics
+  # by:: the sampling rate used to produce the result set (minute, hour, day)
+  # region:: restrict query to a particular region
+  #
+  # See http://docs.fastly.com/docs/stats for details.
+  def usage(opts)
+    url  = "/stats/usage";
+    url += "_by_service" if opts.delete(:by_service)
+    client.get_stats(url, opts)
+  end
+
+  # Fetches the list of codes for regions that are covered by the Fastly CDN service.
+  def regions
+    client.get_stats("/stats/regions")
+  end
 
   [User, Customer, Backend, Director, Domain, Healthcheck, Match, Origin, Service, Syslog, VCL, Version].each do |klass|   
     type = klass.to_s.downcase.split("::")[-1]
