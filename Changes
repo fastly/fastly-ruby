@@ -1,3 +1,13 @@
+2013-10-03 v1.01
+
+Add historical stats functionality
+Fix settings
+Add conditions
+Add in auto_loadbalancing for backends
+Fix some doc stuff (Sam Sharpe)
+Reorganize library (Eric Saxby & Paul Henry)
+Fix purge_all, purge_by_key and details (Kazuki Ohta)
+
 2013-07-16 v1.00
 
 Fix delete VCL (thanks Andrian Jardan)
