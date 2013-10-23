@@ -15,9 +15,9 @@ Gem::Specification.new do |s|
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   s.require_paths = ["lib"]
-  
+
   s.add_dependency 'json'
   s.add_dependency 'curb', '>=0.7.15'
   s.add_dependency 'curb-fu', '>=0.6.1'
-  s.add_dependency 'rdoc', '>=3.11'
+  s.add_development_dependency 'rdoc', '>=3.4'
 end
