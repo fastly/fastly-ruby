@@ -1,7 +1,7 @@
 class Fastly
   # A logical collection of backends - for example all the asset servers in one data center
   class Director < BelongsToServiceAndVersion
-    attr_accessor :service_id, :name, :type, :comment, :retries, :capacity, :quorom
+    attr_accessor :service_id, :name, :type, :comment, :retries, :capacity, :quorum
 
     ## 
     # :attr: service
