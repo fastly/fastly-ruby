@@ -127,7 +127,8 @@ module CommonTests
 
     assert version3.validate
 
-    #assert @fastly.deactivate_version(version2)
+    version3.deactivate!
+    @fastly.delete_service(service)
   end
 
   def test_stats
@@ -147,6 +148,7 @@ module CommonTests
 
     stats       = service.stats(:all, :year => 2011, :month => 10)
     assert stats
+    @fastly.delete_service(service)
   end
 
   def test_invoices
@@ -173,6 +175,7 @@ module CommonTests
     assert_equal 1,     invoice.start.day
     assert_equal year,  invoice.end.year
     assert_equal month, invoice.end.month
+    @fastly.delete_service(service)
   end
 
 end
