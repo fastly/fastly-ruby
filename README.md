@@ -56,12 +56,10 @@ fastly.client.put("/service/#{service.id}/version/#{new_version.number}/vcl/#{vc
 new_version.activate!
 ```
 
-# Copyright
- 
-Copyright 2011 - Fastly Inc
+# License
 
-Mail support at fastly dot com if you have problems.
- 
+[MIT](https://github.com/fastly/fastly-ruby/blob/master/License)
+
 # Developers
 
 http://github.com/fastly/fastly-ruby
