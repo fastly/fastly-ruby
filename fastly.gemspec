@@ -16,6 +16,7 @@ Gem::Specification.new do |s|
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   s.require_paths = ["lib"]
 
+  s.add_dependency 'rake'
   s.add_dependency 'json'
   s.add_dependency 'curb', '>=0.7.15'
   s.add_dependency 'curb-fu', '>=0.6.1'
