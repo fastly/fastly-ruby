@@ -57,8 +57,14 @@ new_version.activate!
 ```
 
 # Copyright
- 
-Copyright 2011 - Fastly Inc
+
+Copyright 2011-2014 - Fastly Inc
+
+# Redistribution
+
+MIT license, see LICENSE.
+
+# Contact
 
 Mail support at fastly dot com if you have problems.
  
