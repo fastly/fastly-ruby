@@ -6,6 +6,7 @@ Gem::Specification.new do |s|
   s.name        = "fastly"
   s.version     = Fastly::VERSION
   s.authors     = ["Fastly Inc"]
+  s.license     = "MIT"
   s.email       = ["support@fastly.com"]
   s.homepage    = "http://github.com/fastly/fastly-ruby"
   s.summary     = %q{Client library for the Fastly acceleration system}
