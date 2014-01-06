@@ -10,6 +10,7 @@ Gem::Specification.new do |s|
   s.homepage    = "http://github.com/fastly/fastly-ruby"
   s.summary     = %q{Client library for the Fastly acceleration system}
   s.description = %q{Client library for the Fastly acceleration system}
+  s.license     = 'MIT'
 
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
