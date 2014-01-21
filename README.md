@@ -1,6 +1,8 @@
-Fastly - client library for interacting with the Fastly web acceleration service
+# Fastly
 
-# Example
+Client library for interacting with the Fastly web acceleration service [API](http://docs.fastly.com/api)
+
+## Example
 
 ```ruby
 fastly = Fastly.new(login_opts)
@@ -22,7 +24,7 @@ fastly.list_services.each do |service|
   puts "Service Name: #{service.name}"
   puts "Service Versions:"
   service.versions.each do |version|
-      puts "\t#{version.number}"
+    puts "\t#{version.number}"
   end
 end
 
@@ -56,20 +58,19 @@ fastly.client.put("/service/#{service.id}/version/#{new_version.number}/vcl/#{vc
 new_version.activate!
 ```
 
-# Copyright
+## Copyright
 
 Copyright 2011-2014 - Fastly Inc
 
-# Redistribution
+## Redistribution
 
 MIT license, see LICENSE.
 
-# Contact
+## Contact
 
 Mail support at fastly dot com if you have problems.
- 
-# Developers
 
-http://github.com/fastly/fastly-ruby
+## Developers
 
-http://www.fastly.com/documentation
+* http://github.com/fastly/fastly-ruby
+* http://www.fastly.com/documentation
