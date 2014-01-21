@@ -58,6 +58,28 @@ fastly.client.put("/service/#{service.id}/version/#{new_version.number}/vcl/#{vc
 new_version.activate!
 ```
 
+## Contributing
+
+1. Fork it
+2. Create your feature branch (`git checkout -b my-new-feature`)
+3. Commit your changes (`git commit -am 'Added some feature'`)
+4. Push to the branch (`git push origin my-new-feature`)
+5. Create new Pull Request
+
+### Notes for testing
+
+The test suite requires the following `ENV` variables to be set:
+
+* `FASTLY_TEST_USER` - Your user email
+* `FASTLY_TEST_NAME` - Your name on your account (ie "John Smith")
+* `FASTLY_TEST_PASSWORD` - Your account password
+* `FASTLY_TEST_CUSTOMER` - Your customer or company name (ie. "Fastly" or "Acme, Inc.")
+* `FASTLY_TEST_API_KEY` - Your API key (found at https://app.fastly.com/#account)
+
+While the test suite is safe to be run on all accounts and isn't harmful to your
+data, the tests will create and delete 3 services in sequence so you may want
+to create an account just for tests.
+
 ## Copyright
 
 Copyright 2011-2014 - Fastly Inc
