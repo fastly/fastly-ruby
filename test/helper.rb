@@ -11,6 +11,11 @@ else
   end
 end
 
+class Fastly::TestCase
+  # Map inconsistency between Test::Unit and Minitest
+  alias :assert_raise :assert_raises
+end
+
 def login_opts(mode=:full)
   opts = { }
   [:url,:port].each do |what|
