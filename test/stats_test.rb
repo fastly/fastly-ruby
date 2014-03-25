@@ -1,12 +1,8 @@
-#!/usr/bin/env ruby
-
-require 'rubygems'
-require 'test/unit'
-require File.expand_path(File.dirname(__FILE__) + '/helper')
+require 'helper'
 
 FROM = "2011-01-01 00:00:00"
 
-class StatsTest < Test::Unit::TestCase
+class StatsTest < Fastly::TestCase
 
   def setup
     opts = login_opts(:api_key).merge(:use_curb => false)

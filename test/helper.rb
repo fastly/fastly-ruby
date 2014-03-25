@@ -1,5 +1,15 @@
+require 'common'
 require 'fastly'
-require File.expand_path(File.dirname(__FILE__) + '/common')
+require 'minitest/autorun'
+
+# Accommodate a more modern version of Minitest compared to the stdlib
+if defined? Minitest::Test
+  class Fastly::TestCase < Minitest::Test
+  end
+else
+  class Fastly::TestCase < MiniTest::Unit::TestCase
+  end
+end
 
 def login_opts(mode=:full)
   opts = { }
