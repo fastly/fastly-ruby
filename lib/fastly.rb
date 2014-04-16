@@ -11,6 +11,7 @@ class Fastly
   require 'fastly/base'
   require 'fastly/belongs_to_service_and_version'
   require 'fastly/backend'
+  require 'fastly/condition'
   require 'fastly/customer'
   require 'fastly/director'  
   require 'fastly/domain'
@@ -146,7 +147,7 @@ class Fastly
     client.get_stats("/stats/regions")
   end
 
-  [User, Customer, Backend, Director, Domain, Healthcheck, Match, Origin, Service, Syslog, VCL, Version].each do |klass|   
+  [User, Customer, Backend, Condition, Director, Domain, Healthcheck, Match, Origin, Service, Syslog, VCL, Version].each do |klass|   
     type = klass.to_s.downcase.split("::")[-1]
     # unless the class doesn't have a list path or it already exists
     unless klass.list_path.nil? || klass.respond_to?("list_#{type}s".to_sym)
