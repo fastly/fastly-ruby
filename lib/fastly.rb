@@ -2,9 +2,16 @@
 # Copyright:: Copyright (c) 2011 Fastly Inc
 # License::   Distributes under the same terms as Ruby
 
+#class String
+#  def underscore
+#    gsub(/([^A-Z])([A-Z]+)/, '\1_\2').downcase
+#  end
+#end
+
 # A client library for interacting with the Fastly web acceleration service
 class Fastly
   require 'fastly/gem_version'
+  require 'fastly/string'
   require 'fastly/fetcher'
   require 'fastly/client'
 
@@ -19,6 +26,7 @@ class Fastly
   require 'fastly/invoice'
   require 'fastly/match'
   require 'fastly/origin'
+  require 'fastly/request_settings'
   require 'fastly/service'
   require 'fastly/settings'
   require 'fastly/syslog'
@@ -147,8 +155,9 @@ class Fastly
     client.get_stats("/stats/regions")
   end
 
-  [User, Customer, Backend, Condition, Director, Domain, Healthcheck, Match, Origin, Service, Syslog, VCL, Version].each do |klass|   
-    type = klass.to_s.downcase.split("::")[-1]
+  [User, Customer, Backend, Condition, Director, Domain, Healthcheck, Match, Origin, RequestSettings, Service, Syslog, VCL, Version].each do |klass|   
+    type = klass.to_s.split("::")[-1].underscore
+    warn type
     # unless the class doesn't have a list path or it already exists
     unless klass.list_path.nil? || klass.respond_to?("list_#{type}s".to_sym)
         self.send :define_method, "list_#{type}s".to_sym do |*args|
@@ -531,3 +540,5 @@ class Fastly
     options;
   end
 end
+
+
