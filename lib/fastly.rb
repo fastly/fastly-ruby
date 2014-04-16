@@ -209,7 +209,7 @@ class Fastly
   # opts must contain service_id, version and name params
   
   ##
-  # :method: create_s3logging(opts)
+  # :method: create_s3_logging(opts)
   # opts must contain service_id, version and name params
 
   ##
@@ -222,6 +222,26 @@ class Fastly
   
   ##
   # :method: create_condition(opts)
+  # opts must contain service_id, version and name params
+
+  ##
+  # :method: create_cache_setting(opts)
+  # opts must contain service_id, version and name params
+
+  ##
+  # :method: create_header(opts)
+  # opts must contain service_id, version and name params
+
+  ##
+  # :method: create_gzip(opts)
+  # opts must contain service_id, version and name params
+
+  ##
+  # :method: create_request_setting(opts)
+  # opts must contain service_id, version and name params
+
+  ##
+  # :method: create_response_object(opts)
   # opts must contain service_id, version and name params
 
   ##
@@ -265,7 +285,7 @@ class Fastly
   # Get an Origin
 
   ##
-  # :method: get_s3logging(service_id, number, name)
+  # :method: get_s3_logging(service_id, number, name)
   # Get a S3 logging
   
   ## 
@@ -283,6 +303,30 @@ class Fastly
   ## 
   # :method: get_settings(service_id, number, name)
   # Get a Settings
+
+  ## 
+  # :method: get_condition(service_id, number, name)
+  # Get a Condition
+
+  ## 
+  # :method: get_cache_setting(service_id, number, name)
+  # Get a Cache Setting
+
+  ## 
+  # :method: get_gzip(service_id, number, name)
+  # Get a Gzip
+
+  ## 
+  # :method: get_header(service_id, number, name)
+  # Get a Header
+
+  ## 
+  # :method: get_request_setting(service_id, number, name)
+  # Get a Request Setting
+
+  ## 
+  # :method: get_response_object(service_id, number, name)
+  # Get a Response Object
 
   ##
   # :method: update_user(user)
@@ -340,9 +384,9 @@ class Fastly
   #    settings.save!
 
   ## 
-  # :method: update_s3logging(s3logging)
+  # :method: update_s3_logging(s3_logging)
   # You can also call
-  #    s3logging.save!
+  #    s3_logging.save!
 
   ## 
   # :method: update_syslog(syslog)
@@ -353,6 +397,31 @@ class Fastly
   # :method: update_vcl(vcl)
   # You can also call
   #    vcl.save!
+
+  ## 
+  # :method: update_cache_setting(cache_setting)
+  # You can also call
+  #    cache_setting.save!
+
+  ## 
+  # :method: update_header(header)
+  # You can also call
+  #    header.save!
+
+  ## 
+  # :method: update_gzip(gzip)
+  # You can also call
+  #    gzip.save!
+
+  ## 
+  # :method: update_request_setting(request_setting)
+  # You can also call
+  #    request_setting.save!
+
+  ## 
+  # :method: update_response_object(response_object)
+  # You can also call
+  #    response_object.save!
 
   ## 
   # :method: update_condition(condition)
@@ -421,9 +490,9 @@ class Fastly
   #    origin.delete!
 
   ## 
-  # :method: delete_s3logging(s3logging)
+  # :method: delete_s3_logging(s3_logging)
   # You can also call
-  #    s3logging.delete!
+  #    s3_logging.delete!
 
   ## 
   # :method: delete_syslog(syslog)
@@ -435,6 +504,31 @@ class Fastly
   # :method: delete_vcl(vcl)
   # You can also call
   #    vcl.delete!
+
+  ## 
+  # :method: delete_cache_setting(cache_setting)
+  # You can also call
+  #    cache_setting.delete!
+
+  ## 
+  # :method: delete_header(header)
+  # You can also call
+  #    header.delete!
+
+  ## 
+  # :method: delete_gzip(gzip)
+  # You can also call
+  #    gzip.delete!
+
+  ## 
+  # :method: delete_request_setting(request_setting)
+  # You can also call
+  #    request_setting.delete!
+
+  ## 
+  # :method: delete_response_object(response_object)
+  # You can also call
+  #    response_object.delete!
 
   ## 
   # :method: delete_condition(condition)
@@ -498,7 +592,27 @@ class Fastly
   # 
   # Get a list of all conditions
 
-  # :method: list_versions(:service_id => service.id, :version => version.number) 
+  # :method: list_cache_settings(:service_id => service.id, :version => version.number)
+  # 
+  # Get a list of all cache settings
+
+  # :method: list_headers(:service_id => service.id, :version => version.number)
+  # 
+  # Get a list of all headers
+
+  # :method: list_gzips(:service_id => service.id, :version => version.number)
+  # 
+  # Get a list of all gzips
+
+  # :method: list_request_settings(:service_id => service.id, :version => version.number)
+  # 
+  # Get a list of all request_settings
+
+  # :method: list_response_objects(:service_id => service.id, :version => version.number)
+  # 
+  # Get a list of all response_objects
+
+  # :method: list_versions(:service_id => service.id, :version => version.number)
   # 
   # Get a list of all versions
 
@@ -556,5 +670,4 @@ class Fastly
     options;
   end
 end
-
 
