@@ -19,10 +19,12 @@ class Fastly
   require 'fastly/domain'
   require 'fastly/header'
   require 'fastly/healthcheck'
+  require 'fastly/gzip'
   require 'fastly/invoice'
   require 'fastly/match'
   require 'fastly/origin'
   require 'fastly/request_setting'
+  require 'fastly/response_object'
   require 'fastly/service'
   require 'fastly/settings'
   require 'fastly/syslog'
@@ -151,7 +153,7 @@ class Fastly
     client.get_stats("/stats/regions")
   end
 
-  [User, Customer, Backend, CacheSetting, Condition, Director, Domain, Header, Healthcheck, Match, Origin, RequestSetting, Service, Syslog, VCL, Version].each do |klass|   
+  [User, Customer, Backend, CacheSetting, Condition, Director, Domain, Header, Healthcheck, Gzip, Match, Origin, RequestSetting, ResponseObject, Service, Syslog, VCL, Version].each do |klass|   
     type = klass.to_s.split("::")[-1].underscore
     # unless the class doesn't have a list path or it already exists
     unless klass.list_path.nil? || klass.respond_to?("list_#{type}s".to_sym)
