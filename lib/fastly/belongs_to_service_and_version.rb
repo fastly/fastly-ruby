@@ -32,7 +32,7 @@ class Fastly
     end
     
     def self.post_path(opts)
-    "/service/#{opts[:service_id]}/version/#{opts[:version]}/#{path}"
+      "/service/#{opts[:service_id]}/version/#{opts[:version]}/#{path}"
     end
     
     def self.put_path(obj)
