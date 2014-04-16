@@ -35,7 +35,7 @@ class Fastly
      end
 
      def self.path
-       self.to_s.downcase.split("::")[-1]
+       self.to_s.split("::")[-1].underscore
      end
      
      def self.get_path(id)
