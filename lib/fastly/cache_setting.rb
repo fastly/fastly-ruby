@@ -1,5 +1,5 @@
 class Fastly
-  # customize request handing. Best used with conditions
+  # customize cache handling. Best used with conditions.
   class CacheSetting < BelongsToServiceAndVersion
     attr_accessor :service_id, :name, :action, :cache_condition, :ttl, :stale_ttl
 
