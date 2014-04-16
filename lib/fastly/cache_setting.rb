@@ -15,7 +15,7 @@ class Fastly
         ## 
         # :attr: name
         #
-        # The name of the condition
+        # The name of the gzip setting
 
 	##
 	# :attr: action

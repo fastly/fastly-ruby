@@ -1,5 +1,5 @@
 class Fastly
-  # customize cache handling. Best used with conditions.
+  # customize gzipping content.
   class Gzip < BelongsToServiceAndVersion
     attr_accessor :service_id, :name, :extensions, :content_types, :cache_condition
 
