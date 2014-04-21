@@ -36,7 +36,7 @@ domain         = fastly.create_domain(:service_id => service.id, :version => lat
 backend        = fastly.create_backend(:service_id => service.id, :version => latest_version.number, :name => "Backend 1", :ipv4 => "192.0.43.10", :port => 80)
 
 # ... and activate it. You're now hosted on Fastly.
-latest_version.activate
+latest_version.activate!
 
 # Let's take a peek at the VCL that Fastly generated for us
 vcl = latest_version.generated_vcl
