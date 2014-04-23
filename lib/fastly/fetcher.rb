@@ -18,7 +18,7 @@ class Fastly
     end
     
     def list(klass, opts={})
-      list = client.get(klass.list_path, opts)
+      list = client.get(klass.list_path(opts))
       return [] if list.nil?
       list.map { |hash| klass.new(hash, self) }
     end

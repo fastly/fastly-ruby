@@ -5,19 +5,26 @@
 # A client library for interacting with the Fastly web acceleration service
 class Fastly
   require 'fastly/gem_version'
+  require 'fastly/string'
   require 'fastly/fetcher'
   require 'fastly/client'
 
   require 'fastly/base'
   require 'fastly/belongs_to_service_and_version'
   require 'fastly/backend'
+  require 'fastly/cache_setting'
+  require 'fastly/condition'
   require 'fastly/customer'
   require 'fastly/director'  
   require 'fastly/domain'
+  require 'fastly/header'
   require 'fastly/healthcheck'
+  require 'fastly/gzip'
   require 'fastly/invoice'
   require 'fastly/match'
   require 'fastly/origin'
+  require 'fastly/request_setting'
+  require 'fastly/response_object'
   require 'fastly/service'
   require 'fastly/settings'
   require 'fastly/syslog'
@@ -146,8 +153,8 @@ class Fastly
     client.get_stats("/stats/regions")
   end
 
-  [User, Customer, Backend, Director, Domain, Healthcheck, Match, Origin, Service, Syslog, VCL, Version].each do |klass|   
-    type = klass.to_s.downcase.split("::")[-1]
+  [User, Customer, Backend, CacheSetting, Condition, Director, Domain, Header, Healthcheck, Gzip, Match, Origin, RequestSetting, ResponseObject, Service, Syslog, VCL, Version].each do |klass|   
+    type = klass.to_s.split("::")[-1].underscore
     # unless the class doesn't have a list path or it already exists
     unless klass.list_path.nil? || klass.respond_to?("list_#{type}s".to_sym)
         self.send :define_method, "list_#{type}s".to_sym do |*args|
@@ -213,6 +220,26 @@ class Fastly
   # opts must contain service_id, version and name params
 
   ##
+  # :method: create_cache_setting(opts)
+  # opts must contain service_id, version and name params
+
+  ##
+  # :method: create_header(opts)
+  # opts must contain service_id, version and name params
+
+  ##
+  # :method: create_gzip(opts)
+  # opts must contain service_id, version and name params
+
+  ##
+  # :method: create_request_setting(opts)
+  # opts must contain service_id, version and name params
+
+  ##
+  # :method: create_response_object(opts)
+  # opts must contain service_id, version and name params
+
+  ##
   # :method: get_user(id)
   # Get a User
 
@@ -267,6 +294,30 @@ class Fastly
   ## 
   # :method: get_settings(service_id, number, name)
   # Get a Settings
+
+  ## 
+  # :method: get_condition(service_id, number, name)
+  # Get a Condition
+
+  ## 
+  # :method: get_cache_setting(service_id, number, name)
+  # Get a Cache Setting
+
+  ## 
+  # :method: get_gzip(service_id, number, name)
+  # Get a Gzip
+
+  ## 
+  # :method: get_header(service_id, number, name)
+  # Get a Header
+
+  ## 
+  # :method: get_request_setting(service_id, number, name)
+  # Get a Request Setting
+
+  ## 
+  # :method: get_response_object(service_id, number, name)
+  # Get a Response Object
 
   ##
   # :method: update_user(user)
@@ -332,6 +383,31 @@ class Fastly
   # :method: update_vcl(vcl)
   # You can also call
   #    vcl.save!
+
+  ## 
+  # :method: update_cache_setting(cache_setting)
+  # You can also call
+  #    cache_setting.save!
+
+  ## 
+  # :method: update_header(header)
+  # You can also call
+  #    header.save!
+
+  ## 
+  # :method: update_gzip(gzip)
+  # You can also call
+  #    gzip.save!
+
+  ## 
+  # :method: update_request_setting(request_setting)
+  # You can also call
+  #    request_setting.save!
+
+  ## 
+  # :method: update_response_object(response_object)
+  # You can also call
+  #    response_object.save!
 
   ## 
   # :method: update_condition(condition)
@@ -411,6 +487,31 @@ class Fastly
   #    vcl.delete!
 
   ## 
+  # :method: delete_cache_setting(cache_setting)
+  # You can also call
+  #    cache_setting.delete!
+
+  ## 
+  # :method: delete_header(header)
+  # You can also call
+  #    header.delete!
+
+  ## 
+  # :method: delete_gzip(gzip)
+  # You can also call
+  #    gzip.delete!
+
+  ## 
+  # :method: delete_request_setting(request_setting)
+  # You can also call
+  #    request_setting.delete!
+
+  ## 
+  # :method: delete_response_object(response_object)
+  # You can also call
+  #    response_object.delete!
+
+  ## 
   # :method: delete_condition(condition)
   # You can also call
   #    condition.delete!
@@ -472,6 +573,26 @@ class Fastly
   # 
   # Get a list of all conditions
 
+  # :method: list_cache_settings
+  # 
+  # Get a list of all cache settings
+
+  # :method: list_headers
+  # 
+  # Get a list of all headers
+
+  # :method: list_gzips
+  # 
+  # Get a list of all gzips
+
+  # :method: list_request_settings
+  # 
+  # Get a list of all request_settings
+
+  # :method: list_response_objects
+  # 
+  # Get a list of all response_objects
+
   # :method: list_versions 
   # 
   # Get a list of all versions
@@ -530,3 +651,4 @@ class Fastly
     options;
   end
 end
+
