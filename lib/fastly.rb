@@ -28,6 +28,7 @@ class Fastly
   require 'fastly/service'
   require 'fastly/settings'
   require 'fastly/syslog'
+  require 'fastly/s3_logging'
   require 'fastly/user'
   require 'fastly/vcl'
   require 'fastly/version'
@@ -153,7 +154,7 @@ class Fastly
     client.get_stats("/stats/regions")
   end
 
-  [User, Customer, Backend, CacheSetting, Condition, Director, Domain, Header, Healthcheck, Gzip, Match, Origin, RequestSetting, ResponseObject, Service, Syslog, VCL, Version].each do |klass|   
+  [User, Customer, Backend, CacheSetting, Condition, Director, Domain, Header, Healthcheck, Gzip, Match, Origin, RequestSetting, ResponseObject, Service, S3Logging, Syslog, VCL, Version].each do |klass|   
     type = klass.to_s.split("::")[-1].underscore
     # unless the class doesn't have a list path or it already exists
     unless klass.list_path.nil? || klass.respond_to?("list_#{type}s".to_sym)
@@ -207,6 +208,10 @@ class Fastly
   # :method: create_healthcheck(opts)
   # opts must contain service_id, version and name params
   
+  ##
+  # :method: create_s3_logging(opts)
+  # opts must contain service_id, version and name params
+
   ##
   # :method: create_syslog(opts)
   # opts must contain service_id, version and name params
@@ -278,6 +283,10 @@ class Fastly
   ## 
   # :method: get_origin(service_id, number, name)
   # Get an Origin
+
+  ##
+  # :method: get_s3_logging(service_id, number, name)
+  # Get a S3 logging
   
   ## 
   # :method: get_syslog(service_id, number, name)
@@ -373,6 +382,11 @@ class Fastly
   # :method: update_settings(settings)
   # You can also call
   #    settings.save!
+
+  ## 
+  # :method: update_s3_logging(s3_logging)
+  # You can also call
+  #    s3_logging.save!
 
   ## 
   # :method: update_syslog(syslog)
@@ -476,6 +490,11 @@ class Fastly
   #    origin.delete!
 
   ## 
+  # :method: delete_s3_logging(s3_logging)
+  # You can also call
+  #    s3_logging.delete!
+
+  ## 
   # :method: delete_syslog(syslog)
   # You can also call
   #    syslog.delete!
@@ -521,79 +540,79 @@ class Fastly
   # You can also call
   #    version.delete!
 
-  # :method: list_users
+  # :method: list_users(:service_id => service.id, :version => version.number)
   # 
   # Get a list of all users
 
-  # :method: list_customers 
+  # :method: list_customers(:service_id => service.id, :version => version.number)
   # 
   # Get a list of all customers
 
-  # :method: list_versions
+  # :method: list_versions(:service_id => service.id, :version => version.number)
   # 
   # Get a list of all versions
 
-  # :method: list_services 
+  # :method: list_services(:service_id => service.id, :version => version.number)
   # 
   # Get a list of all services
 
-  # :method: list_backends 
+  # :method: list_backends(:service_id => service.id, :version => version.number) 
   # 
   # Get a list of all backends
 
-  # :method: list_directors 
+  # :method: list_directors(:service_id => service.id, :version => version.number) 
   # 
   # Get a list of all directors
 
-  # :method: list_domains 
+  # :method: list_domains(:service_id => service.id, :version => version.number) 
   # 
   # Get a list of all domains
 
-  # :method: list_healthchecks
+  # :method: list_healthchecks(:service_id => service.id, :version => version.number)
   # 
   # Get a list of all healthchecks
 
-  # :method: list_matchs 
+  # :method: list_matchs(:service_id => service.id, :version => version.number)
   # 
   # Get a list of all matches
 
-  # :method: list_origins 
+  # :method: list_origins(:service_id => service.id, :version => version.number) 
   # 
   # Get a list of all origins
 
-  # :method: list_syslogs
+  # :method: list_syslogs(:service_id => service.id, :version => version.number)
   # 
   # Get a list of all syslogs
 
-  # :method: list_vcls 
+  # :method: list_vcls(:service_id => service.id, :version => version.number) 
   # 
   # Get a list of all vcls
   
-  # :method: list_conditions 
+  # :method: list_conditions(:service_id => service.id, :version => version.number) 
   # 
   # Get a list of all conditions
 
-  # :method: list_cache_settings
+  # :method: list_cache_settings(:service_id => service.id, :version => version.number)
   # 
   # Get a list of all cache settings
 
-  # :method: list_headers
+  # :method: list_headers(:service_id => service.id, :version => version.number)
   # 
   # Get a list of all headers
 
-  # :method: list_gzips
+  # :method: list_gzips(:service_id => service.id, :version => version.number)
   # 
   # Get a list of all gzips
 
-  # :method: list_request_settings
+  # :method: list_request_settings(:service_id => service.id, :version => version.number)
   # 
   # Get a list of all request_settings
 
-  # :method: list_response_objects
+  # :method: list_response_objects(:service_id => service.id, :version => version.number)
   # 
   # Get a list of all response_objects
 
-  # :method: list_versions 
+  # :method: list_versions(:service_id => service.id, :version => version.number)
   # 
   # Get a list of all versions
 
