@@ -1,10 +1,6 @@
-#!/usr/bin/env ruby
+require 'helper'
 
-require 'rubygems'
-require 'test/unit'
-require File.expand_path(File.dirname(__FILE__) + '/helper')
-
-class FullLoginTest < Test::Unit::TestCase
+class FullLoginTest < Fastly::TestCase
   include CommonTests
 
   def setup

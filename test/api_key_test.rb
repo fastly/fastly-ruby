@@ -1,9 +1,6 @@
-#!/usr/bin/env ruby
-require 'rubygems'
-require 'test/unit'
-require File.expand_path(File.dirname(__FILE__) + '/helper')
+require 'helper'
 
-class ApiKeyTest < Test::Unit::TestCase
+class ApiKeyTest < Fastly::TestCase
   include CommonTests
 
   def setup

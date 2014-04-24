@@ -1,10 +1,6 @@
-#!/usr/bin/env ruby
+require 'helper'
 
-require 'rubygems'
-require 'test/unit'
-require File.expand_path(File.dirname(__FILE__) + '/helper')
-
-class AdminTest < Test::Unit::TestCase
+class AdminTest < Fastly::TestCase
   def setup
     opts = login_opts(:full).merge(:use_curb => false)
     begin
