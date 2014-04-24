@@ -96,6 +96,13 @@ class Fastly
       return Fastly::Version.new(hash, fetcher)
     end
 
+    # Create an entirely new version, not cloned from the previous one.
+    def self.create_new(fetcher, opts)
+      hash = fetcher.client.post(Fastly::Version.post_path(opts))
+      return nil if hash.nil?
+      return Fastly::Version.new(hash, fetcher)
+    end
+
     # Get the generated VCL object for this Version (which must have been activated first)
     #
     # Won't return the content of the VCL unless you pass in 

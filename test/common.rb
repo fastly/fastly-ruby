@@ -177,6 +177,11 @@ module CommonTests
     assert version3.validate
 
     version3.deactivate!
+
+    version4 = Fastly::Version.create_new(service.fetcher, :service_id => service.id)
+    assert version4.number != version3.number
+    assert @fastly.list_directors(:service_id => service.id, :version => version4.number).length == 0
+
     @fastly.delete_service(service)
   end
 
