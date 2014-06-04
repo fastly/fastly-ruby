@@ -1,4 +1,4 @@
 class Fastly
   # The current version of the library
-  VERSION = "1.02"
+  VERSION = "1.1.0"
 end
