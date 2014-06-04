@@ -13,13 +13,10 @@ Gem::Specification.new do |s|
   s.license     = 'MIT'
 
   s.files         = `git ls-files`.split("\n")
-  s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
+  s.test_files    = `git ls-files -- test/*`.split("\n")
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   s.require_paths = ["lib"]
 
-  s.add_dependency 'rake'
-  s.add_dependency 'json'
   s.add_dependency 'curb', '>=0.7.15'
   s.add_dependency 'curb-fu', '>=0.6.1'
-  s.add_development_dependency 'rdoc', '>=3.4'
 end
