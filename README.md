@@ -53,7 +53,7 @@ director.add_backend(new_backend)
 # ... and upload some custom vcl (presuming we have permissions)
 new_version.upload_vcl(vcl_name, File.read(vcl_file))
 # ... and set it as the service's main vcl
-fastly.client.put("/service/#{service.id}/version/#{new_version.number}/vcl/#{vcl_name}/main")
+new_version.vcl(vcl_name).set_main!
 
 new_version.activate!
 ```
