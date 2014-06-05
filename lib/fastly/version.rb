@@ -126,6 +126,11 @@ class Fastly
       return Fastly::VCL.new(hash, fetcher)
     end
 
+    # Upload a VCL file for this Version and set as the main VCL
+    def upload_main_vcl(name, contents)
+      upload_vcl(name, contents).set_main!
+    end
+
     # Get the named VCL for this version
     #
     # Won't return the content of the VCL unless you pass in 
