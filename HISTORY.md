@@ -1,3 +1,6 @@
+# 2014-06-12 v1.1.2
+* Check if `String#underscore` is already defined before defining it.
+
 2013-11-26 v1.02
 
 Fix rdoc dependency and quorum spelling (Kristoffer Renholm)
