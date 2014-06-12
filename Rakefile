@@ -16,6 +16,13 @@ RDoc::Task.new do |rdoc|
   rdoc.rdoc_files.include('README.md', 'lib/**/*.rb')
 end
 
+namespace :test do
+  desc 'Run all unit tests'
+  task :unit do
+    sh 'bundle exec ruby -Itest -Ilib test/fastly/*_test.rb'
+  end
+end
+
 Rake::TestTask.new do |t|
   t.libs << 'test'
   t.test_files = FileList['test/*test.rb']
