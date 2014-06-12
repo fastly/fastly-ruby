@@ -1,4 +1,3 @@
-
 class Fastly
   # Base class for all Fastly objects
   class Base # :nodoc: all
@@ -35,7 +34,7 @@ class Fastly
      end
 
      def self.path
-       self.to_s.split("::")[-1].underscore
+       Util.class_to_path(self)
      end
      
      def self.get_path(id)

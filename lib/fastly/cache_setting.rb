@@ -41,7 +41,7 @@ class Fastly
     private
       # needs an 's' at the end of the url
       def self.path
-        self.to_s.split("::")[-1].underscore + "s"
+        Util.class_to_path(self, true)
       end
   end
 end

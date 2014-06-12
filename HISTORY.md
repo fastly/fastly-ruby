@@ -1,5 +1,7 @@
 # 2014-06-12 v1.1.2
-* Check if `String#underscore` is already defined before defining it.
+* Replace `String#underscore` with `Fastly::Util.class_to_path` method.
+* Add first true unit test
+* Add `test_helper.rb`
 
 2013-11-26 v1.02
 

@@ -5,7 +5,7 @@
 # A client library for interacting with the Fastly web acceleration service
 class Fastly
   require 'fastly/gem_version'
-  require 'fastly/string'
+  require 'fastly/util'
   require 'fastly/fetcher'
   require 'fastly/client'
 
@@ -155,7 +155,7 @@ class Fastly
   end
 
   [User, Customer, Backend, CacheSetting, Condition, Director, Domain, Header, Healthcheck, Gzip, Match, Origin, RequestSetting, ResponseObject, Service, S3Logging, Syslog, VCL, Version].each do |klass|   
-    type = klass.to_s.split("::")[-1].underscore
+    type = Util.class_to_path(klass)
     # unless the class doesn't have a list path or it already exists
     unless klass.list_path.nil? || klass.respond_to?("list_#{type}s".to_sym)
         self.send :define_method, "list_#{type}s".to_sym do |*args|

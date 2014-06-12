@@ -84,7 +84,7 @@ class Fastly
 
     private
      def self.path
-       self.to_s.split("::")[-1].underscore + "s"
+       Util.class_to_path(self, true)
      end
   end
 end
