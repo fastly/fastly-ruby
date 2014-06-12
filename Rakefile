@@ -2,6 +2,14 @@ require 'bundler/gem_tasks'
 require 'rake/testtask'
 require 'rdoc/task'
 
+desc 'Run library from within a Pry console'
+task :console do
+  require 'pry'
+  require 'fastly'
+  ARGV.clear
+  Pry.start
+end
+
 RDoc::Task.new do |rdoc|
   rdoc.rdoc_dir = 'doc'
   rdoc.main = 'README.md'

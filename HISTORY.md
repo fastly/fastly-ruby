@@ -2,6 +2,8 @@
 * Replace `String#underscore` with `Fastly::Util.class_to_path` method.
 * Add first true unit test
 * Add `test_helper.rb`
+* Add `pry` as dependency
+* Add console Rake task
 
 2013-11-26 v1.02
 
