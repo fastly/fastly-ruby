@@ -1,4 +1,4 @@
-# Fastly
+# Fastly [![Build Status](https://travis-ci.org/fastly/fastly-ruby.svg?branch=master)](https://travis-ci.org/fastly/fastly-ruby)
 
 Client library for interacting with the Fastly web acceleration service [API](http://docs.fastly.com/api)
 
