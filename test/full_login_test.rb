@@ -12,12 +12,10 @@ class Fastly
       it 'should have access to current user' do
         assert_instance_of User, current_user
         assert_equal opts[:user], current_user.login
-        assert_equal opts[:name], current_user.name
       end
 
       it 'should have access to current customer' do
         assert_instance_of Customer, current_customer
-        assert_equal opts[:customer], current_customer.id
       end
 
       it 'should have an arbitrary test confirming clearly defined relationships' do
