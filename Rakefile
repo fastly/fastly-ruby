@@ -1,6 +1,4 @@
 require 'bundler/gem_tasks'
-require 'rake/testtask'
-require 'rdoc/task'
 
 desc 'Run library from within a Pry console'
 task :console do
@@ -17,6 +15,17 @@ namespace :clean do
   end
 end
 
+require 'rubocop/rake_task'
+
+desc 'Run rubocop'
+RuboCop::RakeTask.new(:rubocop) do |task|
+  task.patterns = ['lib/**/*.rb', 'test/**/*.rb']
+  task.formatters = ['fuubar']
+  task.fail_on_error = true
+end
+
+require 'rdoc/task'
+
 RDoc::Task.new do |rdoc|
   rdoc.rdoc_dir = 'doc'
   rdoc.main = 'README.md'
@@ -29,6 +38,8 @@ namespace :test do
     sh 'bundle exec ruby -Itest -Ilib test/fastly/*_test.rb'
   end
 end
+
+require 'rake/testtask'
 
 Rake::TestTask.new do |t|
   t.libs << 'test'
