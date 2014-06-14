@@ -1,43 +1,27 @@
 require 'helper'
 
 # API Key Tests
-class ApiKeyTest < Fastly::TestCase
-  include CommonTests
+class Fastly
+  describe 'ApiKeyTest' do
+    let(:opts)             { login_opts(:api_key) }
+    let(:client)           { Client.new(opts) }
+    let(:fastly)           { Fastly.new(opts) }
 
-  def setup
-    @opts = login_opts(:api_key)
-    begin
-      @client = Fastly::Client.new(@opts)
-      @fastly = Fastly.new(@opts)
-    rescue => e
-      pp e
-      exit(-1)
+    describe '#current_{user,customer}' do
+      it 'should not have access to current user 'do
+        assert_raises(Error) do
+          client.get('/current_user')
+        end
+
+        assert_raises(FullAuthRequired) do
+          fastly.current_user
+        end
+      end
+
+      it 'should have access to current customer' do
+        assert_instance_of Hash, client.get('/current_customer')
+        assert_instance_of Customer, fastly.current_customer
+      end
     end
-  end
-
-  def test_raw_client
-    user = nil
-
-    assert_raises(Fastly::Error) do
-      user = @client.get('/current_user')
-    end
-
-    assert_equal nil, user
-
-    customer = @client.get('/current_customer')
-    assert customer
-  end
-
-  def test_current_user_and_customer
-    current_user = nil
-
-    assert_raises(Fastly::FullAuthRequired) do
-      current_user = @fastly.current_user
-    end
-
-    assert_equal nil, current_user
-
-    customer = @fastly.current_customer
-    assert customer
   end
 end
