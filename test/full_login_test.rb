@@ -1,5 +1,6 @@
 require 'helper'
 
+# test login
 class FullLoginTest < Fastly::TestCase
   include CommonTests
 
@@ -8,7 +9,7 @@ class FullLoginTest < Fastly::TestCase
     begin
       @client = Fastly::Client.new(@opts)
       @fastly = Fastly.new(@opts)
-    rescue Exception => e
+    rescue => e
       warn e.inspect
       warn e.backtrace.join("\n")
       exit(-1)
@@ -25,7 +26,6 @@ class FullLoginTest < Fastly::TestCase
     assert customer
     assert_equal @opts[:customer], customer['name']
   end
-
 
   def test_current_user_and_customer
     user     = @fastly.current_user
@@ -45,7 +45,6 @@ class FullLoginTest < Fastly::TestCase
     assert_equal user.id, tmp_user.id
   end
 
-
   def test_fetching_particular_user
     current_user = @fastly.current_user
     assert current_user
@@ -54,10 +53,10 @@ class FullLoginTest < Fastly::TestCase
     assert_equal current_user.id, id_user.id
     assert_equal current_user.name, id_user.name
 
-    # FIXME looking up by login doesn't work yet
-    #login_user = @fastly.get_user(current_user.login)
-    #assert_equal current_user.id, login_user.id
-    #assert_equal current_user.name, login_user.name
+    # FIXME: looking up by login doesn't work yet
+    # login_user = @fastly.get_user(current_user.login)
+    # assert_equal current_user.id, login_user.id
+    # assert_equal current_user.name, login_user.name
 
     current_customer = @fastly.current_customer
     assert current_customer
@@ -69,11 +68,11 @@ class FullLoginTest < Fastly::TestCase
 
   def test_creating_and_updating_user
     customer = @fastly.current_customer
-    email    = "fastly-ruby-test-#{get_rand}-new@example.com"
-    user     = @fastly.create_user(:login => email, :name => "New User")
+    email    = "fastly-ruby-test-#{random_string}-new@example.com"
+    user     = @fastly.create_user(:login => email, :name => 'New User')
     assert user
     assert_equal customer.id, user.customer_id
-    assert_equal "New User", user.name
+    assert_equal 'New User', user.name
     assert_equal email, user.login
 
     tmp       = @fastly.get_user(user.id)
@@ -82,11 +81,11 @@ class FullLoginTest < Fastly::TestCase
     assert_equal user.id, tmp.id
     assert_equal user.name, tmp.name
 
-    user.name = "Updated Name"
+    user.name = 'Updated Name'
     tmp      = @fastly.update_user(user)
     assert tmp
     assert_equal user.id, tmp.id
-    assert_equal "Updated Name", tmp.name
+    assert_equal 'Updated Name', tmp.name
 
     assert @fastly.delete_user(user)
     tmp       = @fastly.get_user(user.id)

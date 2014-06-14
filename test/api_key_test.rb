@@ -1,5 +1,6 @@
 require 'helper'
 
+# API Key Tests
 class ApiKeyTest < Fastly::TestCase
   include CommonTests
 
@@ -8,17 +9,19 @@ class ApiKeyTest < Fastly::TestCase
     begin
       @client = Fastly::Client.new(@opts)
       @fastly = Fastly.new(@opts)
-    rescue Exception => e
+    rescue => e
       pp e
       exit(-1)
     end
   end
 
   def test_raw_client
-    user = customer = nil
-    assert_raise(Fastly::Error) {
-      user     = @client.get('/current_user')
-    }
+    user = nil
+
+    assert_raises(Fastly::Error) do
+      user = @client.get('/current_user')
+    end
+
     assert_equal nil, user
 
     customer = @client.get('/current_customer')
@@ -27,20 +30,16 @@ class ApiKeyTest < Fastly::TestCase
   end
 
   def test_current_user_and_customer
-    current_user  = current_customer = nil
-    assert_raise(Fastly::FullAuthRequired) {
+    current_user = nil
+
+    assert_raises(Fastly::FullAuthRequired) do
       current_user = @fastly.current_user
-    }
+    end
+
     assert_equal nil, current_user
 
     customer = @fastly.current_customer
     assert customer
     assert_equal @opts[:customer], customer.name
-  end
-
-  def test_purging
-    #assert @fastly.purge('foo')
-    # TODO Won't work until we get fixtures in Heavenly
-    #assert @fastly.purge_all('foo')
   end
 end
