@@ -19,7 +19,7 @@ require 'rubocop/rake_task'
 
 desc 'Run rubocop'
 RuboCop::RakeTask.new(:rubocop) do |task|
-  task.patterns = ['lib/**/*.rb', 'test/**/*.rb']
+  task.patterns = ['bin/*', 'lib/**/*.rb', 'test/**/*.rb']
   task.formatters = ['fuubar']
   task.fail_on_error = true
 end
