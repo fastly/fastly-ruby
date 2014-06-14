@@ -2,6 +2,10 @@ require 'common'
 require 'fastly'
 require 'minitest/autorun'
 
+class Fastly
+  class TestCase < Minitest::Test; end
+end
+
 def login_opts(mode = :full)
   opts = {}
   [:url, :port].each do |what|
