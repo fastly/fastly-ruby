@@ -1,40 +1,36 @@
-require 'net/http'
-require 'net/https'
 require 'json'
 require 'cgi'
-require 'pp'
 require 'uri'
+require 'fastly/client/curl'
 
 class Fastly
   # The UserAgent to communicate with the API
   class Client #:nodoc: all
-    begin
-      require 'curb-fu'
-      CURB_FU=true
-    rescue LoadError
-      CURB_FU=false
-    end
-
     attr_accessor :http, :api_key, :user, :password, :cookie, :customer
 
     def initialize(opts)
-      [:api_key, :user, :password].each do |key|
-        self.send("#{key}=", opts[key]) if opts.has_key?(key)
-      end
-      base      = opts[:base_url]      || "https://api.fastly.com"
+      @api_key  = opts.fetch(:api_key, nil)
+      @user     = opts.fetch(:user, nil)
+      @password = opts.fetch(:password, nil)
+      @customer = opts.fetch(:customer, nil)
+
+      base      = opts.fetch(:base_url, 'https://api.fastly.com')
       uri       = URI.parse(base)
-      scheme    = uri.scheme
-      host      = uri.host
-      curb      = opts.has_key?(:use_curb)  ? !!opts[:use_curb] && CURB_FU : CURB_FU
-      port      = opts.has_key?(:base_port) ?   opts[:base_port]           : (scheme == "https") ? 443 : 80
-      self.http = curb ? Fastly::Client::Curl.new(host, port) : Net::HTTP.new(host, port)
-      self.http.use_ssl = (scheme == "https")
+
+      @http     = Curl.new(uri)
+
       return self unless fully_authed?
 
       # If we're fully authed (i.e username and password ) then we need to log in
-      resp = self.http.post('/login', make_params(:user => user, :password => password))
-      raise Fastly::Unauthorized unless resp.success?
-      self.cookie = resp['set-cookie']
+      resp = http.post('/login', make_params(user: user, password: password))
+
+      if resp.success?
+        @cookie = resp['Set-Cookie']
+      else
+        fail Unauthorized
+      end
+
+      self
     end
 
     def require_key!
@@ -56,133 +52,72 @@ class Fastly
       !(user.nil? || password.nil?)
     end
 
-    def set_customer(id)
-
-    end
-
-    def get(path, params={})
-      path += "?"+make_params(params) unless params.empty?
-      resp  = self.http.get(path, headers)
+    def get(path, params = {})
+      path += "?#{make_params(params)}" unless params.empty?
+      resp  = http.get(path, headers)
       return nil if 404 == resp.status
-      raise Fastly::Error, resp.message unless resp.success?
+      fail Error, resp.message unless resp.success?
       JSON.parse(resp.body)
     end
 
-    def get_stats(path, params={})
+    def get_stats(path, params = {})
       content = get(path, params)
-      raise Fastly::Error, content["message"] unless content["status"] == 'success'
-      content["data"]
+
+      case content['status']
+      when success then content['data']
+      else
+        fail Error, content['message']
+      end
     end
 
-    def post(path, params={})
+    def post(path, params = {})
       post_and_put(:post, path, params)
     end
 
-    def put(path, params={})
+    def put(path, params = {})
       post_and_put(:put, path, params)
     end
 
     def delete(path)
-      resp  = self.http.delete(path, headers)
-      return resp.success?
+      resp  = http.delete(path, headers)
+      resp.success?
     end
 
     private
 
-    def post_and_put(method, path, params={})
+    def post_and_put(method, path, params = {})
       query = make_params(params)
-      resp  = self.http.send(method, path, query, headers.merge( 'Content-Type' =>  "application/x-www-form-urlencoded"))
-      raise Fastly::Error, resp.message unless resp.success?
+      resp  = http.send(method, path, query, headers.merge('Content-Type' =>  'application/x-www-form-urlencoded'))
+
+      if resp.success?
+        JSON.parse(resp.body)
+      else
+        fail Error, resp.message
+      end
+
       JSON.parse(resp.body)
     end
 
     def headers
-      headers = if require_key?
-                  api_key_header
-                else
-                  fully_authed? ? { 'Cookie' => cookie } : api_key_header
-                end
-      headers.merge!('Fastly-Explicit-Customer' => customer) if customer
-      headers.merge!('Content-Accept' => 'application/json')
-    ensure
-      @require_key = nil
-    end
-
-    def api_key_header
-      { 'X-Fastly-Key' => api_key }
+      headers = fully_authed? ? { 'Cookie' => cookie } : { 'X-Fastly-Key' => api_key }
+      headers.merge('Content-Accept' => 'application/json')
     end
 
     def make_params(params)
-      params.map { |key,val|
-        next if val.nil?
-        unless val.is_a?(Hash)
-          "#{CGI.escape(key.to_s)}=#{CGI.escape(val.to_s)}"
+      param_ary = params.map do |key, value|
+        next if value.nil?
+        key = key.to_s
+
+        if value.is_a?(Hash)
+          value.map do |sub_key, sub_value|
+            "#{CGI.escape("#{key}[#{sub_key}]")}=#{CGI.escape(sub_value)}"
+          end
         else
-          val.map { |sub_key, sub_val|
-            new_key = "#{key}[#{sub_key}]"
-            "#{CGI.escape(new_key)}=#{CGI.escape(sub_val.to_s)}"
-          }
+          "#{CGI.escape(key)}=#{CGI.escape(value)}"
         end
-      }.flatten.delete_if { |v| v.nil? }.join("&")
+      end
+
+      param_ary.flatten.delete_if { |v| v.nil? }.join('&')
     end
-
-    # :nodoc: all
-    class Curl
-      attr_accessor :host, :port, :protocol
-
-      def initialize(host, port=443)
-        self.host     = host
-        self.port     = port
-        self.protocol = 'https'
-      end
-
-      def get(path, headers={})
-        CurbFu.get({ :host => host, :port => port, :path => path, :headers => headers, :protocol => protocol })
-      end
-
-      def post(path, params, headers={})
-        CurbFu.post({ :host => host, :port => port, :path => path, :headers => headers, :protocol => protocol }, params)
-      end
-
-      def put(path, params, headers={})
-        CurbFu.put({ :host => host, :port => port, :path => path, :headers => headers, :params => params, :protocol => protocol }, params)
-      end
-
-      def delete(path, headers={})
-        CurbFu.delete({ :host => host, :port => port, :path => path, :headers => headers, :protocol => protocol })
-      end
-
-      def use_ssl=(ssl)
-        self.protocol = ssl ? 'https' : 'http'
-      end
-    end
-  end
-end
-
-# :nodoc: all
-class Net::HTTPResponse
-  def success?
-    return Net::HTTPSuccess === self
-  end
-
-  def status
-    return self.code.to_i
-  end
-end
-
-
-
-# :nodoc: all
-class CurbFu::Response::Base
-  def get_fields(key)
-    if ( match = @headers.find{|k,v| k.downcase == key.downcase} )
-      [match.last].flatten
-    else
-      []
-    end
-  end
-
-  def [](key)
-    get_fields(key).last
   end
 end

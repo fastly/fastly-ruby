@@ -48,16 +48,16 @@ class Fastly
     #
     # Return true on success and false on failure
     def add_backend(backend)
-      hash = fetcher.client.post(Fastly::Director.put_path(self)+"/backend/#{backend.name}")
-      return !hash.nil?
+      hash = fetcher.client.post("#{Director.put_path(self)}/backend/#{backend.name}")
+      !hash.nil?
     end
 
     # Delete a Backend object from a Director
     #
     # Return true on success and false on failure
     def delete_backend(backend)
-      hash = fetcher.client.delete(Fastly::Director.put_path(self)+"/backend/#{backend.name}")
-      return !hash.nil?
+      hash = fetcher.client.delete("#{Director.put_path(self)}/backend/#{backend.name}")
+      !hash.nil?
     end
   end
 end

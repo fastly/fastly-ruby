@@ -1,13 +1,11 @@
 class Fastly
+  # Encapsulates behavior of objects requiring both service and version
   class BelongsToServiceAndVersion < Base
+    attr_writer :version
+
     # Return the Service object this belongs to
     def service
-      @service ||= fetcher.get(Fastly::Service, service_id)
-    end
-
-    # Set the Version object this belongs to
-    def version=(version)
-      @version = version
+      @service ||= fetcher.get(Service, service_id)
     end
 
     # Get the Version object this belongs to
@@ -16,18 +14,16 @@ class Fastly
     end
 
     # Get the number of the Version this belongs to
-    def version_number
+    def version_number # rubocop:disable all
       @version
-    end
+    end # rubocop:enable all
 
     # :nodoc:
     def as_hash
-      super.delete_if { |var| ["service_id", "version"].include?(var) }
+      super.delete_if { |var| %w(service_id version).include?(var) }
     end
 
-    private
-
-    def self.get_path(service, version, name, options={})
+    def self.get_path(service, version, name, _opts = {})
       "/service/#{service}/version/#{version}/#{path}/#{name}"
     end
 
@@ -36,12 +32,11 @@ class Fastly
     end
 
     def self.put_path(obj)
-      get_path(obj.service_id, obj.version_number,obj.name)
+      get_path(obj.service_id, obj.version_number, obj.name)
     end
 
     def self.delete_path(obj)
       put_path(obj)
     end
-
   end
 end

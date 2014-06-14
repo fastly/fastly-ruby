@@ -25,10 +25,9 @@ class Fastly
     #
     # The role this user has (one of admin, owner, superuser, user, engineer, billing)
 
-
     # Get the Customer object this user belongs to
     def customer
-      @customer ||= fetcher.get(Customer, self.customer_id)
+      @customer ||= fetcher.get(Customer, customer_id)
     end
 
     # Whether or not this User is the owner of the Customer they belong to
@@ -43,20 +42,19 @@ class Fastly
       :superuser  => 10,
       :user       => 20,
       :engineer   => 30,
-      :billing    => 30,
+      :billing    => 30
     }
 
     # Does this User have sufficient permissions to perform the given role
     def can_do?(test_role)
       test_priority = PRIORITIES[test_role.to_sym] || 1000
-      my_priority = PRIORITIES[self.role.to_sym] || 1000
+      my_priority = PRIORITIES[role.to_sym] || 1000
 
       if test_priority == my_priority
-        test_role.to_s == :owner ? owner? : test_role.to_sym == self.role.to_sym
+        test_role.to_s == :owner ? owner? : test_role.to_sym == role.to_sym
       else
         my_priority < test_priority
       end
     end
-
   end
 end

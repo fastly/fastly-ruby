@@ -3,36 +3,38 @@
 # License::   Distributes under the same terms as Ruby
 
 # A client library for interacting with the Fastly web acceleration service
+require 'fastly/gem_version'
+require 'fastly/util'
+require 'ext/curb_fu/response/base'
+require 'fastly/fetcher'
+require 'fastly/client'
+
+require 'fastly/base'
+require 'fastly/belongs_to_service_and_version'
+require 'fastly/backend'
+require 'fastly/cache_setting'
+require 'fastly/condition'
+require 'fastly/customer'
+require 'fastly/director'
+require 'fastly/domain'
+require 'fastly/header'
+require 'fastly/healthcheck'
+require 'fastly/gzip'
+require 'fastly/invoice'
+require 'fastly/match'
+require 'fastly/origin'
+require 'fastly/request_setting'
+require 'fastly/response_object'
+require 'fastly/service'
+require 'fastly/settings'
+require 'fastly/syslog'
+require 'fastly/s3_logging'
+require 'fastly/user'
+require 'fastly/vcl'
+require 'fastly/version'
+
+# Top-level Fastly class
 class Fastly
-  require 'fastly/gem_version'
-  require 'fastly/util'
-  require 'fastly/fetcher'
-  require 'fastly/client'
-
-  require 'fastly/base'
-  require 'fastly/belongs_to_service_and_version'
-  require 'fastly/backend'
-  require 'fastly/cache_setting'
-  require 'fastly/condition'
-  require 'fastly/customer'
-  require 'fastly/director'
-  require 'fastly/domain'
-  require 'fastly/header'
-  require 'fastly/healthcheck'
-  require 'fastly/gzip'
-  require 'fastly/invoice'
-  require 'fastly/match'
-  require 'fastly/origin'
-  require 'fastly/request_setting'
-  require 'fastly/response_object'
-  require 'fastly/service'
-  require 'fastly/settings'
-  require 'fastly/syslog'
-  require 'fastly/s3_logging'
-  require 'fastly/user'
-  require 'fastly/vcl'
-  require 'fastly/version'
-
   include Fastly::Fetcher
 
   # Create a new Fastly client. Options are
@@ -45,7 +47,7 @@ class Fastly
   #
   # Some methods require full username and password rather than just auth token.
   def initialize(opts)
-    self.client(opts)
+    client(opts)
     self
   end
 
@@ -62,24 +64,15 @@ class Fastly
 
   # Return a Customer object representing the customer of the current logged in user.
   def current_customer
-    raise Fastly::AuthRequired unless self.authed?
+    fail AuthRequired unless authed?
     @current_customer ||= get(Customer)
   end
 
   # Return a User object representing the current logged in user.
   # NOTE: requires you to be fully authed - will not work with only an API key
   def current_user
-    raise Fastly::FullAuthRequired unless self.fully_authed?
+    fail FullAuthRequired unless fully_authed?
     @current_user ||= get(User)
-  end
-
-  # Set the current customer to act as.
-  # NOTE: this will only work if you're an admin
-  def set_customer(id)
-      raise Fastly::FullAuthRequired "You must be fully authed to set the customer" unless self.fully_authed?;
-      raise Fastly::AdminRequired "You must be an admin to set the customer" unless self.current_user.can_do?(:admin);
-      @current_customer = nil
-      client.set_customer(id);
   end
 
   # Return a hash representing all commands available.
@@ -91,8 +84,7 @@ class Fastly
 
   # Purge the specified path from your cache.
   def purge(path)
-    res = client.post("/purge/#{path}")
-    #res = client.post("/purge/", :path => path)
+    client.post("/purge/#{path}")
   end
 
   # Fetches historical stats for each of your fastly services and groups the results by service id.
@@ -112,13 +104,13 @@ class Fastly
   #
   # See http://docs.fastly.com/docs/stats for details.
   def stats(opts)
-    raise Fastly::Error.new("You can't specify a field or a service for an aggregate request") if opts[:aggregate] && (opts[:field] || opts[:service])
-
-    url  = "/stats"
-
-    if opts.delete(:aggregate)
-      url += "/aggregate"
+    if opts[:aggregate] && (opts[:field] || opts[:service])
+      fail Error, "You can't specify a field or a service for an aggregate request"
     end
+
+    url  = '/stats'
+
+    url += '/aggregate' if opts.delete(:aggregate)
 
     if service = opts.delete(:service)
       url += "/service/#{service}"
@@ -128,7 +120,7 @@ class Fastly
       url += "/field/#{field}"
     end
 
-    client.get_stats(url, opts);
+    client.get_stats(url, opts)
   end
 
   # Returns usage information aggregated across all Fastly services and grouped by region.
@@ -144,42 +136,42 @@ class Fastly
   #
   # See http://docs.fastly.com/docs/stats for details.
   def usage(opts)
-    url  = "/stats/usage";
-    url += "_by_service" if opts.delete(:by_service)
+    url  = '/stats/usage'
+    url += '_by_service' if opts.delete(:by_service)
     client.get_stats(url, opts)
   end
 
   # Fetches the list of codes for regions that are covered by the Fastly CDN service.
   def regions
-    client.get_stats("/stats/regions")
+    client.get_stats('/stats/regions')
   end
 
   [User, Customer, Backend, CacheSetting, Condition, Director, Domain, Header, Healthcheck, Gzip, Match, Origin, RequestSetting, ResponseObject, Service, S3Logging, Syslog, VCL, Version].each do |klass|
     type = Util.class_to_path(klass)
+
     # unless the class doesn't have a list path or it already exists
     unless klass.list_path.nil? || klass.respond_to?("list_#{type}s".to_sym)
-        self.send :define_method, "list_#{type}s".to_sym do |*args|
-            list(klass, *args)
-        end
+      send :define_method, "list_#{type}s".to_sym do |*args|
+        list(klass, *args)
+      end
     end
 
-    self.send :define_method, "get_#{type}".to_sym do |*args|
+    send :define_method, "get_#{type}".to_sym do |*args|
       get(klass, *args)
     end
 
-    self.send :define_method, "create_#{type}".to_sym do |obj|
+    send :define_method, "create_#{type}".to_sym do |obj|
       create(klass, obj)
     end
 
-    self.send :define_method, "update_#{type}".to_sym do |obj|
+    send :define_method, "update_#{type}".to_sym do |obj|
       update(klass, obj)
     end
 
-    self.send :define_method, "delete_#{type}".to_sym do |obj|
+    send :define_method, "delete_#{type}".to_sym do |obj|
       delete(klass, obj)
     end
   end
-
 
   # :method: create_version(opts)
   # opts must contain a service_id param
@@ -433,7 +425,6 @@ class Fastly
   # You can also call
   #    version.save!
 
-
   ##
   # :method: delete_user(user)
   # You can also call
@@ -449,24 +440,20 @@ class Fastly
   # You can also call
   #    service.delete!
 
-
   ##
   # :method: delete_version(version)
   # You can also call
   #    version.delete!
-
 
   ##
   # :method:delete_backend(backend)
   # You can also call
   #    backend.delete!
 
-
   ##
   # :method: delete_director(backend)
   # You can also call
   #    backend.delete!
-
 
   ##
   # :method: delete_domain(domain
@@ -483,7 +470,6 @@ class Fastly
   # You can also call
   #    match.delete!(match)
 
-
   ##
   # :method: delete_origin(origin)
   # You can also call
@@ -498,7 +484,6 @@ class Fastly
   # :method: delete_syslog(syslog)
   # You can also call
   #    syslog.delete!
-
 
   ##
   # :method: delete_vcl(vcl)
@@ -616,8 +601,6 @@ class Fastly
   #
   # Get a list of all versions
 
-
-
   ##
   # Attempts to load various config options in the form
   #
@@ -631,18 +614,19 @@ class Fastly
     options = {}
     return options unless File.exist?(file)
 
-    File.open(file, "r") do |infile|
-      while (line = infile.gets) do
+    File.open(file, 'r') do |infile|
+      while line = infile.gets
         line.chomp!
-        next if     line =~ /^#/;
-        next if     line =~ /^\s*$/;
-        next unless line =~ /=/;
+        next if line =~ /^#/
+        next if line =~ /^\s*$/
+        next unless line =~ /=/
         line.strip!
         key, val = line.split(/\s*=\s*/, 2)
-        options[key.to_sym] = val;
+        options[key.to_sym] = val
       end
     end
-    options;
+
+    options
   end
 
   ##
@@ -656,18 +640,20 @@ class Fastly
   #
   def self.get_options(*files)
     options = {}
+
     files.each do |file|
       next unless File.exist?(file)
       options = load_config(file)
       break
     end
 
-    while (ARGV.size>0 && ARGV[0] =~ /^-+(\w+)\=(\w+)$/) do
-      options[$1.to_sym] = $2;
-      ARGV.shift;
+    while ARGV.size > 0 && ARGV[0] =~ /^-+(\w+)\=(\w+)$/
+      options[$1.to_sym] = $2
+      ARGV.shift
     end
-    raise"Couldn't find options from command line arguments or #{files.join(', ')}" unless options.size>0
-    options;
+
+    fail "Couldn't find options from command line arguments or #{files.join(', ')}" unless options.size > 0
+
+    options
   end
 end
-

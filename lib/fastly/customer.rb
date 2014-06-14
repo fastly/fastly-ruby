@@ -20,7 +20,7 @@ class Fastly
 
     # Return a user object representing the owner of this Customer
     def owner
-      self.fetcher.get(User,self.owner_id)
+      fetcher.get(User, owner_id)
     end
   end
 end
