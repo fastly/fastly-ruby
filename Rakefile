@@ -10,6 +10,13 @@ task :console do
   Pry.start
 end
 
+namespace :clean do
+  desc 'Remove all trailing whitespace from Ruby files in lib and test'
+  task :whitespace do
+    sh "find {test,lib,bin} -name *.rb -exec sed -i '' 's/[ ]*$//' {} \\\;"
+  end
+end
+
 RDoc::Task.new do |rdoc|
   rdoc.rdoc_dir = 'doc'
   rdoc.main = 'README.md'
