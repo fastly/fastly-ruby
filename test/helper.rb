@@ -1,6 +1,7 @@
 require 'common'
 require 'fastly'
 require 'minitest/autorun'
+require 'pry'
 
 class Fastly
   class TestCase < Minitest::Test; end
