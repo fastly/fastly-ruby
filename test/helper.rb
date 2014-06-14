@@ -14,7 +14,7 @@ def login_opts(mode = :full)
     opts["base_#{what}".to_sym] = ENV[key] if ENV.key?(key)
   end
 
-  required = :full == mode ? [:user, :name, :password, :customer] : [:api_key, :customer]
+  required = :full == mode ? [:user, :password] : [:api_key]
   required.each do |what|
     key = "FASTLY_TEST_#{what.to_s.upcase}"
     unless ENV.key?(key)
