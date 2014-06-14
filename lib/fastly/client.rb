@@ -110,10 +110,10 @@ class Fastly
 
         if value.is_a?(Hash)
           value.map do |sub_key, sub_value|
-            "#{CGI.escape("#{key}[#{sub_key}]")}=#{CGI.escape(sub_value)}"
+            "#{CGI.escape("#{key}[#{sub_key}]")}=#{CGI.escape(sub_value.to_s)}"
           end
         else
-          "#{CGI.escape(key)}=#{CGI.escape(value)}"
+          "#{CGI.escape(key)}=#{CGI.escape(value.to_s)}"
         end
       end
 
