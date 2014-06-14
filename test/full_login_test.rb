@@ -1,5 +1,6 @@
 require 'helper'
 
+# Test username/password login access to user and customer objects
 class Fastly
   describe 'FullLoginTest' do
     let(:opts)             { login_opts(:full) }
