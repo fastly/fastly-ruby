@@ -26,7 +26,6 @@ class ApiKeyTest < Fastly::TestCase
 
     customer = @client.get('/current_customer')
     assert customer
-    assert_equal @opts[:customer], customer['name']
   end
 
   def test_current_user_and_customer
@@ -40,6 +39,5 @@ class ApiKeyTest < Fastly::TestCase
 
     customer = @fastly.current_customer
     assert customer
-    assert_equal @opts[:customer], customer.name
   end
 end
