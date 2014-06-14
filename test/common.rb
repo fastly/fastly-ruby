@@ -20,15 +20,15 @@ module CommonTests
     default_ttl = settings.settings['general.default_ttl']
     settings    = version.settings
     assert settings
-    assert_equal settings.service_id, service.id
-    assert_equal settings.version.to_s, version.number.to_s
-    assert_equal settings.settings['general.default_ttl'], default_ttl
+    assert_equal service.id, settings.service_id
+    assert_equal version.number.to_s, settings.version.to_s
+    assert_equal default_ttl, settings.settings['general.default_ttl']
 
     settings.settings['general.default_ttl'] = default_ttl = '888888888'
     settings.save!
 
     settings = version.settings
-    assert_equal settings.settings['general.default_ttl'].to_s, default_ttl
+    assert_equal default_ttl, settings.settings['general.default_ttl'].to_s
 
     services = @fastly.list_services
     assert !services.empty?
@@ -72,31 +72,31 @@ module CommonTests
     backend          = @fastly.get_backend(service.id, number, backend_name)
 
     assert backend
-    assert_equal backend.address, 'thegestalt.org'
+    assert_equal 'thegestalt.org', backend.address
     # assert_equal backend.hostname, 'thegestalt.org'
-    assert_equal backend.port.to_s, '9092'
+    assert_equal '9092', backend.port.to_s
 
     domain_name = "fastly-test-domain-#{random_string}-example.com"
     domain  = @fastly.create_domain(:service_id => service.id, :version => number, :name => domain_name)
     assert domain
     assert_equal domain_name, domain.name
-    assert_equal domain.service.id, service.id
-    assert_equal domain.version_number.to_s, number.to_s
-    assert_equal domain.version.number.to_s, number.to_s
+    assert_equal service.id, domain.service.id
+    assert_equal number.to_s, domain.version_number.to_s
+    assert_equal number.to_s, domain.version.number.to_s
 
     domain.comment = 'Flibbety gibbet'
     domain.save!
     domain         = @fastly.get_domain(service.id, number, domain_name)
-    assert_equal domain.name, domain_name
-    assert_equal domain.comment, 'Flibbety gibbet'
+    assert_equal domain_name, domain.name
+    assert_equal 'Flibbety gibbet', domain.comment
 
     director_name = "fastly-test-director-#{random_string}"
     director      = @fastly.create_director(:service_id => service.id, :version => number, :name => director_name)
     assert director
     assert_equal director_name, director.name
-    assert_equal director.service.id, service.id
-    assert_equal director.version_number.to_s, number.to_s
-    assert_equal director.version.number.to_s, number.to_s
+    assert_equal service.id, director.service.id
+    assert_equal number.to_s, director.version_number.to_s
+    assert_equal number.to_s, director.version.number.to_s
 
     assert director.add_backend(backend)
     # generated2  = version3.generated_vcl
@@ -105,8 +105,8 @@ module CommonTests
     origin      = @fastly.create_origin(:service_id => service.id, :version => number, :name => origin_name)
     assert origin
     assert_equal origin_name, origin.name
-    assert_equal origin.service.id, service.id
-    assert_equal origin.version_number.to_s, number.to_s
+    assert_equal service.id, origin.service.id
+    assert_equal number.to_s, origin.version_number.to_s
     # assert_equal origin.version.number.to_s, number.to_s
 
     condition_name = "fastly-test-condition-#{random_string}"
@@ -125,10 +125,10 @@ module CommonTests
     cache_setting_name = "fastly-cache-setting-#{random_string}"
     cache_setting = @fastly.create_cache_setting(:service_id => service.id, :version => number, :name => cache_setting_name, :ttl => 3600, :stale_ttl => 10_001, :cache_condition => cache_condition_name)
     assert cache_setting
-    assert_equal cache_setting.name, cache_setting_name
-    assert_equal cache_setting.ttl.to_s, 3600.to_s
-    assert_equal cache_setting.stale_ttl.to_s, 10_001.to_s
-    assert_equal cache_setting.cache_condition, cache_condition_name
+    assert_equal cache_setting_name, cache_setting.name
+    assert_equal '3600', cache_setting.ttl.to_s
+    assert_equal '10001', cache_setting.stale_ttl.to_s
+    assert_equal cache_condition_name, cache_setting.cache_condition
 
     gzip_name = "fastly-test-gzip-#{random_string}"
     gzip = @fastly.create_gzip(:service_id => service.id, :version => number, :name => gzip_name, :extensions => 'js css html', :content_types => 'text/html')
@@ -141,7 +141,7 @@ module CommonTests
     response_obj = @fastly.create_response_object(:service_id => service.id, :version => number, :name => response_obj_name, :status => 418, :response => "I'm a teapot", :content_type => 'text/plain', :content => 'short and stout')
     assert response_obj
     assert_equal response_obj_name, response_obj.name
-    assert_equal 418.to_s, response_obj.status
+    assert_equal '418', response_obj.status
     assert_equal "I'm a teapot", response_obj.response
     assert_equal 'text/plain', response_obj.content_type
     assert_equal 'short and stout', response_obj.content
@@ -151,12 +151,12 @@ module CommonTests
     header_name = "fastly-header-test-#{random_string}"
     header = @fastly.create_header(:service_id => service.id, :version => number, :name => header_name, :response_condition => response_condition.name, :ignore_if_set => 1, :type => 'response', :dst => 'http.Cache-Control', :src => "'max-age=301'", :priority => 10, :action => 'set')
     assert header
-    assert_equal header.name, header_name
-    assert_equal header.response_condition, response_condition.name
-    assert_equal header.ignore_if_set.to_s, 1.to_s
-    assert_equal header.dst, 'http.Cache-Control'
-    assert_equal header.src, '"max-age=301"'
-    assert_equal header.action, 'set'
+    assert_equal header_name, header.name
+    assert_equal response_condition.name, header.response_condition
+    assert_equal '1', header.ignore_if_set.to_s
+    assert_equal 'http.Cache-Control', header.dst
+    assert_equal '"max-age=301"', header.src
+    assert_equal 'set', header.action
 
     assert version3.activate!
     assert version3.deactivate!
@@ -213,7 +213,7 @@ module CommonTests
     invoice     = service.invoice
     assert invoice
     assert invoice.regions
-    assert_equal invoice.service_id, service.id
+    assert_equal service.id, invoice.service_id
 
     invoice     = @fastly.get_invoice
     assert_equal Fastly::Invoice,  invoice.class
