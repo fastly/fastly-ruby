@@ -1,94 +1,91 @@
 require 'helper'
 
-# test login
-class FullLoginTest < Fastly::TestCase
-  include CommonTests
+class Fastly
+  describe 'FullLoginTest' do
+    let(:opts)             { login_opts(:full) }
+    let(:client)           { Client.new(opts) }
+    let(:fastly)           { Fastly.new(opts) }
+    let(:current_user)     { fastly.current_user }
+    let(:current_customer) { fastly.current_customer }
 
-  def setup
-    @opts = login_opts(:full)
-    begin
-      @client = Fastly::Client.new(@opts)
-      @fastly = Fastly.new(@opts)
-    rescue => e
-      warn e.inspect
-      warn e.backtrace.join("\n")
-      exit(-1)
+    describe '#current_{user,customer}' do
+      it 'should have access to current user' do
+        assert_instance_of User, current_user
+        assert_equal opts[:user], current_user.login
+        assert_equal opts[:name], current_user.name
+      end
+
+      it 'should have access to current customer' do
+        assert_instance_of Customer, current_customer
+        assert_equal opts[:customer], current_customer.id
+      end
+
+      it 'should have an arbitrary test confirming clearly defined relationships' do
+        assert_equal current_customer.id, current_user.customer.id
+        assert_equal current_user.id, current_customer.owner.id
+      end
     end
-  end
 
-  def test_raw_client
-    user     = @client.get('/current_user')
-    assert user
-    assert_equal @opts[:user], user['login']
-    assert_equal @opts[:name], user['name']
+    describe '#get_user' do
+      let(:user) { fastly.get_user(current_user.id) }
 
-    customer = @client.get('/current_customer')
-    assert customer
-    assert_equal @opts[:customer], customer['name']
-  end
+      it 'should be able to fetch a user' do
+        assert_equal current_user.name, user.name
+      end
+    end
 
-  def test_current_user_and_customer
-    user     = @fastly.current_user
-    assert user
-    assert_equal @opts[:user], user.login
-    assert_equal @opts[:name], user.name
+    describe '#get_customer' do
+      let(:customer) { fastly.get_customer(current_customer.id) }
 
-    customer = @fastly.current_customer
-    assert customer
-    assert_equal @opts[:customer], customer.name
+      it 'should be able to fetch a customer' do
+        assert_equal current_customer.name, customer.name
+      end
+    end
 
-    tmp_customer = user.customer
-    assert_equal customer.id, tmp_customer.id
+    describe '#create_user' do
+      let(:email)     { "fastly-ruby-test-#{random_string}-new@example.com" }
+      let(:user_name) { 'New User' }
+      let(:user)      { fastly.create_user(login: email, name: user_name) }
 
-    tmp_user = customer.owner
-    assert tmp_user
-    assert_equal user.id, tmp_user.id
-  end
+      it 'should create the user we wanted to create' do
+        assert_instance_of User, user
+        assert_equal current_customer.id, user.customer_id
+        assert_equal user_name, user.name
+        assert_equal email, user.login
+      end
 
-  def test_fetching_particular_user
-    current_user = @fastly.current_user
-    assert current_user
+      after do
+        fastly.delete_user(user)
+      end
+    end
 
-    id_user = @fastly.get_user(current_user.id)
-    assert_equal current_user.id, id_user.id
-    assert_equal current_user.name, id_user.name
+    describe '#update_user' do
+      let(:email)     { "fastly-ruby-test-#{random_string}-new@example.com" }
+      let(:user_name) { 'New User' }
+      let(:user)      { fastly.create_user(login: email, name: user_name) }
+      let(:new_name)  { 'New Name' }
 
-    # FIXME: looking up by login doesn't work yet
-    # login_user = @fastly.get_user(current_user.login)
-    # assert_equal current_user.id, login_user.id
-    # assert_equal current_user.name, login_user.name
+      it 'should allow us to update the user' do
+        assert_instance_of User, user
+        user.name = new_name
+        assert_equal new_name, fastly.update_user(user).name
+      end
 
-    current_customer = @fastly.current_customer
-    assert current_customer
+      after do
+        fastly.delete_user(user)
+      end
+    end
 
-    customer = @fastly.get_customer(current_customer.id)
-    assert_equal current_customer.id, customer.id
-    assert_equal current_customer.name, customer.name
-  end
+    describe '#delete_user' do
+      let(:email)     { "fastly-ruby-test-#{random_string}-new@example.com" }
+      let(:user_name) { 'New User' }
+      let(:user)      { fastly.create_user(login: email, name: user_name) }
 
-  def test_creating_and_updating_user
-    customer = @fastly.current_customer
-    email    = "fastly-ruby-test-#{random_string}-new@example.com"
-    user     = @fastly.create_user(:login => email, :name => 'New User')
-    assert user
-    assert_equal customer.id, user.customer_id
-    assert_equal 'New User', user.name
-    assert_equal email, user.login
-
-    tmp       = @fastly.get_user(user.id)
-
-    assert tmp
-    assert_equal user.id, tmp.id
-    assert_equal user.name, tmp.name
-
-    user.name = 'Updated Name'
-    tmp      = @fastly.update_user(user)
-    assert tmp
-    assert_equal user.id, tmp.id
-    assert_equal 'Updated Name', tmp.name
-
-    assert @fastly.delete_user(user)
-    tmp       = @fastly.get_user(user.id)
-    assert_equal nil, tmp
+      it 'should allow us to delete a user' do
+        user_id = user.id
+        assert_equal true, fastly.delete_user(user)
+        assert_equal nil, fastly.get_user(user_id)
+      end
+    end
   end
 end
