@@ -5,7 +5,7 @@ class FullLoginTest < Fastly::TestCase
   include CommonTests
 
   def setup
-    @opts = login_opts(:full).merge(:use_curb => false)
+    @opts = login_opts(:full)
     begin
       @client = Fastly::Client.new(@opts)
       @fastly = Fastly.new(@opts)
