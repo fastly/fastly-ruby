@@ -3,35 +3,35 @@ class Fastly
   class Service < Base
     attr_accessor :id, :customer_id, :name, :comment
     @versions = []
-    
-    ## 
+
+    ##
     # :attr: id
-    # 
+    #
     # The id of the service
-    # 
+    #
 
-    ## 
+    ##
     # :attr: customer_id
-    # 
+    #
     # The id of the customer this belongs to
-    # 
+    #
 
-    ## 
+    ##
     # :attr: name
-    # 
+    #
     # The name of this service
-    # 
+    #
 
-    ## 
-    # :attr: comment 
-    # 
+    ##
+    # :attr: comment
+    #
     # a free form comment field
 
-    
-    ## 
+
+    ##
     #
     # Get a hash of stats from different data centers.
-    # 
+    #
     # Type can be one of
     # * minutely
     # * hourly
@@ -44,9 +44,9 @@ class Fastly
     end
 
     # Return a Invoice object representing the invoice for this service
-    # 
-    # If a year and month are passed in returns the invoice for that whole month. 
-    # 
+    #
+    # If a year and month are passed in returns the invoice for that whole month.
+    #
     # Otherwise it returns the invoice for the current month so far.
     def invoice(year=nil, month=nil)
       opts = { :service_id => self.id }
@@ -82,12 +82,12 @@ class Fastly
     def version(number=-1)
       versions[number]
     end
-    
+
     # A deep hash of nested details
     def details(opts={})
       fetcher.client.get(Fastly::Service.get_path(self.id)+"/details", opts);
     end
-    
+
     # Get the Customer object for this Service
     def customer
       fetcher.get(Fastly::Customer, customer_id)
@@ -95,14 +95,14 @@ class Fastly
   end
 
   # Search all the services that the current customer has.
-  # 
+  #
   # In general you'll want to do
-  # 
+  #
   #   services = fastly.search_services(:name => name)
-  # 
+  #
   # or
-  # 
-  #   service = fastly.search_services(:name => name, :version => number)  
+  #
+  #   service = fastly.search_services(:name => name, :version => number)
   def search_services(opts)
     klass = Fastly::Service
     hash  = client.get(klass.post_path+"/search", opts)

@@ -117,7 +117,7 @@ module CommonTests
     assert_equal condition_name, condition.name
     assert_equal condition_statement, condition.statement
 
-    cache_condition_name = "cache-#{condition_name}" 
+    cache_condition_name = "cache-#{condition_name}"
     cache_condition = @fastly.create_condition(:service_id => service.id, :version => number, :name => cache_condition_name, :statement => condition_statement, :type => "CACHE")
     assert cache_condition
     assert_equal cache_condition_name, cache_condition.name

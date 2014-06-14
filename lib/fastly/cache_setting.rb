@@ -2,17 +2,17 @@ class Fastly
   # customize cache handling. Best used with conditions.
   class CacheSetting < BelongsToServiceAndVersion
     attr_accessor :service_id, :name, :action, :cache_condition, :ttl, :stale_ttl
-        ## 
+        ##
         # :attr: service_id
         #
         # The id of the service this belongs to.
 
-        ## 
+        ##
         # :attr: version
         #
         # The number of the version this belongs to.
 
-        ## 
+        ##
         # :attr: name
         #
         # The name of the gzip setting

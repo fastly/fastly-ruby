@@ -3,19 +3,19 @@ class Fastly
   class S3Logging < BelongsToServiceAndVersion
     attr_accessor :service_id, :name, :bucket_name, :access_key, :secret_key, :path, :period, :gzip_level, :format, :response_condition
 
-        ## 
+        ##
         # :attr: service_id
-        # 
+        #
         # The id of the service this belongs to.
 
-        ## 
+        ##
         # :attr: version
-        # 
+        #
         # The number of the version this belongs to.
 
-        ## 
+        ##
         # :attr: name
-        # 
+        #
         # The name for this s3 rule
 
 	##

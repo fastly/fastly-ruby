@@ -3,17 +3,17 @@ class Fastly
   class Header < BelongsToServiceAndVersion
     attr_accessor :service_id, :name, :action, :cache_condition, :request_condition, :response_condition, :ignore_if_set, :type, :dst, :src, :substitution, :priority, :regexp
 
-        ## 
+        ##
         # :attr: service_id
         #
         # The id of the service this belongs to.
 
-        ## 
+        ##
         # :attr: version
         #
         # The number of the version this belongs to.
 
-        ## 
+        ##
         # :attr: name
         #
         # The name of the header setting
@@ -47,7 +47,7 @@ class Fastly
 	#
 	# Header to set
 
-	## 
+	##
 	# :attr: src
 	#
 	# Variable to be used as a source for the header content. Does not apply
@@ -61,7 +61,7 @@ class Fastly
 	##
 	# :attr: substitution
 	#
-	# Value to substitute in place of regular expression. (Only applies to 
+	# Value to substitute in place of regular expression. (Only applies to
 	# 'regex' and 'regex_repeat'.)
 
 	##

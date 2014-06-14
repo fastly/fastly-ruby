@@ -3,17 +3,17 @@ class Fastly
   class ResponseObject < BelongsToServiceAndVersion
     attr_accessor :service_id, :name, :cache_condition, :request_condition, :status, :response, :content, :content_type
 
-        ## 
+        ##
         # :attr: service_id
         #
         # The id of the service this belongs to.
 
-        ## 
+        ##
         # :attr: version
         #
         # The number of the version this belongs to.
 
-        ## 
+        ##
         # :attr: name
         #
         # The name of the response object
@@ -32,12 +32,12 @@ class Fastly
 
 	##
 	# :attr: status
-	# 
+	#
 	# The HTTP status code, defaults to 200
 
 	##
 	# :attr: response
-	# 
+	#
 	# The HTTP response, defaults to "Ok"
 
 	##

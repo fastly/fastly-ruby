@@ -8,7 +8,7 @@ require 'uri'
 class Fastly
     # The UserAgent to communicate with the API
     class Client #:nodoc: all
-        begin 
+        begin
             require 'curb-fu'
             CURB_FU=true
         rescue LoadError
@@ -50,19 +50,19 @@ class Fastly
         def fully_authed?
             !(user.nil? || password.nil?)
         end
-        
+
         def set_customer(id)
-          
+
         end
 
         def get(path, params={})
-            path += "?"+make_params(params) unless params.empty? 
+            path += "?"+make_params(params) unless params.empty?
             resp  = self.http.get(path, headers)
             return nil if 404 == resp.status
             raise Fastly::Error, resp.message unless resp.success?
             JSON.parse(resp.body)
         end
-        
+
         def get_stats(path, params={})
             content = get(path, params)
             raise Fastly::Error, content["message"] unless content["status"] == 'success'
@@ -98,19 +98,19 @@ class Fastly
         end
 
         def make_params(params)
-            params.map { |key,val| 
+            params.map { |key,val|
                 next if val.nil?
                 unless val.is_a?(Hash)
                     "#{CGI.escape(key.to_s)}=#{CGI.escape(val.to_s)}"
-                else 
+                else
                     val.map { |sub_key, sub_val|
                         new_key = "#{key}[#{sub_key}]"
                         "#{CGI.escape(new_key)}=#{CGI.escape(sub_val.to_s)}"
-                    } 
+                    }
                 end
             }.flatten.delete_if { |v| v.nil? }.join("&")
         end
-        
+
         # :nodoc: all
         class Curl
             attr_accessor :host, :port, :protocol
@@ -145,7 +145,7 @@ class Fastly
 end
 
 # :nodoc: all
-class Net::HTTPResponse 
+class Net::HTTPResponse
     def success?
         return Net::HTTPSuccess === self
     end
@@ -158,7 +158,7 @@ end
 
 
 # :nodoc: all
-class CurbFu::Response::Base 
+class CurbFu::Response::Base
     def get_fields(key)
         if ( match = @headers.find{|k,v| k.downcase == key.downcase} )
             [match.last].flatten

@@ -1,22 +1,22 @@
-class Fastly 
+class Fastly
   # :nodoc:
   class AuthRequired < RuntimeError; end
   # :nodoc:
   class FullAuthRequired <  Fastly::AuthRequired; end
-  # :nodoc: 
+  # :nodoc:
   class Error < RuntimeError; end
   # :nodoc:
-  class Unauthorized < AuthRequired; end 
+  class Unauthorized < AuthRequired; end
   # :nodoc:
   class AdminRequired < AuthRequired; end
-      
-  module Fetcher # :nodoc: all 
+
+  module Fetcher # :nodoc: all
 
     # Get the current Fastly::Client
     def client(opts={})
       @client ||= Fastly::Client.new(opts)
     end
-    
+
     def list(klass, opts={})
       list = client.get(klass.list_path(opts))
       return [] if list.nil?
@@ -32,7 +32,7 @@ class Fastly
       return nil if hash.nil?
       return klass.new(hash, self)
     end
-    
+
     def create(klass, opts)
       hash = client.post(klass.post_path(opts),opts)
       return klass.new(hash, self)

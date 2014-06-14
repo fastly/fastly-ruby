@@ -2,8 +2,8 @@ class Fastly
   # An iteration of your configuration
   class Version < Base
     attr_accessor :service_id, :number, :name, :active, :staging, :testing, :deployed, :comment
-    
-    ## 
+
+    ##
     # :attr: service_id
     # The id of the service this belongs to.
 
@@ -11,59 +11,59 @@ class Fastly
     # :attr: number
     # The generation of this version
 
-    ## 
+    ##
     # :attr: name
-    # 
+    #
     # The name of this version.
-  
 
-    ## 
+
+    ##
     # :attr: active
-    # 
+    #
     # Whether this version is active or not.
-    
 
-    ## 
+
+    ##
     # :attr: locked
-    # 
+    #
     # Whether this version is locked or not.
-    
 
-    ## 
+
+    ##
     # :attr: staging
-    # 
+    #
     # Whether this version is in staging or not.
-     
 
-    ## 
+
+    ##
     # :attr: testing
-    # 
+    #
     # Whether this version is in testing or not.
-    # 
+    #
 
-    ## 
+    ##
     # :attr: deployed
-    # 
+    #
     # Whether this version is deployed or not.
-    # 
+    #
 
-    ## 
-    # :attr: comment 
+    ##
+    # :attr: comment
     #
     # a free form comment field
-    
+
     # Is this Version locked
     def locked?
       return @locked.to_i > 0
     end
-    
+
     # Set whether this Version is locked
     def locked=(is_locked)
       @locked = is_locked ? "1" : "0"
     end
-    
+
     # Get the Service object this Version belongs to
-    def service 
+    def service
       fetcher.get(Fastly::Service, service_id)
     end
 
@@ -105,7 +105,7 @@ class Fastly
 
     # Get the generated VCL object for this Version (which must have been activated first)
     #
-    # Won't return the content of the VCL unless you pass in 
+    # Won't return the content of the VCL unless you pass in
     #    :include_content => true
     # in the opts
     def generated_vcl(opts={})
@@ -114,7 +114,7 @@ class Fastly
         'content'    => hash['vcl'] || hash['content'],
         'name'       => hash['md5'],
         'version'    => hash['version'],
-        'service_id' => hash['service']     
+        'service_id' => hash['service']
       }
       return Fastly::VCL.new(opts, fetcher)
     end
@@ -133,7 +133,7 @@ class Fastly
 
     # Get the named VCL for this version
     #
-    # Won't return the content of the VCL unless you pass in 
+    # Won't return the content of the VCL unless you pass in
     #    :include_content => true
     # in the opts
     def vcl(name, opts={})
@@ -152,9 +152,9 @@ class Fastly
       hash = fetcher.client.get(Fastly::Version.put_path(self)+"/validate")
       return !hash.nil?
     end
-    
+
     private
-    
+
     def self.get_path(service, number)
       "/service/#{service}/version/#{number}"
     end
@@ -170,5 +170,5 @@ class Fastly
     def self.delete_path(obj)
       put_path(obj)
     end
-  end 
+  end
 end

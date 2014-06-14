@@ -2,17 +2,17 @@ class Fastly
   # Represent arbitary key value settings for a given Version
   class Settings < Base
     attr_accessor :service_id, :version, :settings
-    ## 
+    ##
     # :attr: service_id
-    # 
+    #
     # The id of the service this belongs to.
-    # 
+    #
 
-    ## 
+    ##
     # :attr: version
-    # 
+    #
     # The number of the version this belongs to.
-    # 
+    #
 
     ##
     # :attr: service
@@ -36,7 +36,7 @@ class Fastly
     end
 
     # :nodoc:
-    def self.post_path 
+    def self.post_path
       raise "You can't POST to an setting"
     end
 
@@ -44,26 +44,26 @@ class Fastly
     def self.delete_path
       raise "You can't DELETE to an setting"
     end
-    
+
     # :nodoc:
     def delete!
       raise "You can't delete an invoice"
     end
-    
+
     # :nodoc:
-    def as_hash 
+    def as_hash
       settings
     end
   end
-  
+
   # Get the Settings object for the specified Version
   def get_settings(service, number)
     klass            = Fastly::Settings
     hash             = client.get(Fastly::Settings.get_path(service, number))
-    
+
     return nil if hash.nil?
     hash["settings"] = Hash[["general.default_host", "general.default_ttl"].collect { |var| [var, hash.delete(var)] }]
-    
+
     return klass.new(hash, self)
   end
 

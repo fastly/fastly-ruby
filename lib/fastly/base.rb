@@ -2,7 +2,7 @@ class Fastly
   # Base class for all Fastly objects
   class Base # :nodoc: all
     attr_accessor :fetcher
-    
+
     def initialize(opts, fetcher)
       @keys = []
       opts.each do |key,val|
@@ -12,7 +12,7 @@ class Fastly
       end
       self.fetcher = fetcher
      end
-     
+
      # Save this object
      def save!
        fetcher.update(self.class, self)
@@ -22,7 +22,7 @@ class Fastly
      def delete!
        fetcher.delete(self.class, self)
      end
-     
+
      ##
      # :nodoc:
      def as_hash
@@ -36,26 +36,26 @@ class Fastly
      def self.path
        Util.class_to_path(self)
      end
-     
+
      def self.get_path(id)
        "/#{path}/#{id}"
      end
-     
+
      def self.post_path(opts={})
        "/#{path}"
      end
-     
+
      def self.list_path(opts={})
        post_path(opts)
      end
-     
+
      def self.put_path(obj)
        get_path(obj.id)
      end
-     
+
      def self.delete_path(obj)
        put_path(obj)
      end
-     
+
   end
 end

@@ -2,35 +2,35 @@ class Fastly
   # A representation of a User in Fastly
   class User < Base
     attr_accessor :id, :name, :login, :customer_id, :role, :password
-    ## 
+    ##
     # :attr: id
-    # 
+    #
     # The id of this user
-    # 
+    #
 
-    ## 
+    ##
     # :attr: name
-    # 
-    # The name of this user 
-    # 
+    #
+    # The name of this user
+    #
 
-    ## 
+    ##
     # :attr: customer_id
-    # 
+    #
     # The id of the customer this user belongs to
-    # 
+    #
 
-    ## 
+    ##
     # :attr: role
-    # 
+    #
     # The role this user has (one of admin, owner, superuser, user, engineer, billing)
-    
-    
+
+
     # Get the Customer object this user belongs to
-    def customer 
+    def customer
       @customer ||= fetcher.get(Customer, self.customer_id)
     end
-    
+
     # Whether or not this User is the owner of the Customer they belong to
     def owner?
       customer.owner_id == id
@@ -57,6 +57,6 @@ class Fastly
         my_priority < test_priority
       end
     end
-    
+
   end
 end

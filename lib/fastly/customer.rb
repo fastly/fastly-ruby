@@ -5,17 +5,17 @@ class Fastly
 
     ##
     # :attr: id
-    # 
+    #
     # The id of this customer
 
-    ## 
+    ##
     # :attr: name
-    # 
+    #
     # The name of this customer
 
-    ## 
+    ##
     # :attr: owner_id
-    # 
+    #
     # The id of the user that owns this customer
 
     # Return a user object representing the owner of this Customer

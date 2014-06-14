@@ -2,11 +2,11 @@ class Fastly
   # An internal representation of a Varnish Configuration Language file
   class VCL < BelongsToServiceAndVersion
     attr_accessor :service_id, :name, :content, :comment, :main
-    ## 
+    ##
     # :attr: service_id
-    # 
+    #
     # The id of the service this belongs to.
-    # 
+    #
 
     ##
     # :attr: name
@@ -14,21 +14,21 @@ class Fastly
     # The name of the uploaded VCL
     #
 
-    ## 
+    ##
     # :attr: version
-    # 
+    #
     # The number of the version this belongs to.
-    # 
+    #
 
-    ## 
+    ##
     # :attr: content
-    # 
+    #
     # The content of this VCL
-    # 
+    #
 
-    ## 
-    # :attr: comment 
-    # 
+    ##
+    # :attr: comment
+    #
     # a free form comment field
     #
 
