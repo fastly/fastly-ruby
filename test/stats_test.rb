@@ -60,25 +60,18 @@ class StatsTest < Fastly::TestCase
     assert(stats[0]['requests'], 'Found requests')
     assert(stats[0]['hits'], 'Found hits')
 
-    stats = nil
     # stats aggregate with field
-    begin
-      stats = @fastly.stats(:from => FROM, :field => 'requests', :aggregate => true)
-    rescue Error
+    assert_raises Fastly::Error do
+      @fastly.stats(:from => FROM, :field => 'requests', :aggregate => true)
     end
-    assert stats.nil?
 
     # stats aggregate with service
-    begin
-      stats = @fastly.stats(:from => FROM, :service => service1, :aggregate => true)
-    rescue Error
+    assert_raises Fastly::Error do
+      @fastly.stats(:from => FROM, :service => service1, :aggregate => true)
     end
-    assert stats.nil?
 
-    begin
-      stats = @fastly.stats(:from => FROM, :service => service1, :field => 'requests', :aggregate => true)
-    rescue Error
+    assert_raises Fastly::Error do
+      @fastly.stats(:from => FROM, :service => service1, :field => 'requests', :aggregate => true)
     end
-    assert stats.nil?
   end
 end

@@ -149,7 +149,7 @@ module CommonTests
     response_condition_name = "fastly-response-condition-#{random_string}"
     response_condition = @fastly.create_condition(:service_id => service.id, :version => number, :name => response_condition_name, :statement => condition_statement, :type => 'RESPONSE')
     header_name = "fastly-header-test-#{random_string}"
-    header = @fastly.create_header(:service_id => service.id, :version => number, :name => header_name, :response_condition => response_condition.name, :ignore_if_set => 1, :type => 'response', :dst => 'http.Cache-Control', :src => "'max-age=301'", :priority => 10, :action => 'set')
+    header = @fastly.create_header(:service_id => service.id, :version => number, :name => header_name, :response_condition => response_condition.name, :ignore_if_set => 1, :type => 'response', :dst => 'http.Cache-Control', :src => '"max-age=301"', :priority => 10, :action => 'set')
     assert header
     assert_equal header_name, header.name
     assert_equal response_condition.name, header.response_condition

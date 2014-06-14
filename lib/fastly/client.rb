@@ -64,7 +64,7 @@ class Fastly
       content = get(path, params)
 
       case content['status']
-      when success then content['data']
+      when 'success' then content['data']
       else
         fail Error, content['message']
       end
