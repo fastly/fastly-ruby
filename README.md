@@ -5,6 +5,12 @@ Client library for interacting with the Fastly web acceleration service [API](ht
 ## Example
 
 ```ruby
+# Gemfile
+group :development do
+  gem 'fastly'
+end
+
+# some_file.rb
 fastly = Fastly.new(login_opts)
 
 current_user     = fastly.current_user
