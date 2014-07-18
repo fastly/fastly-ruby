@@ -6,9 +6,7 @@ Client library for interacting with the Fastly web acceleration service [API](ht
 
 ```ruby
 # Gemfile
-group :development do
-  gem 'fastly'
-end
+gem 'fastly'
 
 # some_file.rb
 fastly = Fastly.new(login_opts)
