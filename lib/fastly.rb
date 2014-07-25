@@ -125,7 +125,7 @@ class Fastly
 
   # Returns usage information aggregated across all Fastly services and grouped by region.
   #
-  # If the :by_service flag is passed then teturns usage information aggregated by service and grouped by service & region.
+  # If the :by_service flag is passed then returns usage information aggregated by service and grouped by service & region.
   #
   # Other options available are:
   #
