@@ -664,7 +664,7 @@ class Fastly
 
     while (ARGV.size>0 && ARGV[0] =~ /^-+(\w+)\=(\w+)$/) do
       options[$1.to_sym] = $2;
-      @ARGV.shift;
+      ARGV.shift;
     end
     raise"Couldn't find options from command line arguments or #{files.join(', ')}" unless options.size>0
     options;
