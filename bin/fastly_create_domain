@@ -19,7 +19,7 @@
 # 
 # Alternatively you can pass in any of those options on the command line
 # 
-#     fastly_upload_vcl --api_key  <key> <service id> <domain name>
+#     fastly_create_domain --api_key=<key> <service id> <domain name>
 
 require 'rubygems'
 require 'fastly'
