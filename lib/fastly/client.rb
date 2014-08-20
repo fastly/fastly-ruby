@@ -122,19 +122,19 @@ class Fastly
             end
 
             def get(path, headers={})
-                CurbFu.get({ :host => host, :port => port, :path => path, :headers => headers, :protocol => protocol })
+                CurbFu.get({ :host => host, :port => port, :path => URI.escape(path), :headers => headers, :protocol => protocol })
             end
 
             def post(path, params, headers={})
-                CurbFu.post({ :host => host, :port => port, :path => path, :headers => headers, :protocol => protocol }, params)
+                CurbFu.post({ :host => host, :port => port, :path => URI.escape(path), :headers => headers, :protocol => protocol }, params)
             end
 
             def put(path, params, headers={})
-                CurbFu.put({ :host => host, :port => port, :path => path, :headers => headers, :params => params, :protocol => protocol }, params)
+                CurbFu.put({ :host => host, :port => port, :path => URI.escape(path), :headers => headers, :params => params, :protocol => protocol }, params)
             end
 
             def delete(path, headers={})
-                CurbFu.delete({ :host => host, :port => port, :path => path, :headers => headers, :protocol => protocol })
+                CurbFu.delete({ :host => host, :port => port, :path => URI.escape(path), :headers => headers, :protocol => protocol })
             end
 
             def use_ssl=(ssl)
