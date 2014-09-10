@@ -41,9 +41,9 @@ class Fastly
       :admin      => 1,
       :owner      => 10,
       :superuser  => 10,
-      :user       => 20,
-      :engineer   => 30,
-      :billing    => 30,
+      :engineer   => 20,
+      :user       => 30,
+      :billing    => 40,
     }
 
     # Does this User have sufficient permissions to perform the given role
