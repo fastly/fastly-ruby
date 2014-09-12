@@ -22,7 +22,6 @@ class Fastly
         self.send("#{key}=", opts[key]) if opts.has_key?(key)
       end
       base      = opts[:base_url]      || "https://api.fastly.com"
-      customer  = opts[:customer]
       uri       = URI.parse(base)
       scheme    = uri.scheme
       host      = uri.host
@@ -36,9 +35,16 @@ class Fastly
       resp = self.http.post('/login', make_params(:user => user, :password => password))
       raise Fastly::Unauthorized unless resp.success?
       self.cookie = resp['set-cookie']
-      content     = JSON.parse(resp.body)
-      #return self, content['user'], content['content']
-      self
+    end
+
+    def require_key!
+      raise Fastly::AuthRequired.new("This request requires an API key") if api_key.nil?
+
+      @require_key = true
+    end
+
+    def require_key?
+      !!@require_key
     end
 
     def authed?
@@ -91,9 +97,19 @@ class Fastly
     end
 
     def headers
-      headers = fully_authed? ? { 'Cookie' => cookie } : { 'X-Fastly-Key' => api_key }
-      headers.merge( 'Fastly-Explicit-Customer' => customer ) if customer
-      headers.merge( 'Content-Accept' => 'application/json')
+      headers = if require_key?
+                  api_key_header
+                else
+                  fully_authed? ? { 'Cookie' => cookie } : api_key_header
+                end
+      headers.merge!('Fastly-Explicit-Customer' => customer) if customer
+      headers.merge!('Content-Accept' => 'application/json')
+    ensure
+      @require_key = nil
+    end
+
+    def api_key_header
+      { 'X-Fastly-Key' => api_key }
     end
 
     def make_params(params)

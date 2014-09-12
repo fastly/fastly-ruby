@@ -33,6 +33,10 @@ class Fastly
       ret
     end
 
+    def require_api_key!
+      fetcher.client.require_key!
+    end
+
     def self.path
       Util.class_to_path(self)
     end
