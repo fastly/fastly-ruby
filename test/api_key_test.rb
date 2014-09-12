@@ -26,7 +26,6 @@ class ApiKeyTest < Fastly::TestCase
     assert_equal @opts[:customer], customer['name']
   end
 
-
   def test_current_user_and_customer
     current_user  = current_customer = nil
     assert_raise(Fastly::FullAuthRequired) {
@@ -38,7 +37,6 @@ class ApiKeyTest < Fastly::TestCase
     assert customer
     assert_equal @opts[:customer], customer.name
   end
-
 
   def test_purging
     #assert @fastly.purge('foo')
