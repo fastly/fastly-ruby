@@ -11,51 +11,54 @@ class Fastly
         @keys.push(key)
       end
       self.fetcher = fetcher
-     end
+    end
 
-     # Save this object
-     def save!
-       fetcher.update(self.class, self)
-     end
+    # Save this object
+    def save!
+      fetcher.update(self.class, self)
+    end
 
-     # Delete this object
-     def delete!
-       fetcher.delete(self.class, self)
-     end
+    # Delete this object
+    def delete!
+      fetcher.delete(self.class, self)
+    end
 
-     ##
-     # :nodoc:
-     def as_hash
-       ret = {}
-       @keys.each do |key|
-         ret[key] = self.send("#{key}") unless key =~ /^_/;
-       end
-       ret
-     end
+    ##
+    # :nodoc:
+    def as_hash
+      ret = {}
+      @keys.each do |key|
+        ret[key] = self.send("#{key}") unless key =~ /^_/;
+      end
+      ret
+    end
 
-     def self.path
-       Util.class_to_path(self)
-     end
+    def require_api_key!
+      fetcher.client.require_key!
+    end
 
-     def self.get_path(id)
-       "/#{path}/#{id}"
-     end
+    def self.path
+      Util.class_to_path(self)
+    end
 
-     def self.post_path(opts={})
-       "/#{path}"
-     end
+    def self.get_path(id)
+      "/#{path}/#{id}"
+    end
 
-     def self.list_path(opts={})
-       post_path(opts)
-     end
+    def self.post_path(opts={})
+      "/#{path}"
+    end
 
-     def self.put_path(obj)
-       get_path(obj.id)
-     end
+    def self.list_path(opts={})
+      post_path(opts)
+    end
 
-     def self.delete_path(obj)
-       put_path(obj)
-     end
+    def self.put_path(obj)
+      get_path(obj.id)
+    end
 
+    def self.delete_path(obj)
+      put_path(obj)
+    end
   end
 end
