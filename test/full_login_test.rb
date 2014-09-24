@@ -1,4 +1,4 @@
-require 'helper'
+require 'test_helper'
 
 class FullLoginTest < Fastly::TestCase
   include CommonTests
