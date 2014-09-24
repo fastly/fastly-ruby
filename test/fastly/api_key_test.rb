@@ -41,7 +41,7 @@ describe Fastly do #Test < Fastly::TestCase
         resp = service.purge_by_key('somekey')
         assert_equal "ok", resp['status']
       ensure
-        fastly.delete_service(service)  # cleanup
+        service.delete!  # cleanup
       end
     end
 
@@ -55,7 +55,7 @@ describe Fastly do #Test < Fastly::TestCase
           resp = service.purge_by_key('somekey')
         end
       ensure
-        fastly.delete_service(service)  # cleanup
+        service.delete!  # cleanup
       end
     end
   end
