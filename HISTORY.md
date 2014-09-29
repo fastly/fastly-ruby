@@ -1,14 +1,16 @@
 # HEAD
 
+# 2014-09-29 v1.1.4
+* Require API for purge by key
 
-# 2014-07-25 v1.1.3
+#### 2014-07-25 v1.1.3
 * Add test:unit rake task
 * Add Rubocop and some rubocop cleanup
 * Clarify gem name in documentation
 * Fix a bug in the `Fastly.get_options` method
 * Add `bin/fastly_create_domain` script to easily create domain
 
-#### 2014-06-12 v1.1.2
+2014-06-12 v1.1.2
 * Replace `String#underscore` with `Fastly::Util.class_to_path` method.
 * Add first true unit test
 * Add `test_helper.rb`
