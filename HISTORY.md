@@ -1,9 +1,9 @@
 # HEAD
 
-# 2014-09-29 v1.1.4
-* Require API for purge by key
+## 2014-09-29 v1.1.4
+* Require API Key for purge by key requests
 
-#### 2014-07-25 v1.1.3
+2014-07-25 v1.1.3
 * Add test:unit rake task
 * Add Rubocop and some rubocop cleanup
 * Clarify gem name in documentation
