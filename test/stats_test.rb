@@ -1,4 +1,4 @@
-require 'helper'
+require 'test_helper'
 
 FROM = "2011-01-01 00:00:00"
 
