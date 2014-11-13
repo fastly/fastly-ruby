@@ -172,17 +172,19 @@ end
 
 
 
-# :nodoc: all
-class CurbFu::Response::Base
-  def get_fields(key)
-    if ( match = @headers.find{|k,v| k.downcase == key.downcase} )
-      [match.last].flatten
-    else
-      []
+if defined?(CurbFu)
+  # :nodoc: all
+  class CurbFu::Response::Base
+    def get_fields(key)
+      if ( match = @headers.find{|k,v| k.downcase == key.downcase} )
+        [match.last].flatten
+      else
+        []
+      end
     end
-  end
 
-  def [](key)
-    get_fields(key).last
+    def [](key)
+      get_fields(key).last
+    end
   end
 end
