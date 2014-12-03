@@ -1,3 +1,4 @@
+# Invoice object
 class Fastly
   # An invoice for a time period
   class Invoice < Base
@@ -38,7 +39,6 @@ class Fastly
     #
     # A hash reference with all the different regions and their subtotals
 
-
     # Get the start time of this invoice as a DateTime object in UTC
     def start
       DateTime.parse(start_time).new_offset(0)
@@ -52,14 +52,16 @@ class Fastly
     private
 
     def self.get_path(*args)
-      opts = args.size>0 ? args[0] : {}
-      url  = "/billing"
-      if opts.has_key?(:service_id)
-        url += "/service/#{opts[:service_id]}"
-      end
-      if opts.has_key?(:year) && opts.has_key?(:month)
+      opts = args.size > 0 ? args[0] : {}
+
+      url  = '/billing'
+
+      url += "/service/#{opts[:service_id]}" if opts.key?(:service_id)
+
+      if opts.key?(:year) && opts.key?(:month)
         url += "/year/#{opts[:year]}/month/#{opts[:month]}"
       end
+
       url
     end
 
@@ -68,39 +70,38 @@ class Fastly
     end
 
     def self.post_path
-      raise "You can't POST to an invoice"
+      fail "You can't POST to an invoice"
     end
 
     def self.put_path
-      raise "You can't PUT to an invoice"
+      fail "You can't PUT to an invoice"
     end
 
     def self.delete_path
-      raise "You can't DELETE to an invoice"
+      fail "You can't DELETE to an invoice"
     end
 
     def save!
-      raise "You can't save an invoice"
+      fail "You can't save an invoice"
     end
 
     def delete!
-      raise "You can't delete an invoice"
+      fail "You can't delete an invoice"
     end
   end
-
 
   # Return an array of Invoice objects representing invoices for all services.
   #
   # If a year and month are passed in returns the invoices for that whole month.
   #
   # Otherwise it returns the invoices for the current month so far.
-  def get_invoice(year=nil, month=nil)
+  def get_invoice(year = nil, month = nil)
     opts = {}
     unless year.nil? || month.nil?
       opts[:year]  = year
       opts[:month] = month
     end
-    get(Fastly::Invoice, opts)
-  end
 
+    get(Invoice, opts)
+  end
 end

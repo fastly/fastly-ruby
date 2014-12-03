@@ -1,5 +1,6 @@
 require 'test_helper'
 
+# Fastly Util class tests
 class Fastly
   class FooBar; end
   class FooBarBaz; end

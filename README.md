@@ -75,9 +75,7 @@ new_version.activate!
 The test suite requires the following `ENV` variables to be set:
 
 * `FASTLY_TEST_USER` - Your user email
-* `FASTLY_TEST_NAME` - Your name on your account (ie "John Smith")
 * `FASTLY_TEST_PASSWORD` - Your account password
-* `FASTLY_TEST_CUSTOMER` - Your customer or company name (ie. "Fastly" or "Acme, Inc.")
 * `FASTLY_TEST_API_KEY` - Your API key (found at https://app.fastly.com/#account)
 
 While the test suite is safe to be run on all accounts and isn't harmful to your

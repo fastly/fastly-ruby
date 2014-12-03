@@ -1,4 +1,5 @@
 class Fastly
+  # Collection of frequently used utility methods
   module Util
     def self.class_to_path(klass, append_s = false)
       klass_string = klass.to_s.split('::')[-1]
