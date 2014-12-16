@@ -2,6 +2,8 @@ class Fastly
   # :nodoc:
   class AuthRequired < RuntimeError; end
   # :nodoc:
+  class KeyAuthRequired < AuthRequired; end
+  # :nodoc:
   class FullAuthRequired <  AuthRequired; end
   # :nodoc:
   class Error < RuntimeError; end
