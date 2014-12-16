@@ -1,6 +1,10 @@
 # HEAD
 
-## 2014-09-29 v1.1.4
+## 2014-12-15 v1.1.5
+* major refactor and reorganization of code (merged branch https://github.com/fastly/fastly-ruby/pull/31)
+* bump curb dep to 0.8.6 for ruby 2.1 support (see https://github.com/fastly/fastly-ruby/issues/43)
+
+2014-09-29 v1.1.4
 * Require API Key for purge by key requests
 
 2014-07-25 v1.1.3
