@@ -5,3 +5,4 @@ pkg/*
 run_test.sh
 doc/*
 .*.sw?
+.env
