@@ -1,0 +1,2838 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.fastly.com/service
+    body:
+      encoding: US-ASCII
+      string: name=fastly-test-service-93038-1418701701-903
+    headers:
+      Cookie:
+      - fastly.session=eyJ1c2VyX2lkIjoiNmpOeWJTbnVSMDVRQVM2NkhnY3Q5dyJ9--12521753698408033003--e400bc26d26b8e9906fe2726f6018737b9e24549;
+        Expires=Tue, 30 Dec 2014 03:28:28 GMT;Path=/; HttpOnly; secure
+      Content-Accept:
+      - application/json
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 16 Dec 2014 03:48:22 GMT
+      Server:
+      - Apache
+      Status:
+      - 200 OK
+      Content-Type:
+      - application/json
+      Cache-Control:
+      - no-cache
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Content-Length:
+      - '585'
+      Accept-Ranges:
+      - bytes
+      X-Served-By:
+      - app-sl2-SL, cache-jfk1029-JFK
+      X-Cache:
+      - MISS, MISS
+      X-Cache-Hits:
+      - 0, 0
+      Vary:
+      - Accept-Encoding
+      Set-Cookie:
+      - fastly.session=eyJ1c2VyX2lkIjoiNmpOeWJTbnVSMDVRQVM2NkhnY3Q5dyJ9--12521753698408033003--e400bc26d26b8e9906fe2726f6018737b9e24549;
+        Expires=Tue, 30 Dec 2014 03:48:22 GMT;Path=/; HttpOnly; secure
+    body:
+      encoding: ASCII-8BIT
+      string: '{"name":"fastly-test-service-93038-1418701701-903","customer_id":"6icLrTg3IL5DfWKdFzbavk","versions":[{"testing":null,"locked":"0","number":"1","active":null,"backend":0,"service_id":"2yMAUEYYHQLAfgLyULRMfx","service":"2yMAUEYYHQLAfgLyULRMfx","staging":null,"created_at":"2014-12-16T03:48:22","deleted_at":null,"comment":"","updated_at":"2014-12-16T03:48:22","deployed":null,"inherit_service_id":null}],"created_at":"2014-12-16T03:48:22+00:00","comment":"","publish_key":"51b3ecd639e677536a532bbe619bea88764bfb53","updated_at":"2014-12-16T03:48:22+00:00","id":"2yMAUEYYHQLAfgLyULRMfx"}'
+    http_version: 
+  recorded_at: Tue, 16 Dec 2014 03:48:22 GMT
+- request:
+    method: get
+    uri: https://api.fastly.com/service/2yMAUEYYHQLAfgLyULRMfx
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Cookie:
+      - fastly.session=eyJ1c2VyX2lkIjoiNmpOeWJTbnVSMDVRQVM2NkhnY3Q5dyJ9--12521753698408033003--e400bc26d26b8e9906fe2726f6018737b9e24549;
+        Expires=Tue, 30 Dec 2014 03:28:28 GMT;Path=/; HttpOnly; secure
+      Content-Accept:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 16 Dec 2014 03:48:23 GMT
+      Server:
+      - Apache
+      Status:
+      - 200 OK
+      Content-Type:
+      - application/json
+      Cache-Control:
+      - no-cache
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Content-Length:
+      - '585'
+      Accept-Ranges:
+      - bytes
+      Age:
+      - '0'
+      X-Served-By:
+      - app-sl2-SL, cache-jfk1026-JFK
+      X-Cache:
+      - MISS, MISS
+      X-Cache-Hits:
+      - 0, 0
+      Vary:
+      - Accept-Encoding
+      Set-Cookie:
+      - fastly.session=eyJ1c2VyX2lkIjoiNmpOeWJTbnVSMDVRQVM2NkhnY3Q5dyJ9--12521753698408033003--e400bc26d26b8e9906fe2726f6018737b9e24549;
+        Expires=Tue, 30 Dec 2014 03:48:23 GMT;Path=/; HttpOnly; secure
+    body:
+      encoding: ASCII-8BIT
+      string: '{"versions":[{"testing":null,"locked":"0","number":"1","active":null,"backend":0,"service_id":"2yMAUEYYHQLAfgLyULRMfx","service":"2yMAUEYYHQLAfgLyULRMfx","staging":null,"created_at":"2014-12-16T03:48:22","deleted_at":null,"comment":"","updated_at":"2014-12-16T03:48:22","deployed":null,"inherit_service_id":null}],"created_at":"2014-12-16T03:48:22+00:00","customer_id":"6icLrTg3IL5DfWKdFzbavk","comment":"","publish_key":"51b3ecd639e677536a532bbe619bea88764bfb53","updated_at":"2014-12-16T03:48:22+00:00","name":"fastly-test-service-93038-1418701701-903","id":"2yMAUEYYHQLAfgLyULRMfx"}'
+    http_version: 
+  recorded_at: Tue, 16 Dec 2014 03:48:23 GMT
+- request:
+    method: get
+    uri: https://api.fastly.com/service/2yMAUEYYHQLAfgLyULRMfx/version/1/settings
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Cookie:
+      - fastly.session=eyJ1c2VyX2lkIjoiNmpOeWJTbnVSMDVRQVM2NkhnY3Q5dyJ9--12521753698408033003--e400bc26d26b8e9906fe2726f6018737b9e24549;
+        Expires=Tue, 30 Dec 2014 03:28:28 GMT;Path=/; HttpOnly; secure
+      Content-Accept:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 16 Dec 2014 03:48:23 GMT
+      Server:
+      - Apache
+      Status:
+      - 200 OK
+      Content-Type:
+      - application/json
+      Cache-Control:
+      - no-cache
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Content-Length:
+      - '128'
+      Accept-Ranges:
+      - bytes
+      Age:
+      - '0'
+      X-Served-By:
+      - app-sl1-SL, cache-jfk1020-JFK
+      X-Cache:
+      - MISS, MISS
+      X-Cache-Hits:
+      - 0, 0
+      Vary:
+      - Accept-Encoding
+      Set-Cookie:
+      - fastly.session=eyJ1c2VyX2lkIjoiNmpOeWJTbnVSMDVRQVM2NkhnY3Q5dyJ9--12521753698408033003--e400bc26d26b8e9906fe2726f6018737b9e24549;
+        Expires=Tue, 30 Dec 2014 03:48:23 GMT;Path=/; HttpOnly; secure
+    body:
+      encoding: ASCII-8BIT
+      string: '{"general.default_ttl":3600,"version":1,"general.default_host":"","general.default_pci":0,"service_id":"2yMAUEYYHQLAfgLyULRMfx"}'
+    http_version: 
+  recorded_at: Tue, 16 Dec 2014 03:48:23 GMT
+- request:
+    method: get
+    uri: https://api.fastly.com/service/2yMAUEYYHQLAfgLyULRMfx/version/1/settings
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Cookie:
+      - fastly.session=eyJ1c2VyX2lkIjoiNmpOeWJTbnVSMDVRQVM2NkhnY3Q5dyJ9--12521753698408033003--e400bc26d26b8e9906fe2726f6018737b9e24549;
+        Expires=Tue, 30 Dec 2014 03:28:28 GMT;Path=/; HttpOnly; secure
+      Content-Accept:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 16 Dec 2014 03:48:24 GMT
+      Server:
+      - Apache
+      Status:
+      - 200 OK
+      Content-Type:
+      - application/json
+      Cache-Control:
+      - no-cache
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Content-Length:
+      - '128'
+      Accept-Ranges:
+      - bytes
+      Age:
+      - '0'
+      X-Served-By:
+      - app-sl2-SL, cache-jfk1031-JFK
+      X-Cache:
+      - MISS, MISS
+      X-Cache-Hits:
+      - 0, 0
+      Vary:
+      - Accept-Encoding
+      Set-Cookie:
+      - fastly.session=eyJ1c2VyX2lkIjoiNmpOeWJTbnVSMDVRQVM2NkhnY3Q5dyJ9--12521753698408033003--e400bc26d26b8e9906fe2726f6018737b9e24549;
+        Expires=Tue, 30 Dec 2014 03:48:24 GMT;Path=/; HttpOnly; secure
+    body:
+      encoding: ASCII-8BIT
+      string: '{"general.default_ttl":3600,"version":1,"general.default_host":"","general.default_pci":0,"service_id":"2yMAUEYYHQLAfgLyULRMfx"}'
+    http_version: 
+  recorded_at: Tue, 16 Dec 2014 03:48:24 GMT
+- request:
+    method: put
+    uri: https://api.fastly.com/service/2yMAUEYYHQLAfgLyULRMfx/version/1/settings
+    body:
+      encoding: UTF-8
+      string: general.default_host=&general.default_ttl=888888888
+    headers:
+      Cookie:
+      - fastly.session=eyJ1c2VyX2lkIjoiNmpOeWJTbnVSMDVRQVM2NkhnY3Q5dyJ9--12521753698408033003--e400bc26d26b8e9906fe2726f6018737b9e24549;
+        Expires=Tue, 30 Dec 2014 03:28:28 GMT;Path=/; HttpOnly; secure
+      Content-Accept:
+      - application/json
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 16 Dec 2014 03:48:24 GMT
+      Server:
+      - Apache
+      Status:
+      - 200 OK
+      Content-Type:
+      - application/json
+      Cache-Control:
+      - no-cache
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Content-Length:
+      - '133'
+      Accept-Ranges:
+      - bytes
+      X-Served-By:
+      - app-sl1-SL, cache-jfk1024-JFK
+      X-Cache:
+      - MISS, MISS
+      X-Cache-Hits:
+      - 0, 0
+      Vary:
+      - Accept-Encoding
+      Set-Cookie:
+      - fastly.session=eyJ1c2VyX2lkIjoiNmpOeWJTbnVSMDVRQVM2NkhnY3Q5dyJ9--12521753698408033003--e400bc26d26b8e9906fe2726f6018737b9e24549;
+        Expires=Tue, 30 Dec 2014 03:48:24 GMT;Path=/; HttpOnly; secure
+    body:
+      encoding: ASCII-8BIT
+      string: '{"general.default_ttl":888888888,"version":1,"general.default_host":"","general.default_pci":0,"service_id":"2yMAUEYYHQLAfgLyULRMfx"}'
+    http_version: 
+  recorded_at: Tue, 16 Dec 2014 03:48:24 GMT
+- request:
+    method: get
+    uri: https://api.fastly.com/service/2yMAUEYYHQLAfgLyULRMfx/version/1/settings
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Cookie:
+      - fastly.session=eyJ1c2VyX2lkIjoiNmpOeWJTbnVSMDVRQVM2NkhnY3Q5dyJ9--12521753698408033003--e400bc26d26b8e9906fe2726f6018737b9e24549;
+        Expires=Tue, 30 Dec 2014 03:28:28 GMT;Path=/; HttpOnly; secure
+      Content-Accept:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 16 Dec 2014 03:48:25 GMT
+      Server:
+      - Apache
+      Status:
+      - 200 OK
+      Content-Type:
+      - application/json
+      Cache-Control:
+      - no-cache
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Content-Length:
+      - '133'
+      Accept-Ranges:
+      - bytes
+      X-Served-By:
+      - app-sl2-SL, cache-jfk1027-JFK
+      X-Cache:
+      - MISS, MISS
+      X-Cache-Hits:
+      - 0, 0
+      Vary:
+      - Accept-Encoding
+      Set-Cookie:
+      - fastly.session=eyJ1c2VyX2lkIjoiNmpOeWJTbnVSMDVRQVM2NkhnY3Q5dyJ9--12521753698408033003--e400bc26d26b8e9906fe2726f6018737b9e24549;
+        Expires=Tue, 30 Dec 2014 03:48:25 GMT;Path=/; HttpOnly; secure
+    body:
+      encoding: ASCII-8BIT
+      string: '{"general.default_ttl":888888888,"version":1,"general.default_host":"","general.default_pci":0,"service_id":"2yMAUEYYHQLAfgLyULRMfx"}'
+    http_version: 
+  recorded_at: Tue, 16 Dec 2014 03:48:25 GMT
+- request:
+    method: get
+    uri: https://api.fastly.com/service
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Cookie:
+      - fastly.session=eyJ1c2VyX2lkIjoiNmpOeWJTbnVSMDVRQVM2NkhnY3Q5dyJ9--12521753698408033003--e400bc26d26b8e9906fe2726f6018737b9e24549;
+        Expires=Tue, 30 Dec 2014 03:28:28 GMT;Path=/; HttpOnly; secure
+      Content-Accept:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 16 Dec 2014 03:48:25 GMT
+      Server:
+      - Apache
+      Status:
+      - 200 OK
+      Content-Type:
+      - application/json
+      Cache-Control:
+      - no-cache
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Content-Length:
+      - '1363'
+      Accept-Ranges:
+      - bytes
+      Age:
+      - '0'
+      X-Served-By:
+      - app-sl2-SL, cache-jfk1020-JFK
+      X-Cache:
+      - MISS, MISS
+      X-Cache-Hits:
+      - 0, 0
+      Vary:
+      - Accept-Encoding
+      Set-Cookie:
+      - fastly.session=eyJ1c2VyX2lkIjoiNmpOeWJTbnVSMDVRQVM2NkhnY3Q5dyJ9--12521753698408033003--e400bc26d26b8e9906fe2726f6018737b9e24549;
+        Expires=Tue, 30 Dec 2014 03:48:25 GMT;Path=/; HttpOnly; secure
+    body:
+      encoding: ASCII-8BIT
+      string: '[{"active_version":1,"name":"fastly-test-service-91558-1418699090-615","versions":[{"testing":null,"locked":"0","number":"1","active":null,"service_id":"2Ld1Mxvm3ByX0WqQfWmlRu","service":"2Ld1Mxvm3ByX0WqQfWmlRu","staging":null,"created_at":"2014-12-16T03:04:51","deleted_at":null,"comment":"","updated_at":"2014-12-16T03:04:51","deployed":null,"inherit_service_id":null}],"comment":"","customer_id":"6icLrTg3IL5DfWKdFzbavk","id":"2Ld1Mxvm3ByX0WqQfWmlRu"},{"active_version":1,"name":"fastly-test-service-91581-1418699145-594","versions":[{"testing":null,"locked":"0","number":"1","active":null,"service_id":"3L0AOrxShPi8bboNgUb5cv","service":"3L0AOrxShPi8bboNgUb5cv","staging":null,"created_at":"2014-12-16T03:05:45","deleted_at":null,"comment":"","updated_at":"2014-12-16T03:05:45","deployed":null,"inherit_service_id":null}],"comment":"","customer_id":"6icLrTg3IL5DfWKdFzbavk","id":"3L0AOrxShPi8bboNgUb5cv"},{"active_version":1,"name":"fastly-test-service-93038-1418701701-903","versions":[{"testing":null,"locked":"0","number":"1","active":null,"service_id":"2yMAUEYYHQLAfgLyULRMfx","service":"2yMAUEYYHQLAfgLyULRMfx","staging":null,"created_at":"2014-12-16T03:48:22","deleted_at":null,"comment":"","updated_at":"2014-12-16T03:48:22","deployed":null,"inherit_service_id":null}],"comment":"","customer_id":"6icLrTg3IL5DfWKdFzbavk","id":"2yMAUEYYHQLAfgLyULRMfx"}]'
+    http_version: 
+  recorded_at: Tue, 16 Dec 2014 03:48:25 GMT
+- request:
+    method: get
+    uri: https://api.fastly.com/service/search?name=fastly-test-service-91558-1418699090-615
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Cookie:
+      - fastly.session=eyJ1c2VyX2lkIjoiNmpOeWJTbnVSMDVRQVM2NkhnY3Q5dyJ9--12521753698408033003--e400bc26d26b8e9906fe2726f6018737b9e24549;
+        Expires=Tue, 30 Dec 2014 03:28:28 GMT;Path=/; HttpOnly; secure
+      Content-Accept:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 16 Dec 2014 03:48:26 GMT
+      Server:
+      - Apache
+      Status:
+      - 200 OK
+      Content-Type:
+      - application/json
+      Cache-Control:
+      - no-cache
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Content-Length:
+      - '434'
+      Accept-Ranges:
+      - bytes
+      Age:
+      - '0'
+      X-Served-By:
+      - app-sl1-SL, cache-jfk1031-JFK
+      X-Cache:
+      - MISS, MISS
+      X-Cache-Hits:
+      - 0, 0
+      Vary:
+      - Accept-Encoding
+      Set-Cookie:
+      - fastly.session=eyJ1c2VyX2lkIjoiNmpOeWJTbnVSMDVRQVM2NkhnY3Q5dyJ9--12521753698408033003--e400bc26d26b8e9906fe2726f6018737b9e24549;
+        Expires=Tue, 30 Dec 2014 03:48:26 GMT;Path=/; HttpOnly; secure
+    body:
+      encoding: ASCII-8BIT
+      string: '{"name":"fastly-test-service-91558-1418699090-615","versions":[{"testing":null,"locked":"0","number":"1","active":null,"service_id":"2Ld1Mxvm3ByX0WqQfWmlRu","service":"2Ld1Mxvm3ByX0WqQfWmlRu","staging":null,"created_at":"2014-12-16T03:04:51","deleted_at":null,"comment":"","updated_at":"2014-12-16T03:04:51","deployed":null,"inherit_service_id":null}],"comment":"","customer_id":"6icLrTg3IL5DfWKdFzbavk","id":"2Ld1Mxvm3ByX0WqQfWmlRu"}'
+    http_version: 
+  recorded_at: Tue, 16 Dec 2014 03:48:26 GMT
+- request:
+    method: get
+    uri: https://api.fastly.com/service/search?name=fastly-test-service-91558-1418699090-615&version=1
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Cookie:
+      - fastly.session=eyJ1c2VyX2lkIjoiNmpOeWJTbnVSMDVRQVM2NkhnY3Q5dyJ9--12521753698408033003--e400bc26d26b8e9906fe2726f6018737b9e24549;
+        Expires=Tue, 30 Dec 2014 03:28:28 GMT;Path=/; HttpOnly; secure
+      Content-Accept:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 16 Dec 2014 03:48:26 GMT
+      Server:
+      - Apache
+      Status:
+      - 200 OK
+      Content-Type:
+      - application/json
+      Cache-Control:
+      - no-cache
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Content-Length:
+      - '729'
+      Accept-Ranges:
+      - bytes
+      Age:
+      - '0'
+      X-Served-By:
+      - app-sl1-SL, cache-jfk1031-JFK
+      X-Cache:
+      - MISS, MISS
+      X-Cache-Hits:
+      - 0, 0
+      Vary:
+      - Accept-Encoding
+      Set-Cookie:
+      - fastly.session=eyJ1c2VyX2lkIjoiNmpOeWJTbnVSMDVRQVM2NkhnY3Q5dyJ9--12521753698408033003--e400bc26d26b8e9906fe2726f6018737b9e24549;
+        Expires=Tue, 30 Dec 2014 03:48:26 GMT;Path=/; HttpOnly; secure
+    body:
+      encoding: ASCII-8BIT
+      string: '{"name":"fastly-test-service-91558-1418699090-615","versions":[{"testing":null,"logging_syslog":[],"number":"1","backend":[],"vcl":[],"service_id":"2Ld1Mxvm3ByX0WqQfWmlRu","director":[],"staging":null,"domain":[],"updated":"2014-12-16
+        03:04:51","gzip":[],"request_settings":[],"inherit_service_id":null,"deployed":null,"response_object":[],"locked":"0","ssl":[],"match":[],"wordpress":[],"active":null,"origin":[],"deleted":"0000-00-00
+        00:00:00","healthcheck":[],"settings":{"general.default_ttl":3600,"general.default_host":"","general.default_pci":0},"created":"2014-12-16
+        03:04:51","cache_settings":[],"comment":"","header":[],"condition":[]}],"comment":"","customer_id":"6icLrTg3IL5DfWKdFzbavk","id":"2Ld1Mxvm3ByX0WqQfWmlRu"}'
+    http_version: 
+  recorded_at: Tue, 16 Dec 2014 03:48:26 GMT
+- request:
+    method: post
+    uri: https://api.fastly.com/service/2Ld1Mxvm3ByX0WqQfWmlRu/version
+    body:
+      encoding: US-ASCII
+      string: service_id=2Ld1Mxvm3ByX0WqQfWmlRu
+    headers:
+      Cookie:
+      - fastly.session=eyJ1c2VyX2lkIjoiNmpOeWJTbnVSMDVRQVM2NkhnY3Q5dyJ9--12521753698408033003--e400bc26d26b8e9906fe2726f6018737b9e24549;
+        Expires=Tue, 30 Dec 2014 03:28:28 GMT;Path=/; HttpOnly; secure
+      Content-Accept:
+      - application/json
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 16 Dec 2014 03:48:27 GMT
+      Server:
+      - Apache
+      Status:
+      - 200 OK
+      Content-Type:
+      - application/json
+      Cache-Control:
+      - no-cache
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Content-Length:
+      - '50'
+      Accept-Ranges:
+      - bytes
+      X-Served-By:
+      - app-sl2-SL, cache-jfk1023-JFK
+      X-Cache:
+      - MISS, MISS
+      X-Cache-Hits:
+      - 0, 0
+      Vary:
+      - Accept-Encoding
+      Set-Cookie:
+      - fastly.session=eyJ1c2VyX2lkIjoiNmpOeWJTbnVSMDVRQVM2NkhnY3Q5dyJ9--12521753698408033003--e400bc26d26b8e9906fe2726f6018737b9e24549;
+        Expires=Tue, 30 Dec 2014 03:48:27 GMT;Path=/; HttpOnly; secure
+    body:
+      encoding: ASCII-8BIT
+      string: '{"service_id":"2Ld1Mxvm3ByX0WqQfWmlRu","number":2}'
+    http_version: 
+  recorded_at: Tue, 16 Dec 2014 03:48:27 GMT
+- request:
+    method: put
+    uri: https://api.fastly.com/service/2Ld1Mxvm3ByX0WqQfWmlRu/version/2/clone
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Cookie:
+      - fastly.session=eyJ1c2VyX2lkIjoiNmpOeWJTbnVSMDVRQVM2NkhnY3Q5dyJ9--12521753698408033003--e400bc26d26b8e9906fe2726f6018737b9e24549;
+        Expires=Tue, 30 Dec 2014 03:28:28 GMT;Path=/; HttpOnly; secure
+      Content-Accept:
+      - application/json
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 16 Dec 2014 03:48:27 GMT
+      Server:
+      - Apache
+      Status:
+      - 200 OK
+      Content-Type:
+      - application/json
+      Cache-Control:
+      - no-cache
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Content-Length:
+      - '268'
+      Accept-Ranges:
+      - bytes
+      X-Served-By:
+      - app-sl2-SL, cache-jfk1024-JFK
+      X-Cache:
+      - MISS, MISS
+      X-Cache-Hits:
+      - 0, 0
+      Vary:
+      - Accept-Encoding
+      Set-Cookie:
+      - fastly.session=eyJ1c2VyX2lkIjoiNmpOeWJTbnVSMDVRQVM2NkhnY3Q5dyJ9--12521753698408033003--e400bc26d26b8e9906fe2726f6018737b9e24549;
+        Expires=Tue, 30 Dec 2014 03:48:27 GMT;Path=/; HttpOnly; secure
+    body:
+      encoding: ASCII-8BIT
+      string: '{"testing":false,"locked":false,"number":3,"active":false,"service_id":"2Ld1Mxvm3ByX0WqQfWmlRu","staging":false,"created_at":"2014-12-16T03:48:27+00:00","deleted_at":null,"comment":"","updated_at":"2014-12-16T03:48:27+00:00","deployed":false,"inherit_service_id":null}'
+    http_version: 
+  recorded_at: Tue, 16 Dec 2014 03:48:27 GMT
+- request:
+    method: post
+    uri: https://api.fastly.com/service/2Ld1Mxvm3ByX0WqQfWmlRu/version/3/backend
+    body:
+      encoding: US-ASCII
+      string: service_id=2Ld1Mxvm3ByX0WqQfWmlRu&version=3&hostname=localhost&name=fastly-test-backend-93038-1418701707-805
+    headers:
+      Cookie:
+      - fastly.session=eyJ1c2VyX2lkIjoiNmpOeWJTbnVSMDVRQVM2NkhnY3Q5dyJ9--12521753698408033003--e400bc26d26b8e9906fe2726f6018737b9e24549;
+        Expires=Tue, 30 Dec 2014 03:28:28 GMT;Path=/; HttpOnly; secure
+      Content-Accept:
+      - application/json
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Expect:
+      - ''
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Date:
+      - Tue, 16 Dec 2014 03:48:28 GMT
+      Server:
+      - Apache
+      Status:
+      - 400 Bad Request
+      Content-Type:
+      - text/json
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Content-Length:
+      - '141'
+      Accept-Ranges:
+      - bytes
+      X-Served-By:
+      - app-sl1-SL, cache-jfk1031-JFK
+      X-Cache:
+      - MISS, MISS
+      X-Cache-Hits:
+      - 0, 0
+      Vary:
+      - Accept-Encoding
+      Set-Cookie:
+      - fastly.session=eyJ1c2VyX2lkIjoiNmpOeWJTbnVSMDVRQVM2NkhnY3Q5dyJ9--12521753698408033003--e400bc26d26b8e9906fe2726f6018737b9e24549;
+        Expires=Tue, 30 Dec 2014 03:48:28 GMT;Path=/; HttpOnly; secure
+      Connection:
+      - close
+    body:
+      encoding: ASCII-8BIT
+      string: '{"msg":"An error occurred while connecting to the fastly API, please
+        try your request again.","detail":"''localhost'' is not a valid hostname"}'
+    http_version: 
+  recorded_at: Tue, 16 Dec 2014 03:48:28 GMT
+- request:
+    method: post
+    uri: https://api.fastly.com/service/2Ld1Mxvm3ByX0WqQfWmlRu/version/3/backend
+    body:
+      encoding: US-ASCII
+      string: service_id=2Ld1Mxvm3ByX0WqQfWmlRu&version=3&address=74.125.224.146&name=fastly-test-backend-93038-1418701707-805
+    headers:
+      Cookie:
+      - fastly.session=eyJ1c2VyX2lkIjoiNmpOeWJTbnVSMDVRQVM2NkhnY3Q5dyJ9--12521753698408033003--e400bc26d26b8e9906fe2726f6018737b9e24549;
+        Expires=Tue, 30 Dec 2014 03:28:28 GMT;Path=/; HttpOnly; secure
+      Content-Accept:
+      - application/json
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 16 Dec 2014 03:48:29 GMT
+      Server:
+      - Apache
+      Status:
+      - 200 OK
+      Content-Type:
+      - application/json
+      Cache-Control:
+      - no-cache
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Content-Length:
+      - '531'
+      Accept-Ranges:
+      - bytes
+      X-Served-By:
+      - app-sl1-SL, cache-jfk1028-JFK
+      X-Cache:
+      - MISS, MISS
+      X-Cache-Hits:
+      - 0, 0
+      Vary:
+      - Accept-Encoding
+      Set-Cookie:
+      - fastly.session=eyJ1c2VyX2lkIjoiNmpOeWJTbnVSMDVRQVM2NkhnY3Q5dyJ9--12521753698408033003--e400bc26d26b8e9906fe2726f6018737b9e24549;
+        Expires=Tue, 30 Dec 2014 03:48:29 GMT;Path=/; HttpOnly; secure
+    body:
+      encoding: ASCII-8BIT
+      string: '{"service_id":"2Ld1Mxvm3ByX0WqQfWmlRu","version":3,"address":"74.125.224.146","name":"fastly-test-backend-93038-1418701707-805","ssl_ca_cert":null,"auto_loadbalance":false,"shield":null,"ssl_client_cert":null,"hostname":null,"error_threshold":0,"first_byte_timeout":15000,"request_condition":"","weight":100,"client_cert":null,"ssl_hostname":null,"ipv6":null,"connect_timeout":1000,"ipv4":"74.125.224.146","healthcheck":null,"port":80,"max_conn":200,"use_ssl":false,"comment":"","between_bytes_timeout":10000,"ssl_client_key":null}'
+    http_version: 
+  recorded_at: Tue, 16 Dec 2014 03:48:29 GMT
+- request:
+    method: get
+    uri: https://api.fastly.com/service/2Ld1Mxvm3ByX0WqQfWmlRu/version/3
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Cookie:
+      - fastly.session=eyJ1c2VyX2lkIjoiNmpOeWJTbnVSMDVRQVM2NkhnY3Q5dyJ9--12521753698408033003--e400bc26d26b8e9906fe2726f6018737b9e24549;
+        Expires=Tue, 30 Dec 2014 03:28:28 GMT;Path=/; HttpOnly; secure
+      Content-Accept:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 16 Dec 2014 03:48:29 GMT
+      Server:
+      - Apache
+      Status:
+      - 200 OK
+      Content-Type:
+      - application/json
+      Cache-Control:
+      - no-cache
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Content-Length:
+      - '264'
+      Accept-Ranges:
+      - bytes
+      Age:
+      - '0'
+      X-Served-By:
+      - app-sl2-SL, cache-jfk1023-JFK
+      X-Cache:
+      - MISS, MISS
+      X-Cache-Hits:
+      - 0, 0
+      Vary:
+      - Accept-Encoding
+      Set-Cookie:
+      - fastly.session=eyJ1c2VyX2lkIjoiNmpOeWJTbnVSMDVRQVM2NkhnY3Q5dyJ9--12521753698408033003--e400bc26d26b8e9906fe2726f6018737b9e24549;
+        Expires=Tue, 30 Dec 2014 03:48:29 GMT;Path=/; HttpOnly; secure
+    body:
+      encoding: ASCII-8BIT
+      string: '{"testing":null,"locked":false,"number":3,"active":null,"service_id":"2Ld1Mxvm3ByX0WqQfWmlRu","staging":null,"created_at":"2014-12-16T03:48:27+00:00","deleted_at":null,"comment":"","updated_at":"2014-12-16T03:48:27+00:00","deployed":null,"inherit_service_id":null}'
+    http_version: 
+  recorded_at: Tue, 16 Dec 2014 03:48:29 GMT
+- request:
+    method: put
+    uri: https://api.fastly.com/service/2Ld1Mxvm3ByX0WqQfWmlRu/version/3/backend/fastly-test-backend-93038-1418701707-805
+    body:
+      encoding: UTF-8
+      string: address=thegestalt.org&name=fastly-test-backend-93038-1418701707-805&auto_loadbalance=false&error_threshold=0&first_byte_timeout=15000&request_condition=&weight=100&connect_timeout=1000&ipv4=74.125.224.146&port=9092&max_conn=200&use_ssl=false&comment=&between_bytes_timeout=10000
+    headers:
+      Cookie:
+      - fastly.session=eyJ1c2VyX2lkIjoiNmpOeWJTbnVSMDVRQVM2NkhnY3Q5dyJ9--12521753698408033003--e400bc26d26b8e9906fe2726f6018737b9e24549;
+        Expires=Tue, 30 Dec 2014 03:28:28 GMT;Path=/; HttpOnly; secure
+      Content-Accept:
+      - application/json
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 16 Dec 2014 03:48:29 GMT
+      Server:
+      - Apache
+      Status:
+      - 200 OK
+      Content-Type:
+      - application/json
+      Cache-Control:
+      - no-cache
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Content-Length:
+      - '533'
+      Accept-Ranges:
+      - bytes
+      X-Served-By:
+      - app-sl1-SL, cache-jfk1021-JFK
+      X-Cache:
+      - MISS, MISS
+      X-Cache-Hits:
+      - 0, 0
+      Vary:
+      - Accept-Encoding
+      Set-Cookie:
+      - fastly.session=eyJ1c2VyX2lkIjoiNmpOeWJTbnVSMDVRQVM2NkhnY3Q5dyJ9--12521753698408033003--e400bc26d26b8e9906fe2726f6018737b9e24549;
+        Expires=Tue, 30 Dec 2014 03:48:29 GMT;Path=/; HttpOnly; secure
+    body:
+      encoding: ASCII-8BIT
+      string: '{"ssl_ca_cert":null,"auto_loadbalance":false,"shield":null,"ssl_client_cert":null,"hostname":null,"service_id":"2Ld1Mxvm3ByX0WqQfWmlRu","error_threshold":0,"request_condition":"","first_byte_timeout":15000,"weight":100,"client_cert":null,"address":"thegestalt.org","ssl_hostname":null,"ipv6":null,"ipv4":"74.125.224.146","connect_timeout":1000,"version":3,"name":"fastly-test-backend-93038-1418701707-805","healthcheck":null,"port":9092,"max_conn":200,"use_ssl":false,"comment":"","between_bytes_timeout":10000,"ssl_client_key":null}'
+    http_version: 
+  recorded_at: Tue, 16 Dec 2014 03:48:29 GMT
+- request:
+    method: get
+    uri: https://api.fastly.com/service/2Ld1Mxvm3ByX0WqQfWmlRu/version/3/backend/fastly-test-backend-93038-1418701707-805
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Cookie:
+      - fastly.session=eyJ1c2VyX2lkIjoiNmpOeWJTbnVSMDVRQVM2NkhnY3Q5dyJ9--12521753698408033003--e400bc26d26b8e9906fe2726f6018737b9e24549;
+        Expires=Tue, 30 Dec 2014 03:28:28 GMT;Path=/; HttpOnly; secure
+      Content-Accept:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 16 Dec 2014 03:48:30 GMT
+      Server:
+      - Apache
+      Status:
+      - 200 OK
+      Content-Type:
+      - application/json
+      Cache-Control:
+      - no-cache
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Content-Length:
+      - '533'
+      Accept-Ranges:
+      - bytes
+      Age:
+      - '0'
+      X-Served-By:
+      - app-sl2-SL, cache-jfk1032-JFK
+      X-Cache:
+      - MISS, MISS
+      X-Cache-Hits:
+      - 0, 0
+      Vary:
+      - Accept-Encoding
+      Set-Cookie:
+      - fastly.session=eyJ1c2VyX2lkIjoiNmpOeWJTbnVSMDVRQVM2NkhnY3Q5dyJ9--12521753698408033003--e400bc26d26b8e9906fe2726f6018737b9e24549;
+        Expires=Tue, 30 Dec 2014 03:48:30 GMT;Path=/; HttpOnly; secure
+    body:
+      encoding: ASCII-8BIT
+      string: '{"ssl_ca_cert":null,"auto_loadbalance":false,"shield":null,"ssl_client_cert":null,"hostname":"thegestalt.org","service_id":"2Ld1Mxvm3ByX0WqQfWmlRu","error_threshold":0,"first_byte_timeout":15000,"request_condition":"","weight":100,"client_cert":null,"address":"thegestalt.org","ssl_hostname":null,"ipv6":null,"connect_timeout":1000,"ipv4":null,"version":3,"name":"fastly-test-backend-93038-1418701707-805","healthcheck":null,"port":9092,"max_conn":200,"use_ssl":false,"comment":"","between_bytes_timeout":10000,"ssl_client_key":null}'
+    http_version: 
+  recorded_at: Tue, 16 Dec 2014 03:48:29 GMT
+- request:
+    method: post
+    uri: https://api.fastly.com/service/2Ld1Mxvm3ByX0WqQfWmlRu/version/3/domain
+    body:
+      encoding: US-ASCII
+      string: service_id=2Ld1Mxvm3ByX0WqQfWmlRu&version=3&name=fastly-test-domain-93038-1418701709-963-example.com
+    headers:
+      Cookie:
+      - fastly.session=eyJ1c2VyX2lkIjoiNmpOeWJTbnVSMDVRQVM2NkhnY3Q5dyJ9--12521753698408033003--e400bc26d26b8e9906fe2726f6018737b9e24549;
+        Expires=Tue, 30 Dec 2014 03:28:28 GMT;Path=/; HttpOnly; secure
+      Content-Accept:
+      - application/json
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 16 Dec 2014 03:48:32 GMT
+      Server:
+      - Apache
+      Status:
+      - 200 OK
+      Content-Type:
+      - application/json
+      Cache-Control:
+      - no-cache
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Content-Length:
+      - '125'
+      Accept-Ranges:
+      - bytes
+      X-Served-By:
+      - app-sl2-SL, cache-jfk1034-JFK
+      X-Cache:
+      - MISS, MISS
+      X-Cache-Hits:
+      - 0, 0
+      Vary:
+      - Accept-Encoding
+      Set-Cookie:
+      - fastly.session=eyJ1c2VyX2lkIjoiNmpOeWJTbnVSMDVRQVM2NkhnY3Q5dyJ9--12521753698408033003--e400bc26d26b8e9906fe2726f6018737b9e24549;
+        Expires=Tue, 30 Dec 2014 03:48:32 GMT;Path=/; HttpOnly; secure
+    body:
+      encoding: ASCII-8BIT
+      string: '{"service_id":"2Ld1Mxvm3ByX0WqQfWmlRu","version":3,"name":"fastly-test-domain-93038-1418701709-963-example.com","comment":""}'
+    http_version: 
+  recorded_at: Tue, 16 Dec 2014 03:48:32 GMT
+- request:
+    method: get
+    uri: https://api.fastly.com/service/2Ld1Mxvm3ByX0WqQfWmlRu
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Cookie:
+      - fastly.session=eyJ1c2VyX2lkIjoiNmpOeWJTbnVSMDVRQVM2NkhnY3Q5dyJ9--12521753698408033003--e400bc26d26b8e9906fe2726f6018737b9e24549;
+        Expires=Tue, 30 Dec 2014 03:28:28 GMT;Path=/; HttpOnly; secure
+      Content-Accept:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 16 Dec 2014 03:48:33 GMT
+      Server:
+      - Apache
+      Status:
+      - 200 OK
+      Content-Type:
+      - application/json
+      Cache-Control:
+      - no-cache
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Content-Length:
+      - '1185'
+      Accept-Ranges:
+      - bytes
+      Age:
+      - '0'
+      X-Served-By:
+      - app-sl2-SL, cache-jfk1033-JFK
+      X-Cache:
+      - MISS, MISS
+      X-Cache-Hits:
+      - 0, 0
+      Vary:
+      - Accept-Encoding
+      Set-Cookie:
+      - fastly.session=eyJ1c2VyX2lkIjoiNmpOeWJTbnVSMDVRQVM2NkhnY3Q5dyJ9--12521753698408033003--e400bc26d26b8e9906fe2726f6018737b9e24549;
+        Expires=Tue, 30 Dec 2014 03:48:33 GMT;Path=/; HttpOnly; secure
+    body:
+      encoding: ASCII-8BIT
+      string: '{"versions":[{"testing":null,"locked":"0","number":"1","active":null,"backend":0,"service_id":"2Ld1Mxvm3ByX0WqQfWmlRu","service":"2Ld1Mxvm3ByX0WqQfWmlRu","staging":null,"created_at":"2014-12-16T03:04:51","deleted_at":null,"comment":"","updated_at":"2014-12-16T03:04:51","deployed":null,"inherit_service_id":null},{"testing":null,"locked":"0","number":"2","active":null,"backend":0,"service_id":"2Ld1Mxvm3ByX0WqQfWmlRu","service":"2Ld1Mxvm3ByX0WqQfWmlRu","staging":null,"created_at":"2014-12-16T03:48:27","deleted_at":null,"comment":"","updated_at":"2014-12-16T03:48:27","deployed":null,"inherit_service_id":null},{"testing":null,"locked":"0","number":"3","active":null,"backend":1,"service_id":"2Ld1Mxvm3ByX0WqQfWmlRu","service":"2Ld1Mxvm3ByX0WqQfWmlRu","staging":null,"created_at":"2014-12-16T03:48:27","deleted_at":null,"comment":"","updated_at":"2014-12-16T03:48:27","deployed":null,"inherit_service_id":null}],"created_at":"2014-12-16T03:04:51+00:00","customer_id":"6icLrTg3IL5DfWKdFzbavk","comment":"","publish_key":"01774c1027ab9cacd0a335fd07849d71380efe14","updated_at":"2014-12-16T03:04:51+00:00","name":"fastly-test-service-91558-1418699090-615","id":"2Ld1Mxvm3ByX0WqQfWmlRu"}'
+    http_version: 
+  recorded_at: Tue, 16 Dec 2014 03:48:33 GMT
+- request:
+    method: get
+    uri: https://api.fastly.com/service/2Ld1Mxvm3ByX0WqQfWmlRu/version/3
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Cookie:
+      - fastly.session=eyJ1c2VyX2lkIjoiNmpOeWJTbnVSMDVRQVM2NkhnY3Q5dyJ9--12521753698408033003--e400bc26d26b8e9906fe2726f6018737b9e24549;
+        Expires=Tue, 30 Dec 2014 03:28:28 GMT;Path=/; HttpOnly; secure
+      Content-Accept:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 16 Dec 2014 03:48:33 GMT
+      Server:
+      - Apache
+      Status:
+      - 200 OK
+      Content-Type:
+      - application/json
+      Cache-Control:
+      - no-cache
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Content-Length:
+      - '264'
+      Accept-Ranges:
+      - bytes
+      X-Served-By:
+      - app-sl1-SL, cache-jfk1023-JFK
+      X-Cache:
+      - MISS, MISS
+      X-Cache-Hits:
+      - 0, 0
+      Vary:
+      - Accept-Encoding
+      Set-Cookie:
+      - fastly.session=eyJ1c2VyX2lkIjoiNmpOeWJTbnVSMDVRQVM2NkhnY3Q5dyJ9--12521753698408033003--e400bc26d26b8e9906fe2726f6018737b9e24549;
+        Expires=Tue, 30 Dec 2014 03:48:33 GMT;Path=/; HttpOnly; secure
+    body:
+      encoding: ASCII-8BIT
+      string: '{"testing":null,"locked":false,"number":3,"active":null,"service_id":"2Ld1Mxvm3ByX0WqQfWmlRu","staging":null,"created_at":"2014-12-16T03:48:27+00:00","deleted_at":null,"comment":"","updated_at":"2014-12-16T03:48:27+00:00","deployed":null,"inherit_service_id":null}'
+    http_version: 
+  recorded_at: Tue, 16 Dec 2014 03:48:33 GMT
+- request:
+    method: put
+    uri: https://api.fastly.com/service/2Ld1Mxvm3ByX0WqQfWmlRu/version/3/domain/fastly-test-domain-93038-1418701709-963-example.com
+    body:
+      encoding: UTF-8
+      string: name=fastly-test-domain-93038-1418701709-963-example.com&comment=Flibbety+gibbet
+    headers:
+      Cookie:
+      - fastly.session=eyJ1c2VyX2lkIjoiNmpOeWJTbnVSMDVRQVM2NkhnY3Q5dyJ9--12521753698408033003--e400bc26d26b8e9906fe2726f6018737b9e24549;
+        Expires=Tue, 30 Dec 2014 03:28:28 GMT;Path=/; HttpOnly; secure
+      Content-Accept:
+      - application/json
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 16 Dec 2014 03:48:34 GMT
+      Server:
+      - Apache
+      Status:
+      - 200 OK
+      Content-Type:
+      - application/json
+      Cache-Control:
+      - no-cache
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Content-Length:
+      - '140'
+      Accept-Ranges:
+      - bytes
+      X-Served-By:
+      - app-sl1-SL, cache-jfk1029-JFK
+      X-Cache:
+      - MISS, MISS
+      X-Cache-Hits:
+      - 0, 0
+      Vary:
+      - Accept-Encoding
+      Set-Cookie:
+      - fastly.session=eyJ1c2VyX2lkIjoiNmpOeWJTbnVSMDVRQVM2NkhnY3Q5dyJ9--12521753698408033003--e400bc26d26b8e9906fe2726f6018737b9e24549;
+        Expires=Tue, 30 Dec 2014 03:48:34 GMT;Path=/; HttpOnly; secure
+    body:
+      encoding: ASCII-8BIT
+      string: '{"comment":"Flibbety gibbet","version":3,"name":"fastly-test-domain-93038-1418701709-963-example.com","service_id":"2Ld1Mxvm3ByX0WqQfWmlRu"}'
+    http_version: 
+  recorded_at: Tue, 16 Dec 2014 03:48:34 GMT
+- request:
+    method: get
+    uri: https://api.fastly.com/service/2Ld1Mxvm3ByX0WqQfWmlRu/version/3/domain/fastly-test-domain-93038-1418701709-963-example.com
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Cookie:
+      - fastly.session=eyJ1c2VyX2lkIjoiNmpOeWJTbnVSMDVRQVM2NkhnY3Q5dyJ9--12521753698408033003--e400bc26d26b8e9906fe2726f6018737b9e24549;
+        Expires=Tue, 30 Dec 2014 03:28:28 GMT;Path=/; HttpOnly; secure
+      Content-Accept:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 16 Dec 2014 03:48:34 GMT
+      Server:
+      - Apache
+      Status:
+      - 200 OK
+      Content-Type:
+      - application/json
+      Cache-Control:
+      - no-cache
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Content-Length:
+      - '140'
+      Accept-Ranges:
+      - bytes
+      Age:
+      - '0'
+      X-Served-By:
+      - app-sl1-SL, cache-iad2124-IAD
+      X-Cache:
+      - MISS, MISS
+      X-Cache-Hits:
+      - 0, 0
+      Vary:
+      - Accept-Encoding
+      Set-Cookie:
+      - fastly.session=eyJ1c2VyX2lkIjoiNmpOeWJTbnVSMDVRQVM2NkhnY3Q5dyJ9--12521753698408033003--e400bc26d26b8e9906fe2726f6018737b9e24549;
+        Expires=Tue, 30 Dec 2014 03:48:34 GMT;Path=/; HttpOnly; secure
+    body:
+      encoding: ASCII-8BIT
+      string: '{"comment":"Flibbety gibbet","version":3,"name":"fastly-test-domain-93038-1418701709-963-example.com","service_id":"2Ld1Mxvm3ByX0WqQfWmlRu"}'
+    http_version: 
+  recorded_at: Tue, 16 Dec 2014 03:48:34 GMT
+- request:
+    method: post
+    uri: https://api.fastly.com/service/2Ld1Mxvm3ByX0WqQfWmlRu/version/3/director
+    body:
+      encoding: US-ASCII
+      string: service_id=2Ld1Mxvm3ByX0WqQfWmlRu&version=3&name=fastly-test-director-93038-1418701714-769
+    headers:
+      Cookie:
+      - fastly.session=eyJ1c2VyX2lkIjoiNmpOeWJTbnVSMDVRQVM2NkhnY3Q5dyJ9--12521753698408033003--e400bc26d26b8e9906fe2726f6018737b9e24549;
+        Expires=Tue, 30 Dec 2014 03:28:28 GMT;Path=/; HttpOnly; secure
+      Content-Accept:
+      - application/json
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 16 Dec 2014 03:48:35 GMT
+      Server:
+      - Apache
+      Status:
+      - 200 OK
+      Content-Type:
+      - application/json
+      Cache-Control:
+      - no-cache
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Content-Length:
+      - '291'
+      Accept-Ranges:
+      - bytes
+      X-Served-By:
+      - app-sl1-SL, cache-iad2141-IAD
+      X-Cache:
+      - MISS, MISS
+      X-Cache-Hits:
+      - 0, 0
+      Vary:
+      - Accept-Encoding
+      Set-Cookie:
+      - fastly.session=eyJ1c2VyX2lkIjoiNmpOeWJTbnVSMDVRQVM2NkhnY3Q5dyJ9--12521753698408033003--e400bc26d26b8e9906fe2726f6018737b9e24549;
+        Expires=Tue, 30 Dec 2014 03:48:35 GMT;Path=/; HttpOnly; secure
+    body:
+      encoding: ASCII-8BIT
+      string: '{"service_id":"2Ld1Mxvm3ByX0WqQfWmlRu","version":3,"name":"fastly-test-director-93038-1418701714-769","retries":5,"shield":null,"deleted_at":null,"capacity":100,"created_at":"2014-12-16T03:48:35+00:00","backends":[],"comment":"","type":1,"updated_at":"2014-12-16T03:48:35+00:00","quorum":75}'
+    http_version: 
+  recorded_at: Tue, 16 Dec 2014 03:48:35 GMT
+- request:
+    method: get
+    uri: https://api.fastly.com/service/2Ld1Mxvm3ByX0WqQfWmlRu
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Cookie:
+      - fastly.session=eyJ1c2VyX2lkIjoiNmpOeWJTbnVSMDVRQVM2NkhnY3Q5dyJ9--12521753698408033003--e400bc26d26b8e9906fe2726f6018737b9e24549;
+        Expires=Tue, 30 Dec 2014 03:28:28 GMT;Path=/; HttpOnly; secure
+      Content-Accept:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 16 Dec 2014 03:48:35 GMT
+      Server:
+      - Apache
+      Status:
+      - 200 OK
+      Content-Type:
+      - application/json
+      Cache-Control:
+      - no-cache
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Content-Length:
+      - '1185'
+      Accept-Ranges:
+      - bytes
+      Age:
+      - '0'
+      X-Served-By:
+      - app-sl1-SL, cache-iad2121-IAD
+      X-Cache:
+      - MISS, MISS
+      X-Cache-Hits:
+      - 0, 0
+      Vary:
+      - Accept-Encoding
+      Set-Cookie:
+      - fastly.session=eyJ1c2VyX2lkIjoiNmpOeWJTbnVSMDVRQVM2NkhnY3Q5dyJ9--12521753698408033003--e400bc26d26b8e9906fe2726f6018737b9e24549;
+        Expires=Tue, 30 Dec 2014 03:48:35 GMT;Path=/; HttpOnly; secure
+    body:
+      encoding: ASCII-8BIT
+      string: '{"versions":[{"testing":null,"locked":"0","number":"1","active":null,"backend":0,"service_id":"2Ld1Mxvm3ByX0WqQfWmlRu","service":"2Ld1Mxvm3ByX0WqQfWmlRu","staging":null,"created_at":"2014-12-16T03:04:51","deleted_at":null,"comment":"","updated_at":"2014-12-16T03:04:51","deployed":null,"inherit_service_id":null},{"testing":null,"locked":"0","number":"2","active":null,"backend":0,"service_id":"2Ld1Mxvm3ByX0WqQfWmlRu","service":"2Ld1Mxvm3ByX0WqQfWmlRu","staging":null,"created_at":"2014-12-16T03:48:27","deleted_at":null,"comment":"","updated_at":"2014-12-16T03:48:27","deployed":null,"inherit_service_id":null},{"testing":null,"locked":"0","number":"3","active":null,"backend":1,"service_id":"2Ld1Mxvm3ByX0WqQfWmlRu","service":"2Ld1Mxvm3ByX0WqQfWmlRu","staging":null,"created_at":"2014-12-16T03:48:27","deleted_at":null,"comment":"","updated_at":"2014-12-16T03:48:27","deployed":null,"inherit_service_id":null}],"created_at":"2014-12-16T03:04:51+00:00","customer_id":"6icLrTg3IL5DfWKdFzbavk","comment":"","publish_key":"01774c1027ab9cacd0a335fd07849d71380efe14","updated_at":"2014-12-16T03:04:51+00:00","name":"fastly-test-service-91558-1418699090-615","id":"2Ld1Mxvm3ByX0WqQfWmlRu"}'
+    http_version: 
+  recorded_at: Tue, 16 Dec 2014 03:48:35 GMT
+- request:
+    method: get
+    uri: https://api.fastly.com/service/2Ld1Mxvm3ByX0WqQfWmlRu/version/3
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Cookie:
+      - fastly.session=eyJ1c2VyX2lkIjoiNmpOeWJTbnVSMDVRQVM2NkhnY3Q5dyJ9--12521753698408033003--e400bc26d26b8e9906fe2726f6018737b9e24549;
+        Expires=Tue, 30 Dec 2014 03:28:28 GMT;Path=/; HttpOnly; secure
+      Content-Accept:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 16 Dec 2014 03:48:35 GMT
+      Server:
+      - Apache
+      Status:
+      - 200 OK
+      Content-Type:
+      - application/json
+      Cache-Control:
+      - no-cache
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Content-Length:
+      - '264'
+      Accept-Ranges:
+      - bytes
+      Age:
+      - '0'
+      X-Served-By:
+      - app-sl2-SL, cache-iad2129-IAD
+      X-Cache:
+      - MISS, MISS
+      X-Cache-Hits:
+      - 0, 0
+      Vary:
+      - Accept-Encoding
+      Set-Cookie:
+      - fastly.session=eyJ1c2VyX2lkIjoiNmpOeWJTbnVSMDVRQVM2NkhnY3Q5dyJ9--12521753698408033003--e400bc26d26b8e9906fe2726f6018737b9e24549;
+        Expires=Tue, 30 Dec 2014 03:48:35 GMT;Path=/; HttpOnly; secure
+    body:
+      encoding: ASCII-8BIT
+      string: '{"testing":null,"locked":false,"number":3,"active":null,"service_id":"2Ld1Mxvm3ByX0WqQfWmlRu","staging":null,"created_at":"2014-12-16T03:48:27+00:00","deleted_at":null,"comment":"","updated_at":"2014-12-16T03:48:27+00:00","deployed":null,"inherit_service_id":null}'
+    http_version: 
+  recorded_at: Tue, 16 Dec 2014 03:48:35 GMT
+- request:
+    method: post
+    uri: https://api.fastly.com/service/2Ld1Mxvm3ByX0WqQfWmlRu/version/3/director/fastly-test-director-93038-1418701714-769/backend/fastly-test-backend-93038-1418701707-805
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Cookie:
+      - fastly.session=eyJ1c2VyX2lkIjoiNmpOeWJTbnVSMDVRQVM2NkhnY3Q5dyJ9--12521753698408033003--e400bc26d26b8e9906fe2726f6018737b9e24549;
+        Expires=Tue, 30 Dec 2014 03:28:28 GMT;Path=/; HttpOnly; secure
+      Content-Accept:
+      - application/json
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 16 Dec 2014 03:48:36 GMT
+      Server:
+      - Apache
+      Status:
+      - 200 OK
+      Content-Type:
+      - application/json
+      Cache-Control:
+      - no-cache
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Content-Length:
+      - '269'
+      Accept-Ranges:
+      - bytes
+      X-Served-By:
+      - app-sl2-SL, cache-iad2139-IAD
+      X-Cache:
+      - MISS, MISS
+      X-Cache-Hits:
+      - 0, 0
+      Vary:
+      - Accept-Encoding
+      Set-Cookie:
+      - fastly.session=eyJ1c2VyX2lkIjoiNmpOeWJTbnVSMDVRQVM2NkhnY3Q5dyJ9--12521753698408033003--e400bc26d26b8e9906fe2726f6018737b9e24549;
+        Expires=Tue, 30 Dec 2014 03:48:36 GMT;Path=/; HttpOnly; secure
+    body:
+      encoding: ASCII-8BIT
+      string: '{"service_id":"2Ld1Mxvm3ByX0WqQfWmlRu","version":3,"director_name":"fastly-test-director-93038-1418701714-769","backend_name":"fastly-test-backend-93038-1418701707-805","created_at":"2014-12-16T03:48:36+00:00","deleted_at":null,"updated_at":"2014-12-16T03:48:36+00:00"}'
+    http_version: 
+  recorded_at: Tue, 16 Dec 2014 03:48:36 GMT
+- request:
+    method: post
+    uri: https://api.fastly.com/service/2Ld1Mxvm3ByX0WqQfWmlRu/version/3/origin
+    body:
+      encoding: US-ASCII
+      string: service_id=2Ld1Mxvm3ByX0WqQfWmlRu&version=3&name=fastly-test-origin-93038-1418701716-488
+    headers:
+      Cookie:
+      - fastly.session=eyJ1c2VyX2lkIjoiNmpOeWJTbnVSMDVRQVM2NkhnY3Q5dyJ9--12521753698408033003--e400bc26d26b8e9906fe2726f6018737b9e24549;
+        Expires=Tue, 30 Dec 2014 03:28:28 GMT;Path=/; HttpOnly; secure
+      Content-Accept:
+      - application/json
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 16 Dec 2014 03:48:36 GMT
+      Server:
+      - Apache
+      Status:
+      - 200 OK
+      Content-Type:
+      - application/json
+      Cache-Control:
+      - no-cache
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Content-Length:
+      - '113'
+      Accept-Ranges:
+      - bytes
+      X-Served-By:
+      - app-sl1-SL, cache-iad2136-IAD
+      X-Cache:
+      - MISS, MISS
+      X-Cache-Hits:
+      - 0, 0
+      Vary:
+      - Accept-Encoding
+      Set-Cookie:
+      - fastly.session=eyJ1c2VyX2lkIjoiNmpOeWJTbnVSMDVRQVM2NkhnY3Q5dyJ9--12521753698408033003--e400bc26d26b8e9906fe2726f6018737b9e24549;
+        Expires=Tue, 30 Dec 2014 03:48:36 GMT;Path=/; HttpOnly; secure
+    body:
+      encoding: ASCII-8BIT
+      string: '{"service_id":"2Ld1Mxvm3ByX0WqQfWmlRu","version":3,"name":"fastly-test-origin-93038-1418701716-488","comment":""}'
+    http_version: 
+  recorded_at: Tue, 16 Dec 2014 03:48:36 GMT
+- request:
+    method: get
+    uri: https://api.fastly.com/service/2Ld1Mxvm3ByX0WqQfWmlRu
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Cookie:
+      - fastly.session=eyJ1c2VyX2lkIjoiNmpOeWJTbnVSMDVRQVM2NkhnY3Q5dyJ9--12521753698408033003--e400bc26d26b8e9906fe2726f6018737b9e24549;
+        Expires=Tue, 30 Dec 2014 03:28:28 GMT;Path=/; HttpOnly; secure
+      Content-Accept:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 16 Dec 2014 03:48:36 GMT
+      Server:
+      - Apache
+      Status:
+      - 200 OK
+      Content-Type:
+      - application/json
+      Cache-Control:
+      - no-cache
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Content-Length:
+      - '1185'
+      Accept-Ranges:
+      - bytes
+      Age:
+      - '0'
+      X-Served-By:
+      - app-sl1-SL, cache-iad2145-IAD
+      X-Cache:
+      - MISS, MISS
+      X-Cache-Hits:
+      - 0, 0
+      Vary:
+      - Accept-Encoding
+      Set-Cookie:
+      - fastly.session=eyJ1c2VyX2lkIjoiNmpOeWJTbnVSMDVRQVM2NkhnY3Q5dyJ9--12521753698408033003--e400bc26d26b8e9906fe2726f6018737b9e24549;
+        Expires=Tue, 30 Dec 2014 03:48:36 GMT;Path=/; HttpOnly; secure
+    body:
+      encoding: ASCII-8BIT
+      string: '{"versions":[{"testing":null,"locked":"0","number":"1","active":null,"backend":0,"service_id":"2Ld1Mxvm3ByX0WqQfWmlRu","service":"2Ld1Mxvm3ByX0WqQfWmlRu","staging":null,"created_at":"2014-12-16T03:04:51","deleted_at":null,"comment":"","updated_at":"2014-12-16T03:04:51","deployed":null,"inherit_service_id":null},{"testing":null,"locked":"0","number":"2","active":null,"backend":0,"service_id":"2Ld1Mxvm3ByX0WqQfWmlRu","service":"2Ld1Mxvm3ByX0WqQfWmlRu","staging":null,"created_at":"2014-12-16T03:48:27","deleted_at":null,"comment":"","updated_at":"2014-12-16T03:48:27","deployed":null,"inherit_service_id":null},{"testing":null,"locked":"0","number":"3","active":null,"backend":1,"service_id":"2Ld1Mxvm3ByX0WqQfWmlRu","service":"2Ld1Mxvm3ByX0WqQfWmlRu","staging":null,"created_at":"2014-12-16T03:48:27","deleted_at":null,"comment":"","updated_at":"2014-12-16T03:48:27","deployed":null,"inherit_service_id":null}],"created_at":"2014-12-16T03:04:51+00:00","customer_id":"6icLrTg3IL5DfWKdFzbavk","comment":"","publish_key":"01774c1027ab9cacd0a335fd07849d71380efe14","updated_at":"2014-12-16T03:04:51+00:00","name":"fastly-test-service-91558-1418699090-615","id":"2Ld1Mxvm3ByX0WqQfWmlRu"}'
+    http_version: 
+  recorded_at: Tue, 16 Dec 2014 03:48:36 GMT
+- request:
+    method: post
+    uri: https://api.fastly.com/service/2Ld1Mxvm3ByX0WqQfWmlRu/version/3/condition
+    body:
+      encoding: US-ASCII
+      string: service_id=2Ld1Mxvm3ByX0WqQfWmlRu&version=3&name=fastly-test-condition-93038-1418701716-164&statement=req.url+%7E+%22%5E%2Ffoo%22&type=REQUEST
+    headers:
+      Cookie:
+      - fastly.session=eyJ1c2VyX2lkIjoiNmpOeWJTbnVSMDVRQVM2NkhnY3Q5dyJ9--12521753698408033003--e400bc26d26b8e9906fe2726f6018737b9e24549;
+        Expires=Tue, 30 Dec 2014 03:28:28 GMT;Path=/; HttpOnly; secure
+      Content-Accept:
+      - application/json
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 16 Dec 2014 03:48:36 GMT
+      Server:
+      - Apache
+      Status:
+      - 200 OK
+      Content-Type:
+      - application/json
+      Cache-Control:
+      - no-cache
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Content-Length:
+      - '182'
+      Accept-Ranges:
+      - bytes
+      X-Served-By:
+      - app-sl2-SL, cache-iad2135-IAD
+      X-Cache:
+      - MISS, MISS
+      X-Cache-Hits:
+      - 0, 0
+      Vary:
+      - Accept-Encoding
+      Set-Cookie:
+      - fastly.session=eyJ1c2VyX2lkIjoiNmpOeWJTbnVSMDVRQVM2NkhnY3Q5dyJ9--12521753698408033003--e400bc26d26b8e9906fe2726f6018737b9e24549;
+        Expires=Tue, 30 Dec 2014 03:48:36 GMT;Path=/; HttpOnly; secure
+    body:
+      encoding: ASCII-8BIT
+      string: '{"service_id":"2Ld1Mxvm3ByX0WqQfWmlRu","version":"3","name":"fastly-test-condition-93038-1418701716-164","statement":"req.url
+        ~ \"^/foo\"","type":"REQUEST","priority":0,"comment":""}'
+    http_version: 
+  recorded_at: Tue, 16 Dec 2014 03:48:37 GMT
+- request:
+    method: post
+    uri: https://api.fastly.com/service/2Ld1Mxvm3ByX0WqQfWmlRu/version/3/condition
+    body:
+      encoding: US-ASCII
+      string: service_id=2Ld1Mxvm3ByX0WqQfWmlRu&version=3&name=cache-fastly-test-condition-93038-1418701716-164&statement=req.url+%7E+%22%5E%2Ffoo%22&type=CACHE
+    headers:
+      Cookie:
+      - fastly.session=eyJ1c2VyX2lkIjoiNmpOeWJTbnVSMDVRQVM2NkhnY3Q5dyJ9--12521753698408033003--e400bc26d26b8e9906fe2726f6018737b9e24549;
+        Expires=Tue, 30 Dec 2014 03:28:28 GMT;Path=/; HttpOnly; secure
+      Content-Accept:
+      - application/json
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 16 Dec 2014 03:48:37 GMT
+      Server:
+      - Apache
+      Status:
+      - 200 OK
+      Content-Type:
+      - application/json
+      Cache-Control:
+      - no-cache
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Content-Length:
+      - '186'
+      Accept-Ranges:
+      - bytes
+      X-Served-By:
+      - app-sl1-SL, cache-iad2124-IAD
+      X-Cache:
+      - MISS, MISS
+      X-Cache-Hits:
+      - 0, 0
+      Vary:
+      - Accept-Encoding
+      Set-Cookie:
+      - fastly.session=eyJ1c2VyX2lkIjoiNmpOeWJTbnVSMDVRQVM2NkhnY3Q5dyJ9--12521753698408033003--e400bc26d26b8e9906fe2726f6018737b9e24549;
+        Expires=Tue, 30 Dec 2014 03:48:37 GMT;Path=/; HttpOnly; secure
+    body:
+      encoding: ASCII-8BIT
+      string: '{"service_id":"2Ld1Mxvm3ByX0WqQfWmlRu","version":"3","name":"cache-fastly-test-condition-93038-1418701716-164","statement":"req.url
+        ~ \"^/foo\"","type":"CACHE","priority":0,"comment":""}'
+    http_version: 
+  recorded_at: Tue, 16 Dec 2014 03:48:37 GMT
+- request:
+    method: post
+    uri: https://api.fastly.com/service/2Ld1Mxvm3ByX0WqQfWmlRu/version/3/cache_settings
+    body:
+      encoding: US-ASCII
+      string: service_id=2Ld1Mxvm3ByX0WqQfWmlRu&version=3&name=fastly-cache-setting-93038-1418701717-955&ttl=3600&stale_ttl=10001&cache_condition=cache-fastly-test-condition-93038-1418701716-164
+    headers:
+      Cookie:
+      - fastly.session=eyJ1c2VyX2lkIjoiNmpOeWJTbnVSMDVRQVM2NkhnY3Q5dyJ9--12521753698408033003--e400bc26d26b8e9906fe2726f6018737b9e24549;
+        Expires=Tue, 30 Dec 2014 03:28:28 GMT;Path=/; HttpOnly; secure
+      Content-Accept:
+      - application/json
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 16 Dec 2014 03:48:37 GMT
+      Server:
+      - Apache
+      Status:
+      - 200 OK
+      Content-Type:
+      - application/json
+      Cache-Control:
+      - no-cache
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Content-Length:
+      - '220'
+      Accept-Ranges:
+      - bytes
+      X-Served-By:
+      - app-sl1-SL, cache-iad2121-IAD
+      X-Cache:
+      - MISS, MISS
+      X-Cache-Hits:
+      - 0, 0
+      Vary:
+      - Accept-Encoding
+      Set-Cookie:
+      - fastly.session=eyJ1c2VyX2lkIjoiNmpOeWJTbnVSMDVRQVM2NkhnY3Q5dyJ9--12521753698408033003--e400bc26d26b8e9906fe2726f6018737b9e24549;
+        Expires=Tue, 30 Dec 2014 03:48:37 GMT;Path=/; HttpOnly; secure
+    body:
+      encoding: ASCII-8BIT
+      string: '{"service_id":"2Ld1Mxvm3ByX0WqQfWmlRu","version":"3","name":"fastly-cache-setting-93038-1418701717-955","ttl":"3600","stale_ttl":"10001","cache_condition":"cache-fastly-test-condition-93038-1418701716-164","action":null}'
+    http_version: 
+  recorded_at: Tue, 16 Dec 2014 03:48:37 GMT
+- request:
+    method: post
+    uri: https://api.fastly.com/service/2Ld1Mxvm3ByX0WqQfWmlRu/version/3/gzip
+    body:
+      encoding: US-ASCII
+      string: service_id=2Ld1Mxvm3ByX0WqQfWmlRu&version=3&name=fastly-test-gzip-93038-1418701717-335&extensions=js+css+html&content_types=text%2Fhtml
+    headers:
+      Cookie:
+      - fastly.session=eyJ1c2VyX2lkIjoiNmpOeWJTbnVSMDVRQVM2NkhnY3Q5dyJ9--12521753698408033003--e400bc26d26b8e9906fe2726f6018737b9e24549;
+        Expires=Tue, 30 Dec 2014 03:28:28 GMT;Path=/; HttpOnly; secure
+      Content-Accept:
+      - application/json
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 16 Dec 2014 03:48:38 GMT
+      Server:
+      - Apache
+      Status:
+      - 200 OK
+      Content-Type:
+      - application/json
+      Cache-Control:
+      - no-cache
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Content-Length:
+      - '176'
+      Accept-Ranges:
+      - bytes
+      X-Served-By:
+      - app-sl2-SL, cache-iad2139-IAD
+      X-Cache:
+      - MISS, MISS
+      X-Cache-Hits:
+      - 0, 0
+      Vary:
+      - Accept-Encoding
+      Set-Cookie:
+      - fastly.session=eyJ1c2VyX2lkIjoiNmpOeWJTbnVSMDVRQVM2NkhnY3Q5dyJ9--12521753698408033003--e400bc26d26b8e9906fe2726f6018737b9e24549;
+        Expires=Tue, 30 Dec 2014 03:48:38 GMT;Path=/; HttpOnly; secure
+    body:
+      encoding: ASCII-8BIT
+      string: '{"service_id":"2Ld1Mxvm3ByX0WqQfWmlRu","version":"3","name":"fastly-test-gzip-93038-1418701717-335","extensions":"js
+        css html","content_types":"text/html","cache_condition":""}'
+    http_version: 
+  recorded_at: Tue, 16 Dec 2014 03:48:37 GMT
+- request:
+    method: post
+    uri: https://api.fastly.com/service/2Ld1Mxvm3ByX0WqQfWmlRu/version/3/response_object
+    body:
+      encoding: US-ASCII
+      string: service_id=2Ld1Mxvm3ByX0WqQfWmlRu&version=3&name=fastly-test-response-obj-93038-1418701717-631&status=418&response=I%27m+a+teapot&content_type=text%2Fplain&content=short+and+stout
+    headers:
+      Cookie:
+      - fastly.session=eyJ1c2VyX2lkIjoiNmpOeWJTbnVSMDVRQVM2NkhnY3Q5dyJ9--12521753698408033003--e400bc26d26b8e9906fe2726f6018737b9e24549;
+        Expires=Tue, 30 Dec 2014 03:28:28 GMT;Path=/; HttpOnly; secure
+      Content-Accept:
+      - application/json
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 16 Dec 2014 03:48:38 GMT
+      Server:
+      - Apache
+      Status:
+      - 200 OK
+      Content-Type:
+      - application/json
+      Cache-Control:
+      - no-cache
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Content-Length:
+      - '249'
+      Accept-Ranges:
+      - bytes
+      X-Served-By:
+      - app-sl1-SL, cache-iad2134-IAD
+      X-Cache:
+      - MISS, MISS
+      X-Cache-Hits:
+      - 0, 0
+      Vary:
+      - Accept-Encoding
+      Set-Cookie:
+      - fastly.session=eyJ1c2VyX2lkIjoiNmpOeWJTbnVSMDVRQVM2NkhnY3Q5dyJ9--12521753698408033003--e400bc26d26b8e9906fe2726f6018737b9e24549;
+        Expires=Tue, 30 Dec 2014 03:48:38 GMT;Path=/; HttpOnly; secure
+    body:
+      encoding: ASCII-8BIT
+      string: '{"service_id":"2Ld1Mxvm3ByX0WqQfWmlRu","version":"3","name":"fastly-test-response-obj-93038-1418701717-631","status":"418","response":"I''m
+        a teapot","content_type":"text/plain","content":"short and stout","cache_condition":"","request_condition":""}'
+    http_version: 
+  recorded_at: Tue, 16 Dec 2014 03:48:38 GMT
+- request:
+    method: post
+    uri: https://api.fastly.com/service/2Ld1Mxvm3ByX0WqQfWmlRu/version/3/condition
+    body:
+      encoding: US-ASCII
+      string: service_id=2Ld1Mxvm3ByX0WqQfWmlRu&version=3&name=fastly-response-condition-93038-1418701718-364&statement=req.url+%7E+%22%5E%2Ffoo%22&type=RESPONSE
+    headers:
+      Cookie:
+      - fastly.session=eyJ1c2VyX2lkIjoiNmpOeWJTbnVSMDVRQVM2NkhnY3Q5dyJ9--12521753698408033003--e400bc26d26b8e9906fe2726f6018737b9e24549;
+        Expires=Tue, 30 Dec 2014 03:28:28 GMT;Path=/; HttpOnly; secure
+      Content-Accept:
+      - application/json
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 16 Dec 2014 03:48:38 GMT
+      Server:
+      - Apache
+      Status:
+      - 200 OK
+      Content-Type:
+      - application/json
+      Cache-Control:
+      - no-cache
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Content-Length:
+      - '187'
+      Accept-Ranges:
+      - bytes
+      X-Served-By:
+      - app-sl2-SL, cache-iad2128-IAD
+      X-Cache:
+      - MISS, MISS
+      X-Cache-Hits:
+      - 0, 0
+      Vary:
+      - Accept-Encoding
+      Set-Cookie:
+      - fastly.session=eyJ1c2VyX2lkIjoiNmpOeWJTbnVSMDVRQVM2NkhnY3Q5dyJ9--12521753698408033003--e400bc26d26b8e9906fe2726f6018737b9e24549;
+        Expires=Tue, 30 Dec 2014 03:48:38 GMT;Path=/; HttpOnly; secure
+    body:
+      encoding: ASCII-8BIT
+      string: '{"service_id":"2Ld1Mxvm3ByX0WqQfWmlRu","version":"3","name":"fastly-response-condition-93038-1418701718-364","statement":"req.url
+        ~ \"^/foo\"","type":"RESPONSE","priority":0,"comment":""}'
+    http_version: 
+  recorded_at: Tue, 16 Dec 2014 03:48:38 GMT
+- request:
+    method: post
+    uri: https://api.fastly.com/service/2Ld1Mxvm3ByX0WqQfWmlRu/version/3/header
+    body:
+      encoding: US-ASCII
+      string: service_id=2Ld1Mxvm3ByX0WqQfWmlRu&version=3&name=fastly-header-test-93038-1418701718-303&response_condition=fastly-response-condition-93038-1418701718-364&ignore_if_set=1&type=response&dst=http.Cache-Control&src=%22max-age%3D301%22&priority=10&action=set
+    headers:
+      Cookie:
+      - fastly.session=eyJ1c2VyX2lkIjoiNmpOeWJTbnVSMDVRQVM2NkhnY3Q5dyJ9--12521753698408033003--e400bc26d26b8e9906fe2726f6018737b9e24549;
+        Expires=Tue, 30 Dec 2014 03:28:28 GMT;Path=/; HttpOnly; secure
+      Content-Accept:
+      - application/json
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 16 Dec 2014 03:48:38 GMT
+      Server:
+      - Apache
+      Status:
+      - 200 OK
+      Content-Type:
+      - application/json
+      Cache-Control:
+      - no-cache
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Content-Length:
+      - '369'
+      Accept-Ranges:
+      - bytes
+      X-Served-By:
+      - app-sl2-SL, cache-iad2137-IAD
+      X-Cache:
+      - MISS, MISS
+      X-Cache-Hits:
+      - 0, 0
+      Vary:
+      - Accept-Encoding
+      Set-Cookie:
+      - fastly.session=eyJ1c2VyX2lkIjoiNmpOeWJTbnVSMDVRQVM2NkhnY3Q5dyJ9--12521753698408033003--e400bc26d26b8e9906fe2726f6018737b9e24549;
+        Expires=Tue, 30 Dec 2014 03:48:38 GMT;Path=/; HttpOnly; secure
+    body:
+      encoding: ASCII-8BIT
+      string: '{"service_id":"2Ld1Mxvm3ByX0WqQfWmlRu","version":"3","name":"fastly-header-test-93038-1418701718-303","response_condition":"fastly-response-condition-93038-1418701718-364","ignore_if_set":"1","type":"response","dst":"http.Cache-Control","src":"\"max-age=301\"","priority":"10","action":"set","request_condition":null,"substitution":"","cache_condition":null,"regex":""}'
+    http_version: 
+  recorded_at: Tue, 16 Dec 2014 03:48:38 GMT
+- request:
+    method: put
+    uri: https://api.fastly.com/service/2Ld1Mxvm3ByX0WqQfWmlRu/version/3/activate
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Cookie:
+      - fastly.session=eyJ1c2VyX2lkIjoiNmpOeWJTbnVSMDVRQVM2NkhnY3Q5dyJ9--12521753698408033003--e400bc26d26b8e9906fe2726f6018737b9e24549;
+        Expires=Tue, 30 Dec 2014 03:28:28 GMT;Path=/; HttpOnly; secure
+      Content-Accept:
+      - application/json
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 16 Dec 2014 03:48:39 GMT
+      Server:
+      - Apache
+      Status:
+      - 200 OK
+      Content-Type:
+      - application/json
+      Cache-Control:
+      - no-cache
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Content-Length:
+      - '274'
+      Accept-Ranges:
+      - bytes
+      X-Served-By:
+      - app-sl1-SL, cache-iad2133-IAD
+      X-Cache:
+      - MISS, MISS
+      X-Cache-Hits:
+      - 0, 0
+      Vary:
+      - Accept-Encoding
+      Set-Cookie:
+      - fastly.session=eyJ1c2VyX2lkIjoiNmpOeWJTbnVSMDVRQVM2NkhnY3Q5dyJ9--12521753698408033003--e400bc26d26b8e9906fe2726f6018737b9e24549;
+        Expires=Tue, 30 Dec 2014 03:48:39 GMT;Path=/; HttpOnly; secure
+    body:
+      encoding: ASCII-8BIT
+      string: '{"testing":null,"locked":true,"number":3,"active":true,"service_id":"2Ld1Mxvm3ByX0WqQfWmlRu","staging":null,"created_at":"2014-12-16T03:48:27+00:00","deleted_at":null,"comment":"","updated_at":"2014-12-16T03:48:27+00:00","deployed":null,"inherit_service_id":null,"msg":null}'
+    http_version: 
+  recorded_at: Tue, 16 Dec 2014 03:48:39 GMT
+- request:
+    method: put
+    uri: https://api.fastly.com/service/2Ld1Mxvm3ByX0WqQfWmlRu/version/3/deactivate
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Cookie:
+      - fastly.session=eyJ1c2VyX2lkIjoiNmpOeWJTbnVSMDVRQVM2NkhnY3Q5dyJ9--12521753698408033003--e400bc26d26b8e9906fe2726f6018737b9e24549;
+        Expires=Tue, 30 Dec 2014 03:28:28 GMT;Path=/; HttpOnly; secure
+      Content-Accept:
+      - application/json
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 16 Dec 2014 03:48:39 GMT
+      Server:
+      - Apache
+      Status:
+      - 200 OK
+      Content-Type:
+      - application/json
+      Cache-Control:
+      - no-cache
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Content-Length:
+      - '263'
+      Accept-Ranges:
+      - bytes
+      X-Served-By:
+      - app-sl2-SL, cache-iad2129-IAD
+      X-Cache:
+      - MISS, MISS
+      X-Cache-Hits:
+      - 0, 0
+      Vary:
+      - Accept-Encoding
+      Set-Cookie:
+      - fastly.session=eyJ1c2VyX2lkIjoiNmpOeWJTbnVSMDVRQVM2NkhnY3Q5dyJ9--12521753698408033003--e400bc26d26b8e9906fe2726f6018737b9e24549;
+        Expires=Tue, 30 Dec 2014 03:48:39 GMT;Path=/; HttpOnly; secure
+    body:
+      encoding: ASCII-8BIT
+      string: '{"testing":null,"locked":true,"number":3,"active":null,"service_id":"2Ld1Mxvm3ByX0WqQfWmlRu","staging":null,"created_at":"2014-12-16T03:48:27+00:00","deleted_at":null,"comment":"","updated_at":"2014-12-16T03:48:39+00:00","deployed":null,"inherit_service_id":null}'
+    http_version: 
+  recorded_at: Tue, 16 Dec 2014 03:48:39 GMT
+- request:
+    method: get
+    uri: https://api.fastly.com/service/2Ld1Mxvm3ByX0WqQfWmlRu
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Cookie:
+      - fastly.session=eyJ1c2VyX2lkIjoiNmpOeWJTbnVSMDVRQVM2NkhnY3Q5dyJ9--12521753698408033003--e400bc26d26b8e9906fe2726f6018737b9e24549;
+        Expires=Tue, 30 Dec 2014 03:28:28 GMT;Path=/; HttpOnly; secure
+      Content-Accept:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 16 Dec 2014 03:48:40 GMT
+      Server:
+      - Apache
+      Status:
+      - 200 OK
+      Content-Type:
+      - application/json
+      Cache-Control:
+      - no-cache
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Content-Length:
+      - '1185'
+      Accept-Ranges:
+      - bytes
+      X-Served-By:
+      - app-sl2-SL, cache-iad2145-IAD
+      X-Cache:
+      - MISS, MISS
+      X-Cache-Hits:
+      - 0, 0
+      Vary:
+      - Accept-Encoding
+      Set-Cookie:
+      - fastly.session=eyJ1c2VyX2lkIjoiNmpOeWJTbnVSMDVRQVM2NkhnY3Q5dyJ9--12521753698408033003--e400bc26d26b8e9906fe2726f6018737b9e24549;
+        Expires=Tue, 30 Dec 2014 03:48:40 GMT;Path=/; HttpOnly; secure
+    body:
+      encoding: ASCII-8BIT
+      string: '{"versions":[{"testing":null,"locked":"0","number":"1","active":null,"backend":0,"service_id":"2Ld1Mxvm3ByX0WqQfWmlRu","service":"2Ld1Mxvm3ByX0WqQfWmlRu","staging":null,"created_at":"2014-12-16T03:04:51","deleted_at":null,"comment":"","updated_at":"2014-12-16T03:04:51","deployed":null,"inherit_service_id":null},{"testing":null,"locked":"0","number":"2","active":null,"backend":0,"service_id":"2Ld1Mxvm3ByX0WqQfWmlRu","service":"2Ld1Mxvm3ByX0WqQfWmlRu","staging":null,"created_at":"2014-12-16T03:48:27","deleted_at":null,"comment":"","updated_at":"2014-12-16T03:48:27","deployed":null,"inherit_service_id":null},{"testing":null,"locked":"1","number":"3","active":null,"backend":1,"service_id":"2Ld1Mxvm3ByX0WqQfWmlRu","service":"2Ld1Mxvm3ByX0WqQfWmlRu","staging":null,"created_at":"2014-12-16T03:48:27","deleted_at":null,"comment":"","updated_at":"2014-12-16T03:48:39","deployed":null,"inherit_service_id":null}],"created_at":"2014-12-16T03:04:51+00:00","customer_id":"6icLrTg3IL5DfWKdFzbavk","comment":"","publish_key":"01774c1027ab9cacd0a335fd07849d71380efe14","updated_at":"2014-12-16T03:04:51+00:00","name":"fastly-test-service-91558-1418699090-615","id":"2Ld1Mxvm3ByX0WqQfWmlRu"}'
+    http_version: 
+  recorded_at: Tue, 16 Dec 2014 03:48:40 GMT
+- request:
+    method: get
+    uri: https://api.fastly.com/service/2Ld1Mxvm3ByX0WqQfWmlRu
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Cookie:
+      - fastly.session=eyJ1c2VyX2lkIjoiNmpOeWJTbnVSMDVRQVM2NkhnY3Q5dyJ9--12521753698408033003--e400bc26d26b8e9906fe2726f6018737b9e24549;
+        Expires=Tue, 30 Dec 2014 03:28:28 GMT;Path=/; HttpOnly; secure
+      Content-Accept:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 16 Dec 2014 03:48:40 GMT
+      Server:
+      - Apache
+      Status:
+      - 200 OK
+      Content-Type:
+      - application/json
+      Cache-Control:
+      - no-cache
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Content-Length:
+      - '1185'
+      Accept-Ranges:
+      - bytes
+      X-Served-By:
+      - app-sl2-SL, cache-iad2132-IAD
+      X-Cache:
+      - MISS, MISS
+      X-Cache-Hits:
+      - 0, 0
+      Vary:
+      - Accept-Encoding
+      Set-Cookie:
+      - fastly.session=eyJ1c2VyX2lkIjoiNmpOeWJTbnVSMDVRQVM2NkhnY3Q5dyJ9--12521753698408033003--e400bc26d26b8e9906fe2726f6018737b9e24549;
+        Expires=Tue, 30 Dec 2014 03:48:40 GMT;Path=/; HttpOnly; secure
+    body:
+      encoding: ASCII-8BIT
+      string: '{"versions":[{"testing":null,"locked":"0","number":"1","active":null,"backend":0,"service_id":"2Ld1Mxvm3ByX0WqQfWmlRu","service":"2Ld1Mxvm3ByX0WqQfWmlRu","staging":null,"created_at":"2014-12-16T03:04:51","deleted_at":null,"comment":"","updated_at":"2014-12-16T03:04:51","deployed":null,"inherit_service_id":null},{"testing":null,"locked":"0","number":"2","active":null,"backend":0,"service_id":"2Ld1Mxvm3ByX0WqQfWmlRu","service":"2Ld1Mxvm3ByX0WqQfWmlRu","staging":null,"created_at":"2014-12-16T03:48:27","deleted_at":null,"comment":"","updated_at":"2014-12-16T03:48:27","deployed":null,"inherit_service_id":null},{"testing":null,"locked":"1","number":"3","active":null,"backend":1,"service_id":"2Ld1Mxvm3ByX0WqQfWmlRu","service":"2Ld1Mxvm3ByX0WqQfWmlRu","staging":null,"created_at":"2014-12-16T03:48:27","deleted_at":null,"comment":"","updated_at":"2014-12-16T03:48:39","deployed":null,"inherit_service_id":null}],"created_at":"2014-12-16T03:04:51+00:00","customer_id":"6icLrTg3IL5DfWKdFzbavk","comment":"","publish_key":"01774c1027ab9cacd0a335fd07849d71380efe14","updated_at":"2014-12-16T03:04:51+00:00","name":"fastly-test-service-91558-1418699090-615","id":"2Ld1Mxvm3ByX0WqQfWmlRu"}'
+    http_version: 
+  recorded_at: Tue, 16 Dec 2014 03:48:40 GMT
+- request:
+    method: put
+    uri: https://api.fastly.com/service/2Ld1Mxvm3ByX0WqQfWmlRu/version/3/activate
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Cookie:
+      - fastly.session=eyJ1c2VyX2lkIjoiNmpOeWJTbnVSMDVRQVM2NkhnY3Q5dyJ9--12521753698408033003--e400bc26d26b8e9906fe2726f6018737b9e24549;
+        Expires=Tue, 30 Dec 2014 03:28:28 GMT;Path=/; HttpOnly; secure
+      Content-Accept:
+      - application/json
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 16 Dec 2014 03:48:41 GMT
+      Server:
+      - Apache
+      Status:
+      - 200 OK
+      Content-Type:
+      - application/json
+      Cache-Control:
+      - no-cache
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Content-Length:
+      - '274'
+      Accept-Ranges:
+      - bytes
+      X-Served-By:
+      - app-sl1-SL, cache-iad2141-IAD
+      X-Cache:
+      - MISS, MISS
+      X-Cache-Hits:
+      - 0, 0
+      Vary:
+      - Accept-Encoding
+      Set-Cookie:
+      - fastly.session=eyJ1c2VyX2lkIjoiNmpOeWJTbnVSMDVRQVM2NkhnY3Q5dyJ9--12521753698408033003--e400bc26d26b8e9906fe2726f6018737b9e24549;
+        Expires=Tue, 30 Dec 2014 03:48:41 GMT;Path=/; HttpOnly; secure
+    body:
+      encoding: ASCII-8BIT
+      string: '{"testing":null,"locked":true,"number":3,"active":true,"service_id":"2Ld1Mxvm3ByX0WqQfWmlRu","staging":null,"created_at":"2014-12-16T03:48:27+00:00","deleted_at":null,"comment":"","updated_at":"2014-12-16T03:48:39+00:00","deployed":null,"inherit_service_id":null,"msg":null}'
+    http_version: 
+  recorded_at: Tue, 16 Dec 2014 03:48:41 GMT
+- request:
+    method: get
+    uri: https://api.fastly.com/service/2Ld1Mxvm3ByX0WqQfWmlRu
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Cookie:
+      - fastly.session=eyJ1c2VyX2lkIjoiNmpOeWJTbnVSMDVRQVM2NkhnY3Q5dyJ9--12521753698408033003--e400bc26d26b8e9906fe2726f6018737b9e24549;
+        Expires=Tue, 30 Dec 2014 03:28:28 GMT;Path=/; HttpOnly; secure
+      Content-Accept:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 16 Dec 2014 03:48:41 GMT
+      Server:
+      - Apache
+      Status:
+      - 200 OK
+      Content-Type:
+      - application/json
+      Cache-Control:
+      - no-cache
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Content-Length:
+      - '1184'
+      Accept-Ranges:
+      - bytes
+      Age:
+      - '0'
+      X-Served-By:
+      - app-sl2-SL, cache-iad2125-IAD
+      X-Cache:
+      - MISS, MISS
+      X-Cache-Hits:
+      - 0, 0
+      Vary:
+      - Accept-Encoding
+      Set-Cookie:
+      - fastly.session=eyJ1c2VyX2lkIjoiNmpOeWJTbnVSMDVRQVM2NkhnY3Q5dyJ9--12521753698408033003--e400bc26d26b8e9906fe2726f6018737b9e24549;
+        Expires=Tue, 30 Dec 2014 03:48:41 GMT;Path=/; HttpOnly; secure
+    body:
+      encoding: ASCII-8BIT
+      string: '{"versions":[{"testing":null,"locked":"0","number":"1","active":null,"backend":0,"service_id":"2Ld1Mxvm3ByX0WqQfWmlRu","service":"2Ld1Mxvm3ByX0WqQfWmlRu","staging":null,"created_at":"2014-12-16T03:04:51","deleted_at":null,"comment":"","updated_at":"2014-12-16T03:04:51","deployed":null,"inherit_service_id":null},{"testing":null,"locked":"0","number":"2","active":null,"backend":0,"service_id":"2Ld1Mxvm3ByX0WqQfWmlRu","service":"2Ld1Mxvm3ByX0WqQfWmlRu","staging":null,"created_at":"2014-12-16T03:48:27","deleted_at":null,"comment":"","updated_at":"2014-12-16T03:48:27","deployed":null,"inherit_service_id":null},{"testing":null,"locked":"1","number":"3","active":"1","backend":1,"service_id":"2Ld1Mxvm3ByX0WqQfWmlRu","service":"2Ld1Mxvm3ByX0WqQfWmlRu","staging":null,"created_at":"2014-12-16T03:48:27","deleted_at":null,"comment":"","updated_at":"2014-12-16T03:48:41","deployed":null,"inherit_service_id":null}],"created_at":"2014-12-16T03:04:51+00:00","customer_id":"6icLrTg3IL5DfWKdFzbavk","comment":"","publish_key":"01774c1027ab9cacd0a335fd07849d71380efe14","updated_at":"2014-12-16T03:04:51+00:00","name":"fastly-test-service-91558-1418699090-615","id":"2Ld1Mxvm3ByX0WqQfWmlRu"}'
+    http_version: 
+  recorded_at: Tue, 16 Dec 2014 03:48:41 GMT
+- request:
+    method: get
+    uri: https://api.fastly.com/service/2Ld1Mxvm3ByX0WqQfWmlRu
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Cookie:
+      - fastly.session=eyJ1c2VyX2lkIjoiNmpOeWJTbnVSMDVRQVM2NkhnY3Q5dyJ9--12521753698408033003--e400bc26d26b8e9906fe2726f6018737b9e24549;
+        Expires=Tue, 30 Dec 2014 03:28:28 GMT;Path=/; HttpOnly; secure
+      Content-Accept:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 16 Dec 2014 03:48:42 GMT
+      Server:
+      - Apache
+      Status:
+      - 200 OK
+      Content-Type:
+      - application/json
+      Cache-Control:
+      - no-cache
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Content-Length:
+      - '1184'
+      Accept-Ranges:
+      - bytes
+      Age:
+      - '0'
+      X-Served-By:
+      - app-sl1-SL, cache-iad2129-IAD
+      X-Cache:
+      - MISS, MISS
+      X-Cache-Hits:
+      - 0, 0
+      Vary:
+      - Accept-Encoding
+      Set-Cookie:
+      - fastly.session=eyJ1c2VyX2lkIjoiNmpOeWJTbnVSMDVRQVM2NkhnY3Q5dyJ9--12521753698408033003--e400bc26d26b8e9906fe2726f6018737b9e24549;
+        Expires=Tue, 30 Dec 2014 03:48:42 GMT;Path=/; HttpOnly; secure
+    body:
+      encoding: ASCII-8BIT
+      string: '{"versions":[{"testing":null,"locked":"0","number":"1","active":null,"backend":0,"service_id":"2Ld1Mxvm3ByX0WqQfWmlRu","service":"2Ld1Mxvm3ByX0WqQfWmlRu","staging":null,"created_at":"2014-12-16T03:04:51","deleted_at":null,"comment":"","updated_at":"2014-12-16T03:04:51","deployed":null,"inherit_service_id":null},{"testing":null,"locked":"0","number":"2","active":null,"backend":0,"service_id":"2Ld1Mxvm3ByX0WqQfWmlRu","service":"2Ld1Mxvm3ByX0WqQfWmlRu","staging":null,"created_at":"2014-12-16T03:48:27","deleted_at":null,"comment":"","updated_at":"2014-12-16T03:48:27","deployed":null,"inherit_service_id":null},{"testing":null,"locked":"1","number":"3","active":"1","backend":1,"service_id":"2Ld1Mxvm3ByX0WqQfWmlRu","service":"2Ld1Mxvm3ByX0WqQfWmlRu","staging":null,"created_at":"2014-12-16T03:48:27","deleted_at":null,"comment":"","updated_at":"2014-12-16T03:48:41","deployed":null,"inherit_service_id":null}],"created_at":"2014-12-16T03:04:51+00:00","customer_id":"6icLrTg3IL5DfWKdFzbavk","comment":"","publish_key":"01774c1027ab9cacd0a335fd07849d71380efe14","updated_at":"2014-12-16T03:04:51+00:00","name":"fastly-test-service-91558-1418699090-615","id":"2Ld1Mxvm3ByX0WqQfWmlRu"}'
+    http_version: 
+  recorded_at: Tue, 16 Dec 2014 03:48:41 GMT
+- request:
+    method: get
+    uri: https://api.fastly.com/service/2Ld1Mxvm3ByX0WqQfWmlRu/version/3/generated_vcl?no_content=true
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Cookie:
+      - fastly.session=eyJ1c2VyX2lkIjoiNmpOeWJTbnVSMDVRQVM2NkhnY3Q5dyJ9--12521753698408033003--e400bc26d26b8e9906fe2726f6018737b9e24549;
+        Expires=Tue, 30 Dec 2014 03:28:28 GMT;Path=/; HttpOnly; secure
+      Content-Accept:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 16 Dec 2014 03:48:42 GMT
+      Server:
+      - Apache
+      Status:
+      - 200 OK
+      Content-Type:
+      - application/json
+      Cache-Control:
+      - no-cache
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Content-Length:
+      - '106'
+      Accept-Ranges:
+      - bytes
+      Age:
+      - '0'
+      X-Served-By:
+      - app-sl1-SL, cache-iad2127-IAD
+      X-Cache:
+      - MISS, MISS
+      X-Cache-Hits:
+      - 0, 0
+      Vary:
+      - Accept-Encoding
+      Set-Cookie:
+      - fastly.session=eyJ1c2VyX2lkIjoiNmpOeWJTbnVSMDVRQVM2NkhnY3Q5dyJ9--12521753698408033003--e400bc26d26b8e9906fe2726f6018737b9e24549;
+        Expires=Tue, 30 Dec 2014 03:48:42 GMT;Path=/; HttpOnly; secure
+    body:
+      encoding: ASCII-8BIT
+      string: '{"version":3,"service_id":"2Ld1Mxvm3ByX0WqQfWmlRu","main":false,"name":"43a0c26e5d52f351a48715a0f772e08c"}'
+    http_version: 
+  recorded_at: Tue, 16 Dec 2014 03:48:42 GMT
+- request:
+    method: get
+    uri: https://api.fastly.com/service/2Ld1Mxvm3ByX0WqQfWmlRu/version/3/generated_vcl
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Cookie:
+      - fastly.session=eyJ1c2VyX2lkIjoiNmpOeWJTbnVSMDVRQVM2NkhnY3Q5dyJ9--12521753698408033003--e400bc26d26b8e9906fe2726f6018737b9e24549;
+        Expires=Tue, 30 Dec 2014 03:28:28 GMT;Path=/; HttpOnly; secure
+      Content-Accept:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 16 Dec 2014 03:48:42 GMT
+      Server:
+      - Apache
+      Status:
+      - 200 OK
+      Content-Type:
+      - application/json
+      Cache-Control:
+      - no-cache
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Content-Length:
+      - '12081'
+      Accept-Ranges:
+      - bytes
+      Age:
+      - '0'
+      X-Served-By:
+      - app-sl2-SL, cache-iad2134-IAD
+      X-Cache:
+      - MISS, MISS
+      X-Cache-Hits:
+      - 0, 0
+      Vary:
+      - Accept-Encoding
+      Set-Cookie:
+      - fastly.session=eyJ1c2VyX2lkIjoiNmpOeWJTbnVSMDVRQVM2NkhnY3Q5dyJ9--12521753698408033003--e400bc26d26b8e9906fe2726f6018737b9e24549;
+        Expires=Tue, 30 Dec 2014 03:48:42 GMT;Path=/; HttpOnly; secure
+    body:
+      encoding: ASCII-8BIT
+      string: '{"version":3,"service_id":"2Ld1Mxvm3ByX0WqQfWmlRu","main":false,"name":"43a0c26e5d52f351a48715a0f772e08c","content":"C!\n#
+        Backends\n\nbackend F_fastly_test_backend_93038_1418701707_805 {\n    .connect_timeout
+        = 1s;\n    .dynamic = true;\n    .port = \"9092\";\n    .host = \"thegestalt.org\";\n    .first_byte_timeout
+        = 15s;\n    .max_connections = 200;\n    .between_bytes_timeout = 10s;\n    .share_key
+        = \"2Ld1Mxvm3ByX0WqQfWmlRu\";\n  \n      \n    .probe = {\n        .request
+        = \"HEAD / HTTP/1.1\"  \"Host: thegestalt.org\" \"Connection: close\";\n        .window
+        = 5;\n        .threshold = 1;\n        .timeout = 2s;\n        .initial =
+        5;\n        .dummy = true;\n      }\n}\n\ndirector fastly_test_director_93038_1418701714_769
+        random {\n   .quorum = 75%;\n   .retries = 5;\n   {\n    .backend = F_fastly_test_backend_93038_1418701707_805;\n    .weight  =
+        100;\n   }\n}\n\n\n\nsub vcl_recv {\n#--FASTLY RECV CODE START\n  if (req.restarts
+        == 0) {\n    if (!req.http.X-Timer) {\n      set req.http.X-Timer = \"S\"
+        time.start.sec \".\" time.start.usec_frac;\n    }\n    set req.http.X-Timer
+        = req.http.X-Timer \",VS0\";\n  }\n\n            set req.backend = fastly_test_director_93038_1418701714_769;\n        \n\n    \n  #
+        default conditions\n  \n\n  \n  # ResponseObject: fastly-test-response-obj-93038-1418701717-631\n  error
+        900 \"Fastly Internal\";\n  \n  # end default conditions\n\n  \n      \n      \n#--FASTLY
+        RECV CODE END\n\n\n\n    if (req.request != \"HEAD\" && req.request != \"GET\"
+        && req.request != \"FASTLYPURGE\") {\n      return(pass);\n    }\n\n\n    return(lookup);\n}\n\n\nsub
+        vcl_fetch {\n\n\n\n#--FASTLY FETCH START\n\n\n# record which cache ran vcl_fetch
+        for this object and when\n  set beresp.http.Fastly-Debug-Path = \"(F \" server.identity
+        \" \" now.sec \") \" if(beresp.http.Fastly-Debug-Path, beresp.http.Fastly-Debug-Path,
+        \"\");\n\n# generic mechanism to vary on something\n  if (req.http.Fastly-Vary-String)
+        {\n    if (beresp.http.Vary) {\n      set beresp.http.Vary = \"Fastly-Vary-String,
+        \"  beresp.http.Vary;\n    } else {\n      set beresp.http.Vary = \"Fastly-Vary-String,
+        \";\n    }\n  }\n  \n    \n  \n # priority: 0\n\n \n \n      \n  # Gzip fastly-test-gzip-93038-1418701717-335\n  if
+        ((beresp.status == 200 || beresp.status == 404) && (beresp.http.content-type
+        ~ \"^(text\\/html)\\s*($|;)\" || req.url ~ \"\\.(js|css|html)($|\\?)\" ) )
+        {\n  \n    # always set vary to make sure uncompressed versions dont always
+        win\n    if (!beresp.http.Vary ~ \"Accept-Encoding\") {\n      if (beresp.http.Vary)
+        {\n        set beresp.http.Vary = beresp.http.Vary \", Accept-Encoding\";\n      }
+        else {\n         set beresp.http.Vary = \"Accept-Encoding\";\n      }\n    }\n    if
+        (req.http.Accept-Encoding == \"gzip\") {\n      set beresp.gzip = true;\n    }\n  }\n
+        \n    \n # priority: 0\n if ( req.url ~ \"^/foo\" ) {\n  \n        \n      #
+        fastly-cache-setting-93038-1418701717-955\n      set beresp.ttl = 3600s;\n      set
+        beresp.grace = 10001s;\n      \n    \n \n \n \n  }\n      \n#--FASTLY FETCH
+        END\n\n\n\n  if ((beresp.status == 500 || beresp.status == 503) && req.restarts
+        < 1 && (req.request == \"GET\" || req.request == \"HEAD\")) {\n    restart;\n  }\n  \n  if(req.restarts
+        > 0 ) {\n    set beresp.http.Fastly-Restarts = req.restarts;\n  }\n\n  if
+        (beresp.http.Set-Cookie) {\n    set req.http.Fastly-Cachetype = \"SETCOOKIE\";\n    return
+        (pass);\n  }\n\n  if (beresp.http.Cache-Control ~ \"private\") {\n    set
+        req.http.Fastly-Cachetype = \"PRIVATE\";\n    return (pass);\n  }\n\n  if
+        (beresp.status == 500 || beresp.status == 503) {\n    set req.http.Fastly-Cachetype
+        = \"ERROR\";\n    set beresp.ttl = 1s;\n    set beresp.grace = 5s;\n    return
+        (deliver);\n  }  \n  \n\n  if (beresp.http.Expires || beresp.http.Surrogate-Control
+        ~ \"max-age\" || beresp.http.Cache-Control ~\"(s-maxage|max-age)\") {\n    #
+        keep the ttl here\n  } else {\n        # apply the default ttl\n    set beresp.ttl
+        = 3600s;\n    \n  }\n\n  return(deliver);\n}\n\nsub vcl_hit {\n#--FASTLY HIT
+        START\n\n# we cannot reach obj.ttl and obj.grace in vcl_deliver, save them
+        when we can in vcl_hit\n  set req.http.Fastly-Tmp-Obj-TTL = obj.ttl;\n  set
+        req.http.Fastly-Tmp-Obj-Grace = obj.grace;\n\n  {\n    set req.http.Fastly-Cachetype
+        = \"HIT\";\n\n    \n  }\n#--FASTLY HIT END\n  if (!obj.cacheable) {\n    return(pass);\n  }\n  return(deliver);\n}\n\nsub
+        vcl_miss {\n#--FASTLY MISS START\n\n# this is not a hit after all, clean up
+        these set in vcl_hit\n  unset req.http.Fastly-Tmp-Obj-TTL;\n  unset req.http.Fastly-Tmp-Obj-Grace;\n\n  {\n    if
+        (req.http.Fastly-Check-SHA1) {\n       error 550 \"Doesnt exist\";\n    }\n    \n#--FASTLY
+        BEREQ START\n    {\n      if (req.http.Fastly-Original-Cookie) {\n        set
+        bereq.http.Cookie = req.http.Fastly-Original-Cookie;\n      }\n      \n      if
+        (req.http.Fastly-Original-URL) {\n        set bereq.url = req.http.Fastly-Original-URL;\n      }\n      {\n        if
+        (req.http.Fastly-FF) {\n          set bereq.http.Fastly-Client = \"1\";\n        }\n      }\n      {\n        #
+        do not send this to the backend\n        unset bereq.http.Fastly-Original-Cookie;\n        unset
+        bereq.http.Fastly-Original-URL;\n        unset bereq.http.Fastly-Vary-String;\n        unset
+        bereq.http.X-Varnish-Client;\n      }\n      if (req.http.Fastly-Temp-XFF)
+        {\n         if (req.http.Fastly-Temp-XFF == \"\") {\n           unset bereq.http.X-Forwarded-For;\n         }
+        else {\n           set bereq.http.X-Forwarded-For = req.http.Fastly-Temp-XFF;\n         }\n         #
+        unset bereq.http.Fastly-Temp-XFF;\n      }\n    }\n#--FASTLY BEREQ STOP\n\n\n
+        #;\n\n    set req.http.Fastly-Cachetype = \"MISS\";\n\n    \n  }\n#--FASTLY
+        MISS STOP\n  return(fetch);\n}\n\nsub vcl_deliver {\n\n\n#--FASTLY DELIVER
+        START\n\n# record the journey of the object, expose it only if req.http.Fastly-Debug.\n  if
+        (req.http.Fastly-Debug || req.http.Fastly-FF) {\n    set resp.http.Fastly-Debug-Path
+        = \"(D \" server.identity \" \" now.sec \") \"\n       if(resp.http.Fastly-Debug-Path,
+        resp.http.Fastly-Debug-Path, \"\");\n\n    set resp.http.Fastly-Debug-TTL
+        = if(obj.hits > 0, \"(H \", \"(M \")\n       server.identity\n       if(req.http.Fastly-Tmp-Obj-TTL
+        && req.http.Fastly-Tmp-Obj-Grace, \" \" req.http.Fastly-Tmp-Obj-TTL \" \"
+        req.http.Fastly-Tmp-Obj-Grace \" \", \" - - \")\n       if(resp.http.Age,
+        resp.http.Age, \"-\")\n       \") \"\n       if(resp.http.Fastly-Debug-TTL,
+        resp.http.Fastly-Debug-TTL, \"\");\n  } else {\n    unset resp.http.Fastly-Debug-Path;\n    unset
+        resp.http.Fastly-Debug-TTL;\n  }\n\n  # add or append X-Served-By/X-Cache(-Hits)\n  {\n\n    if(!resp.http.X-Served-By)
+        {\n      set resp.http.X-Served-By  = server.identity;\n    } else {\n      set
+        resp.http.X-Served-By = resp.http.X-Served-By \", \" server.identity;\n    }\n\n    if(!resp.http.X-Cache)
+        {\n      if (obj.hits > 0) {\n        set resp.http.X-Cache = \"HIT\";\n      }
+        else {\n        set resp.http.X-Cache = \"MISS\";\n      }\n    } else {\n      if
+        (obj.hits > 0) {\n        set resp.http.X-Cache = resp.http.X-Cache \", HIT\";\n      }
+        else {\n        set resp.http.X-Cache = resp.http.X-Cache \", MISS\";\n      }\n    }\n\n    if(!resp.http.X-Cache-Hits)
+        {\n      set resp.http.X-Cache-Hits = obj.hits;\n    } else {\n      set resp.http.X-Cache-Hits
+        = resp.http.X-Cache-Hits \", \" obj.hits;\n    }\n\n  }\n\n  if (req.http.X-Timer)
+        {\n    set resp.http.X-Timer = req.http.X-Timer \",VE\" time.elapsed.msec;\n  }\n\n  #
+        VARY FIXUP\n  {\n    # remove before sending to client\n    set resp.http.Vary
+        = regsub(resp.http.Vary, \"Fastly-Vary-String, \", \"\");\n    if (resp.http.Vary
+        ~ \"^\\s*$\") {\n      unset resp.http.Vary;\n    }\n  }\n  unset resp.http.X-Varnish;\n\n\n  #
+        Pop the surrogate headers into the request object so we can reference them
+        later\n  set req.http.Surrogate-Key = resp.http.Surrogate-Key;\n  set req.http.Surrogate-Control
+        = resp.http.Surrogate-Control;\n\n  # If we are not forwarding or debugging
+        unset the surrogate headers so they are not present in the response\n  if
+        (!req.http.Fastly-FF && !req.http.Fastly-Debug) {\n    unset resp.http.Surrogate-Key;\n    unset
+        resp.http.Surrogate-Control;\n  }\n\n  if(resp.status == 550) {\n    return(deliver);\n  }\n  \n\n  #default
+        response conditions\n        \n  if (resp.status == 900 ) {\n     set resp.status
+        = 418;\n     set resp.response = \"I''m a teapot\";\n  }  \n      \n          \n\n  #
+        Response Condition: fastly-response-condition-93038-1418701718-364 Prio: 0\n  if(
+        req.url ~ \"^/foo\" ) { \n        \n# Header rewrite fastly-header-test-93038-1418701718-303
+        : 10\n\n    \n  if (!resp.http.Cache-Control) {\n        set resp.http.Cache-Control
+        = \"max-age=301\";\n              }\n  \n\n        \t\n        \n        \n        \n        \n        \n        \n    \n  }\n  \n#--FASTLY
+        DELIVER END\n  return(deliver);\n}\n\nsub vcl_error {\n#--FASTLY ERROR START\n\n  if
+        (obj.status == 801) {\n     set obj.status = 301;\n     set obj.response =
+        \"Moved Permanently\";\n     set obj.http.Location = \"https://\" req.http.host
+        req.url;\n     synthetic {\"\"};\n     return (deliver);\n  }  \n\nif (obj.status
+        == 900 ) {\n   set obj.http.Content-Type = \"text/plain\";   \n   synthetic
+        {\"short and stout\"};\n   return(deliver);\n}  \n\n      \n          \n  if
+        (req.http.Fastly-Restart-On-Error) {\n    if (obj.status == 503 && req.restarts
+        == 0) {\n      restart;\n    }\n  }\n\n  {\n    if (obj.status == 550) {\n      return(deliver);\n    }\n  }\n#--FASTLY
+        ERROR END\n\n\n\n}\n\nsub vcl_pipe {\n#--FASTLY PIPE START\n  {\n    #  error
+        403 \"Forbidden\";      \n    \n#--FASTLY BEREQ START\n    {\n      if (req.http.Fastly-Original-Cookie)
+        {\n        set bereq.http.Cookie = req.http.Fastly-Original-Cookie;\n      }\n      \n      if
+        (req.http.Fastly-Original-URL) {\n        set bereq.url = req.http.Fastly-Original-URL;\n      }\n      {\n        if
+        (req.http.Fastly-FF) {\n          set bereq.http.Fastly-Client = \"1\";\n        }\n      }\n      {\n        #
+        do not send this to the backend\n        unset bereq.http.Fastly-Original-Cookie;\n        unset
+        bereq.http.Fastly-Original-URL;\n        unset bereq.http.Fastly-Vary-String;\n        unset
+        bereq.http.X-Varnish-Client;\n      }\n      if (req.http.Fastly-Temp-XFF)
+        {\n         if (req.http.Fastly-Temp-XFF == \"\") {\n           unset bereq.http.X-Forwarded-For;\n         }
+        else {\n           set bereq.http.X-Forwarded-For = req.http.Fastly-Temp-XFF;\n         }\n         #
+        unset bereq.http.Fastly-Temp-XFF;\n      }\n    }\n#--FASTLY BEREQ STOP\n\n\n    #;\n    set
+        req.http.Fastly-Cachetype = \"PIPE\";\n    set bereq.http.connection = \"close\";\n  }\n#--FASTLY
+        PIPE STOP\n\n}\n\nsub vcl_pass {\n#--FASTLY PASS START\n  {\n    \n#--FASTLY
+        BEREQ START\n    {\n      if (req.http.Fastly-Original-Cookie) {\n        set
+        bereq.http.Cookie = req.http.Fastly-Original-Cookie;\n      }\n      \n      if
+        (req.http.Fastly-Original-URL) {\n        set bereq.url = req.http.Fastly-Original-URL;\n      }\n      {\n        if
+        (req.http.Fastly-FF) {\n          set bereq.http.Fastly-Client = \"1\";\n        }\n      }\n      {\n        #
+        do not send this to the backend\n        unset bereq.http.Fastly-Original-Cookie;\n        unset
+        bereq.http.Fastly-Original-URL;\n        unset bereq.http.Fastly-Vary-String;\n        unset
+        bereq.http.X-Varnish-Client;\n      }\n      if (req.http.Fastly-Temp-XFF)
+        {\n         if (req.http.Fastly-Temp-XFF == \"\") {\n           unset bereq.http.X-Forwarded-For;\n         }
+        else {\n           set bereq.http.X-Forwarded-For = req.http.Fastly-Temp-XFF;\n         }\n         #
+        unset bereq.http.Fastly-Temp-XFF;\n      }\n    }\n#--FASTLY BEREQ STOP\n\n\n
+        #;\n    set req.http.Fastly-Cachetype = \"PASS\";\n  }\n#--FASTLY PASS STOP\n\n}\n\nsub
+        vcl_hash {\n\n  #-FASTLY HASH CODE WITH GENERATION FOR PURGE ALL\n  #\n        \n  \n  #if
+        unspecified fall back to normal\n  {\n    \n\n    set req.hash += req.url;\n    set
+        req.hash += req.http.host;\n    set req.hash += \"#####GENERATION#####\";\n    return
+        (hash);\n  }\n  #--FASTLY END HASH CODE\n\n\n}\n"}'
+    http_version: 
+  recorded_at: Tue, 16 Dec 2014 03:48:42 GMT
+- request:
+    method: get
+    uri: https://api.fastly.com/service/2Ld1Mxvm3ByX0WqQfWmlRu/version/3/validate
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Cookie:
+      - fastly.session=eyJ1c2VyX2lkIjoiNmpOeWJTbnVSMDVRQVM2NkhnY3Q5dyJ9--12521753698408033003--e400bc26d26b8e9906fe2726f6018737b9e24549;
+        Expires=Tue, 30 Dec 2014 03:28:28 GMT;Path=/; HttpOnly; secure
+      Content-Accept:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 16 Dec 2014 03:48:42 GMT
+      Server:
+      - Apache
+      Status:
+      - 200 OK
+      Content-Type:
+      - application/json
+      Cache-Control:
+      - no-cache
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Content-Length:
+      - '15'
+      Accept-Ranges:
+      - bytes
+      Age:
+      - '0'
+      X-Served-By:
+      - app-sl1-SL, cache-iad2125-IAD
+      X-Cache:
+      - MISS, MISS
+      X-Cache-Hits:
+      - 0, 0
+      Vary:
+      - Accept-Encoding
+      Set-Cookie:
+      - fastly.session=eyJ1c2VyX2lkIjoiNmpOeWJTbnVSMDVRQVM2NkhnY3Q5dyJ9--12521753698408033003--e400bc26d26b8e9906fe2726f6018737b9e24549;
+        Expires=Tue, 30 Dec 2014 03:48:42 GMT;Path=/; HttpOnly; secure
+    body:
+      encoding: ASCII-8BIT
+      string: '{"status":"ok"}'
+    http_version: 
+  recorded_at: Tue, 16 Dec 2014 03:48:42 GMT
+- request:
+    method: put
+    uri: https://api.fastly.com/service/2Ld1Mxvm3ByX0WqQfWmlRu/version/3/deactivate
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Cookie:
+      - fastly.session=eyJ1c2VyX2lkIjoiNmpOeWJTbnVSMDVRQVM2NkhnY3Q5dyJ9--12521753698408033003--e400bc26d26b8e9906fe2726f6018737b9e24549;
+        Expires=Tue, 30 Dec 2014 03:28:28 GMT;Path=/; HttpOnly; secure
+      Content-Accept:
+      - application/json
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 16 Dec 2014 03:48:44 GMT
+      Server:
+      - Apache
+      Status:
+      - 200 OK
+      Content-Type:
+      - application/json
+      Cache-Control:
+      - no-cache
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Content-Length:
+      - '263'
+      Accept-Ranges:
+      - bytes
+      X-Served-By:
+      - app-sl2-SL, cache-jfk1029-JFK
+      X-Cache:
+      - MISS, MISS
+      X-Cache-Hits:
+      - 0, 0
+      Vary:
+      - Accept-Encoding
+      Set-Cookie:
+      - fastly.session=eyJ1c2VyX2lkIjoiNmpOeWJTbnVSMDVRQVM2NkhnY3Q5dyJ9--12521753698408033003--e400bc26d26b8e9906fe2726f6018737b9e24549;
+        Expires=Tue, 30 Dec 2014 03:48:44 GMT;Path=/; HttpOnly; secure
+    body:
+      encoding: ASCII-8BIT
+      string: '{"testing":null,"locked":true,"number":3,"active":null,"service_id":"2Ld1Mxvm3ByX0WqQfWmlRu","staging":null,"created_at":"2014-12-16T03:48:27+00:00","deleted_at":null,"comment":"","updated_at":"2014-12-16T03:48:41+00:00","deployed":null,"inherit_service_id":null}'
+    http_version: 
+  recorded_at: Tue, 16 Dec 2014 03:48:44 GMT
+- request:
+    method: post
+    uri: https://api.fastly.com/service/2Ld1Mxvm3ByX0WqQfWmlRu/version
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Cookie:
+      - fastly.session=eyJ1c2VyX2lkIjoiNmpOeWJTbnVSMDVRQVM2NkhnY3Q5dyJ9--12521753698408033003--e400bc26d26b8e9906fe2726f6018737b9e24549;
+        Expires=Tue, 30 Dec 2014 03:28:28 GMT;Path=/; HttpOnly; secure
+      Content-Accept:
+      - application/json
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 16 Dec 2014 03:48:44 GMT
+      Server:
+      - Apache
+      Status:
+      - 200 OK
+      Content-Type:
+      - application/json
+      Cache-Control:
+      - no-cache
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Content-Length:
+      - '50'
+      Accept-Ranges:
+      - bytes
+      X-Served-By:
+      - app-sl1-SL, cache-jfk1031-JFK
+      X-Cache:
+      - MISS, MISS
+      X-Cache-Hits:
+      - 0, 0
+      Vary:
+      - Accept-Encoding
+      Set-Cookie:
+      - fastly.session=eyJ1c2VyX2lkIjoiNmpOeWJTbnVSMDVRQVM2NkhnY3Q5dyJ9--12521753698408033003--e400bc26d26b8e9906fe2726f6018737b9e24549;
+        Expires=Tue, 30 Dec 2014 03:48:44 GMT;Path=/; HttpOnly; secure
+    body:
+      encoding: ASCII-8BIT
+      string: '{"service_id":"2Ld1Mxvm3ByX0WqQfWmlRu","number":4}'
+    http_version: 
+  recorded_at: Tue, 16 Dec 2014 03:48:44 GMT
+- request:
+    method: get
+    uri: https://api.fastly.com/service/2Ld1Mxvm3ByX0WqQfWmlRu/version/4/director
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Cookie:
+      - fastly.session=eyJ1c2VyX2lkIjoiNmpOeWJTbnVSMDVRQVM2NkhnY3Q5dyJ9--12521753698408033003--e400bc26d26b8e9906fe2726f6018737b9e24549;
+        Expires=Tue, 30 Dec 2014 03:28:28 GMT;Path=/; HttpOnly; secure
+      Content-Accept:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 16 Dec 2014 03:48:45 GMT
+      Server:
+      - Apache
+      Status:
+      - 200 OK
+      Content-Type:
+      - application/json
+      Cache-Control:
+      - no-cache
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Content-Length:
+      - '2'
+      Accept-Ranges:
+      - bytes
+      Age:
+      - '0'
+      X-Served-By:
+      - app-sl1-SL, cache-jfk1028-JFK
+      X-Cache:
+      - MISS, MISS
+      X-Cache-Hits:
+      - 0, 0
+      Vary:
+      - Accept-Encoding
+      Set-Cookie:
+      - fastly.session=eyJ1c2VyX2lkIjoiNmpOeWJTbnVSMDVRQVM2NkhnY3Q5dyJ9--12521753698408033003--e400bc26d26b8e9906fe2726f6018737b9e24549;
+        Expires=Tue, 30 Dec 2014 03:48:45 GMT;Path=/; HttpOnly; secure
+    body:
+      encoding: ASCII-8BIT
+      string: "[]"
+    http_version: 
+  recorded_at: Tue, 16 Dec 2014 03:48:45 GMT
+- request:
+    method: delete
+    uri: https://api.fastly.com/service/2Ld1Mxvm3ByX0WqQfWmlRu
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Cookie:
+      - fastly.session=eyJ1c2VyX2lkIjoiNmpOeWJTbnVSMDVRQVM2NkhnY3Q5dyJ9--12521753698408033003--e400bc26d26b8e9906fe2726f6018737b9e24549;
+        Expires=Tue, 30 Dec 2014 03:28:28 GMT;Path=/; HttpOnly; secure
+      Content-Accept:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 16 Dec 2014 03:48:45 GMT
+      Server:
+      - Apache
+      Status:
+      - 200 OK
+      Content-Type:
+      - application/json
+      Cache-Control:
+      - no-cache
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Content-Length:
+      - '15'
+      Accept-Ranges:
+      - bytes
+      X-Served-By:
+      - app-sl1-SL, cache-jfk1026-JFK
+      X-Cache:
+      - MISS, MISS
+      X-Cache-Hits:
+      - 0, 0
+      Vary:
+      - Accept-Encoding
+      Set-Cookie:
+      - fastly.session=eyJ1c2VyX2lkIjoiNmpOeWJTbnVSMDVRQVM2NkhnY3Q5dyJ9--12521753698408033003--e400bc26d26b8e9906fe2726f6018737b9e24549;
+        Expires=Tue, 30 Dec 2014 03:48:45 GMT;Path=/; HttpOnly; secure
+    body:
+      encoding: ASCII-8BIT
+      string: '{"status":"ok"}'
+    http_version: 
+  recorded_at: Tue, 16 Dec 2014 03:48:45 GMT
+- request:
+    method: get
+    uri: https://api.fastly.com/service/2Ld1Mxvm3ByX0WqQfWmlRu/version/3/backend/fastly-test-backend-93142-1418702012-93
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Cookie:
+      - fastly.session=eyJ1c2VyX2lkIjoiNmpOeWJTbnVSMDVRQVM2NkhnY3Q5dyJ9--12521753698408033003--e400bc26d26b8e9906fe2726f6018737b9e24549;
+        Expires=Tue, 30 Dec 2014 03:28:28 GMT;Path=/; HttpOnly; secure
+      Content-Accept:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Date:
+      - Tue, 16 Dec 2014 03:53:33 GMT
+      Server:
+      - Apache
+      Status:
+      - 400 Bad Request
+      Content-Type:
+      - text/json
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Content-Length:
+      - '254'
+      Accept-Ranges:
+      - bytes
+      X-Served-By:
+      - app-sl2-SL, cache-jfk1021-JFK
+      X-Cache:
+      - MISS, MISS
+      X-Cache-Hits:
+      - 0, 0
+      Vary:
+      - Accept-Encoding
+      Set-Cookie:
+      - fastly.session=eyJ1c2VyX2lkIjoiNmpOeWJTbnVSMDVRQVM2NkhnY3Q5dyJ9--12521753698408033003--e400bc26d26b8e9906fe2726f6018737b9e24549;
+        Expires=Tue, 30 Dec 2014 03:53:33 GMT;Path=/; HttpOnly; secure
+      Connection:
+      - close
+    body:
+      encoding: ASCII-8BIT
+      string: '{"msg":"An error occurred while connecting to the fastly API, please
+        try your request again.","detail":"Couldn''t find ''{ service => 2Ld1Mxvm3ByX0WqQfWmlRu,
+        version => 3, name => fastly-test-backend-93142-1418702012-93, deleted =>
+        0000-00-00 00:00:00 }''"}'
+    http_version: 
+  recorded_at: Tue, 16 Dec 2014 03:53:32 GMT
+- request:
+    method: get
+    uri: https://api.fastly.com/service/2Ld1Mxvm3ByX0WqQfWmlRu/version/3/backend/fastly-test-backend-94260-1418703322-967
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Cookie:
+      - fastly.session=eyJ1c2VyX2lkIjoiNmpOeWJTbnVSMDVRQVM2NkhnY3Q5dyJ9--12521753698408033003--e400bc26d26b8e9906fe2726f6018737b9e24549;
+        Expires=Tue, 30 Dec 2014 03:28:28 GMT;Path=/; HttpOnly; secure
+      Content-Accept:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Date:
+      - Tue, 16 Dec 2014 04:15:23 GMT
+      Server:
+      - Apache
+      Status:
+      - 400 Bad Request
+      Content-Type:
+      - text/json
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Content-Length:
+      - '255'
+      Accept-Ranges:
+      - bytes
+      X-Served-By:
+      - app-sl1-SL, cache-iad2126-IAD
+      X-Cache:
+      - MISS, MISS
+      X-Cache-Hits:
+      - 0, 0
+      Vary:
+      - Accept-Encoding
+      Set-Cookie:
+      - fastly.session=eyJ1c2VyX2lkIjoiNmpOeWJTbnVSMDVRQVM2NkhnY3Q5dyJ9--12521753698408033003--e400bc26d26b8e9906fe2726f6018737b9e24549;
+        Expires=Tue, 30 Dec 2014 04:15:23 GMT;Path=/; HttpOnly; secure
+      Connection:
+      - close
+    body:
+      encoding: ASCII-8BIT
+      string: '{"msg":"An error occurred while connecting to the fastly API, please
+        try your request again.","detail":"Couldn''t find ''{ service => 2Ld1Mxvm3ByX0WqQfWmlRu,
+        version => 3, name => fastly-test-backend-94260-1418703322-967, deleted =>
+        0000-00-00 00:00:00 }''"}'
+    http_version: 
+  recorded_at: Tue, 16 Dec 2014 04:15:23 GMT
+recorded_with: VCR 2.9.3

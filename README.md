@@ -72,7 +72,11 @@ new_version.activate!
 
 ### Notes for testing
 
-The test suite requires the following `ENV` variables to be set:
+Existing tests use a mocked api session recorded using VCR. If you need to add a new
+test or the api changes, you'll need to record a new episode onto the vcr_cassette.
+See test/helper.rb
+
+In VCR recording mode, the test suite requires the following `ENV` variables to be set:
 
 * `FASTLY_TEST_USER` - Your user email
 * `FASTLY_TEST_PASSWORD` - Your account password
