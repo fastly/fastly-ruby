@@ -6,23 +6,24 @@ class MissingApiKeyTest < Fastly::TestCase
   def setup
     # missing API key
     @opts = login_opts(:full)
-    begin
+    FastlyHelpers.with_recorded_api do
       @client = Fastly::Client.new(@opts)
       @fastly = Fastly.new(@opts)
-    rescue Exception => e
-      pp e
-      exit(-1)
     end
   end
 
   def test_purging
-    service_name = "fastly-test-service-#{random_string}"
-    service      = @fastly.create_service(:name => service_name)
+    FastlyHelpers.with_recorded_api do
+      begin
+        service_name = "fastly-test-service-#{random_string}"
+        service      = @fastly.create_service(:name => service_name)
 
-    assert_raises Fastly::AuthRequired do
-      service.purge_by_key('somekey')
+        assert_raises Fastly::AuthRequired do
+          service.purge_by_key('somekey')
+        end
+      ensure
+        @fastly.delete_service(service)
+      end
     end
-  ensure
-    @fastly.delete_service(service)
   end
 end

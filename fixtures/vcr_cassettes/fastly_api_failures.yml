@@ -1,0 +1,49 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.fastly.com/current_user
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Fastly-Key:
+      - c299b6287f3ae7b8560aca7af6ee3df3
+      Content-Accept:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 403
+      message: Forbidden
+    headers:
+      Date:
+      - Tue, 16 Dec 2014 03:46:15 GMT
+      Server:
+      - Apache
+      Status:
+      - 403 Forbidden
+      Content-Type:
+      - text/json
+      Via:
+      - 1.1 varnish
+      - 1.1 varnish
+      Content-Length:
+      - '55'
+      Accept-Ranges:
+      - bytes
+      X-Served-By:
+      - app-sl1-SL, cache-atl6224-ATL
+      X-Cache:
+      - MISS, MISS
+      X-Cache-Hits:
+      - 0, 0
+      Vary:
+      - Accept-Encoding
+    body:
+      encoding: ASCII-8BIT
+      string: '{"msg":"You are not authorized to perform this action"}'
+    http_version: 
+  recorded_at: Tue, 16 Dec 2014 03:46:15 GMT
+recorded_with: VCR 2.9.3

@@ -8,4 +8,6 @@ group :development, :test do
   gem 'minitest', '~> 5.3.4'
   gem 'pry'
   gem 'rubocop'
+  gem 'vcr'
+  gem 'webmock'
 end
