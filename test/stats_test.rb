@@ -23,42 +23,35 @@ class StatsTest < Fastly::TestCase
 
   def test_usage
     usage = @fastly.usage(:from => FROM)
-    assert(usage['usa'], 'Found a USA region in usage')
-    assert(usage['usa']['requests'], 'USA region has a requests field')
+    # usage can be and empty hash if no usage stats
+    # this client is not responsiblew for verifying the stats api,
+    # just that requests to stats work
+    assert(usage)
+    assert(usage['meta'])
+    assert_equal 'success', usage['status']
 
     usage = @fastly.usage(:from => FROM, :by_service => 1)
-    assert(usage['usa'], 'Found a USA region in usage')
-    assert(usage['usa']['requests'].nil?, "USA region doesn't have a requests field")
+    assert(usage)
+    assert(usage['meta'])
+    assert_equal 'success', usage['status']
   end
 
   def test_stats
     stats = @fastly.stats(:from => FROM)
-    service1, service2 = stats.keys
-    assert(stats[service1][0]['requests'], 'Found requests')
-    assert(stats[service1][0]['hits'], 'Found hits')
-    assert(stats[service2][0]['requests'], 'Found requests')
-    assert(stats[service2][0]['hits'], 'Found hits')
+    # stats can be and empty hash if no usage stats
+    assert(stats)
+    assert_equal 'success', stats['status']
+    assert_equal 'all', stats['meta']['region']
 
     stats = @fastly.stats(:from => FROM, :field => 'requests')
-    assert(stats[service1][0]['requests'],  'Found requests')
-    assert(stats[service1][0]['hits'].nil?, "Didn't find hits")
-    assert(stats[service2][0]['requests'],  'Found requests')
-    assert(stats[service2][0]['hits'].nil?, "Didn't find hits")
-
-    stats = @fastly.stats(:from => FROM, :service => service1)
-    assert_equal(stats[0]['service_id'], service1, 'Got correct service id')
-    assert(stats[0]['requests'], 'Found requests')
-    assert(stats[0]['hits'], 'Found hits')
-
-    stats = @fastly.stats(:from => FROM, :field => 'requests', :service => service1)
-    assert_equal(stats[0]['service_id'], service1, 'Got correct service id')
-    assert(stats[0]['requests'], 'Found requests')
-    assert(stats[0]['hits'].nil?, "Didn't find hits")
+    assert(stats)
+    assert_equal 'success', stats['status']
+    assert_equal 'all', stats['meta']['region']
 
     stats = @fastly.stats(:from => FROM, :aggregate => true)
-    assert(stats[0]['service_id'].nil?, 'No service id')
-    assert(stats[0]['requests'], 'Found requests')
-    assert(stats[0]['hits'], 'Found hits')
+    assert(stats)
+    assert_equal 'success', stats['status']
+    assert_equal 'all', stats['meta']['region']
 
     # stats aggregate with field
     assert_raises Fastly::Error do
@@ -67,11 +60,11 @@ class StatsTest < Fastly::TestCase
 
     # stats aggregate with service
     assert_raises Fastly::Error do
-      @fastly.stats(:from => FROM, :service => service1, :aggregate => true)
+      @fastly.stats(:from => FROM, :service => 'myserviceId', :aggregate => true)
     end
 
     assert_raises Fastly::Error do
-      @fastly.stats(:from => FROM, :service => service1, :field => 'requests', :aggregate => true)
+      @fastly.stats(:from => FROM, :service => 'datServiceID', :field => 'requests', :aggregate => true)
     end
   end
 end
