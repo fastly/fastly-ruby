@@ -1,3 +1,5 @@
+require 'date'
+
 # Invoice object
 class Fastly
   # An invoice for a time period
