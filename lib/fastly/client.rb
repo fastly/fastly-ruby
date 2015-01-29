@@ -52,7 +52,7 @@ class Fastly
     def get(path, params = {})
       path += "?#{make_params(params)}" unless params.empty?
       resp  = http.get(path, headers)
-      fail Error, resp.message unless resp.kind_of?(Net::HTTPSuccess)
+      fail Error, resp.body unless resp.kind_of?(Net::HTTPSuccess)
       JSON.parse(resp.body)
     end
 
