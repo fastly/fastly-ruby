@@ -19,7 +19,7 @@ class MissingApiKeyTest < Fastly::TestCase
     service_name = "fastly-test-service-#{random_string}"
     service      = @fastly.create_service(:name => service_name)
 
-    assert_raises Fastly::AuthRequired do
+    assert_raises Fastly::KeyAuthRequired do
       service.purge_by_key('somekey')
     end
   ensure

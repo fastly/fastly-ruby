@@ -16,7 +16,4 @@ Gem::Specification.new do |s|
   s.test_files    = `git ls-files -- test/*`.split("\n")
   s.executables   = `git ls-files -- bin/*`.split("\n").map { |f| File.basename(f) }
   s.require_paths = ['lib']
-
-  s.add_dependency 'curb', '~> 0.8.6'
-  s.add_dependency 'curb-fu', '~> 0.6.2'
 end

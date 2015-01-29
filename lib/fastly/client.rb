@@ -1,7 +1,6 @@
 require 'json'
 require 'cgi'
-require 'uri'
-require 'fastly/client/curl'
+require 'net/http' # also requires uri
 
 class Fastly
   # The UserAgent to communicate with the API
@@ -16,26 +15,24 @@ class Fastly
 
       base      = opts.fetch(:base_url, 'https://api.fastly.com')
       uri       = URI.parse(base)
-
-      @http     = Curl.new(uri)
+      @http     = Net::HTTP.start(uri.host, uri.port, use_ssl: true)
 
       return self unless fully_authed?
 
-      # If we're fully authed (i.e username and password ) then we need to log in
+      # If full auth creds (user/pass) then log in and set a cookie
       resp = http.post('/login', make_params(user: user, password: password))
 
-      if resp.success?
+      if resp.kind_of?(Net::HTTPSuccess)
         @cookie = resp['Set-Cookie']
       else
-        fail Unauthorized
+        fail Unauthorized, "Invalid auth credentials. Check username/password."
       end
 
       self
     end
 
     def require_key!
-      raise Fastly::AuthRequired.new("This request requires an API key") if api_key.nil?
-
+      raise Fastly::KeyAuthRequired.new("This request requires an API key") if api_key.nil?
       @require_key = true
     end
 
@@ -55,18 +52,18 @@ class Fastly
     def get(path, params = {})
       path += "?#{make_params(params)}" unless params.empty?
       resp  = http.get(path, headers)
-      return nil if 404 == resp.status
-      fail Error, resp.message unless resp.success?
+      fail Error, resp.message unless resp.kind_of?(Net::HTTPSuccess)
       JSON.parse(resp.body)
     end
 
     def get_stats(path, params = {})
-      content = get(path, params)
+      resp = get(path, params)
 
-      case content['status']
-      when 'success' then content['data']
+      # return meta data, not just the actual stats data
+      if resp['status'] == 'success'
+        resp
       else
-        fail Error, content['message']
+        fail Error, resp['msg']
       end
     end
 
@@ -80,7 +77,7 @@ class Fastly
 
     def delete(path)
       resp  = http.delete(path, headers)
-      resp.success?
+      resp.kind_of?(Net::HTTPSuccess)
     end
 
     private
@@ -88,13 +85,7 @@ class Fastly
     def post_and_put(method, path, params = {})
       query = make_params(params)
       resp  = http.send(method, path, query, headers.merge('Content-Type' =>  'application/x-www-form-urlencoded'))
-
-      if resp.success?
-        JSON.parse(resp.body)
-      else
-        fail Error, resp.message
-      end
-
+      fail Error, resp.message unless resp.kind_of?(Net::HTTPSuccess)
       JSON.parse(resp.body)
     end
 

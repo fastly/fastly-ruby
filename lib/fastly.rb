@@ -5,10 +5,8 @@
 # A client library for interacting with the Fastly web acceleration service
 require 'fastly/gem_version'
 require 'fastly/util'
-require 'ext/curb_fu/response/base'
 require 'fastly/fetcher'
 require 'fastly/client'
-
 require 'fastly/base'
 require 'fastly/belongs_to_service_and_version'
 require 'fastly/backend'

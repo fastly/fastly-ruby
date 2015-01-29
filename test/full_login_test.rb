@@ -83,7 +83,9 @@ class Fastly
       it 'should allow us to delete a user' do
         user_id = user.id
         assert_equal true, fastly.delete_user(user)
-        assert_equal nil, fastly.get_user(user_id)
+        assert_raises(Fastly::Error) do
+          fastly.get_user(user_id)
+        end
       end
     end
   end
