@@ -1,6 +1,6 @@
 require 'json'
 require 'cgi'
-require 'uri'
+require 'net/http' # also requires uri
 
 class Fastly
   # The UserAgent to communicate with the API
