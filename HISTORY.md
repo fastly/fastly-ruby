@@ -1,5 +1,9 @@
 # HEAD
 
+## 2015-02-05 v1.2.0
+* remove curb-fu. Net::HTTP is used instead - https://github.com/fastly/fastly-ruby/pull/44
+* better client error handling - https://github.com/fastly/fastly-ruby/pull/48
+
 ## 2014-12-15 v1.1.5
 * major refactor and reorganization of code (merged branch https://github.com/fastly/fastly-ruby/pull/31)
 * bump curb dep to 0.8.6 for ruby 2.1 support (see https://github.com/fastly/fastly-ruby/issues/43)
