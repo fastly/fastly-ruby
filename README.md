@@ -9,6 +9,7 @@ Client library for interacting with the Fastly web acceleration service [API](ht
 gem 'fastly'
 
 # some_file.rb
+# use {api_key: 'your-key'} or {user: 'username', password: 'password'} as login options
 fastly = Fastly.new(login_opts)
 
 current_user     = fastly.current_user
