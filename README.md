@@ -149,6 +149,15 @@ curl -H 'Fastly-Key: YOUR_API_KEY' -X POST \
 See the [Fastly purging API documentation](https://docs.fastly.com/api/purge)
 for more information and examples.
 
+## Usage notes
+
+If you are performing many purges per second we recommend you use the API
+directly with an HTTP client of your choice.  See Efficient Purging above.
+
+fastly-ruby has not been audited for thread-safety.  If you are performing
+actions that require multiple threads (such as performing many purges) we
+recommend you use the API directly.
+
 ## Contributing
 
 1. Fork it
