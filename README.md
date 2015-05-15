@@ -2,12 +2,16 @@
 
 Client library for interacting with the Fastly web acceleration service [API](http://docs.fastly.com/api)
 
-## Example
+## Examples
+
+Add fastly to your Gemfile:
+```ruby
+gem 'fastly'
+```
+
+Create a fastly client:
 
 ```ruby
-# Gemfile
-gem 'fastly'
-
 # some_file.rb
 fastly = Fastly.new(login_opts)
 
@@ -21,8 +25,11 @@ puts "Name: #{user.name}"
 puts "Works for #{user.customer.name}"
 puts "Which is the same as #{customer.name}"
 puts "Which has the owner #{customer.owner.name}"
+```
 
-# Let's see which services we have defined
+List the services we have defined:
+
+```ruby
 fastly.list_services.each do |service|
   puts "Service ID: #{service.id}"
   puts "Service Name: #{service.name}"
@@ -32,35 +39,124 @@ fastly.list_services.each do |service|
   end
 end
 
-service        = fastly.create_service(:name => "MyFirstService")
+service        = fastly.create_service(name: "MyFirstService")
 latest_version = service.version
+```
 
-# Create a domain and a backend for the service ...
-domain         = fastly.create_domain(:service_id => service.id, :version => latest_version.number, :name => "www.example.com")
-backend        = fastly.create_backend(:service_id => service.id, :version => latest_version.number, :name => "Backend 1", :ipv4 => "192.0.43.10", :port => 80)
+Create a domain and a backend for the service:
 
-# ... and activate it. You're now hosted on Fastly.
+```ruby
+domain =
+  fastly.create_domain(service_id: service.id,
+                       version: latest_version.number,
+                       name: "www.example.com")
+
+backend =
+  fastly.create_backend(service_id: service.id,
+                        version: latest_version.number,
+                        name: "Backend 1",
+                        ipv4: "192.0.43.10",
+                        port: 80)
+```
+
+Activate the service:
+
+```ruby
 latest_version.activate!
+```
 
-# Let's take a peek at the VCL that Fastly generated for us
+You're now hosted on Fastly.
+
+Let's look at the VCL that Fastly generated for us:
+
+```ruby
 vcl = latest_version.generated_vcl
-puts "Generated VCL file is:\n#{vcl.content}"
 
-# Now let's create a new version ...
-new_version    = latest_version.clone
-# ... add a new backend ...
-new_backend    = fastly.create_backend(:service_id => service.id, :version => new_version.number, :name => "Backend 2", :ipv4 => "74.125.224.136", :port => 8080)
-# ... add a director to switch between them
-director       = fastly.create_director(:service_id => service.id, :version => new_version.number, :name => "My Director")
+puts "Generated VCL file is:"
+puts vcl.content
+```
+
+Now let's create a new version:
+
+```ruby
+new_version = latest_version.clone
+```
+
+Add a new backend:
+
+```ruby
+new_backend =
+  fastly.create_backend(service_id: service.id,
+                        version: new_version.number,
+                        name: "Backend 2",
+                        ipv4: "74.125.224.136",
+                        port: 8080)
+```
+
+Add a director to switch between them:
+
+```ruby
+director =
+  fastly.create_director(service_id: service.id,
+                         version: new_version.number,
+                         name: "My Director")
+
 director.add_backend(backend)
 director.add_backend(new_backend)
-# ... and upload some custom vcl (presuming we have permissions)
-new_version.upload_vcl(vcl_name, File.read(vcl_file))
-# ... and set it as the service's main vcl
+```
+
+Upload some custom VCL (presuming we have permissions):
+
+```ruby
+custom_vcl = File.read(vcl_file)
+
+new_version.upload_vcl(vcl_name, custom_vcl)
+```
+
+Set the custom VCL as the service's main VCL
+
+```ruby
 new_version.vcl(vcl_name).set_main!
 
 new_version.activate!
 ```
+
+### Efficient purging
+
+Purging requires your Fastly credentials and the service you want to purge
+content from.  To purge efficiently you do not want to look up the service
+every time you issue a purge:
+
+```ruby
+fastly  = Fastly.new(api_key: 'YOUR_API_KEY')
+service = Fastly::Service.new({ id: 'YOUR_SERVICE_ID' }, fastly)
+
+# purge everything:
+service.purge_all
+
+# purge by key:
+service.purge_by_key('YOUR_SURROGATE_KEY')
+```
+
+You can also purge without involving the Fastly client at all by sending a POST
+request with your Fastly API key in a `Fastly-Key` header:
+
+```
+curl -H 'Fastly-Key: YOUR_API_KEY' -X POST \
+  https://api.fastly.com/service/YOUR_SERVICE_ID/purge/YOUR_SURROGATE_KEY
+```
+
+See the [Fastly purging API documentation](https://docs.fastly.com/api/purge)
+for more information and examples.
+
+## Usage notes
+
+If you are performing many purges per second we recommend you use the API
+directly with an HTTP client of your choice.  See Efficient Purging above.
+
+fastly-ruby has not been audited for thread-safety.  If you are performing
+actions that require multiple threads (such as performing many purges) we
+recommend you use the API directly.
 
 ## Contributing
 
