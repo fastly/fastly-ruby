@@ -9,7 +9,7 @@ Add fastly to your Gemfile:
 gem 'fastly'
 ```
 
-Create a fastly client
+Create a fastly client:
 
 ```ruby
 # some_file.rb
