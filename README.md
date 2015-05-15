@@ -2,12 +2,16 @@
 
 Client library for interacting with the Fastly web acceleration service [API](http://docs.fastly.com/api)
 
-## Example
+## Examples
+
+Add fastly to your Gemfile:
+```ruby
+gem 'fastly'
+```
+
+Create a fastly client
 
 ```ruby
-# Gemfile
-gem 'fastly'
-
 # some_file.rb
 fastly = Fastly.new(login_opts)
 
@@ -21,8 +25,11 @@ puts "Name: #{user.name}"
 puts "Works for #{user.customer.name}"
 puts "Which is the same as #{customer.name}"
 puts "Which has the owner #{customer.owner.name}"
+```
 
-# Let's see which services we have defined
+List the services we have defined:
+
+```ruby
 fastly.list_services.each do |service|
   puts "Service ID: #{service.id}"
   puts "Service Name: #{service.name}"
@@ -34,29 +41,59 @@ end
 
 service        = fastly.create_service(:name => "MyFirstService")
 latest_version = service.version
+```
 
-# Create a domain and a backend for the service ...
+Create a domain and a backend for the service:
+
+```ruby
 domain         = fastly.create_domain(:service_id => service.id, :version => latest_version.number, :name => "www.example.com")
 backend        = fastly.create_backend(:service_id => service.id, :version => latest_version.number, :name => "Backend 1", :ipv4 => "192.0.43.10", :port => 80)
+```
 
-# ... and activate it. You're now hosted on Fastly.
+Activate the service:
+
+```ruby
 latest_version.activate!
+```
 
-# Let's take a peek at the VCL that Fastly generated for us
+You're now hosted on Fastly.
+
+Let's look at the VCL that Fastly generated for us:
+
+```ruby
 vcl = latest_version.generated_vcl
 puts "Generated VCL file is:\n#{vcl.content}"
+```
 
-# Now let's create a new version ...
+Now let's create a new version:
+
+```ruby
 new_version    = latest_version.clone
-# ... add a new backend ...
+```
+
+Add a new backend:
+
+```ruby
 new_backend    = fastly.create_backend(:service_id => service.id, :version => new_version.number, :name => "Backend 2", :ipv4 => "74.125.224.136", :port => 8080)
-# ... add a director to switch between them
+```
+
+Add a director to switch between them:
+
+```ruby
 director       = fastly.create_director(:service_id => service.id, :version => new_version.number, :name => "My Director")
 director.add_backend(backend)
 director.add_backend(new_backend)
-# ... and upload some custom vcl (presuming we have permissions)
+```
+
+Upload some custom VCL (presuming we have permissions):
+
+```ruby
 new_version.upload_vcl(vcl_name, File.read(vcl_file))
-# ... and set it as the service's main vcl
+```
+
+Set the custom VCL as the service's main VCL
+
+```ruby
 new_version.vcl(vcl_name).set_main!
 
 new_version.activate!
