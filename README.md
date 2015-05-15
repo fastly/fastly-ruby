@@ -121,6 +121,34 @@ new_version.vcl(vcl_name).set_main!
 new_version.activate!
 ```
 
+### Efficient purging
+
+Purging requires your Fastly credentials and the service you want to purge
+content from.  To purge efficiently you do not want to look up the service
+every time you issue a purge:
+
+```ruby
+fastly  = Fastly.new(api_key: 'YOUR_API_KEY')
+service = Fastly::Service.new({ id: 'YOUR_SERVICE_ID' }, fastly)
+
+# purge everything:
+service.purge_all
+
+# purge by key:
+service.purge_by_key('YOUR_SURROGATE_KEY')
+```
+
+You can also purge without involving the Fastly client at all by sending a POST
+request with your Fastly API key in a `Fastly-Key` header:
+
+```
+curl -H 'Fastly-Key: YOUR_API_KEY' -X POST \
+  https://api.fastly.com/service/YOUR_SERVICE_ID/purge/YOUR_SURROGATE_KEY
+```
+
+See the [Fastly purging API documentation](https://docs.fastly.com/api/purge)
+for more information and examples.
+
 ## Contributing
 
 1. Fork it
