@@ -60,11 +60,15 @@ class Fastly
     end
 
     # Purge all assets from this service.
+    #
+    # See README.md for examples of purging
     def purge_all
       fetcher.client.post("#{Service.get_path(id)}/purge_all")
     end
 
     # Purge anything with the specific key from the given service.
+    #
+    # See README.md for examples of purging
     def purge_by_key(key)
       require_api_key!
       fetcher.client.post("#{Service.get_path(id)}/purge/#{key}")
