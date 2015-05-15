@@ -39,15 +39,24 @@ fastly.list_services.each do |service|
   end
 end
 
-service        = fastly.create_service(:name => "MyFirstService")
+service        = fastly.create_service(name: "MyFirstService")
 latest_version = service.version
 ```
 
 Create a domain and a backend for the service:
 
 ```ruby
-domain         = fastly.create_domain(:service_id => service.id, :version => latest_version.number, :name => "www.example.com")
-backend        = fastly.create_backend(:service_id => service.id, :version => latest_version.number, :name => "Backend 1", :ipv4 => "192.0.43.10", :port => 80)
+domain =
+  fastly.create_domain(service_id: service.id,
+                       version: latest_version.number,
+                       name: "www.example.com")
+
+backend =
+  fastly.create_backend(service_id: service.id,
+                        version: latest_version.number,
+                        name: "Backend 1",
+                        ipv4: "192.0.43.10",
+                        port: 80)
 ```
 
 Activate the service:
@@ -62,25 +71,36 @@ Let's look at the VCL that Fastly generated for us:
 
 ```ruby
 vcl = latest_version.generated_vcl
-puts "Generated VCL file is:\n#{vcl.content}"
+
+puts "Generated VCL file is:"
+puts vcl.content
 ```
 
 Now let's create a new version:
 
 ```ruby
-new_version    = latest_version.clone
+new_version = latest_version.clone
 ```
 
 Add a new backend:
 
 ```ruby
-new_backend    = fastly.create_backend(:service_id => service.id, :version => new_version.number, :name => "Backend 2", :ipv4 => "74.125.224.136", :port => 8080)
+new_backend =
+  fastly.create_backend(service_id: service.id,
+                        version: new_version.number,
+                        name: "Backend 2",
+                        ipv4: "74.125.224.136",
+                        port: 8080)
 ```
 
 Add a director to switch between them:
 
 ```ruby
-director       = fastly.create_director(:service_id => service.id, :version => new_version.number, :name => "My Director")
+director =
+  fastly.create_director(service_id: service.id,
+                         version: new_version.number,
+                         name: "My Director")
+
 director.add_backend(backend)
 director.add_backend(new_backend)
 ```
@@ -88,7 +108,9 @@ director.add_backend(new_backend)
 Upload some custom VCL (presuming we have permissions):
 
 ```ruby
-new_version.upload_vcl(vcl_name, File.read(vcl_file))
+custom_vcl = File.read(vcl_file)
+
+new_version.upload_vcl(vcl_name, custom_vcl)
 ```
 
 Set the custom VCL as the service's main VCL
