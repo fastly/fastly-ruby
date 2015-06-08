@@ -15,7 +15,8 @@ class Fastly
 
       base      = opts.fetch(:base_url, 'https://api.fastly.com')
       uri       = URI.parse(base)
-      @http     = Net::HTTP.start(uri.host, uri.port, use_ssl: true)
+      ssl       = uri.is_a? URI::HTTPS  # detect if we should pass `use_ssl`
+      @http     = Net::HTTP.start(uri.host, uri.port, use_ssl: ssl)
 
       return self unless fully_authed?
 
