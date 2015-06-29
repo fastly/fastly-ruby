@@ -147,7 +147,7 @@ class Fastly
     # Validate this Version
     def validate
       hash = fetcher.client.get("#{Version.put_path(self)}/validate")
-      !hash.nil?
+      hash.nil? ? nil : hash
     end
 
     def self.get_path(service, number)
