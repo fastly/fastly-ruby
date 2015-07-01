@@ -61,12 +61,13 @@ class Fastly
     describe '#update_user' do
       let(:email)     { "fastly-ruby-test-#{random_string}-new@example.com" }
       let(:user_name) { 'New User' }
-      let(:user)      { fastly.create_user(login: email, name: user_name) }
+      let(:user)      { fastly.create_user(password: login_opts[:password], login: email, name: user_name) }
       let(:new_name)  { 'New Name' }
 
       it 'should allow us to update the user' do
         assert_instance_of User, user
         user.name = new_name
+        user.password_confirmation = login_opts[:password]
         assert_equal new_name, fastly.update_user(user).name
       end
 

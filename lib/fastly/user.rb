@@ -1,7 +1,7 @@
 class Fastly
   # A representation of a User in Fastly
   class User < Base
-    attr_accessor :id, :name, :login, :customer_id, :role, :password
+    attr_accessor :id, :name, :login, :customer_id, :role, :password, :password_confirmation
     ##
     # :attr: id
     #
@@ -24,6 +24,13 @@ class Fastly
     # :attr: role
     #
     # The role this user has (one of admin, owner, superuser, user, engineer, billing)
+
+    def password_confirmation=(pc)
+      unless @keys.include? 'password_confirmation'
+        @keys << 'password_confirmation'
+      end
+      @password_confirmation = pc
+    end
 
     # Get the Customer object this user belongs to
     def customer
