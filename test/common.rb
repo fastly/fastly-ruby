@@ -173,7 +173,8 @@ module CommonTests
     assert !generated.content.nil?
     assert generated.content.match(/\.port = "9092"/ms)
 
-    assert version3.validate
+    valid = version3.validate
+    assert_equal 'ok', valid['status']
 
     version3.deactivate!
 
