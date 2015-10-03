@@ -13,10 +13,11 @@ class Fastly
       @password = opts.fetch(:password, nil)
       @customer = opts.fetch(:customer, nil)
 
-      base      = opts.fetch(:base_url, 'https://api.fastly.com')
-      uri       = URI.parse(base)
-      ssl       = uri.is_a? URI::HTTPS  # detect if we should pass `use_ssl`
-      @http     = Net::HTTP.start(uri.host, uri.port, use_ssl: ssl)
+      base       = opts.fetch(:base_url, 'https://api.fastly.com')
+      uri        = URI.parse(base)
+      ssl        = uri.is_a? URI::HTTPS  # detect if we should pass `use_ssl`
+      @http      = Net::HTTP.start(uri.host, uri.port, use_ssl: ssl)
+      @semaphore = Mutex.new
 
       return self unless fully_authed?
 
@@ -34,11 +35,6 @@ class Fastly
 
     def require_key!
       raise Fastly::KeyAuthRequired.new("This request requires an API key") if api_key.nil?
-      @require_key = true
-    end
-
-    def require_key?
-      !!@require_key
     end
 
     def authed?
@@ -52,7 +48,10 @@ class Fastly
 
     def get(path, params = {})
       path += "?#{make_params(params)}" unless params.empty?
-      resp  = http.get(path, headers)
+      resp = nil
+      @semaphore.synchronize do
+        resp = http.get(path, headers)
+      end
       fail Error, resp.body unless resp.kind_of?(Net::HTTPSuccess)
       JSON.parse(resp.body)
     end
@@ -77,7 +76,10 @@ class Fastly
     end
 
     def delete(path)
-      resp  = http.delete(path, headers)
+      resp = nil
+      @semaphore.synchronize do
+        http.delete(path, headers)
+      end
       resp.kind_of?(Net::HTTPSuccess)
     end
 
@@ -85,7 +87,10 @@ class Fastly
 
     def post_and_put(method, path, params = {})
       query = make_params(params)
-      resp  = http.send(method, path, query, headers.merge('Content-Type' =>  'application/x-www-form-urlencoded'))
+      resp = nil
+      @semaphore.synchronize do
+        resp = http.send(method, path, query, headers.merge('Content-Type' =>  'application/x-www-form-urlencoded'))
+      end
       fail Error, resp.body unless resp.kind_of?(Net::HTTPSuccess)
       JSON.parse(resp.body)
     end
