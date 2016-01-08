@@ -1,5 +1,6 @@
 language: ruby
 script: 'bundle exec rake test:unit'
+sudo: false
 rvm:
   - '1.9.3'
   - '2.1.1'
