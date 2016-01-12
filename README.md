@@ -132,17 +132,28 @@ every time you issue a purge:
 fastly  = Fastly.new(api_key: 'YOUR_API_KEY')
 service = Fastly::Service.new({ id: 'YOUR_SERVICE_ID' }, fastly)
 
+# purge an individual url
+fastly.purge(url)
+
 # purge everything:
 service.purge_all
 
 # purge by key:
 service.purge_by_key('YOUR_SURROGATE_KEY')
+
+# 'soft' purging
+# see https://docs.fastly.com/guides/purging/soft-purges
+fastly.purge(url, true)
+service.purge_by_key('YOUR_SURROGATE_KEY', true)
 ```
 
 You can also purge without involving the Fastly client at all by sending a POST
 request with your Fastly API key in a `Fastly-Key` header:
 
 ```
+curl -H 'Fastly-Key: YOUR_API_KEY' -X PURGE \
+  YOUR URL
+
 curl -H 'Fastly-Key: YOUR_API_KEY' -X POST \
   https://api.fastly.com/service/YOUR_SERVICE_ID/purge/YOUR_SURROGATE_KEY
 ```
