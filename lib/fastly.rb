@@ -81,8 +81,8 @@ class Fastly
   end
 
   # Purge the specified path from your cache.
-  def purge(path, soft=false)
-    client.post("/purge/#{path}", soft ? { headers: { 'Fastly-Soft-Purge' => "1"} } : {})
+  def purge(url, soft=false)
+    client.purge(url, soft ? { headers: { 'Fastly-Soft-Purge' => "1"} } : {})
   end
 
   # Fetches historical stats for each of your fastly services and groups the results by service id.

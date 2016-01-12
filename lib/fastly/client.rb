@@ -13,6 +13,7 @@ class Fastly
       @user     = opts.fetch(:user, nil)
       @password = opts.fetch(:password, nil)
       @customer = opts.fetch(:customer, nil)
+      @oldpurge = opts.fetch(:use_old_purge_method, false)  
 
       certificate_store = opts.fetch(:certificate_store, ROOT_CA)
 
@@ -90,6 +91,18 @@ class Fastly
       resp.kind_of?(Net::HTTPSuccess)
     end
 
+    def purge(url, params = {})
+      return post("/purge/#{url}", params) if @oldpurge
+
+      extras = params.delete(:headers) || {}
+      uri    = URI.parse(url)
+      http   = Net::HTTP.new(uri.host, uri.port)
+      resp   = http.request Net::HTTP::Purge.new(uri.request_uri, headers(extras))
+
+      fail Error, resp.body unless resp.kind_of?(Net::HTTPSuccess)
+      JSON.parse(resp.body)
+    end
+
     private
 
     def post_and_put(method, path, params = {})
@@ -122,4 +135,11 @@ class Fastly
       param_ary.flatten.delete_if { |v| v.nil? }.join('&')
     end
   end
+end
+
+# See Net::HTTPGenericRequest for attributes and methods.
+class Net::HTTP::Purge < Net::HTTPRequest
+  METHOD = 'PURGE'
+  REQUEST_HAS_BODY = false
+  RESPONSE_HAS_BODY = true
 end
