@@ -158,9 +158,9 @@ curl -H 'Fastly-Key: YOUR_API_KEY' -X POST \
   https://api.fastly.com/service/YOUR_SERVICE_ID/purge/YOUR_SURROGATE_KEY
 ```
 
-Previously purging made an API call to the C</purge> endpoint of the Fastly API.
+Previously purging made an API call to the `/purge` endpoint of the Fastly API.
 
-The new method of purging is done by making an HTTP request against the URL using the C<PURGE> HTTP method.
+The new method of purging is done by making an HTTP request against the URL using the `PURGE` HTTP method.
 
 This gem now uses the new method. The old method can be used by passing the `use_old_purge_method` option into the constructor.
 
