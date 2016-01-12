@@ -85,7 +85,7 @@ class Fastly
       post_and_put(:put, path, params)
     end
 
-    def delete(path)
+    def delete(path, params = {})
       extras = params.delete(:headers) || {}
       resp  = http.delete(path, headers(extras))
       resp.kind_of?(Net::HTTPSuccess)
