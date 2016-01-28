@@ -73,13 +73,6 @@ class Fastly
     @current_user ||= get(User)
   end
 
-  # Return a hash representing all commands available.
-  #
-  # Useful for information.
-  def commands
-    client.get('/commands')
-  end
-
   # Purge the specified path from your cache.
   def purge(path)
     client.post("/purge/#{path}")
