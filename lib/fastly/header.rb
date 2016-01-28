@@ -1,7 +1,7 @@
 class Fastly
   # customize headers. Best used with conditions.
   class Header < BelongsToServiceAndVersion
-    attr_accessor :service_id, :name, :action, :cache_condition, :request_condition, :response_condition, :ignore_if_set, :type, :dst, :src, :substitution, :priority, :regexp
+    attr_accessor :service_id, :name, :action, :cache_condition, :request_condition, :response_condition, :ignore_if_set, :type, :dst, :src, :substitution, :priority, :regex
 
     ##
     # :attr: service_id
@@ -54,7 +54,7 @@ class Fastly
     # to the 'delete' action.
 
     ##
-    # :attr: regexp
+    # :attr: regex
     #
     # Regular expression to use with the 'regex' and 'regex_repeat' actions.
 
