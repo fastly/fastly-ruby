@@ -187,7 +187,7 @@ class Fastly
   # opts must contain service_id, version and name params
 
   ##
-  # :method: reate_domain(opts)
+  # :method: create_domain(opts)
   # opts must contain service_id, version and name params
 
   ##
