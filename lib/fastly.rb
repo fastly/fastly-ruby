@@ -13,6 +13,7 @@ require 'fastly/backend'
 require 'fastly/cache_setting'
 require 'fastly/condition'
 require 'fastly/customer'
+require 'fastly/dictionary'
 require 'fastly/director'
 require 'fastly/domain'
 require 'fastly/header'
@@ -137,12 +138,18 @@ class Fastly
     client.get_stats('/stats/regions')
   end
 
-  [User, Customer, Backend, CacheSetting, Condition, Director, Domain, Header, Healthcheck, Gzip, Match, Origin, RequestSetting, ResponseObject, Service, S3Logging, Syslog, VCL, Version].each do |klass|
+  [User, Customer, Backend, CacheSetting, Condition, Dictionary, Director, Domain, Header, Healthcheck, Gzip, Match, Origin, RequestSetting, ResponseObject, Service, S3Logging, Syslog, VCL, Version].each do |klass|
     type = Util.class_to_path(klass)
 
+    if klass.respond_to?(:pluralize)
+      plural = klass.pluralize
+    else
+      plural = "#{type}s"
+    end
+
     # unless the class doesn't have a list path or it already exists
-    unless klass.list_path.nil? || klass.respond_to?("list_#{type}s".to_sym)
-      send :define_method, "list_#{type}s".to_sym do |*args|
+    unless klass.list_path.nil? || klass.respond_to?("list_#{plural}".to_sym)
+      send :define_method, "list_#{plural}".to_sym do |*args|
         list(klass, *args)
       end
     end
@@ -169,6 +176,10 @@ class Fastly
 
   ##
   # :method: create_backend(opts)
+  # opts must contain service_id, version and name params
+
+  ##
+  # :method: create_dictionary(opts)
   # opts must contain service_id, version and name params
 
   ##
@@ -246,6 +257,10 @@ class Fastly
   ##
   # :method: get_backend(service_id, number, name)
   # Get a backend
+
+  ##
+  # :method: get_dictionary(service_id, number, name)
+  # Get a single dictionary
 
   ##
   # :method: get_director(service_id, number, name)
@@ -335,6 +350,11 @@ class Fastly
   # :method: update_backend(backend)
   # You can also call
   #    backend.save!
+
+  ##
+  # :method: update_dictionary(dictionary)
+  # You can also call
+  #    dictionary.save!
 
   ##
   # :method: update_director(director)
@@ -442,6 +462,11 @@ class Fastly
   #    backend.delete!
 
   ##
+  # :method: delete_dictionary(dictionary)
+  # You can also call
+  #    dictionary.delete!
+
+  ##
   # :method: delete_director(backend)
   # You can also call
   #    backend.delete!
@@ -539,6 +564,10 @@ class Fastly
   # :method: list_directors(:service_id => service.id, :version => version.number)
   #
   # Get a list of all directors
+
+  # :method: list_dictionaries(:service_id => service.id, :version => version.number)
+  #
+  # Get a list of all dictionaries
 
   # :method: list_domains(:service_id => service.id, :version => version.number)
   #

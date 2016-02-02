@@ -144,6 +144,10 @@ class Fastly
       hash.nil? ? nil : hash
     end
 
+    def dictionaries
+      fetcher.list_dictionaries(:service_id => service_id, :version => number)
+    end
+
     # Validate this Version
     def validate
       hash = fetcher.client.get("#{Version.put_path(self)}/validate")
