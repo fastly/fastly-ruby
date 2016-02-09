@@ -19,7 +19,6 @@ class Fastly
       @http     = Net::HTTP.start(uri.host, uri.port, use_ssl: ssl)
 
       http.verify_mode  = OpenSSL::SSL::VERIFY_PEER
-      http.verify_depth = 5
 
       return self unless fully_authed?
 
