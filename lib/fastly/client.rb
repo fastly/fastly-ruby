@@ -13,12 +13,18 @@ class Fastly
       @password = opts.fetch(:password, nil)
       @customer = opts.fetch(:customer, nil)
 
-      base      = opts.fetch(:base_url, 'https://api.fastly.com')
-      uri       = URI.parse(base)
-      ssl       = uri.is_a? URI::HTTPS  # detect if we should pass `use_ssl`
-      @http     = Net::HTTP.start(uri.host, uri.port, use_ssl: ssl)
+      base    = opts.fetch(:base_url, 'https://api.fastly.com')
+      uri     = URI.parse(base)
+      options = if uri.is_a? URI::HTTPS
+                  {
+                    use_ssl: true,
+                    verify_mode: OpenSSL::SSL::VERIFY_PEER
+                  }
+                else
+                  {}
+                end
 
-      http.verify_mode  = OpenSSL::SSL::VERIFY_PEER
+      @http = Net::HTTP.start(uri.host, uri.port, options)
 
       return self unless fully_authed?
 
