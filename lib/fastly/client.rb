@@ -5,7 +5,6 @@ require 'net/http' # also requires uri
 class Fastly
   # The UserAgent to communicate with the API
   class Client #:nodoc: all
-    ROOT_CA = File.join("../../cacert.pem", __FILE__)
     attr_accessor :http, :api_key, :user, :password, :cookie, :customer
 
     def initialize(opts)
@@ -14,16 +13,18 @@ class Fastly
       @password = opts.fetch(:password, nil)
       @customer = opts.fetch(:customer, nil)
 
-      certificate_store = opts.fetch(:certificate_store, ROOT_CA)
+      base    = opts.fetch(:base_url, 'https://api.fastly.com')
+      uri     = URI.parse(base)
+      options = if uri.is_a? URI::HTTPS
+                  {
+                    use_ssl: true,
+                    verify_mode: OpenSSL::SSL::VERIFY_PEER
+                  }
+                else
+                  {}
+                end
 
-      base      = opts.fetch(:base_url, 'https://api.fastly.com')
-      uri       = URI.parse(base)
-      ssl       = uri.is_a? URI::HTTPS  # detect if we should pass `use_ssl`
-      @http     = Net::HTTP.start(uri.host, uri.port, use_ssl: ssl)
-
-      http.ca_path      = certificate_store
-      http.verify_mode  = OpenSSL::SSL::VERIFY_PEER
-      http.verify_depth = 5
+      @http = Net::HTTP.start(uri.host, uri.port, options)
 
       return self unless fully_authed?
 
