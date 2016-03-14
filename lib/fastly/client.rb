@@ -1,6 +1,7 @@
 require 'json'
 require 'cgi'
 require 'net/http' # also requires uri
+require 'openssl'
 
 class Fastly
   # The UserAgent to communicate with the API
