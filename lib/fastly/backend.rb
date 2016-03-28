@@ -2,7 +2,9 @@ class Fastly
   # An individual host you want to serve assets off
   class Backend < BelongsToServiceAndVersion
     attr_accessor :service_id, :name, :address, :ipv4, :ipv6, :hostname, :use_ssl, :client_cert, :port,
-                  :connect_timeout, :first_byte_timeout, :between_bytes_timeout, :error_threshold, :max_conn, :weight, :comment, :healthcheck, :auto_loadbalance, :request_condition
+                  :connect_timeout, :first_byte_timeout, :between_bytes_timeout, :error_threshold, :max_conn, :weight, :comment, :healthcheck, :auto_loadbalance, :request_condition,
+                  :ssl_check_cert, :ssl_hostname, :ssl_cert_hostname, :ssl_sni_hostname, :min_tls_version, :max_tls_version, :ssl_ciphers,
+                  :shield
 
     ##
     # :attr: service_id
@@ -109,5 +111,46 @@ class Fastly
     # :attr: request_condition
     #
     # name of a request_condition to filter the backend on
+
+    ##
+    # :attr: ssl_check_cert
+    #
+    # be strict on checking SSL certs.
+
+    ##
+    # :attr: ssl_hostname
+    #
+    # used for both SNI during the TLS handshake and to validate the cert.
+
+    ##
+    # :attr: ssl_cert_hostname 
+    #
+    # overrides ssl_hostname, but only for cert verification. Does not affect SNI at all.
+
+    ##
+    # :attr: ssl_sni_hostname 
+    #
+    # overrides ssl_hostname, but only for SNI in the handshake. Does not affect cert validation at all.
+
+    ##
+    # :attr: min_tls_version 
+    #
+    # minimum allowed TLS version on ssl connections to this backend
+
+    ##
+    # :attr: max_tls_version
+    #
+    # maximum allowed TLS version on ssl connections to this backend.
+
+    ##
+    # :attr: ssl_ciphers 
+    #
+    # list of openssl ciphers (see https://www.openssl.org/docs/manmaster/apps/ciphers.html for details)
+
+    ##
+    # :attr: shield
+    #
+    # name of a datacenter to shield requests
+
   end
 end

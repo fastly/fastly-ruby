@@ -1,7 +1,7 @@
 class Fastly
   # An s3 endpoint to stream logs to
   class S3Logging < BelongsToServiceAndVersion
-    attr_accessor :service_id, :name, :bucket_name, :access_key, :secret_key, :path, :period, :gzip_level, :format, :response_condition
+    attr_accessor :service_id, :name, :bucket_name, :access_key, :secret_key, :path, :period, :gzip_level, :format, :response_condition, :timestamp_format
 
     ##
     # :attr: service_id
@@ -58,6 +58,11 @@ class Fastly
     # :attr: response_condition
     #
     # When to execute the s3 logging. If empty, always execute.
+
+    ##
+    # :attr: timestamp_format
+    #
+    # strftime specified timestamp formatting (default "%Y-%m-%dT%H:%M:%S.000").
 
     def self.path
       'logging/s3'
