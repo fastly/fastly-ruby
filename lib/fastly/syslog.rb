@@ -1,7 +1,7 @@
 class Fastly
   # An endpoint to stream syslogs to
   class Syslog < BelongsToServiceAndVersion
-    attr_accessor :service_id, :name, :comment, :ipv4, :ipv6, :hostname, :port, :format, :response_conditions, :use_tls, :tls_hostname, :tls_ca_cert 
+    attr_accessor :service_id, :name, :comment, :ipv4, :ipv6, :hostname, :port, :token, :format, :response_conditions, :use_tls, :tls_hostname, :tls_ca_cert
 
     ##
     # :attr: service_id
@@ -52,6 +52,11 @@ class Fastly
     # :attr: port
     #
     # the port to stream logs to (defaults to 514)
+
+    ##
+    # :attr: token
+    #
+    # Whether to prepend each message with a specific token.
 
     ##
     # :attr: format
