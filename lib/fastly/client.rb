@@ -13,6 +13,7 @@ class Fastly
       @user     = opts.fetch(:user, nil)
       @password = opts.fetch(:password, nil)
       @customer = opts.fetch(:customer, nil)
+      @oldpurge = opts.fetch(:use_old_purge_method, false)  
 
       base    = opts.fetch(:base_url, 'https://api.fastly.com')
       uri     = URI.parse(base)
@@ -60,8 +61,9 @@ class Fastly
     end
 
     def get(path, params = {})
+      extras = params.delete(:headers) || {}
       path += "?#{make_params(params)}" unless params.empty?
-      resp  = http.get(path, headers)
+      resp  = http.get(path, headers(extras))
       fail Error, resp.body unless resp.kind_of?(Net::HTTPSuccess)
       JSON.parse(resp.body)
     end
@@ -85,23 +87,37 @@ class Fastly
       post_and_put(:put, path, params)
     end
 
-    def delete(path)
-      resp  = http.delete(path, headers)
+    def delete(path, params = {})
+      extras = params.delete(:headers) || {}
+      resp  = http.delete(path, headers(extras))
       resp.kind_of?(Net::HTTPSuccess)
+    end
+
+    def purge(url, params = {})
+      return post("/purge/#{url}", params) if @oldpurge
+
+      extras = params.delete(:headers) || {}
+      uri    = URI.parse(url)
+      http   = Net::HTTP.new(uri.host, uri.port)
+      resp   = http.request Net::HTTP::Purge.new(uri.request_uri, headers(extras))
+
+      fail Error, resp.body unless resp.kind_of?(Net::HTTPSuccess)
+      JSON.parse(resp.body)
     end
 
     private
 
     def post_and_put(method, path, params = {})
+      extras = params.delete(:headers) || {}
       query = make_params(params)
-      resp  = http.send(method, path, query, headers.merge('Content-Type' =>  'application/x-www-form-urlencoded'))
+      resp  = http.send(method, path, query, headers(extras).merge('Content-Type' =>  'application/x-www-form-urlencoded'))
       fail Error, resp.body unless resp.kind_of?(Net::HTTPSuccess)
       JSON.parse(resp.body)
     end
 
-    def headers
+    def headers(extras={})
       headers = fully_authed? ? { 'Cookie' => cookie } : { 'Fastly-Key' => api_key }
-      headers.merge('Content-Accept' => 'application/json')
+      headers.merge('Content-Accept' => 'application/json').merge(extras.keep_if {|k,v| !v.nil? })
     end
 
     def make_params(params)
@@ -121,4 +137,11 @@ class Fastly
       param_ary.flatten.delete_if { |v| v.nil? }.join('&')
     end
   end
+end
+
+# See Net::HTTPGenericRequest for attributes and methods.
+class Net::HTTP::Purge < Net::HTTPRequest
+  METHOD = 'PURGE'
+  REQUEST_HAS_BODY = false
+  RESPONSE_HAS_BODY = true
 end
