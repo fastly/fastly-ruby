@@ -22,6 +22,32 @@ class Fastly
         assert_instance_of Hash, client.get('/current_customer')
         assert_instance_of Customer, fastly.current_customer
       end
+
+      describe 'purging' do
+        before do
+          @opts = login_opts(:api_key)
+            @client = Fastly::Client.new(@opts)
+            @fastly = Fastly.new(@opts)
+          service_name = "fastly-test-service-#{random_string}"
+          @service      = @fastly.create_service(:name => service_name)
+        end
+
+        after do
+          @fastly.delete_service(@service)
+        end
+
+        it 'allows purging' do
+          response = @service.purge_by_key('somekey')
+
+          assert_equal 'ok', response['status']
+        end
+
+        it 'allows soft purging' do
+          response = @service.purge_by_key('somekey', soft: true)
+
+          assert_equal 'ok', response['status']
+        end
+      end
     end
   end
 end
