@@ -13,7 +13,7 @@ class Fastly
       @user     = opts.fetch(:user, nil)
       @password = opts.fetch(:password, nil)
       @customer = opts.fetch(:customer, nil)
-      @oldpurge = opts.fetch(:use_old_purge_method, false)  
+      @oldpurge = opts.fetch(:use_old_purge_method, false)
 
       base    = opts.fetch(:base_url, 'https://api.fastly.com')
       uri     = URI.parse(base)
@@ -117,7 +117,7 @@ class Fastly
 
     def headers(extras={})
       headers = fully_authed? ? { 'Cookie' => cookie } : { 'Fastly-Key' => api_key }
-      headers.merge('Content-Accept' => 'application/json').merge(extras.keep_if {|k,v| !v.nil? })
+      headers.merge('Content-Accept' => 'application/json', 'User-Agent' => 'fastly-ruby-v#{Fastly::VERSION}').merge(extras.keep_if {|k,v| !v.nil? })
     end
 
     def make_params(params)
