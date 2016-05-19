@@ -1,5 +1,8 @@
 # Changelog
 
+### 1.4.1 / 2016-05-19
+  * Adds User-Agent to headers
+
 ### 1.4.0 / 2016-05-09
   * Adds support for soft purge for a service
 
