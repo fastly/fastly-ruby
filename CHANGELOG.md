@@ -2,10 +2,19 @@
 
 ## [Unreleased](https://github.com/fastly/fastly-ruby/tree/HEAD)
 
-[Full Changelog](https://github.com/fastly/fastly-ruby/compare/v1.4.1...HEAD)
+[Full Changelog](https://github.com/fastly/fastly-ruby/compare/v1.4.2...HEAD)
 
 **Merged pull requests:**
 
+- Reintroduced :locked so the version.locked? check works [\#83](https://github.com/fastly/fastly-ruby/pull/83) ([eddieroger](https://github.com/eddieroger))
+
+## [v1.4.2](https://github.com/fastly/fastly-ruby/tree/v1.4.2) (2016-05-23)
+[Full Changelog](https://github.com/fastly/fastly-ruby/compare/v1.4.1...v1.4.2)
+
+**Merged pull requests:**
+
+- Version\#locked and \#active are boolean values [\#81](https://github.com/fastly/fastly-ruby/pull/81) ([lanej](https://github.com/lanej))
+- Update README [\#80](https://github.com/fastly/fastly-ruby/pull/80) ([tijmenb](https://github.com/tijmenb))
 - Add Edge Dictionaries [\#69](https://github.com/fastly/fastly-ruby/pull/69) ([alexmuller](https://github.com/alexmuller))
 - Validate was always returning true [\#55](https://github.com/fastly/fastly-ruby/pull/55) ([ljagiello](https://github.com/ljagiello))
 
