@@ -50,12 +50,7 @@ class Fastly
 
     # Is this Version locked
     def locked?
-      @locked.to_i > 0
-    end
-
-    # Set whether this Version is locked
-    def locked=(is_locked)
-      @locked = is_locked ? '1' : '0'
+      true == @locked
     end
 
     # Get the Service object this Version belongs to
@@ -70,7 +65,7 @@ class Fastly
 
     # Is version active?
     def active?
-      @active.to_i > 0
+      true == @active
     end
 
     # Activate this version
