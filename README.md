@@ -208,7 +208,7 @@ Copyright 2011-2014 - Fastly Inc
 
 ## Redistribution
 
-MIT license, see LICENSE.
+MIT license, see [LICENSE](LICENSE).
 
 ## Contact
 
