@@ -1,7 +1,7 @@
 class Fastly
   # An iteration of your configuration
   class Version < Base
-    attr_accessor :service_id, :number, :name, :active, :staging, :testing, :deployed, :comment
+    attr_accessor :service_id, :number, :name, :active, :staging, :testing, :deployed, :comment, :locked
 
     ##
     # :attr: service_id
