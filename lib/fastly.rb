@@ -46,9 +46,18 @@ class Fastly
   #
   # Some methods require full username and password rather than just auth token.
   def initialize(opts)
+    if (opts[:api_key].nil?  &&  opts[:password] && opts[:user].nil?)
+      opts[:user] = opts.fetch(:username)
+    end
+    
     client(opts)
     self
   end
+
+   # if opts[:aggregate] && (opts[:field] || opts[:service])
+   #    fail Error, "You can't specify a field or a service for an aggregate request"
+   #  end
+
 
   # Whether or not we're authed at all by either username & password or API key
   def authed?
