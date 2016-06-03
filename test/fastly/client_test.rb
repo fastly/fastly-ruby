@@ -1,11 +1,12 @@
 require 'test_helper'
 
 describe Fastly::Client do
-  let(:user)        { "test@example.com" }
+  let(:user)          { "test@example.com" }
   let(:password)    { "notasecret" }
   let(:api_key)     { "notasecreteither" }
+  
 
-  describe 'initialize' do
+  describe 'initialize' do    
     it 'raises ArgumentError when no options provided' do
       assert_raises(ArgumentError) {
         Fastly::Client.new()
@@ -45,6 +46,17 @@ describe Fastly::Client do
       client = Fastly::Client.new(user: user, password: pass)
       assert_equal "tasty!", client.cookie
     end
+
+    it 'accepts username in place of user as an option' do
+      stub_request(:any, /api.fastly.com/).
+        to_return(body: JSON.generate(i: "dont care"), status: 200, headers: { 'Set-Cookie' => 'tasty!' })
+
+      fastly = Fastly.new(username: user, password: pass)
+
+      assert_equal fastly.client.user, user
+      assert_equal "tasty!", fastly.client.cookie
+    end
+
   end
 
   describe 'get' do
