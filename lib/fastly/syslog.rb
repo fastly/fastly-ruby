@@ -1,7 +1,7 @@
 class Fastly
   # An endpoint to stream syslogs to
   class Syslog < BelongsToServiceAndVersion
-    attr_accessor :service_id, :name, :comment, :ipv4, :ipv6, :hostname, :port, :format, :response_conditions
+    attr_accessor :service_id, :name, :comment, :ipv4, :ipv6, :hostname, :port, :token, :format, :response_conditions, :use_tls, :tls_hostname, :tls_ca_cert
 
     ##
     # :attr: service_id
@@ -54,6 +54,11 @@ class Fastly
     # the port to stream logs to (defaults to 514)
 
     ##
+    # :attr: token
+    #
+    # Whether to prepend each message with a specific token.
+
+    ##
     # :attr: format
     #
     # Format to log like in apache format
@@ -62,5 +67,22 @@ class Fastly
     # :attr: response_condition
     #
     # name of a response_condition to filter the log on, if empty it always logs
+
+    ##
+    # :attr: use_tls
+    #
+    # Establish a TLS connection when connecting
+
+    ##
+    # :attr: tls_hostname
+    #
+    # Hostname used to verify the certificate. It can either be the CN or be in
+    # subAltNames. Not required.
+
+    ##
+    # :attr: tls_ca_cert
+    #
+    # Use this pem formatted certificate as the CA cert to verify the syslog
+    # server's certificate
   end
 end

@@ -1,7 +1,7 @@
 class Fastly
   # An s3 endpoint to stream logs to
   class S3Logging < BelongsToServiceAndVersion
-    attr_accessor :service_id, :name, :bucket_name, :access_key, :secret_key, :path, :period, :gzip_level, :format, :response_condition
+    attr_accessor :service_id, :name, :bucket_name, :access_key, :secret_key, :path, :period, :gzip_level, :format, :response_condition, :timestamp_format, :domain, :redundancy
 
     ##
     # :attr: service_id
@@ -58,6 +58,26 @@ class Fastly
     # :attr: response_condition
     #
     # When to execute the s3 logging. If empty, always execute.
+
+    ##
+    # :attr: timestamp_format
+    #
+    # strftime specified timestamp formatting (default "%Y-%m-%dT%H:%M:%S.000").
+
+    ##
+    # :attr: domain
+    #
+    # The region-specific endpoint for your domain if your AWS S3 bucket was not
+    # set up in the US Standard region. See Amazon's list of supported,
+    # region-specific endpoints for more info.
+    # http://docs.aws.amazon.com/general/latest/gr/rande.html#s3_region
+
+    ##
+    # :attr: redundancy
+    #
+    # The S3 redundancy level. Defaults to Standard. See
+    # http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingRRS.html  on using reduced
+    # redundancy storage for more information.
 
     def self.path
       'logging/s3'

@@ -132,19 +132,42 @@ every time you issue a purge:
 fastly  = Fastly.new(api_key: 'YOUR_API_KEY')
 service = Fastly::Service.new({ id: 'YOUR_SERVICE_ID' }, fastly)
 
+# purge an individual url
+fastly.purge(url)
+
 # purge everything:
 service.purge_all
 
 # purge by key:
 service.purge_by_key('YOUR_SURROGATE_KEY')
+
+# 'soft' purging
+# see https://docs.fastly.com/guides/purging/soft-purges
+fastly.purge(url, true)
+service.purge_by_key('YOUR_SURROGATE_KEY', true)
 ```
 
-You can also purge without involving the Fastly client at all by sending a POST
-request with your Fastly API key in a `Fastly-Key` header:
+You can also purge without involving the Fastly client by sending a PURGE request directly
+to the URL you want to purge. You can also send a POST request to the API with your Fastly API key
+in a `Fastly-Key` header:
 
 ```
+curl -X PURGE YOUR URL
+
 curl -H 'Fastly-Key: YOUR_API_KEY' -X POST \
   https://api.fastly.com/service/YOUR_SERVICE_ID/purge/YOUR_SURROGATE_KEY
+```
+
+Previously purging made an POST call to the `/purge` endpoint of the Fastly API.
+
+The new method of purging is done by making an HTTP request against the URL using the `PURGE` HTTP method.
+
+This gem now uses the new method. The old method can be used by passing the `use_old_purge_method` option into the constructor.
+
+```ruby
+fastly = Fastly.new(login_opts.merge(use_old_purge_method: true))
+fastly.purge(url, true)
+service.purge_by_key('YOUR_SURROGATE_KEY', true)
 ```
 
 See the [Fastly purging API documentation](https://docs.fastly.com/api/purge)
@@ -185,7 +208,7 @@ Copyright 2011-2014 - Fastly Inc
 
 ## Redistribution
 
-MIT license, see LICENSE.
+MIT license, see [LICENSE](LICENSE).
 
 ## Contact
 

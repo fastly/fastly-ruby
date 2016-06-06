@@ -1,7 +1,7 @@
 class Fastly
   # An iteration of your configuration
   class Version < Base
-    attr_accessor :service_id, :number, :name, :active, :staging, :testing, :deployed, :comment
+    attr_accessor :service_id, :number, :name, :active, :staging, :testing, :deployed, :comment, :locked
 
     ##
     # :attr: service_id
@@ -50,12 +50,7 @@ class Fastly
 
     # Is this Version locked
     def locked?
-      @locked.to_i > 0
-    end
-
-    # Set whether this Version is locked
-    def locked=(is_locked)
-      @locked = is_locked ? '1' : '0'
+      true == @locked
     end
 
     # Get the Service object this Version belongs to
@@ -70,7 +65,7 @@ class Fastly
 
     # Is version active?
     def active?
-      @active.to_i > 0
+      true == @active
     end
 
     # Activate this version
@@ -151,7 +146,11 @@ class Fastly
     # Validate this Version
     def validate
       hash = fetcher.client.get("#{Version.put_path(self)}/validate")
-      !hash.nil?
+
+      valid = ("ok" == hash["status"])
+      message = hash['msg']
+
+      [valid, message]
     end
 
     def self.get_path(service, number)

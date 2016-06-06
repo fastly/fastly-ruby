@@ -76,8 +76,8 @@ class Fastly
   end
 
   # Purge the specified path from your cache.
-  def purge(path)
-    client.post("/purge/#{path}")
+  def purge(url, soft=false)
+    client.purge(url, soft ? { headers: { 'Fastly-Soft-Purge' => "1"} } : {})
   end
 
   # Fetches historical stats for each of your fastly services and groups the results by service id.
@@ -142,7 +142,7 @@ class Fastly
   [User, Customer, Backend, CacheSetting, Condition, Dictionary, DictionaryItem, Director, Domain, Header, Healthcheck, Gzip, Match, Origin, RequestSetting, ResponseObject, Service, S3Logging, Syslog, VCL, Version].each do |klass|
     type = Util.class_to_path(klass)
 
-    if klass.respond_to?('pluralize'.to_sym)
+    if klass.respond_to?(:pluralize)
       plural = klass.pluralize
     else
       plural = "#{type}s"
