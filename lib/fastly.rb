@@ -54,11 +54,6 @@ class Fastly
     self
   end
 
-   # if opts[:aggregate] && (opts[:field] || opts[:service])
-   #    fail Error, "You can't specify a field or a service for an aggregate request"
-   #  end
-
-
   # Whether or not we're authed at all by either username & password or API key
   def authed?
     client.authed?
