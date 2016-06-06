@@ -47,14 +47,10 @@ describe Fastly::Client do
       assert_equal "tasty!", client.cookie
     end
 
-    it 'accepts username in place of user as an option' do
-      stub_request(:any, /api.fastly.com/).
-        to_return(body: JSON.generate(i: "dont care"), status: 200, headers: { 'Set-Cookie' => 'tasty!' })
-
-      fastly = Fastly.new(username: user, password: pass)
-
-      assert_equal fastly.client.user, user
-      assert_equal "tasty!", fastly.client.cookie
+    it 'raises an Error if username is used in place of user as an option' do
+      assert_raises(ArgumentError) do
+        fastly = Fastly.new(username: user, password: pass)
+      end
     end
 
   end
