@@ -21,7 +21,7 @@ class Fastly
     end
 
     def self.put_path(opts)
-      get_path(obj.service_id, obj.dictionary_id, obj.item_key)
+      get_path(opts[:service_id], opts[:dictionary_id], opts[:item_key])
     end
 
     def self.delete_path(obj)

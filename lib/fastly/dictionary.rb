@@ -10,6 +10,10 @@ class Fastly
       fetcher.create_dictionary_item(service_id: service_id, dictionary_id: id, item_key: key, item_value: value)
     end
 
+    def update_item(key, value)
+      fetcher.update_dictionary_item(service_id: service_id, dictionary_id: id, item_key: key, item_value: value)
+    end
+
     def delete_item(key)
       fetcher.delete_dictionary_item(service_id: service_id, dictionary_id: id, item_key: key)
     end
