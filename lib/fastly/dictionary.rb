@@ -11,7 +11,7 @@ class Fastly
     end
 
     def update_item(key, value)
-      di = items.select {|di| di.item_key.eql? key }.first
+      di = items.select {|item| item.item_key.eql? key }.first
       if di
         di.item_value = value
         fetcher.update_dictionary_item(di)
