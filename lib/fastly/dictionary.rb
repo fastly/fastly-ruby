@@ -11,7 +11,13 @@ class Fastly
     end
 
     def update_item(key, value)
-      fetcher.update_dictionary_item(service_id: service_id, dictionary_id: id, item_key: key, item_value: value)
+      di = items.select {|di| di.item_key.eql? key }.first
+      if di
+        di.item_value = value
+        fetcher.update_dictionary_item(di)
+      else
+        add_item(key, value)
+      end
     end
 
     def delete_item(key)
