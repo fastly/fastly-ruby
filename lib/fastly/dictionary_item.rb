@@ -30,7 +30,7 @@ class Fastly
     end
 
     def self.delete_path(obj)
-      put_path(obj)
+      put_path({service_id: obj.service_id, dictionary_id: obj.dictionary_id})
     end
 
     def self.list_path(opts = {})
