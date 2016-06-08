@@ -52,7 +52,7 @@ describe Fastly::Client do
         fastly = Fastly.new(username: user, password: pass)
       end
     end
-
+    
   end
 
   describe 'get' do
