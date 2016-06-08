@@ -46,6 +46,10 @@ class Fastly
   #
   # Some methods require full username and password rather than just auth token.
   def initialize(opts)
+    if (opts[:password] && opts[:user].nil?)
+      opts[:user] || raise(ArgumentError, ':user is required')
+    end
+    
     client(opts)
     self
   end
