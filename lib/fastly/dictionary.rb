@@ -21,7 +21,8 @@ class Fastly
     end
 
     def delete_item(key)
-      fetcher.delete_dictionary_item(service_id: service_id, dictionary_id: id, item_key: key)
+      di = items.select {|item| item.item_key.eql? key }.first
+      fetcher.delete_dictionary_item(di) if di
     end
 
     def self.pluralize
