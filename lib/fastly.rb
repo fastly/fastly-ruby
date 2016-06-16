@@ -47,10 +47,10 @@ class Fastly
   #
   # Some methods require full username and password rather than just auth token.
   def initialize(opts)
-    if opts[:api_key].nil? || (opts[:password] && opts[:user].nil?)
-      raise ArgumentError, "Required options missing. Please pass either key or both user and password."
+    if opts[:api_key].nil? && (opts[:password].nil? || opts[:user].nil?)
+      raise ArgumentError, "Required options missing. Please pass either ':api_key' or both ':user' and ':password'."
     end
-    
+
     client(opts)
     self
   end
