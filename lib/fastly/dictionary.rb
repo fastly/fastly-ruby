@@ -6,6 +6,9 @@ class Fastly
       fetcher.list_dictionary_items(:service_id => service_id, :dictionary_id => id)
     end
 
+    # Returns a Fastly::DictionaryItem corresponding to this dictionary and the +key+
+    #
+    # * +key+ - Key of the dictionary item
     def item(key)
       fetcher.get_dictionary_item(service_id, id, key)
     end
