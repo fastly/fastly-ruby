@@ -14,6 +14,7 @@ require 'fastly/cache_setting'
 require 'fastly/condition'
 require 'fastly/customer'
 require 'fastly/dictionary'
+require 'fastly/dictionary_item'
 require 'fastly/director'
 require 'fastly/domain'
 require 'fastly/header'
@@ -142,7 +143,7 @@ class Fastly
     client.get_stats('/stats/regions')
   end
 
-  [User, Customer, Backend, CacheSetting, Condition, Dictionary, Director, Domain, Header, Healthcheck, Gzip, Match, Origin, RequestSetting, ResponseObject, Service, S3Logging, Syslog, VCL, Version].each do |klass|
+  [User, Customer, Backend, CacheSetting, Condition, Dictionary, DictionaryItem, Director, Domain, Header, Healthcheck, Gzip, Match, Origin, RequestSetting, ResponseObject, Service, S3Logging, Syslog, VCL, Version].each do |klass|
     type = Util.class_to_path(klass)
 
     if klass.respond_to?(:pluralize)
@@ -185,6 +186,10 @@ class Fastly
   ##
   # :method: create_dictionary(opts)
   # opts must contain service_id, version and name params
+
+  ##
+  # :method: create_dictionary_item(opts)
+  # opts must contain service_id, dictionary_id, item_key and item_value params
 
   ##
   # :method: create_director(opts)
@@ -265,6 +270,10 @@ class Fastly
   ##
   # :method: get_dictionary(service_id, number, name)
   # Get a single dictionary
+
+  ##
+  # :method: get_dictionary_item(service_id, dictionary_id, name)
+  # Get a single dictionary item
 
   ##
   # :method: get_director(service_id, number, name)
@@ -359,6 +368,11 @@ class Fastly
   # :method: update_dictionary(dictionary)
   # You can also call
   #    dictionary.save!
+
+  ##
+  # :method: update_dictionary_item(dictionary_item)
+  # You can also call
+  #    dictionary_item.save!
 
   ##
   # :method: update_director(director)
@@ -471,6 +485,11 @@ class Fastly
   #    dictionary.delete!
 
   ##
+  # :method: delete_dictionary_item(dictionary_item)
+  # You can also call
+  #    dictionary_item.delete!
+
+  ##
   # :method: delete_director(backend)
   # You can also call
   #    backend.delete!
@@ -572,6 +591,10 @@ class Fastly
   # :method: list_dictionaries(:service_id => service.id, :version => version.number)
   #
   # Get a list of all dictionaries
+
+  # :method: list_dictionary_items(:service_id => service.id, :dictionary_id => dictionary.name)
+  #
+  # Get a list of all items belonging to a dictionary
 
   # :method: list_domains(:service_id => service.id, :version => version.number)
   #
