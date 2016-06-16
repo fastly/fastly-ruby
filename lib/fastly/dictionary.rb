@@ -6,6 +6,10 @@ class Fastly
       fetcher.list_dictionary_items(:service_id => service_id, :dictionary_id => id)
     end
 
+    def item(key)
+      fetcher.get_dictionary_item(service_id, id, key)
+    end
+
     def add_item(key, value)
       fetcher.create_dictionary_item(service_id: service_id, dictionary_id: id, item_key: key, item_value: value)
     end
