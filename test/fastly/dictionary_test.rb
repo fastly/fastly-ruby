@@ -12,7 +12,21 @@ describe Fastly::Dictionary do
   }
 
   describe '#item' do
-    it 'returns the corresponding dictionary item' do
+    it 'returns the nil when item is not present' do
+      item_key   = 'key'
+      get_item_url = "#{Fastly::Client::DEFAULT_URL}/service/#{service_id}/dictionary/#{dictionary.id}/item/#{item_key}"
+
+      response_body = JSON.dump(
+        "msg"    => "Record not found",
+        "detail" => "Couldn't find dictionary item '{ service => #{service_id}, dictionary_id => #{dictionary.id}, item_key => #{item_key}, deleted => 0000-00-00 00:00:00'",
+      )
+
+      stub_request(:get, get_item_url).to_return(body: response_body, status: 404)
+
+      assert_nil dictionary.item('key')
+    end
+
+    it 'returns the corresponding dictionary item when present' do
       item_key   = 'key'
       item_value = 'value'
 

@@ -11,6 +11,8 @@ class Fastly
     # * +key+ - Key of the dictionary item
     def item(key)
       fetcher.get_dictionary_item(service_id, id, key)
+    rescue Fastly::Error => e
+      raise unless e.message =~ /Record not found/
     end
 
     def add_item(key, value)
