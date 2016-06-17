@@ -6,6 +6,9 @@ require 'openssl'
 class Fastly
   # The UserAgent to communicate with the API
   class Client #:nodoc: all
+
+    DEFAULT_URL = 'https://api.fastly.com'.freeze
+
     attr_accessor :http, :api_key, :user, :password, :cookie, :customer
 
     def initialize(opts)
@@ -15,7 +18,7 @@ class Fastly
       @customer = opts.fetch(:customer, nil)
       @oldpurge = opts.fetch(:use_old_purge_method, false)
 
-      base    = opts.fetch(:base_url, 'https://api.fastly.com')
+      base    = opts.fetch(:base_url, DEFAULT_URL)
       uri     = URI.parse(base)
       options = if uri.is_a? URI::HTTPS
                   {
