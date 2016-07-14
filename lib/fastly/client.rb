@@ -119,7 +119,9 @@ class Fastly
     end
 
     def headers(extras={})
-      headers = fully_authed? ? { 'Cookie' => cookie } : { 'Fastly-Key' => api_key }
+      headers = fully_authed? ? { 'Cookie' => cookie } : {}
+      headers['Fastly-Key'] = api_key if api_key
+
       headers.merge('Content-Accept' => 'application/json', 'User-Agent' => "fastly-ruby-v#{Fastly::VERSION}").merge(extras.keep_if {|k,v| !v.nil? })
     end
 

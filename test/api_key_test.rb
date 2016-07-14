@@ -24,28 +24,76 @@ class Fastly
       end
 
       describe 'purging' do
-        before do
-          @opts = login_opts(:api_key)
+        describe 'with only api key' do
+          before do
+            @opts = login_opts(:api_key)
             @client = Fastly::Client.new(@opts)
             @fastly = Fastly.new(@opts)
-          service_name = "fastly-test-service-#{random_string}"
-          @service      = @fastly.create_service(:name => service_name)
+            service_name = "fastly-test-service-#{random_string}"
+            @service      = @fastly.create_service(:name => service_name)
+          end
+
+          after do
+            @fastly.delete_service(@service)
+          end
+
+          it 'allows purging' do
+            response = @service.purge_by_key('somekey')
+
+            assert_equal 'ok', response['status']
+          end
+
+          it 'allows soft purging' do
+            response = @service.purge_by_key('somekey', soft: true)
+
+            assert_equal 'ok', response['status']
+          end
         end
 
-        after do
-          @fastly.delete_service(@service)
+        describe 'with cookie and api key' do
+          before do
+            @opts = login_opts(:both)
+            @client = Fastly::Client.new(@opts)
+            @fastly = Fastly.new(@opts)
+            service_name = "fastly-test-service-#{random_string}"
+            @service      = @fastly.create_service(:name => service_name)
+          end
+
+          after do
+            @fastly.delete_service(@service)
+          end
+
+          it 'allows purging' do
+            response = @service.purge_by_key('somekey')
+
+            assert_equal 'ok', response['status']
+          end
+
+          it 'allows soft purging' do
+            response = @service.purge_by_key('somekey', soft: true)
+
+            assert_equal 'ok', response['status']
+          end
         end
 
-        it 'allows purging' do
-          response = @service.purge_by_key('somekey')
+        describe 'with cookie only' do
+          before do
+            @opts = login_opts(:full)
+            @client = Fastly::Client.new(@opts)
+            @fastly = Fastly.new(@opts)
+            service_name = "fastly-test-service-#{random_string}"
+            @service      = @fastly.create_service(:name => service_name)
+          end
 
-          assert_equal 'ok', response['status']
-        end
+          after do
+            @fastly.delete_service(@service)
+          end
 
-        it 'allows soft purging' do
-          response = @service.purge_by_key('somekey', soft: true)
-
-          assert_equal 'ok', response['status']
+          it 'does not allow purging' do
+            assert_raises Fastly::KeyAuthRequired do
+              @service.purge_by_key('somekey')
+            end
+          end
         end
       end
     end
