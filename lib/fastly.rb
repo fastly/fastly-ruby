@@ -22,7 +22,6 @@ require 'fastly/healthcheck'
 require 'fastly/gzip'
 require 'fastly/invoice'
 require 'fastly/match'
-require 'fastly/origin'
 require 'fastly/request_setting'
 require 'fastly/response_object'
 require 'fastly/service'
@@ -143,7 +142,7 @@ class Fastly
     client.get_stats('/stats/regions')
   end
 
-  [User, Customer, Backend, CacheSetting, Condition, Dictionary, DictionaryItem, Director, Domain, Header, Healthcheck, Gzip, Match, Origin, RequestSetting, ResponseObject, Service, S3Logging, Syslog, VCL, Version].each do |klass|
+  [User, Customer, Backend, CacheSetting, Condition, Dictionary, DictionaryItem, Director, Domain, Header, Healthcheck, Gzip, Match, RequestSetting, ResponseObject, Service, S3Logging, Syslog, VCL, Version].each do |klass|
     type = Util.class_to_path(klass)
 
     if klass.respond_to?(:pluralize)
@@ -201,10 +200,6 @@ class Fastly
 
   ##
   # :method: create_match(opts)
-  # opts must contain service_id, version and name params
-
-  ##
-  # :method: create_origin(opts)
   # opts must contain service_id, version and name params
 
   ##
@@ -290,10 +285,6 @@ class Fastly
   ##
   # :method: get_match(service_id, number, name)
   # Get a Match
-
-  ##
-  # :method: get_origin(service_id, number, name)
-  # Get an Origin
 
   ##
   # :method: get_s3_logging(service_id, number, name)
@@ -393,11 +384,6 @@ class Fastly
   # :method: update_match(match)
   # You can also call
   #    match.save!
-
-  ##
-  # :method: update_origin(origin)
-  # You can also call
-  #    origin.save!
 
   ##
   # :method: update_settings(settings)
@@ -510,11 +496,6 @@ class Fastly
   #    match.delete!(match)
 
   ##
-  # :method: delete_origin(origin)
-  # You can also call
-  #    origin.delete!
-
-  ##
   # :method: delete_s3_logging(s3_logging)
   # You can also call
   #    s3_logging.delete!
@@ -607,10 +588,6 @@ class Fastly
   # :method: list_matchs(:service_id => service.id, :version => version.number)
   #
   # Get a list of all matches
-
-  # :method: list_origins(:service_id => service.id, :version => version.number)
-  #
-  # Get a list of all origins
 
   # :method: list_syslogs(:service_id => service.id, :version => version.number)
   #
