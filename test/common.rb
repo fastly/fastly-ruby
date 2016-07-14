@@ -101,14 +101,6 @@ module CommonTests
     assert director.add_backend(backend)
     # generated2  = version3.generated_vcl
 
-    origin_name = "fastly-test-origin-#{random_string}"
-    origin      = @fastly.create_origin(:service_id => service.id, :version => number, :name => origin_name)
-    assert origin
-    assert_equal origin_name, origin.name
-    assert_equal service.id, origin.service.id
-    assert_equal number.to_s, origin.version_number.to_s
-    # assert_equal origin.version.number.to_s, number.to_s
-
     condition_name = "fastly-test-condition-#{random_string}"
     condition_statement = 'req.url ~ "^/foo"'
     condition = @fastly.create_condition(:service_id => service.id, :version => number, :name => condition_name, :statement => condition_statement, :type => 'REQUEST')
