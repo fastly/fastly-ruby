@@ -1,11 +1,29 @@
 # Change Log
 
-## [Unreleased](https://github.com/fastly/fastly-ruby/tree/HEAD)
-
-[Full Changelog](https://github.com/fastly/fastly-ruby/compare/v1.4.2...HEAD)
+## [v1.6.0](https://github.com/fastly/fastly-ruby/tree/v1.6.0) (2016-07-14)
+[Full Changelog](https://github.com/fastly/fastly-ruby/compare/v1.5.0...v1.6.0)
 
 **Merged pull requests:**
 
+- Always add api key to requests if provided [\#93](https://github.com/fastly/fastly-ruby/pull/93) ([blithe](https://github.com/blithe))
+- Fix header regex test [\#92](https://github.com/fastly/fastly-ruby/pull/92) ([blithe](https://github.com/blithe))
+- Remove Origin model [\#91](https://github.com/fastly/fastly-ruby/pull/91) ([blithe](https://github.com/blithe))
+
+## [v1.5.0](https://github.com/fastly/fastly-ruby/tree/v1.5.0) (2016-07-08)
+[Full Changelog](https://github.com/fastly/fastly-ruby/compare/v1.4.2...v1.5.0)
+
+**Closed issues:**
+
+- Support Edge Dictionaries [\#66](https://github.com/fastly/fastly-ruby/issues/66)
+- version.locked? method returns incorrect value of true for unlocked version [\#47](https://github.com/fastly/fastly-ruby/issues/47)
+
+**Merged pull requests:**
+
+- build for all recent ruby patch-levels [\#90](https://github.com/fastly/fastly-ruby/pull/90) ([thommahoney](https://github.com/thommahoney))
+- add Fastly::Dictionary\#item [\#89](https://github.com/fastly/fastly-ruby/pull/89) ([lanej](https://github.com/lanej))
+- fix initialize [\#88](https://github.com/fastly/fastly-ruby/pull/88) ([lanej](https://github.com/lanej))
+- Raised ArgumentError if api\_key or user/pass are not passed in.  [\#87](https://github.com/fastly/fastly-ruby/pull/87) ([andriantoniades](https://github.com/andriantoniades))
+- Add support for dictionary items [\#86](https://github.com/fastly/fastly-ruby/pull/86) ([icco](https://github.com/icco))
 - Reintroduced :locked so the version.locked? check works [\#83](https://github.com/fastly/fastly-ruby/pull/83) ([eddieroger](https://github.com/eddieroger))
 
 ## [v1.4.2](https://github.com/fastly/fastly-ruby/tree/v1.4.2) (2016-05-23)
