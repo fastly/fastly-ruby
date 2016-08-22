@@ -20,14 +20,13 @@ class Fastly
 
       base    = opts.fetch(:base_url, DEFAULT_URL)
       uri     = URI.parse(base)
-      options = if uri.is_a? URI::HTTPS
-                  {
-                    use_ssl: true,
-                    verify_mode: OpenSSL::SSL::VERIFY_PEER
-                  }
-                else
-                  {}
-                end
+      options = {open_timeout: 10}
+      if uri.is_a? URI::HTTPS
+        options.merge!({
+                        use_ssl: true,
+                        verify_mode: OpenSSL::SSL::VERIFY_PEER
+                      })
+      end
 
       @http = Net::HTTP.start(uri.host, uri.port, options)
 
