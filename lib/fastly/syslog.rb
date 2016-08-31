@@ -1,7 +1,7 @@
 class Fastly
   # An endpoint to stream syslogs to
   class Syslog < BelongsToServiceAndVersion
-    attr_accessor :service_id, :name, :comment, :ipv4, :ipv6, :hostname, :port, :token, :format, :response_conditions, :use_tls, :tls_hostname, :tls_ca_cert
+    attr_accessor :service_id, :name, :comment, :ipv4, :ipv6, :hostname, :port, :token, :format, :format_version, :response_conditions, :use_tls, :tls_hostname, :tls_ca_cert
 
     ##
     # :attr: service_id
@@ -62,6 +62,13 @@ class Fastly
     # :attr: format
     #
     # Format to log like in apache format
+
+    ##
+    # :attr: format_version
+    #
+    # The version of the custom logging format used for the configured endpoint.
+    # Can be either 1 (the default, version 1 log format) or 2 (the version 2
+    # log format).
 
     ##
     # :attr: response_condition

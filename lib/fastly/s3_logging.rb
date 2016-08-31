@@ -1,7 +1,7 @@
 class Fastly
   # An s3 endpoint to stream logs to
   class S3Logging < BelongsToServiceAndVersion
-    attr_accessor :service_id, :name, :bucket_name, :access_key, :secret_key, :path, :period, :gzip_level, :format, :response_condition, :timestamp_format, :domain, :redundancy
+    attr_accessor :service_id, :name, :bucket_name, :access_key, :secret_key, :path, :period, :gzip_level, :format, :format_version, :response_condition, :timestamp_format, :domain, :redundancy
 
     ##
     # :attr: service_id
@@ -53,6 +53,13 @@ class Fastly
     # :attr: format
     #
     # Apache style log formatting
+
+    ##
+    # :attr: format_version
+    #
+    # The version of the custom logging format used for the configured endpoint.
+    # Can be either 1 (the default, version 1 log format) or 2 (the version 2
+    # log format).
 
     ##
     # :attr: response_condition
