@@ -6,3 +6,4 @@ run_test.sh
 doc/*
 .*.sw?
 .env
+gemfiles/*.lock
