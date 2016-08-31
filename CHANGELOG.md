@@ -1,5 +1,14 @@
 # Change Log
 
+## [Unreleased](https://github.com/fastly/fastly-ruby/tree/HEAD)
+
+[Full Changelog](https://github.com/fastly/fastly-ruby/compare/v1.6.0...HEAD)
+
+**Merged pull requests:**
+
+- fix: use Appraisal to fix dependency conflicts [\#97](https://github.com/fastly/fastly-ruby/pull/97) ([lanej](https://github.com/lanej))
+- Add `format\_version` to S3Logging and Syslog resources [\#96](https://github.com/fastly/fastly-ruby/pull/96) ([schisamo](https://github.com/schisamo))
+
 ## [v1.6.0](https://github.com/fastly/fastly-ruby/tree/v1.6.0) (2016-07-14)
 [Full Changelog](https://github.com/fastly/fastly-ruby/compare/v1.5.0...v1.6.0)
 
