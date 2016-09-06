@@ -1,8 +1,7 @@
 # Change Log
 
-## [Unreleased](https://github.com/fastly/fastly-ruby/tree/HEAD)
-
-[Full Changelog](https://github.com/fastly/fastly-ruby/compare/v1.6.0...HEAD)
+## [v1.6.1](https://github.com/fastly/fastly-ruby/tree/v1.6.1) (2016-09-06)
+[Full Changelog](https://github.com/fastly/fastly-ruby/compare/v1.6.0...v1.6.1)
 
 **Merged pull requests:**
 
