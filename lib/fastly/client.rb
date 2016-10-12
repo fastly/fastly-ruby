@@ -102,6 +102,11 @@ class Fastly
       extras = params.delete(:headers) || {}
       uri    = URI.parse(url)
       http   = Net::HTTP.new(uri.host, uri.port)
+
+      if uri.is_a? URI::HTTPS
+        http.use_ssl = true
+      end
+
       resp   = http.request Net::HTTP::Purge.new(uri.request_uri, headers(extras))
 
       fail Error, resp.body unless resp.kind_of?(Net::HTTPSuccess)
