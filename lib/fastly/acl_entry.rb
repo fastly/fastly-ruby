@@ -17,6 +17,10 @@ class Fastly
     #
     # The ACL entry id for a specific entry
 
+    def self.singularize
+      'acl_entry'
+    end
+
     def self.pluralize
       'acl_entries'
     end
