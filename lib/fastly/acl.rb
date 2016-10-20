@@ -1,3 +1,5 @@
+require 'fastly/acl_entry'
+
 class Fastly
   class ACL < BelongsToServiceAndVersion
     attr_accessor :id, :service_id, :name
@@ -17,36 +19,49 @@ class Fastly
     #
     # The name for the ACL.
 
+    ##
+    # List ACL entries that belong to the ACL
     def entries
       fetcher.list_acl_entries(:service_id => service_id, :acl_id => id)
     end
 
-    # Returns a Fastly::ACLEntry corresponding to this ACL and the +key+
+    ##
+    # Create an ACL entry and add it to the ACL
     #
-    # * +key+ - Key of the ACL entry
-    def entry(key)
-      fetcher.get_acl_entry(service_id, id, key)
-    rescue Fastly::Error => e
-      raise unless e.message =~ /Record not found/
+    def add_entry(opts = {})
+      fetcher.create_acl_entry(
+        service_id: service_id,
+        acl_id: id,
+        ip: opts[:ip],
+        negated:, opts[:negated],
+        subnet: opts[:subnet],
+        comment: opts[:comment]
+      )
     end
 
-    def add_entry(key, value)
-      fetcher.create_acl_entry(service_id: service_id, acl_id: id, entry_key: key, entry_value: value)
+    ##
+    # Retrieve an ACL entry
+    #
+    def entry(entry_id)
+      fetcher.get_acl_entry(service_id, id, entry_id)
     end
 
-    def update_entry(key, value)
-      entry = entries.select {|entry| entry.key.eql? key }.first
-      if entry
-        entry.value = value
-        fetcher.update_acl_entry(entry)
-      else
-        add_entry(key, value)
+    ##
+    # Update an ACL entry value
+    #
+    def update_entry(entry_id, opts = {})
+      acl_entry = entry(entry_id)
+      %w{ ip negated subnet comment }.each |opt| do
+        eval("acl_entry.#{opt} = opts[:#{opt}] if opts[:#{opt}]")
       end
+      fetcher.update_acl_entry(acl_entry)
     end
 
-    def delete_entry(key)
-      entry = entries.select {|entry| entry.key.eql? key }.first
-      fetcher.delete_acl_entry(entry) if entry
+    ##
+    # Delete an ACL entry
+    #
+    def delete_entry(entry_id)
+      fetcher.delete_acl_entry(entry(entry_id))
     end
   end
 end

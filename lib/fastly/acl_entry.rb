@@ -1,6 +1,8 @@
+require 'cgi'
+
 class Fastly
   class ACLEntry < Base
-    attr_accessor :service_id, :ip, :subnet, :acl_id, :negated, :comment, :entry_key, :entry_value
+    attr_accessor :id, :service_id, :ip, :subnet, :acl_id, :negated, :comment
 
     ##
     # :attr: service_id
@@ -32,9 +34,6 @@ class Fastly
     #
     # A descriptive note.
 
-    alias_method :key, :entry_key
-    alias_method :value, :entry_value
-
     # Return the Service object this belongs to
     def service
       @service ||= fetcher.get(Service, service_id)
@@ -45,8 +44,8 @@ class Fastly
       super.delete_if { |var| %w(service_id acl_id).include?(var) }
     end
 
-    def self.get_path(service, acl_id, entry_key, _opts = {})
-      "/service/#{service}/acl/#{acl_id}/entry/#{CGI::escape(entry_key)}"
+    def self.get_path(service, acl_id, id, _opts = {})
+      "/service/#{service}/acl/#{acl_id}/entry/#{CGI::escape(id)}"
     end
 
     def self.post_path(opts)
@@ -54,7 +53,7 @@ class Fastly
     end
 
     def self.put_path(obj)
-      get_path(obj.service_id, obj.acl_id, obj.entry_key)
+      get_path(obj.service_id, obj.acl_id, obj.id)
     end
 
     def self.delete_path(obj)
