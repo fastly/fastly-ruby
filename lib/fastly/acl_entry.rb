@@ -2,12 +2,7 @@ require 'cgi'
 
 class Fastly
   class ACLEntry < Base
-    attr_accessor :id, :service_id, :ip, :subnet, :acl_id, :negated, :comment
-
-    ##
-    # :attr: service_id
-    #
-    # The id of the service this belongs to.
+    attr_accessor :id, :ip, :subnet, :acl_id, :negated, :comment
 
     ##
     # :attr: ip
@@ -34,18 +29,8 @@ class Fastly
     #
     # A descriptive note.
 
-    # Return the Service object this belongs to
-    def service
-      @service ||= fetcher.get(Service, service_id)
-    end
-
-    # :nodoc:
-    def as_hash
-      super.delete_if { |var| %w(service_id acl_id).include?(var) }
-    end
-
-    def self.get_path(service, acl_id, id, _opts = {})
-      "/service/#{service}/acl/#{acl_id}/entry/#{CGI::escape(id)}"
+    def self.get_path(service_id, acl_id, id, _opts = {})
+      "/service/#{service_id}/acl/#{acl_id}/entry/#{CGI::escape(id)}"
     end
 
     def self.post_path(opts)
