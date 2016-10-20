@@ -1,5 +1,3 @@
-require 'fastly/acl_entry'
-
 class Fastly
   class ACL < BelongsToServiceAndVersion
     attr_accessor :id, :service_id, :name
@@ -47,12 +45,12 @@ class Fastly
     end
 
     ##
-    # Update an ACL entry value
+    # Update ACL entry values
     #
     def update_entry(entry_id, opts = {})
       acl_entry = entry(entry_id)
       %w{ ip negated subnet comment }.each |opt| do
-        eval("acl_entry.#{opt} = opts[:#{opt}] if opts[:#{opt}]")
+        eval("acl_entry.#{opt} = opts[:#{opt}]")
       end
       fetcher.update_acl_entry(acl_entry)
     end
