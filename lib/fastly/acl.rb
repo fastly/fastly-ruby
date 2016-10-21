@@ -31,7 +31,7 @@ class Fastly
         service_id: service_id,
         acl_id: id,
         ip: opts[:ip],
-        negated:, opts[:negated],
+        negated: opts[:negated],
         subnet: opts[:subnet],
         comment: opts[:comment]
       )
@@ -49,8 +49,8 @@ class Fastly
     #
     def update_entry(entry_id, opts = {})
       acl_entry = entry(entry_id)
-      %w{ ip negated subnet comment }.each |opt| do
-        eval("acl_entry.#{opt} = opts[:#{opt}]")
+      %w{ ip negated subnet comment }.each do |opt|
+        eval("acl_entry.#{opt} = opts[:#{opt}] if opts[:#{opt}]")
       end
       fetcher.update_acl_entry(acl_entry)
     end

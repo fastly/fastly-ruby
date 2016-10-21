@@ -2,7 +2,7 @@ require 'cgi'
 
 class Fastly
   class ACLEntry < Base
-    attr_accessor :id, :ip, :subnet, :acl_id, :negated, :comment
+    attr_accessor :id, :service_id, :ip, :subnet, :acl_id, :negated, :comment
 
     ##
     # :attr: ip
@@ -29,7 +29,7 @@ class Fastly
     #
     # A descriptive note.
 
-    def self.get_path(service_id, acl_id, id, _opts = {})
+    def self.get_path(service_id, acl_id, id)
       "/service/#{service_id}/acl/#{acl_id}/entry/#{CGI::escape(id)}"
     end
 
@@ -37,11 +37,11 @@ class Fastly
       "/service/#{opts[:service_id]}/acl/#{opts[:acl_id]}/entry"
     end
 
-    def self.put_path(obj)
-      get_path(obj.service_id, obj.acl_id, obj.id)
+    def self.put_path(object)
+      get_path(object.service_id, object.acl_id, object.id)
     end
 
-    def self.delete_path(obj)
+    def self.delete_path(object)
       put_path(obj)
     end
 
