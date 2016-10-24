@@ -9,6 +9,8 @@ require 'fastly/fetcher'
 require 'fastly/client'
 require 'fastly/base'
 require 'fastly/belongs_to_service_and_version'
+require 'fastly/acl'
+require 'fastly/acl_entry'
 require 'fastly/backend'
 require 'fastly/cache_setting'
 require 'fastly/condition'
@@ -142,13 +144,19 @@ class Fastly
     client.get_stats('/stats/regions')
   end
 
-  [User, Customer, Backend, CacheSetting, Condition, Dictionary, DictionaryItem, Director, Domain, Header, Healthcheck, Gzip, Match, RequestSetting, ResponseObject, Service, S3Logging, Syslog, VCL, Version].each do |klass|
+  [ACL, ACLEntry, User, Customer, Backend, CacheSetting, Condition, Dictionary, DictionaryItem, Director, Domain, Header, Healthcheck, Gzip, Match, RequestSetting, ResponseObject, Service, S3Logging, Syslog, VCL, Version].each do |klass|
     type = Util.class_to_path(klass)
 
     if klass.respond_to?(:pluralize)
       plural = klass.pluralize
     else
       plural = "#{type}s"
+    end
+
+    if klass.respond_to?(:singularize)
+      singular = klass.singularize
+    else
+      singular = type
     end
 
     # unless the class doesn't have a list path or it already exists
@@ -158,19 +166,19 @@ class Fastly
       end
     end
 
-    send :define_method, "get_#{type}".to_sym do |*args|
+    send :define_method, "get_#{singular}".to_sym do |*args|
       get(klass, *args)
     end
 
-    send :define_method, "create_#{type}".to_sym do |obj|
+    send :define_method, "create_#{singular}".to_sym do |obj|
       create(klass, obj)
     end
 
-    send :define_method, "update_#{type}".to_sym do |obj|
+    send :define_method, "update_#{singular}".to_sym do |obj|
       update(klass, obj)
     end
 
-    send :define_method, "delete_#{type}".to_sym do |obj|
+    send :define_method, "delete_#{singular}".to_sym do |obj|
       delete(klass, obj)
     end
   end
