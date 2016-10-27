@@ -29,7 +29,7 @@ class Fastly
                   {}
                 end
 
-      @http = Net::HTTP.start(uri.host, uri.port, options)
+      @http = Net::HTTP.start(uri.host, uri.port, :ENV, nil, nil, nil, options)
 
       return self unless fully_authed?
 
