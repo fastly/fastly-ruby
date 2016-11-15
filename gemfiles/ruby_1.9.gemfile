@@ -11,6 +11,7 @@ group :development, :test do
   gem "minitest", "~> 5.3.4"
   gem "pry"
   gem "webmock"
+  gem "public_suffix", "~> 1.4.6"
 end
 
 gemspec :path => "../"
