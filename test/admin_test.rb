@@ -14,6 +14,7 @@ class AdminTest < Fastly::TestCase
     end
   end
 
+  # rubocop:disable Metrics/AbcSize
   def test_creating_and_updating_customer
     return unless @fastly.current_user.can_do?(:admin)
     customer = @fastly.create_customer(:name => "fastly-ruby-test-customer-#{random_string}")

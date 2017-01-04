@@ -39,7 +39,7 @@ class Fastly
     # * daily
     # * all
     def stats(type = :all, opts = {})
-      fail Error, "Unknown stats type #{type}" unless [:minutely, :hourly, :daily, :all].include?(type.to_sym)
+      raise Error, "Unknown stats type #{type}" unless [:minutely, :hourly, :daily, :all].include?(type.to_sym)
       fetcher.client.get("#{Service.get_path(id)}/stats/#{type}", opts)
     end
 
@@ -69,9 +69,9 @@ class Fastly
     # Purge anything with the specific key from the given service.
     #
     # See README.md for examples of purging
-    def purge_by_key(key, soft=false)
+    def purge_by_key(key, soft = false)
       require_api_key!
-      fetcher.client.post("#{Service.get_path(id)}/purge/#{key}", soft ? { headers: { 'Fastly-Soft-Purge' => "1"} } : {})
+      fetcher.client.post("#{Service.get_path(id)}/purge/#{key}", soft ? { headers: { 'Fastly-Soft-Purge' => '1' } } : {})
     end
 
     # Get a sorted array of all the versions that this service has had.

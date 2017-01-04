@@ -1,4 +1,4 @@
 # The current version of the library
 class Fastly
-  VERSION = "1.7.0"
+  VERSION = '1.7.0'.freeze
 end

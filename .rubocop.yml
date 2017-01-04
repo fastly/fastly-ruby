@@ -1,35 +1,38 @@
 # inherit_from:
   # - rubocop-todo.yml
 
-LineLength:
+Lint/AssignmentInCondition:
   Enabled: false
 
-HashSyntax:
+Lint/HandleExceptions:
   Enabled: false
 
-BracesAroundHashParameters:
+Metrics/BlockNesting:
   Enabled: false
 
-BlockNesting:
+Metrics/CyclomaticComplexity:
   Enabled: false
 
-AssignmentInCondition:
+Metrics/LineLength:
   Enabled: false
 
-CollectionMethods:
+Metrics/MethodLength:
   Enabled: false
 
-CyclomaticComplexity:
+Style/BracesAroundHashParameters:
   Enabled: false
 
-MethodLength:
+Style/CollectionMethods:
   Enabled: false
 
-PerlBackrefs:
+Style/DoubleNegation:
   Enabled: false
 
-RescueModifier:
+Style/HashSyntax:
   Enabled: false
 
-HandleExceptions:
+Style/PerlBackrefs:
+  Enabled: false
+
+Style/RescueModifier:
   Enabled: false

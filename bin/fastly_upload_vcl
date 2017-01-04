@@ -42,7 +42,7 @@ params      = Fastly.get_options("#{ENV['HOME']}/.fastly", '/etc/fastly')
 service_id  = ARGV.shift || die('You must pass in a service id')
 vcl_file    = ARGV.shift || die('You must pass in a vcl file')
 
-die("Couldn't find any of the config files - #{configs.join(',')}") unless params.keys.size > 0
+die("Couldn't find any of the config files - #{configs.join(',')}") if params.keys.empty?
 die("Couldn't find vcl file #{vcl_file}") unless File.file?(vcl_file)
 
 fastly  = Fastly.new(params)

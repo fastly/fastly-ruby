@@ -60,7 +60,6 @@ class Fastly
     # :attr: threshold
     #
     # How many have to be ok for it work
-  end
 
     ##
     # :attr: method
@@ -81,4 +80,5 @@ class Fastly
     # :attr: check_interval
     #
     # Time between checks in milliseconds
+  end
 end

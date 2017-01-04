@@ -2,13 +2,13 @@ require 'helper'
 
 # API Key Tests
 class Fastly
-  describe 'ApiKeyTest' do
+  describe 'ApiKeyTest' do # rubocop:disable Metrics/BlockLength
     let(:opts)             { login_opts(:api_key) }
     let(:client)           { Client.new(opts) }
     let(:fastly)           { Fastly.new(opts) }
 
-    describe '#current_{user,customer}' do
-      it 'should not have access to current user 'do
+    describe '#current_{user,customer}' do # rubocop:disable Metrics/BlockLength
+      it 'should not have access to current user ' do
         assert_raises(Error) do
           client.get('/current_user')
         end
@@ -23,14 +23,14 @@ class Fastly
         assert_instance_of Customer, fastly.current_customer
       end
 
-      describe 'purging' do
+      describe 'purging' do # rubocop:disable Metrics/BlockLength
         describe 'with only api key' do
           before do
             @opts = login_opts(:api_key)
             @client = Fastly::Client.new(@opts)
             @fastly = Fastly.new(@opts)
             service_name = "fastly-test-service-#{random_string}"
-            @service      = @fastly.create_service(:name => service_name)
+            @service = @fastly.create_service(:name => service_name)
           end
 
           after do
@@ -56,7 +56,7 @@ class Fastly
             @client = Fastly::Client.new(@opts)
             @fastly = Fastly.new(@opts)
             service_name = "fastly-test-service-#{random_string}"
-            @service      = @fastly.create_service(:name => service_name)
+            @service = @fastly.create_service(:name => service_name)
           end
 
           after do
@@ -82,7 +82,7 @@ class Fastly
             @client = Fastly::Client.new(@opts)
             @fastly = Fastly.new(@opts)
             service_name = "fastly-test-service-#{random_string}"
-            @service      = @fastly.create_service(:name => service_name)
+            @service = @fastly.create_service(:name => service_name)
           end
 
           after do

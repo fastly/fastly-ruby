@@ -35,7 +35,7 @@ require 'fastly/vcl'
 require 'fastly/version'
 
 # Top-level Fastly class
-class Fastly
+class Fastly # rubocop:disable Metrics/ClassLength
   include Fastly::Fetcher
 
   # Create a new Fastly client. Options are
@@ -69,20 +69,20 @@ class Fastly
 
   # Return a Customer object representing the customer of the current logged in user.
   def current_customer
-    fail AuthRequired unless authed?
+    raise AuthRequired unless authed?
     @current_customer ||= get(Customer)
   end
 
   # Return a User object representing the current logged in user.
   # NOTE: requires you to be fully authed - will not work with only an API key
   def current_user
-    fail FullAuthRequired unless fully_authed?
+    raise FullAuthRequired unless fully_authed?
     @current_user ||= get(User)
   end
 
   # Purge the specified path from your cache.
-  def purge(url, soft=false)
-    client.purge(url, soft ? { headers: { 'Fastly-Soft-Purge' => "1"} } : {})
+  def purge(url, soft = false)
+    client.purge(url, soft ? { headers: { 'Fastly-Soft-Purge' => '1' } } : {})
   end
 
   # Fetches historical stats for each of your fastly services and groups the results by service id.
@@ -103,7 +103,7 @@ class Fastly
   # See http://docs.fastly.com/docs/stats for details.
   def stats(opts)
     if opts[:aggregate] && (opts[:field] || opts[:service])
-      fail Error, "You can't specify a field or a service for an aggregate request"
+      raise Error, "You can't specify a field or a service for an aggregate request"
     end
 
     url  = '/stats'
@@ -144,20 +144,21 @@ class Fastly
     client.get_stats('/stats/regions')
   end
 
+  # rubocop:disable Metrics/BlockLength
   [ACL, ACLEntry, User, Customer, Backend, CacheSetting, Condition, Dictionary, DictionaryItem, Director, Domain, Header, Healthcheck, Gzip, Match, RequestSetting, ResponseObject, Service, S3Logging, Syslog, VCL, Version].each do |klass|
     type = Util.class_to_path(klass)
 
-    if klass.respond_to?(:pluralize)
-      plural = klass.pluralize
-    else
-      plural = "#{type}s"
-    end
+    plural = if klass.respond_to?(:pluralize)
+               klass.pluralize
+             else
+               "#{type}s"
+             end
 
-    if klass.respond_to?(:singularize)
-      singular = klass.singularize
-    else
-      singular = type
-    end
+    singular = if klass.respond_to?(:singularize)
+                 klass.singularize
+               else
+                 type
+               end
 
     # unless the class doesn't have a list path or it already exists
     unless klass.list_path.nil? || klass.respond_to?("list_#{plural}".to_sym)
@@ -679,12 +680,12 @@ class Fastly
       break
     end
 
-    while ARGV.size > 0 && ARGV[0] =~ /^-+(\w+)\=(\w+)$/
+    while !ARGV.empty? && ARGV[0] =~ /^-+(\w+)\=(\w+)$/
       options[$1.to_sym] = $2
       ARGV.shift
     end
 
-    fail "Couldn't find options from command line arguments or #{files.join(', ')}" unless options.size > 0
+    raise "Couldn't find options from command line arguments or #{files.join(', ')}" if options.empty?
 
     options
   end

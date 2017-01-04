@@ -2,7 +2,7 @@ require 'helper'
 
 # Test username/password login access to user and customer objects
 class Fastly
-  describe 'FullLoginTest' do
+  describe 'FullLoginTest' do # rubocop:disable Metrics/BlockLength
     let(:opts)             { login_opts(:full) }
     let(:client)           { Client.new(opts) }
     let(:fastly)           { Fastly.new(opts) }

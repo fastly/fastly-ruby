@@ -30,7 +30,7 @@ class Fastly
     ##
     # :attr: retries
     #
-    # how many backends to search if it fails (default 5)
+    # how many backends to search if it raises (default 5)
     #
 
     ##
@@ -46,7 +46,7 @@ class Fastly
 
     # Add a Backend object to a Director
     #
-    # Return true on success and false on failure
+    # Return true on success and false on raiseure
     def add_backend(backend)
       hash = fetcher.client.post("#{Director.put_path(self)}/backend/#{backend.name}")
       !hash.nil?
@@ -54,7 +54,7 @@ class Fastly
 
     # Delete a Backend object from a Director
     #
-    # Return true on success and false on failure
+    # Return true on success and false on raiseure
     def delete_backend(backend)
       hash = fetcher.client.delete("#{Director.put_path(self)}/backend/#{backend.name}")
       !hash.nil?

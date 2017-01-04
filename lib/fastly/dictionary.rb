@@ -1,4 +1,5 @@
 class Fastly
+  # Edge Dictionary Container
   class Dictionary < BelongsToServiceAndVersion
     attr_accessor :id, :name, :service_id
 
@@ -20,7 +21,7 @@ class Fastly
     end
 
     def update_item(key, value)
-      di = items.select {|item| item.item_key.eql? key }.first
+      di = items.select { |item| item.item_key.eql? key }.first
       if di
         di.item_value = value
         fetcher.update_dictionary_item(di)
@@ -30,7 +31,7 @@ class Fastly
     end
 
     def delete_item(key)
-      di = items.select {|item| item.item_key.eql? key }.first
+      di = items.select { |item| item.item_key.eql? key }.first
       fetcher.delete_dictionary_item(di) if di
     end
 

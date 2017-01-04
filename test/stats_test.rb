@@ -1,6 +1,6 @@
 require 'helper'
 
-FROM = '2011-01-01 00:00:00'
+FROM = '2011-01-01 00:00:00'.freeze
 
 # Testing client components related to stats
 class StatsTest < Fastly::TestCase
@@ -18,7 +18,7 @@ class StatsTest < Fastly::TestCase
 
   def test_regions
     regions = @fastly.regions
-    assert_equal true, (regions.size > 0)
+    assert_equal false, regions.empty?
   end
 
   def test_usage
@@ -36,7 +36,7 @@ class StatsTest < Fastly::TestCase
     assert_equal 'success', usage['status']
   end
 
-  def test_stats
+  def test_stats # rubocop:disable Metrics/AbcSize
     stats = @fastly.stats(:from => FROM)
     # stats can be and empty hash if no usage stats
     assert(stats)

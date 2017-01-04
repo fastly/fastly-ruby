@@ -1,11 +1,12 @@
 require 'cgi'
 
 class Fastly
+  # Edge Dictionary entry
   class DictionaryItem < Base
     attr_accessor :dictionary_id, :item_key, :item_value, :service_id
 
-    alias_method :key, :item_key
-    alias_method :value, :item_value
+    alias key item_key
+    alias value item_value
 
     # Return the Service object this belongs to
     def service
@@ -18,7 +19,7 @@ class Fastly
     end
 
     def self.get_path(service, dictionary_id, item_key, _opts = {})
-      "/service/#{service}/dictionary/#{dictionary_id}/item/#{CGI::escape(item_key)}"
+      "/service/#{service}/dictionary/#{dictionary_id}/item/#{CGI.escape(item_key)}"
     end
 
     def self.post_path(opts)

@@ -1,5 +1,7 @@
 language: ruby
-script: 'bundle exec rake test:unit'
+script:
+  - 'bundle exec rubocop'
+  - 'bundle exec rake test:unit'
 sudo: false
 matrix:
   include:

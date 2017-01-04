@@ -8,17 +8,17 @@
 # License::   Distributes under the same terms as Ruby
 #
 # = USAGE
-# 
+#
 #     fastly_create_domain <options> <service id> <domain name>
-# 
+#
 # = CONFIGURATION
-# 
+#
 # You can either have a config file in ~/.fastly or /etc/fastly with
-# 
+#
 #     api_key = <api_key>
-# 
+#
 # Alternatively you can pass in any of those options on the command line
-# 
+#
 #     $ ruby fastly_create_domain --api_key=<key> <service id> <domain name>
 
 require 'rubygems'
@@ -32,28 +32,26 @@ def get_options(*files)
     break
   end
 
-  while (ARGV.size>0 && ARGV[0] =~ /^-+(\w+)\=(\w+)$/) do
-    options[$1.to_sym] = $2;
-    ARGV.shift;
+  while !ARGV.empty? && ARGV[0] =~ /^-+(\w+)\=(\w+)$/
+    options[$1.to_sym] = $2
+    ARGV.shift
   end
-  raise"Couldn't find options from command line arguments or #{files.join(', ')}" unless options.size>0
-  options;
+  raise "Couldn't find options from command line arguments or #{files.join(', ')}" if optoins.empty?
+  options
 end
-
 
 # :nodoc:
 def die(message)
   warn message
-  exit -1
+  exit(-1)
 end
 
+params = get_options("#{ENV['HOME']}/.fastly", '/etc/fastly')
 
-params = get_options("#{ENV['HOME']}/.fastly", "/etc/fastly")
+service_id  = ARGV.shift || die('You must pass in a service id')
+domain_name = ARGV.shift || die('You must pass in a domain name')
 
-service_id  = ARGV.shift || die("You must pass in a service id")
-domain_name = ARGV.shift || die("You must pass in a domain name")
-
-die("Couldn't find any of the config files - #{configs.join(',')}") unless params.keys.size>0
+die("Couldn't find any of the config files - #{configs.join(',')}") if params.keys.empty?
 
 fastly = Fastly.new(params)
 
@@ -64,4 +62,3 @@ domain = fastly.create_domain(:service_id => service.id, :version => cloned_vers
 cloned_version.activate!
 
 puts "Done! Created Domain: #{domain.name}. Active Version: #{domain.version.number}"
-

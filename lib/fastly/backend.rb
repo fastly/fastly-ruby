@@ -123,17 +123,17 @@ class Fastly
     # used for both SNI during the TLS handshake and to validate the cert.
 
     ##
-    # :attr: ssl_cert_hostname 
+    # :attr: ssl_cert_hostname
     #
     # overrides ssl_hostname, but only for cert verification. Does not affect SNI at all.
 
     ##
-    # :attr: ssl_sni_hostname 
+    # :attr: ssl_sni_hostname
     #
     # overrides ssl_hostname, but only for SNI in the handshake. Does not affect cert validation at all.
 
     ##
-    # :attr: min_tls_version 
+    # :attr: min_tls_version
     #
     # minimum allowed TLS version on ssl connections to this backend
 
@@ -143,7 +143,7 @@ class Fastly
     # maximum allowed TLS version on ssl connections to this backend.
 
     ##
-    # :attr: ssl_ciphers 
+    # :attr: ssl_ciphers
     #
     # list of openssl ciphers (see https://www.openssl.org/docs/manmaster/apps/ciphers.html for details)
 
@@ -151,6 +151,5 @@ class Fastly
     # :attr: shield
     #
     # name of a datacenter to shield requests
-
   end
 end

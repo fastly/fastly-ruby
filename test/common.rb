@@ -1,18 +1,18 @@
 # Common tests
-module CommonTests
-  def test_creating_service_and_backend
+module CommonTests # rubocop:disable Metrics/ModuleLength
+  def test_creating_service_and_backend # rubocop:disable Metrics/AbcSize
     name        = "fastly-test-service-#{random_string}"
     service     = @fastly.create_service(:name => name)
     assert service
     assert_equal name, service.name
-    tmp         = @fastly.get_service(service.id)
+    tmp = @fastly.get_service(service.id)
     assert tmp
     assert_equal name, tmp.name
 
-    version     = service.version
+    version = service.version
     assert version
 
-    settings    = @fastly.get_settings(service.id, version.number)
+    settings = @fastly.get_settings(service.id, version.number)
     assert settings
     assert_equal settings.service_id, service.id
     assert_equal settings.version.to_s, version.number.to_s
@@ -42,7 +42,7 @@ module CommonTests
     assert services
     assert name, service.name
 
-    version2    = @fastly.create_version(:service_id => service.id)
+    version2 = @fastly.create_version(:service_id => service.id)
     assert version2
     assert_equal version.number.to_i + 1, version2.number.to_i
 
@@ -69,7 +69,7 @@ module CommonTests
     backend.address  = 'thegestalt.org'
     backend.port     = '9092'
     @fastly.update_backend(backend)
-    backend          = @fastly.get_backend(service.id, number, backend_name)
+    backend = @fastly.get_backend(service.id, number, backend_name)
 
     assert backend
     assert_equal 'thegestalt.org', backend.address
@@ -77,7 +77,7 @@ module CommonTests
     assert_equal '9092', backend.port.to_s
 
     domain_name = "fastly-test-domain-#{random_string}-example.com"
-    domain  = @fastly.create_domain(:service_id => service.id, :version => number, :name => domain_name)
+    domain = @fastly.create_domain(:service_id => service.id, :version => number, :name => domain_name)
     assert domain
     assert_equal domain_name, domain.name
     assert_equal service.id, domain.service.id
@@ -86,7 +86,7 @@ module CommonTests
 
     domain.comment = 'Flibbety gibbet'
     domain.save!
-    domain         = @fastly.get_domain(service.id, number, domain_name)
+    domain = @fastly.get_domain(service.id, number, domain_name)
     assert_equal domain_name, domain.name
     assert_equal 'Flibbety gibbet', domain.comment
 
@@ -172,50 +172,50 @@ module CommonTests
 
     version4 = Fastly::Version.create_new(service.fetcher, :service_id => service.id)
     assert version4.number != version3.number
-    assert @fastly.list_directors(:service_id => service.id, :version => version4.number).length == 0
+    assert @fastly.list_directors(:service_id => service.id, :version => version4.number).empty?
 
     @fastly.delete_service(service)
   end
 
-  def test_stats
+  def test_stats # rubocop:disable Metrics/AbcSize
     name        = "fastly-test-service-#{random_string}"
     service     = @fastly.create_service(:name => name)
     assert service
     assert_equal name, service.name
-    tmp         = @fastly.get_service(service.id)
+    tmp = @fastly.get_service(service.id)
     assert tmp
     assert_equal name, tmp.name
 
     begin
-      stats       = service.stats
+      stats = service.stats
     rescue Fastly::Error
     end
     assert stats.nil?
 
-    stats       = service.stats(:all, :year => 2011, :month => 10)
+    stats = service.stats(:all, :year => 2011, :month => 10)
     assert stats
     @fastly.delete_service(service)
   end
 
-  def test_invoices
+  def test_invoices # rubocop:disable Metrics/AbcSize
     name        = "fastly-test-service-#{random_string}"
     service     = @fastly.create_service(:name => name)
     assert service
     assert_equal name, service.name
 
-    invoice     = service.invoice
+    invoice = service.invoice
     assert invoice
     assert invoice.regions
     assert_equal service.id, invoice.service_id
 
-    invoice     = @fastly.get_invoice
-    assert_equal Fastly::Invoice,  invoice.class
+    invoice = @fastly.get_invoice
+    assert_equal Fastly::Invoice, invoice.class
 
     year        = Time.now.year
     month       = Time.now.month
 
     invoice     = @fastly.get_invoice(year, month)
-    assert_equal Fastly::Invoice,  invoice.class
+    assert_equal Fastly::Invoice, invoice.class
     assert_equal year,  invoice.start.year
     assert_equal month, invoice.start.month
     assert_equal 1,     invoice.start.day

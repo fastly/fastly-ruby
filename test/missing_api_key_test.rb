@@ -9,7 +9,7 @@ class MissingApiKeyTest < Fastly::TestCase
     begin
       @client = Fastly::Client.new(@opts)
       @fastly = Fastly.new(@opts)
-    rescue Exception => e
+    rescue Exception => e # rubocop:disable Lint/RescueException
       pp e
       exit(-1)
     end

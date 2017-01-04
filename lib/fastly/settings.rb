@@ -38,17 +38,17 @@ class Fastly
 
     # :nodoc:
     def self.post_path
-      fail "You can't POST to an setting"
+      raise "You can't POST to an setting"
     end
 
     # :nodoc:
     def self.delete_path
-      fail "You can't DELETE to an setting"
+      raise "You can't DELETE to an setting"
     end
 
     # :nodoc:
     def delete!
-      fail "You can't delete an invoice"
+      raise "You can't delete an invoice"
     end
 
     # :nodoc:

@@ -1,6 +1,6 @@
 require'test_helper'
 
-describe Fastly::ACLEntry do
+describe Fastly::ACLEntry do # rubocop:disable Metrics/BlockLength
   let(:fastly) { Fastly.new(api_key: 'secret') }
   let(:service) { fastly.create_service(name: 'acl_service') }
   let(:acl) { fastly.create_acl(service_id: service.id, version: 1, name: 'acl_group') }
