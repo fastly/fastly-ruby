@@ -18,18 +18,19 @@ class Fastly
       @customer = opts.fetch(:customer, nil)
       @oldpurge = opts.fetch(:use_old_purge_method, false)
 
-      base    = opts.fetch(:base_url, DEFAULT_URL)
-      uri     = URI.parse(base)
-      options = if uri.is_a? URI::HTTPS
-                  {
-                    use_ssl: true,
-                    verify_mode: OpenSSL::SSL::VERIFY_PEER
-                  }
-                else
-                  {}
-                end
+      base = opts.fetch(:base_url, DEFAULT_URL)
+      uri  = URI.parse(base)
 
-      @http = Net::HTTP.start(uri.host, uri.port, :ENV, nil, nil, nil, options)
+      @http = Net::HTTP.new(uri.host, uri.port, :ENV, nil, nil, nil)
+
+      # handle TLS connections outside of development
+      @http.verify_mode = OpenSSL::SSL::VERIFY_PEER
+      @http.use_ssl = uri.scheme.downcase == 'https'
+
+      # debug http interactions if specified
+      @http.set_debug_output(opts[:debug]) if opts[:debug]
+
+      @http.start
 
       return self unless fully_authed?
 

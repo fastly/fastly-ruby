@@ -182,6 +182,16 @@ fastly-ruby has not been audited for thread-safety.  If you are performing
 actions that require multiple threads (such as performing many purges) we
 recommend you use the API directly.
 
+### Debugging notes
+
+You can pass a `:debug` argument to the initializer. This will output verbose HTTP logs for all API interactions. For example, the following will print logs to STDERR:
+
+```
+client = Fastly.new(debug: STDERR, api_key: 'YOUR_API_KEY')
+```
+
+This option should not be used in a production setting as all HTTP headers, request parameters, and bodies will be logged, which may include sensitive information.
+
 ## Contributing
 
 1. Fork it
