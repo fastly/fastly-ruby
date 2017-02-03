@@ -1,7 +1,7 @@
 class Fastly
   # An s3 endpoint to stream logs to
   class S3Logging < BelongsToServiceAndVersion
-    attr_accessor :service_id, :name, :bucket_name, :access_key, :secret_key, :path, :period, :gzip_level, :format, :format_version, :response_condition, :timestamp_format, :domain, :redundancy
+    attr_accessor :service_id, :name, :bucket_name, :access_key, :secret_key, :path, :period, :gzip_level, :format, :format_version, :message_type, :response_condition, :timestamp_format, :domain, :redundancy
 
     ##
     # :attr: service_id
@@ -60,6 +60,14 @@ class Fastly
     # The version of the custom logging format used for the configured endpoint.
     # Can be either 1 (the default, version 1 log format) or 2 (the version 2
     # log format).
+
+    ##
+    # :attr: message_type
+    #
+    # How the message should be formatted. Can be either classic (RFC 3164
+    # syslog prefix), loggly (RFC 5424 structured syslog), logplex (Heroku-style
+    # length prefixed syslog), or blank (No prefix. Useful for writing JSON and
+    # CSV).
 
     ##
     # :attr: response_condition
