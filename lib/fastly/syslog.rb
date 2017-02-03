@@ -1,7 +1,7 @@
 class Fastly
   # An endpoint to stream syslogs to
   class Syslog < BelongsToServiceAndVersion
-    attr_accessor :service_id, :name, :comment, :ipv4, :ipv6, :hostname, :port, :token, :format, :format_version, :response_conditions, :use_tls, :tls_hostname, :tls_ca_cert
+    attr_accessor :service_id, :name, :comment, :ipv4, :ipv6, :hostname, :port, :token, :format, :format_version, :message_type, :response_conditions, :use_tls, :tls_hostname, :tls_ca_cert
 
     ##
     # :attr: service_id
@@ -69,6 +69,14 @@ class Fastly
     # The version of the custom logging format used for the configured endpoint.
     # Can be either 1 (the default, version 1 log format) or 2 (the version 2
     # log format).
+
+    ##
+    # :attr: message_type
+    #
+    # How the message should be formatted. Can be either classic (RFC 3164
+    # syslog prefix), loggly (RFC 5424 structured syslog), logplex (Heroku-style
+    # length prefixed syslog), or blank (No prefix. Useful for writing JSON and
+    # CSV).
 
     ##
     # :attr: response_condition
