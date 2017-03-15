@@ -24,6 +24,7 @@ require 'fastly/healthcheck'
 require 'fastly/gzip'
 require 'fastly/invoice'
 require 'fastly/match'
+require 'fastly/papertrail_logging'
 require 'fastly/request_setting'
 require 'fastly/response_object'
 require 'fastly/service'
@@ -144,7 +145,7 @@ class Fastly
     client.get_stats('/stats/regions')
   end
 
-  [ACL, ACLEntry, User, Customer, Backend, CacheSetting, Condition, Dictionary, DictionaryItem, Director, Domain, Header, Healthcheck, Gzip, Match, RequestSetting, ResponseObject, Service, S3Logging, Syslog, VCL, Version].each do |klass|
+  [ACL, ACLEntry, User, Customer, Backend, CacheSetting, Condition, Dictionary, DictionaryItem, Director, Domain, Header, Healthcheck, Gzip, Match, PapertrailLogging, RequestSetting, ResponseObject, Service, S3Logging, Syslog, VCL, Version].each do |klass|
     type = Util.class_to_path(klass)
 
     if klass.respond_to?(:pluralize)
@@ -216,6 +217,10 @@ class Fastly
 
   ##
   # :method: create_s3_logging(opts)
+  # opts must contain service_id, version and name params
+
+  ##
+  # :method: create_papertrail_logging(opts)
   # opts must contain service_id, version and name params
 
   ##
@@ -297,6 +302,10 @@ class Fastly
   ##
   # :method: get_s3_logging(service_id, number, name)
   # Get a S3 logging
+
+  ##
+  # :method: get_papertrail_logging(service_id, number, name)
+  # Get a Papertrail logging stream config
 
   ##
   # :method: get_syslog(service_id, number, name)
@@ -404,6 +413,11 @@ class Fastly
   #    s3_logging.save!
 
   ##
+  # :method: update_papertrail_logging(papertrail_logging)
+  # You can also call
+  #    papertrail_logging.save!
+
+  ##
   # :method: update_syslog(syslog)
   # You can also call
   #    syslog.save!
@@ -507,6 +521,11 @@ class Fastly
   # :method: delete_s3_logging(s3_logging)
   # You can also call
   #    s3_logging.delete!
+
+  ##
+  # :method: delete_papertrail_logging(papertrail_logging)
+  # You can also call
+  #    papertrail_logging.delete!
 
   ##
   # :method: delete_syslog(syslog)
