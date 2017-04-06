@@ -17,6 +17,7 @@ class Fastly
       @password = opts.fetch(:password, nil)
       @customer = opts.fetch(:customer, nil)
       @oldpurge = opts.fetch(:use_old_purge_method, false)
+      @retry_times_on_get = opts.fetch(:retry_times_on_get, 3)
 
       base = opts.fetch(:base_url, DEFAULT_URL)
       uri  = URI.parse(base)
@@ -67,8 +68,17 @@ class Fastly
     def get(path, params = {})
       extras = params.delete(:headers) || {}
       path += "?#{make_params(params)}" unless params.empty?
-      resp  = http.get(path, headers(extras))
-      fail Error, resp.body unless resp.kind_of?(Net::HTTPSuccess)
+      
+      retries = 0
+      begin
+        resp = http.get(path, headers(extras))
+        unless resp.kind_of?(Net::HTTPSuccess)
+          fail(Error, resp.body) if retries >= @retry_times_on_get
+          retries += 1
+          retry
+        end
+      end
+       
       JSON.parse(resp.body)
     end
 
