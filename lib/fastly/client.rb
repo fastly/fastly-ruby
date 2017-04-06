@@ -9,12 +9,13 @@ class Fastly
 
     DEFAULT_URL = 'https://api.fastly.com'.freeze
 
-    attr_accessor :http, :api_key, :user, :password, :cookie, :customer
+    attr_accessor :http, :api_key, :user, :password, :otp, :cookie, :customer
 
     def initialize(opts)
       @api_key  = opts.fetch(:api_key, nil)
       @user     = opts.fetch(:user, nil)
       @password = opts.fetch(:password, nil)
+      @otp      = opts.fetch(:otp, nil)
       @customer = opts.fetch(:customer, nil)
       @oldpurge = opts.fetch(:use_old_purge_method, false)
 
@@ -34,16 +35,32 @@ class Fastly
 
       return self unless fully_authed?
 
-      # If full auth creds (user/pass) then log in and set a cookie
-      resp = http.post('/login', make_params(user: user, password: password))
+      if @otp
+        # We've been given a second factor, so login with that and get a
+        # disposible token. The token lasts for 20 minutes because that's
+        # a decent amount of time to do some requests.
+        token_expires = (Time.now + (60 * 20)).iso8601
+        resp = http.post('/tokens', make_params(user: user, password: password, expires_at: token_expires))
 
-      if resp.kind_of?(Net::HTTPSuccess)
-        @cookie = resp['Set-Cookie']
+        if resp.kind_of?(Net::HTTPSuccess)
+          @api_key = JSON.load(resp.body)['access_token']
+        else
+          fail Unauthorized, "Error requesting token using one-time password"
+        end
+
+        self
       else
-        fail Unauthorized, "Invalid auth credentials. Check username/password."
-      end
+        # If full auth creds (user/pass) then log in and set a cookie
+        resp = http.post('/login', make_params(user: user, password: password))
 
-      self
+        if resp.kind_of?(Net::HTTPSuccess)
+          @cookie = resp['Set-Cookie']
+        else
+          fail Unauthorized, "Invalid auth credentials. Check username/password."
+        end
+
+        self
+      end
     end
 
     def require_key!
