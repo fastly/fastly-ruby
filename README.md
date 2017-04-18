@@ -173,6 +173,12 @@ service.purge_by_key('YOUR_SURROGATE_KEY', true)
 See the [Fastly purging API documentation](https://docs.fastly.com/api/purge)
 for more information and examples.
 
+Note: If you use an operation that requires authentication, but
+the authention fails (e.g., because someone changed the key),
+many of these methods will raise the AuthRequired exception
+(or one of its children).  You may want to "rescue" the AuthRequired exception
+and log these problems.
+
 ## Usage notes
 
 If you are performing many purges per second we recommend you use the API
