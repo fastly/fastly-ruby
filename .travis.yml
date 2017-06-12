@@ -3,8 +3,6 @@ script: 'bundle exec rake test:unit'
 sudo: false
 matrix:
   include:
-    - rvm: 1.9
-      gemfile: gemfiles/ruby_1.9.gemfile
     - rvm: 2.0.0
       gemfile: gemfiles/HEAD.gemfile
     - rvm: 2.1.9
