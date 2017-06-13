@@ -29,6 +29,7 @@ require 'fastly/request_setting'
 require 'fastly/response_object'
 require 'fastly/service'
 require 'fastly/settings'
+require 'fastly/snippet'
 require 'fastly/syslog'
 require 'fastly/s3_logging'
 require 'fastly/user'
@@ -145,7 +146,7 @@ class Fastly
     client.get_stats('/stats/regions')
   end
 
-  [ACL, ACLEntry, User, Customer, Backend, CacheSetting, Condition, Dictionary, DictionaryItem, Director, Domain, Header, Healthcheck, Gzip, Match, PapertrailLogging, RequestSetting, ResponseObject, Service, S3Logging, Syslog, VCL, Version].each do |klass|
+  [ACL, ACLEntry, User, Customer, Backend, CacheSetting, Condition, Dictionary, DictionaryItem, Director, Domain, Header, Healthcheck, Gzip, Match, PapertrailLogging, RequestSetting, ResponseObject, Service, Snippet, S3Logging, Syslog, VCL, Version].each do |klass|
     type = Util.class_to_path(klass)
 
     if klass.respond_to?(:pluralize)
@@ -316,6 +317,10 @@ class Fastly
   # Get a VCL
 
   ##
+  # :method: get_snippet(service_id, number, name)
+  # Get a VCL snippet
+
+  ##
   # :method: get_version(service_id, number, name)
   # Get a Version
 
@@ -428,6 +433,11 @@ class Fastly
   #    vcl.save!
 
   ##
+  # :method: update_snippet(snippet)
+  # You can also call
+  #    snippet.save!
+
+  ##
   # :method: update_cache_setting(cache_setting)
   # You can also call
   #    cache_setting.save!
@@ -538,6 +548,11 @@ class Fastly
   #    vcl.delete!
 
   ##
+  # :method: delete_snippet(snippet)
+  # You can also call
+  #    snippet.delete!
+
+  ##
   # :method: delete_cache_setting(cache_setting)
   # You can also call
   #    cache_setting.delete!
@@ -623,6 +638,10 @@ class Fastly
   # :method: list_vcls(:service_id => service.id, :version => version.number)
   #
   # Get a list of all vcls
+
+  # :method: list_snippets(:service_id => service.id, :version => version.number)
+  #
+  # Get a list of all vcl snippets
 
   # :method: list_conditions(:service_id => service.id, :version => version.number)
   #
