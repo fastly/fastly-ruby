@@ -1,7 +1,13 @@
 class Fastly
   # VCL Snippets are blocks of VCL logic inserted into your service's configuration that don't require custom VCL.
   class Snippet < BelongsToServiceAndVersion
-    attr_accessor :service_id, :name, :dynamic, :type, :content, :priority
+    attr_accessor :id, :service_id, :name, :dynamic, :type, :content, :priority
+    ##
+    # :attr: id
+    #
+    # The id of the snippet (useful for dynamic snippet reference)
+    #
+
     ##
     # :attr: service_id
     #
