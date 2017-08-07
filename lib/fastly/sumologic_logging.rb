@@ -1,7 +1,7 @@
 class Fastly
   # An Google Cloud Storage endpoint to stream logs to
   class SumologicLogging < BelongsToServiceAndVersion
-    attr_accessor :service_id, :name, :period, :placement, :gzip_level, :format, :comment, :format_version, :message_type, :response_condition, :timestamp_format, :created_at, :updated_at, :deleted_at
+    attr_accessor :service_id, :name, :url, :period, :placement, :gzip_level, :format, :comment, :format_version, :message_type, :response_condition, :timestamp_format, :created_at, :updated_at, :deleted_at
 
     ##
     # :attr: service_id
