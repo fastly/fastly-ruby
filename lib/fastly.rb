@@ -188,6 +188,16 @@ class Fastly
     end
   end
 
+  # Update a VCL dynamic snippet
+  def update_dynamic_snippet(snippet)
+    update(DynamicSnippet, snippet)
+  end
+
+  # Get a VCL dynamic snippet
+  def get_dynamic_snippet(service_id, snippet_id)
+    get(DynamicSnippet, service_id, snippet_id)
+  end
+
   # :method: create_version(opts)
   # opts must contain a service_id param
 

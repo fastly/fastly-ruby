@@ -20,12 +20,12 @@ class Fastly
     # The ID of this dynamic snippet
     #
 
-    def self.get_path(object)
-      "/service/#{object.service_id}/snippet/#{object.snippet_id}"
+    def self.get_path(service_id, snippet_id)
+      "/service/#{service_id}/snippet/#{snippet_id}"
     end
 
     def self.put_path(object)
-      get_path(object)
+      "/service/#{object.service_id}/snippet/#{object.snippet_id}"
     end
   end
 end
