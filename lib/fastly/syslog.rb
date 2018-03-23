@@ -1,7 +1,7 @@
 class Fastly
   # An endpoint to stream syslogs to
   class Syslog < BelongsToServiceAndVersion
-    attr_accessor :service_id, :name, :comment, :ipv4, :ipv6, :hostname, :port, :token, :format, :format_version, :message_type, :response_condition, :use_tls, :tls_hostname, :tls_ca_cert
+    attr_accessor :service_id, :name, :comment, :ipv4, :ipv6, :hostname, :port, :placement, :token, :format, :format_version, :message_type, :response_condition, :use_tls, :tls_hostname, :tls_ca_cert
 
     ##
     # :attr: service_id
@@ -52,6 +52,11 @@ class Fastly
     # :attr: port
     #
     # the port to stream logs to (defaults to 514)
+    
+    ##
+    # :attr: placement
+    #
+    # Where in the generated VCL the logging call should be placed
 
     ##
     # :attr: token
@@ -99,5 +104,8 @@ class Fastly
     #
     # Use this pem formatted certificate as the CA cert to verify the syslog
     # server's certificate
+    def self.path
+      'logging/syslog'
+    end
   end
 end
