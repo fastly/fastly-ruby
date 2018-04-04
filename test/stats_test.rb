@@ -30,6 +30,11 @@ class StatsTest < Fastly::TestCase
     assert(usage['meta'])
     assert_equal 'success', usage['status']
 
+    usage = @fastly.usage(:from => FROM, :by_month => 1)
+    assert(usage)
+    assert(usage['meta'])
+    assert_equal 'success', usage['status']
+
     usage = @fastly.usage(:from => FROM, :by_service => 1)
     assert(usage)
     assert(usage['meta'])

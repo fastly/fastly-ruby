@@ -128,6 +128,8 @@ class Fastly
 
   # Returns usage information aggregated across all Fastly services and grouped by region.
   #
+  # If the :by_month flag is passed then returns total usage information aggregated by month as well as grouped by service & region.
+  #
   # If the :by_service flag is passed then returns usage information aggregated by service and grouped by service & region.
   #
   # Other options available are:
@@ -140,6 +142,7 @@ class Fastly
   # See http://docs.fastly.com/docs/stats for details.
   def usage(opts)
     url  = '/stats/usage'
+    url += '_by_month' if opts.delete(:by_month)
     url += '_by_service' if opts.delete(:by_service)
     client.get_stats(url, opts)
   end
