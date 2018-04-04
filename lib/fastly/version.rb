@@ -143,6 +143,10 @@ class Fastly
       fetcher.list_dictionaries(:service_id => service_id, :version => number)
     end
 
+    def acls
+      fetcher.list_acls(:service_id => service_id, :version => number)
+    end
+
     # Validate this Version
     def validate
       hash = fetcher.client.get("#{Version.put_path(self)}/validate")
