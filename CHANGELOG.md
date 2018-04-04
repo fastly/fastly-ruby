@@ -1,5 +1,14 @@
 # Change Log
 
+## [v1.14.0](https://github.com/fastly/fastly-ruby/tree/v1.14.0) (2018-03-23)
+[Full Changelog](https://github.com/fastly/fastly-ruby/compare/v1.6.1...v1.14.0)
+
+**Merged pull requests:**
+
+- add `placement` attribute to Syslog, use newer API path [\#121](https://github.com/fastly/fastly-ruby/pull/121) ([RexBelli](https://github.com/RexBelli))
+  
+  This change utilizes a more precise API endpoint for listing Syslog configurations. The old endpoint returned all Logging\* objects regardless of type (eg. GCS, S3) but the new one will only return logging configurations of type `syslog`.
+
 ## [v1.6.1](https://github.com/fastly/fastly-ruby/tree/v1.6.1) (2016-09-06)
 [Full Changelog](https://github.com/fastly/fastly-ruby/compare/v1.6.0...v1.6.1)
 
