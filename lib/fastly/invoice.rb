@@ -4,19 +4,7 @@ require 'date'
 class Fastly
   # An invoice for a time period
   class Invoice < Base
-    attr_accessor :service_id, :service_name, :start_time, :end_time, :total, :regions
-
-    ##
-    # :attr: service_id
-    #
-    # The id of the service this invoice is for
-    #
-
-    ##
-    # :attr: service_name
-    #
-    # The id of the service this invoice is for
-    #
+    attr_accessor :start_time, :end_time, :invoice_id, :total, :regions
 
     ##
     # :attr: start_time
@@ -56,13 +44,17 @@ class Fastly
     def self.get_path(*args)
       opts = args.size > 0 ? args[0] : {}
 
-      url  = '/billing'
+      url  = '/billing/v2'
 
-      url += "/service/#{opts[:service_id]}" if opts.key?(:service_id)
-
-      if opts.key?(:year) && opts.key?(:month)
-        url += "/year/#{opts[:year]}/month/#{opts[:month]}"
-      end
+      url += if opts.key?(:year) && opts.key?(:month)
+               "/year/#{opts[:year]}/month/#{opts[:month]}"
+             elsif opts.key?(:id)
+               "/account_customers/#{opts[:customer_id]}/invoices/#{opts[:id]}"
+             elsif opts.key?(:mtd)
+               "/account_customers/#{opts[:customer_id]}/mtd_invoice"
+             else
+               "/account_customers/#{opts[:customer_id]}/invoices"
+             end
 
       url
     end
@@ -92,18 +84,37 @@ class Fastly
     end
   end
 
-  # Return an array of Invoice objects representing invoices for all services.
+  # Return an Invoice object
   #
   # If a year and month are passed in returns the invoices for that whole month.
   #
   # Otherwise it returns the invoices for the current month so far.
   def get_invoice(year = nil, month = nil)
-    opts = {}
-    unless year.nil? || month.nil?
+    opts = { customer_id: current_customer.id }
+    if year.nil? || month.nil?
+      opts[:mtd] = true
+    else
       opts[:year]  = year
       opts[:month] = month
     end
 
     get(Invoice, opts)
+  end
+
+  # Return an Invoice object for the passed invoice ID
+  def get_invoice_by_id(id)
+    opts = {
+      id: id,
+      customer_id: current_customer.id
+    }
+
+    get(Invoice, opts)
+  end
+
+  # Retun an array of Invoice objects.
+  def list_invoices
+    opts = { customer_id: current_customer.id }
+
+    list(Invoice, opts)
   end
 end
