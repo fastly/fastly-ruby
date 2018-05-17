@@ -1,5 +1,13 @@
 # Change Log
 
+## [v2.0.0](https://github.com/fastly/fastly-ruby/tree/v2.0.0) (2018-05-17)
+[Full Changelog](https://github.com/fastly/fastly-ruby/compare/v1.15.0...v2.0.0)
+
+**Merged pull requests:**
+
+- Update version and CHANGELOG for Release v1.15.0 [\#128](https://github.com/fastly/fastly-ruby/pull/128) ([leklund](https://github.com/leklund))
+- Update fastly/invoice for v2 invoice endpoints [\#126](https://github.com/fastly/fastly-ruby/pull/126) ([leklund](https://github.com/leklund))
+
 ## [v1.15.0](https://github.com/fastly/fastly-ruby/tree/v1.15.0) (2018-04-04)
 [Full Changelog](https://github.com/fastly/fastly-ruby/compare/v1.14.0...v1.15.0)
 
