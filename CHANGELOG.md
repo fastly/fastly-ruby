@@ -1,13 +1,92 @@
 # Change Log
 
-## [v1.14.0](https://github.com/fastly/fastly-ruby/tree/v1.14.0) (2018-03-23)
-[Full Changelog](https://github.com/fastly/fastly-ruby/compare/v1.6.1...v1.14.0)
+## [v1.15.0](https://github.com/fastly/fastly-ruby/tree/v1.15.0) (2018-05-17)
+[Full Changelog](https://github.com/fastly/fastly-ruby/compare/v1.14.0...v1.15.0)
 
 **Merged pull requests:**
 
-- add `placement` attribute to Syslog, use newer API path [\#121](https://github.com/fastly/fastly-ruby/pull/121) ([RexBelli](https://github.com/RexBelli))
-  
-  This change utilizes a more precise API endpoint for listing Syslog configurations. The old endpoint returned all Logging\* objects regardless of type (eg. GCS, S3) but the new one will only return logging configurations of type `syslog`.
+- Update fastly/invoice for v2 invoice endpoints [\#126](https://github.com/fastly/fastly-ruby/pull/126) ([leklund](https://github.com/leklund))
+- Feature - add support for /stats/usage\_by\_month [\#124](https://github.com/fastly/fastly-ruby/pull/124) ([jrbeilke](https://github.com/jrbeilke))
+- add changelog for v1.14.0 [\#123](https://github.com/fastly/fastly-ruby/pull/123) ([thommahoney](https://github.com/thommahoney))
+
+## [v1.14.0](https://github.com/fastly/fastly-ruby/tree/v1.14.0) (2018-03-23)
+[Full Changelog](https://github.com/fastly/fastly-ruby/compare/v1.13.2...v1.14.0)
+
+**Merged pull requests:**
+
+- bump to v1.14.0 [\#122](https://github.com/fastly/fastly-ruby/pull/122) ([thommahoney](https://github.com/thommahoney))
+- Placement in Syslog [\#121](https://github.com/fastly/fastly-ruby/pull/121) ([RexBelli](https://github.com/RexBelli))
+
+## [v1.13.2](https://github.com/fastly/fastly-ruby/tree/v1.13.2) (2017-12-18)
+[Full Changelog](https://github.com/fastly/fastly-ruby/compare/v1.13.1...v1.13.2)
+
+**Merged pull requests:**
+
+- Fix syslog response\_condition attribute [\#117](https://github.com/fastly/fastly-ruby/pull/117) ([anotherJay](https://github.com/anotherJay))
+
+## [v1.13.1](https://github.com/fastly/fastly-ruby/tree/v1.13.1) (2017-08-08)
+[Full Changelog](https://github.com/fastly/fastly-ruby/compare/v1.13.0...v1.13.1)
+
+**Merged pull requests:**
+
+- automatically load the sumologic\_logging class [\#115](https://github.com/fastly/fastly-ruby/pull/115) ([thommahoney](https://github.com/thommahoney))
+
+## [v1.13.0](https://github.com/fastly/fastly-ruby/tree/v1.13.0) (2017-08-07)
+[Full Changelog](https://github.com/fastly/fastly-ruby/compare/v1.12.0...v1.13.0)
+
+**Merged pull requests:**
+
+- add support for sumologic [\#114](https://github.com/fastly/fastly-ruby/pull/114) ([thommahoney](https://github.com/thommahoney))
+
+## [v1.12.0](https://github.com/fastly/fastly-ruby/tree/v1.12.0) (2017-08-03)
+[Full Changelog](https://github.com/fastly/fastly-ruby/compare/v1.11.0...v1.12.0)
+
+**Merged pull requests:**
+
+- add support for dynamic snippets [\#113](https://github.com/fastly/fastly-ruby/pull/113) ([thommahoney](https://github.com/thommahoney))
+- Added VCL snippets endpoint [\#112](https://github.com/fastly/fastly-ruby/pull/112) ([thomshutt](https://github.com/thomshutt))
+
+## [v1.11.0](https://github.com/fastly/fastly-ruby/tree/v1.11.0) (2017-06-12)
+[Full Changelog](https://github.com/fastly/fastly-ruby/compare/v1.10.0...v1.11.0)
+
+**Merged pull requests:**
+
+- add GCS Logging object [\#111](https://github.com/fastly/fastly-ruby/pull/111) ([thommahoney](https://github.com/thommahoney))
+
+## [v1.10.0](https://github.com/fastly/fastly-ruby/tree/v1.10.0) (2017-03-17)
+[Full Changelog](https://github.com/fastly/fastly-ruby/compare/v1.9.0...v1.10.0)
+
+**Merged pull requests:**
+
+- Support Papertrail logging endpoints [\#110](https://github.com/fastly/fastly-ruby/pull/110) ([werkshy](https://github.com/werkshy))
+
+## [v1.9.0](https://github.com/fastly/fastly-ruby/tree/v1.9.0) (2017-02-03)
+[Full Changelog](https://github.com/fastly/fastly-ruby/compare/v1.8.0...v1.9.0)
+
+**Closed issues:**
+
+- Missing tag for v1.8.0 [\#108](https://github.com/fastly/fastly-ruby/issues/108)
+
+**Merged pull requests:**
+
+- Add `message\_type` support to logging resources [\#109](https://github.com/fastly/fastly-ruby/pull/109) ([schisamo](https://github.com/schisamo))
+
+## [v1.8.0](https://github.com/fastly/fastly-ruby/tree/v1.8.0) (2017-01-17)
+[Full Changelog](https://github.com/fastly/fastly-ruby/compare/v1.7.0...v1.8.0)
+
+**Merged pull requests:**
+
+- Support for HTTP debug logs [\#107](https://github.com/fastly/fastly-ruby/pull/107) ([thommahoney](https://github.com/thommahoney))
+- use public\_suffix version 1.4.6 for ruby 1.9 [\#105](https://github.com/fastly/fastly-ruby/pull/105) ([thommahoney](https://github.com/thommahoney))
+- Enable HTTP proxy support from environment [\#104](https://github.com/fastly/fastly-ruby/pull/104) ([vr](https://github.com/vr))
+
+## [v1.7.0](https://github.com/fastly/fastly-ruby/tree/v1.7.0) (2016-10-24)
+[Full Changelog](https://github.com/fastly/fastly-ruby/compare/v1.6.1...v1.7.0)
+
+**Merged pull requests:**
+
+- Add ACL and ACL Entry Support [\#103](https://github.com/fastly/fastly-ruby/pull/103) ([wrightp](https://github.com/wrightp))
+- add https support to purge function [\#99](https://github.com/fastly/fastly-ruby/pull/99) ([jgoulah](https://github.com/jgoulah))
 
 ## [v1.6.1](https://github.com/fastly/fastly-ruby/tree/v1.6.1) (2016-09-06)
 [Full Changelog](https://github.com/fastly/fastly-ruby/compare/v1.6.0...v1.6.1)
