@@ -122,6 +122,8 @@ class Fastly
       resp  = http.send(method, path, query, headers(extras).merge('Content-Type' =>  'application/x-www-form-urlencoded'))
       fail Error, resp.body unless resp.kind_of?(Net::HTTPSuccess)
       JSON.parse(resp.body)
+      rescue JSON::ParserError => _e
+        resp.body
     end
 
     def headers(extras={})
