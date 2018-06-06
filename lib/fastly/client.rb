@@ -26,6 +26,8 @@ class Fastly
       # handle TLS connections outside of development
       @http.verify_mode = OpenSSL::SSL::VERIFY_PEER
       @http.use_ssl = uri.scheme.downcase == 'https'
+      @http.open_timeout = 10 if @http.respond_to?(:open_timeout) # default is 60
+      @http.read_timeout = 10 if @http.respond_to?(:read_timeout) # default is 60
 
       # debug http interactions if specified
       @http.set_debug_output(opts[:debug]) if opts[:debug]
