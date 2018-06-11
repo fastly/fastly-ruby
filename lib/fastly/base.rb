@@ -5,7 +5,8 @@ class Fastly
 
     def initialize(opts, fetcher)
       @keys = []
-      opts.each do |key, val|
+      attributes = opts.delete('attributes')
+      opts.merge(attributes).each do |key, val|
         next unless self.respond_to? "#{key}="
         send("#{key}=", val)
         @keys.push(key)
