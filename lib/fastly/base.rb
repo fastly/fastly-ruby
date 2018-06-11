@@ -60,5 +60,9 @@ class Fastly
     def self.delete_path(object)
       update_path(object)
     end
+
+    def update_method
+      :put
+    end
   end
 end

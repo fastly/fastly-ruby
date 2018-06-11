@@ -91,6 +91,12 @@ class Fastly
       post_and_put(:put, path, params)
     end
 
+    def patch(path, body = {})
+      resp = http.patch(path, body, 'Content-Type' =>  'application/vnd.api+json')
+      fail Error, resp.body unless resp.kind_of?(Net::HTTPSuccess)
+      JSON.parse(resp.body)
+    end
+
     def delete(path, params = {})
       extras = params.delete(:headers) || {}
       resp  = http.delete(path, headers(extras))

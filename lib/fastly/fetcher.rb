@@ -40,7 +40,7 @@ class Fastly
     end
 
     def update(klass, obj)
-      hash = client.put(klass.update_path(obj), obj.as_hash)
+      hash = client.public_send(klass.update_method, klass.update_path(obj), obj.as_hash)
       klass.new(hash, self)
     end
 
