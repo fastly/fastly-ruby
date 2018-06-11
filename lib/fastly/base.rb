@@ -53,12 +53,12 @@ class Fastly
       post_path(opts)
     end
 
-    def self.put_path(object)
+    def self.update_path(object)
       get_path(object.id)
     end
 
     def self.delete_path(object)
-      put_path(object)
+      update_path(object)
     end
   end
 end

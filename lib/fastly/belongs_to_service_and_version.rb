@@ -40,12 +40,12 @@ class Fastly
       "/service/#{opts[:service_id]}/version/#{opts[:version]}/#{path}"
     end
 
-    def self.put_path(obj)
+    def self.update_path(obj)
       get_path(obj.service_id, obj.version_number, obj.name)
     end
 
     def self.delete_path(obj)
-      put_path(obj)
+      update_path(obj)
     end
   end
 end

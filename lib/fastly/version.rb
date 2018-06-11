@@ -70,19 +70,19 @@ class Fastly
 
     # Activate this version
     def activate!
-      hash = fetcher.client.put("#{Version.put_path(self)}/activate")
+      hash = fetcher.client.put("#{Version.update_path(self)}/activate")
       !hash.nil?
     end
 
     # Deactivate this version
     def deactivate!
-      hash = fetcher.client.put("#{Version.put_path(self)}/deactivate")
+      hash = fetcher.client.put("#{Version.update_path(self)}/deactivate")
       !hash.nil?
     end
 
     # Clone this Version
     def clone
-      hash = fetcher.client.put("#{Version.put_path(self)}/clone")
+      hash = fetcher.client.put("#{Version.update_path(self)}/clone")
       return nil if hash.nil?
       Version.new(hash, fetcher)
     end
@@ -101,7 +101,7 @@ class Fastly
     #    :include_content => true
     # in the opts
     def generated_vcl(opts = {})
-      hash = fetcher.client.get("#{Version.put_path(self)}/generated_vcl", opts)
+      hash = fetcher.client.get("#{Version.update_path(self)}/generated_vcl", opts)
       opts = {
         'content'    => hash['vcl'] || hash['content'],
         'name'       => hash['md5'],
@@ -114,7 +114,7 @@ class Fastly
 
     # Upload a VCL file for this Version
     def upload_vcl(name, content)
-      hash = fetcher.client.post("#{Version.put_path(self)}/vcl", name: name, content: content)
+      hash = fetcher.client.post("#{Version.update_path(self)}/vcl", name: name, content: content)
       return nil if hash.nil?
       VCL.new(hash, fetcher)
     end
@@ -135,7 +135,7 @@ class Fastly
 
     # Delete a VCL file for this Version
     def delete_vcl(name)
-      hash = fetcher.client.delete("#{Version.put_path(self)}/vcl/#{name}")
+      hash = fetcher.client.delete("#{Version.update_path(self)}/vcl/#{name}")
       hash.nil? ? nil : hash
     end
 
@@ -145,7 +145,7 @@ class Fastly
 
     # Validate this Version
     def validate
-      hash = fetcher.client.get("#{Version.put_path(self)}/validate")
+      hash = fetcher.client.get("#{Version.update_path(self)}/validate")
 
       valid = ("ok" == hash["status"])
       message = hash['msg']
@@ -161,12 +161,12 @@ class Fastly
       "/service/#{opts[:service_id]}/version"
     end
 
-    def self.put_path(obj)
+    def self.update_path(obj)
       get_path(obj.service_id, obj.number)
     end
 
     def self.delete_path(obj)
-      put_path(obj)
+      update_path(obj)
     end
   end
 end

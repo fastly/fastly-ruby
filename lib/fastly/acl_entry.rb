@@ -38,12 +38,12 @@ class Fastly
       "/service/#{opts[:service_id]}/acl/#{opts[:acl_id]}/entry"
     end
 
-    def self.put_path(object)
+    def self.update_path(object)
       get_path(object.service_id, object.acl_id, object.id)
     end
 
     def self.delete_path(object)
-      put_path(object)
+      update_path(object)
     end
 
     def self.list_path(opts = {})

@@ -27,7 +27,7 @@ class Fastly
     end
 
     # :nodoc:
-    def self.put_path(obj)
+    def self.update_path(obj)
       get_path(obj.service_id, obj.version)
     end
 

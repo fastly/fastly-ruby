@@ -67,7 +67,7 @@ class Fastly
       fail "You can't POST to an invoice"
     end
 
-    def self.put_path
+    def self.update_path
       fail "You can't PUT to an invoice"
     end
 

@@ -24,7 +24,7 @@ class Fastly
       "/service/#{object.service_id}/snippet/#{object.snippet_id}"
     end
 
-    def self.put_path(object)
+    def self.update_path(object)
       get_path(object)
     end
   end
