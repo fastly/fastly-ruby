@@ -1,5 +1,13 @@
 # Change Log
 
+## [v2.1.0](https://github.com/fastly/fastly-ruby/tree/v2.0.0) (2018-06-18)
+[Full Changelog](https://github.com/fastly/fastly-ruby/compare/v2.0.0...v2.1.0)
+
+** Merged pull requests:**
+
+- Fix tests in continuous integration [\#134](https://github.com/fastly/fastly-ruby/pull/134) ([jamesarosen](https://github.com/jamesarosen))
+- Add more user relationships to Fastly::Customer [\#133](https://github.com/fastly/fastly-ruby/pull/133) ([jamesarosen](https://github.com/jamesarosen))
+
 ## [v2.0.0](https://github.com/fastly/fastly-ruby/tree/v2.0.0) (2018-05-17)
 [Full Changelog](https://github.com/fastly/fastly-ruby/compare/v1.15.0...v2.0.0)
 
