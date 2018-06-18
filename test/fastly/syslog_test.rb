@@ -38,7 +38,7 @@ describe Fastly::Syslog do
         'format' => '%h %l %u %t \'%r\' %>s %b',
       )
 
-      get_item_url = "#{Fastly::Client::DEFAULT_URL}/service/#{service_id}/version/#{version}/syslog/#{syslog.name}"
+      get_item_url = "#{Fastly::Client::DEFAULT_URL}/service/#{service_id}/version/#{version}/logging/syslog/#{syslog.name}"
       get_service_url = "#{Fastly::Client::DEFAULT_URL}/service/#{service_id}/version/#{version}"
 
       stub_request(:get, get_service_url).to_return(status: 200, body: '{}', headers: {})
