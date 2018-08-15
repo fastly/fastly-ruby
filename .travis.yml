@@ -3,11 +3,9 @@ script: 'bundle exec rake test:unit'
 sudo: false
 matrix:
   include:
-    - rvm: 2.1.10
+    - rvm: 2.3.7
       gemfile: gemfiles/HEAD.gemfile
-    - rvm: 2.2.7
+    - rvm: 2.4.4
       gemfile: gemfiles/HEAD.gemfile
-    - rvm: 2.3.4
-      gemfile: gemfiles/HEAD.gemfile
-    - rvm: 2.4.1
+    - rvm: 2.5.1
       gemfile: gemfiles/HEAD.gemfile
