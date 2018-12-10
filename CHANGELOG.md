@@ -1,6 +1,11 @@
 # Change Log
 
-## [v2.1.0](https://github.com/fastly/fastly-ruby/tree/v2.0.0) (2018-06-18)
+## [v2.2.0]((https://github.com/fastly/fastly-ruby/tree/v2.2.0) (2018-12-10)
+[Full Changelog](https://github.com/fastly/fastly-ruby/compare/v2.1.0...v2.2.0)
+
+- Add BigQuery logging
+
+## [v2.1.0](https://github.com/fastly/fastly-ruby/tree/v2.1.0) (2018-06-18)
 [Full Changelog](https://github.com/fastly/fastly-ruby/compare/v2.0.0...v2.1.0)
 
 ** Merged pull requests:**
