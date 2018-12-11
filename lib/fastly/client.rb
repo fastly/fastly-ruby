@@ -9,28 +9,16 @@ class Fastly
 
     DEFAULT_URL = 'https://api.fastly.com'.freeze
 
-    attr_accessor :http, :api_key, :user, :password, :cookie, :customer
+    attr_accessor :api_key, :base_url, :debug, :user, :password, :cookie, :customer
 
     def initialize(opts)
       @api_key  = opts.fetch(:api_key, nil)
-      @user     = opts.fetch(:user, nil)
-      @password = opts.fetch(:password, nil)
+      @base_url = opts.fetch(:base_url, DEFAULT_URL)
       @customer = opts.fetch(:customer, nil)
       @oldpurge = opts.fetch(:use_old_purge_method, false)
-
-      base = opts.fetch(:base_url, DEFAULT_URL)
-      uri  = URI.parse(base)
-
-      @http = Net::HTTP.new(uri.host, uri.port, :ENV, nil, nil, nil)
-
-      # handle TLS connections outside of development
-      @http.verify_mode = OpenSSL::SSL::VERIFY_PEER
-      @http.use_ssl = uri.scheme.downcase == 'https'
-
-      # debug http interactions if specified
-      @http.set_debug_output(opts[:debug]) if opts[:debug]
-
-      @http.start
+      @password = opts.fetch(:password, nil)
+      @user     = opts.fetch(:user, nil)
+      @debug    = opts.fetch(:debug, nil)
 
       return self unless fully_authed?
 
@@ -112,6 +100,22 @@ class Fastly
 
       fail Error, resp.body unless resp.kind_of?(Net::HTTPSuccess)
       JSON.parse(resp.body)
+    end
+
+    def http
+      return Thread.current[:fastly_net_http] if Thread.current[:fastly_net_http]
+
+      uri = URI.parse(base_url)
+      http = Net::HTTP.new(uri.host, uri.port, :ENV, nil, nil, nil)
+
+      # handle TLS connections outside of development
+      http.verify_mode = OpenSSL::SSL::VERIFY_PEER
+      http.use_ssl = uri.scheme.downcase == 'https'
+
+      # debug http interactions if specified
+      http.set_debug_output(debug) if debug
+
+      Thread.current[:fastly_net_http] = http
     end
 
     private
