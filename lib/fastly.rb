@@ -80,9 +80,7 @@ class Fastly
   end
 
   # Return a User object representing the current logged in user.
-  # NOTE: requires you to be fully authed - will not work with only an API key
   def current_user
-    fail FullAuthRequired unless fully_authed?
     @current_user ||= get(User)
   end
 
