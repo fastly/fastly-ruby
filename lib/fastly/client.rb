@@ -2,7 +2,6 @@
 
 require 'json'
 require 'cgi'
-require 'concurrent'
 require 'net/http' # also requires uri
 require 'openssl'
 
@@ -22,7 +21,9 @@ class Fastly
       @password           = opts.fetch(:password, nil)
       @user               = opts.fetch(:user, nil)
       @debug              = opts.fetch(:debug, nil)
-      @thread_http_client = Concurrent::ThreadLocalVar.new { build_http_client }
+      @thread_http_client = if defined?(Concurrent::ThreadLocalVar)
+                              Concurrent::ThreadLocalVar.new { build_http_client }
+                            end
 
       return self unless fully_authed?
 
@@ -107,7 +108,10 @@ class Fastly
     end
 
     def http
-      @thread_http_client.value
+      return @thread_http_client.value if @thread_http_client
+      return Thread.current[:fastly_net_http] if Thread.current[:fastly_net_http]
+
+      Thread.current[:fastly_net_http] = build_http_client
     end
 
     private
