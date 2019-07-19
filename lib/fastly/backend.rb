@@ -4,7 +4,7 @@ class Fastly
     attr_accessor :service_id, :name, :address, :ipv4, :ipv6, :hostname, :use_ssl, :client_cert, :port,
                   :connect_timeout, :first_byte_timeout, :between_bytes_timeout, :error_threshold, :max_conn, :weight, :comment, :healthcheck, :auto_loadbalance, :request_condition,
                   :ssl_check_cert, :ssl_hostname, :ssl_cert_hostname, :ssl_sni_hostname, :min_tls_version, :max_tls_version, :ssl_ciphers,
-                  :shield
+                  :shield, :override_host
 
     ##
     # :attr: service_id
