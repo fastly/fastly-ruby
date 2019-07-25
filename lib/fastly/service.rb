@@ -33,14 +33,9 @@ class Fastly
     #
     # Get a hash of stats from different data centers.
     #
-    # Type can be one of
-    # * minutely
-    # * hourly
-    # * daily
-    # * all
-    def stats(type = :all, opts = {})
-      fail Error, "Unknown stats type #{type}" unless [:minutely, :hourly, :daily, :all].include?(type.to_sym)
-      fetcher.client.get("#{Service.get_path(id)}/stats/#{type}", opts)
+    # Type is always :all (argument is ignored)
+    def stats(_type = :all, opts = {})
+      fetcher.client.get("#{Service.get_path(id)}/stats/summary", opts)
     end
 
     # Return a Invoice object representing the invoice for this service
