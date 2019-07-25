@@ -1,23 +1,46 @@
 # Change Log
 
-## [v2.2.0]((https://github.com/fastly/fastly-ruby/tree/v2.2.0) (2018-12-10)
+## [v2.3.0](https://github.com/fastly/fastly-ruby/tree/v2.3.0) (2019-04-26)
+[Full Changelog](https://github.com/fastly/fastly-ruby/compare/v2.2.0...v2.3.0)
+
+**Closed issues:**
+
+- Ruby 2.5.0, fastly-1.15.0:  Purge Errors [\#130](https://github.com/fastly/fastly-ruby/issues/130)
+
+**Merged pull requests:**
+
+- make concurrent-ruby optional [\#145](https://github.com/fastly/fastly-ruby/pull/145) ([thommahoney](https://github.com/thommahoney))
+- Use concurrent-ruby to handle thread safety for http client. [\#144](https://github.com/fastly/fastly-ruby/pull/144) ([demersus](https://github.com/demersus))
+- Fix bug auth [\#143](https://github.com/fastly/fastly-ruby/pull/143) ([ichiee](https://github.com/ichiee))
+- update ruby versions to latest supported [\#142](https://github.com/fastly/fastly-ruby/pull/142) ([thommahoney](https://github.com/thommahoney))
+
+## [v2.2.0](https://github.com/fastly/fastly-ruby/tree/v2.2.0) (2018-12-11)
 [Full Changelog](https://github.com/fastly/fastly-ruby/compare/v2.1.0...v2.2.0)
 
-- Add BigQuery logging
+**Closed issues:**
+
+- purging https url doesn't work [\#100](https://github.com/fastly/fastly-ruby/issues/100)
+
+**Merged pull requests:**
+
+- ✨ Add BigQuery logging \[APPENG-2076\] [\#138](https://github.com/fastly/fastly-ruby/pull/138) ([jamesarosen](https://github.com/jamesarosen))
+- Update Fastly docs url [\#136](https://github.com/fastly/fastly-ruby/pull/136) ([crazyshot](https://github.com/crazyshot))
+- 🔖 v2.1.0 [\#135](https://github.com/fastly/fastly-ruby/pull/135) ([jamesarosen](https://github.com/jamesarosen))
 
 ## [v2.1.0](https://github.com/fastly/fastly-ruby/tree/v2.1.0) (2018-06-18)
 [Full Changelog](https://github.com/fastly/fastly-ruby/compare/v2.0.0...v2.1.0)
 
-** Merged pull requests:**
+**Merged pull requests:**
 
-- Fix tests in continuous integration [\#134](https://github.com/fastly/fastly-ruby/pull/134) ([jamesarosen](https://github.com/jamesarosen))
-- Add more user relationships to Fastly::Customer [\#133](https://github.com/fastly/fastly-ruby/pull/133) ([jamesarosen](https://github.com/jamesarosen))
+- 👷➕🐛✅ fix tests in CI [\#134](https://github.com/fastly/fastly-ruby/pull/134) ([jamesarosen](https://github.com/jamesarosen))
+- ✨ add more user relationships to Customer [\#133](https://github.com/fastly/fastly-ruby/pull/133) ([jamesarosen](https://github.com/jamesarosen))
 
 ## [v2.0.0](https://github.com/fastly/fastly-ruby/tree/v2.0.0) (2018-05-17)
 [Full Changelog](https://github.com/fastly/fastly-ruby/compare/v1.15.0...v2.0.0)
 
 **Merged pull requests:**
 
+- Update Changelog and version for 2.0.0 [\#129](https://github.com/fastly/fastly-ruby/pull/129) ([leklund](https://github.com/leklund))
 - Update version and CHANGELOG for Release v1.15.0 [\#128](https://github.com/fastly/fastly-ruby/pull/128) ([leklund](https://github.com/leklund))
 - Update fastly/invoice for v2 invoice endpoints [\#126](https://github.com/fastly/fastly-ruby/pull/126) ([leklund](https://github.com/leklund))
 
