@@ -1,5 +1,19 @@
 # Change Log
 
+## [v2.4.0](https://github.com/fastly/fastly-ruby/tree/v2.4.0) (2019-07-29)
+[Full Changelog](https://github.com/fastly/fastly-ruby/compare/v2.3.1...v2.4.0)
+
+**Merged pull requests:**
+
+- \[Backend\] Add override\_host attribute for Backend [\#146](https://github.com/fastly/fastly-ruby/pull/146) ([werkshy](https://github.com/werkshy))
+
+## [v2.3.1](https://github.com/fastly/fastly-ruby/tree/v2.3.1) (2019-07-25)
+[Full Changelog](https://github.com/fastly/fastly-ruby/compare/v2.3.0...v2.3.1)
+
+**Merged pull requests:**
+
+- Correct stats API path [\#147](https://github.com/fastly/fastly-ruby/pull/147) ([thommahoney](https://github.com/thommahoney))
+
 ## [v2.3.0](https://github.com/fastly/fastly-ruby/tree/v2.3.0) (2019-04-26)
 [Full Changelog](https://github.com/fastly/fastly-ruby/compare/v2.2.0...v2.3.0)
 
