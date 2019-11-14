@@ -98,6 +98,23 @@ describe Fastly::Client do
       assert_equal resp.class, Hash
       assert_includes resp, "i"
     end
+
+    it 'can make a POST without auth if asked to do so' do
+      stub_request(:post, /api.fastly.com/).
+        with(headers: {
+          'Accept'=>'*/*',
+          'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+          'Content-Accept'=>'application/json',
+          'Content-Type'=>'application/x-www-form-urlencoded',
+          #'Fastly-Key'=>'notasecreteither',
+          'User-Agent'=>'fastly-ruby-v2.4.0'
+          }).
+        to_return(body: JSON.generate(i: "dont care"), status: 200)
+
+      client.without_auth = true
+      resp = client.post('/service/blah')
+    end
+
   end
 
   describe 'get_stats' do

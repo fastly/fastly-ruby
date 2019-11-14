@@ -11,9 +11,12 @@ class Fastly
 
     DEFAULT_URL = 'https://api.fastly.com'.freeze
 
-    attr_accessor :api_key, :base_url, :debug, :user, :password, :cookie, :customer
+    attr_accessor :api_key, :base_url, :debug, :user, :password, :cookie, :customer, :without_auth
 
     def initialize(opts)
+      # Some endpoints (POST /tokens) break if any auth headers including cookies are sent so
+      # setting without_auth to true will remove the auth headers in those cases.
+      @without_auth       = opts.fetch(:without_auth, false)
       @api_key            = opts.fetch(:api_key, nil)
       @base_url           = opts.fetch(:base_url, DEFAULT_URL)
       @customer           = opts.fetch(:customer, nil)
@@ -28,8 +31,11 @@ class Fastly
       return self unless fully_authed?
 
       # If full auth creds (user/pass) then log in and set a cookie
-      resp = http.post('/login', make_params(user: user, password: password))
-
+      resp = http.post(
+        '/login', 
+        make_params(user: user, password: password), 
+        {'Content-Type' =>  'application/x-www-form-urlencoded'}
+      )
       if resp.kind_of?(Net::HTTPSuccess)
         @cookie = resp['Set-Cookie']
       else
@@ -139,9 +145,11 @@ class Fastly
     end
 
     def headers(extras={})
-      headers = fully_authed? ? { 'Cookie' => cookie } : {}
-      headers['Fastly-Key'] = api_key if api_key
-
+      headers = {}
+      if !@without_auth
+        headers = fully_authed? ? { 'Cookie' => cookie } : {}
+        headers['Fastly-Key'] = api_key if api_key
+      end
       headers.merge('Content-Accept' => 'application/json', 'User-Agent' => "fastly-ruby-v#{Fastly::VERSION}").merge(extras.keep_if {|k,v| !v.nil? })
     end
 
