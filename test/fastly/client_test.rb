@@ -111,8 +111,10 @@ describe Fastly::Client do
           }).
         to_return(body: JSON.generate(i: "dont care"), status: 200)
 
-      client.without_auth = true
-      resp = client.post('/service/blah')
+      resp = client.post(
+        '/service/blah',
+        {headers_no_auth: true}
+      )
     end
 
   end

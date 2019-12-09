@@ -11,12 +11,10 @@ class Fastly
 
     DEFAULT_URL = 'https://api.fastly.com'.freeze
 
-    attr_accessor :api_key, :base_url, :debug, :user, :password, :cookie, :customer, :without_auth
+    attr_accessor :api_key, :base_url, :debug, :user, :password, :cookie, :customer
 
     def initialize(opts)
       # Some endpoints (POST /tokens) break if any auth headers including cookies are sent so
-      # setting without_auth to true will remove the auth headers in those cases.
-      @without_auth       = opts.fetch(:without_auth, false)
       @api_key            = opts.fetch(:api_key, nil)
       @base_url           = opts.fetch(:base_url, DEFAULT_URL)
       @customer           = opts.fetch(:customer, nil)
@@ -65,8 +63,9 @@ class Fastly
 
     def get(path, params = {})
       extras = params.delete(:headers) || {}
+      headers_no_auth = params.delete(:headers_no_auth) || false
       path += "?#{make_params(params)}" unless params.empty?
-      resp  = http.get(path, headers(extras))
+      resp  = http.get(path, headers(extras, headers_no_auth))
       fail Error, resp.body unless resp.kind_of?(Net::HTTPSuccess)
       JSON.parse(resp.body)
     end
@@ -92,7 +91,8 @@ class Fastly
 
     def delete(path, params = {})
       extras = params.delete(:headers) || {}
-      resp  = http.delete(path, headers(extras))
+      headers_no_auth = params.delete(:headers_no_auth) || false
+      resp  = http.delete(path, headers(extras, headers_no_auth))
       resp.kind_of?(Net::HTTPSuccess)
     end
 
@@ -138,15 +138,16 @@ class Fastly
 
     def post_and_put(method, path, params = {})
       extras = params.delete(:headers) || {}
+      headers_no_auth = params.delete(:headers_no_auth) || false
       query = make_params(params)
-      resp  = http.send(method, path, query, headers(extras).merge('Content-Type' =>  'application/x-www-form-urlencoded'))
+      resp  = http.send(method, path, query, headers(extras, headers_no_auth).merge('Content-Type' =>  'application/x-www-form-urlencoded'))
       fail Error, resp.body unless resp.kind_of?(Net::HTTPSuccess)
       JSON.parse(resp.body)
     end
 
-    def headers(extras={})
+    def headers(extras={}, headers_no_auth=false)
       headers = {}
-      if !@without_auth
+      if !headers_no_auth
         headers = fully_authed? ? { 'Cookie' => cookie } : {}
         headers['Fastly-Key'] = api_key if api_key
       end

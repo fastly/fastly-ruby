@@ -69,7 +69,6 @@ describe Fastly::Token do
         scope: 'optional token_scope such_as purge_all purge_select'
       )
       assert_equal token.id, '5Yo3XXnrQpjc20u0ybrf2g'
-      assert_equal token.access_token, 'YOUR_FASTLY_TOKEN'
       assert_equal token.user_id, '4y5K5trZocEAQYkesWlk7M'
       assert_equal token.services[0], 'service_id_that_token_can_access'
       assert_equal token.name, 'name_of_token'
@@ -79,6 +78,7 @@ describe Fastly::Token do
       assert_equal token.expires_at, '2016-07-28T19:24:50+00:00'
       assert_equal token.ip, '127.17.202.173'
       assert_equal token.user_agent, 'fastly-ruby-v2.4.0'
+      assert_equal token.access_token, 'YOUR_FASTLY_TOKEN'
     end
     
     it 'would delete a token' do

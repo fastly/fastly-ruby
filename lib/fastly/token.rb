@@ -3,7 +3,7 @@
 # Token object
 class Fastly
   class Token < Base
-    attr_accessor :access_token, :id, :user_id, :customer_id, :name, :last_used_at, :created_at, :expires_at, :ip, :user_agent, :sudo_expires_at, :scopes, :scope, :services, :service_id
+    attr_accessor :id, :access_token, :user_id, :services, :name,  :scope, :created_at, :last_used_at, :expires_at, :ip, :user_agent
     
     private
 
@@ -23,12 +23,9 @@ class Fastly
   def new_token(opts)
     opts[:username] = client.user
     opts[:password] = client.password
+    opts[:headers_no_auth] = true
     
-    incumbent_auth_setting = client.without_auth
-    client.without_auth = true
     token = create(Token, opts)
-    client.without_auth = incumbent_auth_setting
-    
     token.nil? ? nil : token
   end
 
