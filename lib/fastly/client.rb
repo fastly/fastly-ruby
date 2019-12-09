@@ -14,7 +14,6 @@ class Fastly
     attr_accessor :api_key, :base_url, :debug, :user, :password, :cookie, :customer
 
     def initialize(opts)
-      # Some endpoints (POST /tokens) break if any auth headers including cookies are sent so
       @api_key            = opts.fetch(:api_key, nil)
       @base_url           = opts.fetch(:base_url, DEFAULT_URL)
       @customer           = opts.fetch(:customer, nil)
@@ -147,6 +146,7 @@ class Fastly
 
     def headers(extras={}, headers_no_auth=false)
       headers = {}
+      # Some endpoints (POST /tokens) break if any auth headers including cookies are sent
       if !headers_no_auth
         headers = fully_authed? ? { 'Cookie' => cookie } : {}
         headers['Fastly-Key'] = api_key if api_key
