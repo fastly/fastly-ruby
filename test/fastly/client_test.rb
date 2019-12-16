@@ -100,6 +100,33 @@ describe Fastly::Client do
     end
   end
 
+  describe 'patch' do
+    let(:client) { Fastly::Client.new(api_key: api_key) }
+
+    it 'raises Fastly::Error on unsuccessful PATCH' do
+      stub_request(:any, /api.fastly.com/).to_return(status: 400)
+
+      assert_raises(Fastly::Error) {
+        client.patch('/service/blah', {})
+      }
+    end
+
+    it 'can make a successful PATCH' do
+      stub_request(:any, /api.fastly.com/).
+        to_return(body: JSON.generate(i: "dont care"), status: 200)
+
+      resp = client.patch('/service/blah', { data: [1,2,3] })
+      assert_equal resp.class, Hash
+      assert_includes resp, "i"
+
+      assert_requested(
+        :patch,
+        /api.fastly.com\/service\/blah/,
+        body: "data=%5B1%2C+2%2C+3%5D"
+      )
+    end
+  end
+
   describe 'get_stats' do
     let(:client) { Fastly::Client.new(api_key: api_key) }
 

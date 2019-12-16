@@ -58,5 +58,20 @@ class Fastly
     def delete_entry(entry)
       fetcher.delete_acl_entry(entry)
     end
+
+    ##
+    # Mass update ACL entries
+    #
+    def update_entries(entries)
+      opts = {
+        service_id: service_id,
+        acl_id: id,
+        params: {
+          entries: entries
+        }
+      }
+
+      fetcher.update_acl_entries(opts)
+    end
   end
 end

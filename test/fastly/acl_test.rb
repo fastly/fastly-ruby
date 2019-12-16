@@ -35,6 +35,13 @@ describe Fastly::ACL do
     )
     stub_request(:post, 'https://api.fastly.com/service//acl/aclid/entry')
       .to_return(:status => 200, :body => create_acl_entry_response_body)
+
+    stub_request(:patch, 'https://api.fastly.com/service/aclserviceid/acl/aclid/entries')
+      .to_return(
+        status: 200,
+        body: '{ "status": "ok" }',
+        headers: {}
+      )
   end
 
   it 'creates a new ACL' do
@@ -158,6 +165,14 @@ describe Fastly::ACL do
 
     it 'lists ACL entries' do
       assert_equal acl.list_entries.first.id, 'aclentryid'
+    end
+  end
+
+  describe '#update_entries' do
+    it 'update ACL entries' do
+      acl.service_id = service.id
+      entries = []
+      assert_equal acl.update_entries(entries), { "status" => 'ok' }
     end
   end
 end

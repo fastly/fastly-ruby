@@ -46,6 +46,10 @@ class Fastly
       put_path(object)
     end
 
+    def self.patch_path(opts = {})
+      "/service/#{opts[:service_id]}/acl/#{opts[:acl_id]}/entries"
+    end
+
     def self.list_path(opts = {})
       "/service/#{opts[:service_id]}/acl/#{opts[:acl_id]}/entries"
     end

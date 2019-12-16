@@ -173,6 +173,14 @@ class Fastly
       end
     end
 
+    # unless the class doesn't have a patch path or it already exists
+    unless klass.patch_path.nil? || klass.respond_to?("update_#{plural}".to_sym)
+      send :define_method, "update_#{plural}".to_sym do |opts|
+        patch(klass, opts)
+      end
+    end
+
+
     send :define_method, "get_#{singular}".to_sym do |*args|
       get(klass, *args)
     end
