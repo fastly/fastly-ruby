@@ -113,7 +113,7 @@ describe Fastly::Client do
 
       resp = client.post(
         '/service/blah',
-        {headers_no_auth: true}
+        {include_auth: false}
       )
     end
 

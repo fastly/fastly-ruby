@@ -23,7 +23,7 @@ class Fastly
   def new_token(opts)
     opts[:username] = client.user
     opts[:password] = client.password
-    opts[:headers_no_auth] = true
+    opts[:include_auth] = false
     
     token = create(Token, opts)
     token.nil? ? nil : token
