@@ -34,6 +34,7 @@ require 'fastly/snippet'
 require 'fastly/dynamic_snippet'
 require 'fastly/sumologic_logging'
 require 'fastly/syslog'
+require 'fastly/token'
 require 'fastly/s3_logging'
 require 'fastly/gcs_logging'
 require 'fastly/user'
@@ -151,7 +152,7 @@ class Fastly
     client.get_stats('/stats/regions')
   end
 
-  [ACL, ACLEntry, User, Customer, Backend, CacheSetting, Condition, Dictionary, DictionaryItem, Director, Domain, Header, Healthcheck, Gzip, Match, PapertrailLogging, RequestSetting, ResponseObject, Service, Snippet, S3Logging, Syslog, VCL, Version].each do |klass|
+  [ACL, ACLEntry, User, Customer, Backend, CacheSetting, Condition, Dictionary, DictionaryItem, Director, Domain, Header, Healthcheck, Gzip, Match, PapertrailLogging, RequestSetting, ResponseObject, Service, Snippet, S3Logging, Syslog, Token, VCL, Version].each do |klass|
     type = Util.class_to_path(klass)
 
     if klass.respond_to?(:pluralize)

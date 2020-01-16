@@ -28,8 +28,11 @@ class Fastly
       return self unless fully_authed?
 
       # If full auth creds (user/pass) then log in and set a cookie
-      resp = http.post('/login', make_params(user: user, password: password))
-
+      resp = http.post(
+        '/login', 
+        make_params(user: user, password: password), 
+        {'Content-Type' =>  'application/x-www-form-urlencoded'}
+      )
       if resp.kind_of?(Net::HTTPSuccess)
         @cookie = resp['Set-Cookie']
       else
@@ -59,8 +62,9 @@ class Fastly
 
     def get(path, params = {})
       extras = params.delete(:headers) || {}
+      include_auth = params.key?(:include_auth) ? params.delete(:include_auth) : true
       path += "?#{make_params(params)}" unless params.empty?
-      resp  = http.get(path, headers(extras))
+      resp  = http.get(path, headers(extras, include_auth))
       fail Error, resp.body unless resp.kind_of?(Net::HTTPSuccess)
       JSON.parse(resp.body)
     end
@@ -86,7 +90,8 @@ class Fastly
 
     def delete(path, params = {})
       extras = params.delete(:headers) || {}
-      resp  = http.delete(path, headers(extras))
+      include_auth = params.key?(:include_auth) ? params.delete(:include_auth) : true
+      resp  = http.delete(path, headers(extras, include_auth))
       resp.kind_of?(Net::HTTPSuccess)
     end
 
@@ -132,16 +137,20 @@ class Fastly
 
     def post_and_put(method, path, params = {})
       extras = params.delete(:headers) || {}
+      include_auth = params.key?(:include_auth) ? params.delete(:include_auth) : true
       query = make_params(params)
-      resp  = http.send(method, path, query, headers(extras).merge('Content-Type' =>  'application/x-www-form-urlencoded'))
+      resp  = http.send(method, path, query, headers(extras, include_auth).merge('Content-Type' =>  'application/x-www-form-urlencoded'))
       fail Error, resp.body unless resp.kind_of?(Net::HTTPSuccess)
       JSON.parse(resp.body)
     end
 
-    def headers(extras={})
-      headers = fully_authed? ? { 'Cookie' => cookie } : {}
-      headers['Fastly-Key'] = api_key if api_key
-
+    def headers(extras={}, include_auth=true)
+      headers = {}
+      # Some endpoints (POST /tokens) break if any auth headers including cookies are sent
+      if include_auth
+        headers['Cookie'] = cookie if fully_authed?
+        headers['Fastly-Key'] = api_key if api_key
+      end
       headers.merge('Content-Accept' => 'application/json', 'User-Agent' => "fastly-ruby-v#{Fastly::VERSION}").merge(extras.keep_if {|k,v| !v.nil? })
     end
 
