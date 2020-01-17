@@ -1,5 +1,12 @@
 # Change Log
 
+## [v2.5.0](https://github.com/fastly/fastly-ruby/tree/v2.5.0) (2020-01-16)
+[Full Changelog](https://github.com/fastly/fastly-ruby/compare/v2.4.0...v2.5.0)
+
+**Merged pull requests:**
+
+- Add tokens.rb [\#150](https://github.com/fastly/fastly-ruby/pull/150) ([malachy-mcconnell](https://github.com/malachy-mcconnell))
+
 ## [v2.4.0](https://github.com/fastly/fastly-ruby/tree/v2.4.0) (2019-07-29)
 [Full Changelog](https://github.com/fastly/fastly-ruby/compare/v2.3.1...v2.4.0)
 
