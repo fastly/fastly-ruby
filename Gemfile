@@ -4,7 +4,7 @@ gemspec
 
 group :development, :test do
   gem 'appraisal', '~> 2.1'
-  gem 'rake', '~> 10.3.2'
+  gem 'rake', '>= 12.3.3'
   gem 'rdoc', '~> 4.1.1'
   gem 'minitest', '~> 5.3.4'
   gem 'pry'
