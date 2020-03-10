@@ -214,7 +214,7 @@ to create an account just for tests.
 
 ## Copyright
 
-Copyright 2011-2014 - Fastly Inc
+Copyright 2011-2020 - Fastly, Inc.
 
 ## Redistribution
 
