@@ -21,7 +21,7 @@ describe Fastly::Token do
         'Content-Accept'=>'application/json',
         'Content-Type'=>'application/x-www-form-urlencoded',
         'Cookie'=>'tasty!',
-        'User-Agent'=>'fastly-ruby-v2.4.0'
+        'User-Agent'=> /fastly-ruby/
         }).
       to_return(status: 403, body: '{"msg":"You must POST /sudo to access this endpoint"}', headers: {})
 
@@ -59,7 +59,7 @@ describe Fastly::Token do
         'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
         'Content-Accept'=>'application/json',
         'Content-Type'=>'application/x-www-form-urlencoded',
-        'User-Agent'=>'fastly-ruby-v2.4.0'
+        'User-Agent'=> /fastly-ruby/
         }).
       to_return(status: 200, body: response_body, headers: {})
 
@@ -89,7 +89,7 @@ describe Fastly::Token do
         'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
         'Content-Accept'=>'application/json',
         'Fastly-Key'=>'my_api_key',
-        'User-Agent'=>'fastly-ruby-v2.4.0'
+        'User-Agent'=> /fastly-ruby/
         }).
       to_return(status: 204, body: "", headers: {})
 
@@ -105,7 +105,7 @@ describe Fastly::Token do
           'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
           'Content-Accept'=>'application/json',
           'Fastly-Key'=>'my_api_key',
-          'User-Agent'=>'fastly-ruby-v2.4.0'
+          'User-Agent'=> /fastly-ruby/
           }).
         to_return(status: 200, body: "[]", headers: {})
 
@@ -120,7 +120,7 @@ describe Fastly::Token do
           'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
           'Content-Accept'=>'application/json',
           'Fastly-Key'=>'my_api_key',
-          'User-Agent'=>'fastly-ruby-v2.4.0'
+          'User-Agent'=> /fastly-ruby/
           }).
         to_return(status: 200, body: "[]", headers: {})
 

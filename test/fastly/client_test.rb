@@ -107,7 +107,7 @@ describe Fastly::Client do
           'Content-Accept'=>'application/json',
           'Content-Type'=>'application/x-www-form-urlencoded',
           #'Fastly-Key'=>'notasecreteither',
-          'User-Agent'=>'fastly-ruby-v2.4.0'
+          'User-Agent'=> /fastly-ruby/
           }).
         to_return(body: JSON.generate(i: "dont care"), status: 200)
 
