@@ -2,6 +2,7 @@ require 'common'
 require 'fastly'
 require 'minitest/autorun'
 require 'pry'
+require 'dotenv/load'
 
 class Fastly
   class TestCase < Minitest::Test; end

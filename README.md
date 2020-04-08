@@ -202,15 +202,19 @@ This option should not be used in a production setting as all HTTP headers, requ
 
 ### Notes for testing
 
-The test suite requires the following `ENV` variables to be set:
+The test suite tests create and delete three services in sequence, so you may want to create an account just for these tests.
 
-* `FASTLY_TEST_USER` - Your user email
-* `FASTLY_TEST_PASSWORD` - Your account password
-* `FASTLY_TEST_API_KEY` - Your API key (found at https://app.fastly.com/#account)
+To run the test suite:
 
-While the test suite is safe to be run on all accounts and isn't harmful to your
-data, the tests will create and delete 3 services in sequence so you may want
-to create an account just for tests.
+1. Generate a personal token for these tests: https://manage.fastly.com/account/personal/tokens
+
+2. Copy `.env.example` to `.env` and add the values for the variables:
+
+  * `FASTLY_TEST_USER` - Your user email
+  * `FASTLY_TEST_PASSWORD` - Your account password
+  * `FASTLY_TEST_API_KEY` - Your personal token
+
+3. Run the tests via `bundle exec rake test:unit`
 
 ## Copyright
 
