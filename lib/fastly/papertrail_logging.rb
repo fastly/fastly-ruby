@@ -57,7 +57,7 @@ class Fastly
     # strftime specified timestamp formatting (default "%Y-%m-%dT%H:%M:%S.000").
 
     def self.path
-      'logging/papertrail'
+      "logging/papertrail"
     end
   end
 end

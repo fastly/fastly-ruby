@@ -13,4 +13,4 @@ group :development, :test do
   gem "webmock"
 end
 
-gemspec :path => "../"
+gemspec path: "../"

@@ -62,23 +62,23 @@ class Fastly
     # How many have to be ok for it work
   end
 
-    ##
-    # :attr: method
-    #
-    # The HTTP method to use: GET, PUT, POST etc.
+  ##
+  # :attr: method
+  #
+  # The HTTP method to use: GET, PUT, POST etc.
 
-    ##
-    # :attr: expected_response
-    #
-    # The HTTP status to indicate a successful healthcheck (e.g. 200)
+  ##
+  # :attr: expected_response
+  #
+  # The HTTP status to indicate a successful healthcheck (e.g. 200)
 
-    ##
-    # :attr: initial
-    #
-    # How many have to be ok for it work the first time
+  ##
+  # :attr: initial
+  #
+  # How many have to be ok for it work the first time
 
-    ##
-    # :attr: check_interval
-    #
-    # Time between checks in milliseconds
+  ##
+  # :attr: check_interval
+  #
+  # Time between checks in milliseconds
 end

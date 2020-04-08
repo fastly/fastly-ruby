@@ -3,7 +3,7 @@ class Fastly
     attr_accessor :id, :name, :service_id
 
     def items
-      fetcher.list_dictionary_items(:service_id => service_id, :dictionary_id => id)
+      fetcher.list_dictionary_items(service_id: service_id, dictionary_id: id)
     end
 
     # Returns a Fastly::DictionaryItem corresponding to this dictionary and the +key+
@@ -12,7 +12,7 @@ class Fastly
     def item(key)
       fetcher.get_dictionary_item(service_id, id, key)
     rescue Fastly::Error => e
-      raise unless e.message =~ /Record not found/
+      raise unless /Record not found/.match?(e.message)
     end
 
     def add_item(key, value)
@@ -20,7 +20,7 @@ class Fastly
     end
 
     def update_item(key, value)
-      di = items.select {|item| item.item_key.eql? key }.first
+      di = items.select { |item| item.item_key.eql? key }.first
       if di
         di.item_value = value
         fetcher.update_dictionary_item(di)
@@ -30,12 +30,12 @@ class Fastly
     end
 
     def delete_item(key)
-      di = items.select {|item| item.item_key.eql? key }.first
+      di = items.select { |item| item.item_key.eql? key }.first
       fetcher.delete_dictionary_item(di) if di
     end
 
     def self.pluralize
-      'dictionaries'
+      "dictionaries"
     end
   end
 end

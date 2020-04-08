@@ -1,4 +1,4 @@
-require 'uri'
+require "uri"
 
 class Fastly
   # Encapsulates behavior of objects requiring both service and version
@@ -22,14 +22,14 @@ class Fastly
 
     # :nodoc:
     def as_hash
-      super.delete_if { |var| %w(service_id version).include?(var) }
+      super.delete_if { |var| %w[service_id version].include?(var) }
     end
 
     # URI escape (including spaces) the path and return it
     def self.path_escape(path)
-      @uri_parser ||= URI::Parser.new
+      @uri_parser ||= URI::DEFAULT_PARSER
       # the leading space in the escape character set is intentional
-      @uri_parser.escape(path, ' !*\'();:@&=+$,/?#[]')
+      @uri_parser.escape(path, " !*'();:@&=+$,/?#[]")
     end
 
     def self.get_path(service, version, name, _opts = {})

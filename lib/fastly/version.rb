@@ -103,10 +103,10 @@ class Fastly
     def generated_vcl(opts = {})
       hash = fetcher.client.get("#{Version.put_path(self)}/generated_vcl", opts)
       opts = {
-        'content'    => hash['vcl'] || hash['content'],
-        'name'       => hash['md5'],
-        'version'    => hash['version'],
-        'service_id' => hash['service']
+        "content" => hash["vcl"] || hash["content"],
+        "name" => hash["md5"],
+        "version" => hash["version"],
+        "service_id" => hash["service"]
       }
 
       VCL.new(opts, fetcher)
@@ -140,7 +140,7 @@ class Fastly
     end
 
     def dictionaries
-      fetcher.list_dictionaries(:service_id => service_id, :version => number)
+      fetcher.list_dictionaries(service_id: service_id, version: number)
     end
 
     # Validate this Version
@@ -148,7 +148,7 @@ class Fastly
       hash = fetcher.client.get("#{Version.put_path(self)}/validate")
 
       valid = ("ok" == hash["status"])
-      message = hash['msg']
+      message = hash["msg"]
 
       [valid, message]
     end
