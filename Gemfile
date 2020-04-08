@@ -8,7 +8,7 @@ group :development, :test do
   gem 'rdoc', '~> 4.1.1'
   gem 'minitest', '~> 5.3.4'
   gem 'pry'
-  gem 'rubocop', '~> 0.57.2', require: false
+  gem 'standard', '~> 0.2'
   gem 'webmock'
 end
 
