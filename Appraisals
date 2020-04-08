@@ -1,3 +1,3 @@
 appraise "HEAD" do
-  gem "rubocop", "~> 0.42"
+  gem "standardrb", "~> 0.2"
 end

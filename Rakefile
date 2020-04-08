@@ -15,15 +15,6 @@ namespace :clean do
   end
 end
 
-require "rubocop/rake_task"
-
-desc "Run rubocop"
-RuboCop::RakeTask.new(:rubocop) do |task|
-  task.patterns = ["bin/*", "lib/**/*.rb", "test/**/*.rb"]
-  task.formatters = ["fuubar"]
-  task.fail_on_error = true
-end
-
 require "rdoc/task"
 
 RDoc::Task.new do |rdoc|
