@@ -34,6 +34,8 @@ end
 
 require "rake/testtask"
 
+require "standard/rake"
+
 namespace :test do
   desc "Run all unit tests"
   Rake::TestTask.new(:unit) do |t|
