@@ -11,3 +11,7 @@ group :development, :test do
   gem 'rubocop', '~> 0.57.2', require: false
   gem 'webmock'
 end
+
+group :test do
+  gem 'dotenv'
+end
