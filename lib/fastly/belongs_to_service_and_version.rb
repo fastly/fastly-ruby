@@ -16,9 +16,9 @@ class Fastly
     end
 
     # Get the number of the Version this belongs to
-    def version_number # rubocop:disable all
-      @version
-    end # rubocop:enable all
+    def version_number
+      @version ||= nil
+    end
 
     # :nodoc:
     def as_hash
