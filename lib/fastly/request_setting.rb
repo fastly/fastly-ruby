@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Fastly
   # customize request handing. Best used with conditions
   class RequestSetting < BelongsToServiceAndVersion

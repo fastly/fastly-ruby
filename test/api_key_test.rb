@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'helper'
 
 # API Key Tests
@@ -8,7 +10,7 @@ class Fastly
     let(:fastly)           { Fastly.new(opts) }
 
     describe '#current_{user,customer}' do
-      it 'should not have access to current user 'do
+      it 'should not have access to current user ' do
         assert_raises(Error) do
           client.get('/current_user')
         end
@@ -30,7 +32,7 @@ class Fastly
             @client = Fastly::Client.new(@opts)
             @fastly = Fastly.new(@opts)
             service_name = "fastly-test-service-#{random_string}"
-            @service      = @fastly.create_service(:name => service_name)
+            @service = @fastly.create_service(:name => service_name)
           end
 
           after do
@@ -56,7 +58,7 @@ class Fastly
             @client = Fastly::Client.new(@opts)
             @fastly = Fastly.new(@opts)
             service_name = "fastly-test-service-#{random_string}"
-            @service      = @fastly.create_service(:name => service_name)
+            @service = @fastly.create_service(:name => service_name)
           end
 
           after do
@@ -82,7 +84,7 @@ class Fastly
             @client = Fastly::Client.new(@opts)
             @fastly = Fastly.new(@opts)
             service_name = "fastly-test-service-#{random_string}"
-            @service      = @fastly.create_service(:name => service_name)
+            @service = @fastly.create_service(:name => service_name)
           end
 
           after do

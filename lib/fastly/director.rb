@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Fastly
   # A logical collection of backends - for example all the asset servers in one data center
   class Director < BelongsToServiceAndVersion

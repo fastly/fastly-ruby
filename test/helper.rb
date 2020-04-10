@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'common'
 require 'fastly'
 require 'minitest/autorun'
@@ -10,16 +12,16 @@ end
 
 def login_opts(mode = :full)
   opts = {}
-  [:url, :port].each do |what|
+  %i[url port].each do |what|
     key = "FASTLY_TEST_BASE_#{what.to_s.upcase}"
     opts["base_#{what}".to_sym] = ENV[key] if ENV.key?(key)
   end
 
   required = case mode
              when :full
-               [:user, :password]
+               %i[user password]
              when :both
-               [:user, :password, :api_key]
+               %i[user password api_key]
              else
                [:api_key]
              end

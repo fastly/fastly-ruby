@@ -1,15 +1,16 @@
+# frozen_string_literal: true
+
 require_relative '../test_helper'
 
 describe Fastly::Syslog do
-
   let(:client)     { Fastly.new(user: 'test@example.com', password: 'password') }
   let(:service_id) { SecureRandom.hex(6) }
   let(:version)    { 1 }
   let(:syslog) { Fastly::Syslog.new({ name: 'test_syslog', service_id: service_id, version: 1 }, client) }
 
-  before {
+  before do
     stub_request(:post, "#{Fastly::Client::DEFAULT_URL}/login").to_return(body: '{}', status: 200, headers: { 'Set-Cookie' => 'tasty!' })
-  }
+  end
 
   describe '#item' do
     it 'translates response_condition attribute properly' do
@@ -35,7 +36,7 @@ describe Fastly::Syslog do
         'version' => version,
         'deleted_at' => nil,
         'created_at' => '2017-12-12T21:44:45Z',
-        'format' => '%h %l %u %t \'%r\' %>s %b',
+        'format' => '%h %l %u %t \'%r\' %>s %b'
       )
 
       get_item_url = "#{Fastly::Client::DEFAULT_URL}/service/#{service_id}/version/#{version}/logging/syslog/#{syslog.name}"

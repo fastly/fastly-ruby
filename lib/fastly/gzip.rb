@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Fastly
   # customize gzipping content.
   class Gzip < BelongsToServiceAndVersion

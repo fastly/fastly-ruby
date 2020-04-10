@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Fastly
   # customize cache handling. Best used with conditions.
   class CacheSetting < BelongsToServiceAndVersion

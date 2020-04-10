@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'helper'
 
 # Test username/password login access to user and customer objects

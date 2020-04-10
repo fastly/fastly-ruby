@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Fastly
   # An s3 endpoint to stream logs to
   class S3Logging < BelongsToServiceAndVersion

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Fastly
   # An internal representation of a Varnish Configuration Language file
   class VCL < BelongsToServiceAndVersion

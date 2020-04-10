@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Fastly
   # An object that allows matching on requests and dispatching to different methods
   class Match < BelongsToServiceAndVersion

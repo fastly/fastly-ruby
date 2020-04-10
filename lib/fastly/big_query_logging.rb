@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Fastly
   # An Google BigQuery endpoint to stream logs to
   class BigQueryLogging < BelongsToServiceAndVersion
