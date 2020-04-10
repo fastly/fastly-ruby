@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Fastly
+  # A Dictionary is a table that stores key value pairs accessible to VCL functions during VCL processing.
   class Dictionary < BelongsToServiceAndVersion
     attr_accessor :id, :name, :service_id
 

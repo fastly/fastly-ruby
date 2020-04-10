@@ -11,7 +11,7 @@ class MissingApiKeyTest < Fastly::TestCase
     begin
       @client = Fastly::Client.new(@opts)
       @fastly = Fastly.new(@opts)
-    rescue Exception => e
+    rescue StandardError => e
       pp e
       exit(-1)
     end

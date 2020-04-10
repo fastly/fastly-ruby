@@ -3,6 +3,7 @@
 require 'cgi'
 
 class Fastly
+  # A DictionaryItem holds a key and value that make up an entry in a Dictionary. DictionaryItems are versionless so they can be modified without activating a new version.
   class DictionaryItem < Base
     attr_accessor :dictionary_id, :item_key, :item_value, :service_id
 

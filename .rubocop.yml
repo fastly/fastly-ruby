@@ -1,5 +1,5 @@
 # inherit_from:
-  # - rubocop-todo.yml
+# - rubocop-todo.yml
 
 LineLength:
   Enabled: false
@@ -33,3 +33,24 @@ RescueModifier:
 
 HandleExceptions:
   Enabled: false
+
+Metrics/BlockLength:
+  Enabled: true
+  ExcludedMethods:
+    - class_methods
+    - included
+  Exclude:
+    - test/**/*
+    - bin/**/*
+
+Metrics/AbcSize:
+  Enabled: true
+  Exclude:
+    - test/**/*
+    - bin/**/*
+
+Metrics/ModuleLength:
+  Enabled: true
+  Exclude:
+    - test/**/*
+    - bin/**/*

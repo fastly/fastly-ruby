@@ -62,7 +62,6 @@ class Fastly
     end
 
     client(opts)
-    self
   end
 
   # Whether or not we're authed at all by either username & password or API key
@@ -157,17 +156,8 @@ class Fastly
   [ACL, ACLEntry, User, Customer, Backend, CacheSetting, Condition, Dictionary, DictionaryItem, Director, Domain, Header, Healthcheck, Gzip, Match, PapertrailLogging, RequestSetting, ResponseObject, Service, Snippet, S3Logging, Syslog, Token, VCL, Version].each do |klass|
     type = Util.class_to_path(klass)
 
-    plural = if klass.respond_to?(:pluralize)
-               klass.pluralize
-             else
-               "#{type}s"
-             end
-
-    singular = if klass.respond_to?(:singularize)
-                 klass.singularize
-               else
-                 type
-               end
+    plural = klass.respond_to?(:pluralize) ? klass.pluralize : "#{type}s"
+    singular = klass.respond_to?(:singularize) ? klass.singularize : type
 
     # unless the class doesn't have a list path or it already exists
     unless klass.list_path.nil? || klass.respond_to?("list_#{plural}".to_sym)

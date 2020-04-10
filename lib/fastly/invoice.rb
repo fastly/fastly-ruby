@@ -33,48 +33,50 @@ class Fastly
 
     # Get the start time of this invoice as a DateTime object in UTC
     def start
-      DateTime.parse(start_time).new_offset(0)
+      DateTime.parse(start_time).new_offset(0) # rubocop:disable Style/DateTime
     end
 
     # Get the end time of this invoice as a DateTime object in UTC
     def end
-      DateTime.parse(end_time).new_offset(0)
+      DateTime.parse(end_time).new_offset(0) # rubocop:disable Style/DateTime
     end
 
     private
 
-    def self.get_path(*args)
-      opts = !args.empty? ? args[0] : {}
+    class << self
+      def get_path(*args)
+        opts = !args.empty? ? args[0] : {}
 
-      url  = '/billing/v2'
+        url  = '/billing/v2'
 
-      url += if opts.key?(:year) && opts.key?(:month)
-               "/year/#{opts[:year]}/month/#{opts[:month]}"
-             elsif opts.key?(:id)
-               "/account_customers/#{opts[:customer_id]}/invoices/#{opts[:id]}"
-             elsif opts.key?(:mtd)
-               "/account_customers/#{opts[:customer_id]}/mtd_invoice"
-             else
-               "/account_customers/#{opts[:customer_id]}/invoices"
-             end
+        url += if opts.key?(:year) && opts.key?(:month)
+                 "/year/#{opts[:year]}/month/#{opts[:month]}"
+               elsif opts.key?(:id)
+                 "/account_customers/#{opts[:customer_id]}/invoices/#{opts[:id]}"
+               elsif opts.key?(:mtd)
+                 "/account_customers/#{opts[:customer_id]}/mtd_invoice"
+               else
+                 "/account_customers/#{opts[:customer_id]}/invoices"
+               end
 
-      url
-    end
+        url
+      end
 
-    def self.list_path(*args)
-      get_path(*args)
-    end
+      def list_path(*args)
+        get_path(*args)
+      end
 
-    def self.post_path
-      raise "You can't POST to an invoice"
-    end
+      def post_path
+        raise "You can't POST to an invoice"
+      end
 
-    def self.put_path
-      raise "You can't PUT to an invoice"
-    end
+      def put_path
+        raise "You can't PUT to an invoice"
+      end
 
-    def self.delete_path
-      raise "You can't DELETE to an invoice"
+      def delete_path
+        raise "You can't DELETE to an invoice"
+      end
     end
 
     def save!

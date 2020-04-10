@@ -7,12 +7,12 @@ require 'openssl'
 
 class Fastly
   # The UserAgent to communicate with the API
-  class Client #:nodoc: all
+  class Client # rubocop:disable Metrics/ClassLength
     DEFAULT_URL = 'https://api.fastly.com'
 
     attr_accessor :api_key, :base_url, :debug, :user, :password, :cookie, :customer
 
-    def initialize(opts)
+    def initialize(opts) # rubocop:disable Metrics/AbcSize
       @api_key            = opts.fetch(:api_key, nil)
       @base_url           = opts.fetch(:base_url, DEFAULT_URL)
       @customer           = opts.fetch(:customer, nil)
@@ -24,7 +24,7 @@ class Fastly
                               Concurrent::ThreadLocalVar.new { build_http_client }
                             end
 
-      return self unless fully_authed?
+      return unless fully_authed?
 
       # If full auth creds (user/pass) then log in and set a cookie
       resp = http.post(
@@ -32,13 +32,9 @@ class Fastly
         make_params(user: user, password: password),
         { 'Content-Type' => 'application/x-www-form-urlencoded' }
       )
-      if resp.is_a?(Net::HTTPSuccess)
-        @cookie = resp['Set-Cookie']
-      else
-        raise Unauthorized, 'Invalid auth credentials. Check username/password.'
-      end
+      (@cookie = resp['Set-Cookie']) && return if resp.is_a?(Net::HTTPSuccess)
 
-      self
+      raise Unauthorized, 'Invalid auth credentials. Check username/password.'
     end
 
     def require_key!
@@ -47,7 +43,7 @@ class Fastly
     end
 
     def require_key?
-      !!@require_key
+      @require_key.present?
     end
 
     def authed?
@@ -72,11 +68,9 @@ class Fastly
       resp = get(path, params)
 
       # return meta data, not just the actual stats data
-      if resp['status'] == 'success'
-        resp
-      else
-        raise Error, resp['msg']
-      end
+      return resp if resp['status'] == 'success'
+
+      raise Error, resp['msg']
     end
 
     def post(path, params = {})
@@ -94,7 +88,7 @@ class Fastly
       resp.is_a?(Net::HTTPSuccess)
     end
 
-    def purge(url, params = {})
+    def purge(url, params = {}) # rubocop:disable Metrics/AbcSize
       return post("/purge/#{url}", params) if @oldpurge
 
       extras = params.delete(:headers) || {}
@@ -171,7 +165,7 @@ class Fastly
 end
 
 # See Net::HTTPGenericRequest for attributes and methods.
-class Net::HTTP::Purge < Net::HTTPRequest
+class Net::HTTP::Purge < Net::HTTPRequest # rubocop:disable Style/ClassAndModuleChildren
   METHOD = 'PURGE'
   REQUEST_HAS_BODY = false
   RESPONSE_HAS_BODY = true

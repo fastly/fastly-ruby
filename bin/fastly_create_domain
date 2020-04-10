@@ -44,7 +44,7 @@ end
 # :nodoc:
 def die(message)
   warn message
-  exit -1
+  exit(-1)
 end
 
 params = get_options("#{ENV['HOME']}/.fastly", '/etc/fastly')

@@ -4,7 +4,7 @@
 class Fastly
   # Represents something you want to serve - this can be, for example, a whole web site, a Wordpress site, or just your image servers
   class Service < Base
-    attr_accessor :id, :customer_id, :name, :comment, :versions
+    attr_accessor :id, :customer_id, :name, :comment
 
     @versions = []
 

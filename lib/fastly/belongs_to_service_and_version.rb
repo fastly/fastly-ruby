@@ -14,13 +14,13 @@ class Fastly
 
     # Get the Version object this belongs to
     def version
-      @version_obj ||= fetcher.get(Fastly::Version, service_id, version_number)
+      @version ||= fetcher.get(Fastly::Version, service_id, version_number)
     end
 
     # Get the number of the Version this belongs to
     def version_number
       @version
-    end # rubocop:enable all
+    end
 
     # :nodoc:
     def as_hash

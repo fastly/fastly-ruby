@@ -113,7 +113,7 @@ describe Fastly::Client do
               })
         .to_return(body: JSON.generate(i: 'dont care'), status: 200)
 
-      resp = client.post(
+      client.post(
         '/service/blah',
         { include_auth: false }
       )
