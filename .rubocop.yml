@@ -31,7 +31,7 @@ PerlBackrefs:
 RescueModifier:
   Enabled: false
 
-HandleExceptions:
+SuppressedException:
   Enabled: false
 
 Metrics/BlockLength:
