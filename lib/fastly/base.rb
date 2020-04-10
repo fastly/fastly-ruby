@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Fastly
   # Base class for all Fastly objects
   class Base # :nodoc: all
@@ -6,7 +8,7 @@ class Fastly
     def initialize(opts, fetcher)
       @keys = []
       opts.each do |key, val|
-        next unless self.respond_to? "#{key}="
+        next unless respond_to? "#{key}="
         send("#{key}=", val)
         @keys.push(key)
       end
@@ -28,7 +30,7 @@ class Fastly
     def as_hash
       ret = {}
       @keys.each do |key|
-        ret[key] = send("#{key}") unless key =~ /^_/
+        ret[key] = send(key.to_s) unless key =~ /^_/
       end
       ret
     end

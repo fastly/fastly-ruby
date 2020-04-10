@@ -1,31 +1,32 @@
+# frozen_string_literal: true
+
 require_relative '../test_helper'
 
 describe Fastly::Token do
-
   let(:elevated_fastly) { Fastly.new(user: 'test@example.com', password: 'password') }
-  let(:fastly) { Fastly.new(api_key:'my_api_key') }
+  let(:fastly) { Fastly.new(api_key: 'my_api_key') }
 
-  before {
+  before do
     stub_request(:post, "#{Fastly::Client::DEFAULT_URL}/login").to_return(body: '{}', status: 200, headers: { 'Set-Cookie' => 'tasty!' })
-  }
+  end
 
   describe '#fastly' do
-
     it 'cannot create itself because POST /tokens must have no auth headers)' do
-      stub_request(:post, "https://api.fastly.com/tokens").
-      with(
-        body: {"name"=>"name_of_token", "scope"=>"token_scope such_as purge_all purge_select", "services"=>"service_id_that_token_can_access"},
-        headers: {
-        'Accept'=>'*/*',
-        'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-        'Content-Accept'=>'application/json',
-        'Content-Type'=>'application/x-www-form-urlencoded',
-        'Cookie'=>'tasty!',
-        'User-Agent'=> /fastly-ruby/
-        }).
-      to_return(status: 403, body: '{"msg":"You must POST /sudo to access this endpoint"}', headers: {})
+      stub_request(:post, 'https://api.fastly.com/tokens')
+        .with(
+          body: { 'name' => 'name_of_token', 'scope' => 'token_scope such_as purge_all purge_select', 'services' => 'service_id_that_token_can_access' },
+          headers: {
+            'Accept' => '*/*',
+            'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+            'Content-Accept' => 'application/json',
+            'Content-Type' => 'application/x-www-form-urlencoded',
+            'Cookie' => 'tasty!',
+            'User-Agent' => /fastly-ruby/
+          }
+        )
+        .to_return(status: 403, body: '{"msg":"You must POST /sudo to access this endpoint"}', headers: {})
 
-      assert_raises(Fastly::Error,'{"msg":"You must POST /sudo to access this endpoint"}') do
+      assert_raises(Fastly::Error, '{"msg":"You must POST /sudo to access this endpoint"}') do
         elevated_fastly.create_token(
           name: 'name_of_token',
           services: 'service_id_that_token_can_access',
@@ -33,9 +34,9 @@ describe Fastly::Token do
         )
       end
     end
-    
+
     it 'can create a new token only if there are no auth headers' do
-      response_body = %q(
+      response_body = '
         {
           "id": "5Yo3XXnrQpjc20u0ybrf2g",
           "access_token": "YOUR_FASTLY_TOKEN",
@@ -49,19 +50,20 @@ describe Fastly::Token do
           "ip": "127.17.202.173",
           "user_agent": "fastly-ruby-v2.4.0"
         }
-      )
+      '
 
-      stub_request(:post, "https://api.fastly.com/tokens").
-      with(
-        body: {"name"=>"name_of_token", "password"=>"password", "scope"=>"optional token_scope such_as purge_all purge_select", "services"=>"service_id_that_token_can_access", "username"=>"test@example.com"},
-        headers: {
-        'Accept'=>'*/*',
-        'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-        'Content-Accept'=>'application/json',
-        'Content-Type'=>'application/x-www-form-urlencoded',
-        'User-Agent'=> /fastly-ruby/
-        }).
-      to_return(status: 200, body: response_body, headers: {})
+      stub_request(:post, 'https://api.fastly.com/tokens')
+        .with(
+          body: { 'name' => 'name_of_token', 'password' => 'password', 'scope' => 'optional token_scope such_as purge_all purge_select', 'services' => 'service_id_that_token_can_access', 'username' => 'test@example.com' },
+          headers: {
+            'Accept' => '*/*',
+            'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+            'Content-Accept' => 'application/json',
+            'Content-Type' => 'application/x-www-form-urlencoded',
+            'User-Agent' => /fastly-ruby/
+          }
+        )
+        .to_return(status: 200, body: response_body, headers: {})
 
       token = elevated_fastly.new_token(
         name: 'name_of_token',
@@ -80,52 +82,54 @@ describe Fastly::Token do
       assert_equal token.user_agent, 'fastly-ruby-v2.4.0'
       assert_equal token.access_token, 'YOUR_FASTLY_TOKEN'
     end
-    
-    it 'would delete a token' do
-      stub_request(:delete, "https://api.fastly.com/tokens/").
-      with(
-        headers: {
-        'Accept'=>'*/*',
-        'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-        'Content-Accept'=>'application/json',
-        'Fastly-Key'=>'my_api_key',
-        'User-Agent'=> /fastly-ruby/
-        }).
-      to_return(status: 204, body: "", headers: {})
 
-      token = Fastly::Token.new({acess_token: 'my_api_key'}, Fastly::Fetcher)  
-      fastly.delete_token(token) 
+    it 'would delete a token' do
+      stub_request(:delete, 'https://api.fastly.com/tokens/')
+        .with(
+          headers: {
+            'Accept' => '*/*',
+            'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+            'Content-Accept' => 'application/json',
+            'Fastly-Key' => 'my_api_key',
+            'User-Agent' => /fastly-ruby/
+          }
+        )
+        .to_return(status: 204, body: '', headers: {})
+
+      token = Fastly::Token.new({ acess_token: 'my_api_key' }, Fastly::Fetcher)
+      fastly.delete_token(token)
     end
 
     it 'would list all the tokens belonging to a token' do
-      stub_request(:get, "https://api.fastly.com/tokens").
-        with(
+      stub_request(:get, 'https://api.fastly.com/tokens')
+        .with(
           headers: {
-          'Accept'=>'*/*',
-          'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-          'Content-Accept'=>'application/json',
-          'Fastly-Key'=>'my_api_key',
-          'User-Agent'=> /fastly-ruby/
-          }).
-        to_return(status: 200, body: "[]", headers: {})
+            'Accept' => '*/*',
+            'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+            'Content-Accept' => 'application/json',
+            'Fastly-Key' => 'my_api_key',
+            'User-Agent' => /fastly-ruby/
+          }
+        )
+        .to_return(status: 200, body: '[]', headers: {})
 
-      fastly.list_tokens()
+      fastly.list_tokens
     end
 
     it 'would list all the tokens belonging to a customer' do
-      stub_request(:get, "https://api.fastly.com/customer/customer_account_number/tokens").
-        with(
+      stub_request(:get, 'https://api.fastly.com/customer/customer_account_number/tokens')
+        .with(
           headers: {
-          'Accept'=>'*/*',
-          'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-          'Content-Accept'=>'application/json',
-          'Fastly-Key'=>'my_api_key',
-          'User-Agent'=> /fastly-ruby/
-          }).
-        to_return(status: 200, body: "[]", headers: {})
+            'Accept' => '*/*',
+            'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+            'Content-Accept' => 'application/json',
+            'Fastly-Key' => 'my_api_key',
+            'User-Agent' => /fastly-ruby/
+          }
+        )
+        .to_return(status: 200, body: '[]', headers: {})
 
-      fastly.customer_tokens({customer_id: 'customer_account_number'})
+      fastly.customer_tokens({ customer_id: 'customer_account_number' })
     end
-
   end
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Fastly
   # A domain name you want to map to a service
   class Domain < BelongsToServiceAndVersion

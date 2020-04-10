@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Fastly
   # customize headers. Best used with conditions.
   class Header < BelongsToServiceAndVersion

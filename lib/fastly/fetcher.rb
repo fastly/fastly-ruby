@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 class Fastly
   # :nodoc:
   class AuthRequired < RuntimeError; end
   # :nodoc:
   class KeyAuthRequired < AuthRequired; end
   # :nodoc:
-  class FullAuthRequired <  AuthRequired; end
+  class FullAuthRequired < AuthRequired; end
   # :nodoc:
   class Error < RuntimeError; end
   # :nodoc:
@@ -26,11 +28,11 @@ class Fastly
     end
 
     def get(klass, *args)
-      if [User, Customer].include?(klass) && args.empty?
-        hash = client.get("/current_#{klass.path}")
-      else
-        hash = client.get(klass.get_path(*args))
-      end
+      hash = if [User, Customer].include?(klass) && args.empty?
+               client.get("/current_#{klass.path}")
+             else
+               client.get(klass.get_path(*args))
+             end
       hash.nil? ? nil : klass.new(hash, self)
     end
 

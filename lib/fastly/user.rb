@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Fastly
   # A representation of a User in Fastly
   class User < Base
@@ -43,7 +45,7 @@ class Fastly
       :user       => 20,
       :engineer   => 30,
       :billing    => 30
-    }
+    }.freeze
 
     # Does this User have sufficient permissions to perform the given role
     def can_do?(test_role)

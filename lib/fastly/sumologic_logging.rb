@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Fastly
   # An Google Cloud Storage endpoint to stream logs to
   class SumologicLogging < BelongsToServiceAndVersion

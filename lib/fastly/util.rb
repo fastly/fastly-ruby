@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Fastly
   # Collection of frequently used utility methods
   module Util

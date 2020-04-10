@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Fastly
   # Set up a response object. Best used with conditions.
   class ResponseObject < BelongsToServiceAndVersion

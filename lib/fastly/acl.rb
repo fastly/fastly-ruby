@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Fastly
   # Acces Control List configuration
   class ACL < BelongsToServiceAndVersion

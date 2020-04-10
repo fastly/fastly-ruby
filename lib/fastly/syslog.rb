@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Fastly
   # An endpoint to stream syslogs to
   class Syslog < BelongsToServiceAndVersion
@@ -52,7 +54,7 @@ class Fastly
     # :attr: port
     #
     # the port to stream logs to (defaults to 514)
-    
+
     ##
     # :attr: placement
     #

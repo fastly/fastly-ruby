@@ -1,4 +1,5 @@
 #!/bin/env ruby
+# frozen_string_literal: true
 
 ##
 # fastly_upload_vcl - upload raw VCL files to Fastly
@@ -42,7 +43,7 @@ params      = Fastly.get_options("#{ENV['HOME']}/.fastly", '/etc/fastly')
 service_id  = ARGV.shift || die('You must pass in a service id')
 vcl_file    = ARGV.shift || die('You must pass in a vcl file')
 
-die("Couldn't find any of the config files - #{configs.join(',')}") unless params.keys.size > 0
+die("Couldn't find any of the config files - #{configs.join(',')}") if params.keys.empty?
 die("Couldn't find vcl file #{vcl_file}") unless File.file?(vcl_file)
 
 fastly  = Fastly.new(params)
@@ -62,7 +63,7 @@ begin
     version.upload_vcl(name, content)
   end
   # version.activate!
-rescue => e
+rescue StandardError => e
   die("Couldn't upload vcl: #{e}")
 end
 puts 'Done! You should now go and activate it at https://app.fastly.com/#configure'

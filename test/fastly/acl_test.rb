@@ -1,4 +1,6 @@
-require'test_helper'
+# frozen_string_literal: true
+
+require 'test_helper'
 
 describe Fastly::ACL do
   let(:fastly) { Fastly.new(api_key: 'secret') }

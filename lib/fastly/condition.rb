@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Fastly
   # An endpoint to stream syslogs to
   class Condition < BelongsToServiceAndVersion

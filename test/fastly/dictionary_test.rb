@@ -1,24 +1,25 @@
+# frozen_string_literal: true
+
 require_relative '../test_helper'
 
 describe Fastly::Dictionary do
-
   let(:client)     { Fastly.new(user: 'test@example.com', password: 'password') }
   let(:service_id) { SecureRandom.hex(6) }
-  let(:version)    {  1 }
-  let(:dictionary) { Fastly::Dictionary.new({id: SecureRandom.hex(6), service_id: service_id, version: 1}, client) }
+  let(:version)    { 1 }
+  let(:dictionary) { Fastly::Dictionary.new({ id: SecureRandom.hex(6), service_id: service_id, version: 1 }, client) }
 
-  before {
+  before do
     stub_request(:post, "#{Fastly::Client::DEFAULT_URL}/login").to_return(body: '{}', status: 200, headers: { 'Set-Cookie' => 'tasty!' })
-  }
+  end
 
   describe '#item' do
     it 'returns the nil when item is not present' do
-      item_key   = 'key'
+      item_key = 'key'
       get_item_url = "#{Fastly::Client::DEFAULT_URL}/service/#{service_id}/dictionary/#{dictionary.id}/item/#{item_key}"
 
       response_body = JSON.dump(
-        "msg"    => "Record not found",
-        "detail" => "Couldn't find dictionary item '{ service => #{service_id}, dictionary_id => #{dictionary.id}, item_key => #{item_key}, deleted => 0000-00-00 00:00:00'",
+        'msg'    => 'Record not found',
+        'detail' => "Couldn't find dictionary item '{ service => #{service_id}, dictionary_id => #{dictionary.id}, item_key => #{item_key}, deleted => 0000-00-00 00:00:00'"
       )
 
       stub_request(:get, get_item_url).to_return(body: response_body, status: 404)
@@ -31,13 +32,13 @@ describe Fastly::Dictionary do
       item_value = 'value'
 
       response_body = JSON.dump(
-        "dictionary_id" => dictionary.id,
-        "service_id"    => service_id,
-        "item_key"      => item_key,
-        "item_value"    => item_value,
-        "created_at"    => "2016-04-21T18:14:32+00:00",
-        "deleted_at"    => nil,
-        "updated_at"    => "2016-04-21T18:14:32+00:00",
+        'dictionary_id' => dictionary.id,
+        'service_id'    => service_id,
+        'item_key'      => item_key,
+        'item_value'    => item_value,
+        'created_at'    => '2016-04-21T18:14:32+00:00',
+        'deleted_at'    => nil,
+        'updated_at'    => '2016-04-21T18:14:32+00:00'
       )
 
       get_item_url = "#{Fastly::Client::DEFAULT_URL}/service/#{service_id}/dictionary/#{dictionary.id}/item/#{item_key}"

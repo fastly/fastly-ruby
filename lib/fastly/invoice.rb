@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'date'
 
 # Invoice object
@@ -42,7 +44,7 @@ class Fastly
     private
 
     def self.get_path(*args)
-      opts = args.size > 0 ? args[0] : {}
+      opts = !args.empty? ? args[0] : {}
 
       url  = '/billing/v2'
 
@@ -64,23 +66,23 @@ class Fastly
     end
 
     def self.post_path
-      fail "You can't POST to an invoice"
+      raise "You can't POST to an invoice"
     end
 
     def self.put_path
-      fail "You can't PUT to an invoice"
+      raise "You can't PUT to an invoice"
     end
 
     def self.delete_path
-      fail "You can't DELETE to an invoice"
+      raise "You can't DELETE to an invoice"
     end
 
     def save!
-      fail "You can't save an invoice"
+      raise "You can't save an invoice"
     end
 
     def delete!
-      fail "You can't delete an invoice"
+      raise "You can't delete an invoice"
     end
   end
 

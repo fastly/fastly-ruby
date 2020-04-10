@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Fastly
   # A Papertrail endpoint to stream logs to
   class PapertrailLogging < BelongsToServiceAndVersion

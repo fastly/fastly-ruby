@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Fastly
   # A Customer account
   class Customer < Base

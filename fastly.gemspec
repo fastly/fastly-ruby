@@ -1,5 +1,6 @@
-# -*- encoding: utf-8 -*-
-$LOAD_PATH.push File.expand_path('../lib', __FILE__)
+# frozen_string_literal: true
+
+$LOAD_PATH.push File.expand_path('lib', __dir__)
 require 'fastly/gem_version'
 
 Gem::Specification.new do |s|
@@ -8,8 +9,8 @@ Gem::Specification.new do |s|
   s.authors     = ['Fastly']
   s.email       = ['simon@fastly.com', 'zeke@templ.in', 'tyler@fastly.com']
   s.homepage    = 'http://github.com/fastly/fastly-ruby'
-  s.summary     = %q(Client library for the Fastly acceleration system)
-  s.description = %q(Client library for the Fastly acceleration system)
+  s.summary     = 'Client library for the Fastly acceleration system'
+  s.description = 'Client library for the Fastly acceleration system'
   s.license     = 'MIT'
 
   s.files         = `git ls-files`.split("\n")

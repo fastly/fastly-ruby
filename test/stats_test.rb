@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'helper'
 
 FROM = '2011-01-01 00:00:00'
@@ -9,7 +11,7 @@ class StatsTest < Fastly::TestCase
 
     begin
       @fastly = Fastly.new(opts)
-    rescue => e
+    rescue StandardError => e
       warn e.inspect
       warn e.backtrace.join("\n")
       exit(-1)
@@ -18,7 +20,7 @@ class StatsTest < Fastly::TestCase
 
   def test_regions
     regions = @fastly.regions
-    assert_equal true, (regions.size > 0)
+    assert_equal true, !regions.empty?
   end
 
   def test_usage

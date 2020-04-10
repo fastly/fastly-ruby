@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Fastly
   # An iteration of your configuration
   class Version < Base
@@ -50,7 +52,7 @@ class Fastly
 
     # Is this Version locked
     def locked?
-      true == @locked
+      @locked == true
     end
 
     # Get the Service object this Version belongs to
@@ -65,7 +67,7 @@ class Fastly
 
     # Is version active?
     def active?
-      true == @active
+      @active == true
     end
 
     # Activate this version
@@ -147,7 +149,7 @@ class Fastly
     def validate
       hash = fetcher.client.get("#{Version.put_path(self)}/validate")
 
-      valid = ("ok" == hash["status"])
+      valid = (hash['status'] == 'ok')
       message = hash['msg']
 
       [valid, message]

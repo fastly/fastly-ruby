@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'helper'
 
 # Admin-related tests
@@ -7,7 +9,7 @@ class AdminTest < Fastly::TestCase
     begin
       @client = Fastly::Client.new(opts)
       @fastly = Fastly.new(opts)
-    rescue => e
+    rescue StandardError => e
       warn e.inspect
       warn e.backtrace.join("\n")
       exit(-1)

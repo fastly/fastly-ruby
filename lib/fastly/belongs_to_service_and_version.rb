@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'uri'
 
 class Fastly
@@ -16,18 +18,18 @@ class Fastly
     end
 
     # Get the number of the Version this belongs to
-    def version_number # rubocop:disable all
+    def version_number
       @version
     end # rubocop:enable all
 
     # :nodoc:
     def as_hash
-      super.delete_if { |var| %w(service_id version).include?(var) }
+      super.delete_if { |var| %w[service_id version].include?(var) }
     end
 
     # URI escape (including spaces) the path and return it
     def self.path_escape(path)
-      @uri_parser ||= URI::Parser.new
+      @uri_parser ||= URI::DEFAULT_PARSER
       # the leading space in the escape character set is intentional
       @uri_parser.escape(path, ' !*\'();:@&=+$,/?#[]')
     end

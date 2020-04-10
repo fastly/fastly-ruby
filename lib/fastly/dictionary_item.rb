@@ -1,11 +1,13 @@
+# frozen_string_literal: true
+
 require 'cgi'
 
 class Fastly
   class DictionaryItem < Base
     attr_accessor :dictionary_id, :item_key, :item_value, :service_id
 
-    alias_method :key, :item_key
-    alias_method :value, :item_value
+    alias key item_key
+    alias value item_value
 
     # Return the Service object this belongs to
     def service
@@ -14,11 +16,11 @@ class Fastly
 
     # :nodoc:
     def as_hash
-      super.delete_if { |var| %w(service_id dictionary_id).include?(var) }
+      super.delete_if { |var| %w[service_id dictionary_id].include?(var) }
     end
 
     def self.get_path(service, dictionary_id, item_key, _opts = {})
-      "/service/#{service}/dictionary/#{dictionary_id}/item/#{CGI::escape(item_key)}"
+      "/service/#{service}/dictionary/#{dictionary_id}/item/#{CGI.escape(item_key)}"
     end
 
     def self.post_path(opts)
