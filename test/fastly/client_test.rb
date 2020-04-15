@@ -115,9 +115,6 @@ describe Fastly::Client do
         '/service/blah',
         {include_auth: false}
       )
-
-      assert_equal resp.class, Hash
-      assert_includes resp, "i"
     end
 
   end
