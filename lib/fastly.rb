@@ -3,43 +3,43 @@
 # License::   Distributes under the same terms as Ruby
 
 # A client library for interacting with the Fastly web acceleration service
-require 'fastly/gem_version'
-require 'fastly/util'
-require 'fastly/fetcher'
-require 'fastly/client'
-require 'fastly/base'
-require 'fastly/belongs_to_service_and_version'
-require 'fastly/acl'
-require 'fastly/acl_entry'
-require 'fastly/backend'
-require 'fastly/big_query_logging'
-require 'fastly/cache_setting'
-require 'fastly/condition'
-require 'fastly/customer'
-require 'fastly/dictionary'
-require 'fastly/dictionary_item'
-require 'fastly/director'
-require 'fastly/domain'
-require 'fastly/header'
-require 'fastly/healthcheck'
-require 'fastly/gzip'
-require 'fastly/invoice'
-require 'fastly/match'
-require 'fastly/papertrail_logging'
-require 'fastly/request_setting'
-require 'fastly/response_object'
-require 'fastly/service'
-require 'fastly/settings'
-require 'fastly/snippet'
-require 'fastly/dynamic_snippet'
-require 'fastly/sumologic_logging'
-require 'fastly/syslog'
-require 'fastly/token'
-require 'fastly/s3_logging'
-require 'fastly/gcs_logging'
-require 'fastly/user'
-require 'fastly/vcl'
-require 'fastly/version'
+require "fastly/gem_version"
+require "fastly/util"
+require "fastly/fetcher"
+require "fastly/client"
+require "fastly/base"
+require "fastly/belongs_to_service_and_version"
+require "fastly/acl"
+require "fastly/acl_entry"
+require "fastly/backend"
+require "fastly/big_query_logging"
+require "fastly/cache_setting"
+require "fastly/condition"
+require "fastly/customer"
+require "fastly/dictionary"
+require "fastly/dictionary_item"
+require "fastly/director"
+require "fastly/domain"
+require "fastly/header"
+require "fastly/healthcheck"
+require "fastly/gzip"
+require "fastly/invoice"
+require "fastly/match"
+require "fastly/papertrail_logging"
+require "fastly/request_setting"
+require "fastly/response_object"
+require "fastly/service"
+require "fastly/settings"
+require "fastly/snippet"
+require "fastly/dynamic_snippet"
+require "fastly/sumologic_logging"
+require "fastly/syslog"
+require "fastly/token"
+require "fastly/s3_logging"
+require "fastly/gcs_logging"
+require "fastly/user"
+require "fastly/vcl"
+require "fastly/version"
 
 # Top-level Fastly class
 class Fastly
@@ -86,8 +86,8 @@ class Fastly
   end
 
   # Purge the specified path from your cache.
-  def purge(url, soft=false)
-    client.purge(url, soft ? { headers: { 'Fastly-Soft-Purge' => "1"} } : {})
+  def purge(url, soft = false)
+    client.purge(url, soft ? {headers: {"Fastly-Soft-Purge" => "1"}} : {})
   end
 
   # Fetches historical stats for each of your fastly services and groups the results by service id.
@@ -111,9 +111,9 @@ class Fastly
       fail Error, "You can't specify a field or a service for an aggregate request"
     end
 
-    url  = '/stats'
+    url = "/stats"
 
-    url += '/aggregate' if opts.delete(:aggregate)
+    url += "/aggregate" if opts.delete(:aggregate)
 
     if service = opts.delete(:service)
       url += "/service/#{service}"
@@ -141,30 +141,30 @@ class Fastly
   #
   # See http://docs.fastly.com/docs/stats for details.
   def usage(opts)
-    url  = '/stats/usage'
-    url += '_by_month' if opts.delete(:by_month)
-    url += '_by_service' if opts.delete(:by_service)
+    url = "/stats/usage"
+    url += "_by_month" if opts.delete(:by_month)
+    url += "_by_service" if opts.delete(:by_service)
     client.get_stats(url, opts)
   end
 
   # Fetches the list of codes for regions that are covered by the Fastly CDN service.
   def regions
-    client.get_stats('/stats/regions')
+    client.get_stats("/stats/regions")
   end
 
   [ACL, ACLEntry, User, Customer, Backend, CacheSetting, Condition, Dictionary, DictionaryItem, Director, Domain, Header, Healthcheck, Gzip, Match, PapertrailLogging, RequestSetting, ResponseObject, Service, Snippet, S3Logging, Syslog, Token, VCL, Version].each do |klass|
     type = Util.class_to_path(klass)
 
-    if klass.respond_to?(:pluralize)
-      plural = klass.pluralize
+    plural = if klass.respond_to?(:pluralize)
+      klass.pluralize
     else
-      plural = "#{type}s"
+      "#{type}s"
     end
 
-    if klass.respond_to?(:singularize)
-      singular = klass.singularize
+    singular = if klass.respond_to?(:singularize)
+      klass.singularize
     else
-      singular = type
+      type
     end
 
     # unless the class doesn't have a list path or it already exists
@@ -690,12 +690,12 @@ class Fastly
     options = {}
     return options unless File.exist?(file)
 
-    File.open(file, 'r') do |infile|
+    File.open(file, "r") do |infile|
       while line = infile.gets
         line.chomp!
-        next if line =~ /^#/
-        next if line =~ /^\s*$/
-        next unless line =~ /=/
+        next if /^#/.match?(line)
+        next if /^\s*$/.match?(line)
+        next unless /=/.match?(line)
         line.strip!
         key, val = line.split(/\s*=\s*/, 2)
         options[key.to_sym] = val
@@ -728,7 +728,7 @@ class Fastly
       ARGV.shift
     end
 
-    fail "Couldn't find options from command line arguments or #{files.join(', ')}" unless options.size > 0
+    fail "Couldn't find options from command line arguments or #{files.join(", ")}" unless options.size > 0
 
     options
   end

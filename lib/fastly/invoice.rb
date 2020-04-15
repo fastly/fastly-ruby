@@ -1,4 +1,4 @@
-require 'date'
+require "date"
 
 # Invoice object
 class Fastly
@@ -44,17 +44,17 @@ class Fastly
     def self.get_path(*args)
       opts = args.size > 0 ? args[0] : {}
 
-      url  = '/billing/v2'
+      url = "/billing/v2"
 
       url += if opts.key?(:year) && opts.key?(:month)
-               "/year/#{opts[:year]}/month/#{opts[:month]}"
-             elsif opts.key?(:id)
-               "/account_customers/#{opts[:customer_id]}/invoices/#{opts[:id]}"
-             elsif opts.key?(:mtd)
-               "/account_customers/#{opts[:customer_id]}/mtd_invoice"
-             else
-               "/account_customers/#{opts[:customer_id]}/invoices"
-             end
+        "/year/#{opts[:year]}/month/#{opts[:month]}"
+      elsif opts.key?(:id)
+        "/account_customers/#{opts[:customer_id]}/invoices/#{opts[:id]}"
+      elsif opts.key?(:mtd)
+        "/account_customers/#{opts[:customer_id]}/mtd_invoice"
+      else
+        "/account_customers/#{opts[:customer_id]}/invoices"
+      end
 
       url
     end
@@ -90,11 +90,11 @@ class Fastly
   #
   # Otherwise it returns the invoices for the current month so far.
   def get_invoice(year = nil, month = nil)
-    opts = { customer_id: current_customer.id }
+    opts = {customer_id: current_customer.id}
     if year.nil? || month.nil?
       opts[:mtd] = true
     else
-      opts[:year]  = year
+      opts[:year] = year
       opts[:month] = month
     end
 
@@ -113,7 +113,7 @@ class Fastly
 
   # Retun an array of Invoice objects.
   def list_invoices
-    opts = { customer_id: current_customer.id }
+    opts = {customer_id: current_customer.id}
 
     list(Invoice, opts)
   end

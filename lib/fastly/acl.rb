@@ -21,7 +21,7 @@ class Fastly
     ##
     # List ACL entries that belong to the ACL
     def list_entries
-      fetcher.list_acl_entries(:service_id => service_id, :acl_id => id)
+      fetcher.list_acl_entries(service_id: service_id, acl_id: id)
     end
 
     ##

@@ -37,12 +37,12 @@ class Fastly
 
     # :nodoc:
     PRIORITIES = {
-      :admin      => 1,
-      :owner      => 10,
-      :superuser  => 10,
-      :user       => 20,
-      :engineer   => 30,
-      :billing    => 30
+      admin: 1,
+      owner: 10,
+      superuser: 10,
+      user: 20,
+      engineer: 30,
+      billing: 30
     }
 
     # Does this User have sufficient permissions to perform the given role

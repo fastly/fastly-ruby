@@ -2,8 +2,8 @@ class Fastly
   # An Google BigQuery endpoint to stream logs to
   class BigQueryLogging < BelongsToServiceAndVersion
     attr_accessor :created_at, :dataset, :format, :format_version, :name, :placement, :project_id,
-                  :response_condition, :secret_key, :service_id, :table, :template_suffix,
-                  :updated_at, :user
+      :response_condition, :secret_key, :service_id, :table, :template_suffix,
+      :updated_at, :user
 
     ##
     # :attr: service_id
@@ -84,7 +84,7 @@ class Fastly
     # Timestamp when this object was updated
 
     def self.path
-      'logging/bigquery'
+      "logging/bigquery"
     end
   end
 end

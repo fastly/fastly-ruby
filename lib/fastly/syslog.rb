@@ -52,7 +52,7 @@ class Fastly
     # :attr: port
     #
     # the port to stream logs to (defaults to 514)
-    
+
     ##
     # :attr: placement
     #
@@ -105,7 +105,7 @@ class Fastly
     # Use this pem formatted certificate as the CA cert to verify the syslog
     # server's certificate
     def self.path
-      'logging/syslog'
+      "logging/syslog"
     end
   end
 end

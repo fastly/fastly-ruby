@@ -1,8 +1,8 @@
-require 'common'
-require 'fastly'
-require 'minitest/autorun'
-require 'pry'
-require 'dotenv/load'
+require "common"
+require "dotenv/load"
+require "fastly"
+require "minitest/autorun"
+require "pry"
 
 class Fastly
   class TestCase < Minitest::Test; end
@@ -22,7 +22,7 @@ def login_opts(mode = :full)
                [:user, :password, :api_key]
              else
                [:api_key]
-             end
+  end
 
   required.each do |what|
     key = "FASTLY_TEST_#{what.to_s.upcase}"

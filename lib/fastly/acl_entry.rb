@@ -1,4 +1,4 @@
-require 'cgi'
+require "cgi"
 
 class Fastly
   # Acces Control List Entry configuration
@@ -51,11 +51,11 @@ class Fastly
     end
 
     def self.singularize
-      'acl_entry'
+      "acl_entry"
     end
 
     def self.pluralize
-      'acl_entries'
+      "acl_entries"
     end
   end
 end

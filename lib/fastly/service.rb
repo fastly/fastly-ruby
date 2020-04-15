@@ -44,10 +44,10 @@ class Fastly
     #
     # Otherwise it returns the invoice for the current month so far.
     def invoice(year = nil, month = nil)
-      opts = { service_id: id }
+      opts = {service_id: id}
 
       unless year.nil? || month.nil?
-        opts[:year]  = year
+        opts[:year] = year
         opts[:month] = month
       end
 
@@ -64,9 +64,9 @@ class Fastly
     # Purge anything with the specific key from the given service.
     #
     # See README.md for examples of purging
-    def purge_by_key(key, soft=false)
+    def purge_by_key(key, soft = false)
       require_api_key!
-      fetcher.client.post("#{Service.get_path(id)}/purge/#{key}", soft ? { headers: { 'Fastly-Soft-Purge' => "1"} } : {})
+      fetcher.client.post("#{Service.get_path(id)}/purge/#{key}", soft ? {headers: {"Fastly-Soft-Purge" => "1"}} : {})
     end
 
     # Get a sorted array of all the versions that this service has had.

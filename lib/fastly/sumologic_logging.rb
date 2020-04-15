@@ -90,7 +90,7 @@ class Fastly
     # Timestamp when this object was deleted
 
     def self.path
-      'logging/sumologic'
+      "logging/sumologic"
     end
   end
 end

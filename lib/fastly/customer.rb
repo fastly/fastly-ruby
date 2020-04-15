@@ -2,7 +2,7 @@ class Fastly
   # A Customer account
   class Customer < Base
     attr_accessor :billing_contact_id, :id, :legal_contact_id, :name,
-                  :owner_id, :security_contact_id, :technical_contact_id
+      :owner_id, :security_contact_id, :technical_contact_id
 
     ##
     # :attr: billing_contact_id

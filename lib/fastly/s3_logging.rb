@@ -95,7 +95,7 @@ class Fastly
     # redundancy storage for more information.
 
     def self.path
-      'logging/s3'
+      "logging/s3"
     end
   end
 end

@@ -62,7 +62,7 @@ class Fastly
     hash = client.get(Settings.get_path(service, number))
     return nil if hash.nil?
 
-    hash['settings'] = Hash[['general.default_host', 'general.default_ttl'].collect { |var| [var, hash.delete(var)] }]
+    hash["settings"] = Hash[["general.default_host", "general.default_ttl"].collect { |var| [var, hash.delete(var)] }]
     Settings.new(hash, self)
   end
 
