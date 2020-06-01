@@ -57,9 +57,11 @@ class Fastly
 
     # Some methods require full username and password rather than just auth token
     def fully_authed?
+      warn("DEPRECATION WARNING: Using username/password authentication is deprecated and will not be available, 
+      please migrate to API tokens as soon as possible.")
       !(user.nil? || password.nil?)
     end
-
+    
     def get(path, params = {})
       extras = params.delete(:headers) || {}
       include_auth = params.key?(:include_auth) ? params.delete(:include_auth) : true

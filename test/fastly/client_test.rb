@@ -12,7 +12,7 @@ describe Fastly::Client do
       }
     end
 
-    it 'does not log in if user/pass are not provided' do
+    it 'does not set the user/pass if they are not provided' do
       client = Fastly::Client.new(api_key: api_key)
 
       assert_equal api_key, client.api_key
@@ -139,4 +139,16 @@ describe Fastly::Client do
 
     end
   end
+
+  describe 'fully_authed?' do
+    it 'surfaces a warning message when checking user/pass authentication' do
+      stub_request(:any, /api.fastly.com/).
+        to_return(body: JSON.generate(i: "dont care"), status: 200)
+
+      client = Fastly::Client.new(user: user, password: pass)
+     
+      assert_output(stdout = nil, stderr =/DEPRECATION WARNING:/) { client.fully_authed? }
+    end
+  end
+
 end
