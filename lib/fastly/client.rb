@@ -61,7 +61,7 @@ class Fastly
       please migrate to API tokens as soon as possible.")
       !(user.nil? || password.nil?)
     end
-    
+
     def get(path, params = {})
       extras = params.delete(:headers) || {}
       include_auth = params.key?(:include_auth) ? params.delete(:include_auth) : true
