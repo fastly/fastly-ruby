@@ -33,9 +33,7 @@ describe Fastly::Client do
       stub_request(:any, /api.fastly.com/).
         to_return(body: JSON.generate(i: "dont care"), status: 200)
 
-      client = Fastly::Client.new(user: user, password: pass)
-      
-      assert_output('', /DEPRECATION WARNING:/) { $stderr.puts 'DEPRECATION WARNING:'}
+      assert_output('', /DEPRECATION WARNING:/) { Fastly::Client.new(user: user, password: pass) }
     end
 
     it 'initializes an http client' do
