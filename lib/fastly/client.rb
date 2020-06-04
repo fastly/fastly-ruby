@@ -61,10 +61,6 @@ class Fastly
 
     # Some methods require full username and password rather than just auth token
     def fully_authed?
-     has_both_username_and_password?
-    end
-
-    def has_both_username_and_password?
       !(user.nil? || password.nil?)
     end
 
