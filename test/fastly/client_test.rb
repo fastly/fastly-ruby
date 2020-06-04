@@ -29,6 +29,15 @@ describe Fastly::Client do
       assert_equal "Invalid auth credentials. Check username/password.", e.message
     end
 
+    it 'surfaces a deprecation message when a username or password is provided' do
+      stub_request(:any, /api.fastly.com/).
+        to_return(body: JSON.generate(i: "dont care"), status: 200)
+
+      client = Fastly::Client.new(user: user, password: pass)
+      
+      assert_output('', /DEPRECATION WARNING:/) { $stderr.puts 'DEPRECATION WARNING:'}
+    end
+
     it 'initializes an http client' do
       client = Fastly::Client.new(api_key: api_key)
 
@@ -139,16 +148,4 @@ describe Fastly::Client do
 
     end
   end
-
-  describe 'fully_authed?' do
-    it 'surfaces a warning message when checking user/pass authentication' do
-      stub_request(:any, /api.fastly.com/).
-        to_return(body: JSON.generate(i: "dont care"), status: 200)
-
-      client = Fastly::Client.new(user: user, password: pass)
-     
-      assert_output(stdout = nil, stderr =/DEPRECATION WARNING:/) { client.fully_authed? }
-    end
-  end
-
 end

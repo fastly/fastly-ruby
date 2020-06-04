@@ -27,6 +27,10 @@ class Fastly
 
       return self unless fully_authed?
 
+      warn("DEPRECATION WARNING: Username/password authentication is deprecated
+      and will not be available starting September 2020;
+      please migrate to API tokens as soon as possible.")
+
       # If full auth creds (user/pass) then log in and set a cookie
       resp = http.post(
         '/login', 
@@ -57,8 +61,10 @@ class Fastly
 
     # Some methods require full username and password rather than just auth token
     def fully_authed?
-      warn("DEPRECATION WARNING: Using username/password authentication is deprecated and will not be available, 
-      please migrate to API tokens as soon as possible.")
+     has_both_username_and_password?
+    end
+
+    def has_both_username_and_password?
       !(user.nil? || password.nil?)
     end
 
