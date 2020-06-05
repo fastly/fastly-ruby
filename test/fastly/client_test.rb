@@ -12,7 +12,7 @@ describe Fastly::Client do
       }
     end
 
-    it 'does not log in if user/pass are not provided' do
+    it 'does not set the user/pass if they are not provided' do
       client = Fastly::Client.new(api_key: api_key)
 
       assert_equal api_key, client.api_key
@@ -27,6 +27,13 @@ describe Fastly::Client do
         Fastly::Client.new(user: user, password: pass)
       }
       assert_equal "Invalid auth credentials. Check username/password.", e.message
+    end
+
+    it 'surfaces a deprecation message when a username or password is provided' do
+      stub_request(:any, /api.fastly.com/).
+        to_return(body: JSON.generate(i: "dont care"), status: 200)
+
+      assert_output('', /DEPRECATION WARNING:/) { Fastly::Client.new(user: user, password: pass) }
     end
 
     it 'initializes an http client' do

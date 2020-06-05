@@ -27,6 +27,10 @@ class Fastly
 
       return self unless fully_authed?
 
+      warn("DEPRECATION WARNING: Username/password authentication is deprecated
+      and will not be available starting September 2020;
+      please migrate to API tokens as soon as possible.")
+
       # If full auth creds (user/pass) then log in and set a cookie
       resp = http.post(
         '/login', 
