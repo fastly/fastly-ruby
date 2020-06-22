@@ -13,7 +13,8 @@ Create a fastly client:
 
 ```ruby
 # some_file.rb
-# use {api_key: 'your-key'} or {user: 'username', password: 'password'} as login options
+# username/password authentication is deprecated and will not be available
+# starting September 2020; use {api_key: 'your-key'} as the login option
 fastly = Fastly.new(login_opts)
 
 current_user     = fastly.current_user
