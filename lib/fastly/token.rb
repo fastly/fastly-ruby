@@ -21,10 +21,7 @@ class Fastly
   end
 
   def new_token(opts)
-    opts[:username] = client.user
-    opts[:password] = client.password
     opts[:include_auth] = false
-    
     token = create(Token, opts)
     token.nil? ? nil : token
   end
