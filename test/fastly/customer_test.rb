@@ -7,7 +7,7 @@ describe Fastly::Customer do
   let(:owner_id)    { SecureRandom.hex(6) }
 
   let(:customer) do
-    stub_request(:post, "#{Fastly::Client::DEFAULT_URL}/login").to_return(body: '{}', status: 200, headers: { 'Set-Cookie' => 'tasty!' })
+    stub_request(:post, "#{Fastly::Client::DEFAULT_URL}/login").to_return(body: '{}', status: 200)
 
     customer_body = JSON.dump(
       'id' => customer_id,

@@ -50,7 +50,7 @@ class Fastly
           end
         end
 
-        describe 'with cookie and api key' do
+        describe 'with username/password and api key' do
           before do
             @opts = login_opts(:both)
             @client = Fastly::Client.new(@opts)
@@ -73,26 +73,6 @@ class Fastly
             response = @service.purge_by_key('somekey', soft: true)
 
             assert_equal 'ok', response['status']
-          end
-        end
-
-        describe 'with cookie only' do
-          before do
-            @opts = login_opts(:full)
-            @client = Fastly::Client.new(@opts)
-            @fastly = Fastly.new(@opts)
-            service_name = "fastly-test-service-#{random_string}"
-            @service      = @fastly.create_service(:name => service_name)
-          end
-
-          after do
-            @fastly.delete_service(@service)
-          end
-
-          it 'does not allow purging' do
-            assert_raises Fastly::KeyAuthRequired do
-              @service.purge_by_key('somekey')
-            end
           end
         end
       end

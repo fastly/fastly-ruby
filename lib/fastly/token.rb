@@ -21,12 +21,16 @@ class Fastly
   end
 
   def new_token(opts)
-    opts[:username] = client.user
-    opts[:password] = client.password
-    opts[:include_auth] = false
-    
-    token = create(Token, opts)
-    token.nil? ? nil : token
+    if client.fully_authed?
+      opts[:username] = client.user
+      opts[:password] = client.password
+      opts[:include_auth] = false
+      
+      token = create(Token, opts)
+      token.nil? ? nil : token
+    else
+      raise ArgumentError, "Required options missing. Please pass :api_key, :user and :password." 
+    end
   end
 
   def customer_tokens(opts)

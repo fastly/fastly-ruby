@@ -1,17 +1,14 @@
 require_relative '../test_helper'
 
 describe Fastly::Token do
-
-  let(:elevated_fastly) { Fastly.new(user: 'test@example.com', password: 'password') }
-  let(:fastly) { Fastly.new(api_key:'my_api_key') }
+  let(:fastly) { Fastly.new(api_key:'my_api_key', user: 'test@example.com', password: 'password') }
 
   before {
-    stub_request(:post, "#{Fastly::Client::DEFAULT_URL}/login").to_return(body: '{}', status: 200, headers: { 'Set-Cookie' => 'tasty!' })
+    stub_request(:post, "#{Fastly::Client::DEFAULT_URL}/login").to_return(body: '{}', status: 200)
   }
 
   describe '#fastly' do
-
-    it 'cannot create itself because POST /tokens must have no auth headers)' do
+    it 'cannot create itself because POST /tokens must have no auth headers' do
       stub_request(:post, "https://api.fastly.com/tokens").
       with(
         body: {"name"=>"name_of_token", "scope"=>"token_scope such_as purge_all purge_select", "services"=>"service_id_that_token_can_access"},
@@ -20,13 +17,12 @@ describe Fastly::Token do
         'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
         'Content-Accept'=>'application/json',
         'Content-Type'=>'application/x-www-form-urlencoded',
-        'Cookie'=>'tasty!',
         'User-Agent'=> /fastly-ruby/
         }).
       to_return(status: 403, body: '{"msg":"You must POST /sudo to access this endpoint"}', headers: {})
 
       assert_raises(Fastly::Error,'{"msg":"You must POST /sudo to access this endpoint"}') do
-        elevated_fastly.create_token(
+        fastly.create_token(
           name: 'name_of_token',
           services: 'service_id_that_token_can_access',
           scope: 'token_scope such_as purge_all purge_select'
@@ -63,7 +59,7 @@ describe Fastly::Token do
         }).
       to_return(status: 200, body: response_body, headers: {})
 
-      token = elevated_fastly.new_token(
+      token = fastly.new_token(
         name: 'name_of_token',
         services: 'service_id_that_token_can_access',
         scope: 'optional token_scope such_as purge_all purge_select'
