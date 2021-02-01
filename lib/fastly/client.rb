@@ -140,7 +140,6 @@ class Fastly
 
     def headers(extras={}, include_auth=true)
       headers = {}
-      # Some endpoints (POST /tokens) break if any auth headers including cookies are sent
       if include_auth
         headers['Fastly-Key'] = api_key if api_key
       end

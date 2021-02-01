@@ -2,7 +2,7 @@ require_relative '../test_helper'
 
 describe Fastly::Dictionary do
 
-  let(:client)     { Fastly.new(api_key: 'notasecrettestkey', user: 'test@example.com', password: 'password') }
+  let(:client)     { Fastly.new(api_key: 'notasecrettestkey') }
   let(:service_id) { SecureRandom.hex(6) }
   let(:version)    {  1 }
   let(:dictionary) { Fastly::Dictionary.new({id: SecureRandom.hex(6), service_id: service_id, version: 1}, client) }

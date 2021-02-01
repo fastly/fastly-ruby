@@ -20,7 +20,7 @@ describe Fastly::Client do
       assert_equal nil, client.password
     end
 
-    it 'raises an Unauthorized if api_key is not passed in the options' do
+    it 'raises Unauthorized if api_key is not passed in the options' do
       assert_raises(Fastly::Unauthorized) { Fastly::Client.new(user: user, password: password)}
     end
 
@@ -46,9 +46,9 @@ describe Fastly::Client do
       stub_request(:any, /api.fastly.com/).
         to_return(body: JSON.generate(i: "dont care"), status: 200)
 
-      assert_raises(ArgumentError) { Fastly.new(username: user, password: pass) }
+      assert_raises(ArgumentError) { Fastly.new(username: user, password: password) }
 
-      Fastly.new(api_key: api_key, user: user, password: pass)
+      Fastly.new(api_key: api_key, user: user, password: password)
     end
   end
 
