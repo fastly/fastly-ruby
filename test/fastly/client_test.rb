@@ -20,20 +20,17 @@ describe Fastly::Client do
       assert_equal nil, client.password
     end
 
+    it 'raises Unauthorized if api_key is not passed in the options' do
+      assert_raises(Fastly::Unauthorized) { Fastly::Client.new(user: user, password: password)}
+    end
+
     it 'raises Unauthorized if user/pass provided but are invalid' do
       stub_request(:any, /api.fastly.com/).to_return(status: 400)
 
       e = assert_raises(Fastly::Unauthorized) {
-        Fastly::Client.new(user: user, password: pass)
+        Fastly::Client.new(user: user, password: password)
       }
-      assert_equal "Invalid auth credentials. Check username/password.", e.message
-    end
-
-    it 'surfaces a deprecation message when a username or password is provided' do
-      stub_request(:any, /api.fastly.com/).
-        to_return(body: JSON.generate(i: "dont care"), status: 200)
-
-      assert_output('', /DEPRECATION WARNING:/) { Fastly::Client.new(user: user, password: pass) }
+      assert_equal "Invalid auth credentials. Check api_key.", e.message
     end
 
     it 'initializes an http client' do
@@ -45,23 +42,13 @@ describe Fastly::Client do
       assert client.http.use_ssl?
     end
 
-    it 'sets a cookie when auth with valid user/pass' do
-      stub_request(:any, /api.fastly.com/).
-        to_return(body: JSON.generate(i: "dont care"), status: 200, headers: { 'Set-Cookie' => 'tasty!' })
-
-      client = Fastly::Client.new(user: user, password: pass)
-      assert_equal "tasty!", client.cookie
-    end
-
     it 'raises an Error if username is used in place of user as an option' do
       stub_request(:any, /api.fastly.com/).
-        to_return(body: JSON.generate(i: "dont care"), status: 200, headers: { 'Set-Cookie' => 'tasty!' })
+        to_return(body: JSON.generate(i: "dont care"), status: 200)
 
-      assert_raises(ArgumentError) { Fastly.new(username: user, password: pass) }
+      assert_raises(ArgumentError) { Fastly.new(username: user, password: password) }
 
-      Fastly.new(user: user, password: pass)
-      Fastly.new(api_key: api_key)
-      Fastly.new(api_key: api_key, user: user, password: pass)
+      Fastly.new(api_key: api_key, user: user, password: password)
     end
   end
 

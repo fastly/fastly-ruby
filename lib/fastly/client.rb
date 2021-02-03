@@ -11,7 +11,7 @@ class Fastly
 
     DEFAULT_URL = 'https://api.fastly.com'.freeze
 
-    attr_accessor :api_key, :base_url, :debug, :user, :password, :cookie, :customer
+    attr_accessor :api_key, :base_url, :debug, :user, :password, :customer
 
     def initialize(opts)
       @api_key            = opts.fetch(:api_key, nil)
@@ -25,22 +25,12 @@ class Fastly
                               Concurrent::ThreadLocalVar.new { build_http_client }
                             end
 
-      return self unless fully_authed?
-
       warn("DEPRECATION WARNING: Username/password authentication is deprecated
       and will not be available starting September 2020;
       please migrate to API tokens as soon as possible.")
-
-      # If full auth creds (user/pass) then log in and set a cookie
-      resp = http.post(
-        '/login', 
-        make_params(user: user, password: password), 
-        {'Content-Type' =>  'application/x-www-form-urlencoded'}
-      )
-      if resp.kind_of?(Net::HTTPSuccess)
-        @cookie = resp['Set-Cookie']
-      else
-        fail Unauthorized, "Invalid auth credentials. Check username/password."
+      
+      if api_key.nil?
+        fail Unauthorized, "Invalid auth credentials. Check api_key."
       end
 
       self
@@ -150,9 +140,7 @@ class Fastly
 
     def headers(extras={}, include_auth=true)
       headers = {}
-      # Some endpoints (POST /tokens) break if any auth headers including cookies are sent
       if include_auth
-        headers['Cookie'] = cookie if fully_authed?
         headers['Fastly-Key'] = api_key if api_key
       end
       headers.merge('Content-Accept' => 'application/json', 'User-Agent' => "fastly-ruby-v#{Fastly::VERSION}").merge(extras.keep_if {|k,v| !v.nil? })

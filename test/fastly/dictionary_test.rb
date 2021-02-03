@@ -2,13 +2,13 @@ require_relative '../test_helper'
 
 describe Fastly::Dictionary do
 
-  let(:client)     { Fastly.new(user: 'test@example.com', password: 'password') }
+  let(:client)     { Fastly.new(api_key: 'notasecrettestkey') }
   let(:service_id) { SecureRandom.hex(6) }
   let(:version)    {  1 }
   let(:dictionary) { Fastly::Dictionary.new({id: SecureRandom.hex(6), service_id: service_id, version: 1}, client) }
 
   before {
-    stub_request(:post, "#{Fastly::Client::DEFAULT_URL}/login").to_return(body: '{}', status: 200, headers: { 'Set-Cookie' => 'tasty!' })
+    stub_request(:post, "#{Fastly::Client::DEFAULT_URL}/login").to_return(body: '{}', status: 200)
   }
 
   describe '#item' do

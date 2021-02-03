@@ -2,13 +2,13 @@ require_relative '../test_helper'
 
 describe Fastly::Syslog do
 
-  let(:client)     { Fastly.new(user: 'test@example.com', password: 'password') }
+  let(:client)     { Fastly.new(api_key: 'notasecrettestkey', user: 'test@example.com', password: 'password') }
   let(:service_id) { SecureRandom.hex(6) }
   let(:version)    { 1 }
   let(:syslog) { Fastly::Syslog.new({ name: 'test_syslog', service_id: service_id, version: 1 }, client) }
 
   before {
-    stub_request(:post, "#{Fastly::Client::DEFAULT_URL}/login").to_return(body: '{}', status: 200, headers: { 'Set-Cookie' => 'tasty!' })
+    stub_request(:post, "#{Fastly::Client::DEFAULT_URL}/login").to_return(body: '{}', status: 200)
   }
 
   describe '#item' do
