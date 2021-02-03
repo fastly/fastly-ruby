@@ -1,6 +1,15 @@
 # Change Log
 
+## [v3.0.0](https://github.com/fastly/fastly-ruby/tree/v3.0.0) (2021-02-03)
+
+[Full Changelog](https://github.com/fastly/fastly-ruby/compare/v2.5.3...v3.0.0)
+
+**Merged pull requests:**
+
+- Removes session authentication [\#170](https://github.com/fastly/fastly-ruby/pull/170) ([conniechu929](https://github.com/conniechu929))
+
 ## [v2.5.0](https://github.com/fastly/fastly-ruby/tree/v2.5.0) (2020-01-16)
+
 [Full Changelog](https://github.com/fastly/fastly-ruby/compare/v2.4.0...v2.5.0)
 
 **Merged pull requests:**
