@@ -1,7 +1,10 @@
 require'test_helper'
 
 describe Fastly::ACL do
-  let(:fastly) { Fastly.new(api_key: 'secret') }
+  let(:opts)             { login_opts(:api_key) }
+  let(:client)           { Client.new(opts) }
+  let(:fastly)           { Fastly.new(opts) }
+
   let(:service) { fastly.create_service(name: 'acl_service') }
   let(:acl) { fastly.create_acl(service_id: service.id, version: 1, name: 'acl_group') }
   let(:acl_entry) { acl.create_entry(ip: '1.2.3.5') }
@@ -50,7 +53,7 @@ describe Fastly::ACL do
     end
 
     it 'gets an ACL' do
-      assert_equal fastly.get_acl(service.id, 1, acl.id).id, 'aclid'
+      assert_equal fastly.get_acl(service.id, 1, acl.name).id, 'aclid'
     end
   end
 
@@ -89,7 +92,7 @@ describe Fastly::ACL do
     end
 
     it 'lists ACLs' do
-      assert_equal fastly.list_acls.first.id, 'aclid'
+      assert_equal service.version.acls.first.id, 'aclid'
     end
   end
 
