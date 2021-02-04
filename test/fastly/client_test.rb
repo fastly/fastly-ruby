@@ -105,7 +105,7 @@ describe Fastly::Client do
           }).
         to_return(body: JSON.generate(i: "dont care"), status: 200)
 
-      resp = client.post(
+      client.post(
         '/service/blah',
         {include_auth: false}
       )
@@ -131,6 +131,56 @@ describe Fastly::Client do
       resp = client.get_stats('/stats')
       assert_equal resp.class, Hash
 
+    end
+  end
+
+  describe 'retry when something goes wrong' do
+    let(:client) { Fastly::Client.new(api_key: api_key) }
+    let(:something_wrong) {'{ "errors" : [{ "title" : "Unknown Error Occurred" , "detail" : "Something went wrong - please try again or contact support@fastly.com if it persists" }] }'}
+    let(:io_error) {'{"error":"I/O error"}'}
+    let(:normal_response) {'{"service_id":"621RhstXUziIWstbAR1","number":5}'}
+    let(:restful_methods) {[:get,:post,:put,:delete,:purge]}
+
+    def stub(method,body_fivehundred, body_twohundred)
+      stub_request(method, /api.fastly.com/)
+        .to_return(
+          {status: 500, body: body_fivehundred},
+          {status: 500, body: body_fivehundred},
+          {status: 200, body: body_twohundred}
+        )
+    end
+
+    it 'retries if something goes wrong' do
+      restful_methods.each do |method|
+        stub(method, something_wrong, normal_response)
+        resp = client.get('/service/')
+        assert_equal resp.class, Hash
+        assert_includes resp, "service_id"
+      end
+    end
+
+    it 'retries on I/O error' do
+      restful_methods.each do |method|
+        stub(method, io_error, normal_response)
+        resp = client.get('/service/')
+        assert_equal resp.class, Hash
+        assert_includes resp, "service_id"
+      end
+    end
+
+    it 'fails if there are too many retries' do
+      stub_request(:get, /api.fastly.com/)
+      .to_return(
+        {status: 500, body: something_wrong},
+        {status: 500, body: io_error},
+        {status: 500, body: something_wrong},
+        {status: 500, body: io_error},
+        {status: 200, body: normal_response}
+      )
+      error = assert_raises Fastly::Error do
+        client.get('/service/')
+      end
+      assert_equal '{"error":"I/O error"}', error.message
     end
   end
 end
