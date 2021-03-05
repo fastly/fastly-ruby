@@ -24,10 +24,6 @@ class Fastly
       @thread_http_client = if defined?(Concurrent::ThreadLocalVar)
                               Concurrent::ThreadLocalVar.new { build_http_client }
                             end
-
-      warn("DEPRECATION WARNING: Username/password authentication is deprecated
-      and will not be available starting September 2020;
-      please migrate to API tokens as soon as possible.")
       
       if api_key.nil?
         fail Unauthorized, "Invalid auth credentials. Check api_key."
