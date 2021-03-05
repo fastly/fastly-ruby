@@ -1,5 +1,13 @@
 # Change Log
 
+## [v3.0.1](https://github.com/fastly/fastly-ruby/tree/v3.0.1) (2021-02-03)
+
+[Full Changelog](https://github.com/fastly/fastly-ruby/compare/v3.0.0...v3.0.1)
+
+**Merged pull requests:**
+
+- Remove deprecation warning [\#174](https://github.com/fastly/fastly-ruby/pull/174) ([conniechu929](https://github.com/conniechu929))
+
 ## [v3.0.0](https://github.com/fastly/fastly-ruby/tree/v3.0.0) (2021-02-03)
 
 [Full Changelog](https://github.com/fastly/fastly-ruby/compare/v2.5.3...v3.0.0)
