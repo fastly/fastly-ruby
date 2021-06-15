@@ -24,7 +24,7 @@ class Fastly
       @thread_http_client = if defined?(Concurrent::ThreadLocalVar)
                               Concurrent::ThreadLocalVar.new { build_http_client }
                             end
-      
+
       if api_key.nil?
         fail Unauthorized, "Invalid auth credentials. Check api_key."
       end
