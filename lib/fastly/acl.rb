@@ -34,7 +34,10 @@ class Fastly
         ip: opts[:ip],
         negated: opts[:negated],
         subnet: opts[:subnet],
-        comment: opts[:comment]
+        comment: opts[:comment],
+        created_at: opts[:created_at],
+        updated_at: opts[:updated_at],
+        deleted_at: opts[:deleted_at],
       )
     end
 
