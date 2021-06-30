@@ -3,7 +3,7 @@
 1. Sign up for an account on Ruby Gems (https://rubygems.org/sign_up)
 2. Go to the `#app-eng-backends` channel and get added to the ruby gem (https://rubygems.org/gems/fastly)
 3. Merge PR after CI passes
-4. Open new PR to update `CHANGELOG.md`
+4. Open new PR to update `CHANGELOG.md` and update `lib/fastly/gem_version.rb`
 5. Merge `CHANGELOG.md` PR
 6. Rebase latest remote master branch locally (`git pull --rebase origin master`).
 7. Tag a new release (`git tag vX.Y.Z && git push origin vX.Y.Z`)
