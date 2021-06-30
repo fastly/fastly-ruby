@@ -1,5 +1,13 @@
 # Change Log
 
+## [v3.0.2](https://github.com/fastly/fastly-ruby/tree/v3.0.2) (2021-06-30)
+
+[Full Changelog](https://github.com/fastly/fastly-ruby/compare/v3.0.1...v3.0.2)
+
+**Merged pull requests:**
+
+- Fix SumoLogic Logging [\#180](https://github.com/fastly/fastly-ruby/pull/180) ([integralist](https://github.com/integralist))
+
 ## [v3.0.1](https://github.com/fastly/fastly-ruby/tree/v3.0.1) (2021-02-03)
 
 [Full Changelog](https://github.com/fastly/fastly-ruby/compare/v3.0.0...v3.0.1)
