@@ -3,7 +3,7 @@ require 'cgi'
 class Fastly
   # Acces Control List Entry configuration
   class ACLEntry < Base
-    attr_accessor :id, :service_id, :ip, :subnet, :acl_id, :negated, :comment
+    attr_accessor :id, :service_id, :ip, :subnet, :acl_id, :negated, :comment, :created_at, :updated_at, :deleted_at
 
     ##
     # :attr: ip
