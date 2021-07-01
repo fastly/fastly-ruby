@@ -1,5 +1,4 @@
 # frozen_string_literal: true
-
 require 'json'
 require 'cgi'
 require 'net/http' # also requires uri
@@ -71,11 +70,15 @@ class Fastly
     end
 
     def post(path, params = {})
-      post_and_put(:post, path, params)
+      http_request(:post, path, params)
     end
 
     def put(path, params = {})
-      post_and_put(:put, path, params)
+      http_request(:put, path, params)
+    end
+
+    def patch(path, params = {})
+      http_request(:patch, path, params)
     end
 
     def delete(path, params = {})
@@ -125,7 +128,7 @@ class Fastly
       net_http
     end
 
-    def post_and_put(method, path, params = {})
+    def http_request(method, path, params = {})
       extras = params.delete(:headers) || {}
       include_auth = params.key?(:include_auth) ? params.delete(:include_auth) : true
       query = make_params(params)

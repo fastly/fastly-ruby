@@ -47,5 +47,9 @@ class Fastly
     def delete(klass, obj)
       client.delete(klass.delete_path(obj))
     end
+
+    def patch(klass, opts)
+      client.patch(klass.patch_path(opts), opts)
+    end
   end
 end

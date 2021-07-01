@@ -53,6 +53,10 @@ class Fastly
       post_path(opts)
     end
 
+    def self.patch_path(opts = {})
+      post_path(opts)
+    end
+
     def self.put_path(object)
       get_path(object.id)
     end
