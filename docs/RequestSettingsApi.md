@@ -10,52 +10,12 @@ api_instance = Fastly::RequestSettingsApi.new
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
-| [**create_request_settings**](RequestSettingsApi.md#create_request_settings) | **POST** /service/{service_id}/version/{version_id}/request_settings | Create a Request Settings object |
 | [**delete_request_settings**](RequestSettingsApi.md#delete_request_settings) | **DELETE** /service/{service_id}/version/{version_id}/request_settings/{request_settings_name} | Delete a Request Settings object |
 | [**get_request_settings**](RequestSettingsApi.md#get_request_settings) | **GET** /service/{service_id}/version/{version_id}/request_settings/{request_settings_name} | Get a Request Settings object |
 | [**list_request_settings**](RequestSettingsApi.md#list_request_settings) | **GET** /service/{service_id}/version/{version_id}/request_settings | List Request Settings objects |
 | [**update_request_settings**](RequestSettingsApi.md#update_request_settings) | **PUT** /service/{service_id}/version/{version_id}/request_settings/{request_settings_name} | Update a Request Settings object |
 
 
-## `create_request_settings()`
-
-```ruby
-create_request_settings(opts): <RequestSettingsResponse> # Create a Request Settings object
-```
-
-Creates a new Request Settings object.
-
-### Examples
-
-```ruby
-api_instance = Fastly::RequestSettingsApi.new
-opts = {
-    service_id: 'service_id_example', # String | Alphanumeric string identifying the service.
-    version_id: 56, # Integer | Integer identifying a service version.
-}
-
-begin
-  # Create a Request Settings object
-  result = api_instance.create_request_settings(opts)
-  p result
-rescue Fastly::ApiError => e
-  puts "Error when calling RequestSettingsApi->create_request_settings: #{e}"
-end
-```
-
-### Options
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **service_id** | **String** | Alphanumeric string identifying the service. |  |
-| **version_id** | **Integer** | Integer identifying a service version. |  |
-
-### Return type
-
-[**RequestSettingsResponse**](RequestSettingsResponse.md)
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to README]](../../README.md)
 ## `delete_request_settings()`
 
 ```ruby

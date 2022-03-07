@@ -14,7 +14,6 @@ api_instance = Fastly::LoggingKinesisApi.new
 | [**delete_log_kinesis**](LoggingKinesisApi.md#delete_log_kinesis) | **DELETE** /service/{service_id}/version/{version_id}/logging/kinesis/{logging_kinesis_name} | Delete the Amazon Kinesis log endpoint |
 | [**get_log_kinesis**](LoggingKinesisApi.md#get_log_kinesis) | **GET** /service/{service_id}/version/{version_id}/logging/kinesis/{logging_kinesis_name} | Get an Amazon Kinesis log endpoint |
 | [**list_log_kinesis**](LoggingKinesisApi.md#list_log_kinesis) | **GET** /service/{service_id}/version/{version_id}/logging/kinesis | List Amazon Kinesis log endpoints |
-| [**update_log_kinesis**](LoggingKinesisApi.md#update_log_kinesis) | **PUT** /service/{service_id}/version/{version_id}/logging/kinesis/{logging_kinesis_name} | Update the Amazon Kinesis log endpoint |
 
 
 ## `create_log_kinesis()`
@@ -192,47 +191,6 @@ end
 ### Return type
 
 [**Array&lt;LoggingKinesisResponse&gt;**](LoggingKinesisResponse.md)
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to README]](../../README.md)
-## `update_log_kinesis()`
-
-```ruby
-update_log_kinesis(opts): <LoggingKinesisResponse> # Update the Amazon Kinesis log endpoint
-```
-
-Update an Amazon Kinesis Data Streams logging object for a particular service and version.
-
-### Examples
-
-```ruby
-api_instance = Fastly::LoggingKinesisApi.new
-opts = {
-    service_id: 'service_id_example', # String | Alphanumeric string identifying the service.
-    version_id: 56, # Integer | Integer identifying a service version.
-    logging_kinesis_name: 'logging_kinesis_name_example', # String | The name for the real-time logging configuration.
-}
-
-begin
-  # Update the Amazon Kinesis log endpoint
-  result = api_instance.update_log_kinesis(opts)
-  p result
-rescue Fastly::ApiError => e
-  puts "Error when calling LoggingKinesisApi->update_log_kinesis: #{e}"
-end
-```
-
-### Options
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **service_id** | **String** | Alphanumeric string identifying the service. |  |
-| **version_id** | **Integer** | Integer identifying a service version. |  |
-| **logging_kinesis_name** | **String** | The name for the real-time logging configuration. |  |
-
-### Return type
-
-[**LoggingKinesisResponse**](LoggingKinesisResponse.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)

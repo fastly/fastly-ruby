@@ -141,69 +141,6 @@ module Fastly
       return data, status_code, headers
     end
 
-    # Delete service authorizations
-    # Delete service authorizations.
-    # @option opts [Hash<String, Object>] :request_body 
-    # @return [InlineResponse2002]
-    def delete_service_authorization2(opts = {})
-      data, _status_code, _headers = delete_service_authorization2_with_http_info(opts)
-      data
-    end
-
-    # Delete service authorizations
-    # Delete service authorizations.
-    # @option opts [Hash<String, Object>] :request_body 
-    # @return [Array<(InlineResponse2002, Integer, Hash)>] InlineResponse2002 data, response status code and response headers
-    def delete_service_authorization2_with_http_info(opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: ServiceAuthorizationsApi.delete_service_authorization2 ...'
-      end
-      # unbox the parameters from the hash
-      # resource path
-      local_var_path = '/service-authorizations'
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/vnd.api+json; ext=bulk'])
-      # HTTP header 'Content-Type'
-      content_type = @api_client.select_header_content_type(['application/vnd.api+json; ext=bulk'])
-      if !content_type.nil?
-          header_params['Content-Type'] = content_type
-      end
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(opts[:'request_body'])
-
-      # return_type
-      return_type = opts[:debug_return_type] || 'InlineResponse2002'
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['token']
-
-      new_options = opts.merge(
-        :operation => :"ServiceAuthorizationsApi.delete_service_authorization2",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: ServiceAuthorizationsApi#delete_service_authorization2\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
     # List service authorizations
     # List service authorizations.
     # @option opts [Integer] :page_number Current page.
@@ -403,69 +340,6 @@ module Fastly
       data, status_code, headers = @api_client.call_api(:PATCH, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: ServiceAuthorizationsApi#update_service_authorization\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Update service authorizations
-    # Update service authorizations.
-    # @option opts [Hash<String, Object>] :request_body 
-    # @return [ServiceAuthorizationsResponse]
-    def update_service_authorization2(opts = {})
-      data, _status_code, _headers = update_service_authorization2_with_http_info(opts)
-      data
-    end
-
-    # Update service authorizations
-    # Update service authorizations.
-    # @option opts [Hash<String, Object>] :request_body 
-    # @return [Array<(ServiceAuthorizationsResponse, Integer, Hash)>] ServiceAuthorizationsResponse data, response status code and response headers
-    def update_service_authorization2_with_http_info(opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: ServiceAuthorizationsApi.update_service_authorization2 ...'
-      end
-      # unbox the parameters from the hash
-      # resource path
-      local_var_path = '/service-authorizations'
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/vnd.api+json; ext=bulk'])
-      # HTTP header 'Content-Type'
-      content_type = @api_client.select_header_content_type(['application/vnd.api+json; ext=bulk'])
-      if !content_type.nil?
-          header_params['Content-Type'] = content_type
-      end
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(opts[:'request_body'])
-
-      # return_type
-      return_type = opts[:debug_return_type] || 'ServiceAuthorizationsResponse'
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['token']
-
-      new_options = opts.merge(
-        :operation => :"ServiceAuthorizationsApi.update_service_authorization2",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:PATCH, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: ServiceAuthorizationsApi#update_service_authorization2\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

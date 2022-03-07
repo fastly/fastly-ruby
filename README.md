@@ -73,12 +73,7 @@ Class | Method | Description
 [*Fastly::AclApi*](docs/AclApi.md) | [**list_acls**](docs/AclApi.md#list_acls) | List ACLs
 [*Fastly::AclApi*](docs/AclApi.md) | [**update_acl**](docs/AclApi.md#update_acl) | Update an ACL
 [*Fastly::AclEntryApi*](docs/AclEntryApi.md) | [**bulk_update_acl_entries**](docs/AclEntryApi.md#bulk_update_acl_entries) | Update multiple ACL entries
-[*Fastly::AclEntryApi*](docs/AclEntryApi.md) | [**create_acl_entry**](docs/AclEntryApi.md#create_acl_entry) | Create an ACL entry
 [*Fastly::AclEntryApi*](docs/AclEntryApi.md) | [**delete_acl_entry**](docs/AclEntryApi.md#delete_acl_entry) | Delete an ACL entry
-[*Fastly::AclEntryApi*](docs/AclEntryApi.md) | [**get_acl_entry**](docs/AclEntryApi.md#get_acl_entry) | Describe an ACL entry
-[*Fastly::AclEntryApi*](docs/AclEntryApi.md) | [**list_acl_entries**](docs/AclEntryApi.md#list_acl_entries) | List ACL entries
-[*Fastly::AclEntryApi*](docs/AclEntryApi.md) | [**update_acl_entry**](docs/AclEntryApi.md#update_acl_entry) | Update an ACL entry
-[*Fastly::ApexRedirectApi*](docs/ApexRedirectApi.md) | [**create_apex_redirect**](docs/ApexRedirectApi.md#create_apex_redirect) | Create an apex redirect
 [*Fastly::ApexRedirectApi*](docs/ApexRedirectApi.md) | [**delete_apex_redirect**](docs/ApexRedirectApi.md#delete_apex_redirect) | Delete an apex redirect
 [*Fastly::ApexRedirectApi*](docs/ApexRedirectApi.md) | [**get_apex_redirect**](docs/ApexRedirectApi.md#get_apex_redirect) | Get an apex redirect
 [*Fastly::ApexRedirectApi*](docs/ApexRedirectApi.md) | [**list_apex_redirects**](docs/ApexRedirectApi.md#list_apex_redirects) | List apex redirects
@@ -105,10 +100,8 @@ Class | Method | Description
 [*Fastly::ConditionApi*](docs/ConditionApi.md) | [**get_condition**](docs/ConditionApi.md#get_condition) | Describe a condition
 [*Fastly::ConditionApi*](docs/ConditionApi.md) | [**list_conditions**](docs/ConditionApi.md#list_conditions) | List conditions
 [*Fastly::ConditionApi*](docs/ConditionApi.md) | [**update_condition**](docs/ConditionApi.md#update_condition) | Update a condition
-[*Fastly::ContactApi*](docs/ContactApi.md) | [**create_contacts**](docs/ContactApi.md#create_contacts) | Add a new customer contact
 [*Fastly::ContactApi*](docs/ContactApi.md) | [**delete_contact**](docs/ContactApi.md#delete_contact) | Delete a contact
 [*Fastly::ContactApi*](docs/ContactApi.md) | [**list_contacts**](docs/ContactApi.md#list_contacts) | List contacts
-[*Fastly::ContentApi*](docs/ContentApi.md) | [**content_check**](docs/ContentApi.md#content_check) | Check status of content in each POP's cache
 [*Fastly::CustomerApi*](docs/CustomerApi.md) | [**delete_customer**](docs/CustomerApi.md#delete_customer) | Delete a customer
 [*Fastly::CustomerApi*](docs/CustomerApi.md) | [**get_customer**](docs/CustomerApi.md#get_customer) | Get a customer
 [*Fastly::CustomerApi*](docs/CustomerApi.md) | [**get_logged_in_customer**](docs/CustomerApi.md#get_logged_in_customer) | Get the logged in customer
@@ -120,7 +113,6 @@ Class | Method | Description
 [*Fastly::DictionaryApi*](docs/DictionaryApi.md) | [**list_dictionaries**](docs/DictionaryApi.md#list_dictionaries) | List edge dictionaries
 [*Fastly::DictionaryApi*](docs/DictionaryApi.md) | [**update_dictionary**](docs/DictionaryApi.md#update_dictionary) | Update an edge dictionary
 [*Fastly::DictionaryInfoApi*](docs/DictionaryInfoApi.md) | [**get_dictionary_info**](docs/DictionaryInfoApi.md#get_dictionary_info) | Get edge dictionary metadata
-[*Fastly::DictionaryItemApi*](docs/DictionaryItemApi.md) | [**bulk_update_dictionary_item**](docs/DictionaryItemApi.md#bulk_update_dictionary_item) | Update multiple entries in an edge dictionary
 [*Fastly::DictionaryItemApi*](docs/DictionaryItemApi.md) | [**create_dictionary_item**](docs/DictionaryItemApi.md#create_dictionary_item) | Create an entry in an edge dictionary
 [*Fastly::DictionaryItemApi*](docs/DictionaryItemApi.md) | [**delete_dictionary_item**](docs/DictionaryItemApi.md#delete_dictionary_item) | Delete an item from an edge dictionary
 [*Fastly::DictionaryItemApi*](docs/DictionaryItemApi.md) | [**get_dictionary_item**](docs/DictionaryItemApi.md#get_dictionary_item) | Get an item from an edge dictionary
@@ -132,7 +124,6 @@ Class | Method | Description
 [*Fastly::DirectorApi*](docs/DirectorApi.md) | [**delete_director**](docs/DirectorApi.md#delete_director) | Delete a director
 [*Fastly::DirectorApi*](docs/DirectorApi.md) | [**get_director**](docs/DirectorApi.md#get_director) | Get a director
 [*Fastly::DirectorApi*](docs/DirectorApi.md) | [**list_directors**](docs/DirectorApi.md#list_directors) | List directors
-[*Fastly::DirectorApi*](docs/DirectorApi.md) | [**update_director**](docs/DirectorApi.md#update_director) | Update a director
 [*Fastly::DirectorBackendApi*](docs/DirectorBackendApi.md) | [**create_director_backend**](docs/DirectorBackendApi.md#create_director_backend) | Create a director-backend relationship
 [*Fastly::DirectorBackendApi*](docs/DirectorBackendApi.md) | [**delete_director_backend**](docs/DirectorBackendApi.md#delete_director_backend) | Delete a director-backend relationship
 [*Fastly::DirectorBackendApi*](docs/DirectorBackendApi.md) | [**get_director_backend**](docs/DirectorBackendApi.md#get_director_backend) | Get a director-backend relationship
@@ -177,36 +168,20 @@ Class | Method | Description
 [*Fastly::Http3Api*](docs/Http3Api.md) | [**delete_http3**](docs/Http3Api.md#delete_http3) | Disable support for HTTP/3
 [*Fastly::Http3Api*](docs/Http3Api.md) | [**get_http3**](docs/Http3Api.md#get_http3) | Get HTTP/3 status
 [*Fastly::IamPermissionsApi*](docs/IamPermissionsApi.md) | [**list_permissions**](docs/IamPermissionsApi.md#list_permissions) | List permissions
-[*Fastly::IamRolesApi*](docs/IamRolesApi.md) | [**add_role_permissions**](docs/IamRolesApi.md#add_role_permissions) | Add permissions to a role
-[*Fastly::IamRolesApi*](docs/IamRolesApi.md) | [**create_a_role**](docs/IamRolesApi.md#create_a_role) | Create a role
 [*Fastly::IamRolesApi*](docs/IamRolesApi.md) | [**delete_a_role**](docs/IamRolesApi.md#delete_a_role) | Delete a role
 [*Fastly::IamRolesApi*](docs/IamRolesApi.md) | [**get_a_role**](docs/IamRolesApi.md#get_a_role) | Get a role
 [*Fastly::IamRolesApi*](docs/IamRolesApi.md) | [**list_role_permissions**](docs/IamRolesApi.md#list_role_permissions) | List permissions in a role
 [*Fastly::IamRolesApi*](docs/IamRolesApi.md) | [**list_roles**](docs/IamRolesApi.md#list_roles) | List roles
-[*Fastly::IamRolesApi*](docs/IamRolesApi.md) | [**remove_role_permissions**](docs/IamRolesApi.md#remove_role_permissions) | Remove permissions from a role
-[*Fastly::IamRolesApi*](docs/IamRolesApi.md) | [**update_a_role**](docs/IamRolesApi.md#update_a_role) | Update a role
-[*Fastly::IamServiceGroupsApi*](docs/IamServiceGroupsApi.md) | [**add_service_group_services**](docs/IamServiceGroupsApi.md#add_service_group_services) | Add services in a service group
-[*Fastly::IamServiceGroupsApi*](docs/IamServiceGroupsApi.md) | [**create_a_service_group**](docs/IamServiceGroupsApi.md#create_a_service_group) | Create a service group
 [*Fastly::IamServiceGroupsApi*](docs/IamServiceGroupsApi.md) | [**delete_a_service_group**](docs/IamServiceGroupsApi.md#delete_a_service_group) | Delete a service group
 [*Fastly::IamServiceGroupsApi*](docs/IamServiceGroupsApi.md) | [**get_a_service_group**](docs/IamServiceGroupsApi.md#get_a_service_group) | Get a service group
 [*Fastly::IamServiceGroupsApi*](docs/IamServiceGroupsApi.md) | [**list_service_group_services**](docs/IamServiceGroupsApi.md#list_service_group_services) | List services to a service group
 [*Fastly::IamServiceGroupsApi*](docs/IamServiceGroupsApi.md) | [**list_service_groups**](docs/IamServiceGroupsApi.md#list_service_groups) | List service groups
-[*Fastly::IamServiceGroupsApi*](docs/IamServiceGroupsApi.md) | [**remove_service_group_services**](docs/IamServiceGroupsApi.md#remove_service_group_services) | Remove services from a service group
-[*Fastly::IamServiceGroupsApi*](docs/IamServiceGroupsApi.md) | [**update_a_service_group**](docs/IamServiceGroupsApi.md#update_a_service_group) | Update a service group
-[*Fastly::IamUserGroupsApi*](docs/IamUserGroupsApi.md) | [**add_user_group_members**](docs/IamUserGroupsApi.md#add_user_group_members) | Add members to a user group
-[*Fastly::IamUserGroupsApi*](docs/IamUserGroupsApi.md) | [**add_user_group_roles**](docs/IamUserGroupsApi.md#add_user_group_roles) | Add roles to a user group
-[*Fastly::IamUserGroupsApi*](docs/IamUserGroupsApi.md) | [**add_user_group_service_groups**](docs/IamUserGroupsApi.md#add_user_group_service_groups) | Add service groups to a user group
-[*Fastly::IamUserGroupsApi*](docs/IamUserGroupsApi.md) | [**create_a_user_group**](docs/IamUserGroupsApi.md#create_a_user_group) | Create a user group
 [*Fastly::IamUserGroupsApi*](docs/IamUserGroupsApi.md) | [**delete_a_user_group**](docs/IamUserGroupsApi.md#delete_a_user_group) | Delete a user group
 [*Fastly::IamUserGroupsApi*](docs/IamUserGroupsApi.md) | [**get_a_user_group**](docs/IamUserGroupsApi.md#get_a_user_group) | Get a user group
 [*Fastly::IamUserGroupsApi*](docs/IamUserGroupsApi.md) | [**list_user_group_members**](docs/IamUserGroupsApi.md#list_user_group_members) | List members of a user group
 [*Fastly::IamUserGroupsApi*](docs/IamUserGroupsApi.md) | [**list_user_group_roles**](docs/IamUserGroupsApi.md#list_user_group_roles) | List roles in a user group
 [*Fastly::IamUserGroupsApi*](docs/IamUserGroupsApi.md) | [**list_user_group_service_groups**](docs/IamUserGroupsApi.md#list_user_group_service_groups) | List service groups in a user group
 [*Fastly::IamUserGroupsApi*](docs/IamUserGroupsApi.md) | [**list_user_groups**](docs/IamUserGroupsApi.md#list_user_groups) | List user groups
-[*Fastly::IamUserGroupsApi*](docs/IamUserGroupsApi.md) | [**remove_user_group_members**](docs/IamUserGroupsApi.md#remove_user_group_members) | Remove members of a user group
-[*Fastly::IamUserGroupsApi*](docs/IamUserGroupsApi.md) | [**remove_user_group_roles**](docs/IamUserGroupsApi.md#remove_user_group_roles) | Remove roles from a user group
-[*Fastly::IamUserGroupsApi*](docs/IamUserGroupsApi.md) | [**remove_user_group_service_groups**](docs/IamUserGroupsApi.md#remove_user_group_service_groups) | Remove service groups from a user group
-[*Fastly::IamUserGroupsApi*](docs/IamUserGroupsApi.md) | [**update_a_user_group**](docs/IamUserGroupsApi.md#update_a_user_group) | Update a user group
 [*Fastly::InvitationsApi*](docs/InvitationsApi.md) | [**create_invitation**](docs/InvitationsApi.md#create_invitation) | Create an invitation
 [*Fastly::InvitationsApi*](docs/InvitationsApi.md) | [**delete_invitation**](docs/InvitationsApi.md#delete_invitation) | Delete an invitation
 [*Fastly::InvitationsApi*](docs/InvitationsApi.md) | [**list_invitations**](docs/InvitationsApi.md#list_invitations) | List invitations
@@ -269,12 +244,10 @@ Class | Method | Description
 [*Fastly::LoggingKafkaApi*](docs/LoggingKafkaApi.md) | [**delete_log_kafka**](docs/LoggingKafkaApi.md#delete_log_kafka) | Delete the Kafka log endpoint
 [*Fastly::LoggingKafkaApi*](docs/LoggingKafkaApi.md) | [**get_log_kafka**](docs/LoggingKafkaApi.md#get_log_kafka) | Get a Kafka log endpoint
 [*Fastly::LoggingKafkaApi*](docs/LoggingKafkaApi.md) | [**list_log_kafka**](docs/LoggingKafkaApi.md#list_log_kafka) | List Kafka log endpoints
-[*Fastly::LoggingKafkaApi*](docs/LoggingKafkaApi.md) | [**update_log_kafka**](docs/LoggingKafkaApi.md#update_log_kafka) | Update the Kafka log endpoint
 [*Fastly::LoggingKinesisApi*](docs/LoggingKinesisApi.md) | [**create_log_kinesis**](docs/LoggingKinesisApi.md#create_log_kinesis) | Create  an Amazon Kinesis log endpoint
 [*Fastly::LoggingKinesisApi*](docs/LoggingKinesisApi.md) | [**delete_log_kinesis**](docs/LoggingKinesisApi.md#delete_log_kinesis) | Delete the Amazon Kinesis log endpoint
 [*Fastly::LoggingKinesisApi*](docs/LoggingKinesisApi.md) | [**get_log_kinesis**](docs/LoggingKinesisApi.md#get_log_kinesis) | Get an Amazon Kinesis log endpoint
 [*Fastly::LoggingKinesisApi*](docs/LoggingKinesisApi.md) | [**list_log_kinesis**](docs/LoggingKinesisApi.md#list_log_kinesis) | List Amazon Kinesis log endpoints
-[*Fastly::LoggingKinesisApi*](docs/LoggingKinesisApi.md) | [**update_log_kinesis**](docs/LoggingKinesisApi.md#update_log_kinesis) | Update the Amazon Kinesis log endpoint
 [*Fastly::LoggingLogentriesApi*](docs/LoggingLogentriesApi.md) | [**create_log_logentries**](docs/LoggingLogentriesApi.md#create_log_logentries) | Create a Logentries log endpoint
 [*Fastly::LoggingLogentriesApi*](docs/LoggingLogentriesApi.md) | [**delete_log_logentries**](docs/LoggingLogentriesApi.md#delete_log_logentries) | Delete a Logentries log endpoint
 [*Fastly::LoggingLogentriesApi*](docs/LoggingLogentriesApi.md) | [**get_log_logentries**](docs/LoggingLogentriesApi.md#get_log_logentries) | Get a Logentries log endpoint
@@ -353,15 +326,12 @@ Class | Method | Description
 [*Fastly::PurgeApi*](docs/PurgeApi.md) | [**purge_all**](docs/PurgeApi.md#purge_all) | Purge everything from a service
 [*Fastly::PurgeApi*](docs/PurgeApi.md) | [**purge_single_url**](docs/PurgeApi.md#purge_single_url) | Purge a URL
 [*Fastly::PurgeApi*](docs/PurgeApi.md) | [**purge_tag**](docs/PurgeApi.md#purge_tag) | Purge by surrogate key tag
-[*Fastly::RateLimiterApi*](docs/RateLimiterApi.md) | [**create_rate_limiter**](docs/RateLimiterApi.md#create_rate_limiter) | Create a rate limiter
 [*Fastly::RateLimiterApi*](docs/RateLimiterApi.md) | [**delete_rate_limiter**](docs/RateLimiterApi.md#delete_rate_limiter) | Delete a rate limiter
 [*Fastly::RateLimiterApi*](docs/RateLimiterApi.md) | [**get_rate_limiter**](docs/RateLimiterApi.md#get_rate_limiter) | Get a rate limiter
 [*Fastly::RateLimiterApi*](docs/RateLimiterApi.md) | [**list_rate_limiters**](docs/RateLimiterApi.md#list_rate_limiters) | List rate limiters
-[*Fastly::RateLimiterApi*](docs/RateLimiterApi.md) | [**update_rate_limiter**](docs/RateLimiterApi.md#update_rate_limiter) | Update a rate limiter
 [*Fastly::RealtimeApi*](docs/RealtimeApi.md) | [**get_stats_last120_seconds**](docs/RealtimeApi.md#get_stats_last120_seconds) | Get real-time data for the last 120 seconds
 [*Fastly::RealtimeApi*](docs/RealtimeApi.md) | [**get_stats_last120_seconds_limit_entries**](docs/RealtimeApi.md#get_stats_last120_seconds_limit_entries) | Get a limited number of real-time data entries
 [*Fastly::RealtimeApi*](docs/RealtimeApi.md) | [**get_stats_last_second**](docs/RealtimeApi.md#get_stats_last_second) | Get real-time data from specified time
-[*Fastly::RequestSettingsApi*](docs/RequestSettingsApi.md) | [**create_request_settings**](docs/RequestSettingsApi.md#create_request_settings) | Create a Request Settings object
 [*Fastly::RequestSettingsApi*](docs/RequestSettingsApi.md) | [**delete_request_settings**](docs/RequestSettingsApi.md#delete_request_settings) | Delete a Request Settings object
 [*Fastly::RequestSettingsApi*](docs/RequestSettingsApi.md) | [**get_request_settings**](docs/RequestSettingsApi.md#get_request_settings) | Get a Request Settings object
 [*Fastly::RequestSettingsApi*](docs/RequestSettingsApi.md) | [**list_request_settings**](docs/RequestSettingsApi.md#list_request_settings) | List Request Settings objects
@@ -371,11 +341,9 @@ Class | Method | Description
 [*Fastly::ResourceApi*](docs/ResourceApi.md) | [**get_resource**](docs/ResourceApi.md#get_resource) | Display a resource
 [*Fastly::ResourceApi*](docs/ResourceApi.md) | [**list_resources**](docs/ResourceApi.md#list_resources) | List resources
 [*Fastly::ResourceApi*](docs/ResourceApi.md) | [**update_resource**](docs/ResourceApi.md#update_resource) | Update a resource
-[*Fastly::ResponseObjectApi*](docs/ResponseObjectApi.md) | [**create_response_object**](docs/ResponseObjectApi.md#create_response_object) | Create a Response object
 [*Fastly::ResponseObjectApi*](docs/ResponseObjectApi.md) | [**delete_response_object**](docs/ResponseObjectApi.md#delete_response_object) | Delete a Response Object
 [*Fastly::ResponseObjectApi*](docs/ResponseObjectApi.md) | [**get_response_object**](docs/ResponseObjectApi.md#get_response_object) | Get a Response object
 [*Fastly::ResponseObjectApi*](docs/ResponseObjectApi.md) | [**list_response_objects**](docs/ResponseObjectApi.md#list_response_objects) | List Response objects
-[*Fastly::ResponseObjectApi*](docs/ResponseObjectApi.md) | [**update_response_object**](docs/ResponseObjectApi.md#update_response_object) | Update a Response object
 [*Fastly::ServerApi*](docs/ServerApi.md) | [**create_pool_server**](docs/ServerApi.md#create_pool_server) | Add a server to a pool
 [*Fastly::ServerApi*](docs/ServerApi.md) | [**delete_pool_server**](docs/ServerApi.md#delete_pool_server) | Delete a server from a pool
 [*Fastly::ServerApi*](docs/ServerApi.md) | [**get_pool_server**](docs/ServerApi.md#get_pool_server) | Get a pool server
@@ -391,19 +359,15 @@ Class | Method | Description
 [*Fastly::ServiceApi*](docs/ServiceApi.md) | [**update_service**](docs/ServiceApi.md#update_service) | Update a service
 [*Fastly::ServiceAuthorizationsApi*](docs/ServiceAuthorizationsApi.md) | [**create_service_authorization**](docs/ServiceAuthorizationsApi.md#create_service_authorization) | Create service authorization
 [*Fastly::ServiceAuthorizationsApi*](docs/ServiceAuthorizationsApi.md) | [**delete_service_authorization**](docs/ServiceAuthorizationsApi.md#delete_service_authorization) | Delete service authorization
-[*Fastly::ServiceAuthorizationsApi*](docs/ServiceAuthorizationsApi.md) | [**delete_service_authorization2**](docs/ServiceAuthorizationsApi.md#delete_service_authorization2) | Delete service authorizations
 [*Fastly::ServiceAuthorizationsApi*](docs/ServiceAuthorizationsApi.md) | [**list_service_authorization**](docs/ServiceAuthorizationsApi.md#list_service_authorization) | List service authorizations
 [*Fastly::ServiceAuthorizationsApi*](docs/ServiceAuthorizationsApi.md) | [**show_service_authorization**](docs/ServiceAuthorizationsApi.md#show_service_authorization) | Show service authorization
 [*Fastly::ServiceAuthorizationsApi*](docs/ServiceAuthorizationsApi.md) | [**update_service_authorization**](docs/ServiceAuthorizationsApi.md#update_service_authorization) | Update service authorization
-[*Fastly::ServiceAuthorizationsApi*](docs/ServiceAuthorizationsApi.md) | [**update_service_authorization2**](docs/ServiceAuthorizationsApi.md#update_service_authorization2) | Update service authorizations
 [*Fastly::SettingsApi*](docs/SettingsApi.md) | [**get_service_settings**](docs/SettingsApi.md#get_service_settings) | Get service settings
-[*Fastly::SettingsApi*](docs/SettingsApi.md) | [**update_service_settings**](docs/SettingsApi.md#update_service_settings) | Update service settings
 [*Fastly::SnippetApi*](docs/SnippetApi.md) | [**create_snippet**](docs/SnippetApi.md#create_snippet) | Create a snippet
 [*Fastly::SnippetApi*](docs/SnippetApi.md) | [**delete_snippet**](docs/SnippetApi.md#delete_snippet) | Delete a snippet
 [*Fastly::SnippetApi*](docs/SnippetApi.md) | [**get_snippet**](docs/SnippetApi.md#get_snippet) | Get a versioned snippet
 [*Fastly::SnippetApi*](docs/SnippetApi.md) | [**get_snippet_dynamic**](docs/SnippetApi.md#get_snippet_dynamic) | Get a dynamic snippet
 [*Fastly::SnippetApi*](docs/SnippetApi.md) | [**list_snippets**](docs/SnippetApi.md#list_snippets) | List snippets
-[*Fastly::SnippetApi*](docs/SnippetApi.md) | [**update_snippet**](docs/SnippetApi.md#update_snippet) | Update a versioned snippet
 [*Fastly::SnippetApi*](docs/SnippetApi.md) | [**update_snippet_dynamic**](docs/SnippetApi.md#update_snippet_dynamic) | Update a dynamic snippet
 [*Fastly::StarApi*](docs/StarApi.md) | [**create_service_star**](docs/StarApi.md#create_service_star) | Create a star
 [*Fastly::StarApi*](docs/StarApi.md) | [**delete_service_star**](docs/StarApi.md#delete_service_star) | Delete a star
@@ -440,8 +404,6 @@ Class | Method | Description
 [*Fastly::TlsSubscriptionsApi*](docs/TlsSubscriptionsApi.md) | [**get_tls_sub**](docs/TlsSubscriptionsApi.md#get_tls_sub) | Get a TLS subscription
 [*Fastly::TlsSubscriptionsApi*](docs/TlsSubscriptionsApi.md) | [**list_tls_subs**](docs/TlsSubscriptionsApi.md#list_tls_subs) | List TLS subscriptions
 [*Fastly::TlsSubscriptionsApi*](docs/TlsSubscriptionsApi.md) | [**patch_tls_sub**](docs/TlsSubscriptionsApi.md#patch_tls_sub) | Update a TLS subscription
-[*Fastly::TokensApi*](docs/TokensApi.md) | [**bulk_revoke_tokens**](docs/TokensApi.md#bulk_revoke_tokens) | Revoke multiple tokens
-[*Fastly::TokensApi*](docs/TokensApi.md) | [**create_token**](docs/TokensApi.md#create_token) | Create a token
 [*Fastly::TokensApi*](docs/TokensApi.md) | [**get_token_current**](docs/TokensApi.md#get_token_current) | Get the current token
 [*Fastly::TokensApi*](docs/TokensApi.md) | [**list_tokens_customer**](docs/TokensApi.md#list_tokens_customer) | List tokens for a customer
 [*Fastly::TokensApi*](docs/TokensApi.md) | [**list_tokens_user**](docs/TokensApi.md#list_tokens_user) | List tokens for the authenticated user
@@ -475,7 +437,6 @@ Class | Method | Description
 [*Fastly::VersionApi*](docs/VersionApi.md) | [**lock_service_version**](docs/VersionApi.md#lock_service_version) | Lock a service version
 [*Fastly::VersionApi*](docs/VersionApi.md) | [**update_service_version**](docs/VersionApi.md#update_service_version) | Update a service version
 [*Fastly::VersionApi*](docs/VersionApi.md) | [**validate_service_version**](docs/VersionApi.md#validate_service_version) | Validate a service version
-[*Fastly::WafActiveRulesApi*](docs/WafActiveRulesApi.md) | [**bulk_delete_waf_active_rules**](docs/WafActiveRulesApi.md#bulk_delete_waf_active_rules) | Delete multiple active rules from a WAF
 [*Fastly::WafActiveRulesApi*](docs/WafActiveRulesApi.md) | [**bulk_update_waf_active_rules**](docs/WafActiveRulesApi.md#bulk_update_waf_active_rules) | Update multiple active rules
 [*Fastly::WafActiveRulesApi*](docs/WafActiveRulesApi.md) | [**create_waf_active_rule**](docs/WafActiveRulesApi.md#create_waf_active_rule) | Add a rule to a WAF as an active rule
 [*Fastly::WafActiveRulesApi*](docs/WafActiveRulesApi.md) | [**create_waf_active_rules_tag**](docs/WafActiveRulesApi.md#create_waf_active_rules_tag) | Create active rules by tag

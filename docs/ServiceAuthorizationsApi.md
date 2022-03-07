@@ -12,11 +12,9 @@ api_instance = Fastly::ServiceAuthorizationsApi.new
 | ------ | ------------ | ----------- |
 | [**create_service_authorization**](ServiceAuthorizationsApi.md#create_service_authorization) | **POST** /service-authorizations | Create service authorization |
 | [**delete_service_authorization**](ServiceAuthorizationsApi.md#delete_service_authorization) | **DELETE** /service-authorizations/{service_authorization_id} | Delete service authorization |
-| [**delete_service_authorization2**](ServiceAuthorizationsApi.md#delete_service_authorization2) | **DELETE** /service-authorizations | Delete service authorizations |
 | [**list_service_authorization**](ServiceAuthorizationsApi.md#list_service_authorization) | **GET** /service-authorizations | List service authorizations |
 | [**show_service_authorization**](ServiceAuthorizationsApi.md#show_service_authorization) | **GET** /service-authorizations/{service_authorization_id} | Show service authorization |
 | [**update_service_authorization**](ServiceAuthorizationsApi.md#update_service_authorization) | **PATCH** /service-authorizations/{service_authorization_id} | Update service authorization |
-| [**update_service_authorization2**](ServiceAuthorizationsApi.md#update_service_authorization2) | **PATCH** /service-authorizations | Update service authorizations |
 
 
 ## `create_service_authorization()`
@@ -89,43 +87,6 @@ end
 ### Return type
 
 nil (empty response body)
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to README]](../../README.md)
-## `delete_service_authorization2()`
-
-```ruby
-delete_service_authorization2(opts): <InlineResponse2002> # Delete service authorizations
-```
-
-Delete service authorizations.
-
-### Examples
-
-```ruby
-api_instance = Fastly::ServiceAuthorizationsApi.new
-opts = {
-    request_body: { key: 3.56}, # Hash<String, Object> | 
-}
-
-begin
-  # Delete service authorizations
-  result = api_instance.delete_service_authorization2(opts)
-  p result
-rescue Fastly::ApiError => e
-  puts "Error when calling ServiceAuthorizationsApi->delete_service_authorization2: #{e}"
-end
-```
-
-### Options
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **request_body** | [**Hash&lt;String, Object&gt;**](Object.md) |  | [optional] |
-
-### Return type
-
-[**InlineResponse2002**](InlineResponse2002.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)
@@ -241,43 +202,6 @@ end
 ### Return type
 
 [**ServiceAuthorizationResponse**](ServiceAuthorizationResponse.md)
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to README]](../../README.md)
-## `update_service_authorization2()`
-
-```ruby
-update_service_authorization2(opts): <ServiceAuthorizationsResponse> # Update service authorizations
-```
-
-Update service authorizations.
-
-### Examples
-
-```ruby
-api_instance = Fastly::ServiceAuthorizationsApi.new
-opts = {
-    request_body: { key: 3.56}, # Hash<String, Object> | 
-}
-
-begin
-  # Update service authorizations
-  result = api_instance.update_service_authorization2(opts)
-  p result
-rescue Fastly::ApiError => e
-  puts "Error when calling ServiceAuthorizationsApi->update_service_authorization2: #{e}"
-end
-```
-
-### Options
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **request_body** | [**Hash&lt;String, Object&gt;**](Object.md) |  | [optional] |
-
-### Return type
-
-[**ServiceAuthorizationsResponse**](ServiceAuthorizationsResponse.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)

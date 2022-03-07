@@ -10,7 +10,6 @@ api_instance = Fastly::WafActiveRulesApi.new
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
-| [**bulk_delete_waf_active_rules**](WafActiveRulesApi.md#bulk_delete_waf_active_rules) | **DELETE** /waf/firewalls/{firewall_id}/versions/{version_id}/active-rules | Delete multiple active rules from a WAF |
 | [**bulk_update_waf_active_rules**](WafActiveRulesApi.md#bulk_update_waf_active_rules) | **PATCH** /waf/firewalls/{firewall_id}/versions/{version_id}/active-rules/bulk | Update multiple active rules |
 | [**create_waf_active_rule**](WafActiveRulesApi.md#create_waf_active_rule) | **POST** /waf/firewalls/{firewall_id}/versions/{version_id}/active-rules | Add a rule to a WAF as an active rule |
 | [**create_waf_active_rules_tag**](WafActiveRulesApi.md#create_waf_active_rules_tag) | **POST** /waf/firewalls/{firewall_id}/versions/{version_id}/tags/{waf_tag_name}/active-rules | Create active rules by tag |
@@ -20,46 +19,6 @@ api_instance = Fastly::WafActiveRulesApi.new
 | [**update_waf_active_rule**](WafActiveRulesApi.md#update_waf_active_rule) | **PATCH** /waf/firewalls/{firewall_id}/versions/{version_id}/active-rules/{waf_rule_id} | Update an active rule |
 
 
-## `bulk_delete_waf_active_rules()`
-
-```ruby
-bulk_delete_waf_active_rules(opts) # Delete multiple active rules from a WAF
-```
-
-Delete many active rules on a particular firewall version using the active rule ID. Limited to 500 rules per request.
-
-### Examples
-
-```ruby
-api_instance = Fastly::WafActiveRulesApi.new
-opts = {
-    firewall_id: 'firewall_id_example', # String | Alphanumeric string identifying a WAF Firewall.
-    version_id: 56, # Integer | Integer identifying a service version.
-    request_body: { key: 3.56}, # Hash<String, Object> | 
-}
-
-begin
-  # Delete multiple active rules from a WAF
-  api_instance.bulk_delete_waf_active_rules(opts)
-rescue Fastly::ApiError => e
-  puts "Error when calling WafActiveRulesApi->bulk_delete_waf_active_rules: #{e}"
-end
-```
-
-### Options
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **firewall_id** | **String** | Alphanumeric string identifying a WAF Firewall. |  |
-| **version_id** | **Integer** | Integer identifying a service version. |  |
-| **request_body** | [**Hash&lt;String, Object&gt;**](Object.md) |  | [optional] |
-
-### Return type
-
-nil (empty response body)
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to README]](../../README.md)
 ## `bulk_update_waf_active_rules()`
 
 ```ruby

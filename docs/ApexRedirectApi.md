@@ -10,68 +10,12 @@ api_instance = Fastly::ApexRedirectApi.new
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
-| [**create_apex_redirect**](ApexRedirectApi.md#create_apex_redirect) | **POST** /service/{service_id}/version/{version_id}/apex-redirects | Create an apex redirect |
 | [**delete_apex_redirect**](ApexRedirectApi.md#delete_apex_redirect) | **DELETE** /apex-redirects/{apex_redirect_id} | Delete an apex redirect |
 | [**get_apex_redirect**](ApexRedirectApi.md#get_apex_redirect) | **GET** /apex-redirects/{apex_redirect_id} | Get an apex redirect |
 | [**list_apex_redirects**](ApexRedirectApi.md#list_apex_redirects) | **GET** /service/{service_id}/version/{version_id}/apex-redirects | List apex redirects |
 | [**update_apex_redirect**](ApexRedirectApi.md#update_apex_redirect) | **PUT** /apex-redirects/{apex_redirect_id} | Update an apex redirect |
 
 
-## `create_apex_redirect()`
-
-```ruby
-create_apex_redirect(opts): <ApexRedirect> # Create an apex redirect
-```
-
-Create an apex redirect for a particular service and version.
-
-### Examples
-
-```ruby
-api_instance = Fastly::ApexRedirectApi.new
-opts = {
-    service_id: 'service_id_example', # String | Alphanumeric string identifying the service.
-    version_id: 56, # Integer | Integer identifying a service version.
-    service_id: TODO, # String | 
-    version: TODO, # Integer | 
-    created_at: Time.parse('2013-10-20T19:20:30+01:00'), # Time | Date and time in ISO 8601 format.
-    deleted_at: Time.parse('2013-10-20T19:20:30+01:00'), # Time | Date and time in ISO 8601 format.
-    updated_at: Time.parse('2013-10-20T19:20:30+01:00'), # Time | Date and time in ISO 8601 format.
-    status_code: 301, # Integer | HTTP status code used to redirect the client.
-    domains: ['inner_example'], # Array<String> | Array of apex domains that should redirect to their WWW subdomain.
-    feature_revision: 56, # Integer | Revision number of the apex redirect feature implementation. Defaults to the most recent revision.
-}
-
-begin
-  # Create an apex redirect
-  result = api_instance.create_apex_redirect(opts)
-  p result
-rescue Fastly::ApiError => e
-  puts "Error when calling ApexRedirectApi->create_apex_redirect: #{e}"
-end
-```
-
-### Options
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **service_id** | **String** | Alphanumeric string identifying the service. |  |
-| **version_id** | **Integer** | Integer identifying a service version. |  |
-| **service_id** | [**String**](String.md) |  | [optional] |
-| **version** | [**Integer**](Integer.md) |  | [optional] |
-| **created_at** | **Time** | Date and time in ISO 8601 format. | [optional] |
-| **deleted_at** | **Time** | Date and time in ISO 8601 format. | [optional] |
-| **updated_at** | **Time** | Date and time in ISO 8601 format. | [optional] |
-| **status_code** | **Integer** | HTTP status code used to redirect the client. | [optional] |
-| **domains** | [**Array&lt;String&gt;**](String.md) | Array of apex domains that should redirect to their WWW subdomain. | [optional] |
-| **feature_revision** | **Integer** | Revision number of the apex redirect feature implementation. Defaults to the most recent revision. | [optional] |
-
-### Return type
-
-[**ApexRedirect**](ApexRedirect.md)
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to README]](../../README.md)
 ## `delete_apex_redirect()`
 
 ```ruby

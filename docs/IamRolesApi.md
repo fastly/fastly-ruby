@@ -10,92 +10,12 @@ api_instance = Fastly::IamRolesApi.new
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
-| [**add_role_permissions**](IamRolesApi.md#add_role_permissions) | **POST** /roles/{role_id}/permissions | Add permissions to a role |
-| [**create_a_role**](IamRolesApi.md#create_a_role) | **POST** /roles | Create a role |
 | [**delete_a_role**](IamRolesApi.md#delete_a_role) | **DELETE** /roles/{role_id} | Delete a role |
 | [**get_a_role**](IamRolesApi.md#get_a_role) | **GET** /roles/{role_id} | Get a role |
 | [**list_role_permissions**](IamRolesApi.md#list_role_permissions) | **GET** /roles/{role_id}/permissions | List permissions in a role |
 | [**list_roles**](IamRolesApi.md#list_roles) | **GET** /roles | List roles |
-| [**remove_role_permissions**](IamRolesApi.md#remove_role_permissions) | **DELETE** /roles/{role_id}/permissions | Remove permissions from a role |
-| [**update_a_role**](IamRolesApi.md#update_a_role) | **PATCH** /roles/{role_id} | Update a role |
 
 
-## `add_role_permissions()`
-
-```ruby
-add_role_permissions(opts): Object # Add permissions to a role
-```
-
-Add permissions to a role.
-
-### Examples
-
-```ruby
-api_instance = Fastly::IamRolesApi.new
-opts = {
-    role_id: 'role_id_example', # String | Alphanumeric string identifying the role.
-    request_body: { key: 3.56}, # Hash<String, Object> | 
-}
-
-begin
-  # Add permissions to a role
-  result = api_instance.add_role_permissions(opts)
-  p result
-rescue Fastly::ApiError => e
-  puts "Error when calling IamRolesApi->add_role_permissions: #{e}"
-end
-```
-
-### Options
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **role_id** | **String** | Alphanumeric string identifying the role. |  |
-| **request_body** | [**Hash&lt;String, Object&gt;**](Object.md) |  | [optional] |
-
-### Return type
-
-**Object**
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to README]](../../README.md)
-## `create_a_role()`
-
-```ruby
-create_a_role(opts): Object # Create a role
-```
-
-Create a role.
-
-### Examples
-
-```ruby
-api_instance = Fastly::IamRolesApi.new
-opts = {
-    request_body: { key: 3.56}, # Hash<String, Object> | 
-}
-
-begin
-  # Create a role
-  result = api_instance.create_a_role(opts)
-  p result
-rescue Fastly::ApiError => e
-  puts "Error when calling IamRolesApi->create_a_role: #{e}"
-end
-```
-
-### Options
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **request_body** | [**Hash&lt;String, Object&gt;**](Object.md) |  | [optional] |
-
-### Return type
-
-**Object**
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to README]](../../README.md)
 ## `delete_a_role()`
 
 ```ruby
@@ -238,83 +158,6 @@ end
 | ---- | ---- | ----------- | ----- |
 | **per_page** | **Integer** | Number of records per page. | [optional][default to 20] |
 | **page** | **Integer** | Current page. | [optional] |
-
-### Return type
-
-**Object**
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to README]](../../README.md)
-## `remove_role_permissions()`
-
-```ruby
-remove_role_permissions(opts) # Remove permissions from a role
-```
-
-Remove permissions from a role.
-
-### Examples
-
-```ruby
-api_instance = Fastly::IamRolesApi.new
-opts = {
-    role_id: 'role_id_example', # String | Alphanumeric string identifying the role.
-    request_body: { key: 3.56}, # Hash<String, Object> | 
-}
-
-begin
-  # Remove permissions from a role
-  api_instance.remove_role_permissions(opts)
-rescue Fastly::ApiError => e
-  puts "Error when calling IamRolesApi->remove_role_permissions: #{e}"
-end
-```
-
-### Options
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **role_id** | **String** | Alphanumeric string identifying the role. |  |
-| **request_body** | [**Hash&lt;String, Object&gt;**](Object.md) |  | [optional] |
-
-### Return type
-
-nil (empty response body)
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to README]](../../README.md)
-## `update_a_role()`
-
-```ruby
-update_a_role(opts): Object # Update a role
-```
-
-Update a role.
-
-### Examples
-
-```ruby
-api_instance = Fastly::IamRolesApi.new
-opts = {
-    role_id: 'role_id_example', # String | Alphanumeric string identifying the role.
-    request_body: { key: 3.56}, # Hash<String, Object> | 
-}
-
-begin
-  # Update a role
-  result = api_instance.update_a_role(opts)
-  p result
-rescue Fastly::ApiError => e
-  puts "Error when calling IamRolesApi->update_a_role: #{e}"
-end
-```
-
-### Options
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **role_id** | **String** | Alphanumeric string identifying the role. |  |
-| **request_body** | [**Hash&lt;String, Object&gt;**](Object.md) |  | [optional] |
 
 ### Return type
 

@@ -15,7 +15,6 @@ api_instance = Fastly::SnippetApi.new
 | [**get_snippet**](SnippetApi.md#get_snippet) | **GET** /service/{service_id}/version/{version_id}/snippet/{snippet_name} | Get a versioned snippet |
 | [**get_snippet_dynamic**](SnippetApi.md#get_snippet_dynamic) | **GET** /service/{service_id}/snippet/{snippet_id} | Get a dynamic snippet |
 | [**list_snippets**](SnippetApi.md#list_snippets) | **GET** /service/{service_id}/version/{version_id}/snippet | List snippets |
-| [**update_snippet**](SnippetApi.md#update_snippet) | **PUT** /service/{service_id}/version/{version_id}/snippet/{snippet_name} | Update a versioned snippet |
 | [**update_snippet_dynamic**](SnippetApi.md#update_snippet_dynamic) | **PUT** /service/{service_id}/snippet/{snippet_id} | Update a dynamic snippet |
 
 
@@ -225,47 +224,6 @@ end
 ### Return type
 
 [**Array&lt;SnippetResponse&gt;**](SnippetResponse.md)
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to README]](../../README.md)
-## `update_snippet()`
-
-```ruby
-update_snippet(opts): <SnippetResponse> # Update a versioned snippet
-```
-
-Update a specific snippet for a particular service and version.
-
-### Examples
-
-```ruby
-api_instance = Fastly::SnippetApi.new
-opts = {
-    service_id: 'service_id_example', # String | Alphanumeric string identifying the service.
-    version_id: 56, # Integer | Integer identifying a service version.
-    snippet_name: 'snippet_name_example', # String | The name for the snippet.
-}
-
-begin
-  # Update a versioned snippet
-  result = api_instance.update_snippet(opts)
-  p result
-rescue Fastly::ApiError => e
-  puts "Error when calling SnippetApi->update_snippet: #{e}"
-end
-```
-
-### Options
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **service_id** | **String** | Alphanumeric string identifying the service. |  |
-| **version_id** | **Integer** | Integer identifying a service version. |  |
-| **snippet_name** | **String** | The name for the snippet. |  |
-
-### Return type
-
-[**SnippetResponse**](SnippetResponse.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)
