@@ -9,5 +9,5 @@ The version of the OpenAPI document: 1.0.0
 =end
 
 module Fastly
-  VERSION = '4.0.0.alpha1'
+  VERSION = '4.0.0.alpha2'
 end

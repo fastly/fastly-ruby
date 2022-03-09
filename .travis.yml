@@ -11,4 +11,4 @@ script:
   - bundle install --path vendor/bundle
   - bundle exec rspec
   - gem build fastly.gemspec
-  - gem install ./fastly-4.0.0.alpha1.gem
+  - gem install ./fastly-4.0.0.alpha2.gem
