@@ -4,7 +4,7 @@
 #Via the Fastly API you can perform any of the operations that are possible within the management console,  including creating services, domains, and backends, configuring rules or uploading your own application code, as well as account operations such as user administration and billing reports. The API is organized into collections of endpoints that allow manipulation of objects related to Fastly services and accounts. For the most accurate and up-to-date API reference content, visit our [Developer Hub](https://developer.fastly.com/reference/api/) 
 
 The version of the OpenAPI document: 1.0.0
-
+Contact: oss@fastly.com
 
 =end
 
@@ -554,6 +554,24 @@ module Fastly
     # Header bytes received from an origin for cacheable content.
     attr_accessor :origin_cache_fetch_resp_header_bytes
 
+    # Number of requests that resulted in a hit at a shield.
+    attr_accessor :shield_hit_requests
+
+    # Number of requests that resulted in a miss at a shield.
+    attr_accessor :shield_miss_requests
+
+    # Header bytes delivered for shield hits.
+    attr_accessor :shield_hit_resp_header_bytes
+
+    # Body bytes delivered for shield hits.
+    attr_accessor :shield_hit_resp_body_bytes
+
+    # Header bytes delivered for shield misses.
+    attr_accessor :shield_miss_resp_header_bytes
+
+    # Body bytes delivered for shield misses.
+    attr_accessor :shield_miss_resp_body_bytes
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -736,7 +754,13 @@ module Fastly
         :'edge_miss_resp_body_bytes' => :'edge_miss_resp_body_bytes',
         :'edge_miss_resp_header_bytes' => :'edge_miss_resp_header_bytes',
         :'origin_cache_fetch_resp_body_bytes' => :'origin_cache_fetch_resp_body_bytes',
-        :'origin_cache_fetch_resp_header_bytes' => :'origin_cache_fetch_resp_header_bytes'
+        :'origin_cache_fetch_resp_header_bytes' => :'origin_cache_fetch_resp_header_bytes',
+        :'shield_hit_requests' => :'shield_hit_requests',
+        :'shield_miss_requests' => :'shield_miss_requests',
+        :'shield_hit_resp_header_bytes' => :'shield_hit_resp_header_bytes',
+        :'shield_hit_resp_body_bytes' => :'shield_hit_resp_body_bytes',
+        :'shield_miss_resp_header_bytes' => :'shield_miss_resp_header_bytes',
+        :'shield_miss_resp_body_bytes' => :'shield_miss_resp_body_bytes'
       }
     end
 
@@ -927,7 +951,13 @@ module Fastly
         :'edge_miss_resp_body_bytes' => :'Integer',
         :'edge_miss_resp_header_bytes' => :'Integer',
         :'origin_cache_fetch_resp_body_bytes' => :'Integer',
-        :'origin_cache_fetch_resp_header_bytes' => :'Integer'
+        :'origin_cache_fetch_resp_header_bytes' => :'Integer',
+        :'shield_hit_requests' => :'Integer',
+        :'shield_miss_requests' => :'Integer',
+        :'shield_hit_resp_header_bytes' => :'Integer',
+        :'shield_hit_resp_body_bytes' => :'Integer',
+        :'shield_miss_resp_header_bytes' => :'Integer',
+        :'shield_miss_resp_body_bytes' => :'Integer'
       }
     end
 
@@ -1671,6 +1701,30 @@ module Fastly
       if attributes.key?(:'origin_cache_fetch_resp_header_bytes')
         self.origin_cache_fetch_resp_header_bytes = attributes[:'origin_cache_fetch_resp_header_bytes']
       end
+
+      if attributes.key?(:'shield_hit_requests')
+        self.shield_hit_requests = attributes[:'shield_hit_requests']
+      end
+
+      if attributes.key?(:'shield_miss_requests')
+        self.shield_miss_requests = attributes[:'shield_miss_requests']
+      end
+
+      if attributes.key?(:'shield_hit_resp_header_bytes')
+        self.shield_hit_resp_header_bytes = attributes[:'shield_hit_resp_header_bytes']
+      end
+
+      if attributes.key?(:'shield_hit_resp_body_bytes')
+        self.shield_hit_resp_body_bytes = attributes[:'shield_hit_resp_body_bytes']
+      end
+
+      if attributes.key?(:'shield_miss_resp_header_bytes')
+        self.shield_miss_resp_header_bytes = attributes[:'shield_miss_resp_header_bytes']
+      end
+
+      if attributes.key?(:'shield_miss_resp_body_bytes')
+        self.shield_miss_resp_body_bytes = attributes[:'shield_miss_resp_body_bytes']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -1870,7 +1924,13 @@ module Fastly
           edge_miss_resp_body_bytes == o.edge_miss_resp_body_bytes &&
           edge_miss_resp_header_bytes == o.edge_miss_resp_header_bytes &&
           origin_cache_fetch_resp_body_bytes == o.origin_cache_fetch_resp_body_bytes &&
-          origin_cache_fetch_resp_header_bytes == o.origin_cache_fetch_resp_header_bytes
+          origin_cache_fetch_resp_header_bytes == o.origin_cache_fetch_resp_header_bytes &&
+          shield_hit_requests == o.shield_hit_requests &&
+          shield_miss_requests == o.shield_miss_requests &&
+          shield_hit_resp_header_bytes == o.shield_hit_resp_header_bytes &&
+          shield_hit_resp_body_bytes == o.shield_hit_resp_body_bytes &&
+          shield_miss_resp_header_bytes == o.shield_miss_resp_header_bytes &&
+          shield_miss_resp_body_bytes == o.shield_miss_resp_body_bytes
     end
 
     # @see the `==` method
@@ -1882,7 +1942,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [requests, logging, log, resp_header_bytes, header_size, resp_body_bytes, body_size, hits, miss, pass, synth, errors, hits_time, miss_time, miss_histogram, compute_requests, compute_execution_time_ms, compute_ram_used, compute_request_time_ms, shield, ipv6, imgopto, imgopto_shield, imgopto_transforms, otfp, otfp_shield, otfp_manifests, video, pci, http2, http3, restarts, req_header_bytes, req_body_bytes, bereq_header_bytes, bereq_body_bytes, waf_blocked, waf_logged, waf_passed, attack_req_header_bytes, attack_req_body_bytes, attack_resp_synth_bytes, attack_logged_req_header_bytes, attack_logged_req_body_bytes, attack_blocked_req_header_bytes, attack_blocked_req_body_bytes, attack_passed_req_header_bytes, attack_passed_req_body_bytes, shield_resp_header_bytes, shield_resp_body_bytes, otfp_resp_header_bytes, otfp_resp_body_bytes, otfp_shield_resp_header_bytes, otfp_shield_resp_body_bytes, otfp_shield_time, otfp_deliver_time, imgopto_resp_header_bytes, imgopto_resp_body_bytes, imgopto_shield_resp_header_bytes, imgopto_shield_resp_body_bytes, status_1xx, status_2xx, status_3xx, status_4xx, status_5xx, status_200, status_204, status_206, status_301, status_302, status_304, status_400, status_401, status_403, status_404, status_416, status_429, status_500, status_501, status_502, status_503, status_504, status_505, uncacheable, pass_time, tls, tls_v10, tls_v11, tls_v12, tls_v13, object_size_1k, object_size_10k, object_size_100k, object_size_1m, object_size_10m, object_size_100m, object_size_1g, object_size_other, recv_sub_time, recv_sub_count, hash_sub_time, hash_sub_count, miss_sub_time, miss_sub_count, fetch_sub_time, fetch_sub_count, pass_sub_time, pass_sub_count, pipe_sub_time, pipe_sub_count, deliver_sub_time, deliver_sub_count, error_sub_time, error_sub_count, hit_sub_time, hit_sub_count, prehash_sub_time, prehash_sub_count, predeliver_sub_time, predeliver_sub_count, hit_resp_body_bytes, miss_resp_body_bytes, pass_resp_body_bytes, compute_req_header_bytes, compute_req_body_bytes, compute_resp_header_bytes, compute_resp_body_bytes, imgvideo, imgvideo_frames, imgvideo_resp_header_bytes, imgvideo_resp_body_bytes, imgvideo_shield, imgvideo_shield_frames, imgvideo_shield_resp_header_bytes, imgvideo_shield_resp_body_bytes, log_bytes, edge_requests, edge_resp_header_bytes, edge_resp_body_bytes, origin_revalidations, origin_fetches, origin_fetch_header_bytes, origin_fetch_body_bytes, origin_fetch_resp_header_bytes, origin_fetch_resp_body_bytes, shield_revalidations, shield_fetches, shield_fetch_header_bytes, shield_fetch_body_bytes, shield_fetch_resp_header_bytes, shield_fetch_resp_body_bytes, segblock_origin_fetches, segblock_shield_fetches, compute_resp_status_1xx, compute_resp_status_2xx, compute_resp_status_3xx, compute_resp_status_4xx, compute_resp_status_5xx, edge_hit_requests, edge_miss_requests, compute_bereq_header_bytes, compute_bereq_body_bytes, compute_beresp_header_bytes, compute_beresp_body_bytes, origin_cache_fetches, shield_cache_fetches, compute_bereqs, compute_bereq_errors, compute_resource_limit_exceeded, compute_heap_limit_exceeded, compute_stack_limit_exceeded, compute_globals_limit_exceeded, compute_guest_errors, compute_runtime_errors, edge_hit_resp_body_bytes, edge_hit_resp_header_bytes, edge_miss_resp_body_bytes, edge_miss_resp_header_bytes, origin_cache_fetch_resp_body_bytes, origin_cache_fetch_resp_header_bytes].hash
+      [requests, logging, log, resp_header_bytes, header_size, resp_body_bytes, body_size, hits, miss, pass, synth, errors, hits_time, miss_time, miss_histogram, compute_requests, compute_execution_time_ms, compute_ram_used, compute_request_time_ms, shield, ipv6, imgopto, imgopto_shield, imgopto_transforms, otfp, otfp_shield, otfp_manifests, video, pci, http2, http3, restarts, req_header_bytes, req_body_bytes, bereq_header_bytes, bereq_body_bytes, waf_blocked, waf_logged, waf_passed, attack_req_header_bytes, attack_req_body_bytes, attack_resp_synth_bytes, attack_logged_req_header_bytes, attack_logged_req_body_bytes, attack_blocked_req_header_bytes, attack_blocked_req_body_bytes, attack_passed_req_header_bytes, attack_passed_req_body_bytes, shield_resp_header_bytes, shield_resp_body_bytes, otfp_resp_header_bytes, otfp_resp_body_bytes, otfp_shield_resp_header_bytes, otfp_shield_resp_body_bytes, otfp_shield_time, otfp_deliver_time, imgopto_resp_header_bytes, imgopto_resp_body_bytes, imgopto_shield_resp_header_bytes, imgopto_shield_resp_body_bytes, status_1xx, status_2xx, status_3xx, status_4xx, status_5xx, status_200, status_204, status_206, status_301, status_302, status_304, status_400, status_401, status_403, status_404, status_416, status_429, status_500, status_501, status_502, status_503, status_504, status_505, uncacheable, pass_time, tls, tls_v10, tls_v11, tls_v12, tls_v13, object_size_1k, object_size_10k, object_size_100k, object_size_1m, object_size_10m, object_size_100m, object_size_1g, object_size_other, recv_sub_time, recv_sub_count, hash_sub_time, hash_sub_count, miss_sub_time, miss_sub_count, fetch_sub_time, fetch_sub_count, pass_sub_time, pass_sub_count, pipe_sub_time, pipe_sub_count, deliver_sub_time, deliver_sub_count, error_sub_time, error_sub_count, hit_sub_time, hit_sub_count, prehash_sub_time, prehash_sub_count, predeliver_sub_time, predeliver_sub_count, hit_resp_body_bytes, miss_resp_body_bytes, pass_resp_body_bytes, compute_req_header_bytes, compute_req_body_bytes, compute_resp_header_bytes, compute_resp_body_bytes, imgvideo, imgvideo_frames, imgvideo_resp_header_bytes, imgvideo_resp_body_bytes, imgvideo_shield, imgvideo_shield_frames, imgvideo_shield_resp_header_bytes, imgvideo_shield_resp_body_bytes, log_bytes, edge_requests, edge_resp_header_bytes, edge_resp_body_bytes, origin_revalidations, origin_fetches, origin_fetch_header_bytes, origin_fetch_body_bytes, origin_fetch_resp_header_bytes, origin_fetch_resp_body_bytes, shield_revalidations, shield_fetches, shield_fetch_header_bytes, shield_fetch_body_bytes, shield_fetch_resp_header_bytes, shield_fetch_resp_body_bytes, segblock_origin_fetches, segblock_shield_fetches, compute_resp_status_1xx, compute_resp_status_2xx, compute_resp_status_3xx, compute_resp_status_4xx, compute_resp_status_5xx, edge_hit_requests, edge_miss_requests, compute_bereq_header_bytes, compute_bereq_body_bytes, compute_beresp_header_bytes, compute_beresp_body_bytes, origin_cache_fetches, shield_cache_fetches, compute_bereqs, compute_bereq_errors, compute_resource_limit_exceeded, compute_heap_limit_exceeded, compute_stack_limit_exceeded, compute_globals_limit_exceeded, compute_guest_errors, compute_runtime_errors, edge_hit_resp_body_bytes, edge_hit_resp_header_bytes, edge_miss_resp_body_bytes, edge_miss_resp_header_bytes, origin_cache_fetch_resp_body_bytes, origin_cache_fetch_resp_header_bytes, shield_hit_requests, shield_miss_requests, shield_hit_resp_header_bytes, shield_hit_resp_body_bytes, shield_miss_resp_header_bytes, shield_miss_resp_body_bytes].hash
     end
 
     # Builds the object from hash

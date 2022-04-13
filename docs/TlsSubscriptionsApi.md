@@ -25,15 +25,15 @@ api_instance = Fastly::TlsSubscriptionsApi.new
 create_globalsign_email_challenge(opts): Object # Creates a GlobalSign email challenge.
 ```
 
-Creates an email challenge for domain on a GlobalSign subscription. An email challenge will generate an email that can be used to validate domain ownership. If this challenge is created, then the domain can only be validated using email for the given subscription.
+Creates an email challenge for a domain on a GlobalSign subscription. An email challenge will generate an email that can be used to validate domain ownership. If this challenge is created, then the domain can only be validated using email for the given subscription. 
 
 ### Examples
 
 ```ruby
 api_instance = Fastly::TlsSubscriptionsApi.new
 opts = {
-    tls_subscription_id: 'tls_subscription_id_example', # String | 
-    tls_authorization_id: 'tls_authorization_id_example', # String | 
+    tls_subscription_id: 'tls_subscription_id_example', # String | Alphanumeric string identifying a TLS subscription.
+    tls_authorization_id: 'tls_authorization_id_example', # String | Alphanumeric string identifying a TLS subscription.
     request_body: { key: 3.56}, # Hash<String, Object> | 
 }
 
@@ -50,8 +50,8 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **tls_subscription_id** | **String** |  |  |
-| **tls_authorization_id** | **String** |  |  |
+| **tls_subscription_id** | **String** | Alphanumeric string identifying a TLS subscription. |  |
+| **tls_authorization_id** | **String** | Alphanumeric string identifying a TLS subscription. |  |
 | **request_body** | [**Hash&lt;String, Object&gt;**](Object.md) |  | [optional] |
 
 ### Return type
@@ -112,9 +112,9 @@ Deletes a GlobalSign email challenge. After a GlobalSign email challenge is dele
 ```ruby
 api_instance = Fastly::TlsSubscriptionsApi.new
 opts = {
-    tls_subscription_id: 'tls_subscription_id_example', # String | 
-    globalsign_email_challenge_id: 'globalsign_email_challenge_id_example', # String | 
-    tls_authorization_id: 'tls_authorization_id_example', # String | 
+    tls_subscription_id: 'tls_subscription_id_example', # String | Alphanumeric string identifying a TLS subscription.
+    globalsign_email_challenge_id: 'gU3guUGZzb2W9Euo4Mo0r', # String | Alphanumeric string identifying a GlobalSign email challenge.
+    tls_authorization_id: 'tls_authorization_id_example', # String | Alphanumeric string identifying a TLS subscription.
 }
 
 begin
@@ -129,9 +129,9 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **tls_subscription_id** | **String** |  |  |
-| **globalsign_email_challenge_id** | **String** |  |  |
-| **tls_authorization_id** | **String** |  |  |
+| **tls_subscription_id** | **String** | Alphanumeric string identifying a TLS subscription. |  |
+| **globalsign_email_challenge_id** | **String** | Alphanumeric string identifying a GlobalSign email challenge. |  |
+| **tls_authorization_id** | **String** | Alphanumeric string identifying a TLS subscription. |  |
 
 ### Return type
 

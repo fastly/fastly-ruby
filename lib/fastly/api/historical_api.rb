@@ -4,7 +4,7 @@
 #Via the Fastly API you can perform any of the operations that are possible within the management console,  including creating services, domains, and backends, configuring rules or uploading your own application code, as well as account operations such as user administration and billing reports. The API is organized into collections of endpoints that allow manipulation of objects related to Fastly services and accounts. For the most accurate and up-to-date API reference content, visit our [Developer Hub](https://developer.fastly.com/reference/api/) 
 
 The version of the OpenAPI document: 1.0.0
-
+Contact: oss@fastly.com
 
 =end
 
@@ -19,8 +19,8 @@ module Fastly
     end
     # Get historical stats
     # Fetches historical stats for each of your Fastly services and groups the results by service ID.
-    # @option opts [String] :from Absolute, relative or epoch timestamp. Limits the results returned.
-    # @option opts [String] :to Absolute, relative or epoch timestamp. Limits the results returned.
+    # @option opts [String] :from Timestamp that defines the start of the window for which to fetch statistics, including the timestamp itself. Accepts Unix timestamps, or any form of input parsable by the [Chronic Ruby library](https://github.com/mojombo/chronic), such as &#39;yesterday&#39;, or &#39;two weeks ago&#39;. Default varies based on the value of &#x60;by&#x60;. 
+    # @option opts [String] :to Timestamp that defines the end of the window for which to fetch statistics. Accepts the same formats as &#x60;from&#x60;.  (default to 'now')
     # @option opts [String] :by Duration of sample windows. One of:   * &#x60;hour&#x60; - Group data by hour.   * &#x60;minute&#x60; - Group data by minute.   * &#x60;day&#x60; - Group data by day.  (default to 'day')
     # @option opts [String] :region Limit query to a specific geographic region. One of:   * &#x60;usa&#x60; - North America.   * &#x60;europe&#x60; - Europe.   * &#x60;anzac&#x60; - Australia and New Zealand.   * &#x60;asia&#x60; - Asia.   * &#x60;asia_india&#x60; - India.   * &#x60;asia_southkorea&#x60; - South Korea ([from Aug 2, 2021](https://status.fastly.com/incidents/f83m70cqm258))   * &#x60;africa_std&#x60; - Africa.   * &#x60;southamerica_std&#x60; - South America. 
     # @return [HistoricalResponse]
@@ -31,8 +31,8 @@ module Fastly
 
     # Get historical stats
     # Fetches historical stats for each of your Fastly services and groups the results by service ID.
-    # @option opts [String] :from Absolute, relative or epoch timestamp. Limits the results returned.
-    # @option opts [String] :to Absolute, relative or epoch timestamp. Limits the results returned.
+    # @option opts [String] :from Timestamp that defines the start of the window for which to fetch statistics, including the timestamp itself. Accepts Unix timestamps, or any form of input parsable by the [Chronic Ruby library](https://github.com/mojombo/chronic), such as &#39;yesterday&#39;, or &#39;two weeks ago&#39;. Default varies based on the value of &#x60;by&#x60;. 
+    # @option opts [String] :to Timestamp that defines the end of the window for which to fetch statistics. Accepts the same formats as &#x60;from&#x60;.  (default to 'now')
     # @option opts [String] :by Duration of sample windows. One of:   * &#x60;hour&#x60; - Group data by hour.   * &#x60;minute&#x60; - Group data by minute.   * &#x60;day&#x60; - Group data by day.  (default to 'day')
     # @option opts [String] :region Limit query to a specific geographic region. One of:   * &#x60;usa&#x60; - North America.   * &#x60;europe&#x60; - Europe.   * &#x60;anzac&#x60; - Australia and New Zealand.   * &#x60;asia&#x60; - Asia.   * &#x60;asia_india&#x60; - India.   * &#x60;asia_southkorea&#x60; - South Korea ([from Aug 2, 2021](https://status.fastly.com/incidents/f83m70cqm258))   * &#x60;africa_std&#x60; - Africa.   * &#x60;southamerica_std&#x60; - South America. 
     # @return [Array<(HistoricalResponse, Integer, Hash)>] HistoricalResponse data, response status code and response headers
@@ -95,8 +95,8 @@ module Fastly
 
     # Get aggregated historical stats
     # Fetches historical stats information aggregated across all of your Fastly services.
-    # @option opts [String] :from Absolute, relative or epoch timestamp. Limits the results returned.
-    # @option opts [String] :to Absolute, relative or epoch timestamp. Limits the results returned.
+    # @option opts [String] :from Timestamp that defines the start of the window for which to fetch statistics, including the timestamp itself. Accepts Unix timestamps, or any form of input parsable by the [Chronic Ruby library](https://github.com/mojombo/chronic), such as &#39;yesterday&#39;, or &#39;two weeks ago&#39;. Default varies based on the value of &#x60;by&#x60;. 
+    # @option opts [String] :to Timestamp that defines the end of the window for which to fetch statistics. Accepts the same formats as &#x60;from&#x60;.  (default to 'now')
     # @option opts [String] :by Duration of sample windows. One of:   * &#x60;hour&#x60; - Group data by hour.   * &#x60;minute&#x60; - Group data by minute.   * &#x60;day&#x60; - Group data by day.  (default to 'day')
     # @option opts [String] :region Limit query to a specific geographic region. One of:   * &#x60;usa&#x60; - North America.   * &#x60;europe&#x60; - Europe.   * &#x60;anzac&#x60; - Australia and New Zealand.   * &#x60;asia&#x60; - Asia.   * &#x60;asia_india&#x60; - India.   * &#x60;asia_southkorea&#x60; - South Korea ([from Aug 2, 2021](https://status.fastly.com/incidents/f83m70cqm258))   * &#x60;africa_std&#x60; - Africa.   * &#x60;southamerica_std&#x60; - South America. 
     # @return [HistoricalAggregateResponse]
@@ -107,8 +107,8 @@ module Fastly
 
     # Get aggregated historical stats
     # Fetches historical stats information aggregated across all of your Fastly services.
-    # @option opts [String] :from Absolute, relative or epoch timestamp. Limits the results returned.
-    # @option opts [String] :to Absolute, relative or epoch timestamp. Limits the results returned.
+    # @option opts [String] :from Timestamp that defines the start of the window for which to fetch statistics, including the timestamp itself. Accepts Unix timestamps, or any form of input parsable by the [Chronic Ruby library](https://github.com/mojombo/chronic), such as &#39;yesterday&#39;, or &#39;two weeks ago&#39;. Default varies based on the value of &#x60;by&#x60;. 
+    # @option opts [String] :to Timestamp that defines the end of the window for which to fetch statistics. Accepts the same formats as &#x60;from&#x60;.  (default to 'now')
     # @option opts [String] :by Duration of sample windows. One of:   * &#x60;hour&#x60; - Group data by hour.   * &#x60;minute&#x60; - Group data by minute.   * &#x60;day&#x60; - Group data by day.  (default to 'day')
     # @option opts [String] :region Limit query to a specific geographic region. One of:   * &#x60;usa&#x60; - North America.   * &#x60;europe&#x60; - Europe.   * &#x60;anzac&#x60; - Australia and New Zealand.   * &#x60;asia&#x60; - Asia.   * &#x60;asia_india&#x60; - India.   * &#x60;asia_southkorea&#x60; - South Korea ([from Aug 2, 2021](https://status.fastly.com/incidents/f83m70cqm258))   * &#x60;africa_std&#x60; - Africa.   * &#x60;southamerica_std&#x60; - South America. 
     # @return [Array<(HistoricalAggregateResponse, Integer, Hash)>] HistoricalAggregateResponse data, response status code and response headers
@@ -172,8 +172,8 @@ module Fastly
     # Get historical stats for a single field
     # Fetches the specified field from the historical stats for each of your services and groups the results by service ID.
     # @option opts [String] :field Name of the stats field. (required)
-    # @option opts [String] :from Absolute, relative or epoch timestamp. Limits the results returned.
-    # @option opts [String] :to Absolute, relative or epoch timestamp. Limits the results returned.
+    # @option opts [String] :from Timestamp that defines the start of the window for which to fetch statistics, including the timestamp itself. Accepts Unix timestamps, or any form of input parsable by the [Chronic Ruby library](https://github.com/mojombo/chronic), such as &#39;yesterday&#39;, or &#39;two weeks ago&#39;. Default varies based on the value of &#x60;by&#x60;. 
+    # @option opts [String] :to Timestamp that defines the end of the window for which to fetch statistics. Accepts the same formats as &#x60;from&#x60;.  (default to 'now')
     # @option opts [String] :by Duration of sample windows. One of:   * &#x60;hour&#x60; - Group data by hour.   * &#x60;minute&#x60; - Group data by minute.   * &#x60;day&#x60; - Group data by day.  (default to 'day')
     # @option opts [String] :region Limit query to a specific geographic region. One of:   * &#x60;usa&#x60; - North America.   * &#x60;europe&#x60; - Europe.   * &#x60;anzac&#x60; - Australia and New Zealand.   * &#x60;asia&#x60; - Asia.   * &#x60;asia_india&#x60; - India.   * &#x60;asia_southkorea&#x60; - South Korea ([from Aug 2, 2021](https://status.fastly.com/incidents/f83m70cqm258))   * &#x60;africa_std&#x60; - Africa.   * &#x60;southamerica_std&#x60; - South America. 
     # @return [HistoricalFieldResponse]
@@ -185,8 +185,8 @@ module Fastly
     # Get historical stats for a single field
     # Fetches the specified field from the historical stats for each of your services and groups the results by service ID.
     # @option opts [String] :field Name of the stats field. (required)
-    # @option opts [String] :from Absolute, relative or epoch timestamp. Limits the results returned.
-    # @option opts [String] :to Absolute, relative or epoch timestamp. Limits the results returned.
+    # @option opts [String] :from Timestamp that defines the start of the window for which to fetch statistics, including the timestamp itself. Accepts Unix timestamps, or any form of input parsable by the [Chronic Ruby library](https://github.com/mojombo/chronic), such as &#39;yesterday&#39;, or &#39;two weeks ago&#39;. Default varies based on the value of &#x60;by&#x60;. 
+    # @option opts [String] :to Timestamp that defines the end of the window for which to fetch statistics. Accepts the same formats as &#x60;from&#x60;.  (default to 'now')
     # @option opts [String] :by Duration of sample windows. One of:   * &#x60;hour&#x60; - Group data by hour.   * &#x60;minute&#x60; - Group data by minute.   * &#x60;day&#x60; - Group data by day.  (default to 'day')
     # @option opts [String] :region Limit query to a specific geographic region. One of:   * &#x60;usa&#x60; - North America.   * &#x60;europe&#x60; - Europe.   * &#x60;anzac&#x60; - Australia and New Zealand.   * &#x60;asia&#x60; - Asia.   * &#x60;asia_india&#x60; - India.   * &#x60;asia_southkorea&#x60; - South Korea ([from Aug 2, 2021](https://status.fastly.com/incidents/f83m70cqm258))   * &#x60;africa_std&#x60; - Africa.   * &#x60;southamerica_std&#x60; - South America. 
     # @return [Array<(HistoricalFieldResponse, Integer, Hash)>] HistoricalFieldResponse data, response status code and response headers
@@ -255,8 +255,8 @@ module Fastly
     # Get historical stats for a single service
     # Fetches historical stats for a given service.
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
-    # @option opts [String] :from Absolute, relative or epoch timestamp. Limits the results returned.
-    # @option opts [String] :to Absolute, relative or epoch timestamp. Limits the results returned.
+    # @option opts [String] :from Timestamp that defines the start of the window for which to fetch statistics, including the timestamp itself. Accepts Unix timestamps, or any form of input parsable by the [Chronic Ruby library](https://github.com/mojombo/chronic), such as &#39;yesterday&#39;, or &#39;two weeks ago&#39;. Default varies based on the value of &#x60;by&#x60;. 
+    # @option opts [String] :to Timestamp that defines the end of the window for which to fetch statistics. Accepts the same formats as &#x60;from&#x60;.  (default to 'now')
     # @option opts [String] :by Duration of sample windows. One of:   * &#x60;hour&#x60; - Group data by hour.   * &#x60;minute&#x60; - Group data by minute.   * &#x60;day&#x60; - Group data by day.  (default to 'day')
     # @option opts [String] :region Limit query to a specific geographic region. One of:   * &#x60;usa&#x60; - North America.   * &#x60;europe&#x60; - Europe.   * &#x60;anzac&#x60; - Australia and New Zealand.   * &#x60;asia&#x60; - Asia.   * &#x60;asia_india&#x60; - India.   * &#x60;asia_southkorea&#x60; - South Korea ([from Aug 2, 2021](https://status.fastly.com/incidents/f83m70cqm258))   * &#x60;africa_std&#x60; - Africa.   * &#x60;southamerica_std&#x60; - South America. 
     # @return [HistoricalAggregateResponse]
@@ -268,8 +268,8 @@ module Fastly
     # Get historical stats for a single service
     # Fetches historical stats for a given service.
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
-    # @option opts [String] :from Absolute, relative or epoch timestamp. Limits the results returned.
-    # @option opts [String] :to Absolute, relative or epoch timestamp. Limits the results returned.
+    # @option opts [String] :from Timestamp that defines the start of the window for which to fetch statistics, including the timestamp itself. Accepts Unix timestamps, or any form of input parsable by the [Chronic Ruby library](https://github.com/mojombo/chronic), such as &#39;yesterday&#39;, or &#39;two weeks ago&#39;. Default varies based on the value of &#x60;by&#x60;. 
+    # @option opts [String] :to Timestamp that defines the end of the window for which to fetch statistics. Accepts the same formats as &#x60;from&#x60;.  (default to 'now')
     # @option opts [String] :by Duration of sample windows. One of:   * &#x60;hour&#x60; - Group data by hour.   * &#x60;minute&#x60; - Group data by minute.   * &#x60;day&#x60; - Group data by day.  (default to 'day')
     # @option opts [String] :region Limit query to a specific geographic region. One of:   * &#x60;usa&#x60; - North America.   * &#x60;europe&#x60; - Europe.   * &#x60;anzac&#x60; - Australia and New Zealand.   * &#x60;asia&#x60; - Asia.   * &#x60;asia_india&#x60; - India.   * &#x60;asia_southkorea&#x60; - South Korea ([from Aug 2, 2021](https://status.fastly.com/incidents/f83m70cqm258))   * &#x60;africa_std&#x60; - Africa.   * &#x60;southamerica_std&#x60; - South America. 
     # @return [Array<(HistoricalAggregateResponse, Integer, Hash)>] HistoricalAggregateResponse data, response status code and response headers
@@ -339,8 +339,8 @@ module Fastly
     # Fetches the specified field from the historical stats for a given service.
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
     # @option opts [String] :field Name of the stats field. (required)
-    # @option opts [String] :from Absolute, relative or epoch timestamp. Limits the results returned.
-    # @option opts [String] :to Absolute, relative or epoch timestamp. Limits the results returned.
+    # @option opts [String] :from Timestamp that defines the start of the window for which to fetch statistics, including the timestamp itself. Accepts Unix timestamps, or any form of input parsable by the [Chronic Ruby library](https://github.com/mojombo/chronic), such as &#39;yesterday&#39;, or &#39;two weeks ago&#39;. Default varies based on the value of &#x60;by&#x60;. 
+    # @option opts [String] :to Timestamp that defines the end of the window for which to fetch statistics. Accepts the same formats as &#x60;from&#x60;.  (default to 'now')
     # @option opts [String] :by Duration of sample windows. One of:   * &#x60;hour&#x60; - Group data by hour.   * &#x60;minute&#x60; - Group data by minute.   * &#x60;day&#x60; - Group data by day.  (default to 'day')
     # @option opts [String] :region Limit query to a specific geographic region. One of:   * &#x60;usa&#x60; - North America.   * &#x60;europe&#x60; - Europe.   * &#x60;anzac&#x60; - Australia and New Zealand.   * &#x60;asia&#x60; - Asia.   * &#x60;asia_india&#x60; - India.   * &#x60;asia_southkorea&#x60; - South Korea ([from Aug 2, 2021](https://status.fastly.com/incidents/f83m70cqm258))   * &#x60;africa_std&#x60; - Africa.   * &#x60;southamerica_std&#x60; - South America. 
     # @return [HistoricalFieldAggregateResponse]
@@ -353,8 +353,8 @@ module Fastly
     # Fetches the specified field from the historical stats for a given service.
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
     # @option opts [String] :field Name of the stats field. (required)
-    # @option opts [String] :from Absolute, relative or epoch timestamp. Limits the results returned.
-    # @option opts [String] :to Absolute, relative or epoch timestamp. Limits the results returned.
+    # @option opts [String] :from Timestamp that defines the start of the window for which to fetch statistics, including the timestamp itself. Accepts Unix timestamps, or any form of input parsable by the [Chronic Ruby library](https://github.com/mojombo/chronic), such as &#39;yesterday&#39;, or &#39;two weeks ago&#39;. Default varies based on the value of &#x60;by&#x60;. 
+    # @option opts [String] :to Timestamp that defines the end of the window for which to fetch statistics. Accepts the same formats as &#x60;from&#x60;.  (default to 'now')
     # @option opts [String] :by Duration of sample windows. One of:   * &#x60;hour&#x60; - Group data by hour.   * &#x60;minute&#x60; - Group data by minute.   * &#x60;day&#x60; - Group data by day.  (default to 'day')
     # @option opts [String] :region Limit query to a specific geographic region. One of:   * &#x60;usa&#x60; - North America.   * &#x60;europe&#x60; - Europe.   * &#x60;anzac&#x60; - Australia and New Zealand.   * &#x60;asia&#x60; - Asia.   * &#x60;asia_india&#x60; - India.   * &#x60;asia_southkorea&#x60; - South Korea ([from Aug 2, 2021](https://status.fastly.com/incidents/f83m70cqm258))   * &#x60;africa_std&#x60; - Africa.   * &#x60;southamerica_std&#x60; - South America. 
     # @return [Array<(HistoricalFieldAggregateResponse, Integer, Hash)>] HistoricalFieldAggregateResponse data, response status code and response headers
@@ -483,8 +483,8 @@ module Fastly
 
     # Get usage statistics
     # Returns usage information aggregated across all Fastly services and grouped by region. To aggregate across all Fastly services by time period, see [`/stats/aggregate`](#get-hist-stats-aggregated).
-    # @option opts [String] :from Absolute, relative or epoch timestamp. Limits the results returned.
-    # @option opts [String] :to Absolute, relative or epoch timestamp. Limits the results returned.
+    # @option opts [String] :from Timestamp that defines the start of the window for which to fetch statistics, including the timestamp itself. Accepts Unix timestamps, or any form of input parsable by the [Chronic Ruby library](https://github.com/mojombo/chronic), such as &#39;yesterday&#39;, or &#39;two weeks ago&#39;. Default varies based on the value of &#x60;by&#x60;. 
+    # @option opts [String] :to Timestamp that defines the end of the window for which to fetch statistics. Accepts the same formats as &#x60;from&#x60;.  (default to 'now')
     # @return [HistoricalUsageAggregateResponse]
     def get_usage(opts = {})
       data, _status_code, _headers = get_usage_with_http_info(opts)
@@ -493,8 +493,8 @@ module Fastly
 
     # Get usage statistics
     # Returns usage information aggregated across all Fastly services and grouped by region. To aggregate across all Fastly services by time period, see [&#x60;/stats/aggregate&#x60;](#get-hist-stats-aggregated).
-    # @option opts [String] :from Absolute, relative or epoch timestamp. Limits the results returned.
-    # @option opts [String] :to Absolute, relative or epoch timestamp. Limits the results returned.
+    # @option opts [String] :from Timestamp that defines the start of the window for which to fetch statistics, including the timestamp itself. Accepts Unix timestamps, or any form of input parsable by the [Chronic Ruby library](https://github.com/mojombo/chronic), such as &#39;yesterday&#39;, or &#39;two weeks ago&#39;. Default varies based on the value of &#x60;by&#x60;. 
+    # @option opts [String] :to Timestamp that defines the end of the window for which to fetch statistics. Accepts the same formats as &#x60;from&#x60;.  (default to 'now')
     # @return [Array<(HistoricalUsageAggregateResponse, Integer, Hash)>] HistoricalUsageAggregateResponse data, response status code and response headers
     def get_usage_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -610,8 +610,8 @@ module Fastly
 
     # Get usage statistics per service
     # Returns usage information aggregated by service and grouped by service and region. For service stats by time period, see [`/stats`](#get-hist-stats) and [`/stats/field/:field`](#get-hist-stats-field).
-    # @option opts [String] :from Absolute, relative or epoch timestamp. Limits the results returned.
-    # @option opts [String] :to Absolute, relative or epoch timestamp. Limits the results returned.
+    # @option opts [String] :from Timestamp that defines the start of the window for which to fetch statistics, including the timestamp itself. Accepts Unix timestamps, or any form of input parsable by the [Chronic Ruby library](https://github.com/mojombo/chronic), such as &#39;yesterday&#39;, or &#39;two weeks ago&#39;. Default varies based on the value of &#x60;by&#x60;. 
+    # @option opts [String] :to Timestamp that defines the end of the window for which to fetch statistics. Accepts the same formats as &#x60;from&#x60;.  (default to 'now')
     # @return [HistoricalUsageServiceResponse]
     def get_usage_service(opts = {})
       data, _status_code, _headers = get_usage_service_with_http_info(opts)
@@ -620,8 +620,8 @@ module Fastly
 
     # Get usage statistics per service
     # Returns usage information aggregated by service and grouped by service and region. For service stats by time period, see [&#x60;/stats&#x60;](#get-hist-stats) and [&#x60;/stats/field/:field&#x60;](#get-hist-stats-field).
-    # @option opts [String] :from Absolute, relative or epoch timestamp. Limits the results returned.
-    # @option opts [String] :to Absolute, relative or epoch timestamp. Limits the results returned.
+    # @option opts [String] :from Timestamp that defines the start of the window for which to fetch statistics, including the timestamp itself. Accepts Unix timestamps, or any form of input parsable by the [Chronic Ruby library](https://github.com/mojombo/chronic), such as &#39;yesterday&#39;, or &#39;two weeks ago&#39;. Default varies based on the value of &#x60;by&#x60;. 
+    # @option opts [String] :to Timestamp that defines the end of the window for which to fetch statistics. Accepts the same formats as &#x60;from&#x60;.  (default to 'now')
     # @return [Array<(HistoricalUsageServiceResponse, Integer, Hash)>] HistoricalUsageServiceResponse data, response status code and response headers
     def get_usage_service_with_http_info(opts = {})
       if @api_client.config.debugging

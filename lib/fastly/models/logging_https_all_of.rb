@@ -4,7 +4,7 @@
 #Via the Fastly API you can perform any of the operations that are possible within the management console,  including creating services, domains, and backends, configuring rules or uploading your own application code, as well as account operations such as user administration and billing reports. The API is organized into collections of endpoints that allow manipulation of objects related to Fastly services and accounts. For the most accurate and up-to-date API reference content, visit our [Developer Hub](https://developer.fastly.com/reference/api/) 
 
 The version of the OpenAPI document: 1.0.0
-
+Contact: oss@fastly.com
 
 =end
 
@@ -16,10 +16,10 @@ module Fastly
     # The URL to send logs to. Must use HTTPS. Required.
     attr_accessor :url
 
-    # The maximum number of logs sent in one request. Defaults `0` (no limit).
+    # The maximum number of logs sent in one request. Defaults `0` (10k).
     attr_accessor :request_max_entries
 
-    # The maximum number of bytes sent in one request. Defaults `0` (no limit).
+    # The maximum number of bytes sent in one request. Defaults `0` (100MB).
     attr_accessor :request_max_bytes
 
     # Content type of the header sent with the request.

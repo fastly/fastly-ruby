@@ -14,7 +14,7 @@ require 'fastly'
 Fastly::WafRuleRevisionOrLatest.fastly_one_of
 # =>
 # [
-#   :'Float',
+#   :'Integer',
 #   :'String'
 # ]
 ```
@@ -29,7 +29,7 @@ Find the appropriate object from the `fastly_one_of` list and casts the data int
 require 'fastly'
 
 Fastly::WafRuleRevisionOrLatest.build(data)
-# => #<Float:0x00007fdd4aab02a0>
+# => #<Integer:0x00007fdd4aab02a0>
 
 Fastly::WafRuleRevisionOrLatest.build(data_that_doesnt_match)
 # => nil
@@ -43,7 +43,7 @@ Fastly::WafRuleRevisionOrLatest.build(data_that_doesnt_match)
 
 #### Return type
 
-- `Float`
+- `Integer`
 - `String`
 - `nil` (if no type matches)
 

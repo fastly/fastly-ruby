@@ -4,7 +4,7 @@
 #Via the Fastly API you can perform any of the operations that are possible within the management console,  including creating services, domains, and backends, configuring rules or uploading your own application code, as well as account operations such as user administration and billing reports. The API is organized into collections of endpoints that allow manipulation of objects related to Fastly services and accounts. For the most accurate and up-to-date API reference content, visit our [Developer Hub](https://developer.fastly.com/reference/api/) 
 
 The version of the OpenAPI document: 1.0.0
-
+Contact: oss@fastly.com
 
 =end
 
@@ -20,7 +20,7 @@ module Fastly
     # Get a revision of a rule
     # Get a specific rule revision.
     # @option opts [String] :waf_rule_id Alphanumeric string identifying a WAF rule. (required)
-    # @option opts [Float] :waf_rule_revision_number Revision number. (required)
+    # @option opts [Integer] :waf_rule_revision_number Revision number. (required)
     # @option opts [String] :include Include relationships. Optional, comma-separated values. Permitted values: &#x60;waf_rule&#x60;, &#x60;vcl&#x60;, and &#x60;source&#x60;. The &#x60;vcl&#x60; and &#x60;source&#x60; relationships show the WAF VCL and corresponding ModSecurity source. These fields are blank unless the relationship is included. 
     # @return [WafRuleRevisionResponse]
     def get_waf_rule_revision(opts = {})
@@ -31,7 +31,7 @@ module Fastly
     # Get a revision of a rule
     # Get a specific rule revision.
     # @option opts [String] :waf_rule_id Alphanumeric string identifying a WAF rule. (required)
-    # @option opts [Float] :waf_rule_revision_number Revision number. (required)
+    # @option opts [Integer] :waf_rule_revision_number Revision number. (required)
     # @option opts [String] :include Include relationships. Optional, comma-separated values. Permitted values: &#x60;waf_rule&#x60;, &#x60;vcl&#x60;, and &#x60;source&#x60;. The &#x60;vcl&#x60; and &#x60;source&#x60; relationships show the WAF VCL and corresponding ModSecurity source. These fields are blank unless the relationship is included. 
     # @return [Array<(WafRuleRevisionResponse, Integer, Hash)>] WafRuleRevisionResponse data, response status code and response headers
     def get_waf_rule_revision_with_http_info(opts = {})

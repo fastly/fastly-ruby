@@ -4,7 +4,7 @@
 #Via the Fastly API you can perform any of the operations that are possible within the management console,  including creating services, domains, and backends, configuring rules or uploading your own application code, as well as account operations such as user administration and billing reports. The API is organized into collections of endpoints that allow manipulation of objects related to Fastly services and accounts. For the most accurate and up-to-date API reference content, visit our [Developer Hub](https://developer.fastly.com/reference/api/) 
 
 The version of the OpenAPI document: 1.0.0
-
+Contact: oss@fastly.com
 
 =end
 
@@ -18,9 +18,9 @@ module Fastly
       @api_client = api_client
     end
     # Creates a GlobalSign email challenge.
-    # Creates an email challenge for domain on a GlobalSign subscription. An email challenge will generate an email that can be used to validate domain ownership. If this challenge is created, then the domain can only be validated using email for the given subscription.
-    # @option opts [String] :tls_subscription_id  (required)
-    # @option opts [String] :tls_authorization_id  (required)
+    # Creates an email challenge for a domain on a GlobalSign subscription. An email challenge will generate an email that can be used to validate domain ownership. If this challenge is created, then the domain can only be validated using email for the given subscription. 
+    # @option opts [String] :tls_subscription_id Alphanumeric string identifying a TLS subscription. (required)
+    # @option opts [String] :tls_authorization_id Alphanumeric string identifying a TLS subscription. (required)
     # @option opts [Hash<String, Object>] :request_body 
     # @return [Object]
     def create_globalsign_email_challenge(opts = {})
@@ -29,9 +29,9 @@ module Fastly
     end
 
     # Creates a GlobalSign email challenge.
-    # Creates an email challenge for domain on a GlobalSign subscription. An email challenge will generate an email that can be used to validate domain ownership. If this challenge is created, then the domain can only be validated using email for the given subscription.
-    # @option opts [String] :tls_subscription_id  (required)
-    # @option opts [String] :tls_authorization_id  (required)
+    # Creates an email challenge for a domain on a GlobalSign subscription. An email challenge will generate an email that can be used to validate domain ownership. If this challenge is created, then the domain can only be validated using email for the given subscription. 
+    # @option opts [String] :tls_subscription_id Alphanumeric string identifying a TLS subscription. (required)
+    # @option opts [String] :tls_authorization_id Alphanumeric string identifying a TLS subscription. (required)
     # @option opts [Hash<String, Object>] :request_body 
     # @return [Array<(Object, Integer, Hash)>] Object data, response status code and response headers
     def create_globalsign_email_challenge_with_http_info(opts = {})
@@ -60,7 +60,7 @@ module Fastly
       # HTTP header 'Accept' (if needed)
       header_params['Accept'] = @api_client.select_header_accept(['application/json'])
       # HTTP header 'Content-Type'
-      content_type = @api_client.select_header_content_type(['application/json'])
+      content_type = @api_client.select_header_content_type(['application/vnd.api+json'])
       if !content_type.nil?
           header_params['Content-Type'] = content_type
       end
@@ -162,9 +162,9 @@ module Fastly
 
     # Delete a GlobalSign email challenge
     # Deletes a GlobalSign email challenge. After a GlobalSign email challenge is deleted, the domain can use HTTP and DNS validation methods again.
-    # @option opts [String] :tls_subscription_id  (required)
-    # @option opts [String] :globalsign_email_challenge_id  (required)
-    # @option opts [String] :tls_authorization_id  (required)
+    # @option opts [String] :tls_subscription_id Alphanumeric string identifying a TLS subscription. (required)
+    # @option opts [String] :globalsign_email_challenge_id Alphanumeric string identifying a GlobalSign email challenge. (required)
+    # @option opts [String] :tls_authorization_id Alphanumeric string identifying a TLS subscription. (required)
     # @return [nil]
     def delete_globalsign_email_challenge(opts = {})
       delete_globalsign_email_challenge_with_http_info(opts)
@@ -173,9 +173,9 @@ module Fastly
 
     # Delete a GlobalSign email challenge
     # Deletes a GlobalSign email challenge. After a GlobalSign email challenge is deleted, the domain can use HTTP and DNS validation methods again.
-    # @option opts [String] :tls_subscription_id  (required)
-    # @option opts [String] :globalsign_email_challenge_id  (required)
-    # @option opts [String] :tls_authorization_id  (required)
+    # @option opts [String] :tls_subscription_id Alphanumeric string identifying a TLS subscription. (required)
+    # @option opts [String] :globalsign_email_challenge_id Alphanumeric string identifying a GlobalSign email challenge. (required)
+    # @option opts [String] :tls_authorization_id Alphanumeric string identifying a TLS subscription. (required)
     # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def delete_globalsign_email_challenge_with_http_info(opts = {})
       if @api_client.config.debugging
