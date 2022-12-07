@@ -126,9 +126,6 @@ Class | Method | Description
 [*Fastly::DirectorBackendApi*](docs/DirectorBackendApi.md) | [**create_director_backend**](docs/DirectorBackendApi.md#create_director_backend) | Create a director-backend relationship
 [*Fastly::DirectorBackendApi*](docs/DirectorBackendApi.md) | [**delete_director_backend**](docs/DirectorBackendApi.md#delete_director_backend) | Delete a director-backend relationship
 [*Fastly::DirectorBackendApi*](docs/DirectorBackendApi.md) | [**get_director_backend**](docs/DirectorBackendApi.md#get_director_backend) | Get a director-backend relationship
-[*Fastly::DocsApi*](docs/DocsApi.md) | [**get_docs**](docs/DocsApi.md#get_docs) | Get Fastly API docs as structured data
-[*Fastly::DocsApi*](docs/DocsApi.md) | [**get_docs_section**](docs/DocsApi.md#get_docs_section) | Get API docs matching a section filter
-[*Fastly::DocsApi*](docs/DocsApi.md) | [**get_docs_subject**](docs/DocsApi.md#get_docs_subject) | Get API docs for a single subject
 [*Fastly::DomainApi*](docs/DomainApi.md) | [**check_domain**](docs/DomainApi.md#check_domain) | Validate DNS configuration for a single domain on a service
 [*Fastly::DomainApi*](docs/DomainApi.md) | [**check_domains**](docs/DomainApi.md#check_domains) | Validate DNS configuration for all domains on a service
 [*Fastly::DomainApi*](docs/DomainApi.md) | [**create_domain**](docs/DomainApi.md#create_domain) | Add a domain name to a service
@@ -136,7 +133,6 @@ Class | Method | Description
 [*Fastly::DomainApi*](docs/DomainApi.md) | [**get_domain**](docs/DomainApi.md#get_domain) | Describe a domain
 [*Fastly::DomainApi*](docs/DomainApi.md) | [**list_domains**](docs/DomainApi.md#list_domains) | List domains
 [*Fastly::DomainApi*](docs/DomainApi.md) | [**update_domain**](docs/DomainApi.md#update_domain) | Update a domain
-[*Fastly::DomainOwnershipsApi*](docs/DomainOwnershipsApi.md) | [**list_domain_ownerships**](docs/DomainOwnershipsApi.md#list_domain_ownerships) | List domain-ownerships
 [*Fastly::EnabledProductsApi*](docs/EnabledProductsApi.md) | [**disable_product**](docs/EnabledProductsApi.md#disable_product) | Disable a product
 [*Fastly::EnabledProductsApi*](docs/EnabledProductsApi.md) | [**enable_product**](docs/EnabledProductsApi.md#enable_product) | Enable a product
 [*Fastly::EnabledProductsApi*](docs/EnabledProductsApi.md) | [**get_enabled_product**](docs/EnabledProductsApi.md#get_enabled_product) | Get enabled product

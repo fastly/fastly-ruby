@@ -24,7 +24,7 @@ module Fastly
     # @option opts [Integer] :check_interval How often to run the health check in milliseconds.
     # @option opts [String] :comment A freeform descriptive note.
     # @option opts [Integer] :expected_response The status code expected from the host.
-    # @option opts [Array<String>] :headers Array of custom headers that will be added to the health check probes. This feature is part of an **alpha release**, which may be subject to breaking changes and improvements over time.
+    # @option opts [Array<String>] :headers Array of custom headers that will be added to the health check probes.
     # @option opts [String] :host Which host to check.
     # @option opts [String] :http_version Whether to use version 1.0 or 1.1 HTTP.
     # @option opts [Integer] :initial When loading a config, the initial number of probes to be seen as OK.
@@ -47,7 +47,7 @@ module Fastly
     # @option opts [Integer] :check_interval How often to run the health check in milliseconds.
     # @option opts [String] :comment A freeform descriptive note.
     # @option opts [Integer] :expected_response The status code expected from the host.
-    # @option opts [Array<String>] :headers Array of custom headers that will be added to the health check probes. This feature is part of an **alpha release**, which may be subject to breaking changes and improvements over time.
+    # @option opts [Array<String>] :headers Array of custom headers that will be added to the health check probes.
     # @option opts [String] :host Which host to check.
     # @option opts [String] :http_version Whether to use version 1.0 or 1.1 HTTP.
     # @option opts [Integer] :initial When loading a config, the initial number of probes to be seen as OK.
@@ -363,7 +363,7 @@ module Fastly
     # @option opts [Integer] :check_interval How often to run the health check in milliseconds.
     # @option opts [String] :comment A freeform descriptive note.
     # @option opts [Integer] :expected_response The status code expected from the host.
-    # @option opts [Array<String>] :headers Array of custom headers that will be added to the health check probes. This feature is part of an **alpha release**, which may be subject to breaking changes and improvements over time.
+    # @option opts [Array<String>] :headers Array of custom headers that will be added to the health check probes.
     # @option opts [String] :host Which host to check.
     # @option opts [String] :http_version Whether to use version 1.0 or 1.1 HTTP.
     # @option opts [Integer] :initial When loading a config, the initial number of probes to be seen as OK.
@@ -387,7 +387,7 @@ module Fastly
     # @option opts [Integer] :check_interval How often to run the health check in milliseconds.
     # @option opts [String] :comment A freeform descriptive note.
     # @option opts [Integer] :expected_response The status code expected from the host.
-    # @option opts [Array<String>] :headers Array of custom headers that will be added to the health check probes. This feature is part of an **alpha release**, which may be subject to breaking changes and improvements over time.
+    # @option opts [Array<String>] :headers Array of custom headers that will be added to the health check probes.
     # @option opts [String] :host Which host to check.
     # @option opts [String] :http_version Whether to use version 1.0 or 1.1 HTTP.
     # @option opts [Integer] :initial When loading a config, the initial number of probes to be seen as OK.

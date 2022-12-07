@@ -35,7 +35,7 @@ opts = {
     check_interval: 56, # Integer | How often to run the health check in milliseconds.
     comment: 'comment_example', # String | A freeform descriptive note.
     expected_response: 56, # Integer | The status code expected from the host.
-    headers: ['inner_example'], # Array<String> | Array of custom headers that will be added to the health check probes. This feature is part of an **alpha release**, which may be subject to breaking changes and improvements over time.
+    headers: ['inner_example'], # Array<String> | Array of custom headers that will be added to the health check probes.
     host: 'host_example', # String | Which host to check.
     http_version: 'http_version_example', # String | Whether to use version 1.0 or 1.1 HTTP.
     initial: 56, # Integer | When loading a config, the initial number of probes to be seen as OK.
@@ -65,7 +65,7 @@ end
 | **check_interval** | **Integer** | How often to run the health check in milliseconds. | [optional] |
 | **comment** | **String** | A freeform descriptive note. | [optional] |
 | **expected_response** | **Integer** | The status code expected from the host. | [optional] |
-| **headers** | [**Array&lt;String&gt;**](String.md) | Array of custom headers that will be added to the health check probes. This feature is part of an **alpha release**, which may be subject to breaking changes and improvements over time. | [optional] |
+| **headers** | [**Array&lt;String&gt;**](String.md) | Array of custom headers that will be added to the health check probes. | [optional] |
 | **host** | **String** | Which host to check. | [optional] |
 | **http_version** | **String** | Whether to use version 1.0 or 1.1 HTTP. | [optional] |
 | **initial** | **Integer** | When loading a config, the initial number of probes to be seen as OK. | [optional] |
@@ -222,7 +222,7 @@ opts = {
     check_interval: 56, # Integer | How often to run the health check in milliseconds.
     comment: 'comment_example', # String | A freeform descriptive note.
     expected_response: 56, # Integer | The status code expected from the host.
-    headers: ['inner_example'], # Array<String> | Array of custom headers that will be added to the health check probes. This feature is part of an **alpha release**, which may be subject to breaking changes and improvements over time.
+    headers: ['inner_example'], # Array<String> | Array of custom headers that will be added to the health check probes.
     host: 'host_example', # String | Which host to check.
     http_version: 'http_version_example', # String | Whether to use version 1.0 or 1.1 HTTP.
     initial: 56, # Integer | When loading a config, the initial number of probes to be seen as OK.
@@ -253,7 +253,7 @@ end
 | **check_interval** | **Integer** | How often to run the health check in milliseconds. | [optional] |
 | **comment** | **String** | A freeform descriptive note. | [optional] |
 | **expected_response** | **Integer** | The status code expected from the host. | [optional] |
-| **headers** | [**Array&lt;String&gt;**](String.md) | Array of custom headers that will be added to the health check probes. This feature is part of an **alpha release**, which may be subject to breaking changes and improvements over time. | [optional] |
+| **headers** | [**Array&lt;String&gt;**](String.md) | Array of custom headers that will be added to the health check probes. | [optional] |
 | **host** | **String** | Which host to check. | [optional] |
 | **http_version** | **String** | Whether to use version 1.0 or 1.1 HTTP. | [optional] |
 | **initial** | **Integer** | When loading a config, the initial number of probes to be seen as OK. | [optional] |

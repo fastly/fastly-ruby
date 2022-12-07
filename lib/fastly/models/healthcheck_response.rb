@@ -22,7 +22,7 @@ module Fastly
     # The status code expected from the host.
     attr_accessor :expected_response
 
-    # Array of custom headers that will be added to the health check probes. This feature is part of an **alpha release**, which may be subject to breaking changes and improvements over time.
+    # Array of custom headers that will be added to the health check probes.
     attr_accessor :headers
 
     # Which host to check.
