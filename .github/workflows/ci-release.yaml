@@ -1,0 +1,59 @@
+name: Release CI
+on:
+  push:
+    tags:
+      # This looks like a regex, but it's actually a filter pattern
+      # see https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#filter-pattern-cheat-sheet
+      - 'release/v?[0-9]*'
+
+env:
+  GITHUB_REF_NAME: ${{ github.ref_name }}
+
+jobs:
+  publish:
+    name: Publish to RubyGems
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          path: main
+      - name: Set up environment variables
+        run: ./.github/scripts/publish_env.sh >> $GITHUB_ENV
+        working-directory: ./main
+        shell: bash
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.1'
+          bundler-cache: true
+      - name: Pack API client
+        run: ./.github/scripts/pack.sh
+        working-directory: ./main
+        shell: bash
+      - name: Auth with RubyGems
+        run: |
+          mkdir -p ~/.gem
+          echo ":rubygems_api_key: ${{ secrets.RUBYGEMS_PUBLISH_TOKEN }}" > ~/.gem/credentials
+          chmod 600 ~/.gem/credentials
+        shell: bash
+      - name: Publish API client
+        run: ./.github/scripts/publish.sh
+        working-directory: ./main
+        shell: bash
+      - name: Write release body file
+        run: CODE_PATH=./main ./main/.github/scripts/release_body.sh > ./dist/release_body.txt
+        shell: bash
+      - name: Create release (dry run)
+        if: ${{ env.DRY_RUN == '1' }}
+        run: cat ./dist/release_body.txt
+      - name: Create GitHub release
+        if: ${{ env.DRY_RUN != '1' }}
+        uses: softprops/action-gh-release@v1
+        with:
+          name: v${{ env.VERSION }}
+          body_path: ./dist/release_body.txt
+          files: |
+            ./dist/${{ env.PACKAGE_FILENAME }}
+          draft: false
+          prerelease: ${{ env.PUBLISH_TAG != 'latest' }}
