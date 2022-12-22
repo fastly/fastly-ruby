@@ -1,5 +1,9 @@
 # Fastly [![Build Status](https://travis-ci.org/fastly/fastly-ruby.svg?branch=master)](https://travis-ci.org/fastly/fastly-ruby)
 
+> NOTE: This version of Fastly Ruby Client is no longer maintained.
+> Fastly now provides a [generated API client](https://dev.to/fastly/better-fastly-api-clients-with-openapi-generator-3lno) to cover the Fastly API.
+> The current version is available at https://github.com/fastly/fastly-ruby/tree/main.
+
 Client library for interacting with the Fastly web acceleration service [API](http://docs.fastly.com/api)
 
 ### A Note About Authentication
