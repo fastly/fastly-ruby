@@ -55,7 +55,7 @@ end
 
 Alternatively, set the `FASTLY_API_TOKEN` environment variable instead of setting `api_token`.
 
-## Endpoints
+## Documentation for API Endpoints
 
 The main documentation for the Fastly API can be found on our [Developer Hub](https://developer.fastly.com/reference/api).
 
