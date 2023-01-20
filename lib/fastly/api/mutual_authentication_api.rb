@@ -144,6 +144,7 @@ module Fastly
     # Get a Mutual Authentication
     # Show a Mutual Authentication.
     # @option opts [String] :mutual_authentication_id Alphanumeric string identifying a mutual authentication. (required)
+    # @option opts [String] :include Comma-separated list of related objects to include (optional). Permitted values: &#x60;tls_activations&#x60;. Including TLS activations will provide you with the TLS domain names that are related to your Mutual TLS authentication. 
     # @return [MutualAuthenticationResponse]
     def get_mutual_authentication(opts = {})
       data, _status_code, _headers = get_mutual_authentication_with_http_info(opts)
@@ -153,6 +154,7 @@ module Fastly
     # Get a Mutual Authentication
     # Show a Mutual Authentication.
     # @option opts [String] :mutual_authentication_id Alphanumeric string identifying a mutual authentication. (required)
+    # @option opts [String] :include Comma-separated list of related objects to include (optional). Permitted values: &#x60;tls_activations&#x60;. Including TLS activations will provide you with the TLS domain names that are related to your Mutual TLS authentication. 
     # @return [Array<(MutualAuthenticationResponse, Integer, Hash)>] MutualAuthenticationResponse data, response status code and response headers
     def get_mutual_authentication_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -169,6 +171,7 @@ module Fastly
 
       # query parameters
       query_params = opts[:query_params] || {}
+      query_params[:'include'] = opts[:'include'] if !opts[:'include'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}
@@ -206,6 +209,7 @@ module Fastly
 
     # List Mutual Authentications
     # List all mutual authentications.
+    # @option opts [String] :include Comma-separated list of related objects to include (optional). Permitted values: &#x60;tls_activations&#x60;. Including TLS activations will provide you with the TLS domain names that are related to your Mutual TLS authentication. 
     # @option opts [Integer] :page_number Current page.
     # @option opts [Integer] :page_size Number of records per page. (default to 20)
     # @return [MutualAuthenticationsResponse]
@@ -216,6 +220,7 @@ module Fastly
 
     # List Mutual Authentications
     # List all mutual authentications.
+    # @option opts [String] :include Comma-separated list of related objects to include (optional). Permitted values: &#x60;tls_activations&#x60;. Including TLS activations will provide you with the TLS domain names that are related to your Mutual TLS authentication. 
     # @option opts [Integer] :page_number Current page.
     # @option opts [Integer] :page_size Number of records per page. (default to 20)
     # @return [Array<(MutualAuthenticationsResponse, Integer, Hash)>] MutualAuthenticationsResponse data, response status code and response headers
@@ -237,6 +242,7 @@ module Fastly
 
       # query parameters
       query_params = opts[:query_params] || {}
+      query_params[:'include'] = opts[:'include'] if !opts[:'include'].nil?
       query_params[:'page[number]'] = opts[:'page_number'] if !opts[:'page_number'].nil?
       query_params[:'page[size]'] = opts[:'page_size'] if !opts[:'page_size'].nil?
 

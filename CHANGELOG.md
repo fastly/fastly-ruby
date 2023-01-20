@@ -511,4 +511,4 @@ Add Healthchecks and Syslog endpoint streaming
 
 ## 2011-11-02 v0.5
 
-Initial release
+Initial releasee

@@ -104,6 +104,7 @@ Show a Mutual Authentication.
 api_instance = Fastly::MutualAuthenticationApi.new
 opts = {
     mutual_authentication_id: 'mutual_authentication_id_example', # String | Alphanumeric string identifying a mutual authentication.
+    include: 'include_example', # String | Comma-separated list of related objects to include (optional). Permitted values: `tls_activations`. Including TLS activations will provide you with the TLS domain names that are related to your Mutual TLS authentication. 
 }
 
 begin
@@ -119,6 +120,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
+| **include** | **String** | Comma-separated list of related objects to include (optional). Permitted values: `tls_activations`. Including TLS activations will provide you with the TLS domain names that are related to your Mutual TLS authentication.  | [optional] |
 | **mutual_authentication_id** | **String** | Alphanumeric string identifying a mutual authentication. |  |
 
 ### Return type
@@ -140,6 +142,7 @@ List all mutual authentications.
 ```ruby
 api_instance = Fastly::MutualAuthenticationApi.new
 opts = {
+    include: 'include_example', # String | Comma-separated list of related objects to include (optional). Permitted values: `tls_activations`. Including TLS activations will provide you with the TLS domain names that are related to your Mutual TLS authentication. 
     page_number: 1, # Integer | Current page.
     page_size: 20, # Integer | Number of records per page.
 }
@@ -157,6 +160,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
+| **include** | **String** | Comma-separated list of related objects to include (optional). Permitted values: `tls_activations`. Including TLS activations will provide you with the TLS domain names that are related to your Mutual TLS authentication.  | [optional] |
 | **page_number** | **Integer** | Current page. | [optional] |
 | **page_size** | **Integer** | Number of records per page. | [optional][default to 20] |
 

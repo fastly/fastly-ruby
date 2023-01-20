@@ -348,7 +348,7 @@ module Fastly
     end
 
     # Update a user
-    # Update a user. Only users with the role of `superuser` can make changes to other users on the account. Non-superusers may use this endpoint to make changes to their own account. Modifications to `login` email require a valid password in the request body. Two-factor attributes are not editable via this endpoint.
+    # Update a user. Only users with the role of `superuser` can make changes to other users on the account. Non-superusers may use this endpoint to make changes to their own account. Two-factor attributes are not editable via this endpoint.
     # @option opts [String] :user_id Alphanumeric string identifying the user. (required)
     # @option opts [String] :login 
     # @option opts [String] :name The real life name of the user.
@@ -365,7 +365,7 @@ module Fastly
     end
 
     # Update a user
-    # Update a user. Only users with the role of &#x60;superuser&#x60; can make changes to other users on the account. Non-superusers may use this endpoint to make changes to their own account. Modifications to &#x60;login&#x60; email require a valid password in the request body. Two-factor attributes are not editable via this endpoint.
+    # Update a user. Only users with the role of &#x60;superuser&#x60; can make changes to other users on the account. Non-superusers may use this endpoint to make changes to their own account. Two-factor attributes are not editable via this endpoint.
     # @option opts [String] :user_id Alphanumeric string identifying the user. (required)
     # @option opts [String] :login 
     # @option opts [String] :name The real life name of the user.
