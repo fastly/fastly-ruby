@@ -6,7 +6,7 @@ A Ruby client library for interacting with most facets of the [Fastly API](https
 > The previous 3.x version is no longer supported, but can be found at https://github.com/fastly/fastly-ruby/tree/v3.x.
 
 
-> ⚠️ This client library (`v4.1.0`)  is an early-access release. Features may change without notice. Use at your own risk.
+> ⚠️ This client library (`4.2.0`)  is an early-access release. Features may change without notice. Use at your own risk.
 
 **We strongly recommend that you do not install alpha and beta releases on live production services.** No official support is provided for such releases. Please try out the library in a test environment, see what breaks without worrying about consequences, and give us [feedback](#issues).
 
@@ -18,7 +18,7 @@ Read about the [Fastly Product Lifecycle](https://docs.fastly.com/products/fastl
 To install via RubyGems, add the following to your project's `Gemfile`:
 
 ```ruby
-gem 'fastly', '~> v4.1.0'
+gem 'fastly', '~> 4.2.0'
 ```
 
 Then run `bundle install`.
@@ -327,13 +327,9 @@ Class | Method | Description
 [*Fastly::MutualAuthenticationApi*](docs/MutualAuthenticationApi.md) | [**list_mutual_authentications**](docs/MutualAuthenticationApi.md#list_mutual_authentications) | List Mutual Authentications
 [*Fastly::MutualAuthenticationApi*](docs/MutualAuthenticationApi.md) | [**patch_mutual_authentication**](docs/MutualAuthenticationApi.md#patch_mutual_authentication) | Update a Mutual Authentication
 [*Fastly::ObjectStoreApi*](docs/ObjectStoreApi.md) | [**create_store**](docs/ObjectStoreApi.md#create_store) | Create an object store.
-[*Fastly::ObjectStoreApi*](docs/ObjectStoreApi.md) | [**delete_key_from_store**](docs/ObjectStoreApi.md#delete_key_from_store) | Delete object store key.
 [*Fastly::ObjectStoreApi*](docs/ObjectStoreApi.md) | [**delete_store**](docs/ObjectStoreApi.md#delete_store) | Delete an object store.
-[*Fastly::ObjectStoreApi*](docs/ObjectStoreApi.md) | [**get_keys**](docs/ObjectStoreApi.md#get_keys) | List object store keys.
 [*Fastly::ObjectStoreApi*](docs/ObjectStoreApi.md) | [**get_store**](docs/ObjectStoreApi.md#get_store) | Describe an object store.
 [*Fastly::ObjectStoreApi*](docs/ObjectStoreApi.md) | [**get_stores**](docs/ObjectStoreApi.md#get_stores) | List object stores.
-[*Fastly::ObjectStoreApi*](docs/ObjectStoreApi.md) | [**get_value_for_key**](docs/ObjectStoreApi.md#get_value_for_key) | Get object store key value.
-[*Fastly::ObjectStoreApi*](docs/ObjectStoreApi.md) | [**set_value_for_key**](docs/ObjectStoreApi.md#set_value_for_key) | Insert object store key-value.
 [*Fastly::PackageApi*](docs/PackageApi.md) | [**get_package**](docs/PackageApi.md#get_package) | Get details of the service's Compute@Edge package.
 [*Fastly::PackageApi*](docs/PackageApi.md) | [**put_package**](docs/PackageApi.md#put_package) | Upload a Compute@Edge package.
 [*Fastly::PoolApi*](docs/PoolApi.md) | [**create_server_pool**](docs/PoolApi.md#create_server_pool) | Create a server pool
@@ -358,11 +354,11 @@ Class | Method | Description
 [*Fastly::RequestSettingsApi*](docs/RequestSettingsApi.md) | [**get_request_settings**](docs/RequestSettingsApi.md#get_request_settings) | Get a Request Settings object
 [*Fastly::RequestSettingsApi*](docs/RequestSettingsApi.md) | [**list_request_settings**](docs/RequestSettingsApi.md#list_request_settings) | List Request Settings objects
 [*Fastly::RequestSettingsApi*](docs/RequestSettingsApi.md) | [**update_request_settings**](docs/RequestSettingsApi.md#update_request_settings) | Update a Request Settings object
-[*Fastly::ResourceApi*](docs/ResourceApi.md) | [**create_resource**](docs/ResourceApi.md#create_resource) | Create a resource
-[*Fastly::ResourceApi*](docs/ResourceApi.md) | [**delete_resource**](docs/ResourceApi.md#delete_resource) | Delete a resource
-[*Fastly::ResourceApi*](docs/ResourceApi.md) | [**get_resource**](docs/ResourceApi.md#get_resource) | Display a resource
-[*Fastly::ResourceApi*](docs/ResourceApi.md) | [**list_resources**](docs/ResourceApi.md#list_resources) | List resources
-[*Fastly::ResourceApi*](docs/ResourceApi.md) | [**update_resource**](docs/ResourceApi.md#update_resource) | Update a resource
+[*Fastly::ResourceApi*](docs/ResourceApi.md) | [**create_resource**](docs/ResourceApi.md#create_resource) | Create a resource link
+[*Fastly::ResourceApi*](docs/ResourceApi.md) | [**delete_resource**](docs/ResourceApi.md#delete_resource) | Delete a resource link
+[*Fastly::ResourceApi*](docs/ResourceApi.md) | [**get_resource**](docs/ResourceApi.md#get_resource) | Display a resource link
+[*Fastly::ResourceApi*](docs/ResourceApi.md) | [**list_resources**](docs/ResourceApi.md#list_resources) | List resource links
+[*Fastly::ResourceApi*](docs/ResourceApi.md) | [**update_resource**](docs/ResourceApi.md#update_resource) | Update a resource link
 [*Fastly::ResponseObjectApi*](docs/ResponseObjectApi.md) | [**delete_response_object**](docs/ResponseObjectApi.md#delete_response_object) | Delete a Response Object
 [*Fastly::ResponseObjectApi*](docs/ResponseObjectApi.md) | [**get_response_object**](docs/ResponseObjectApi.md#get_response_object) | Get a Response object
 [*Fastly::ResponseObjectApi*](docs/ResponseObjectApi.md) | [**list_response_objects**](docs/ResponseObjectApi.md#list_response_objects) | List Response objects

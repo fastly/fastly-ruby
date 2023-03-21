@@ -44,7 +44,7 @@ module Fastly
     # Ratio of cache hits to cache misses (between 0 and 1).
     attr_accessor :hit_ratio
 
-    # Total bytes delivered (`resp_header_bytes` + `resp_body_bytes` + `bereq_header_bytes` + `bereq_body_bytes` + `compute_resp_header_bytes` + `compute_resp_body_bytes` + `compute_bereq_header_bytes` + `compute_bereq_body_bytes` + `websocket_resp_header_bytes` + `websocket_resp_body_bytes` + `websocket_bereq_header_bytes` + `websocket_bereq_body_bytes`).
+    # Total bytes delivered (`resp_header_bytes` + `resp_body_bytes` + `bereq_header_bytes` + `bereq_body_bytes` + `compute_resp_header_bytes` + `compute_resp_body_bytes` + `compute_bereq_header_bytes` + `compute_bereq_body_bytes` + `websocket_resp_header_bytes` + `websocket_resp_body_bytes` + `websocket_bereq_header_bytes` + `websocket_bereq_body_bytes` + `fanout_resp_header_bytes` + `fanout_resp_body_bytes` + `fanout_bereq_header_bytes` + `fanout_bereq_body_bytes`).
     attr_accessor :bandwidth
 
     # Total body bytes delivered (alias for resp_body_bytes).
@@ -602,10 +602,16 @@ module Fastly
     # Total published messages sent to end users.
     attr_accessor :fanout_send_publishes
 
-    # The total number of reads received for the object store.
+    # The total number of class a operations for the object store.
+    attr_accessor :object_store_class_a_operations
+
+    # The total number of class b operations for the object store.
+    attr_accessor :object_store_class_b_operations
+
+    # Use object_store_class_b_operations.
     attr_accessor :object_store_read_requests
 
-    # The total number of writes received for the object store.
+    # Use object_store_class_a_operations.
     attr_accessor :object_store_write_requests
 
     # Total header bytes received from end users over Fanout connections.
@@ -834,6 +840,8 @@ module Fastly
         :'websocket_conn_time_ms' => :'websocket_conn_time_ms',
         :'fanout_recv_publishes' => :'fanout_recv_publishes',
         :'fanout_send_publishes' => :'fanout_send_publishes',
+        :'object_store_class_a_operations' => :'object_store_class_a_operations',
+        :'object_store_class_b_operations' => :'object_store_class_b_operations',
         :'object_store_read_requests' => :'object_store_read_requests',
         :'object_store_write_requests' => :'object_store_write_requests',
         :'fanout_req_header_bytes' => :'fanout_req_header_bytes',
@@ -1052,6 +1060,8 @@ module Fastly
         :'websocket_conn_time_ms' => :'Integer',
         :'fanout_recv_publishes' => :'Integer',
         :'fanout_send_publishes' => :'Integer',
+        :'object_store_class_a_operations' => :'Integer',
+        :'object_store_class_b_operations' => :'Integer',
         :'object_store_read_requests' => :'Integer',
         :'object_store_write_requests' => :'Integer',
         :'fanout_req_header_bytes' => :'Integer',
@@ -1872,6 +1882,14 @@ module Fastly
         self.fanout_send_publishes = attributes[:'fanout_send_publishes']
       end
 
+      if attributes.key?(:'object_store_class_a_operations')
+        self.object_store_class_a_operations = attributes[:'object_store_class_a_operations']
+      end
+
+      if attributes.key?(:'object_store_class_b_operations')
+        self.object_store_class_b_operations = attributes[:'object_store_class_b_operations']
+      end
+
       if attributes.key?(:'object_store_read_requests')
         self.object_store_read_requests = attributes[:'object_store_read_requests']
       end
@@ -2131,6 +2149,8 @@ module Fastly
           websocket_conn_time_ms == o.websocket_conn_time_ms &&
           fanout_recv_publishes == o.fanout_recv_publishes &&
           fanout_send_publishes == o.fanout_send_publishes &&
+          object_store_class_a_operations == o.object_store_class_a_operations &&
+          object_store_class_b_operations == o.object_store_class_b_operations &&
           object_store_read_requests == o.object_store_read_requests &&
           object_store_write_requests == o.object_store_write_requests &&
           fanout_req_header_bytes == o.fanout_req_header_bytes &&
@@ -2153,7 +2173,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [requests, hits, hits_time, miss, miss_time, pass, pass_time, errors, restarts, hit_ratio, bandwidth, body_size, header_size, req_body_bytes, req_header_bytes, resp_body_bytes, resp_header_bytes, bereq_body_bytes, bereq_header_bytes, uncacheable, pipe, synth, tls, tls_v10, tls_v11, tls_v12, tls_v13, edge_requests, edge_resp_header_bytes, edge_resp_body_bytes, edge_hit_requests, edge_miss_requests, origin_fetches, origin_fetch_header_bytes, origin_fetch_body_bytes, origin_fetch_resp_header_bytes, origin_fetch_resp_body_bytes, origin_revalidations, origin_cache_fetches, shield, shield_resp_body_bytes, shield_resp_header_bytes, shield_fetches, shield_fetch_header_bytes, shield_fetch_body_bytes, shield_fetch_resp_header_bytes, shield_fetch_resp_body_bytes, shield_revalidations, shield_cache_fetches, ipv6, otfp, otfp_resp_body_bytes, otfp_resp_header_bytes, otfp_shield_resp_body_bytes, otfp_shield_resp_header_bytes, otfp_manifests, otfp_deliver_time, otfp_shield_time, video, pci, log, log_bytes, http2, http3, waf_logged, waf_blocked, waf_passed, attack_req_body_bytes, attack_req_header_bytes, attack_logged_req_body_bytes, attack_logged_req_header_bytes, attack_blocked_req_body_bytes, attack_blocked_req_header_bytes, attack_passed_req_body_bytes, attack_passed_req_header_bytes, attack_resp_synth_bytes, imgopto, imgopto_resp_body_bytes, imgopto_resp_header_bytes, imgopto_shield_resp_body_bytes, imgopto_shield_resp_header_bytes, imgvideo, imgvideo_frames, imgvideo_resp_header_bytes, imgvideo_resp_body_bytes, imgvideo_shield_resp_header_bytes, imgvideo_shield_resp_body_bytes, imgvideo_shield, imgvideo_shield_frames, status_200, status_204, status_206, status_301, status_302, status_304, status_400, status_401, status_403, status_404, status_406, status_416, status_429, status_500, status_501, status_502, status_503, status_504, status_505, status_1xx, status_2xx, status_3xx, status_4xx, status_5xx, object_size_1k, object_size_10k, object_size_100k, object_size_1m, object_size_10m, object_size_100m, object_size_1g, recv_sub_time, recv_sub_count, hash_sub_time, hash_sub_count, miss_sub_time, miss_sub_count, fetch_sub_time, fetch_sub_count, pass_sub_time, pass_sub_count, pipe_sub_time, pipe_sub_count, deliver_sub_time, deliver_sub_count, error_sub_time, error_sub_count, hit_sub_time, hit_sub_count, prehash_sub_time, prehash_sub_count, predeliver_sub_time, predeliver_sub_count, tls_handshake_sent_bytes, hit_resp_body_bytes, miss_resp_body_bytes, pass_resp_body_bytes, segblock_origin_fetches, segblock_shield_fetches, compute_requests, compute_request_time_ms, compute_ram_used, compute_execution_time_ms, compute_req_header_bytes, compute_req_body_bytes, compute_resp_header_bytes, compute_resp_body_bytes, compute_resp_status_1xx, compute_resp_status_2xx, compute_resp_status_3xx, compute_resp_status_4xx, compute_resp_status_5xx, compute_bereq_header_bytes, compute_bereq_body_bytes, compute_beresp_header_bytes, compute_beresp_body_bytes, compute_bereqs, compute_bereq_errors, compute_resource_limit_exceeded, compute_heap_limit_exceeded, compute_stack_limit_exceeded, compute_globals_limit_exceeded, compute_guest_errors, compute_runtime_errors, edge_hit_resp_body_bytes, edge_hit_resp_header_bytes, edge_miss_resp_body_bytes, edge_miss_resp_header_bytes, origin_cache_fetch_resp_body_bytes, origin_cache_fetch_resp_header_bytes, shield_hit_requests, shield_miss_requests, shield_hit_resp_header_bytes, shield_hit_resp_body_bytes, shield_miss_resp_header_bytes, shield_miss_resp_body_bytes, websocket_req_header_bytes, websocket_req_body_bytes, websocket_resp_header_bytes, websocket_resp_body_bytes, websocket_bereq_header_bytes, websocket_bereq_body_bytes, websocket_beresp_header_bytes, websocket_beresp_body_bytes, websocket_conn_time_ms, fanout_recv_publishes, fanout_send_publishes, object_store_read_requests, object_store_write_requests, fanout_req_header_bytes, fanout_req_body_bytes, fanout_resp_header_bytes, fanout_resp_body_bytes, fanout_bereq_header_bytes, fanout_bereq_body_bytes, fanout_beresp_header_bytes, fanout_beresp_body_bytes, fanout_conn_time_ms].hash
+      [requests, hits, hits_time, miss, miss_time, pass, pass_time, errors, restarts, hit_ratio, bandwidth, body_size, header_size, req_body_bytes, req_header_bytes, resp_body_bytes, resp_header_bytes, bereq_body_bytes, bereq_header_bytes, uncacheable, pipe, synth, tls, tls_v10, tls_v11, tls_v12, tls_v13, edge_requests, edge_resp_header_bytes, edge_resp_body_bytes, edge_hit_requests, edge_miss_requests, origin_fetches, origin_fetch_header_bytes, origin_fetch_body_bytes, origin_fetch_resp_header_bytes, origin_fetch_resp_body_bytes, origin_revalidations, origin_cache_fetches, shield, shield_resp_body_bytes, shield_resp_header_bytes, shield_fetches, shield_fetch_header_bytes, shield_fetch_body_bytes, shield_fetch_resp_header_bytes, shield_fetch_resp_body_bytes, shield_revalidations, shield_cache_fetches, ipv6, otfp, otfp_resp_body_bytes, otfp_resp_header_bytes, otfp_shield_resp_body_bytes, otfp_shield_resp_header_bytes, otfp_manifests, otfp_deliver_time, otfp_shield_time, video, pci, log, log_bytes, http2, http3, waf_logged, waf_blocked, waf_passed, attack_req_body_bytes, attack_req_header_bytes, attack_logged_req_body_bytes, attack_logged_req_header_bytes, attack_blocked_req_body_bytes, attack_blocked_req_header_bytes, attack_passed_req_body_bytes, attack_passed_req_header_bytes, attack_resp_synth_bytes, imgopto, imgopto_resp_body_bytes, imgopto_resp_header_bytes, imgopto_shield_resp_body_bytes, imgopto_shield_resp_header_bytes, imgvideo, imgvideo_frames, imgvideo_resp_header_bytes, imgvideo_resp_body_bytes, imgvideo_shield_resp_header_bytes, imgvideo_shield_resp_body_bytes, imgvideo_shield, imgvideo_shield_frames, status_200, status_204, status_206, status_301, status_302, status_304, status_400, status_401, status_403, status_404, status_406, status_416, status_429, status_500, status_501, status_502, status_503, status_504, status_505, status_1xx, status_2xx, status_3xx, status_4xx, status_5xx, object_size_1k, object_size_10k, object_size_100k, object_size_1m, object_size_10m, object_size_100m, object_size_1g, recv_sub_time, recv_sub_count, hash_sub_time, hash_sub_count, miss_sub_time, miss_sub_count, fetch_sub_time, fetch_sub_count, pass_sub_time, pass_sub_count, pipe_sub_time, pipe_sub_count, deliver_sub_time, deliver_sub_count, error_sub_time, error_sub_count, hit_sub_time, hit_sub_count, prehash_sub_time, prehash_sub_count, predeliver_sub_time, predeliver_sub_count, tls_handshake_sent_bytes, hit_resp_body_bytes, miss_resp_body_bytes, pass_resp_body_bytes, segblock_origin_fetches, segblock_shield_fetches, compute_requests, compute_request_time_ms, compute_ram_used, compute_execution_time_ms, compute_req_header_bytes, compute_req_body_bytes, compute_resp_header_bytes, compute_resp_body_bytes, compute_resp_status_1xx, compute_resp_status_2xx, compute_resp_status_3xx, compute_resp_status_4xx, compute_resp_status_5xx, compute_bereq_header_bytes, compute_bereq_body_bytes, compute_beresp_header_bytes, compute_beresp_body_bytes, compute_bereqs, compute_bereq_errors, compute_resource_limit_exceeded, compute_heap_limit_exceeded, compute_stack_limit_exceeded, compute_globals_limit_exceeded, compute_guest_errors, compute_runtime_errors, edge_hit_resp_body_bytes, edge_hit_resp_header_bytes, edge_miss_resp_body_bytes, edge_miss_resp_header_bytes, origin_cache_fetch_resp_body_bytes, origin_cache_fetch_resp_header_bytes, shield_hit_requests, shield_miss_requests, shield_hit_resp_header_bytes, shield_hit_resp_body_bytes, shield_miss_resp_header_bytes, shield_miss_resp_body_bytes, websocket_req_header_bytes, websocket_req_body_bytes, websocket_resp_header_bytes, websocket_resp_body_bytes, websocket_bereq_header_bytes, websocket_bereq_body_bytes, websocket_beresp_header_bytes, websocket_beresp_body_bytes, websocket_conn_time_ms, fanout_recv_publishes, fanout_send_publishes, object_store_class_a_operations, object_store_class_b_operations, object_store_read_requests, object_store_write_requests, fanout_req_header_bytes, fanout_req_body_bytes, fanout_resp_header_bytes, fanout_resp_body_bytes, fanout_bereq_header_bytes, fanout_bereq_body_bytes, fanout_beresp_header_bytes, fanout_beresp_body_bytes, fanout_conn_time_ms].hash
     end
 
     # Builds the object from hash

@@ -32,7 +32,7 @@ module Fastly
     # @option opts [String] :hostname The hostname of the backend. May be used as an alternative to &#x60;address&#x60; to set the backend location.
     # @option opts [String] :ipv4 IPv4 address of the backend. May be used as an alternative to &#x60;address&#x60; to set the backend location.
     # @option opts [String] :ipv6 IPv6 address of the backend. May be used as an alternative to &#x60;address&#x60; to set the backend location.
-    # @option opts [Integer] :keepalive_time How long to keep a persistent connection to the backend between requests.
+    # @option opts [Integer] :keepalive_time How long in seconds to keep a persistent connection to the backend between requests.
     # @option opts [Integer] :max_conn Maximum number of concurrent connections this backend will accept.
     # @option opts [String] :max_tls_version Maximum allowed TLS version on SSL connections to this backend. If your backend server is not able to negotiate a connection meeting this constraint, a synthetic &#x60;503&#x60; error response will be generated.
     # @option opts [String] :min_tls_version Minimum allowed TLS version on SSL connections to this backend. If your backend server is not able to negotiate a connection meeting this constraint, a synthetic &#x60;503&#x60; error response will be generated.
@@ -72,7 +72,7 @@ module Fastly
     # @option opts [String] :hostname The hostname of the backend. May be used as an alternative to &#x60;address&#x60; to set the backend location.
     # @option opts [String] :ipv4 IPv4 address of the backend. May be used as an alternative to &#x60;address&#x60; to set the backend location.
     # @option opts [String] :ipv6 IPv6 address of the backend. May be used as an alternative to &#x60;address&#x60; to set the backend location.
-    # @option opts [Integer] :keepalive_time How long to keep a persistent connection to the backend between requests.
+    # @option opts [Integer] :keepalive_time How long in seconds to keep a persistent connection to the backend between requests.
     # @option opts [Integer] :max_conn Maximum number of concurrent connections this backend will accept.
     # @option opts [String] :max_tls_version Maximum allowed TLS version on SSL connections to this backend. If your backend server is not able to negotiate a connection meeting this constraint, a synthetic &#x60;503&#x60; error response will be generated.
     # @option opts [String] :min_tls_version Minimum allowed TLS version on SSL connections to this backend. If your backend server is not able to negotiate a connection meeting this constraint, a synthetic &#x60;503&#x60; error response will be generated.
@@ -422,7 +422,7 @@ module Fastly
     # @option opts [String] :hostname The hostname of the backend. May be used as an alternative to &#x60;address&#x60; to set the backend location.
     # @option opts [String] :ipv4 IPv4 address of the backend. May be used as an alternative to &#x60;address&#x60; to set the backend location.
     # @option opts [String] :ipv6 IPv6 address of the backend. May be used as an alternative to &#x60;address&#x60; to set the backend location.
-    # @option opts [Integer] :keepalive_time How long to keep a persistent connection to the backend between requests.
+    # @option opts [Integer] :keepalive_time How long in seconds to keep a persistent connection to the backend between requests.
     # @option opts [Integer] :max_conn Maximum number of concurrent connections this backend will accept.
     # @option opts [String] :max_tls_version Maximum allowed TLS version on SSL connections to this backend. If your backend server is not able to negotiate a connection meeting this constraint, a synthetic &#x60;503&#x60; error response will be generated.
     # @option opts [String] :min_tls_version Minimum allowed TLS version on SSL connections to this backend. If your backend server is not able to negotiate a connection meeting this constraint, a synthetic &#x60;503&#x60; error response will be generated.
@@ -463,7 +463,7 @@ module Fastly
     # @option opts [String] :hostname The hostname of the backend. May be used as an alternative to &#x60;address&#x60; to set the backend location.
     # @option opts [String] :ipv4 IPv4 address of the backend. May be used as an alternative to &#x60;address&#x60; to set the backend location.
     # @option opts [String] :ipv6 IPv6 address of the backend. May be used as an alternative to &#x60;address&#x60; to set the backend location.
-    # @option opts [Integer] :keepalive_time How long to keep a persistent connection to the backend between requests.
+    # @option opts [Integer] :keepalive_time How long in seconds to keep a persistent connection to the backend between requests.
     # @option opts [Integer] :max_conn Maximum number of concurrent connections this backend will accept.
     # @option opts [String] :max_tls_version Maximum allowed TLS version on SSL connections to this backend. If your backend server is not able to negotiate a connection meeting this constraint, a synthetic &#x60;503&#x60; error response will be generated.
     # @option opts [String] :min_tls_version Minimum allowed TLS version on SSL connections to this backend. If your backend server is not able to negotiate a connection meeting this constraint, a synthetic &#x60;503&#x60; error response will be generated.

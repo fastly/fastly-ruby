@@ -46,7 +46,7 @@ module Fastly
     # IPv6 address of the backend. May be used as an alternative to `address` to set the backend location.
     attr_accessor :ipv6
 
-    # How long to keep a persistent connection to the backend between requests.
+    # How long in seconds to keep a persistent connection to the backend between requests.
     attr_accessor :keepalive_time
 
     # Maximum number of concurrent connections this backend will accept.

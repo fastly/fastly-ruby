@@ -15,7 +15,7 @@
 | **hostname** | **String** | The hostname of the backend. May be used as an alternative to `address` to set the backend location. | [optional] |
 | **ipv4** | **String** | IPv4 address of the backend. May be used as an alternative to `address` to set the backend location. | [optional] |
 | **ipv6** | **String** | IPv6 address of the backend. May be used as an alternative to `address` to set the backend location. | [optional] |
-| **keepalive_time** | **Integer** | How long to keep a persistent connection to the backend between requests. | [optional] |
+| **keepalive_time** | **Integer** | How long in seconds to keep a persistent connection to the backend between requests. | [optional] |
 | **max_conn** | **Integer** | Maximum number of concurrent connections this backend will accept. | [optional] |
 | **max_tls_version** | **String** | Maximum allowed TLS version on SSL connections to this backend. If your backend server is not able to negotiate a connection meeting this constraint, a synthetic `503` error response will be generated. | [optional] |
 | **min_tls_version** | **String** | Minimum allowed TLS version on SSL connections to this backend. If your backend server is not able to negotiate a connection meeting this constraint, a synthetic `503` error response will be generated. | [optional] |

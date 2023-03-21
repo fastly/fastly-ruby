@@ -14,7 +14,7 @@
 | **errors** | **Integer** | Number of cache errors. | [optional] |
 | **restarts** | **Integer** | Number of restarts performed. | [optional] |
 | **hit_ratio** | **Float** | Ratio of cache hits to cache misses (between 0 and 1). | [optional] |
-| **bandwidth** | **Integer** | Total bytes delivered (`resp_header_bytes` + `resp_body_bytes` + `bereq_header_bytes` + `bereq_body_bytes` + `compute_resp_header_bytes` + `compute_resp_body_bytes` + `compute_bereq_header_bytes` + `compute_bereq_body_bytes` + `websocket_resp_header_bytes` + `websocket_resp_body_bytes` + `websocket_bereq_header_bytes` + `websocket_bereq_body_bytes`). | [optional] |
+| **bandwidth** | **Integer** | Total bytes delivered (`resp_header_bytes` + `resp_body_bytes` + `bereq_header_bytes` + `bereq_body_bytes` + `compute_resp_header_bytes` + `compute_resp_body_bytes` + `compute_bereq_header_bytes` + `compute_bereq_body_bytes` + `websocket_resp_header_bytes` + `websocket_resp_body_bytes` + `websocket_bereq_header_bytes` + `websocket_bereq_body_bytes` + `fanout_resp_header_bytes` + `fanout_resp_body_bytes` + `fanout_bereq_header_bytes` + `fanout_bereq_body_bytes`). | [optional] |
 | **body_size** | **Integer** | Total body bytes delivered (alias for resp_body_bytes). | [optional] |
 | **header_size** | **Integer** | Total header bytes delivered (alias for resp_header_bytes). | [optional] |
 | **req_body_bytes** | **Integer** | Total body bytes received. | [optional] |
@@ -200,8 +200,10 @@
 | **websocket_conn_time_ms** | **Integer** | Total duration of passthrough WebSocket connections with end users. | [optional] |
 | **fanout_recv_publishes** | **Integer** | Total published messages received from the publish API endpoint. | [optional] |
 | **fanout_send_publishes** | **Integer** | Total published messages sent to end users. | [optional] |
-| **object_store_read_requests** | **Integer** | The total number of reads received for the object store. | [optional] |
-| **object_store_write_requests** | **Integer** | The total number of writes received for the object store. | [optional] |
+| **object_store_class_a_operations** | **Integer** | The total number of class a operations for the object store. | [optional] |
+| **object_store_class_b_operations** | **Integer** | The total number of class b operations for the object store. | [optional] |
+| **object_store_read_requests** | **Integer** | Use object_store_class_b_operations. | [optional] |
+| **object_store_write_requests** | **Integer** | Use object_store_class_a_operations. | [optional] |
 | **fanout_req_header_bytes** | **Integer** | Total header bytes received from end users over Fanout connections. | [optional] |
 | **fanout_req_body_bytes** | **Integer** | Total body or message content bytes received from end users over Fanout connections. | [optional] |
 | **fanout_resp_header_bytes** | **Integer** | Total header bytes sent to end users over Fanout connections. | [optional] |

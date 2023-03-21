@@ -1,11 +1,11 @@
-# Fastly::EnabledProductLinks
+# Fastly::EnabledProductResponseProduct
 
 ## Properties
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **_self** | **String** |  | [optional] |
-| **service** | **String** |  | [optional] |
+| **id** | **String** | Product identifier | [optional] |
+| **object** | **String** | Name of the object | [optional] |
 
 [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
 

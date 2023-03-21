@@ -13,12 +13,16 @@ require 'time'
 
 module Fastly
   class Resource
-    # The name of the resource.
+    # The ID of the underlying linked resource.
+    attr_accessor :resource_id
+
+    # The name of the resource link.
     attr_accessor :name
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'resource_id' => :'resource_id',
         :'name' => :'name'
       }
     end
@@ -31,6 +35,7 @@ module Fastly
     # Attribute type mapping.
     def self.fastly_types
       {
+        :'resource_id' => :'String',
         :'name' => :'String'
       }
     end
@@ -56,6 +61,10 @@ module Fastly
         h[k.to_sym] = v
       }
 
+      if attributes.key?(:'resource_id')
+        self.resource_id = attributes[:'resource_id']
+      end
+
       if attributes.key?(:'name')
         self.name = attributes[:'name']
       end
@@ -79,6 +88,7 @@ module Fastly
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          resource_id == o.resource_id &&
           name == o.name
     end
 
@@ -91,7 +101,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name].hash
+      [resource_id, name].hash
     end
 
     # Builds the object from hash

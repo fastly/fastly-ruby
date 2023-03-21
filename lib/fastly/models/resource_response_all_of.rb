@@ -13,7 +13,7 @@ require 'time'
 
 module Fastly
   class ResourceResponseAllOf
-    # An alphanumeric string identifying the resource.
+    # An alphanumeric string identifying the resource link.
     attr_accessor :id
 
     # The path to the resource.

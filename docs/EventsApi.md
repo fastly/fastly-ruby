@@ -69,6 +69,7 @@ opts = {
     filter_service_id: 'filter_service_id_example', # String | Limit the results returned to a specific service.
     filter_user_id: 'filter_user_id_example', # String | Limit the results returned to a specific user.
     filter_token_id: 'filter_token_id_example', # String | Limit the returned events to a specific token.
+    filter_created_at: 'filter_created_at_example', # String | Limit the returned events to a specific time frame. Accepts sub-parameters: lt, lte, gt, gte (e.g., filter[created_at][gt]=2022-01-12). 
     page_number: 1, # Integer | Current page.
     page_size: 20, # Integer | Number of records per page.
     sort: 'created_at', # String | The order in which to list the results by creation date.
@@ -92,6 +93,7 @@ end
 | **filter_service_id** | **String** | Limit the results returned to a specific service. | [optional] |
 | **filter_user_id** | **String** | Limit the results returned to a specific user. | [optional] |
 | **filter_token_id** | **String** | Limit the returned events to a specific token. | [optional] |
+| **filter_created_at** | **String** | Limit the returned events to a specific time frame. Accepts sub-parameters: lt, lte, gt, gte (e.g., filter[created_at][gt]&#x3D;2022-01-12).  | [optional] |
 | **page_number** | **Integer** | Current page. | [optional] |
 | **page_size** | **Integer** | Number of records per page. | [optional][default to 20] |
 | **sort** | **String** | The order in which to list the results by creation date. | [optional][default to &#39;created_at&#39;] |

@@ -12,16 +12,18 @@ require 'date'
 require 'time'
 
 module Fastly
-  class EnabledProductProduct
-    attr_accessor :id
+  class EnabledProductResponseLinks
+    # Location of resource
+    attr_accessor :_self
 
-    attr_accessor :object
+    # Location of the service resource
+    attr_accessor :service
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'id' => :'id',
-        :'object' => :'object'
+        :'_self' => :'self',
+        :'service' => :'service'
       }
     end
 
@@ -33,8 +35,8 @@ module Fastly
     # Attribute type mapping.
     def self.fastly_types
       {
-        :'id' => :'String',
-        :'object' => :'String'
+        :'_self' => :'String',
+        :'service' => :'String'
       }
     end
 
@@ -48,23 +50,23 @@ module Fastly
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Fastly::EnabledProductProduct` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Fastly::EnabledProductResponseLinks` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `Fastly::EnabledProductProduct`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `Fastly::EnabledProductResponseLinks`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'id')
-        self.id = attributes[:'id']
+      if attributes.key?(:'_self')
+        self._self = attributes[:'_self']
       end
 
-      if attributes.key?(:'object')
-        self.object = attributes[:'object']
+      if attributes.key?(:'service')
+        self.service = attributes[:'service']
       end
     end
 
@@ -86,8 +88,8 @@ module Fastly
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          id == o.id &&
-          object == o.object
+          _self == o._self &&
+          service == o.service
     end
 
     # @see the `==` method
@@ -99,7 +101,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, object].hash
+      [_self, service].hash
     end
 
     # Builds the object from hash

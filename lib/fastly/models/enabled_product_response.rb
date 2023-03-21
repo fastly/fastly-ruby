@@ -12,7 +12,7 @@ require 'date'
 require 'time'
 
 module Fastly
-  class EnabledProduct
+  class EnabledProductResponse
     attr_accessor :product
 
     attr_accessor :service
@@ -36,9 +36,9 @@ module Fastly
     # Attribute type mapping.
     def self.fastly_types
       {
-        :'product' => :'EnabledProductProduct',
-        :'service' => :'EnabledProductProduct',
-        :'_links' => :'EnabledProductLinks'
+        :'product' => :'EnabledProductResponseProduct',
+        :'service' => :'EnabledProductResponseService',
+        :'_links' => :'EnabledProductResponseLinks'
       }
     end
 
@@ -52,13 +52,13 @@ module Fastly
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Fastly::EnabledProduct` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Fastly::EnabledProductResponse` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `Fastly::EnabledProduct`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `Fastly::EnabledProductResponse`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }

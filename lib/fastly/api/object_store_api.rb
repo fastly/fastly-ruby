@@ -80,76 +80,8 @@ module Fastly
       return data, status_code, headers
     end
 
-    # Delete object store key.
-    # Delete a key from a customer store.
-    # @option opts [String] :store_id  (required)
-    # @option opts [String] :key_name  (required)
-    # @return [nil]
-    def delete_key_from_store(opts = {})
-      delete_key_from_store_with_http_info(opts)
-      nil
-    end
-
-    # Delete object store key.
-    # Delete a key from a customer store.
-    # @option opts [String] :store_id  (required)
-    # @option opts [String] :key_name  (required)
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
-    def delete_key_from_store_with_http_info(opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: ObjectStoreApi.delete_key_from_store ...'
-      end
-      # unbox the parameters from the hash
-      store_id = opts[:'store_id']
-      key_name = opts[:'key_name']
-      # verify the required parameter 'store_id' is set
-      if @api_client.config.client_side_validation && store_id.nil?
-        fail ArgumentError, "Missing the required parameter 'store_id' when calling ObjectStoreApi.delete_key_from_store"
-      end
-      # verify the required parameter 'key_name' is set
-      if @api_client.config.client_side_validation && key_name.nil?
-        fail ArgumentError, "Missing the required parameter 'key_name' when calling ObjectStoreApi.delete_key_from_store"
-      end
-      # resource path
-      local_var_path = '/resources/stores/object/{store_id}/keys/{key_name}'.sub('{' + 'store_id' + '}', CGI.escape(store_id.to_s)).sub('{' + 'key_name' + '}', CGI.escape(key_name.to_s))
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body]
-
-      # return_type
-      return_type = opts[:debug_return_type]
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['token']
-
-      new_options = opts.merge(
-        :operation => :"ObjectStoreApi.delete_key_from_store",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: ObjectStoreApi#delete_key_from_store\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
     # Delete an object store.
-    # An object store must be empty before it can be deleted.  Deleting an object store that still contains keys will result in a 409 Conflict.
+    # An object store must be empty before it can be deleted.  Deleting an object store that still contains keys will result in a `409` (Conflict).
     # @option opts [String] :store_id  (required)
     # @return [nil]
     def delete_store(opts = {})
@@ -158,7 +90,7 @@ module Fastly
     end
 
     # Delete an object store.
-    # An object store must be empty before it can be deleted.  Deleting an object store that still contains keys will result in a 409 Conflict.
+    # An object store must be empty before it can be deleted.  Deleting an object store that still contains keys will result in a &#x60;409&#x60; (Conflict).
     # @option opts [String] :store_id  (required)
     # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def delete_store_with_http_info(opts = {})
@@ -205,75 +137,6 @@ module Fastly
       data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: ObjectStoreApi#delete_store\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # List object store keys.
-    # List all keys within an object store.
-    # @option opts [String] :store_id  (required)
-    # @option opts [String] :cursor 
-    # @option opts [Integer] :limit  (default to 100)
-    # @return [KeyResponse]
-    def get_keys(opts = {})
-      data, _status_code, _headers = get_keys_with_http_info(opts)
-      data
-    end
-
-    # List object store keys.
-    # List all keys within an object store.
-    # @option opts [String] :store_id  (required)
-    # @option opts [String] :cursor 
-    # @option opts [Integer] :limit  (default to 100)
-    # @return [Array<(KeyResponse, Integer, Hash)>] KeyResponse data, response status code and response headers
-    def get_keys_with_http_info(opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: ObjectStoreApi.get_keys ...'
-      end
-      # unbox the parameters from the hash
-      store_id = opts[:'store_id']
-      # verify the required parameter 'store_id' is set
-      if @api_client.config.client_side_validation && store_id.nil?
-        fail ArgumentError, "Missing the required parameter 'store_id' when calling ObjectStoreApi.get_keys"
-      end
-      # resource path
-      local_var_path = '/resources/stores/object/{store_id}/keys'.sub('{' + 'store_id' + '}', CGI.escape(store_id.to_s))
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-      query_params[:'cursor'] = opts[:'cursor'] if !opts[:'cursor'].nil?
-      query_params[:'limit'] = opts[:'limit'] if !opts[:'limit'].nil?
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body]
-
-      # return_type
-      return_type = opts[:debug_return_type] || 'KeyResponse'
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['token']
-
-      new_options = opts.merge(
-        :operation => :"ObjectStoreApi.get_keys",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: ObjectStoreApi#get_keys\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -345,7 +208,7 @@ module Fastly
     # Get all stores for a given customer.
     # @option opts [String] :cursor 
     # @option opts [Integer] :limit  (default to 100)
-    # @return [GetStoresResponse]
+    # @return [InlineResponse2002]
     def get_stores(opts = {})
       data, _status_code, _headers = get_stores_with_http_info(opts)
       data
@@ -355,7 +218,7 @@ module Fastly
     # Get all stores for a given customer.
     # @option opts [String] :cursor 
     # @option opts [Integer] :limit  (default to 100)
-    # @return [Array<(GetStoresResponse, Integer, Hash)>] GetStoresResponse data, response status code and response headers
+    # @return [Array<(InlineResponse2002, Integer, Hash)>] InlineResponse2002 data, response status code and response headers
     def get_stores_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ObjectStoreApi.get_stores ...'
@@ -381,7 +244,7 @@ module Fastly
       post_body = opts[:debug_body]
 
       # return_type
-      return_type = opts[:debug_return_type] || 'GetStoresResponse'
+      return_type = opts[:debug_return_type] || 'InlineResponse2002'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['token']
@@ -399,153 +262,6 @@ module Fastly
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: ObjectStoreApi#get_stores\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Get object store key value.
-    # Get the value associated with a key.
-    # @option opts [String] :store_id  (required)
-    # @option opts [String] :key_name  (required)
-    # @return [File]
-    def get_value_for_key(opts = {})
-      data, _status_code, _headers = get_value_for_key_with_http_info(opts)
-      data
-    end
-
-    # Get object store key value.
-    # Get the value associated with a key.
-    # @option opts [String] :store_id  (required)
-    # @option opts [String] :key_name  (required)
-    # @return [Array<(File, Integer, Hash)>] File data, response status code and response headers
-    def get_value_for_key_with_http_info(opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: ObjectStoreApi.get_value_for_key ...'
-      end
-      # unbox the parameters from the hash
-      store_id = opts[:'store_id']
-      key_name = opts[:'key_name']
-      # verify the required parameter 'store_id' is set
-      if @api_client.config.client_side_validation && store_id.nil?
-        fail ArgumentError, "Missing the required parameter 'store_id' when calling ObjectStoreApi.get_value_for_key"
-      end
-      # verify the required parameter 'key_name' is set
-      if @api_client.config.client_side_validation && key_name.nil?
-        fail ArgumentError, "Missing the required parameter 'key_name' when calling ObjectStoreApi.get_value_for_key"
-      end
-      # resource path
-      local_var_path = '/resources/stores/object/{store_id}/keys/{key_name}'.sub('{' + 'store_id' + '}', CGI.escape(store_id.to_s)).sub('{' + 'key_name' + '}', CGI.escape(key_name.to_s))
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/octet-stream'])
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body]
-
-      # return_type
-      return_type = opts[:debug_return_type] || 'File'
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['token']
-
-      new_options = opts.merge(
-        :operation => :"ObjectStoreApi.get_value_for_key",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: ObjectStoreApi#get_value_for_key\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Insert object store key-value.
-    # Insert a new key-value pair into an object store.
-    # @option opts [String] :store_id  (required)
-    # @option opts [String] :key_name  (required)
-    # @option opts [File] :body 
-    # @return [File]
-    def set_value_for_key(opts = {})
-      data, _status_code, _headers = set_value_for_key_with_http_info(opts)
-      data
-    end
-
-    # Insert object store key-value.
-    # Insert a new key-value pair into an object store.
-    # @option opts [String] :store_id  (required)
-    # @option opts [String] :key_name  (required)
-    # @option opts [File] :body 
-    # @return [Array<(File, Integer, Hash)>] File data, response status code and response headers
-    def set_value_for_key_with_http_info(opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: ObjectStoreApi.set_value_for_key ...'
-      end
-      # unbox the parameters from the hash
-      store_id = opts[:'store_id']
-      key_name = opts[:'key_name']
-      # verify the required parameter 'store_id' is set
-      if @api_client.config.client_side_validation && store_id.nil?
-        fail ArgumentError, "Missing the required parameter 'store_id' when calling ObjectStoreApi.set_value_for_key"
-      end
-      # verify the required parameter 'key_name' is set
-      if @api_client.config.client_side_validation && key_name.nil?
-        fail ArgumentError, "Missing the required parameter 'key_name' when calling ObjectStoreApi.set_value_for_key"
-      end
-      # resource path
-      local_var_path = '/resources/stores/object/{store_id}/keys/{key_name}'.sub('{' + 'store_id' + '}', CGI.escape(store_id.to_s)).sub('{' + 'key_name' + '}', CGI.escape(key_name.to_s))
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/octet-stream'])
-      # HTTP header 'Content-Type'
-      content_type = @api_client.select_header_content_type(['application/octet-stream'])
-      if !content_type.nil?
-          header_params['Content-Type'] = content_type
-      end
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(opts[:'body'])
-
-      # return_type
-      return_type = opts[:debug_return_type] || 'File'
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['token']
-
-      new_options = opts.merge(
-        :operation => :"ObjectStoreApi.set_value_for_key",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: ObjectStoreApi#set_value_for_key\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

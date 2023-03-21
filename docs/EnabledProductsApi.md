@@ -21,7 +21,7 @@ api_instance = Fastly::EnabledProductsApi.new
 disable_product(opts) # Disable a product
 ```
 
-Disable a product on a service. Supported product IDs: `origin_inspector`,`domain_inspector`,`image_optimizer`, and `websockets`.
+Disable a product on a service. Supported product IDs: `brotli_compression`,`domain_inspector`,`fanout`,`image_optimizer`,`origin_inspector`, and `websockets`.
 
 ### Examples
 
@@ -56,10 +56,10 @@ nil (empty response body)
 ## `enable_product()`
 
 ```ruby
-enable_product(opts): <EnabledProduct> # Enable a product
+enable_product(opts): <EnabledProductResponse> # Enable a product
 ```
 
-Enable a product on a service. Supported product IDs: `origin_inspector`,`domain_inspector`,`image_optimizer`, and `websockets`.
+Enable a product on a service. Supported product IDs: `brotli_compression`,`domain_inspector`,`fanout`,`image_optimizer`,`origin_inspector`, and `websockets`.
 
 ### Examples
 
@@ -88,17 +88,17 @@ end
 
 ### Return type
 
-[**EnabledProduct**](EnabledProduct.md)
+[**EnabledProductResponse**](EnabledProductResponse.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)
 ## `get_enabled_product()`
 
 ```ruby
-get_enabled_product(opts): <EnabledProduct> # Get enabled product
+get_enabled_product(opts): <EnabledProductResponse> # Get enabled product
 ```
 
-Get enabled product on a service. Supported product IDs: `origin_inspector`,`domain_inspector`,`image_optimizer`, and `websockets`.
+Get enabled product on a service. Supported product IDs: `brotli_compression`,`domain_inspector`,`fanout`,`image_optimizer`,`origin_inspector`, and `websockets`.
 
 ### Examples
 
@@ -127,7 +127,7 @@ end
 
 ### Return type
 
-[**EnabledProduct**](EnabledProduct.md)
+[**EnabledProductResponse**](EnabledProductResponse.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)

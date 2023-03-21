@@ -93,7 +93,7 @@ module Fastly
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      state_validator = EnumAttributeValidator.new('String', ["pending", "processing", "issued", "renewing"])
+      state_validator = EnumAttributeValidator.new('String', ["pending", "processing", "issued", "renewing", "failed"])
       return false unless state_validator.valid?(@state)
       true
     end
@@ -101,7 +101,7 @@ module Fastly
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] state Object to be assigned
     def state=(state)
-      validator = EnumAttributeValidator.new('String', ["pending", "processing", "issued", "renewing"])
+      validator = EnumAttributeValidator.new('String', ["pending", "processing", "issued", "renewing", "failed"])
       unless validator.valid?(state)
         fail ArgumentError, "invalid value for \"state\", must be one of #{validator.allowable_values}."
       end

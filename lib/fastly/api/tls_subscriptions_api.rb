@@ -364,7 +364,7 @@ module Fastly
 
     # List TLS subscriptions
     # List all TLS subscriptions.
-    # @option opts [String] :filter_state Limit the returned subscriptions by state. Valid values are &#x60;pending&#x60;, &#x60;processing&#x60;, &#x60;issued&#x60;, and &#x60;renewing&#x60;. Accepts parameters: &#x60;not&#x60; (e.g., &#x60;filter[state][not]&#x3D;renewing&#x60;). 
+    # @option opts [String] :filter_state Limit the returned subscriptions by state. Valid values are &#x60;pending&#x60;, &#x60;processing&#x60;, &#x60;issued&#x60;, &#x60;renewing&#x60;, and &#x60;failed&#x60;. Accepts parameters: &#x60;not&#x60; (e.g., &#x60;filter[state][not]&#x3D;renewing&#x60;). 
     # @option opts [String] :filter_tls_domains_id Limit the returned subscriptions to those that include the specific domain.
     # @option opts [Boolean] :filter_has_active_order Limit the returned subscriptions to those that have currently active orders. Permitted values: &#x60;true&#x60;. 
     # @option opts [String] :include Include related objects. Optional, comma-separated values. Permitted values: &#x60;tls_authorizations&#x60; and &#x60;tls_authorizations.globalsign_email_challenge&#x60;. 
@@ -379,7 +379,7 @@ module Fastly
 
     # List TLS subscriptions
     # List all TLS subscriptions.
-    # @option opts [String] :filter_state Limit the returned subscriptions by state. Valid values are &#x60;pending&#x60;, &#x60;processing&#x60;, &#x60;issued&#x60;, and &#x60;renewing&#x60;. Accepts parameters: &#x60;not&#x60; (e.g., &#x60;filter[state][not]&#x3D;renewing&#x60;). 
+    # @option opts [String] :filter_state Limit the returned subscriptions by state. Valid values are &#x60;pending&#x60;, &#x60;processing&#x60;, &#x60;issued&#x60;, &#x60;renewing&#x60;, and &#x60;failed&#x60;. Accepts parameters: &#x60;not&#x60; (e.g., &#x60;filter[state][not]&#x3D;renewing&#x60;). 
     # @option opts [String] :filter_tls_domains_id Limit the returned subscriptions to those that include the specific domain.
     # @option opts [Boolean] :filter_has_active_order Limit the returned subscriptions to those that have currently active orders. Permitted values: &#x60;true&#x60;. 
     # @option opts [String] :include Include related objects. Optional, comma-separated values. Permitted values: &#x60;tls_authorizations&#x60; and &#x60;tls_authorizations.globalsign_email_challenge&#x60;. 
@@ -452,7 +452,7 @@ module Fastly
     end
 
     # Update a TLS subscription
-    # Change the TLS domains or common name associated with this subscription, or update the TLS configuration for this set of domains.
+    # Change the TLS domains or common name associated with this subscription, update the TLS configuration for this set of domains, or retry a subscription with state `failed` by setting the state to `retry`.
     # @option opts [String] :tls_subscription_id Alphanumeric string identifying a TLS subscription. (required)
     # @option opts [Boolean] :force A flag that allows you to edit and delete a subscription with active domains. Valid to use on PATCH and DELETE actions. As a warning, removing an active domain from a subscription or forcing the deletion of a subscription may result in breaking TLS termination to that domain. 
     # @option opts [TlsSubscription] :tls_subscription 
@@ -463,7 +463,7 @@ module Fastly
     end
 
     # Update a TLS subscription
-    # Change the TLS domains or common name associated with this subscription, or update the TLS configuration for this set of domains.
+    # Change the TLS domains or common name associated with this subscription, update the TLS configuration for this set of domains, or retry a subscription with state &#x60;failed&#x60; by setting the state to &#x60;retry&#x60;.
     # @option opts [String] :tls_subscription_id Alphanumeric string identifying a TLS subscription. (required)
     # @option opts [Boolean] :force A flag that allows you to edit and delete a subscription with active domains. Valid to use on PATCH and DELETE actions. As a warning, removing an active domain from a subscription or forcing the deletion of a subscription may result in breaking TLS termination to that domain. 
     # @option opts [TlsSubscription] :tls_subscription 

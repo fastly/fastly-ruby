@@ -14,6 +14,8 @@ require 'time'
 module Fastly
   class TypeResource
     OBJECT_STORE = "object-store".freeze
+    SECRET_STORE = "secret-store".freeze
+    CONFIG_STORE = "config-store".freeze
 
     # Builds the enum from string
     # @param [String] The enum value in the form of the string

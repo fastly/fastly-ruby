@@ -12,19 +12,18 @@ require 'date'
 require 'time'
 
 module Fastly
-  # Meta for the pagination.
-  class GetStoresResponseMeta
-    # Cursor for the next page.
-    attr_accessor :next_cursor
+  class EnabledProductResponseProduct
+    # Product identifier
+    attr_accessor :id
 
-    # Entries returned.
-    attr_accessor :limit
+    # Name of the object
+    attr_accessor :object
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'next_cursor' => :'next_cursor',
-        :'limit' => :'limit'
+        :'id' => :'id',
+        :'object' => :'object'
       }
     end
 
@@ -36,8 +35,8 @@ module Fastly
     # Attribute type mapping.
     def self.fastly_types
       {
-        :'next_cursor' => :'String',
-        :'limit' => :'Integer'
+        :'id' => :'String',
+        :'object' => :'String'
       }
     end
 
@@ -51,23 +50,23 @@ module Fastly
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Fastly::GetStoresResponseMeta` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Fastly::EnabledProductResponseProduct` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `Fastly::GetStoresResponseMeta`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `Fastly::EnabledProductResponseProduct`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'next_cursor')
-        self.next_cursor = attributes[:'next_cursor']
+      if attributes.key?(:'id')
+        self.id = attributes[:'id']
       end
 
-      if attributes.key?(:'limit')
-        self.limit = attributes[:'limit']
+      if attributes.key?(:'object')
+        self.object = attributes[:'object']
       end
     end
 
@@ -89,8 +88,8 @@ module Fastly
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          next_cursor == o.next_cursor &&
-          limit == o.limit
+          id == o.id &&
+          object == o.object
     end
 
     # @see the `==` method
@@ -102,7 +101,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [next_cursor, limit].hash
+      [id, object].hash
     end
 
     # Builds the object from hash

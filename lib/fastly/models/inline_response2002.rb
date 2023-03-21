@@ -12,14 +12,16 @@ require 'date'
 require 'time'
 
 module Fastly
-  class ResourceCreateAllOf
-    # The ID of the linked resource.
-    attr_accessor :resource_id
+  class InlineResponse2002
+    attr_accessor :data
+
+    attr_accessor :meta
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'resource_id' => :'resource_id'
+        :'data' => :'data',
+        :'meta' => :'meta'
       }
     end
 
@@ -31,7 +33,8 @@ module Fastly
     # Attribute type mapping.
     def self.fastly_types
       {
-        :'resource_id' => :'String'
+        :'data' => :'Array<StoreResponse>',
+        :'meta' => :'InlineResponse2002Meta'
       }
     end
 
@@ -45,19 +48,25 @@ module Fastly
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Fastly::ResourceCreateAllOf` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Fastly::InlineResponse2002` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `Fastly::ResourceCreateAllOf`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `Fastly::InlineResponse2002`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'resource_id')
-        self.resource_id = attributes[:'resource_id']
+      if attributes.key?(:'data')
+        if (value = attributes[:'data']).is_a?(Array)
+          self.data = value
+        end
+      end
+
+      if attributes.key?(:'meta')
+        self.meta = attributes[:'meta']
       end
     end
 
@@ -79,7 +88,8 @@ module Fastly
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          resource_id == o.resource_id
+          data == o.data &&
+          meta == o.meta
     end
 
     # @see the `==` method
@@ -91,7 +101,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [resource_id].hash
+      [data, meta].hash
     end
 
     # Builds the object from hash

@@ -12,18 +12,18 @@ require 'date'
 require 'time'
 
 module Fastly
-  class ResourceCreate
-    # The name of the resource.
-    attr_accessor :name
+  class EnabledProductResponseService
+    # Service identifier
+    attr_accessor :id
 
-    # The ID of the linked resource.
-    attr_accessor :resource_id
+    # Name of the object
+    attr_accessor :object
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'name' => :'name',
-        :'resource_id' => :'resource_id'
+        :'id' => :'id',
+        :'object' => :'object'
       }
     end
 
@@ -35,8 +35,8 @@ module Fastly
     # Attribute type mapping.
     def self.fastly_types
       {
-        :'name' => :'String',
-        :'resource_id' => :'String'
+        :'id' => :'String',
+        :'object' => :'String'
       }
     end
 
@@ -46,35 +46,27 @@ module Fastly
       ])
     end
 
-    # List of class defined in allOf (OpenAPI v3)
-    def self.fastly_all_of
-      [
-      :'Resource',
-      :'ResourceCreateAllOf'
-      ]
-    end
-
     # Initializes the object
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Fastly::ResourceCreate` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Fastly::EnabledProductResponseService` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `Fastly::ResourceCreate`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `Fastly::EnabledProductResponseService`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'name')
-        self.name = attributes[:'name']
+      if attributes.key?(:'id')
+        self.id = attributes[:'id']
       end
 
-      if attributes.key?(:'resource_id')
-        self.resource_id = attributes[:'resource_id']
+      if attributes.key?(:'object')
+        self.object = attributes[:'object']
       end
     end
 
@@ -96,8 +88,8 @@ module Fastly
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          name == o.name &&
-          resource_id == o.resource_id
+          id == o.id &&
+          object == o.object
     end
 
     # @see the `==` method
@@ -109,7 +101,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, resource_id].hash
+      [id, object].hash
     end
 
     # Builds the object from hash

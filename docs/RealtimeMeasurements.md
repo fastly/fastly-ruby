@@ -202,8 +202,10 @@
 | **websocket_resp_body_bytes** | **Integer** | Total message content bytes sent to end users over passthrough WebSocket connections. | [optional] |
 | **fanout_recv_publishes** | **Integer** | Total published messages received from the publish API endpoint. | [optional] |
 | **fanout_send_publishes** | **Integer** | Total published messages sent to end users. | [optional] |
-| **object_store_read_requests** | **Integer** | The total number of reads received for the object store. | [optional] |
-| **object_store_write_requests** | **Integer** | The total number of writes received for the object store. | [optional] |
+| **object_store_class_a_operations** | **Integer** | The total number of class a operations for the object store. | [optional] |
+| **object_store_class_b_operations** | **Integer** | The total number of class b operations for the object store. | [optional] |
+| **object_store_read_requests** | **Integer** | Use object_store_class_b_operations. | [optional] |
+| **object_store_write_requests** | **Integer** | Use object_store_class_a_operations. | [optional] |
 | **fanout_req_header_bytes** | **Integer** | Total header bytes received from end users over Fanout connections. | [optional] |
 | **fanout_req_body_bytes** | **Integer** | Total body or message content bytes received from end users over Fanout connections. | [optional] |
 | **fanout_resp_header_bytes** | **Integer** | Total header bytes sent to end users over Fanout connections. | [optional] |

@@ -17,24 +17,24 @@ module Fastly
     def initialize(api_client = ApiClient.default)
       @api_client = api_client
     end
-    # Create a resource
-    # Create a resource.
+    # Create a resource link
+    # Create a link between a resource and a service version.
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
     # @option opts [Integer] :version_id Integer identifying a service version. (required)
-    # @option opts [String] :name The name of the resource.
-    # @option opts [String] :resource_id The ID of the linked resource.
+    # @option opts [String] :resource_id The ID of the underlying linked resource.
+    # @option opts [String] :name The name of the resource link.
     # @return [ResourceResponse]
     def create_resource(opts = {})
       data, _status_code, _headers = create_resource_with_http_info(opts)
       data
     end
 
-    # Create a resource
-    # Create a resource.
+    # Create a resource link
+    # Create a link between a resource and a service version.
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
     # @option opts [Integer] :version_id Integer identifying a service version. (required)
-    # @option opts [String] :name The name of the resource.
-    # @option opts [String] :resource_id The ID of the linked resource.
+    # @option opts [String] :resource_id The ID of the underlying linked resource.
+    # @option opts [String] :name The name of the resource link.
     # @return [Array<(ResourceResponse, Integer, Hash)>] ResourceResponse data, response status code and response headers
     def create_resource_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -69,8 +69,8 @@ module Fastly
 
       # form parameters
       form_params = opts[:form_params] || {}
-      form_params['name'] = opts[:'name'] if !opts[:'name'].nil?
       form_params['resource_id'] = opts[:'resource_id'] if !opts[:'resource_id'].nil?
+      form_params['name'] = opts[:'name'] if !opts[:'name'].nil?
 
       # http body (model)
       post_body = opts[:debug_body]
@@ -98,22 +98,22 @@ module Fastly
       return data, status_code, headers
     end
 
-    # Delete a resource
-    # Delete a resource.
+    # Delete a resource link
+    # Delete a link between a resource and a service version.
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
     # @option opts [Integer] :version_id Integer identifying a service version. (required)
-    # @option opts [String] :resource_id An alphanumeric string identifying the resource. (required)
+    # @option opts [String] :id An alphanumeric string identifying the resource link. (required)
     # @return [InlineResponse200]
     def delete_resource(opts = {})
       data, _status_code, _headers = delete_resource_with_http_info(opts)
       data
     end
 
-    # Delete a resource
-    # Delete a resource.
+    # Delete a resource link
+    # Delete a link between a resource and a service version.
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
     # @option opts [Integer] :version_id Integer identifying a service version. (required)
-    # @option opts [String] :resource_id An alphanumeric string identifying the resource. (required)
+    # @option opts [String] :id An alphanumeric string identifying the resource link. (required)
     # @return [Array<(InlineResponse200, Integer, Hash)>] InlineResponse200 data, response status code and response headers
     def delete_resource_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -122,7 +122,7 @@ module Fastly
       # unbox the parameters from the hash
       service_id = opts[:'service_id']
       version_id = opts[:'version_id']
-      resource_id = opts[:'resource_id']
+      id = opts[:'id']
       # verify the required parameter 'service_id' is set
       if @api_client.config.client_side_validation && service_id.nil?
         fail ArgumentError, "Missing the required parameter 'service_id' when calling ResourceApi.delete_resource"
@@ -131,12 +131,12 @@ module Fastly
       if @api_client.config.client_side_validation && version_id.nil?
         fail ArgumentError, "Missing the required parameter 'version_id' when calling ResourceApi.delete_resource"
       end
-      # verify the required parameter 'resource_id' is set
-      if @api_client.config.client_side_validation && resource_id.nil?
-        fail ArgumentError, "Missing the required parameter 'resource_id' when calling ResourceApi.delete_resource"
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling ResourceApi.delete_resource"
       end
       # resource path
-      local_var_path = '/service/{service_id}/version/{version_id}/resource/{resource_id}'.sub('{' + 'service_id' + '}', CGI.escape(service_id.to_s)).sub('{' + 'version_id' + '}', CGI.escape(version_id.to_s)).sub('{' + 'resource_id' + '}', CGI.escape(resource_id.to_s))
+      local_var_path = '/service/{service_id}/version/{version_id}/resource/{id}'.sub('{' + 'service_id' + '}', CGI.escape(service_id.to_s)).sub('{' + 'version_id' + '}', CGI.escape(version_id.to_s)).sub('{' + 'id' + '}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -175,22 +175,22 @@ module Fastly
       return data, status_code, headers
     end
 
-    # Display a resource
-    # Display a resource by its identifier.
+    # Display a resource link
+    # Display a resource link by its identifier.
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
     # @option opts [Integer] :version_id Integer identifying a service version. (required)
-    # @option opts [String] :resource_id An alphanumeric string identifying the resource. (required)
+    # @option opts [String] :id An alphanumeric string identifying the resource link. (required)
     # @return [ResourceResponse]
     def get_resource(opts = {})
       data, _status_code, _headers = get_resource_with_http_info(opts)
       data
     end
 
-    # Display a resource
-    # Display a resource by its identifier.
+    # Display a resource link
+    # Display a resource link by its identifier.
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
     # @option opts [Integer] :version_id Integer identifying a service version. (required)
-    # @option opts [String] :resource_id An alphanumeric string identifying the resource. (required)
+    # @option opts [String] :id An alphanumeric string identifying the resource link. (required)
     # @return [Array<(ResourceResponse, Integer, Hash)>] ResourceResponse data, response status code and response headers
     def get_resource_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -199,7 +199,7 @@ module Fastly
       # unbox the parameters from the hash
       service_id = opts[:'service_id']
       version_id = opts[:'version_id']
-      resource_id = opts[:'resource_id']
+      id = opts[:'id']
       # verify the required parameter 'service_id' is set
       if @api_client.config.client_side_validation && service_id.nil?
         fail ArgumentError, "Missing the required parameter 'service_id' when calling ResourceApi.get_resource"
@@ -208,12 +208,12 @@ module Fastly
       if @api_client.config.client_side_validation && version_id.nil?
         fail ArgumentError, "Missing the required parameter 'version_id' when calling ResourceApi.get_resource"
       end
-      # verify the required parameter 'resource_id' is set
-      if @api_client.config.client_side_validation && resource_id.nil?
-        fail ArgumentError, "Missing the required parameter 'resource_id' when calling ResourceApi.get_resource"
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling ResourceApi.get_resource"
       end
       # resource path
-      local_var_path = '/service/{service_id}/version/{version_id}/resource/{resource_id}'.sub('{' + 'service_id' + '}', CGI.escape(service_id.to_s)).sub('{' + 'version_id' + '}', CGI.escape(version_id.to_s)).sub('{' + 'resource_id' + '}', CGI.escape(resource_id.to_s))
+      local_var_path = '/service/{service_id}/version/{version_id}/resource/{id}'.sub('{' + 'service_id' + '}', CGI.escape(service_id.to_s)).sub('{' + 'version_id' + '}', CGI.escape(version_id.to_s)).sub('{' + 'id' + '}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -252,8 +252,8 @@ module Fastly
       return data, status_code, headers
     end
 
-    # List resources
-    # List resources.
+    # List resource links
+    # List links between resources and services
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
     # @option opts [Integer] :version_id Integer identifying a service version. (required)
     # @return [Array<ResourceResponse>]
@@ -262,8 +262,8 @@ module Fastly
       data
     end
 
-    # List resources
-    # List resources.
+    # List resource links
+    # List links between resources and services
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
     # @option opts [Integer] :version_id Integer identifying a service version. (required)
     # @return [Array<(Array<ResourceResponse>, Integer, Hash)>] Array<ResourceResponse> data, response status code and response headers
@@ -322,24 +322,26 @@ module Fastly
       return data, status_code, headers
     end
 
-    # Update a resource
-    # Update a resource.
+    # Update a resource link
+    # Update a link between a resource and a service version.
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
     # @option opts [Integer] :version_id Integer identifying a service version. (required)
-    # @option opts [String] :resource_id An alphanumeric string identifying the resource. (required)
-    # @option opts [String] :name The name of the resource.
+    # @option opts [String] :id An alphanumeric string identifying the resource link. (required)
+    # @option opts [String] :resource_id The ID of the underlying linked resource.
+    # @option opts [String] :name The name of the resource link.
     # @return [ResourceResponse]
     def update_resource(opts = {})
       data, _status_code, _headers = update_resource_with_http_info(opts)
       data
     end
 
-    # Update a resource
-    # Update a resource.
+    # Update a resource link
+    # Update a link between a resource and a service version.
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
     # @option opts [Integer] :version_id Integer identifying a service version. (required)
-    # @option opts [String] :resource_id An alphanumeric string identifying the resource. (required)
-    # @option opts [String] :name The name of the resource.
+    # @option opts [String] :id An alphanumeric string identifying the resource link. (required)
+    # @option opts [String] :resource_id The ID of the underlying linked resource.
+    # @option opts [String] :name The name of the resource link.
     # @return [Array<(ResourceResponse, Integer, Hash)>] ResourceResponse data, response status code and response headers
     def update_resource_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -348,7 +350,7 @@ module Fastly
       # unbox the parameters from the hash
       service_id = opts[:'service_id']
       version_id = opts[:'version_id']
-      resource_id = opts[:'resource_id']
+      id = opts[:'id']
       # verify the required parameter 'service_id' is set
       if @api_client.config.client_side_validation && service_id.nil?
         fail ArgumentError, "Missing the required parameter 'service_id' when calling ResourceApi.update_resource"
@@ -357,12 +359,12 @@ module Fastly
       if @api_client.config.client_side_validation && version_id.nil?
         fail ArgumentError, "Missing the required parameter 'version_id' when calling ResourceApi.update_resource"
       end
-      # verify the required parameter 'resource_id' is set
-      if @api_client.config.client_side_validation && resource_id.nil?
-        fail ArgumentError, "Missing the required parameter 'resource_id' when calling ResourceApi.update_resource"
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling ResourceApi.update_resource"
       end
       # resource path
-      local_var_path = '/service/{service_id}/version/{version_id}/resource/{resource_id}'.sub('{' + 'service_id' + '}', CGI.escape(service_id.to_s)).sub('{' + 'version_id' + '}', CGI.escape(version_id.to_s)).sub('{' + 'resource_id' + '}', CGI.escape(resource_id.to_s))
+      local_var_path = '/service/{service_id}/version/{version_id}/resource/{id}'.sub('{' + 'service_id' + '}', CGI.escape(service_id.to_s)).sub('{' + 'version_id' + '}', CGI.escape(version_id.to_s)).sub('{' + 'id' + '}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -379,6 +381,7 @@ module Fastly
 
       # form parameters
       form_params = opts[:form_params] || {}
+      form_params['resource_id'] = opts[:'resource_id'] if !opts[:'resource_id'].nil?
       form_params['name'] = opts[:'name'] if !opts[:'name'].nil?
 
       # http body (model)

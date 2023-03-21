@@ -203,7 +203,7 @@ module Fastly
       return_type = opts[:debug_return_type] || 'PurgeResponse'
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || ['url_purge']
+      auth_names = opts[:debug_auth_names] || ['token']
 
       new_options = opts.merge(
         :operation => :"PurgeApi.purge_single_url",

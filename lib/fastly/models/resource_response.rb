@@ -13,6 +13,12 @@ require 'time'
 
 module Fastly
   class ResourceResponse
+    # The ID of the underlying linked resource.
+    attr_accessor :resource_id
+
+    # The name of the resource link.
+    attr_accessor :name
+
     # Date and time in ISO 8601 format.
     attr_accessor :created_at
 
@@ -22,13 +28,7 @@ module Fastly
     # Date and time in ISO 8601 format.
     attr_accessor :updated_at
 
-    # The name of the resource.
-    attr_accessor :name
-
-    # The ID of the linked resource.
-    attr_accessor :resource_id
-
-    # An alphanumeric string identifying the resource.
+    # An alphanumeric string identifying the resource link.
     attr_accessor :id
 
     # The path to the resource.
@@ -45,11 +45,11 @@ module Fastly
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'resource_id' => :'resource_id',
+        :'name' => :'name',
         :'created_at' => :'created_at',
         :'deleted_at' => :'deleted_at',
         :'updated_at' => :'updated_at',
-        :'name' => :'name',
-        :'resource_id' => :'resource_id',
         :'id' => :'id',
         :'href' => :'href',
         :'service_id' => :'service_id',
@@ -66,11 +66,11 @@ module Fastly
     # Attribute type mapping.
     def self.fastly_types
       {
+        :'resource_id' => :'String',
+        :'name' => :'String',
         :'created_at' => :'Time',
         :'deleted_at' => :'Time',
         :'updated_at' => :'Time',
-        :'name' => :'String',
-        :'resource_id' => :'String',
         :'id' => :'String',
         :'href' => :'String',
         :'service_id' => :'String',
@@ -91,7 +91,7 @@ module Fastly
     # List of class defined in allOf (OpenAPI v3)
     def self.fastly_all_of
       [
-      :'ResourceCreate',
+      :'Resource',
       :'ResourceResponseAllOf',
       :'Timestamps'
       ]
@@ -112,6 +112,14 @@ module Fastly
         h[k.to_sym] = v
       }
 
+      if attributes.key?(:'resource_id')
+        self.resource_id = attributes[:'resource_id']
+      end
+
+      if attributes.key?(:'name')
+        self.name = attributes[:'name']
+      end
+
       if attributes.key?(:'created_at')
         self.created_at = attributes[:'created_at']
       end
@@ -122,14 +130,6 @@ module Fastly
 
       if attributes.key?(:'updated_at')
         self.updated_at = attributes[:'updated_at']
-      end
-
-      if attributes.key?(:'name')
-        self.name = attributes[:'name']
-      end
-
-      if attributes.key?(:'resource_id')
-        self.resource_id = attributes[:'resource_id']
       end
 
       if attributes.key?(:'id')
@@ -173,11 +173,11 @@ module Fastly
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          resource_id == o.resource_id &&
+          name == o.name &&
           created_at == o.created_at &&
           deleted_at == o.deleted_at &&
           updated_at == o.updated_at &&
-          name == o.name &&
-          resource_id == o.resource_id &&
           id == o.id &&
           href == o.href &&
           service_id == o.service_id &&
@@ -194,7 +194,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [created_at, deleted_at, updated_at, name, resource_id, id, href, service_id, version, resource_type].hash
+      [resource_id, name, created_at, deleted_at, updated_at, id, href, service_id, version, resource_type].hash
     end
 
     # Builds the object from hash

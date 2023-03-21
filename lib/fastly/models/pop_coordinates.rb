@@ -12,11 +12,8 @@ require 'date'
 require 'time'
 
 module Fastly
+  # the geographic location of the POP
   class PopCoordinates
-    attr_accessor :x
-
-    attr_accessor :y
-
     attr_accessor :latitude
 
     attr_accessor :longitude
@@ -24,8 +21,6 @@ module Fastly
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'x' => :'x',
-        :'y' => :'y',
         :'latitude' => :'latitude',
         :'longitude' => :'longitude'
       }
@@ -39,8 +34,6 @@ module Fastly
     # Attribute type mapping.
     def self.fastly_types
       {
-        :'x' => :'Float',
-        :'y' => :'Float',
         :'latitude' => :'Float',
         :'longitude' => :'Float'
       }
@@ -67,14 +60,6 @@ module Fastly
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'x')
-        self.x = attributes[:'x']
-      end
-
-      if attributes.key?(:'y')
-        self.y = attributes[:'y']
-      end
-
       if attributes.key?(:'latitude')
         self.latitude = attributes[:'latitude']
       end
@@ -88,12 +73,22 @@ module Fastly
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+      if @latitude.nil?
+        invalid_properties.push('invalid value for "latitude", latitude cannot be nil.')
+      end
+
+      if @longitude.nil?
+        invalid_properties.push('invalid value for "longitude", longitude cannot be nil.')
+      end
+
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if @latitude.nil?
+      return false if @longitude.nil?
       true
     end
 
@@ -102,8 +97,6 @@ module Fastly
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          x == o.x &&
-          y == o.y &&
           latitude == o.latitude &&
           longitude == o.longitude
     end
@@ -117,7 +110,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [x, y, latitude, longitude].hash
+      [latitude, longitude].hash
     end
 
     # Builds the object from hash

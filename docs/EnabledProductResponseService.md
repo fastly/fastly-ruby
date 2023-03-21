@@ -1,10 +1,11 @@
-# Fastly::ResourceCreateAllOf
+# Fastly::EnabledProductResponseService
 
 ## Properties
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **resource_id** | **String** | The ID of the linked resource. | [optional] |
+| **id** | **String** | Service identifier | [optional] |
+| **object** | **String** | Name of the object | [optional] |
 
 [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
 

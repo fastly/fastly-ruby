@@ -227,7 +227,7 @@ List all TLS subscriptions.
 ```ruby
 api_instance = Fastly::TlsSubscriptionsApi.new
 opts = {
-    filter_state: 'filter_state_example', # String | Limit the returned subscriptions by state. Valid values are `pending`, `processing`, `issued`, and `renewing`. Accepts parameters: `not` (e.g., `filter[state][not]=renewing`). 
+    filter_state: 'filter_state_example', # String | Limit the returned subscriptions by state. Valid values are `pending`, `processing`, `issued`, `renewing`, and `failed`. Accepts parameters: `not` (e.g., `filter[state][not]=renewing`). 
     filter_tls_domains_id: 'filter_tls_domains_id_example', # String | Limit the returned subscriptions to those that include the specific domain.
     filter_has_active_order: true, # Boolean | Limit the returned subscriptions to those that have currently active orders. Permitted values: `true`. 
     include: 'tls_authorizations', # String | Include related objects. Optional, comma-separated values. Permitted values: `tls_authorizations` and `tls_authorizations.globalsign_email_challenge`. 
@@ -249,7 +249,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **filter_state** | **String** | Limit the returned subscriptions by state. Valid values are `pending`, `processing`, `issued`, and `renewing`. Accepts parameters: `not` (e.g., `filter[state][not]&#x3D;renewing`).  | [optional] |
+| **filter_state** | **String** | Limit the returned subscriptions by state. Valid values are `pending`, `processing`, `issued`, `renewing`, and `failed`. Accepts parameters: `not` (e.g., `filter[state][not]&#x3D;renewing`).  | [optional] |
 | **filter_tls_domains_id** | **String** | Limit the returned subscriptions to those that include the specific domain. | [optional] |
 | **filter_has_active_order** | **Boolean** | Limit the returned subscriptions to those that have currently active orders. Permitted values: `true`.  | [optional] |
 | **include** | **String** | Include related objects. Optional, comma-separated values. Permitted values: `tls_authorizations` and `tls_authorizations.globalsign_email_challenge`.  | [optional] |
@@ -269,7 +269,7 @@ end
 patch_tls_sub(opts): <TlsSubscriptionResponse> # Update a TLS subscription
 ```
 
-Change the TLS domains or common name associated with this subscription, or update the TLS configuration for this set of domains.
+Change the TLS domains or common name associated with this subscription, update the TLS configuration for this set of domains, or retry a subscription with state `failed` by setting the state to `retry`.
 
 ### Examples
 

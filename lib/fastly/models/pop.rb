@@ -13,15 +13,48 @@ require 'time'
 
 module Fastly
   class Pop
+    # the three-letter code for the [POP](https://developer.fastly.com/learning/concepts/pop/)
     attr_accessor :code
 
+    # the name of the POP
     attr_accessor :name
 
     attr_accessor :group
 
+    attr_accessor :region
+
+    # the region used for stats reporting
+    attr_accessor :stats_region
+
+    # the region used for billing
+    attr_accessor :billing_region
+
     attr_accessor :coordinates
 
+    # the name of the [shield code](https://developer.fastly.com/learning/concepts/shielding/#choosing-a-shield-location) if this POP is suitable for shielding
     attr_accessor :shield
+
+    class EnumAttributeValidator
+      attr_reader :datatype
+      attr_reader :allowable_values
+
+      def initialize(datatype, allowable_values)
+        @allowable_values = allowable_values.map do |value|
+          case datatype.to_s
+          when /Integer/i
+            value.to_i
+          when /Float/i
+            value.to_f
+          else
+            value
+          end
+        end
+      end
+
+      def valid?(value)
+        !value || allowable_values.include?(value)
+      end
+    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -29,6 +62,9 @@ module Fastly
         :'code' => :'code',
         :'name' => :'name',
         :'group' => :'group',
+        :'region' => :'region',
+        :'stats_region' => :'stats_region',
+        :'billing_region' => :'billing_region',
         :'coordinates' => :'coordinates',
         :'shield' => :'shield'
       }
@@ -45,6 +81,9 @@ module Fastly
         :'code' => :'String',
         :'name' => :'String',
         :'group' => :'String',
+        :'region' => :'String',
+        :'stats_region' => :'String',
+        :'billing_region' => :'String',
         :'coordinates' => :'PopCoordinates',
         :'shield' => :'String'
       }
@@ -83,6 +122,18 @@ module Fastly
         self.group = attributes[:'group']
       end
 
+      if attributes.key?(:'region')
+        self.region = attributes[:'region']
+      end
+
+      if attributes.key?(:'stats_region')
+        self.stats_region = attributes[:'stats_region']
+      end
+
+      if attributes.key?(:'billing_region')
+        self.billing_region = attributes[:'billing_region']
+      end
+
       if attributes.key?(:'coordinates')
         self.coordinates = attributes[:'coordinates']
       end
@@ -96,13 +147,79 @@ module Fastly
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+      if @code.nil?
+        invalid_properties.push('invalid value for "code", code cannot be nil.')
+      end
+
+      if @name.nil?
+        invalid_properties.push('invalid value for "name", name cannot be nil.')
+      end
+
+      if @group.nil?
+        invalid_properties.push('invalid value for "group", group cannot be nil.')
+      end
+
+      if @region.nil?
+        invalid_properties.push('invalid value for "region", region cannot be nil.')
+      end
+
+      if @stats_region.nil?
+        invalid_properties.push('invalid value for "stats_region", stats_region cannot be nil.')
+      end
+
+      if @billing_region.nil?
+        invalid_properties.push('invalid value for "billing_region", billing_region cannot be nil.')
+      end
+
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if @code.nil?
+      return false if @name.nil?
+      return false if @group.nil?
+      return false if @region.nil?
+      region_validator = EnumAttributeValidator.new('String', ["APAC", "Asia", "AF-West", "EU-Central", "EU-East", "EU-West", "Middle-East", "North-America", "SA-South", "SA-East", "SA-West", "SA-North", "South-Africa", "South-America", "US-Central", "US-East", "US-West", "Asia-South"])
+      return false unless region_validator.valid?(@region)
+      return false if @stats_region.nil?
+      stats_region_validator = EnumAttributeValidator.new('String', ["southamerica_std", "africa_std", "anzac", "asia", "europe", "usa", "asia_india", "asia_southkorea"])
+      return false unless stats_region_validator.valid?(@stats_region)
+      return false if @billing_region.nil?
+      billing_region_validator = EnumAttributeValidator.new('String', ["Africa", "Australia", "Asia", "Europe", "India", "North America", "South Korea", "South America"])
+      return false unless billing_region_validator.valid?(@billing_region)
       true
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] region Object to be assigned
+    def region=(region)
+      validator = EnumAttributeValidator.new('String', ["APAC", "Asia", "AF-West", "EU-Central", "EU-East", "EU-West", "Middle-East", "North-America", "SA-South", "SA-East", "SA-West", "SA-North", "South-Africa", "South-America", "US-Central", "US-East", "US-West", "Asia-South"])
+      unless validator.valid?(region)
+        fail ArgumentError, "invalid value for \"region\", must be one of #{validator.allowable_values}."
+      end
+      @region = region
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] stats_region Object to be assigned
+    def stats_region=(stats_region)
+      validator = EnumAttributeValidator.new('String', ["southamerica_std", "africa_std", "anzac", "asia", "europe", "usa", "asia_india", "asia_southkorea"])
+      unless validator.valid?(stats_region)
+        fail ArgumentError, "invalid value for \"stats_region\", must be one of #{validator.allowable_values}."
+      end
+      @stats_region = stats_region
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] billing_region Object to be assigned
+    def billing_region=(billing_region)
+      validator = EnumAttributeValidator.new('String', ["Africa", "Australia", "Asia", "Europe", "India", "North America", "South Korea", "South America"])
+      unless validator.valid?(billing_region)
+        fail ArgumentError, "invalid value for \"billing_region\", must be one of #{validator.allowable_values}."
+      end
+      @billing_region = billing_region
     end
 
     # Checks equality by comparing each attribute.
@@ -113,6 +230,9 @@ module Fastly
           code == o.code &&
           name == o.name &&
           group == o.group &&
+          region == o.region &&
+          stats_region == o.stats_region &&
+          billing_region == o.billing_region &&
           coordinates == o.coordinates &&
           shield == o.shield
     end
@@ -126,7 +246,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [code, name, group, coordinates, shield].hash
+      [code, name, group, region, stats_region, billing_region, coordinates, shield].hash
     end
 
     # Builds the object from hash

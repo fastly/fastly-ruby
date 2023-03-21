@@ -18,7 +18,7 @@ module Fastly
       @api_client = api_client
     end
     # Disable a product
-    # Disable a product on a service. Supported product IDs: `origin_inspector`,`domain_inspector`,`image_optimizer`, and `websockets`.
+    # Disable a product on a service. Supported product IDs: `brotli_compression`,`domain_inspector`,`fanout`,`image_optimizer`,`origin_inspector`, and `websockets`.
     # @option opts [String] :product_id  (required)
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
     # @return [nil]
@@ -28,7 +28,7 @@ module Fastly
     end
 
     # Disable a product
-    # Disable a product on a service. Supported product IDs: &#x60;origin_inspector&#x60;,&#x60;domain_inspector&#x60;,&#x60;image_optimizer&#x60;, and &#x60;websockets&#x60;.
+    # Disable a product on a service. Supported product IDs: &#x60;brotli_compression&#x60;,&#x60;domain_inspector&#x60;,&#x60;fanout&#x60;,&#x60;image_optimizer&#x60;,&#x60;origin_inspector&#x60;, and &#x60;websockets&#x60;.
     # @option opts [String] :product_id  (required)
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
     # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
@@ -86,20 +86,20 @@ module Fastly
     end
 
     # Enable a product
-    # Enable a product on a service. Supported product IDs: `origin_inspector`,`domain_inspector`,`image_optimizer`, and `websockets`.
+    # Enable a product on a service. Supported product IDs: `brotli_compression`,`domain_inspector`,`fanout`,`image_optimizer`,`origin_inspector`, and `websockets`.
     # @option opts [String] :product_id  (required)
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
-    # @return [EnabledProduct]
+    # @return [EnabledProductResponse]
     def enable_product(opts = {})
       data, _status_code, _headers = enable_product_with_http_info(opts)
       data
     end
 
     # Enable a product
-    # Enable a product on a service. Supported product IDs: &#x60;origin_inspector&#x60;,&#x60;domain_inspector&#x60;,&#x60;image_optimizer&#x60;, and &#x60;websockets&#x60;.
+    # Enable a product on a service. Supported product IDs: &#x60;brotli_compression&#x60;,&#x60;domain_inspector&#x60;,&#x60;fanout&#x60;,&#x60;image_optimizer&#x60;,&#x60;origin_inspector&#x60;, and &#x60;websockets&#x60;.
     # @option opts [String] :product_id  (required)
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
-    # @return [Array<(EnabledProduct, Integer, Hash)>] EnabledProduct data, response status code and response headers
+    # @return [Array<(EnabledProductResponse, Integer, Hash)>] EnabledProductResponse data, response status code and response headers
     def enable_product_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: EnabledProductsApi.enable_product ...'
@@ -133,7 +133,7 @@ module Fastly
       post_body = opts[:debug_body]
 
       # return_type
-      return_type = opts[:debug_return_type] || 'EnabledProduct'
+      return_type = opts[:debug_return_type] || 'EnabledProductResponse'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['token']
@@ -156,20 +156,20 @@ module Fastly
     end
 
     # Get enabled product
-    # Get enabled product on a service. Supported product IDs: `origin_inspector`,`domain_inspector`,`image_optimizer`, and `websockets`.
+    # Get enabled product on a service. Supported product IDs: `brotli_compression`,`domain_inspector`,`fanout`,`image_optimizer`,`origin_inspector`, and `websockets`.
     # @option opts [String] :product_id  (required)
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
-    # @return [EnabledProduct]
+    # @return [EnabledProductResponse]
     def get_enabled_product(opts = {})
       data, _status_code, _headers = get_enabled_product_with_http_info(opts)
       data
     end
 
     # Get enabled product
-    # Get enabled product on a service. Supported product IDs: &#x60;origin_inspector&#x60;,&#x60;domain_inspector&#x60;,&#x60;image_optimizer&#x60;, and &#x60;websockets&#x60;.
+    # Get enabled product on a service. Supported product IDs: &#x60;brotli_compression&#x60;,&#x60;domain_inspector&#x60;,&#x60;fanout&#x60;,&#x60;image_optimizer&#x60;,&#x60;origin_inspector&#x60;, and &#x60;websockets&#x60;.
     # @option opts [String] :product_id  (required)
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
-    # @return [Array<(EnabledProduct, Integer, Hash)>] EnabledProduct data, response status code and response headers
+    # @return [Array<(EnabledProductResponse, Integer, Hash)>] EnabledProductResponse data, response status code and response headers
     def get_enabled_product_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: EnabledProductsApi.get_enabled_product ...'
@@ -203,7 +203,7 @@ module Fastly
       post_body = opts[:debug_body]
 
       # return_type
-      return_type = opts[:debug_return_type] || 'EnabledProduct'
+      return_type = opts[:debug_return_type] || 'EnabledProductResponse'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['token']
