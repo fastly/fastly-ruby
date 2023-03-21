@@ -1,8 +1,8 @@
 # Changelog
 
-## [v4.1.0](https://github.com/fastly/fastly-ruby/releases/tag/v4.1.0) (2023-03-21)
+## [v4.2.0](https://github.com/fastly/fastly-ruby/releases/tag/v4.2.0) (2023-03-21)
 
-[Full Changelog](https://github.com/fastly/fastly-ruby/compare/v4.0.0...v4.1.0)
+[Full Changelog](https://github.com/fastly/fastly-ruby/compare/v4.1.0...v4.2.0)
 
 ## Bug fixes
 
