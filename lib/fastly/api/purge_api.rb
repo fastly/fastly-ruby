@@ -182,7 +182,7 @@ module Fastly
         fail ArgumentError, "Missing the required parameter 'cached_url' when calling PurgeApi.purge_single_url"
       end
       # resource path
-      local_var_path = '/purge/{cached_url}'.sub('{' + 'cached_url' + '}', CGI.escape(cached_url.to_s))
+      local_var_path = '/purge/{cached_url}'.sub('{' + 'cached_url' + '}', cached_url.to_s)
 
       # query parameters
       query_params = opts[:query_params] || {}
