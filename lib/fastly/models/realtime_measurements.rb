@@ -647,6 +647,24 @@ module Fastly
     # Total duration of Fanout connections with end users.
     attr_accessor :fanout_conn_time_ms
 
+    # For HTTP/2, the number of connections the limit-streams action was applied to. The limit-streams action caps the allowed number of concurrent streams in a connection.
+    attr_accessor :ddos_action_limit_streams_connections
+
+    # For HTTP/2, the number of requests made on a connection for which the limit-streams action was taken. The limit-streams action caps the allowed number of concurrent streams in a connection.
+    attr_accessor :ddos_action_limit_streams_requests
+
+    # The number of times the tarpit-accept action was taken. The tarpit-accept action adds a delay when accepting future connections.
+    attr_accessor :ddos_action_tarpit_accept
+
+    # The number of times the tarpit action was taken. The tarpit action delays writing the response to the client.
+    attr_accessor :ddos_action_tarpit
+
+    # The number of times the close action was taken. The close action aborts the connection as soon as possible. The close action takes effect either right after accept, right after the client hello, or right after the response was sent.
+    attr_accessor :ddos_action_close
+
+    # The number of times the blackhole action was taken. The blackhole action quietly closes a TCP connection without sending a reset. The blackhole action quietly closes a TCP connection without notifying its peer (all TCP state is dropped).
+    attr_accessor :ddos_action_blackhole
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -860,7 +878,13 @@ module Fastly
         :'fanout_bereq_body_bytes' => :'fanout_bereq_body_bytes',
         :'fanout_beresp_header_bytes' => :'fanout_beresp_header_bytes',
         :'fanout_beresp_body_bytes' => :'fanout_beresp_body_bytes',
-        :'fanout_conn_time_ms' => :'fanout_conn_time_ms'
+        :'fanout_conn_time_ms' => :'fanout_conn_time_ms',
+        :'ddos_action_limit_streams_connections' => :'ddos_action_limit_streams_connections',
+        :'ddos_action_limit_streams_requests' => :'ddos_action_limit_streams_requests',
+        :'ddos_action_tarpit_accept' => :'ddos_action_tarpit_accept',
+        :'ddos_action_tarpit' => :'ddos_action_tarpit',
+        :'ddos_action_close' => :'ddos_action_close',
+        :'ddos_action_blackhole' => :'ddos_action_blackhole'
       }
     end
 
@@ -1082,7 +1106,13 @@ module Fastly
         :'fanout_bereq_body_bytes' => :'Integer',
         :'fanout_beresp_header_bytes' => :'Integer',
         :'fanout_beresp_body_bytes' => :'Integer',
-        :'fanout_conn_time_ms' => :'Integer'
+        :'fanout_conn_time_ms' => :'Integer',
+        :'ddos_action_limit_streams_connections' => :'Integer',
+        :'ddos_action_limit_streams_requests' => :'Integer',
+        :'ddos_action_tarpit_accept' => :'Integer',
+        :'ddos_action_tarpit' => :'Integer',
+        :'ddos_action_close' => :'Integer',
+        :'ddos_action_blackhole' => :'Integer'
       }
     end
 
@@ -1950,6 +1980,30 @@ module Fastly
       if attributes.key?(:'fanout_conn_time_ms')
         self.fanout_conn_time_ms = attributes[:'fanout_conn_time_ms']
       end
+
+      if attributes.key?(:'ddos_action_limit_streams_connections')
+        self.ddos_action_limit_streams_connections = attributes[:'ddos_action_limit_streams_connections']
+      end
+
+      if attributes.key?(:'ddos_action_limit_streams_requests')
+        self.ddos_action_limit_streams_requests = attributes[:'ddos_action_limit_streams_requests']
+      end
+
+      if attributes.key?(:'ddos_action_tarpit_accept')
+        self.ddos_action_tarpit_accept = attributes[:'ddos_action_tarpit_accept']
+      end
+
+      if attributes.key?(:'ddos_action_tarpit')
+        self.ddos_action_tarpit = attributes[:'ddos_action_tarpit']
+      end
+
+      if attributes.key?(:'ddos_action_close')
+        self.ddos_action_close = attributes[:'ddos_action_close']
+      end
+
+      if attributes.key?(:'ddos_action_blackhole')
+        self.ddos_action_blackhole = attributes[:'ddos_action_blackhole']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -2180,7 +2234,13 @@ module Fastly
           fanout_bereq_body_bytes == o.fanout_bereq_body_bytes &&
           fanout_beresp_header_bytes == o.fanout_beresp_header_bytes &&
           fanout_beresp_body_bytes == o.fanout_beresp_body_bytes &&
-          fanout_conn_time_ms == o.fanout_conn_time_ms
+          fanout_conn_time_ms == o.fanout_conn_time_ms &&
+          ddos_action_limit_streams_connections == o.ddos_action_limit_streams_connections &&
+          ddos_action_limit_streams_requests == o.ddos_action_limit_streams_requests &&
+          ddos_action_tarpit_accept == o.ddos_action_tarpit_accept &&
+          ddos_action_tarpit == o.ddos_action_tarpit &&
+          ddos_action_close == o.ddos_action_close &&
+          ddos_action_blackhole == o.ddos_action_blackhole
     end
 
     # @see the `==` method
@@ -2192,7 +2252,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [requests, logging, log, resp_header_bytes, header_size, resp_body_bytes, body_size, hits, miss, pass, synth, errors, hits_time, miss_time, miss_histogram, compute_requests, compute_execution_time_ms, compute_ram_used, compute_request_time_ms, shield, ipv6, imgopto, imgopto_shield, imgopto_transforms, otfp, otfp_shield, otfp_manifests, video, pci, http2, http3, restarts, req_header_bytes, req_body_bytes, bereq_header_bytes, bereq_body_bytes, waf_blocked, waf_logged, waf_passed, attack_req_header_bytes, attack_req_body_bytes, attack_resp_synth_bytes, attack_logged_req_header_bytes, attack_logged_req_body_bytes, attack_blocked_req_header_bytes, attack_blocked_req_body_bytes, attack_passed_req_header_bytes, attack_passed_req_body_bytes, shield_resp_header_bytes, shield_resp_body_bytes, otfp_resp_header_bytes, otfp_resp_body_bytes, otfp_shield_resp_header_bytes, otfp_shield_resp_body_bytes, otfp_shield_time, otfp_deliver_time, imgopto_resp_header_bytes, imgopto_resp_body_bytes, imgopto_shield_resp_header_bytes, imgopto_shield_resp_body_bytes, status_1xx, status_2xx, status_3xx, status_4xx, status_5xx, status_200, status_204, status_206, status_301, status_302, status_304, status_400, status_401, status_403, status_404, status_406, status_416, status_429, status_500, status_501, status_502, status_503, status_504, status_505, uncacheable, pass_time, tls, tls_v10, tls_v11, tls_v12, tls_v13, object_size_1k, object_size_10k, object_size_100k, object_size_1m, object_size_10m, object_size_100m, object_size_1g, object_size_other, recv_sub_time, recv_sub_count, hash_sub_time, hash_sub_count, miss_sub_time, miss_sub_count, fetch_sub_time, fetch_sub_count, pass_sub_time, pass_sub_count, pipe_sub_time, pipe_sub_count, deliver_sub_time, deliver_sub_count, error_sub_time, error_sub_count, hit_sub_time, hit_sub_count, prehash_sub_time, prehash_sub_count, predeliver_sub_time, predeliver_sub_count, hit_resp_body_bytes, miss_resp_body_bytes, pass_resp_body_bytes, compute_req_header_bytes, compute_req_body_bytes, compute_resp_header_bytes, compute_resp_body_bytes, imgvideo, imgvideo_frames, imgvideo_resp_header_bytes, imgvideo_resp_body_bytes, imgvideo_shield, imgvideo_shield_frames, imgvideo_shield_resp_header_bytes, imgvideo_shield_resp_body_bytes, log_bytes, edge_requests, edge_resp_header_bytes, edge_resp_body_bytes, origin_revalidations, origin_fetches, origin_fetch_header_bytes, origin_fetch_body_bytes, origin_fetch_resp_header_bytes, origin_fetch_resp_body_bytes, shield_revalidations, shield_fetches, shield_fetch_header_bytes, shield_fetch_body_bytes, shield_fetch_resp_header_bytes, shield_fetch_resp_body_bytes, segblock_origin_fetches, segblock_shield_fetches, compute_resp_status_1xx, compute_resp_status_2xx, compute_resp_status_3xx, compute_resp_status_4xx, compute_resp_status_5xx, edge_hit_requests, edge_miss_requests, compute_bereq_header_bytes, compute_bereq_body_bytes, compute_beresp_header_bytes, compute_beresp_body_bytes, origin_cache_fetches, shield_cache_fetches, compute_bereqs, compute_bereq_errors, compute_resource_limit_exceeded, compute_heap_limit_exceeded, compute_stack_limit_exceeded, compute_globals_limit_exceeded, compute_guest_errors, compute_runtime_errors, edge_hit_resp_body_bytes, edge_hit_resp_header_bytes, edge_miss_resp_body_bytes, edge_miss_resp_header_bytes, origin_cache_fetch_resp_body_bytes, origin_cache_fetch_resp_header_bytes, shield_hit_requests, shield_miss_requests, shield_hit_resp_header_bytes, shield_hit_resp_body_bytes, shield_miss_resp_header_bytes, shield_miss_resp_body_bytes, websocket_req_header_bytes, websocket_req_body_bytes, websocket_resp_header_bytes, websocket_bereq_header_bytes, websocket_bereq_body_bytes, websocket_beresp_header_bytes, websocket_beresp_body_bytes, websocket_conn_time_ms, websocket_resp_body_bytes, fanout_recv_publishes, fanout_send_publishes, object_store_class_a_operations, object_store_class_b_operations, object_store_read_requests, object_store_write_requests, fanout_req_header_bytes, fanout_req_body_bytes, fanout_resp_header_bytes, fanout_resp_body_bytes, fanout_bereq_header_bytes, fanout_bereq_body_bytes, fanout_beresp_header_bytes, fanout_beresp_body_bytes, fanout_conn_time_ms].hash
+      [requests, logging, log, resp_header_bytes, header_size, resp_body_bytes, body_size, hits, miss, pass, synth, errors, hits_time, miss_time, miss_histogram, compute_requests, compute_execution_time_ms, compute_ram_used, compute_request_time_ms, shield, ipv6, imgopto, imgopto_shield, imgopto_transforms, otfp, otfp_shield, otfp_manifests, video, pci, http2, http3, restarts, req_header_bytes, req_body_bytes, bereq_header_bytes, bereq_body_bytes, waf_blocked, waf_logged, waf_passed, attack_req_header_bytes, attack_req_body_bytes, attack_resp_synth_bytes, attack_logged_req_header_bytes, attack_logged_req_body_bytes, attack_blocked_req_header_bytes, attack_blocked_req_body_bytes, attack_passed_req_header_bytes, attack_passed_req_body_bytes, shield_resp_header_bytes, shield_resp_body_bytes, otfp_resp_header_bytes, otfp_resp_body_bytes, otfp_shield_resp_header_bytes, otfp_shield_resp_body_bytes, otfp_shield_time, otfp_deliver_time, imgopto_resp_header_bytes, imgopto_resp_body_bytes, imgopto_shield_resp_header_bytes, imgopto_shield_resp_body_bytes, status_1xx, status_2xx, status_3xx, status_4xx, status_5xx, status_200, status_204, status_206, status_301, status_302, status_304, status_400, status_401, status_403, status_404, status_406, status_416, status_429, status_500, status_501, status_502, status_503, status_504, status_505, uncacheable, pass_time, tls, tls_v10, tls_v11, tls_v12, tls_v13, object_size_1k, object_size_10k, object_size_100k, object_size_1m, object_size_10m, object_size_100m, object_size_1g, object_size_other, recv_sub_time, recv_sub_count, hash_sub_time, hash_sub_count, miss_sub_time, miss_sub_count, fetch_sub_time, fetch_sub_count, pass_sub_time, pass_sub_count, pipe_sub_time, pipe_sub_count, deliver_sub_time, deliver_sub_count, error_sub_time, error_sub_count, hit_sub_time, hit_sub_count, prehash_sub_time, prehash_sub_count, predeliver_sub_time, predeliver_sub_count, hit_resp_body_bytes, miss_resp_body_bytes, pass_resp_body_bytes, compute_req_header_bytes, compute_req_body_bytes, compute_resp_header_bytes, compute_resp_body_bytes, imgvideo, imgvideo_frames, imgvideo_resp_header_bytes, imgvideo_resp_body_bytes, imgvideo_shield, imgvideo_shield_frames, imgvideo_shield_resp_header_bytes, imgvideo_shield_resp_body_bytes, log_bytes, edge_requests, edge_resp_header_bytes, edge_resp_body_bytes, origin_revalidations, origin_fetches, origin_fetch_header_bytes, origin_fetch_body_bytes, origin_fetch_resp_header_bytes, origin_fetch_resp_body_bytes, shield_revalidations, shield_fetches, shield_fetch_header_bytes, shield_fetch_body_bytes, shield_fetch_resp_header_bytes, shield_fetch_resp_body_bytes, segblock_origin_fetches, segblock_shield_fetches, compute_resp_status_1xx, compute_resp_status_2xx, compute_resp_status_3xx, compute_resp_status_4xx, compute_resp_status_5xx, edge_hit_requests, edge_miss_requests, compute_bereq_header_bytes, compute_bereq_body_bytes, compute_beresp_header_bytes, compute_beresp_body_bytes, origin_cache_fetches, shield_cache_fetches, compute_bereqs, compute_bereq_errors, compute_resource_limit_exceeded, compute_heap_limit_exceeded, compute_stack_limit_exceeded, compute_globals_limit_exceeded, compute_guest_errors, compute_runtime_errors, edge_hit_resp_body_bytes, edge_hit_resp_header_bytes, edge_miss_resp_body_bytes, edge_miss_resp_header_bytes, origin_cache_fetch_resp_body_bytes, origin_cache_fetch_resp_header_bytes, shield_hit_requests, shield_miss_requests, shield_hit_resp_header_bytes, shield_hit_resp_body_bytes, shield_miss_resp_header_bytes, shield_miss_resp_body_bytes, websocket_req_header_bytes, websocket_req_body_bytes, websocket_resp_header_bytes, websocket_bereq_header_bytes, websocket_bereq_body_bytes, websocket_beresp_header_bytes, websocket_beresp_body_bytes, websocket_conn_time_ms, websocket_resp_body_bytes, fanout_recv_publishes, fanout_send_publishes, object_store_class_a_operations, object_store_class_b_operations, object_store_read_requests, object_store_write_requests, fanout_req_header_bytes, fanout_req_body_bytes, fanout_resp_header_bytes, fanout_resp_body_bytes, fanout_bereq_header_bytes, fanout_bereq_body_bytes, fanout_beresp_header_bytes, fanout_beresp_body_bytes, fanout_conn_time_ms, ddos_action_limit_streams_connections, ddos_action_limit_streams_requests, ddos_action_tarpit_accept, ddos_action_tarpit, ddos_action_close, ddos_action_blackhole].hash
     end
 
     # Builds the object from hash

@@ -1,5 +1,17 @@
 # Changelog
 
+## [v4.3.0](https://github.com/fastly/fastly-ruby/releases/tag/v4.3.0) (2023-04-03)
+
+**Bug fixes:**
+
+- fix(purge): avoid CGI escape URL parameter
+
+**Enhancements:**
+
+- feat(domain-ownership): list API endpoint
+- feat(object-store): items API endpoints
+- feat(realtime): additional DDoS properties
+
 ## [v4.2.0](https://github.com/fastly/fastly-ruby/releases/tag/v4.2.0) (2023-03-21)
 
 [Full Changelog](https://github.com/fastly/fastly-ruby/compare/v4.1.0...v4.2.0)

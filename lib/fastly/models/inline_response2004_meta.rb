@@ -12,14 +12,16 @@ require 'date'
 require 'time'
 
 module Fastly
-  class InlineResponse2002
-    # Time-stamp (GMT) when the domain_ownership validation will expire.
-    attr_accessor :expires_at
+  class InlineResponse2004Meta
+    attr_accessor :next_cursor
+
+    attr_accessor :limit
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'expires_at' => :'expires_at'
+        :'next_cursor' => :'next_cursor',
+        :'limit' => :'limit'
       }
     end
 
@@ -31,7 +33,8 @@ module Fastly
     # Attribute type mapping.
     def self.fastly_types
       {
-        :'expires_at' => :'String'
+        :'next_cursor' => :'String',
+        :'limit' => :'Integer'
       }
     end
 
@@ -45,19 +48,23 @@ module Fastly
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Fastly::InlineResponse2002` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Fastly::InlineResponse2004Meta` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `Fastly::InlineResponse2002`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `Fastly::InlineResponse2004Meta`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'expires_at')
-        self.expires_at = attributes[:'expires_at']
+      if attributes.key?(:'next_cursor')
+        self.next_cursor = attributes[:'next_cursor']
+      end
+
+      if attributes.key?(:'limit')
+        self.limit = attributes[:'limit']
       end
     end
 
@@ -79,7 +86,8 @@ module Fastly
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          expires_at == o.expires_at
+          next_cursor == o.next_cursor &&
+          limit == o.limit
     end
 
     # @see the `==` method
@@ -91,7 +99,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [expires_at].hash
+      [next_cursor, limit].hash
     end
 
     # Builds the object from hash

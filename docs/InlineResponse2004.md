@@ -1,11 +1,11 @@
-# Fastly::InlineResponse2002Meta
+# Fastly::InlineResponse2004
 
 ## Properties
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **next_cursor** | **String** | Cursor for the next page. | [optional] |
-| **limit** | **Integer** | Entries returned. | [optional] |
+| **data** | **Array&lt;String&gt;** |  | [optional] |
+| **meta** | [**InlineResponse2004Meta**](InlineResponse2004Meta.md) |  | [optional] |
 
 [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
 

@@ -129,7 +129,7 @@ end
 ## `get_stores()`
 
 ```ruby
-get_stores(opts): <InlineResponse2002> # List object stores.
+get_stores(opts): <InlineResponse2003> # List object stores.
 ```
 
 Get all stores for a given customer.
@@ -161,7 +161,7 @@ end
 
 ### Return type
 
-[**InlineResponse2002**](InlineResponse2002.md)
+[**InlineResponse2003**](InlineResponse2003.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)

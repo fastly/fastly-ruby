@@ -208,7 +208,7 @@ module Fastly
     # Get all stores for a given customer.
     # @option opts [String] :cursor 
     # @option opts [Integer] :limit  (default to 100)
-    # @return [InlineResponse2002]
+    # @return [InlineResponse2003]
     def get_stores(opts = {})
       data, _status_code, _headers = get_stores_with_http_info(opts)
       data
@@ -218,7 +218,7 @@ module Fastly
     # Get all stores for a given customer.
     # @option opts [String] :cursor 
     # @option opts [Integer] :limit  (default to 100)
-    # @return [Array<(InlineResponse2002, Integer, Hash)>] InlineResponse2002 data, response status code and response headers
+    # @return [Array<(InlineResponse2003, Integer, Hash)>] InlineResponse2003 data, response status code and response headers
     def get_stores_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ObjectStoreApi.get_stores ...'
@@ -244,7 +244,7 @@ module Fastly
       post_body = opts[:debug_body]
 
       # return_type
-      return_type = opts[:debug_return_type] || 'InlineResponse2002'
+      return_type = opts[:debug_return_type] || 'InlineResponse2003'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['token']

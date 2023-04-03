@@ -1,10 +1,11 @@
-# Fastly::InlineResponse2002
+# Fastly::InlineResponse2003Meta
 
 ## Properties
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **expires_at** | **String** | Time-stamp (GMT) when the domain_ownership validation will expire. | [optional][readonly] |
+| **next_cursor** | **String** | Cursor for the next page. | [optional] |
+| **limit** | **Integer** | Entries returned. | [optional] |
 
 [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
 
