@@ -1,6 +1,6 @@
 # Changelog
 
-## [v4.3.0](https://github.com/fastly/fastly-ruby/releases/tag/v4.3.0) (2023-04-03)
+## [v4.3.0](https://github.com/fastly/fastly-ruby/releases/tag/release/v4.3.0) (2023-04-03)
 
 **Bug fixes:**
 
@@ -12,22 +12,20 @@
 - feat(object-store): items API endpoints
 - feat(realtime): additional DDoS properties
 
-## [v4.2.0](https://github.com/fastly/fastly-ruby/releases/tag/v4.2.0) (2023-03-21)
+## [v4.2.0](https://github.com/fastly/fastly-ruby/releases/tag/release/v4.2.0) (2023-03-21)
 
-[Full Changelog](https://github.com/fastly/fastly-ruby/compare/v4.1.0...v4.2.0)
-
-## Bug fixes
+**Bug fixes:**
 
 - fix(purge): switch authentication type to 'token'
 
-## Enhancements
+**Enhancements:**
 
 - feat(events): implement 'filter_created_at' property
 - feat(mutual-authentication): implement 'include' property
 - feat(object-store): implement new Object Store API endpoints
 - feat(settings): implement Service Settings 'update' endpoint
 
-## Documentation
+**Documentation:**
 
 - docs(backend): keepalive_time
 - docs(pop): region, shield, latitude, longitude
