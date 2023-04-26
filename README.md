@@ -6,19 +6,13 @@ A Ruby client library for interacting with most facets of the [Fastly API](https
 > The previous 3.x version is no longer supported, but can be found at https://github.com/fastly/fastly-ruby/tree/v3.x.
 
 
-> ⚠️ This client library (`4.3.0`)  is an early-access release. Features may change without notice. Use at your own risk.
-
-**We strongly recommend that you do not install alpha and beta releases on live production services.** No official support is provided for such releases. Please try out the library in a test environment, see what breaks without worrying about consequences, and give us [feedback](#issues).
-
-Read about the [Fastly Product Lifecycle](https://docs.fastly.com/products/fastly-product-lifecycle).
-
 
 ## Installation
 
 To install via RubyGems, add the following to your project's `Gemfile`:
 
 ```ruby
-gem 'fastly', '~> 4.3.0'
+gem 'fastly', '~> 4.4.0'
 ```
 
 Then run `bundle install`.
@@ -416,7 +410,6 @@ Class | Method | Description
 [*Fastly::TlsConfigurationsApi*](docs/TlsConfigurationsApi.md) | [**get_tls_config**](docs/TlsConfigurationsApi.md#get_tls_config) | Get a TLS configuration
 [*Fastly::TlsConfigurationsApi*](docs/TlsConfigurationsApi.md) | [**list_tls_configs**](docs/TlsConfigurationsApi.md#list_tls_configs) | List TLS configurations
 [*Fastly::TlsConfigurationsApi*](docs/TlsConfigurationsApi.md) | [**update_tls_config**](docs/TlsConfigurationsApi.md#update_tls_config) | Update a TLS configuration
-[*Fastly::TlsCsrsApi*](docs/TlsCsrsApi.md) | [**create_csr**](docs/TlsCsrsApi.md#create_csr) | Create CSR
 [*Fastly::TlsDomainsApi*](docs/TlsDomainsApi.md) | [**list_tls_domains**](docs/TlsDomainsApi.md#list_tls_domains) | List TLS domains
 [*Fastly::TlsPrivateKeysApi*](docs/TlsPrivateKeysApi.md) | [**create_tls_key**](docs/TlsPrivateKeysApi.md#create_tls_key) | Create a TLS private key
 [*Fastly::TlsPrivateKeysApi*](docs/TlsPrivateKeysApi.md) | [**delete_tls_key**](docs/TlsPrivateKeysApi.md#delete_tls_key) | Delete a TLS private key

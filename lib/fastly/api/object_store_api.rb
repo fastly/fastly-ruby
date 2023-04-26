@@ -19,6 +19,7 @@ module Fastly
     end
     # Create an object store.
     # Create a new object store.
+    # @option opts [String] :location 
     # @option opts [Store] :store 
     # @return [StoreResponse]
     def create_store(opts = {})
@@ -28,6 +29,7 @@ module Fastly
 
     # Create an object store.
     # Create a new object store.
+    # @option opts [String] :location 
     # @option opts [Store] :store 
     # @return [Array<(StoreResponse, Integer, Hash)>] StoreResponse data, response status code and response headers
     def create_store_with_http_info(opts = {})
@@ -40,6 +42,7 @@ module Fastly
 
       # query parameters
       query_params = opts[:query_params] || {}
+      query_params[:'location'] = opts[:'location'] if !opts[:'location'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}
@@ -83,6 +86,7 @@ module Fastly
     # Delete an object store.
     # An object store must be empty before it can be deleted.  Deleting an object store that still contains keys will result in a `409` (Conflict).
     # @option opts [String] :store_id  (required)
+    # @option opts [Boolean] :force 
     # @return [nil]
     def delete_store(opts = {})
       delete_store_with_http_info(opts)
@@ -92,6 +96,7 @@ module Fastly
     # Delete an object store.
     # An object store must be empty before it can be deleted.  Deleting an object store that still contains keys will result in a &#x60;409&#x60; (Conflict).
     # @option opts [String] :store_id  (required)
+    # @option opts [Boolean] :force 
     # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def delete_store_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -111,6 +116,7 @@ module Fastly
 
       # header parameters
       header_params = opts[:header_params] || {}
+      header_params[:'force'] = opts[:'force'] if !opts[:'force'].nil?
 
       # form parameters
       form_params = opts[:form_params] || {}

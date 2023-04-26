@@ -31,6 +31,7 @@ api_instance = Fastly::ObjectStoreItemApi.new
 opts = {
     store_id: 'store_id_example', # String | 
     key_name: 'key_name_example', # String | 
+    force: true, # Boolean | 
 }
 
 begin
@@ -47,6 +48,7 @@ end
 | ---- | ---- | ----------- | ----- |
 | **store_id** | **String** |  |  |
 | **key_name** | **String** |  |  |
+| **force** | **Boolean** |  | [optional] |
 
 ### Return type
 
@@ -70,6 +72,7 @@ opts = {
     store_id: 'store_id_example', # String | 
     cursor: 'cursor_example', # String | 
     limit: 56, # Integer | 
+    prefix: 'prefix_example', # String | 
 }
 
 begin
@@ -88,6 +91,7 @@ end
 | **store_id** | **String** |  |  |
 | **cursor** | **String** |  | [optional] |
 | **limit** | **Integer** |  | [optional][default to 100] |
+| **prefix** | **String** |  | [optional] |
 
 ### Return type
 
@@ -98,7 +102,7 @@ end
 ## `get_value_for_key()`
 
 ```ruby
-get_value_for_key(opts): File # Get the value of an object store item
+get_value_for_key(opts): String # Get the value of an object store item
 ```
 
 Get the value associated with a key.
@@ -130,14 +134,14 @@ end
 
 ### Return type
 
-**File**
+**String**
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)
 ## `set_value_for_key()`
 
 ```ruby
-set_value_for_key(opts): File # Insert an item into an object store
+set_value_for_key(opts): String # Insert an item into an object store
 ```
 
 Set a new value for a new or existing key in an object store.
@@ -149,7 +153,14 @@ api_instance = Fastly::ObjectStoreItemApi.new
 opts = {
     store_id: 'store_id_example', # String | 
     key_name: 'key_name_example', # String | 
-    body: File.new('/path/to/some/file'), # File | 
+    if_generation_match: 56, # Integer | 
+    time_to_live_sec: 56, # Integer | 
+    metadata: 'metadata_example', # String | 
+    add: true, # Boolean | 
+    append: true, # Boolean | 
+    prepend: true, # Boolean | 
+    background_fetch: true, # Boolean | 
+    body: 'BYTE_ARRAY_DATA_HERE', # String | 
 }
 
 begin
@@ -167,11 +178,18 @@ end
 | ---- | ---- | ----------- | ----- |
 | **store_id** | **String** |  |  |
 | **key_name** | **String** |  |  |
-| **body** | **File** |  | [optional] |
+| **if_generation_match** | **Integer** |  | [optional] |
+| **time_to_live_sec** | **Integer** |  | [optional] |
+| **metadata** | **String** |  | [optional] |
+| **add** | **Boolean** |  | [optional] |
+| **append** | **Boolean** |  | [optional] |
+| **prepend** | **Boolean** |  | [optional] |
+| **background_fetch** | **Boolean** |  | [optional] |
+| **body** | **String** |  | [optional] |
 
 ### Return type
 
-**File**
+**String**
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)

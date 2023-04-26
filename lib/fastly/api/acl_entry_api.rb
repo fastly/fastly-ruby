@@ -18,7 +18,7 @@ module Fastly
       @api_client = api_client
     end
     # Update multiple ACL entries
-    # Update multiple ACL entries on the same ACL.
+    # Update multiple ACL entries on the same ACL. For faster updates to your service, group your changes into large batches. The maximum batch size is 1000 entries. [Contact support](https://support.fastly.com/) to discuss raising this limit.
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
     # @option opts [String] :acl_id Alphanumeric string identifying a ACL. (required)
     # @option opts [BulkUpdateAclEntriesRequest] :bulk_update_acl_entries_request 
@@ -29,7 +29,7 @@ module Fastly
     end
 
     # Update multiple ACL entries
-    # Update multiple ACL entries on the same ACL.
+    # Update multiple ACL entries on the same ACL. For faster updates to your service, group your changes into large batches. The maximum batch size is 1000 entries. [Contact support](https://support.fastly.com/) to discuss raising this limit.
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
     # @option opts [String] :acl_id Alphanumeric string identifying a ACL. (required)
     # @option opts [BulkUpdateAclEntriesRequest] :bulk_update_acl_entries_request 

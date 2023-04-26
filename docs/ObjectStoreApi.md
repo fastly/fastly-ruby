@@ -29,6 +29,7 @@ Create a new object store.
 ```ruby
 api_instance = Fastly::ObjectStoreApi.new
 opts = {
+    location: 'location_example', # String | 
     store: Fastly::Store.new, # Store | 
 }
 
@@ -45,6 +46,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
+| **location** | **String** |  | [optional] |
 | **store** | [**Store**](Store.md) |  | [optional] |
 
 ### Return type
@@ -67,6 +69,7 @@ An object store must be empty before it can be deleted.  Deleting an object stor
 api_instance = Fastly::ObjectStoreApi.new
 opts = {
     store_id: 'store_id_example', # String | 
+    force: true, # Boolean | 
 }
 
 begin
@@ -82,6 +85,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **store_id** | **String** |  |  |
+| **force** | **Boolean** |  | [optional] |
 
 ### Return type
 

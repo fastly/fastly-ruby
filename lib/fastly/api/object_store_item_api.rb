@@ -21,6 +21,7 @@ module Fastly
     # Delete an item from an object store
     # @option opts [String] :store_id  (required)
     # @option opts [String] :key_name  (required)
+    # @option opts [Boolean] :force 
     # @return [nil]
     def delete_key_from_store(opts = {})
       delete_key_from_store_with_http_info(opts)
@@ -31,6 +32,7 @@ module Fastly
     # Delete an item from an object store
     # @option opts [String] :store_id  (required)
     # @option opts [String] :key_name  (required)
+    # @option opts [Boolean] :force 
     # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def delete_key_from_store_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -52,6 +54,7 @@ module Fastly
 
       # query parameters
       query_params = opts[:query_params] || {}
+      query_params[:'force'] = opts[:'force'] if !opts[:'force'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}
@@ -90,6 +93,7 @@ module Fastly
     # @option opts [String] :store_id  (required)
     # @option opts [String] :cursor 
     # @option opts [Integer] :limit  (default to 100)
+    # @option opts [String] :prefix 
     # @return [InlineResponse2004]
     def get_keys(opts = {})
       data, _status_code, _headers = get_keys_with_http_info(opts)
@@ -101,6 +105,7 @@ module Fastly
     # @option opts [String] :store_id  (required)
     # @option opts [String] :cursor 
     # @option opts [Integer] :limit  (default to 100)
+    # @option opts [String] :prefix 
     # @return [Array<(InlineResponse2004, Integer, Hash)>] InlineResponse2004 data, response status code and response headers
     def get_keys_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -119,6 +124,7 @@ module Fastly
       query_params = opts[:query_params] || {}
       query_params[:'cursor'] = opts[:'cursor'] if !opts[:'cursor'].nil?
       query_params[:'limit'] = opts[:'limit'] if !opts[:'limit'].nil?
+      query_params[:'prefix'] = opts[:'prefix'] if !opts[:'prefix'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}
@@ -158,7 +164,7 @@ module Fastly
     # Get the value associated with a key.
     # @option opts [String] :store_id  (required)
     # @option opts [String] :key_name  (required)
-    # @return [File]
+    # @return [String]
     def get_value_for_key(opts = {})
       data, _status_code, _headers = get_value_for_key_with_http_info(opts)
       data
@@ -168,7 +174,7 @@ module Fastly
     # Get the value associated with a key.
     # @option opts [String] :store_id  (required)
     # @option opts [String] :key_name  (required)
-    # @return [Array<(File, Integer, Hash)>] File data, response status code and response headers
+    # @return [Array<(String, Integer, Hash)>] String data, response status code and response headers
     def get_value_for_key_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ObjectStoreItemApi.get_value_for_key ...'
@@ -202,7 +208,7 @@ module Fastly
       post_body = opts[:debug_body]
 
       # return_type
-      return_type = opts[:debug_return_type] || 'File'
+      return_type = opts[:debug_return_type] || 'String'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['token']
@@ -228,8 +234,15 @@ module Fastly
     # Set a new value for a new or existing key in an object store.
     # @option opts [String] :store_id  (required)
     # @option opts [String] :key_name  (required)
-    # @option opts [File] :body 
-    # @return [File]
+    # @option opts [Integer] :if_generation_match 
+    # @option opts [Integer] :time_to_live_sec 
+    # @option opts [String] :metadata 
+    # @option opts [Boolean] :add 
+    # @option opts [Boolean] :append 
+    # @option opts [Boolean] :prepend 
+    # @option opts [Boolean] :background_fetch 
+    # @option opts [String] :body 
+    # @return [String]
     def set_value_for_key(opts = {})
       data, _status_code, _headers = set_value_for_key_with_http_info(opts)
       data
@@ -239,8 +252,15 @@ module Fastly
     # Set a new value for a new or existing key in an object store.
     # @option opts [String] :store_id  (required)
     # @option opts [String] :key_name  (required)
-    # @option opts [File] :body 
-    # @return [Array<(File, Integer, Hash)>] File data, response status code and response headers
+    # @option opts [Integer] :if_generation_match 
+    # @option opts [Integer] :time_to_live_sec 
+    # @option opts [String] :metadata 
+    # @option opts [Boolean] :add 
+    # @option opts [Boolean] :append 
+    # @option opts [Boolean] :prepend 
+    # @option opts [Boolean] :background_fetch 
+    # @option opts [String] :body 
+    # @return [Array<(String, Integer, Hash)>] String data, response status code and response headers
     def set_value_for_key_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ObjectStoreItemApi.set_value_for_key ...'
@@ -261,6 +281,10 @@ module Fastly
 
       # query parameters
       query_params = opts[:query_params] || {}
+      query_params[:'add'] = opts[:'add'] if !opts[:'add'].nil?
+      query_params[:'append'] = opts[:'append'] if !opts[:'append'].nil?
+      query_params[:'prepend'] = opts[:'prepend'] if !opts[:'prepend'].nil?
+      query_params[:'background_fetch'] = opts[:'background_fetch'] if !opts[:'background_fetch'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}
@@ -271,6 +295,9 @@ module Fastly
       if !content_type.nil?
           header_params['Content-Type'] = content_type
       end
+      header_params[:'if-generation-match'] = opts[:'if_generation_match'] if !opts[:'if_generation_match'].nil?
+      header_params[:'time_to_live_sec'] = opts[:'time_to_live_sec'] if !opts[:'time_to_live_sec'].nil?
+      header_params[:'metadata'] = opts[:'metadata'] if !opts[:'metadata'].nil?
 
       # form parameters
       form_params = opts[:form_params] || {}
@@ -279,7 +306,7 @@ module Fastly
       post_body = opts[:debug_body] || @api_client.object_to_http_body(opts[:'body'])
 
       # return_type
-      return_type = opts[:debug_return_type] || 'File'
+      return_type = opts[:debug_return_type] || 'String'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['token']

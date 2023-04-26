@@ -20,7 +20,7 @@ api_instance = Fastly::AclEntryApi.new
 bulk_update_acl_entries(opts): <InlineResponse200> # Update multiple ACL entries
 ```
 
-Update multiple ACL entries on the same ACL.
+Update multiple ACL entries on the same ACL. For faster updates to your service, group your changes into large batches. The maximum batch size is 1000 entries. [Contact support](https://support.fastly.com/) to discuss raising this limit.
 
 ### Examples
 
