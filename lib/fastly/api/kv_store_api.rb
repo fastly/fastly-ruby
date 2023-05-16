@@ -11,14 +11,14 @@ Contact: oss@fastly.com
 require 'cgi'
 
 module Fastly
-  class ObjectStoreApi
+  class KvStoreApi
     attr_accessor :api_client
 
     def initialize(api_client = ApiClient.default)
       @api_client = api_client
     end
-    # Create an object store.
-    # Create a new object store.
+    # Create an kv store.
+    # Create a new kv store.
     # @option opts [String] :location 
     # @option opts [Store] :store 
     # @return [StoreResponse]
@@ -27,18 +27,18 @@ module Fastly
       data
     end
 
-    # Create an object store.
-    # Create a new object store.
+    # Create an kv store.
+    # Create a new kv store.
     # @option opts [String] :location 
     # @option opts [Store] :store 
     # @return [Array<(StoreResponse, Integer, Hash)>] StoreResponse data, response status code and response headers
     def create_store_with_http_info(opts = {})
       if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: ObjectStoreApi.create_store ...'
+        @api_client.config.logger.debug 'Calling API: KvStoreApi.create_store ...'
       end
       # unbox the parameters from the hash
       # resource path
-      local_var_path = '/resources/stores/object'
+      local_var_path = '/resources/stores/kv'
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -67,7 +67,7 @@ module Fastly
       auth_names = opts[:debug_auth_names] || ['token']
 
       new_options = opts.merge(
-        :operation => :"ObjectStoreApi.create_store",
+        :operation => :"KvStoreApi.create_store",
         :header_params => header_params,
         :query_params => query_params,
         :form_params => form_params,
@@ -78,13 +78,13 @@ module Fastly
 
       data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
       if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: ObjectStoreApi#create_store\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+        @api_client.config.logger.debug "API called: KvStoreApi#create_store\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
 
-    # Delete an object store.
-    # An object store must be empty before it can be deleted.  Deleting an object store that still contains keys will result in a `409` (Conflict).
+    # Delete an kv store.
+    # An kv store must be empty before it can be deleted.  Deleting an kv store that still contains keys will result in a `409` (Conflict).
     # @option opts [String] :store_id  (required)
     # @option opts [Boolean] :force 
     # @return [nil]
@@ -93,23 +93,23 @@ module Fastly
       nil
     end
 
-    # Delete an object store.
-    # An object store must be empty before it can be deleted.  Deleting an object store that still contains keys will result in a &#x60;409&#x60; (Conflict).
+    # Delete an kv store.
+    # An kv store must be empty before it can be deleted.  Deleting an kv store that still contains keys will result in a &#x60;409&#x60; (Conflict).
     # @option opts [String] :store_id  (required)
     # @option opts [Boolean] :force 
     # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def delete_store_with_http_info(opts = {})
       if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: ObjectStoreApi.delete_store ...'
+        @api_client.config.logger.debug 'Calling API: KvStoreApi.delete_store ...'
       end
       # unbox the parameters from the hash
       store_id = opts[:'store_id']
       # verify the required parameter 'store_id' is set
       if @api_client.config.client_side_validation && store_id.nil?
-        fail ArgumentError, "Missing the required parameter 'store_id' when calling ObjectStoreApi.delete_store"
+        fail ArgumentError, "Missing the required parameter 'store_id' when calling KvStoreApi.delete_store"
       end
       # resource path
-      local_var_path = '/resources/stores/object/{store_id}'.sub('{' + 'store_id' + '}', CGI.escape(store_id.to_s))
+      local_var_path = '/resources/stores/kv/{store_id}'.sub('{' + 'store_id' + '}', CGI.escape(store_id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -131,7 +131,7 @@ module Fastly
       auth_names = opts[:debug_auth_names] || ['token']
 
       new_options = opts.merge(
-        :operation => :"ObjectStoreApi.delete_store",
+        :operation => :"KvStoreApi.delete_store",
         :header_params => header_params,
         :query_params => query_params,
         :form_params => form_params,
@@ -142,13 +142,13 @@ module Fastly
 
       data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
       if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: ObjectStoreApi#delete_store\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+        @api_client.config.logger.debug "API called: KvStoreApi#delete_store\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
 
-    # Describe an object store.
-    # Get an object store by ID.
+    # Describe an kv store.
+    # Get an kv store by ID.
     # @option opts [String] :store_id  (required)
     # @return [StoreResponse]
     def get_store(opts = {})
@@ -156,22 +156,22 @@ module Fastly
       data
     end
 
-    # Describe an object store.
-    # Get an object store by ID.
+    # Describe an kv store.
+    # Get an kv store by ID.
     # @option opts [String] :store_id  (required)
     # @return [Array<(StoreResponse, Integer, Hash)>] StoreResponse data, response status code and response headers
     def get_store_with_http_info(opts = {})
       if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: ObjectStoreApi.get_store ...'
+        @api_client.config.logger.debug 'Calling API: KvStoreApi.get_store ...'
       end
       # unbox the parameters from the hash
       store_id = opts[:'store_id']
       # verify the required parameter 'store_id' is set
       if @api_client.config.client_side_validation && store_id.nil?
-        fail ArgumentError, "Missing the required parameter 'store_id' when calling ObjectStoreApi.get_store"
+        fail ArgumentError, "Missing the required parameter 'store_id' when calling KvStoreApi.get_store"
       end
       # resource path
-      local_var_path = '/resources/stores/object/{store_id}'.sub('{' + 'store_id' + '}', CGI.escape(store_id.to_s))
+      local_var_path = '/resources/stores/kv/{store_id}'.sub('{' + 'store_id' + '}', CGI.escape(store_id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -194,7 +194,7 @@ module Fastly
       auth_names = opts[:debug_auth_names] || ['token']
 
       new_options = opts.merge(
-        :operation => :"ObjectStoreApi.get_store",
+        :operation => :"KvStoreApi.get_store",
         :header_params => header_params,
         :query_params => query_params,
         :form_params => form_params,
@@ -205,12 +205,12 @@ module Fastly
 
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: ObjectStoreApi#get_store\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+        @api_client.config.logger.debug "API called: KvStoreApi#get_store\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
 
-    # List object stores.
+    # List kv stores.
     # Get all stores for a given customer.
     # @option opts [String] :cursor 
     # @option opts [Integer] :limit  (default to 100)
@@ -220,18 +220,18 @@ module Fastly
       data
     end
 
-    # List object stores.
+    # List kv stores.
     # Get all stores for a given customer.
     # @option opts [String] :cursor 
     # @option opts [Integer] :limit  (default to 100)
     # @return [Array<(InlineResponse2003, Integer, Hash)>] InlineResponse2003 data, response status code and response headers
     def get_stores_with_http_info(opts = {})
       if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: ObjectStoreApi.get_stores ...'
+        @api_client.config.logger.debug 'Calling API: KvStoreApi.get_stores ...'
       end
       # unbox the parameters from the hash
       # resource path
-      local_var_path = '/resources/stores/object'
+      local_var_path = '/resources/stores/kv'
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -256,7 +256,7 @@ module Fastly
       auth_names = opts[:debug_auth_names] || ['token']
 
       new_options = opts.merge(
-        :operation => :"ObjectStoreApi.get_stores",
+        :operation => :"KvStoreApi.get_stores",
         :header_params => header_params,
         :query_params => query_params,
         :form_params => form_params,
@@ -267,7 +267,7 @@ module Fastly
 
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: ObjectStoreApi#get_stores\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+        @api_client.config.logger.debug "API called: KvStoreApi#get_stores\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

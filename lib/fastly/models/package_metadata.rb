@@ -32,6 +32,9 @@ module Fastly
     # Hash of the Compute@Edge package.
     attr_accessor :hashsum
 
+    # Hash of the files within the Compute@Edge package.
+    attr_accessor :files_hash
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -40,7 +43,8 @@ module Fastly
         :'authors' => :'authors',
         :'language' => :'language',
         :'size' => :'size',
-        :'hashsum' => :'hashsum'
+        :'hashsum' => :'hashsum',
+        :'files_hash' => :'files_hash'
       }
     end
 
@@ -57,7 +61,8 @@ module Fastly
         :'authors' => :'Array<String>',
         :'language' => :'String',
         :'size' => :'Integer',
-        :'hashsum' => :'String'
+        :'hashsum' => :'String',
+        :'files_hash' => :'String'
       }
     end
 
@@ -107,6 +112,10 @@ module Fastly
       if attributes.key?(:'hashsum')
         self.hashsum = attributes[:'hashsum']
       end
+
+      if attributes.key?(:'files_hash')
+        self.files_hash = attributes[:'files_hash']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -132,7 +141,8 @@ module Fastly
           authors == o.authors &&
           language == o.language &&
           size == o.size &&
-          hashsum == o.hashsum
+          hashsum == o.hashsum &&
+          files_hash == o.files_hash
     end
 
     # @see the `==` method
@@ -144,7 +154,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, description, authors, language, size, hashsum].hash
+      [name, description, authors, language, size, hashsum, files_hash].hash
     end
 
     # Builds the object from hash

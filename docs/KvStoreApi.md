@@ -1,44 +1,44 @@
-# Fastly::ObjectStoreApi
+# Fastly::KvStoreApi
 
 
 ```ruby
 require 'fastly'
-api_instance = Fastly::ObjectStoreApi.new
+api_instance = Fastly::KvStoreApi.new
 ```
 
 ## Methods
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
-| [**create_store**](ObjectStoreApi.md#create_store) | **POST** /resources/stores/object | Create an object store. |
-| [**delete_store**](ObjectStoreApi.md#delete_store) | **DELETE** /resources/stores/object/{store_id} | Delete an object store. |
-| [**get_store**](ObjectStoreApi.md#get_store) | **GET** /resources/stores/object/{store_id} | Describe an object store. |
-| [**get_stores**](ObjectStoreApi.md#get_stores) | **GET** /resources/stores/object | List object stores. |
+| [**create_store**](KvStoreApi.md#create_store) | **POST** /resources/stores/kv | Create an kv store. |
+| [**delete_store**](KvStoreApi.md#delete_store) | **DELETE** /resources/stores/kv/{store_id} | Delete an kv store. |
+| [**get_store**](KvStoreApi.md#get_store) | **GET** /resources/stores/kv/{store_id} | Describe an kv store. |
+| [**get_stores**](KvStoreApi.md#get_stores) | **GET** /resources/stores/kv | List kv stores. |
 
 
 ## `create_store()`
 
 ```ruby
-create_store(opts): <StoreResponse> # Create an object store.
+create_store(opts): <StoreResponse> # Create an kv store.
 ```
 
-Create a new object store.
+Create a new kv store.
 
 ### Examples
 
 ```ruby
-api_instance = Fastly::ObjectStoreApi.new
+api_instance = Fastly::KvStoreApi.new
 opts = {
     location: 'location_example', # String | 
     store: Fastly::Store.new, # Store | 
 }
 
 begin
-  # Create an object store.
+  # Create an kv store.
   result = api_instance.create_store(opts)
   p result
 rescue Fastly::ApiError => e
-  puts "Error when calling ObjectStoreApi->create_store: #{e}"
+  puts "Error when calling KvStoreApi->create_store: #{e}"
 end
 ```
 
@@ -58,25 +58,25 @@ end
 ## `delete_store()`
 
 ```ruby
-delete_store(opts) # Delete an object store.
+delete_store(opts) # Delete an kv store.
 ```
 
-An object store must be empty before it can be deleted.  Deleting an object store that still contains keys will result in a `409` (Conflict).
+An kv store must be empty before it can be deleted.  Deleting an kv store that still contains keys will result in a `409` (Conflict).
 
 ### Examples
 
 ```ruby
-api_instance = Fastly::ObjectStoreApi.new
+api_instance = Fastly::KvStoreApi.new
 opts = {
     store_id: 'store_id_example', # String | 
     force: true, # Boolean | 
 }
 
 begin
-  # Delete an object store.
+  # Delete an kv store.
   api_instance.delete_store(opts)
 rescue Fastly::ApiError => e
-  puts "Error when calling ObjectStoreApi->delete_store: #{e}"
+  puts "Error when calling KvStoreApi->delete_store: #{e}"
 end
 ```
 
@@ -96,25 +96,25 @@ nil (empty response body)
 ## `get_store()`
 
 ```ruby
-get_store(opts): <StoreResponse> # Describe an object store.
+get_store(opts): <StoreResponse> # Describe an kv store.
 ```
 
-Get an object store by ID.
+Get an kv store by ID.
 
 ### Examples
 
 ```ruby
-api_instance = Fastly::ObjectStoreApi.new
+api_instance = Fastly::KvStoreApi.new
 opts = {
     store_id: 'store_id_example', # String | 
 }
 
 begin
-  # Describe an object store.
+  # Describe an kv store.
   result = api_instance.get_store(opts)
   p result
 rescue Fastly::ApiError => e
-  puts "Error when calling ObjectStoreApi->get_store: #{e}"
+  puts "Error when calling KvStoreApi->get_store: #{e}"
 end
 ```
 
@@ -133,7 +133,7 @@ end
 ## `get_stores()`
 
 ```ruby
-get_stores(opts): <InlineResponse2003> # List object stores.
+get_stores(opts): <InlineResponse2003> # List kv stores.
 ```
 
 Get all stores for a given customer.
@@ -141,18 +141,18 @@ Get all stores for a given customer.
 ### Examples
 
 ```ruby
-api_instance = Fastly::ObjectStoreApi.new
+api_instance = Fastly::KvStoreApi.new
 opts = {
     cursor: 'cursor_example', # String | 
     limit: 56, # Integer | 
 }
 
 begin
-  # List object stores.
+  # List kv stores.
   result = api_instance.get_stores(opts)
   p result
 rescue Fastly::ApiError => e
-  puts "Error when calling ObjectStoreApi->get_stores: #{e}"
+  puts "Error when calling KvStoreApi->get_stores: #{e}"
 end
 ```
 

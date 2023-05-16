@@ -140,6 +140,7 @@ List all TLS certificates.
 ```ruby
 api_instance = Fastly::TlsCertificatesApi.new
 opts = {
+    filter_in_use: 'filter_in_use_example', # String | Optional. Limit the returned certificates to those currently using Fastly to terminate TLS (that is, certificates associated with an activation). Permitted values: true, false.
     filter_not_after: 'filter_not_after_example', # String | Limit the returned certificates to those that expire prior to the specified date in UTC. Accepts parameters: lte (e.g., filter[not_after][lte]=2020-05-05). 
     filter_tls_domains_id: 'filter_tls_domains_id_example', # String | Limit the returned certificates to those that include the specific domain.
     include: 'include_example', # String | Include related objects. Optional, comma-separated values. Permitted values: `tls_activations`. 
@@ -161,6 +162,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
+| **filter_in_use** | **String** | Optional. Limit the returned certificates to those currently using Fastly to terminate TLS (that is, certificates associated with an activation). Permitted values: true, false. | [optional] |
 | **filter_not_after** | **String** | Limit the returned certificates to those that expire prior to the specified date in UTC. Accepts parameters: lte (e.g., filter[not_after][lte]&#x3D;2020-05-05).  | [optional] |
 | **filter_tls_domains_id** | **String** | Limit the returned certificates to those that include the specific domain. | [optional] |
 | **include** | **String** | Include related objects. Optional, comma-separated values. Permitted values: `tls_activations`.  | [optional] |

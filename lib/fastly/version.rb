@@ -9,5 +9,5 @@ Contact: oss@fastly.com
 =end
 
 module Fastly
-  VERSION = '4.4.0'
+  VERSION = '5.0.0'
 end

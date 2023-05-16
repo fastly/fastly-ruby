@@ -206,6 +206,7 @@ module Fastly
 
     # List TLS certificates
     # List all TLS certificates.
+    # @option opts [String] :filter_in_use Optional. Limit the returned certificates to those currently using Fastly to terminate TLS (that is, certificates associated with an activation). Permitted values: true, false.
     # @option opts [String] :filter_not_after Limit the returned certificates to those that expire prior to the specified date in UTC. Accepts parameters: lte (e.g., filter[not_after][lte]&#x3D;2020-05-05). 
     # @option opts [String] :filter_tls_domains_id Limit the returned certificates to those that include the specific domain.
     # @option opts [String] :include Include related objects. Optional, comma-separated values. Permitted values: &#x60;tls_activations&#x60;. 
@@ -220,6 +221,7 @@ module Fastly
 
     # List TLS certificates
     # List all TLS certificates.
+    # @option opts [String] :filter_in_use Optional. Limit the returned certificates to those currently using Fastly to terminate TLS (that is, certificates associated with an activation). Permitted values: true, false.
     # @option opts [String] :filter_not_after Limit the returned certificates to those that expire prior to the specified date in UTC. Accepts parameters: lte (e.g., filter[not_after][lte]&#x3D;2020-05-05). 
     # @option opts [String] :filter_tls_domains_id Limit the returned certificates to those that include the specific domain.
     # @option opts [String] :include Include related objects. Optional, comma-separated values. Permitted values: &#x60;tls_activations&#x60;. 
@@ -249,6 +251,7 @@ module Fastly
 
       # query parameters
       query_params = opts[:query_params] || {}
+      query_params[:'filter[in_use]'] = opts[:'filter_in_use'] if !opts[:'filter_in_use'].nil?
       query_params[:'filter[not_after]'] = opts[:'filter_not_after'] if !opts[:'filter_not_after'].nil?
       query_params[:'filter[tls_domains.id]'] = opts[:'filter_tls_domains_id'] if !opts[:'filter_tls_domains_id'].nil?
       query_params[:'include'] = opts[:'include'] if !opts[:'include'].nil?

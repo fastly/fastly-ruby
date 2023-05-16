@@ -12,7 +12,7 @@ A Ruby client library for interacting with most facets of the [Fastly API](https
 To install via RubyGems, add the following to your project's `Gemfile`:
 
 ```ruby
-gem 'fastly', '~> 4.4.0'
+gem 'fastly', '~> 5.0.0'
 ```
 
 Then run `bundle install`.
@@ -116,6 +116,7 @@ Class | Method | Description
 [*Fastly::DictionaryApi*](docs/DictionaryApi.md) | [**list_dictionaries**](docs/DictionaryApi.md#list_dictionaries) | List edge dictionaries
 [*Fastly::DictionaryApi*](docs/DictionaryApi.md) | [**update_dictionary**](docs/DictionaryApi.md#update_dictionary) | Update an edge dictionary
 [*Fastly::DictionaryInfoApi*](docs/DictionaryInfoApi.md) | [**get_dictionary_info**](docs/DictionaryInfoApi.md#get_dictionary_info) | Get edge dictionary metadata
+[*Fastly::DictionaryItemApi*](docs/DictionaryItemApi.md) | [**bulk_update_dictionary_item**](docs/DictionaryItemApi.md#bulk_update_dictionary_item) | Update multiple entries in an edge dictionary
 [*Fastly::DictionaryItemApi*](docs/DictionaryItemApi.md) | [**create_dictionary_item**](docs/DictionaryItemApi.md#create_dictionary_item) | Create an entry in an edge dictionary
 [*Fastly::DictionaryItemApi*](docs/DictionaryItemApi.md) | [**delete_dictionary_item**](docs/DictionaryItemApi.md#delete_dictionary_item) | Delete an item from an edge dictionary
 [*Fastly::DictionaryItemApi*](docs/DictionaryItemApi.md) | [**get_dictionary_item**](docs/DictionaryItemApi.md#get_dictionary_item) | Get an item from an edge dictionary
@@ -188,6 +189,14 @@ Class | Method | Description
 [*Fastly::InvitationsApi*](docs/InvitationsApi.md) | [**create_invitation**](docs/InvitationsApi.md#create_invitation) | Create an invitation
 [*Fastly::InvitationsApi*](docs/InvitationsApi.md) | [**delete_invitation**](docs/InvitationsApi.md#delete_invitation) | Delete an invitation
 [*Fastly::InvitationsApi*](docs/InvitationsApi.md) | [**list_invitations**](docs/InvitationsApi.md#list_invitations) | List invitations
+[*Fastly::KvStoreApi*](docs/KvStoreApi.md) | [**create_store**](docs/KvStoreApi.md#create_store) | Create an kv store.
+[*Fastly::KvStoreApi*](docs/KvStoreApi.md) | [**delete_store**](docs/KvStoreApi.md#delete_store) | Delete an kv store.
+[*Fastly::KvStoreApi*](docs/KvStoreApi.md) | [**get_store**](docs/KvStoreApi.md#get_store) | Describe an kv store.
+[*Fastly::KvStoreApi*](docs/KvStoreApi.md) | [**get_stores**](docs/KvStoreApi.md#get_stores) | List kv stores.
+[*Fastly::KvStoreItemApi*](docs/KvStoreItemApi.md) | [**delete_key_from_store**](docs/KvStoreItemApi.md#delete_key_from_store) | Delete kv store item.
+[*Fastly::KvStoreItemApi*](docs/KvStoreItemApi.md) | [**get_keys**](docs/KvStoreItemApi.md#get_keys) | List kv store keys.
+[*Fastly::KvStoreItemApi*](docs/KvStoreItemApi.md) | [**get_value_for_key**](docs/KvStoreItemApi.md#get_value_for_key) | Get the value of an kv store item
+[*Fastly::KvStoreItemApi*](docs/KvStoreItemApi.md) | [**set_value_for_key**](docs/KvStoreItemApi.md#set_value_for_key) | Insert an item into an kv store
 [*Fastly::LoggingAzureblobApi*](docs/LoggingAzureblobApi.md) | [**create_log_azure**](docs/LoggingAzureblobApi.md#create_log_azure) | Create an Azure Blob Storage log endpoint
 [*Fastly::LoggingAzureblobApi*](docs/LoggingAzureblobApi.md) | [**delete_log_azure**](docs/LoggingAzureblobApi.md#delete_log_azure) | Delete the Azure Blob Storage log endpoint
 [*Fastly::LoggingAzureblobApi*](docs/LoggingAzureblobApi.md) | [**get_log_azure**](docs/LoggingAzureblobApi.md#get_log_azure) | Get an Azure Blob Storage log endpoint
@@ -321,14 +330,6 @@ Class | Method | Description
 [*Fastly::MutualAuthenticationApi*](docs/MutualAuthenticationApi.md) | [**get_mutual_authentication**](docs/MutualAuthenticationApi.md#get_mutual_authentication) | Get a Mutual Authentication
 [*Fastly::MutualAuthenticationApi*](docs/MutualAuthenticationApi.md) | [**list_mutual_authentications**](docs/MutualAuthenticationApi.md#list_mutual_authentications) | List Mutual Authentications
 [*Fastly::MutualAuthenticationApi*](docs/MutualAuthenticationApi.md) | [**patch_mutual_authentication**](docs/MutualAuthenticationApi.md#patch_mutual_authentication) | Update a Mutual Authentication
-[*Fastly::ObjectStoreApi*](docs/ObjectStoreApi.md) | [**create_store**](docs/ObjectStoreApi.md#create_store) | Create an object store.
-[*Fastly::ObjectStoreApi*](docs/ObjectStoreApi.md) | [**delete_store**](docs/ObjectStoreApi.md#delete_store) | Delete an object store.
-[*Fastly::ObjectStoreApi*](docs/ObjectStoreApi.md) | [**get_store**](docs/ObjectStoreApi.md#get_store) | Describe an object store.
-[*Fastly::ObjectStoreApi*](docs/ObjectStoreApi.md) | [**get_stores**](docs/ObjectStoreApi.md#get_stores) | List object stores.
-[*Fastly::ObjectStoreItemApi*](docs/ObjectStoreItemApi.md) | [**delete_key_from_store**](docs/ObjectStoreItemApi.md#delete_key_from_store) | Delete object store item.
-[*Fastly::ObjectStoreItemApi*](docs/ObjectStoreItemApi.md) | [**get_keys**](docs/ObjectStoreItemApi.md#get_keys) | List object store keys.
-[*Fastly::ObjectStoreItemApi*](docs/ObjectStoreItemApi.md) | [**get_value_for_key**](docs/ObjectStoreItemApi.md#get_value_for_key) | Get the value of an object store item
-[*Fastly::ObjectStoreItemApi*](docs/ObjectStoreItemApi.md) | [**set_value_for_key**](docs/ObjectStoreItemApi.md#set_value_for_key) | Insert an item into an object store
 [*Fastly::PackageApi*](docs/PackageApi.md) | [**get_package**](docs/PackageApi.md#get_package) | Get details of the service's Compute@Edge package.
 [*Fastly::PackageApi*](docs/PackageApi.md) | [**put_package**](docs/PackageApi.md#put_package) | Upload a Compute@Edge package.
 [*Fastly::PoolApi*](docs/PoolApi.md) | [**create_server_pool**](docs/PoolApi.md#create_server_pool) | Create a server pool
@@ -506,7 +507,7 @@ The fastly-ruby API client currently does not support the following endpoints:
 - [`/resources/stores/secret/client-key`](https://developer.fastly.com/reference/api/services/resources/secret-store) (POST)
 - [`/resources/stores/secret/signing-key`](https://developer.fastly.com/reference/api/services/resources/secret-store) (GET)
 - [`/resources/stores/secret/{store_id}/secrets/{secret_name}`](https://developer.fastly.com/reference/api/services/resources/secret) (DELETE, GET)
-- [`/resources/stores/secret/{store_id}/secrets`](https://developer.fastly.com/reference/api/services/resources/secret) (GET, POST)
+- [`/resources/stores/secret/{store_id}/secrets`](https://developer.fastly.com/reference/api/services/resources/secret) (GET, PATCH, POST, PUT)
 - [`/resources/stores/secret/{store_id}`](https://developer.fastly.com/reference/api/services/resources/secret-store) (DELETE, GET)
 - [`/resources/stores/secret`](https://developer.fastly.com/reference/api/services/resources/secret-store) (GET, POST)
 - [`/roles/{role_id}/permissions`](https://developer.fastly.com/reference/api/account/roles) (DELETE, POST)
@@ -519,7 +520,6 @@ The fastly-ruby API client currently does not support the following endpoints:
 - [`/service/{service_id}/acl/{acl_id}/entries`](https://developer.fastly.com/reference/api/acls/acl-entry) (GET)
 - [`/service/{service_id}/acl/{acl_id}/entry/{acl_entry_id}`](https://developer.fastly.com/reference/api/acls/acl-entry) (GET, PATCH)
 - [`/service/{service_id}/acl/{acl_id}/entry`](https://developer.fastly.com/reference/api/acls/acl-entry) (POST)
-- [`/service/{service_id}/dictionary/{dictionary_id}/items`](https://developer.fastly.com/reference/api/dictionaries/dictionary-item) (PATCH)
 - [`/service/{service_id}/version/{version_id}/apex-redirects`](https://developer.fastly.com/reference/api/vcl-services/apex-redirect) (POST)
 - [`/service/{service_id}/version/{version_id}/director/{director_name}`](https://developer.fastly.com/reference/api/load-balancing/directors/director) (PUT)
 - [`/service/{service_id}/version/{version_id}/logging/kafka/{logging_kafka_name}`](https://developer.fastly.com/reference/api/logging/kafka) (PUT)

@@ -1,33 +1,33 @@
-# Fastly::ObjectStoreItemApi
+# Fastly::KvStoreItemApi
 
 
 ```ruby
 require 'fastly'
-api_instance = Fastly::ObjectStoreItemApi.new
+api_instance = Fastly::KvStoreItemApi.new
 ```
 
 ## Methods
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
-| [**delete_key_from_store**](ObjectStoreItemApi.md#delete_key_from_store) | **DELETE** /resources/stores/object/{store_id}/keys/{key_name} | Delete object store item. |
-| [**get_keys**](ObjectStoreItemApi.md#get_keys) | **GET** /resources/stores/object/{store_id}/keys | List object store keys. |
-| [**get_value_for_key**](ObjectStoreItemApi.md#get_value_for_key) | **GET** /resources/stores/object/{store_id}/keys/{key_name} | Get the value of an object store item |
-| [**set_value_for_key**](ObjectStoreItemApi.md#set_value_for_key) | **PUT** /resources/stores/object/{store_id}/keys/{key_name} | Insert an item into an object store |
+| [**delete_key_from_store**](KvStoreItemApi.md#delete_key_from_store) | **DELETE** /resources/stores/kv/{store_id}/keys/{key_name} | Delete kv store item. |
+| [**get_keys**](KvStoreItemApi.md#get_keys) | **GET** /resources/stores/kv/{store_id}/keys | List kv store keys. |
+| [**get_value_for_key**](KvStoreItemApi.md#get_value_for_key) | **GET** /resources/stores/kv/{store_id}/keys/{key_name} | Get the value of an kv store item |
+| [**set_value_for_key**](KvStoreItemApi.md#set_value_for_key) | **PUT** /resources/stores/kv/{store_id}/keys/{key_name} | Insert an item into an kv store |
 
 
 ## `delete_key_from_store()`
 
 ```ruby
-delete_key_from_store(opts) # Delete object store item.
+delete_key_from_store(opts) # Delete kv store item.
 ```
 
-Delete an item from an object store
+Delete an item from an kv store
 
 ### Examples
 
 ```ruby
-api_instance = Fastly::ObjectStoreItemApi.new
+api_instance = Fastly::KvStoreItemApi.new
 opts = {
     store_id: 'store_id_example', # String | 
     key_name: 'key_name_example', # String | 
@@ -35,10 +35,10 @@ opts = {
 }
 
 begin
-  # Delete object store item.
+  # Delete kv store item.
   api_instance.delete_key_from_store(opts)
 rescue Fastly::ApiError => e
-  puts "Error when calling ObjectStoreItemApi->delete_key_from_store: #{e}"
+  puts "Error when calling KvStoreItemApi->delete_key_from_store: #{e}"
 end
 ```
 
@@ -59,15 +59,15 @@ nil (empty response body)
 ## `get_keys()`
 
 ```ruby
-get_keys(opts): <InlineResponse2004> # List object store keys.
+get_keys(opts): <InlineResponse2004> # List kv store keys.
 ```
 
-List the keys of all items within an object store.
+List the keys of all items within an kv store.
 
 ### Examples
 
 ```ruby
-api_instance = Fastly::ObjectStoreItemApi.new
+api_instance = Fastly::KvStoreItemApi.new
 opts = {
     store_id: 'store_id_example', # String | 
     cursor: 'cursor_example', # String | 
@@ -76,11 +76,11 @@ opts = {
 }
 
 begin
-  # List object store keys.
+  # List kv store keys.
   result = api_instance.get_keys(opts)
   p result
 rescue Fastly::ApiError => e
-  puts "Error when calling ObjectStoreItemApi->get_keys: #{e}"
+  puts "Error when calling KvStoreItemApi->get_keys: #{e}"
 end
 ```
 
@@ -102,7 +102,7 @@ end
 ## `get_value_for_key()`
 
 ```ruby
-get_value_for_key(opts): String # Get the value of an object store item
+get_value_for_key(opts): String # Get the value of an kv store item
 ```
 
 Get the value associated with a key.
@@ -110,18 +110,18 @@ Get the value associated with a key.
 ### Examples
 
 ```ruby
-api_instance = Fastly::ObjectStoreItemApi.new
+api_instance = Fastly::KvStoreItemApi.new
 opts = {
     store_id: 'store_id_example', # String | 
     key_name: 'key_name_example', # String | 
 }
 
 begin
-  # Get the value of an object store item
+  # Get the value of an kv store item
   result = api_instance.get_value_for_key(opts)
   p result
 rescue Fastly::ApiError => e
-  puts "Error when calling ObjectStoreItemApi->get_value_for_key: #{e}"
+  puts "Error when calling KvStoreItemApi->get_value_for_key: #{e}"
 end
 ```
 
@@ -141,15 +141,15 @@ end
 ## `set_value_for_key()`
 
 ```ruby
-set_value_for_key(opts): String # Insert an item into an object store
+set_value_for_key(opts): String # Insert an item into an kv store
 ```
 
-Set a new value for a new or existing key in an object store.
+Set a new value for a new or existing key in an kv store.
 
 ### Examples
 
 ```ruby
-api_instance = Fastly::ObjectStoreItemApi.new
+api_instance = Fastly::KvStoreItemApi.new
 opts = {
     store_id: 'store_id_example', # String | 
     key_name: 'key_name_example', # String | 
@@ -164,11 +164,11 @@ opts = {
 }
 
 begin
-  # Insert an item into an object store
+  # Insert an item into an kv store
   result = api_instance.set_value_for_key(opts)
   p result
 rescue Fastly::ApiError => e
-  puts "Error when calling ObjectStoreItemApi->set_value_for_key: #{e}"
+  puts "Error when calling KvStoreItemApi->set_value_for_key: #{e}"
 end
 ```
 

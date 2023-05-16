@@ -11,14 +11,14 @@ Contact: oss@fastly.com
 require 'cgi'
 
 module Fastly
-  class ObjectStoreItemApi
+  class KvStoreItemApi
     attr_accessor :api_client
 
     def initialize(api_client = ApiClient.default)
       @api_client = api_client
     end
-    # Delete object store item.
-    # Delete an item from an object store
+    # Delete kv store item.
+    # Delete an item from an kv store
     # @option opts [String] :store_id  (required)
     # @option opts [String] :key_name  (required)
     # @option opts [Boolean] :force 
@@ -28,29 +28,29 @@ module Fastly
       nil
     end
 
-    # Delete object store item.
-    # Delete an item from an object store
+    # Delete kv store item.
+    # Delete an item from an kv store
     # @option opts [String] :store_id  (required)
     # @option opts [String] :key_name  (required)
     # @option opts [Boolean] :force 
     # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def delete_key_from_store_with_http_info(opts = {})
       if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: ObjectStoreItemApi.delete_key_from_store ...'
+        @api_client.config.logger.debug 'Calling API: KvStoreItemApi.delete_key_from_store ...'
       end
       # unbox the parameters from the hash
       store_id = opts[:'store_id']
       key_name = opts[:'key_name']
       # verify the required parameter 'store_id' is set
       if @api_client.config.client_side_validation && store_id.nil?
-        fail ArgumentError, "Missing the required parameter 'store_id' when calling ObjectStoreItemApi.delete_key_from_store"
+        fail ArgumentError, "Missing the required parameter 'store_id' when calling KvStoreItemApi.delete_key_from_store"
       end
       # verify the required parameter 'key_name' is set
       if @api_client.config.client_side_validation && key_name.nil?
-        fail ArgumentError, "Missing the required parameter 'key_name' when calling ObjectStoreItemApi.delete_key_from_store"
+        fail ArgumentError, "Missing the required parameter 'key_name' when calling KvStoreItemApi.delete_key_from_store"
       end
       # resource path
-      local_var_path = '/resources/stores/object/{store_id}/keys/{key_name}'.sub('{' + 'store_id' + '}', CGI.escape(store_id.to_s)).sub('{' + 'key_name' + '}', CGI.escape(key_name.to_s))
+      local_var_path = '/resources/stores/kv/{store_id}/keys/{key_name}'.sub('{' + 'store_id' + '}', CGI.escape(store_id.to_s)).sub('{' + 'key_name' + '}', CGI.escape(key_name.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -72,7 +72,7 @@ module Fastly
       auth_names = opts[:debug_auth_names] || ['token']
 
       new_options = opts.merge(
-        :operation => :"ObjectStoreItemApi.delete_key_from_store",
+        :operation => :"KvStoreItemApi.delete_key_from_store",
         :header_params => header_params,
         :query_params => query_params,
         :form_params => form_params,
@@ -83,13 +83,13 @@ module Fastly
 
       data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
       if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: ObjectStoreItemApi#delete_key_from_store\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+        @api_client.config.logger.debug "API called: KvStoreItemApi#delete_key_from_store\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
 
-    # List object store keys.
-    # List the keys of all items within an object store.
+    # List kv store keys.
+    # List the keys of all items within an kv store.
     # @option opts [String] :store_id  (required)
     # @option opts [String] :cursor 
     # @option opts [Integer] :limit  (default to 100)
@@ -100,8 +100,8 @@ module Fastly
       data
     end
 
-    # List object store keys.
-    # List the keys of all items within an object store.
+    # List kv store keys.
+    # List the keys of all items within an kv store.
     # @option opts [String] :store_id  (required)
     # @option opts [String] :cursor 
     # @option opts [Integer] :limit  (default to 100)
@@ -109,16 +109,16 @@ module Fastly
     # @return [Array<(InlineResponse2004, Integer, Hash)>] InlineResponse2004 data, response status code and response headers
     def get_keys_with_http_info(opts = {})
       if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: ObjectStoreItemApi.get_keys ...'
+        @api_client.config.logger.debug 'Calling API: KvStoreItemApi.get_keys ...'
       end
       # unbox the parameters from the hash
       store_id = opts[:'store_id']
       # verify the required parameter 'store_id' is set
       if @api_client.config.client_side_validation && store_id.nil?
-        fail ArgumentError, "Missing the required parameter 'store_id' when calling ObjectStoreItemApi.get_keys"
+        fail ArgumentError, "Missing the required parameter 'store_id' when calling KvStoreItemApi.get_keys"
       end
       # resource path
-      local_var_path = '/resources/stores/object/{store_id}/keys'.sub('{' + 'store_id' + '}', CGI.escape(store_id.to_s))
+      local_var_path = '/resources/stores/kv/{store_id}/keys'.sub('{' + 'store_id' + '}', CGI.escape(store_id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -144,7 +144,7 @@ module Fastly
       auth_names = opts[:debug_auth_names] || ['token']
 
       new_options = opts.merge(
-        :operation => :"ObjectStoreItemApi.get_keys",
+        :operation => :"KvStoreItemApi.get_keys",
         :header_params => header_params,
         :query_params => query_params,
         :form_params => form_params,
@@ -155,12 +155,12 @@ module Fastly
 
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: ObjectStoreItemApi#get_keys\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+        @api_client.config.logger.debug "API called: KvStoreItemApi#get_keys\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
 
-    # Get the value of an object store item
+    # Get the value of an kv store item
     # Get the value associated with a key.
     # @option opts [String] :store_id  (required)
     # @option opts [String] :key_name  (required)
@@ -170,28 +170,28 @@ module Fastly
       data
     end
 
-    # Get the value of an object store item
+    # Get the value of an kv store item
     # Get the value associated with a key.
     # @option opts [String] :store_id  (required)
     # @option opts [String] :key_name  (required)
     # @return [Array<(String, Integer, Hash)>] String data, response status code and response headers
     def get_value_for_key_with_http_info(opts = {})
       if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: ObjectStoreItemApi.get_value_for_key ...'
+        @api_client.config.logger.debug 'Calling API: KvStoreItemApi.get_value_for_key ...'
       end
       # unbox the parameters from the hash
       store_id = opts[:'store_id']
       key_name = opts[:'key_name']
       # verify the required parameter 'store_id' is set
       if @api_client.config.client_side_validation && store_id.nil?
-        fail ArgumentError, "Missing the required parameter 'store_id' when calling ObjectStoreItemApi.get_value_for_key"
+        fail ArgumentError, "Missing the required parameter 'store_id' when calling KvStoreItemApi.get_value_for_key"
       end
       # verify the required parameter 'key_name' is set
       if @api_client.config.client_side_validation && key_name.nil?
-        fail ArgumentError, "Missing the required parameter 'key_name' when calling ObjectStoreItemApi.get_value_for_key"
+        fail ArgumentError, "Missing the required parameter 'key_name' when calling KvStoreItemApi.get_value_for_key"
       end
       # resource path
-      local_var_path = '/resources/stores/object/{store_id}/keys/{key_name}'.sub('{' + 'store_id' + '}', CGI.escape(store_id.to_s)).sub('{' + 'key_name' + '}', CGI.escape(key_name.to_s))
+      local_var_path = '/resources/stores/kv/{store_id}/keys/{key_name}'.sub('{' + 'store_id' + '}', CGI.escape(store_id.to_s)).sub('{' + 'key_name' + '}', CGI.escape(key_name.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -214,7 +214,7 @@ module Fastly
       auth_names = opts[:debug_auth_names] || ['token']
 
       new_options = opts.merge(
-        :operation => :"ObjectStoreItemApi.get_value_for_key",
+        :operation => :"KvStoreItemApi.get_value_for_key",
         :header_params => header_params,
         :query_params => query_params,
         :form_params => form_params,
@@ -225,13 +225,13 @@ module Fastly
 
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: ObjectStoreItemApi#get_value_for_key\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+        @api_client.config.logger.debug "API called: KvStoreItemApi#get_value_for_key\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
 
-    # Insert an item into an object store
-    # Set a new value for a new or existing key in an object store.
+    # Insert an item into an kv store
+    # Set a new value for a new or existing key in an kv store.
     # @option opts [String] :store_id  (required)
     # @option opts [String] :key_name  (required)
     # @option opts [Integer] :if_generation_match 
@@ -248,8 +248,8 @@ module Fastly
       data
     end
 
-    # Insert an item into an object store
-    # Set a new value for a new or existing key in an object store.
+    # Insert an item into an kv store
+    # Set a new value for a new or existing key in an kv store.
     # @option opts [String] :store_id  (required)
     # @option opts [String] :key_name  (required)
     # @option opts [Integer] :if_generation_match 
@@ -263,21 +263,21 @@ module Fastly
     # @return [Array<(String, Integer, Hash)>] String data, response status code and response headers
     def set_value_for_key_with_http_info(opts = {})
       if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: ObjectStoreItemApi.set_value_for_key ...'
+        @api_client.config.logger.debug 'Calling API: KvStoreItemApi.set_value_for_key ...'
       end
       # unbox the parameters from the hash
       store_id = opts[:'store_id']
       key_name = opts[:'key_name']
       # verify the required parameter 'store_id' is set
       if @api_client.config.client_side_validation && store_id.nil?
-        fail ArgumentError, "Missing the required parameter 'store_id' when calling ObjectStoreItemApi.set_value_for_key"
+        fail ArgumentError, "Missing the required parameter 'store_id' when calling KvStoreItemApi.set_value_for_key"
       end
       # verify the required parameter 'key_name' is set
       if @api_client.config.client_side_validation && key_name.nil?
-        fail ArgumentError, "Missing the required parameter 'key_name' when calling ObjectStoreItemApi.set_value_for_key"
+        fail ArgumentError, "Missing the required parameter 'key_name' when calling KvStoreItemApi.set_value_for_key"
       end
       # resource path
-      local_var_path = '/resources/stores/object/{store_id}/keys/{key_name}'.sub('{' + 'store_id' + '}', CGI.escape(store_id.to_s)).sub('{' + 'key_name' + '}', CGI.escape(key_name.to_s))
+      local_var_path = '/resources/stores/kv/{store_id}/keys/{key_name}'.sub('{' + 'store_id' + '}', CGI.escape(store_id.to_s)).sub('{' + 'key_name' + '}', CGI.escape(key_name.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -312,7 +312,7 @@ module Fastly
       auth_names = opts[:debug_auth_names] || ['token']
 
       new_options = opts.merge(
-        :operation => :"ObjectStoreItemApi.set_value_for_key",
+        :operation => :"KvStoreItemApi.set_value_for_key",
         :header_params => header_params,
         :query_params => query_params,
         :form_params => form_params,
@@ -323,7 +323,7 @@ module Fastly
 
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
       if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: ObjectStoreItemApi#set_value_for_key\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+        @api_client.config.logger.debug "API called: KvStoreItemApi#set_value_for_key\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
