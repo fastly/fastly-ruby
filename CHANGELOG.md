@@ -1,5 +1,11 @@
 # Changelog
 
+## [v5.1.0](https://github.com/fastly/fastly-ruby/releases/tag/release/v5.1.0) (2023-05-17)
+
+**Enhancements:**
+
+- feat(config_store): add Config Store endpoints.
+
 ## [v5.0.0](https://github.com/fastly/fastly-ruby/releases/tag/release/v5.0.0) (2023-05-16)
 
 **Breaking changes:**

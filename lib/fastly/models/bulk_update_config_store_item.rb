@@ -12,7 +12,7 @@ require 'date'
 require 'time'
 
 module Fastly
-  class BulkUpdateDictionaryItem
+  class BulkUpdateConfigStoreItem
     # Item key, maximum 256 characters.
     attr_accessor :item_key
 
@@ -76,7 +76,7 @@ module Fastly
     def self.fastly_all_of
       [
       :'BulkUpdateConfigStoreItemAllOf',
-      :'DictionaryItem'
+      :'ConfigStoreItem'
       ]
     end
 
@@ -84,13 +84,13 @@ module Fastly
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Fastly::BulkUpdateDictionaryItem` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Fastly::BulkUpdateConfigStoreItem` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `Fastly::BulkUpdateDictionaryItem`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `Fastly::BulkUpdateConfigStoreItem`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }

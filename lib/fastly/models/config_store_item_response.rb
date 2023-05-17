@@ -12,43 +12,33 @@ require 'date'
 require 'time'
 
 module Fastly
-  class BulkUpdateDictionaryItem
+  class ConfigStoreItemResponse
     # Item key, maximum 256 characters.
     attr_accessor :item_key
 
     # Item value, maximum 8000 characters.
     attr_accessor :item_value
 
-    attr_accessor :op
+    # Date and time in ISO 8601 format.
+    attr_accessor :created_at
 
-    class EnumAttributeValidator
-      attr_reader :datatype
-      attr_reader :allowable_values
+    # Date and time in ISO 8601 format.
+    attr_accessor :deleted_at
 
-      def initialize(datatype, allowable_values)
-        @allowable_values = allowable_values.map do |value|
-          case datatype.to_s
-          when /Integer/i
-            value.to_i
-          when /Float/i
-            value.to_f
-          else
-            value
-          end
-        end
-      end
+    # Date and time in ISO 8601 format.
+    attr_accessor :updated_at
 
-      def valid?(value)
-        !value || allowable_values.include?(value)
-      end
-    end
+    attr_accessor :store_id
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'item_key' => :'item_key',
         :'item_value' => :'item_value',
-        :'op' => :'op'
+        :'created_at' => :'created_at',
+        :'deleted_at' => :'deleted_at',
+        :'updated_at' => :'updated_at',
+        :'store_id' => :'store_id'
       }
     end
 
@@ -62,21 +52,28 @@ module Fastly
       {
         :'item_key' => :'String',
         :'item_value' => :'String',
-        :'op' => :'String'
+        :'created_at' => :'Time',
+        :'deleted_at' => :'Time',
+        :'updated_at' => :'Time',
+        :'store_id' => :'String'
       }
     end
 
     # List of attributes with nullable: true
     def self.fastly_nullable
       Set.new([
+        :'created_at',
+        :'deleted_at',
+        :'updated_at',
       ])
     end
 
     # List of class defined in allOf (OpenAPI v3)
     def self.fastly_all_of
       [
-      :'BulkUpdateConfigStoreItemAllOf',
-      :'DictionaryItem'
+      :'ConfigStoreItem',
+      :'ConfigStoreItemResponseAllOf',
+      :'Timestamps'
       ]
     end
 
@@ -84,13 +81,13 @@ module Fastly
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Fastly::BulkUpdateDictionaryItem` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Fastly::ConfigStoreItemResponse` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `Fastly::BulkUpdateDictionaryItem`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `Fastly::ConfigStoreItemResponse`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
@@ -103,8 +100,20 @@ module Fastly
         self.item_value = attributes[:'item_value']
       end
 
-      if attributes.key?(:'op')
-        self.op = attributes[:'op']
+      if attributes.key?(:'created_at')
+        self.created_at = attributes[:'created_at']
+      end
+
+      if attributes.key?(:'deleted_at')
+        self.deleted_at = attributes[:'deleted_at']
+      end
+
+      if attributes.key?(:'updated_at')
+        self.updated_at = attributes[:'updated_at']
+      end
+
+      if attributes.key?(:'store_id')
+        self.store_id = attributes[:'store_id']
       end
     end
 
@@ -118,19 +127,7 @@ module Fastly
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      op_validator = EnumAttributeValidator.new('String', ["create", "update", "delete", "upsert"])
-      return false unless op_validator.valid?(@op)
       true
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] op Object to be assigned
-    def op=(op)
-      validator = EnumAttributeValidator.new('String', ["create", "update", "delete", "upsert"])
-      unless validator.valid?(op)
-        fail ArgumentError, "invalid value for \"op\", must be one of #{validator.allowable_values}."
-      end
-      @op = op
     end
 
     # Checks equality by comparing each attribute.
@@ -140,7 +137,10 @@ module Fastly
       self.class == o.class &&
           item_key == o.item_key &&
           item_value == o.item_value &&
-          op == o.op
+          created_at == o.created_at &&
+          deleted_at == o.deleted_at &&
+          updated_at == o.updated_at &&
+          store_id == o.store_id
     end
 
     # @see the `==` method
@@ -152,7 +152,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [item_key, item_value, op].hash
+      [item_key, item_value, created_at, deleted_at, updated_at, store_id].hash
     end
 
     # Builds the object from hash

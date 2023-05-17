@@ -12,7 +12,7 @@ A Ruby client library for interacting with most facets of the [Fastly API](https
 To install via RubyGems, add the following to your project's `Gemfile`:
 
 ```ruby
-gem 'fastly', '~> 5.0.0'
+gem 'fastly', '~> 5.1.0'
 ```
 
 Then run `bundle install`.
@@ -103,6 +103,20 @@ Class | Method | Description
 [*Fastly::ConditionApi*](docs/ConditionApi.md) | [**get_condition**](docs/ConditionApi.md#get_condition) | Describe a condition
 [*Fastly::ConditionApi*](docs/ConditionApi.md) | [**list_conditions**](docs/ConditionApi.md#list_conditions) | List conditions
 [*Fastly::ConditionApi*](docs/ConditionApi.md) | [**update_condition**](docs/ConditionApi.md#update_condition) | Update a condition
+[*Fastly::ConfigStoreApi*](docs/ConfigStoreApi.md) | [**create_config_store**](docs/ConfigStoreApi.md#create_config_store) | Create a config store
+[*Fastly::ConfigStoreApi*](docs/ConfigStoreApi.md) | [**delete_config_store**](docs/ConfigStoreApi.md#delete_config_store) | Delete a config store
+[*Fastly::ConfigStoreApi*](docs/ConfigStoreApi.md) | [**get_config_store**](docs/ConfigStoreApi.md#get_config_store) | Describe a config store
+[*Fastly::ConfigStoreApi*](docs/ConfigStoreApi.md) | [**get_config_store_info**](docs/ConfigStoreApi.md#get_config_store_info) | Get config store metadata
+[*Fastly::ConfigStoreApi*](docs/ConfigStoreApi.md) | [**list_config_store_services**](docs/ConfigStoreApi.md#list_config_store_services) | List linked services
+[*Fastly::ConfigStoreApi*](docs/ConfigStoreApi.md) | [**list_config_stores**](docs/ConfigStoreApi.md#list_config_stores) | List config stores
+[*Fastly::ConfigStoreApi*](docs/ConfigStoreApi.md) | [**update_config_store**](docs/ConfigStoreApi.md#update_config_store) | Update a config store
+[*Fastly::ConfigStoreItemApi*](docs/ConfigStoreItemApi.md) | [**bulk_update_config_store_item**](docs/ConfigStoreItemApi.md#bulk_update_config_store_item) | Update multiple entries in a config store
+[*Fastly::ConfigStoreItemApi*](docs/ConfigStoreItemApi.md) | [**create_config_store_item**](docs/ConfigStoreItemApi.md#create_config_store_item) | Create an entry in a config store
+[*Fastly::ConfigStoreItemApi*](docs/ConfigStoreItemApi.md) | [**delete_config_store_item**](docs/ConfigStoreItemApi.md#delete_config_store_item) | Delete an item from a config store
+[*Fastly::ConfigStoreItemApi*](docs/ConfigStoreItemApi.md) | [**get_config_store_item**](docs/ConfigStoreItemApi.md#get_config_store_item) | Get an item from a config store
+[*Fastly::ConfigStoreItemApi*](docs/ConfigStoreItemApi.md) | [**list_config_store_items**](docs/ConfigStoreItemApi.md#list_config_store_items) | List items in a config store
+[*Fastly::ConfigStoreItemApi*](docs/ConfigStoreItemApi.md) | [**update_config_store_item**](docs/ConfigStoreItemApi.md#update_config_store_item) | Update an entry in a config store
+[*Fastly::ConfigStoreItemApi*](docs/ConfigStoreItemApi.md) | [**upsert_config_store_item**](docs/ConfigStoreItemApi.md#upsert_config_store_item) | Insert or update an entry in a config store
 [*Fastly::ContactApi*](docs/ContactApi.md) | [**delete_contact**](docs/ContactApi.md#delete_contact) | Delete a contact
 [*Fastly::ContactApi*](docs/ContactApi.md) | [**list_contacts**](docs/ContactApi.md#list_contacts) | List contacts
 [*Fastly::CustomerApi*](docs/CustomerApi.md) | [**delete_customer**](docs/CustomerApi.md#delete_customer) | Delete a customer
@@ -497,13 +511,6 @@ The fastly-ruby API client currently does not support the following endpoints:
 - [`/metrics/domains/services/{service_id}`](https://developer.fastly.com/reference/api/metrics-stats/domain-inspector/historical) (GET)
 - [`/metrics/origins/services/{service_id}`](https://developer.fastly.com/reference/api/metrics-stats/origin-inspector/historical) (GET)
 - [`/rate-limiters/{rate_limiter_id}`](https://developer.fastly.com/reference/api/vcl-services/rate-limiter) (PUT)
-- [`/resources/stores/config/{config_store_id}/info`](https://developer.fastly.com/reference/api/services/resources/config-store) (GET)
-- [`/resources/stores/config/{config_store_id}/item/{config_store_item_key}`](https://developer.fastly.com/reference/api/services/resources/config-store-item) (DELETE, GET, PATCH, PUT)
-- [`/resources/stores/config/{config_store_id}/item`](https://developer.fastly.com/reference/api/services/resources/config-store-item) (POST)
-- [`/resources/stores/config/{config_store_id}/items`](https://developer.fastly.com/reference/api/services/resources/config-store-item) (GET, PATCH)
-- [`/resources/stores/config/{config_store_id}/services`](https://developer.fastly.com/reference/api/services/resources/config-store) (GET)
-- [`/resources/stores/config/{config_store_id}`](https://developer.fastly.com/reference/api/services/resources/config-store) (DELETE, GET, PUT)
-- [`/resources/stores/config`](https://developer.fastly.com/reference/api/services/resources/config-store) (GET, POST)
 - [`/resources/stores/secret/client-key`](https://developer.fastly.com/reference/api/services/resources/secret-store) (POST)
 - [`/resources/stores/secret/signing-key`](https://developer.fastly.com/reference/api/services/resources/secret-store) (GET)
 - [`/resources/stores/secret/{store_id}/secrets/{secret_name}`](https://developer.fastly.com/reference/api/services/resources/secret) (DELETE, GET)

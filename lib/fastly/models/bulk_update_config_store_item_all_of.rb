@@ -12,13 +12,7 @@ require 'date'
 require 'time'
 
 module Fastly
-  class BulkUpdateDictionaryItem
-    # Item key, maximum 256 characters.
-    attr_accessor :item_key
-
-    # Item value, maximum 8000 characters.
-    attr_accessor :item_value
-
+  class BulkUpdateConfigStoreItemAllOf
     attr_accessor :op
 
     class EnumAttributeValidator
@@ -46,8 +40,6 @@ module Fastly
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'item_key' => :'item_key',
-        :'item_value' => :'item_value',
         :'op' => :'op'
       }
     end
@@ -60,8 +52,6 @@ module Fastly
     # Attribute type mapping.
     def self.fastly_types
       {
-        :'item_key' => :'String',
-        :'item_value' => :'String',
         :'op' => :'String'
       }
     end
@@ -72,36 +62,20 @@ module Fastly
       ])
     end
 
-    # List of class defined in allOf (OpenAPI v3)
-    def self.fastly_all_of
-      [
-      :'BulkUpdateConfigStoreItemAllOf',
-      :'DictionaryItem'
-      ]
-    end
-
     # Initializes the object
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Fastly::BulkUpdateDictionaryItem` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Fastly::BulkUpdateConfigStoreItemAllOf` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `Fastly::BulkUpdateDictionaryItem`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `Fastly::BulkUpdateConfigStoreItemAllOf`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
-
-      if attributes.key?(:'item_key')
-        self.item_key = attributes[:'item_key']
-      end
-
-      if attributes.key?(:'item_value')
-        self.item_value = attributes[:'item_value']
-      end
 
       if attributes.key?(:'op')
         self.op = attributes[:'op']
@@ -138,8 +112,6 @@ module Fastly
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          item_key == o.item_key &&
-          item_value == o.item_value &&
           op == o.op
     end
 
@@ -152,7 +124,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [item_key, item_value, op].hash
+      [op].hash
     end
 
     # Builds the object from hash
