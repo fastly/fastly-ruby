@@ -13,11 +13,18 @@ require 'time'
 
 module Fastly
   class AclResponseAllOf
+    attr_accessor :service_id
+
+    # String representing the number identifying a version of the service.
+    attr_accessor :version
+
     attr_accessor :id
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'service_id' => :'service_id',
+        :'version' => :'version',
         :'id' => :'id'
       }
     end
@@ -30,6 +37,8 @@ module Fastly
     # Attribute type mapping.
     def self.fastly_types
       {
+        :'service_id' => :'String',
+        :'version' => :'String',
         :'id' => :'String'
       }
     end
@@ -55,6 +64,14 @@ module Fastly
         h[k.to_sym] = v
       }
 
+      if attributes.key?(:'service_id')
+        self.service_id = attributes[:'service_id']
+      end
+
+      if attributes.key?(:'version')
+        self.version = attributes[:'version']
+      end
+
       if attributes.key?(:'id')
         self.id = attributes[:'id']
       end
@@ -78,6 +95,8 @@ module Fastly
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          service_id == o.service_id &&
+          version == o.version &&
           id == o.id
     end
 
@@ -90,7 +109,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id].hash
+      [service_id, version, id].hash
     end
 
     # Builds the object from hash

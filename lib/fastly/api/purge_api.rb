@@ -255,7 +255,7 @@ module Fastly
         fail ArgumentError, "Missing the required parameter 'surrogate_key' when calling PurgeApi.purge_tag"
       end
       # resource path
-      local_var_path = '/service/{service_id}/purge/{surrogate_key}'.sub('{' + 'service_id' + '}', CGI.escape(service_id.to_s)).sub('{' + 'surrogate_key' + '}', CGI.escape(surrogate_key.to_s))
+      local_var_path = '/service/{service_id}/purge/{surrogate_key}'.sub('{' + 'service_id' + '}', CGI.escape(service_id.to_s)).sub('{' + 'surrogate_key' + '}', surrogate_key.to_s)
 
       # query parameters
       query_params = opts[:query_params] || {}

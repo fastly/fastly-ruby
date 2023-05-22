@@ -73,7 +73,7 @@ module Fastly
         :'dynamic' => :'Integer',
         :'type' => :'String',
         :'content' => :'String',
-        :'priority' => :'Integer'
+        :'priority' => :'String'
       }
     end
 
@@ -117,7 +117,7 @@ module Fastly
       if attributes.key?(:'priority')
         self.priority = attributes[:'priority']
       else
-        self.priority = 100
+        self.priority = '100'
       end
     end
 

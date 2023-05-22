@@ -27,6 +27,7 @@ module Fastly
 
     attr_accessor :service_id
 
+    # String representing the number identifying a version of the service.
     attr_accessor :version
 
     attr_accessor :id
@@ -57,7 +58,7 @@ module Fastly
         :'deleted_at' => :'Time',
         :'updated_at' => :'Time',
         :'service_id' => :'String',
-        :'version' => :'Integer',
+        :'version' => :'String',
         :'id' => :'String'
       }
     end
@@ -76,7 +77,6 @@ module Fastly
       [
       :'Acl',
       :'AclResponseAllOf',
-      :'ServiceIdAndVersion',
       :'Timestamps'
       ]
     end

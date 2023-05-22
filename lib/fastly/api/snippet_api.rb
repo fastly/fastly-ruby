@@ -25,7 +25,7 @@ module Fastly
     # @option opts [Integer] :dynamic Sets the snippet version.
     # @option opts [String] :type The location in generated VCL where the snippet should be placed.
     # @option opts [String] :content The VCL code that specifies exactly what the snippet does.
-    # @option opts [Integer] :priority Priority determines execution order. Lower numbers execute first. (default to 100)
+    # @option opts [String] :priority Priority determines execution order. Lower numbers execute first. (default to '100')
     # @return [SnippetResponse]
     def create_snippet(opts = {})
       data, _status_code, _headers = create_snippet_with_http_info(opts)
@@ -40,7 +40,7 @@ module Fastly
     # @option opts [Integer] :dynamic Sets the snippet version.
     # @option opts [String] :type The location in generated VCL where the snippet should be placed.
     # @option opts [String] :content The VCL code that specifies exactly what the snippet does.
-    # @option opts [Integer] :priority Priority determines execution order. Lower numbers execute first. (default to 100)
+    # @option opts [String] :priority Priority determines execution order. Lower numbers execute first. (default to '100')
     # @return [Array<(SnippetResponse, Integer, Hash)>] SnippetResponse data, response status code and response headers
     def create_snippet_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -417,7 +417,7 @@ module Fastly
     # @option opts [Integer] :dynamic Sets the snippet version.
     # @option opts [String] :type The location in generated VCL where the snippet should be placed.
     # @option opts [String] :content The VCL code that specifies exactly what the snippet does.
-    # @option opts [Integer] :priority Priority determines execution order. Lower numbers execute first. (default to 100)
+    # @option opts [String] :priority Priority determines execution order. Lower numbers execute first. (default to '100')
     # @return [SnippetResponse]
     def update_snippet_dynamic(opts = {})
       data, _status_code, _headers = update_snippet_dynamic_with_http_info(opts)
@@ -432,7 +432,7 @@ module Fastly
     # @option opts [Integer] :dynamic Sets the snippet version.
     # @option opts [String] :type The location in generated VCL where the snippet should be placed.
     # @option opts [String] :content The VCL code that specifies exactly what the snippet does.
-    # @option opts [Integer] :priority Priority determines execution order. Lower numbers execute first. (default to 100)
+    # @option opts [String] :priority Priority determines execution order. Lower numbers execute first. (default to '100')
     # @return [Array<(SnippetResponse, Integer, Hash)>] SnippetResponse data, response status code and response headers
     def update_snippet_dynamic_with_http_info(opts = {})
       if @api_client.config.debugging

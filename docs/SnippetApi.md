@@ -37,7 +37,7 @@ opts = {
     dynamic: 0, # Integer | Sets the snippet version.
     type: 'init', # String | The location in generated VCL where the snippet should be placed.
     content: 'content_example', # String | The VCL code that specifies exactly what the snippet does.
-    priority: 56, # Integer | Priority determines execution order. Lower numbers execute first.
+    priority: 'priority_example', # String | Priority determines execution order. Lower numbers execute first.
 }
 
 begin
@@ -59,7 +59,7 @@ end
 | **dynamic** | **Integer** | Sets the snippet version. | [optional] |
 | **type** | **String** | The location in generated VCL where the snippet should be placed. | [optional] |
 | **content** | **String** | The VCL code that specifies exactly what the snippet does. | [optional] |
-| **priority** | **Integer** | Priority determines execution order. Lower numbers execute first. | [optional][default to 100] |
+| **priority** | **String** | Priority determines execution order. Lower numbers execute first. | [optional][default to &#39;100&#39;] |
 
 ### Return type
 
@@ -246,7 +246,7 @@ opts = {
     dynamic: 0, # Integer | Sets the snippet version.
     type: 'init', # String | The location in generated VCL where the snippet should be placed.
     content: 'content_example', # String | The VCL code that specifies exactly what the snippet does.
-    priority: 56, # Integer | Priority determines execution order. Lower numbers execute first.
+    priority: 'priority_example', # String | Priority determines execution order. Lower numbers execute first.
 }
 
 begin
@@ -268,7 +268,7 @@ end
 | **dynamic** | **Integer** | Sets the snippet version. | [optional] |
 | **type** | **String** | The location in generated VCL where the snippet should be placed. | [optional] |
 | **content** | **String** | The VCL code that specifies exactly what the snippet does. | [optional] |
-| **priority** | **Integer** | Priority determines execution order. Lower numbers execute first. | [optional][default to 100] |
+| **priority** | **String** | Priority determines execution order. Lower numbers execute first. | [optional][default to &#39;100&#39;] |
 
 ### Return type
 

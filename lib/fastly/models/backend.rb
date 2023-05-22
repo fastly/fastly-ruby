@@ -196,6 +196,7 @@ module Fastly
         :'shield',
         :'ssl_ca_cert',
         :'ssl_cert_hostname',
+        :'ssl_check_cert',
         :'ssl_ciphers',
         :'ssl_client_cert',
         :'ssl_client_key',

@@ -28,10 +28,6 @@ module Fastly
     # Priority determines execution order. Lower numbers execute first.
     attr_accessor :priority
 
-    attr_accessor :service_id
-
-    attr_accessor :version
-
     # Date and time in ISO 8601 format.
     attr_accessor :created_at
 
@@ -40,6 +36,11 @@ module Fastly
 
     # Date and time in ISO 8601 format.
     attr_accessor :updated_at
+
+    attr_accessor :service_id
+
+    # String representing the number identifying a version of the service.
+    attr_accessor :version
 
     attr_accessor :id
 
@@ -73,11 +74,11 @@ module Fastly
         :'type' => :'type',
         :'content' => :'content',
         :'priority' => :'priority',
-        :'service_id' => :'service_id',
-        :'version' => :'version',
         :'created_at' => :'created_at',
         :'deleted_at' => :'deleted_at',
         :'updated_at' => :'updated_at',
+        :'service_id' => :'service_id',
+        :'version' => :'version',
         :'id' => :'id'
       }
     end
@@ -94,12 +95,12 @@ module Fastly
         :'dynamic' => :'Integer',
         :'type' => :'String',
         :'content' => :'String',
-        :'priority' => :'Integer',
-        :'service_id' => :'String',
-        :'version' => :'Integer',
+        :'priority' => :'String',
         :'created_at' => :'Time',
         :'deleted_at' => :'Time',
         :'updated_at' => :'Time',
+        :'service_id' => :'String',
+        :'version' => :'String',
         :'id' => :'String'
       }
     end
@@ -116,7 +117,6 @@ module Fastly
     # List of class defined in allOf (OpenAPI v3)
     def self.fastly_all_of
       [
-      :'ServiceIdAndVersion',
       :'Snippet',
       :'SnippetResponseAllOf',
       :'Timestamps'
@@ -157,15 +157,7 @@ module Fastly
       if attributes.key?(:'priority')
         self.priority = attributes[:'priority']
       else
-        self.priority = 100
-      end
-
-      if attributes.key?(:'service_id')
-        self.service_id = attributes[:'service_id']
-      end
-
-      if attributes.key?(:'version')
-        self.version = attributes[:'version']
+        self.priority = '100'
       end
 
       if attributes.key?(:'created_at')
@@ -178,6 +170,14 @@ module Fastly
 
       if attributes.key?(:'updated_at')
         self.updated_at = attributes[:'updated_at']
+      end
+
+      if attributes.key?(:'service_id')
+        self.service_id = attributes[:'service_id']
+      end
+
+      if attributes.key?(:'version')
+        self.version = attributes[:'version']
       end
 
       if attributes.key?(:'id')
@@ -232,11 +232,11 @@ module Fastly
           type == o.type &&
           content == o.content &&
           priority == o.priority &&
-          service_id == o.service_id &&
-          version == o.version &&
           created_at == o.created_at &&
           deleted_at == o.deleted_at &&
           updated_at == o.updated_at &&
+          service_id == o.service_id &&
+          version == o.version &&
           id == o.id
     end
 
@@ -249,7 +249,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, dynamic, type, content, priority, service_id, version, created_at, deleted_at, updated_at, id].hash
+      [name, dynamic, type, content, priority, created_at, deleted_at, updated_at, service_id, version, id].hash
     end
 
     # Builds the object from hash
