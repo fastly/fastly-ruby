@@ -2,11 +2,6 @@
 
 A Ruby client library for interacting with most facets of the [Fastly API](https://developer.fastly.com/reference/api).
 
-> NOTE: This 4.x release is a new [generated API client](https://dev.to/fastly/better-fastly-api-clients-with-openapi-generator-3lno) for the Fastly API.
-> The previous 3.x version is no longer supported, but can be found at https://github.com/fastly/fastly-ruby/tree/v3.x.
-
-
-
 ## Installation
 
 To install via RubyGems, add the following to your project's `Gemfile`:
