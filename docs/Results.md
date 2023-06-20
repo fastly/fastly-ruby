@@ -154,6 +154,7 @@
 | **segblock_shield_fetches** | **Integer** | Number of `Range` requests to a shield for segments of resources when using segmented caching. | [optional] |
 | **compute_requests** | **Integer** | The total number of requests that were received for your service by Fastly. | [optional] |
 | **compute_request_time_ms** | **Float** | The total, actual amount of time used to process your requests, including active CPU time (in milliseconds). | [optional] |
+| **compute_request_time_billed_ms** | **Float** | The total amount of request processing time you will be billed for, measured in 50 millisecond increments. | [optional] |
 | **compute_ram_used** | **Integer** | The amount of RAM used for your service by Fastly (in bytes). | [optional] |
 | **compute_execution_time_ms** | **Float** | The amount of active CPU time used to process your requests (in milliseconds). | [optional] |
 | **compute_req_header_bytes** | **Integer** | Total header bytes received by Compute@Edge. | [optional] |
@@ -200,10 +201,10 @@
 | **websocket_conn_time_ms** | **Integer** | Total duration of passthrough WebSocket connections with end users. | [optional] |
 | **fanout_recv_publishes** | **Integer** | Total published messages received from the publish API endpoint. | [optional] |
 | **fanout_send_publishes** | **Integer** | Total published messages sent to end users. | [optional] |
-| **object_store_class_a_operations** | **Integer** | The total number of class a operations for the object store. | [optional] |
-| **object_store_class_b_operations** | **Integer** | The total number of class b operations for the object store. | [optional] |
-| **object_store_read_requests** | **Integer** | Use object_store_class_b_operations. | [optional] |
-| **object_store_write_requests** | **Integer** | Use object_store_class_a_operations. | [optional] |
+| **kv_store_class_a_operations** | **Integer** | The total number of class a operations for the KV store. | [optional] |
+| **kv_store_class_b_operations** | **Integer** | The total number of class b operations for the KV store. | [optional] |
+| **object_store_class_a_operations** | **Integer** | Use kv_store_class_a_operations. | [optional] |
+| **object_store_class_b_operations** | **Integer** | Use kv_store_class_b_operations. | [optional] |
 | **fanout_req_header_bytes** | **Integer** | Total header bytes received from end users over Fanout connections. | [optional] |
 | **fanout_req_body_bytes** | **Integer** | Total body or message content bytes received from end users over Fanout connections. | [optional] |
 | **fanout_resp_header_bytes** | **Integer** | Total header bytes sent to end users over Fanout connections. | [optional] |

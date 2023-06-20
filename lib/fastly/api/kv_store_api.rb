@@ -86,7 +86,6 @@ module Fastly
     # Delete an kv store.
     # An kv store must be empty before it can be deleted.  Deleting an kv store that still contains keys will result in a `409` (Conflict).
     # @option opts [String] :store_id  (required)
-    # @option opts [Boolean] :force 
     # @return [nil]
     def delete_store(opts = {})
       delete_store_with_http_info(opts)
@@ -96,7 +95,6 @@ module Fastly
     # Delete an kv store.
     # An kv store must be empty before it can be deleted.  Deleting an kv store that still contains keys will result in a &#x60;409&#x60; (Conflict).
     # @option opts [String] :store_id  (required)
-    # @option opts [Boolean] :force 
     # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def delete_store_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -116,7 +114,6 @@ module Fastly
 
       # header parameters
       header_params = opts[:header_params] || {}
-      header_params[:'force'] = opts[:'force'] if !opts[:'force'].nil?
 
       # form parameters
       form_params = opts[:form_params] || {}

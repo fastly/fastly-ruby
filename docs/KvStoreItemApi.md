@@ -31,7 +31,6 @@ api_instance = Fastly::KvStoreItemApi.new
 opts = {
     store_id: 'store_id_example', # String | 
     key_name: 'key_name_example', # String | 
-    force: true, # Boolean | 
 }
 
 begin
@@ -48,7 +47,6 @@ end
 | ---- | ---- | ----------- | ----- |
 | **store_id** | **String** |  |  |
 | **key_name** | **String** |  |  |
-| **force** | **Boolean** |  | [optional] |
 
 ### Return type
 

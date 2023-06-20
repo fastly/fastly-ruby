@@ -21,7 +21,6 @@ module Fastly
     # Delete an item from an kv store
     # @option opts [String] :store_id  (required)
     # @option opts [String] :key_name  (required)
-    # @option opts [Boolean] :force 
     # @return [nil]
     def delete_key_from_store(opts = {})
       delete_key_from_store_with_http_info(opts)
@@ -32,7 +31,6 @@ module Fastly
     # Delete an item from an kv store
     # @option opts [String] :store_id  (required)
     # @option opts [String] :key_name  (required)
-    # @option opts [Boolean] :force 
     # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def delete_key_from_store_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -54,7 +52,6 @@ module Fastly
 
       # query parameters
       query_params = opts[:query_params] || {}
-      query_params[:'force'] = opts[:'force'] if !opts[:'force'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}

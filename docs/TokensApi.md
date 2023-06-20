@@ -10,6 +10,7 @@ api_instance = Fastly::TokensApi.new
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
+| [**get_token**](TokensApi.md#get_token) | **GET** /tokens/{token_id} | Get a token |
 | [**get_token_current**](TokensApi.md#get_token_current) | **GET** /tokens/self | Get the current token |
 | [**list_tokens_customer**](TokensApi.md#list_tokens_customer) | **GET** /customer/{customer_id}/tokens | List tokens for a customer |
 | [**list_tokens_user**](TokensApi.md#list_tokens_user) | **GET** /tokens | List tokens for the authenticated user |
@@ -17,6 +18,43 @@ api_instance = Fastly::TokensApi.new
 | [**revoke_token_current**](TokensApi.md#revoke_token_current) | **DELETE** /tokens/self | Revoke the current token |
 
 
+## `get_token()`
+
+```ruby
+get_token(opts): <TokenResponse> # Get a token
+```
+
+Get a single token by its id.
+
+### Examples
+
+```ruby
+api_instance = Fastly::TokensApi.new
+opts = {
+    token_id: 'token_id_example', # String | Alphanumeric string identifying a token.
+}
+
+begin
+  # Get a token
+  result = api_instance.get_token(opts)
+  p result
+rescue Fastly::ApiError => e
+  puts "Error when calling TokensApi->get_token: #{e}"
+end
+```
+
+### Options
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **token_id** | **String** | Alphanumeric string identifying a token. |  |
+
+### Return type
+
+[**TokenResponse**](TokenResponse.md)
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
 ## `get_token_current()`
 
 ```ruby

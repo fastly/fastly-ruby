@@ -2,17 +2,13 @@
 
 A Ruby client library for interacting with most facets of the [Fastly API](https://developer.fastly.com/reference/api).
 
-> NOTE: This 4.x release is a new [generated API client](https://dev.to/fastly/better-fastly-api-clients-with-openapi-generator-3lno) for the Fastly API.
-> The previous 3.x version is no longer supported, but can be found at https://github.com/fastly/fastly-ruby/tree/v3.x.
-
-
 
 ## Installation
 
 To install via RubyGems, add the following to your project's `Gemfile`:
 
 ```ruby
-gem 'fastly', '~> 5.1.1'
+gem 'fastly', '~> 5.2.0'
 ```
 
 Then run `bundle install`.
@@ -437,6 +433,7 @@ Class | Method | Description
 [*Fastly::TlsSubscriptionsApi*](docs/TlsSubscriptionsApi.md) | [**get_tls_sub**](docs/TlsSubscriptionsApi.md#get_tls_sub) | Get a TLS subscription
 [*Fastly::TlsSubscriptionsApi*](docs/TlsSubscriptionsApi.md) | [**list_tls_subs**](docs/TlsSubscriptionsApi.md#list_tls_subs) | List TLS subscriptions
 [*Fastly::TlsSubscriptionsApi*](docs/TlsSubscriptionsApi.md) | [**patch_tls_sub**](docs/TlsSubscriptionsApi.md#patch_tls_sub) | Update a TLS subscription
+[*Fastly::TokensApi*](docs/TokensApi.md) | [**get_token**](docs/TokensApi.md#get_token) | Get a token
 [*Fastly::TokensApi*](docs/TokensApi.md) | [**get_token_current**](docs/TokensApi.md#get_token_current) | Get the current token
 [*Fastly::TokensApi*](docs/TokensApi.md) | [**list_tokens_customer**](docs/TokensApi.md#list_tokens_customer) | List tokens for a customer
 [*Fastly::TokensApi*](docs/TokensApi.md) | [**list_tokens_user**](docs/TokensApi.md#list_tokens_user) | List tokens for the authenticated user

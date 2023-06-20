@@ -44,7 +44,7 @@ module Fastly
         :'status' => :'String',
         :'meta' => :'HistoricalMeta',
         :'msg' => :'String',
-        :'data' => :'Array<Hash<String, String>>'
+        :'data' => :'Array<HistoricalFieldResultsAttributes>'
       }
     end
 

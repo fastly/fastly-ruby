@@ -12,8 +12,7 @@ require 'date'
 require 'time'
 
 module Fastly
-  # The [results](#results-data-model) of the query, grouped by service (and optionally, region), and aggregated over the appropriate time span.
-  class Results
+  class HistoricalFieldResultsAttributes
     # Number of requests processed.
     attr_accessor :requests
 
@@ -662,6 +661,10 @@ module Fastly
     # The number of times the blackhole action was taken. The blackhole action quietly closes a TCP connection without sending a reset. The blackhole action quietly closes a TCP connection without notifying its peer (all TCP state is dropped).
     attr_accessor :ddos_action_blackhole
 
+    attr_accessor :service_id
+
+    attr_accessor :start_time
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -880,7 +883,9 @@ module Fastly
         :'ddos_action_tarpit_accept' => :'ddos_action_tarpit_accept',
         :'ddos_action_tarpit' => :'ddos_action_tarpit',
         :'ddos_action_close' => :'ddos_action_close',
-        :'ddos_action_blackhole' => :'ddos_action_blackhole'
+        :'ddos_action_blackhole' => :'ddos_action_blackhole',
+        :'service_id' => :'service_id',
+        :'start_time' => :'start_time'
       }
     end
 
@@ -1107,7 +1112,9 @@ module Fastly
         :'ddos_action_tarpit_accept' => :'Integer',
         :'ddos_action_tarpit' => :'Integer',
         :'ddos_action_close' => :'Integer',
-        :'ddos_action_blackhole' => :'Integer'
+        :'ddos_action_blackhole' => :'Integer',
+        :'service_id' => :'String',
+        :'start_time' => :'Integer'
       }
     end
 
@@ -1115,20 +1122,29 @@ module Fastly
     def self.fastly_nullable
       Set.new([
         :'hit_ratio',
+        :'service_id',
       ])
+    end
+
+    # List of class defined in allOf (OpenAPI v3)
+    def self.fastly_all_of
+      [
+      :'HistoricalFieldResultsAttributesAllOf',
+      :'Results'
+      ]
     end
 
     # Initializes the object
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Fastly::Results` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Fastly::HistoricalFieldResultsAttributes` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `Fastly::Results`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `Fastly::HistoricalFieldResultsAttributes`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
@@ -1996,6 +2012,14 @@ module Fastly
       if attributes.key?(:'ddos_action_blackhole')
         self.ddos_action_blackhole = attributes[:'ddos_action_blackhole']
       end
+
+      if attributes.key?(:'service_id')
+        self.service_id = attributes[:'service_id']
+      end
+
+      if attributes.key?(:'start_time')
+        self.start_time = attributes[:'start_time']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -2231,7 +2255,9 @@ module Fastly
           ddos_action_tarpit_accept == o.ddos_action_tarpit_accept &&
           ddos_action_tarpit == o.ddos_action_tarpit &&
           ddos_action_close == o.ddos_action_close &&
-          ddos_action_blackhole == o.ddos_action_blackhole
+          ddos_action_blackhole == o.ddos_action_blackhole &&
+          service_id == o.service_id &&
+          start_time == o.start_time
     end
 
     # @see the `==` method
@@ -2243,7 +2269,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [requests, hits, hits_time, miss, miss_time, pass, pass_time, errors, restarts, hit_ratio, bandwidth, body_size, header_size, req_body_bytes, req_header_bytes, resp_body_bytes, resp_header_bytes, bereq_body_bytes, bereq_header_bytes, uncacheable, pipe, synth, tls, tls_v10, tls_v11, tls_v12, tls_v13, edge_requests, edge_resp_header_bytes, edge_resp_body_bytes, edge_hit_requests, edge_miss_requests, origin_fetches, origin_fetch_header_bytes, origin_fetch_body_bytes, origin_fetch_resp_header_bytes, origin_fetch_resp_body_bytes, origin_revalidations, origin_cache_fetches, shield, shield_resp_body_bytes, shield_resp_header_bytes, shield_fetches, shield_fetch_header_bytes, shield_fetch_body_bytes, shield_fetch_resp_header_bytes, shield_fetch_resp_body_bytes, shield_revalidations, shield_cache_fetches, ipv6, otfp, otfp_resp_body_bytes, otfp_resp_header_bytes, otfp_shield_resp_body_bytes, otfp_shield_resp_header_bytes, otfp_manifests, otfp_deliver_time, otfp_shield_time, video, pci, log, log_bytes, http2, http3, waf_logged, waf_blocked, waf_passed, attack_req_body_bytes, attack_req_header_bytes, attack_logged_req_body_bytes, attack_logged_req_header_bytes, attack_blocked_req_body_bytes, attack_blocked_req_header_bytes, attack_passed_req_body_bytes, attack_passed_req_header_bytes, attack_resp_synth_bytes, imgopto, imgopto_resp_body_bytes, imgopto_resp_header_bytes, imgopto_shield_resp_body_bytes, imgopto_shield_resp_header_bytes, imgvideo, imgvideo_frames, imgvideo_resp_header_bytes, imgvideo_resp_body_bytes, imgvideo_shield_resp_header_bytes, imgvideo_shield_resp_body_bytes, imgvideo_shield, imgvideo_shield_frames, status_200, status_204, status_206, status_301, status_302, status_304, status_400, status_401, status_403, status_404, status_406, status_416, status_429, status_500, status_501, status_502, status_503, status_504, status_505, status_1xx, status_2xx, status_3xx, status_4xx, status_5xx, object_size_1k, object_size_10k, object_size_100k, object_size_1m, object_size_10m, object_size_100m, object_size_1g, recv_sub_time, recv_sub_count, hash_sub_time, hash_sub_count, miss_sub_time, miss_sub_count, fetch_sub_time, fetch_sub_count, pass_sub_time, pass_sub_count, pipe_sub_time, pipe_sub_count, deliver_sub_time, deliver_sub_count, error_sub_time, error_sub_count, hit_sub_time, hit_sub_count, prehash_sub_time, prehash_sub_count, predeliver_sub_time, predeliver_sub_count, tls_handshake_sent_bytes, hit_resp_body_bytes, miss_resp_body_bytes, pass_resp_body_bytes, segblock_origin_fetches, segblock_shield_fetches, compute_requests, compute_request_time_ms, compute_request_time_billed_ms, compute_ram_used, compute_execution_time_ms, compute_req_header_bytes, compute_req_body_bytes, compute_resp_header_bytes, compute_resp_body_bytes, compute_resp_status_1xx, compute_resp_status_2xx, compute_resp_status_3xx, compute_resp_status_4xx, compute_resp_status_5xx, compute_bereq_header_bytes, compute_bereq_body_bytes, compute_beresp_header_bytes, compute_beresp_body_bytes, compute_bereqs, compute_bereq_errors, compute_resource_limit_exceeded, compute_heap_limit_exceeded, compute_stack_limit_exceeded, compute_globals_limit_exceeded, compute_guest_errors, compute_runtime_errors, edge_hit_resp_body_bytes, edge_hit_resp_header_bytes, edge_miss_resp_body_bytes, edge_miss_resp_header_bytes, origin_cache_fetch_resp_body_bytes, origin_cache_fetch_resp_header_bytes, shield_hit_requests, shield_miss_requests, shield_hit_resp_header_bytes, shield_hit_resp_body_bytes, shield_miss_resp_header_bytes, shield_miss_resp_body_bytes, websocket_req_header_bytes, websocket_req_body_bytes, websocket_resp_header_bytes, websocket_resp_body_bytes, websocket_bereq_header_bytes, websocket_bereq_body_bytes, websocket_beresp_header_bytes, websocket_beresp_body_bytes, websocket_conn_time_ms, fanout_recv_publishes, fanout_send_publishes, kv_store_class_a_operations, kv_store_class_b_operations, object_store_class_a_operations, object_store_class_b_operations, fanout_req_header_bytes, fanout_req_body_bytes, fanout_resp_header_bytes, fanout_resp_body_bytes, fanout_bereq_header_bytes, fanout_bereq_body_bytes, fanout_beresp_header_bytes, fanout_beresp_body_bytes, fanout_conn_time_ms, ddos_action_limit_streams_connections, ddos_action_limit_streams_requests, ddos_action_tarpit_accept, ddos_action_tarpit, ddos_action_close, ddos_action_blackhole].hash
+      [requests, hits, hits_time, miss, miss_time, pass, pass_time, errors, restarts, hit_ratio, bandwidth, body_size, header_size, req_body_bytes, req_header_bytes, resp_body_bytes, resp_header_bytes, bereq_body_bytes, bereq_header_bytes, uncacheable, pipe, synth, tls, tls_v10, tls_v11, tls_v12, tls_v13, edge_requests, edge_resp_header_bytes, edge_resp_body_bytes, edge_hit_requests, edge_miss_requests, origin_fetches, origin_fetch_header_bytes, origin_fetch_body_bytes, origin_fetch_resp_header_bytes, origin_fetch_resp_body_bytes, origin_revalidations, origin_cache_fetches, shield, shield_resp_body_bytes, shield_resp_header_bytes, shield_fetches, shield_fetch_header_bytes, shield_fetch_body_bytes, shield_fetch_resp_header_bytes, shield_fetch_resp_body_bytes, shield_revalidations, shield_cache_fetches, ipv6, otfp, otfp_resp_body_bytes, otfp_resp_header_bytes, otfp_shield_resp_body_bytes, otfp_shield_resp_header_bytes, otfp_manifests, otfp_deliver_time, otfp_shield_time, video, pci, log, log_bytes, http2, http3, waf_logged, waf_blocked, waf_passed, attack_req_body_bytes, attack_req_header_bytes, attack_logged_req_body_bytes, attack_logged_req_header_bytes, attack_blocked_req_body_bytes, attack_blocked_req_header_bytes, attack_passed_req_body_bytes, attack_passed_req_header_bytes, attack_resp_synth_bytes, imgopto, imgopto_resp_body_bytes, imgopto_resp_header_bytes, imgopto_shield_resp_body_bytes, imgopto_shield_resp_header_bytes, imgvideo, imgvideo_frames, imgvideo_resp_header_bytes, imgvideo_resp_body_bytes, imgvideo_shield_resp_header_bytes, imgvideo_shield_resp_body_bytes, imgvideo_shield, imgvideo_shield_frames, status_200, status_204, status_206, status_301, status_302, status_304, status_400, status_401, status_403, status_404, status_406, status_416, status_429, status_500, status_501, status_502, status_503, status_504, status_505, status_1xx, status_2xx, status_3xx, status_4xx, status_5xx, object_size_1k, object_size_10k, object_size_100k, object_size_1m, object_size_10m, object_size_100m, object_size_1g, recv_sub_time, recv_sub_count, hash_sub_time, hash_sub_count, miss_sub_time, miss_sub_count, fetch_sub_time, fetch_sub_count, pass_sub_time, pass_sub_count, pipe_sub_time, pipe_sub_count, deliver_sub_time, deliver_sub_count, error_sub_time, error_sub_count, hit_sub_time, hit_sub_count, prehash_sub_time, prehash_sub_count, predeliver_sub_time, predeliver_sub_count, tls_handshake_sent_bytes, hit_resp_body_bytes, miss_resp_body_bytes, pass_resp_body_bytes, segblock_origin_fetches, segblock_shield_fetches, compute_requests, compute_request_time_ms, compute_request_time_billed_ms, compute_ram_used, compute_execution_time_ms, compute_req_header_bytes, compute_req_body_bytes, compute_resp_header_bytes, compute_resp_body_bytes, compute_resp_status_1xx, compute_resp_status_2xx, compute_resp_status_3xx, compute_resp_status_4xx, compute_resp_status_5xx, compute_bereq_header_bytes, compute_bereq_body_bytes, compute_beresp_header_bytes, compute_beresp_body_bytes, compute_bereqs, compute_bereq_errors, compute_resource_limit_exceeded, compute_heap_limit_exceeded, compute_stack_limit_exceeded, compute_globals_limit_exceeded, compute_guest_errors, compute_runtime_errors, edge_hit_resp_body_bytes, edge_hit_resp_header_bytes, edge_miss_resp_body_bytes, edge_miss_resp_header_bytes, origin_cache_fetch_resp_body_bytes, origin_cache_fetch_resp_header_bytes, shield_hit_requests, shield_miss_requests, shield_hit_resp_header_bytes, shield_hit_resp_body_bytes, shield_miss_resp_header_bytes, shield_miss_resp_body_bytes, websocket_req_header_bytes, websocket_req_body_bytes, websocket_resp_header_bytes, websocket_resp_body_bytes, websocket_bereq_header_bytes, websocket_bereq_body_bytes, websocket_beresp_header_bytes, websocket_beresp_body_bytes, websocket_conn_time_ms, fanout_recv_publishes, fanout_send_publishes, kv_store_class_a_operations, kv_store_class_b_operations, object_store_class_a_operations, object_store_class_b_operations, fanout_req_header_bytes, fanout_req_body_bytes, fanout_resp_header_bytes, fanout_resp_body_bytes, fanout_bereq_header_bytes, fanout_bereq_body_bytes, fanout_beresp_header_bytes, fanout_beresp_body_bytes, fanout_conn_time_ms, ddos_action_limit_streams_connections, ddos_action_limit_streams_requests, ddos_action_tarpit_accept, ddos_action_tarpit, ddos_action_close, ddos_action_blackhole, service_id, start_time].hash
     end
 
     # Builds the object from hash

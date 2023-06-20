@@ -69,7 +69,6 @@ An kv store must be empty before it can be deleted.  Deleting an kv store that s
 api_instance = Fastly::KvStoreApi.new
 opts = {
     store_id: 'store_id_example', # String | 
-    force: true, # Boolean | 
 }
 
 begin
@@ -85,7 +84,6 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **store_id** | **String** |  |  |
-| **force** | **Boolean** |  | [optional] |
 
 ### Return type
 

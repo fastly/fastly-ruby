@@ -1,10 +1,11 @@
-# Fastly::HistoricalFieldAggregateResponseAllOf
+# Fastly::HistoricalFieldResultsAttributesAllOf
 
 ## Properties
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **data** | [**Array&lt;HistoricalFieldResultsAttributes&gt;**](HistoricalFieldResultsAttributes.md) |  | [optional] |
+| **service_id** | **String** |  | [optional][readonly] |
+| **start_time** | **Integer** |  | [optional] |
 
 [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
 
