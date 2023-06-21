@@ -12,6 +12,7 @@ require 'date'
 require 'time'
 
 module Fastly
+  # The [Mutual Authentication](/reference/api/tls/mutual-tls/authentication/) for client-to-server authentication. Optional.
   class RelationshipMutualAuthentication
     attr_accessor :mutual_authentication
 

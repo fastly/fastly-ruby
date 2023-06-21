@@ -12,6 +12,7 @@ require 'date'
 require 'time'
 
 module Fastly
+  # The [TLS domain](/reference/api/tls/custom-certs/domains/) being enabled for TLS traffic. Required.
   class RelationshipTlsDomain
     attr_accessor :tls_domain
 

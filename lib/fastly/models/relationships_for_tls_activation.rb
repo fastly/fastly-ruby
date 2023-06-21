@@ -15,10 +15,16 @@ module Fastly
   class RelationshipsForTlsActivation
     attr_accessor :tls_certificate
 
+    attr_accessor :tls_configuration
+
+    attr_accessor :tls_domain
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'tls_certificate' => :'tls_certificate'
+        :'tls_certificate' => :'tls_certificate',
+        :'tls_configuration' => :'tls_configuration',
+        :'tls_domain' => :'tls_domain'
       }
     end
 
@@ -30,7 +36,9 @@ module Fastly
     # Attribute type mapping.
     def self.fastly_types
       {
-        :'tls_certificate' => :'RelationshipTlsCertificateTlsCertificate'
+        :'tls_certificate' => :'RelationshipTlsCertificateTlsCertificate',
+        :'tls_configuration' => :'RelationshipTlsConfigurationTlsConfiguration',
+        :'tls_domain' => :'RelationshipTlsDomainTlsDomain'
       }
     end
 
@@ -38,6 +46,15 @@ module Fastly
     def self.fastly_nullable
       Set.new([
       ])
+    end
+
+    # List of class defined in allOf (OpenAPI v3)
+    def self.fastly_all_of
+      [
+      :'RelationshipTlsCertificate',
+      :'RelationshipTlsConfiguration',
+      :'RelationshipTlsDomain'
+      ]
     end
 
     # Initializes the object
@@ -57,6 +74,14 @@ module Fastly
 
       if attributes.key?(:'tls_certificate')
         self.tls_certificate = attributes[:'tls_certificate']
+      end
+
+      if attributes.key?(:'tls_configuration')
+        self.tls_configuration = attributes[:'tls_configuration']
+      end
+
+      if attributes.key?(:'tls_domain')
+        self.tls_domain = attributes[:'tls_domain']
       end
     end
 
@@ -78,7 +103,9 @@ module Fastly
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          tls_certificate == o.tls_certificate
+          tls_certificate == o.tls_certificate &&
+          tls_configuration == o.tls_configuration &&
+          tls_domain == o.tls_domain
     end
 
     # @see the `==` method
@@ -90,7 +117,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [tls_certificate].hash
+      [tls_certificate, tls_configuration, tls_domain].hash
     end
 
     # Builds the object from hash

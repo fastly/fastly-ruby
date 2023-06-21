@@ -12,22 +12,14 @@ require 'date'
 require 'time'
 
 module Fastly
-  class RelationshipsForTlsSubscription
+  # The unique identifier for the set of TLS configuration options that apply to the enabled domains on this subscription. Write-only on create.
+  class RelationshipTlsConfigurationForTlsSubscription
     attr_accessor :tls_configuration
-
-    attr_accessor :common_name
-
-    attr_accessor :tls_domains
-
-    attr_accessor :tls_certificates
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'tls_configuration' => :'tls_configuration',
-        :'common_name' => :'common_name',
-        :'tls_domains' => :'tls_domains',
-        :'tls_certificates' => :'tls_certificates'
+        :'tls_configuration' => :'tls_configuration'
       }
     end
 
@@ -39,10 +31,7 @@ module Fastly
     # Attribute type mapping.
     def self.fastly_types
       {
-        :'tls_configuration' => :'RelationshipTlsConfigurationTlsConfiguration',
-        :'common_name' => :'RelationshipMemberTlsDomain',
-        :'tls_domains' => :'RelationshipTlsDomainsTlsDomains',
-        :'tls_certificates' => :'RelationshipTlsCertificatesTlsCertificates'
+        :'tls_configuration' => :'RelationshipTlsConfigurationTlsConfiguration'
       }
     end
 
@@ -52,45 +41,23 @@ module Fastly
       ])
     end
 
-    # List of class defined in anyOf (OpenAPI v3)
-    def self.fastly_any_of
-      [
-      :'RelationshipCommonName',
-      :'RelationshipTlsCertificates',
-      :'RelationshipTlsConfigurationForTlsSubscription',
-      :'RelationshipTlsDomains'
-      ]
-    end
-
     # Initializes the object
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Fastly::RelationshipsForTlsSubscription` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Fastly::RelationshipTlsConfigurationForTlsSubscription` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `Fastly::RelationshipsForTlsSubscription`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `Fastly::RelationshipTlsConfigurationForTlsSubscription`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
       if attributes.key?(:'tls_configuration')
         self.tls_configuration = attributes[:'tls_configuration']
-      end
-
-      if attributes.key?(:'common_name')
-        self.common_name = attributes[:'common_name']
-      end
-
-      if attributes.key?(:'tls_domains')
-        self.tls_domains = attributes[:'tls_domains']
-      end
-
-      if attributes.key?(:'tls_certificates')
-        self.tls_certificates = attributes[:'tls_certificates']
       end
     end
 
@@ -104,18 +71,6 @@ module Fastly
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      _any_of_found = false
-      self.class.fastly_any_of.each do |_class|
-        _any_of = Fastly.const_get(_class).build_from_hash(self.to_hash)
-        if _any_of.valid?
-          _any_of_found = true
-        end
-      end
-
-      if !_any_of_found
-        return false
-      end
-
       true
     end
 
@@ -124,10 +79,7 @@ module Fastly
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          tls_configuration == o.tls_configuration &&
-          common_name == o.common_name &&
-          tls_domains == o.tls_domains &&
-          tls_certificates == o.tls_certificates
+          tls_configuration == o.tls_configuration
     end
 
     # @see the `==` method
@@ -139,7 +91,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [tls_configuration, common_name, tls_domains, tls_certificates].hash
+      [tls_configuration].hash
     end
 
     # Builds the object from hash

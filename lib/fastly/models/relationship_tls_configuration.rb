@@ -12,6 +12,7 @@ require 'date'
 require 'time'
 
 module Fastly
+  # The [TLS configuration](/reference/api/tls/custom-certs/configuration/) being used to terminate TLS traffic. Optional.
   class RelationshipTlsConfiguration
     attr_accessor :tls_configuration
 
