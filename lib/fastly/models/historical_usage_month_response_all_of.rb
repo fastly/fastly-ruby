@@ -30,7 +30,7 @@ module Fastly
     # Attribute type mapping.
     def self.fastly_types
       {
-        :'data' => :'HistoricalUsageMonthResponseAllOfData'
+        :'data' => :'HistoricalUsageMonthResponseData'
       }
     end
 

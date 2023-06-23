@@ -12,7 +12,7 @@ require 'date'
 require 'time'
 
 module Fastly
-  class HistoricalResponseAllOf
+  class HistoricalResponseDataField
     # Contains the results of the query, organized by *service ID*, into arrays where each element describes one service over a *time span*.
     attr_accessor :data
 
@@ -45,13 +45,13 @@ module Fastly
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Fastly::HistoricalResponseAllOf` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Fastly::HistoricalResponseDataField` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `Fastly::HistoricalResponseAllOf`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `Fastly::HistoricalResponseDataField`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }

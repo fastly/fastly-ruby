@@ -12,24 +12,19 @@ require 'date'
 require 'time'
 
 module Fastly
-  class HistoricalUsageMonthResponse
-    # Whether or not we were able to successfully execute the query.
-    attr_accessor :status
+  class HistoricalUsageMonthResponseData
+    attr_accessor :customer_id
 
-    attr_accessor :meta
+    attr_accessor :services
 
-    # If the query was not successful, this will provide a string that explains why.
-    attr_accessor :msg
-
-    attr_accessor :data
+    attr_accessor :total
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'status' => :'status',
-        :'meta' => :'meta',
-        :'msg' => :'msg',
-        :'data' => :'data'
+        :'customer_id' => :'customer_id',
+        :'services' => :'services',
+        :'total' => :'total'
       }
     end
 
@@ -41,57 +36,45 @@ module Fastly
     # Attribute type mapping.
     def self.fastly_types
       {
-        :'status' => :'String',
-        :'meta' => :'HistoricalMeta',
-        :'msg' => :'String',
-        :'data' => :'HistoricalUsageMonthResponseData'
+        :'customer_id' => :'String',
+        :'services' => :'Hash<String, HistoricalService>',
+        :'total' => :'HistoricalUsageResults'
       }
     end
 
     # List of attributes with nullable: true
     def self.fastly_nullable
       Set.new([
-        :'msg',
       ])
-    end
-
-    # List of class defined in allOf (OpenAPI v3)
-    def self.fastly_all_of
-      [
-      :'Historical',
-      :'HistoricalUsageMonthResponseAllOf'
-      ]
     end
 
     # Initializes the object
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Fastly::HistoricalUsageMonthResponse` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Fastly::HistoricalUsageMonthResponseData` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `Fastly::HistoricalUsageMonthResponse`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `Fastly::HistoricalUsageMonthResponseData`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'status')
-        self.status = attributes[:'status']
+      if attributes.key?(:'customer_id')
+        self.customer_id = attributes[:'customer_id']
       end
 
-      if attributes.key?(:'meta')
-        self.meta = attributes[:'meta']
+      if attributes.key?(:'services')
+        if (value = attributes[:'services']).is_a?(Hash)
+          self.services = value
+        end
       end
 
-      if attributes.key?(:'msg')
-        self.msg = attributes[:'msg']
-      end
-
-      if attributes.key?(:'data')
-        self.data = attributes[:'data']
+      if attributes.key?(:'total')
+        self.total = attributes[:'total']
       end
     end
 
@@ -113,10 +96,9 @@ module Fastly
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          status == o.status &&
-          meta == o.meta &&
-          msg == o.msg &&
-          data == o.data
+          customer_id == o.customer_id &&
+          services == o.services &&
+          total == o.total
     end
 
     # @see the `==` method
@@ -128,7 +110,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [status, meta, msg, data].hash
+      [customer_id, services, total].hash
     end
 
     # Builds the object from hash

@@ -59,7 +59,7 @@ module Fastly
     def self.fastly_all_of
       [
       :'Historical',
-      :'HistoricalFieldResponseAllOf'
+      :'HistoricalFieldResponseDataField'
       ]
     end
 

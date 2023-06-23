@@ -1,10 +1,10 @@
-# Fastly::HistoricalUsageMonthResponseAllOf
+# Fastly::HistoricalService
 
 ## Properties
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **data** | [**HistoricalUsageMonthResponseData**](HistoricalUsageMonthResponseData.md) |  | [optional] |
+| **name** | **String** | The name of the service. | [optional] |
 
 [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
 

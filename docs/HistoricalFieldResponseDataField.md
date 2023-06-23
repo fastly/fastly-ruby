@@ -1,4 +1,4 @@
-# Fastly::HistoricalFieldResponseAllOf
+# Fastly::HistoricalFieldResponseDataField
 
 ## Properties
 
