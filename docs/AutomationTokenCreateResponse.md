@@ -12,9 +12,9 @@
 | **created_at** | **Time** | A UTC time-stamp of when the token was created.  | [optional][readonly] |
 | **deleted_at** | **Time** | Date and time in ISO 8601 format. | [optional][readonly] |
 | **updated_at** | **Time** | Date and time in ISO 8601 format. | [optional][readonly] |
-| **id** | **String** |  | [optional][readonly] |
-| **user_id** | **String** |  | [optional][readonly] |
-| **customer_id** | **String** |  | [optional][readonly] |
+| **id** | [**ReadOnlyId**](ReadOnlyId.md) |  | [optional] |
+| **user_id** | [**ReadOnlyUserId**](ReadOnlyUserId.md) |  | [optional] |
+| **customer_id** | [**ReadOnlyCustomerId**](ReadOnlyCustomerId.md) |  | [optional] |
 | **sudo_expires_at** | **Time** |  | [optional][readonly] |
 | **access_token** | **String** |  | [optional][readonly] |
 | **last_used_at** | **Time** | A UTC time-stamp of when the token was last used. | [optional][readonly] |

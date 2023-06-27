@@ -1113,7 +1113,7 @@ module Fastly
         :'ddos_action_tarpit' => :'Integer',
         :'ddos_action_close' => :'Integer',
         :'ddos_action_blackhole' => :'Integer',
-        :'service_id' => :'String',
+        :'service_id' => :'ReadOnlyIdService',
         :'start_time' => :'Integer'
       }
     end
@@ -1122,7 +1122,6 @@ module Fastly
     def self.fastly_nullable
       Set.new([
         :'hit_ratio',
-        :'service_id',
       ])
     end
 

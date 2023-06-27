@@ -33,7 +33,7 @@ module Fastly
     # Attribute type mapping.
     def self.fastly_types
       {
-        :'service_id' => :'String',
+        :'service_id' => :'ReadOnlyIdService',
         :'start_time' => :'Integer'
       }
     end
@@ -41,7 +41,6 @@ module Fastly
     # List of attributes with nullable: true
     def self.fastly_nullable
       Set.new([
-        :'service_id',
       ])
     end
 

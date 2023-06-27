@@ -59,8 +59,8 @@ module Fastly
     # Attribute type mapping.
     def self.fastly_types
       {
-        :'id' => :'String',
-        :'customer_id' => :'String',
+        :'id' => :'ReadOnlyId',
+        :'customer_id' => :'ReadOnlyCustomerId',
         :'role' => :'String',
         :'ip' => :'String',
         :'user_agent' => :'String',
@@ -74,8 +74,6 @@ module Fastly
     # List of attributes with nullable: true
     def self.fastly_nullable
       Set.new([
-        :'id',
-        :'customer_id',
       ])
     end
 

@@ -12,23 +12,10 @@ require 'date'
 require 'time'
 
 module Fastly
-  # Custom response to be sent when the rate limit is exceeded. Required if `action` is `response`.
-  class RateLimiterResponse1
-    # HTTP status code for custom limit enforcement response.
-    attr_accessor :status
-
-    # MIME type for custom limit enforcement response.
-    attr_accessor :content_type
-
-    # Response body for custom limit enforcement response.
-    attr_accessor :content
-
+  class ReadOnlyId
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'status' => :'status',
-        :'content_type' => :'content_type',
-        :'content' => :'content'
       }
     end
 
@@ -40,9 +27,6 @@ module Fastly
     # Attribute type mapping.
     def self.fastly_types
       {
-        :'status' => :'Integer',
-        :'content_type' => :'String',
-        :'content' => :'String'
       }
     end
 
@@ -56,105 +40,36 @@ module Fastly
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Fastly::RateLimiterResponse1` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Fastly::ReadOnlyId` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `Fastly::RateLimiterResponse1`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `Fastly::ReadOnlyId`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
-
-      if attributes.key?(:'status')
-        self.status = attributes[:'status']
-      end
-
-      if attributes.key?(:'content_type')
-        self.content_type = attributes[:'content_type']
-      end
-
-      if attributes.key?(:'content')
-        self.content = attributes[:'content']
-      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if !@status.nil? && @status > 999
-        invalid_properties.push('invalid value for "status", must be smaller than or equal to 999.')
-      end
-
-      if !@status.nil? && @status < 100
-        invalid_properties.push('invalid value for "status", must be greater than or equal to 100.')
-      end
-
-      if !@content_type.nil? && @content_type.to_s.length < 1
-        invalid_properties.push('invalid value for "content_type", the character length must be great than or equal to 1.')
-      end
-
-      if !@content.nil? && @content.to_s.length < 1
-        invalid_properties.push('invalid value for "content", the character length must be great than or equal to 1.')
-      end
-
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if !@status.nil? && @status > 999
-      return false if !@status.nil? && @status < 100
-      return false if !@content_type.nil? && @content_type.to_s.length < 1
-      return false if !@content.nil? && @content.to_s.length < 1
       true
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] status Value to be assigned
-    def status=(status)
-      if !status.nil? && status > 999
-        fail ArgumentError, 'invalid value for "status", must be smaller than or equal to 999.'
-      end
-
-      if !status.nil? && status < 100
-        fail ArgumentError, 'invalid value for "status", must be greater than or equal to 100.'
-      end
-
-      @status = status
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] content_type Value to be assigned
-    def content_type=(content_type)
-      if !content_type.nil? && content_type.to_s.length < 1
-        fail ArgumentError, 'invalid value for "content_type", the character length must be great than or equal to 1.'
-      end
-
-      @content_type = content_type
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] content Value to be assigned
-    def content=(content)
-      if !content.nil? && content.to_s.length < 1
-        fail ArgumentError, 'invalid value for "content", the character length must be great than or equal to 1.'
-      end
-
-      @content = content
     end
 
     # Checks equality by comparing each attribute.
     # @param [Object] Object to be compared
     def ==(o)
       return true if self.equal?(o)
-      self.class == o.class &&
-          status == o.status &&
-          content_type == o.content_type &&
-          content == o.content
+      self.class == o.class
     end
 
     # @see the `==` method
@@ -166,7 +81,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [status, content_type, content].hash
+      [].hash
     end
 
     # Builds the object from hash

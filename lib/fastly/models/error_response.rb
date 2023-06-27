@@ -12,54 +12,22 @@ require 'date'
 require 'time'
 
 module Fastly
-  class AutomationTokenCreateRequestAttributes
-    # name of the token
-    attr_accessor :name
+  class ErrorResponse
+    attr_accessor :detail
 
-    attr_accessor :role
+    attr_accessor :errors
 
-    # List of service ids to limit the token
-    attr_accessor :services
+    attr_accessor :status
 
-    attr_accessor :scope
-
-    # A UTC time-stamp of when the token will expire.
-    attr_accessor :expires_at
-
-    # Indicates whether TLS access is enabled for the token.
-    attr_accessor :tls_access
-
-    class EnumAttributeValidator
-      attr_reader :datatype
-      attr_reader :allowable_values
-
-      def initialize(datatype, allowable_values)
-        @allowable_values = allowable_values.map do |value|
-          case datatype.to_s
-          when /Integer/i
-            value.to_i
-          when /Float/i
-            value.to_f
-          else
-            value
-          end
-        end
-      end
-
-      def valid?(value)
-        !value || allowable_values.include?(value)
-      end
-    end
+    attr_accessor :title
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'name' => :'name',
-        :'role' => :'role',
-        :'services' => :'services',
-        :'scope' => :'scope',
-        :'expires_at' => :'expires_at',
-        :'tls_access' => :'tls_access'
+        :'detail' => :'detail',
+        :'errors' => :'errors',
+        :'status' => :'status',
+        :'title' => :'title'
       }
     end
 
@@ -71,19 +39,16 @@ module Fastly
     # Attribute type mapping.
     def self.fastly_types
       {
-        :'name' => :'String',
-        :'role' => :'String',
-        :'services' => :'Array<String>',
-        :'scope' => :'String',
-        :'expires_at' => :'Time',
-        :'tls_access' => :'Boolean'
+        :'detail' => :'String',
+        :'errors' => :'Array<Object>',
+        :'status' => :'Integer',
+        :'title' => :'String'
       }
     end
 
     # List of attributes with nullable: true
     def self.fastly_nullable
       Set.new([
-        :'expires_at',
       ])
     end
 
@@ -91,43 +56,33 @@ module Fastly
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Fastly::AutomationTokenCreateRequestAttributes` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Fastly::ErrorResponse` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `Fastly::AutomationTokenCreateRequestAttributes`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `Fastly::ErrorResponse`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'name')
-        self.name = attributes[:'name']
+      if attributes.key?(:'detail')
+        self.detail = attributes[:'detail']
       end
 
-      if attributes.key?(:'role')
-        self.role = attributes[:'role']
-      end
-
-      if attributes.key?(:'services')
-        if (value = attributes[:'services']).is_a?(Array)
-          self.services = value
+      if attributes.key?(:'errors')
+        if (value = attributes[:'errors']).is_a?(Array)
+          self.errors = value
         end
       end
 
-      if attributes.key?(:'scope')
-        self.scope = attributes[:'scope']
-      else
-        self.scope = 'global'
+      if attributes.key?(:'status')
+        self.status = attributes[:'status']
       end
 
-      if attributes.key?(:'expires_at')
-        self.expires_at = attributes[:'expires_at']
-      end
-
-      if attributes.key?(:'tls_access')
-        self.tls_access = attributes[:'tls_access']
+      if attributes.key?(:'title')
+        self.title = attributes[:'title']
       end
     end
 
@@ -141,31 +96,7 @@ module Fastly
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      role_validator = EnumAttributeValidator.new('String', ["engineer", "billing", "user"])
-      return false unless role_validator.valid?(@role)
-      scope_validator = EnumAttributeValidator.new('String', ["global", "global:read", "purge_all", "purge_select"])
-      return false unless scope_validator.valid?(@scope)
       true
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] role Object to be assigned
-    def role=(role)
-      validator = EnumAttributeValidator.new('String', ["engineer", "billing", "user"])
-      unless validator.valid?(role)
-        fail ArgumentError, "invalid value for \"role\", must be one of #{validator.allowable_values}."
-      end
-      @role = role
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] scope Object to be assigned
-    def scope=(scope)
-      validator = EnumAttributeValidator.new('String', ["global", "global:read", "purge_all", "purge_select"])
-      unless validator.valid?(scope)
-        fail ArgumentError, "invalid value for \"scope\", must be one of #{validator.allowable_values}."
-      end
-      @scope = scope
     end
 
     # Checks equality by comparing each attribute.
@@ -173,12 +104,10 @@ module Fastly
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          name == o.name &&
-          role == o.role &&
-          services == o.services &&
-          scope == o.scope &&
-          expires_at == o.expires_at &&
-          tls_access == o.tls_access
+          detail == o.detail &&
+          errors == o.errors &&
+          status == o.status &&
+          title == o.title
     end
 
     # @see the `==` method
@@ -190,7 +119,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, role, services, scope, expires_at, tls_access].hash
+      [detail, errors, status, title].hash
     end
 
     # Builds the object from hash

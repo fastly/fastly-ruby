@@ -4,9 +4,9 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **id** | **String** |  | [optional][readonly] |
-| **user_id** | **String** |  | [optional][readonly] |
-| **customer_id** | **String** |  | [optional][readonly] |
+| **id** | [**ReadOnlyId**](ReadOnlyId.md) |  | [optional] |
+| **user_id** | [**ReadOnlyUserId**](ReadOnlyUserId.md) |  | [optional] |
+| **customer_id** | [**ReadOnlyCustomerId**](ReadOnlyCustomerId.md) |  | [optional] |
 | **sudo_expires_at** | **Time** |  | [optional][readonly] |
 | **created_at** | **Time** | A UTC time-stamp of when the token was created.  | [optional][readonly] |
 | **access_token** | **String** |  | [optional][readonly] |

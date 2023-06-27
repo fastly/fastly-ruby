@@ -277,16 +277,16 @@ module Fastly
     # Revoke an Automation Token by ID
     # Revoke an automation token by ID.
     # @option opts [String] :id  (required)
-    # @return [nil]
+    # @return [ErrorResponse]
     def revoke_automation_token_id(opts = {})
-      revoke_automation_token_id_with_http_info(opts)
-      nil
+      data, _status_code, _headers = revoke_automation_token_id_with_http_info(opts)
+      data
     end
 
     # Revoke an Automation Token by ID
     # Revoke an automation token by ID.
     # @option opts [String] :id  (required)
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    # @return [Array<(ErrorResponse, Integer, Hash)>] ErrorResponse data, response status code and response headers
     def revoke_automation_token_id_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: AutomationTokensApi.revoke_automation_token_id ...'
@@ -315,7 +315,7 @@ module Fastly
       post_body = opts[:debug_body]
 
       # return_type
-      return_type = opts[:debug_return_type]
+      return_type = opts[:debug_return_type] || 'ErrorResponse'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['token']

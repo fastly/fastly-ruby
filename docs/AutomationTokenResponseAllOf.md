@@ -4,8 +4,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **id** | **String** |  | [optional][readonly] |
-| **customer_id** | **String** |  | [optional][readonly] |
+| **id** | [**ReadOnlyId**](ReadOnlyId.md) |  | [optional] |
+| **customer_id** | [**ReadOnlyCustomerId**](ReadOnlyCustomerId.md) |  | [optional] |
 | **role** | **String** |  | [optional] |
 | **ip** | **String** | The IP address of the client that last used the token. | [optional] |
 | **user_agent** | **String** | The User-Agent header of the client that last used the token. | [optional] |

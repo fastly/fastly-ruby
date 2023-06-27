@@ -174,7 +174,7 @@ end
 ## `revoke_automation_token_id()`
 
 ```ruby
-revoke_automation_token_id(opts) # Revoke an Automation Token by ID
+revoke_automation_token_id(opts): <ErrorResponse> # Revoke an Automation Token by ID
 ```
 
 Revoke an automation token by ID.
@@ -189,7 +189,8 @@ opts = {
 
 begin
   # Revoke an Automation Token by ID
-  api_instance.revoke_automation_token_id(opts)
+  result = api_instance.revoke_automation_token_id(opts)
+  p result
 rescue Fastly::ApiError => e
   puts "Error when calling AutomationTokensApi->revoke_automation_token_id: #{e}"
 end
@@ -203,7 +204,7 @@ end
 
 ### Return type
 
-nil (empty response body)
+[**ErrorResponse**](ErrorResponse.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)

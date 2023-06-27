@@ -2036,6 +2036,12 @@ module Fastly
           description: "No description provided",
           }
         ],
+        "RateLimiterApi.create_rate_limiter": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
         "RateLimiterApi.delete_rate_limiter": [
           {
           url: "https://api.fastly.com",
@@ -2049,6 +2055,12 @@ module Fastly
           }
         ],
         "RateLimiterApi.list_rate_limiters": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "RateLimiterApi.update_rate_limiter": [
           {
           url: "https://api.fastly.com",
           description: "No description provided",

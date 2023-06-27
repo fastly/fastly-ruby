@@ -37,6 +37,7 @@ module Fastly
     # The action to take when a rate limiter violation is detected.
     attr_accessor :action
 
+    # Custom response to be sent when the rate limit is exceeded. Required if `action` is `response`.
     attr_accessor :response
 
     # Name of existing response object. Required if `action` is `response_object`. Note that the rate limiter response is only updated to reflect the response object content when saving the rate limiter configuration.
@@ -104,7 +105,7 @@ module Fastly
         :'client_key' => :'Array<String>',
         :'penalty_box_duration' => :'Integer',
         :'action' => :'String',
-        :'response' => :'RateLimiterResponse1',
+        :'response' => :'Hash<String, String>',
         :'response_object_name' => :'String',
         :'logger_type' => :'String',
         :'feature_revision' => :'Integer'
@@ -172,7 +173,9 @@ module Fastly
       end
 
       if attributes.key?(:'response')
-        self.response = attributes[:'response']
+        if (value = attributes[:'response']).is_a?(Hash)
+          self.response = value
+        end
       end
 
       if attributes.key?(:'response_object_name')

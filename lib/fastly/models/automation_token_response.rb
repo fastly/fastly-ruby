@@ -109,8 +109,8 @@ module Fastly
         :'created_at' => :'String',
         :'deleted_at' => :'Time',
         :'updated_at' => :'Time',
-        :'id' => :'String',
-        :'customer_id' => :'String',
+        :'id' => :'ReadOnlyId',
+        :'customer_id' => :'ReadOnlyCustomerId',
         :'ip' => :'String',
         :'user_agent' => :'String',
         :'sudo_expires_at' => :'String',
@@ -123,8 +123,6 @@ module Fastly
       Set.new([
         :'deleted_at',
         :'updated_at',
-        :'id',
-        :'customer_id',
       ])
     end
 
