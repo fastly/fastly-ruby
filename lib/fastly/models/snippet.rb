@@ -70,7 +70,7 @@ module Fastly
     def self.fastly_types
       {
         :'name' => :'String',
-        :'dynamic' => :'Integer',
+        :'dynamic' => :'String',
         :'type' => :'String',
         :'content' => :'String',
         :'priority' => :'String'
@@ -131,7 +131,7 @@ module Fastly
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      dynamic_validator = EnumAttributeValidator.new('Integer', [0, 1])
+      dynamic_validator = EnumAttributeValidator.new('String', ["0", "1"])
       return false unless dynamic_validator.valid?(@dynamic)
       type_validator = EnumAttributeValidator.new('String', ["init", "recv", "hash", "hit", "miss", "pass", "fetch", "error", "deliver", "log", "none"])
       return false unless type_validator.valid?(@type)
@@ -141,7 +141,7 @@ module Fastly
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] dynamic Object to be assigned
     def dynamic=(dynamic)
-      validator = EnumAttributeValidator.new('Integer', [0, 1])
+      validator = EnumAttributeValidator.new('String', ["0", "1"])
       unless validator.valid?(dynamic)
         fail ArgumentError, "invalid value for \"dynamic\", must be one of #{validator.allowable_values}."
       end

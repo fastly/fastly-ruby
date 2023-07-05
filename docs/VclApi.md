@@ -235,7 +235,7 @@ end
 ## `get_custom_vcl_generated_highlighted()`
 
 ```ruby
-get_custom_vcl_generated_highlighted(opts) # Get the generated VCL with syntax highlighting
+get_custom_vcl_generated_highlighted(opts): <VclSyntaxHighlightingResponse> # Get the generated VCL with syntax highlighting
 ```
 
 Display the content of generated VCL with HTML syntax highlighting. Include line numbers by sending `lineno=true` as a request parameter.
@@ -251,7 +251,8 @@ opts = {
 
 begin
   # Get the generated VCL with syntax highlighting
-  api_instance.get_custom_vcl_generated_highlighted(opts)
+  result = api_instance.get_custom_vcl_generated_highlighted(opts)
+  p result
 rescue Fastly::ApiError => e
   puts "Error when calling VclApi->get_custom_vcl_generated_highlighted: #{e}"
 end
@@ -266,14 +267,14 @@ end
 
 ### Return type
 
-nil (empty response body)
+[**VclSyntaxHighlightingResponse**](VclSyntaxHighlightingResponse.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)
 ## `get_custom_vcl_highlighted()`
 
 ```ruby
-get_custom_vcl_highlighted(opts) # Get a custom VCL file with syntax highlighting
+get_custom_vcl_highlighted(opts): <VclSyntaxHighlightingResponse> # Get a custom VCL file with syntax highlighting
 ```
 
 Get the uploaded VCL for a particular service and version with HTML syntax highlighting. Include line numbers by sending `lineno=true` as a request parameter.
@@ -290,7 +291,8 @@ opts = {
 
 begin
   # Get a custom VCL file with syntax highlighting
-  api_instance.get_custom_vcl_highlighted(opts)
+  result = api_instance.get_custom_vcl_highlighted(opts)
+  p result
 rescue Fastly::ApiError => e
   puts "Error when calling VclApi->get_custom_vcl_highlighted: #{e}"
 end
@@ -306,7 +308,7 @@ end
 
 ### Return type
 
-nil (empty response body)
+[**VclSyntaxHighlightingResponse**](VclSyntaxHighlightingResponse.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)

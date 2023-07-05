@@ -402,17 +402,17 @@ module Fastly
     # Display the content of generated VCL with HTML syntax highlighting. Include line numbers by sending `lineno=true` as a request parameter.
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
     # @option opts [Integer] :version_id Integer identifying a service version. (required)
-    # @return [nil]
+    # @return [VclSyntaxHighlightingResponse]
     def get_custom_vcl_generated_highlighted(opts = {})
-      get_custom_vcl_generated_highlighted_with_http_info(opts)
-      nil
+      data, _status_code, _headers = get_custom_vcl_generated_highlighted_with_http_info(opts)
+      data
     end
 
     # Get the generated VCL with syntax highlighting
     # Display the content of generated VCL with HTML syntax highlighting. Include line numbers by sending &#x60;lineno&#x3D;true&#x60; as a request parameter.
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
     # @option opts [Integer] :version_id Integer identifying a service version. (required)
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    # @return [Array<(VclSyntaxHighlightingResponse, Integer, Hash)>] VclSyntaxHighlightingResponse data, response status code and response headers
     def get_custom_vcl_generated_highlighted_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: VclApi.get_custom_vcl_generated_highlighted ...'
@@ -446,7 +446,7 @@ module Fastly
       post_body = opts[:debug_body]
 
       # return_type
-      return_type = opts[:debug_return_type]
+      return_type = opts[:debug_return_type] || 'VclSyntaxHighlightingResponse'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['token']
@@ -473,10 +473,10 @@ module Fastly
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
     # @option opts [Integer] :version_id Integer identifying a service version. (required)
     # @option opts [String] :vcl_name The name of this VCL. (required)
-    # @return [nil]
+    # @return [VclSyntaxHighlightingResponse]
     def get_custom_vcl_highlighted(opts = {})
-      get_custom_vcl_highlighted_with_http_info(opts)
-      nil
+      data, _status_code, _headers = get_custom_vcl_highlighted_with_http_info(opts)
+      data
     end
 
     # Get a custom VCL file with syntax highlighting
@@ -484,7 +484,7 @@ module Fastly
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
     # @option opts [Integer] :version_id Integer identifying a service version. (required)
     # @option opts [String] :vcl_name The name of this VCL. (required)
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    # @return [Array<(VclSyntaxHighlightingResponse, Integer, Hash)>] VclSyntaxHighlightingResponse data, response status code and response headers
     def get_custom_vcl_highlighted_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: VclApi.get_custom_vcl_highlighted ...'
@@ -523,7 +523,7 @@ module Fastly
       post_body = opts[:debug_body]
 
       # return_type
-      return_type = opts[:debug_return_type]
+      return_type = opts[:debug_return_type] || 'VclSyntaxHighlightingResponse'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['token']

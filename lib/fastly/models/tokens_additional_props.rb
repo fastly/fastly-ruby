@@ -12,14 +12,10 @@ require 'date'
 require 'time'
 
 module Fastly
-  # Results from VCL linting
-  class ValidatorResult
-    attr_accessor :data
-
+  class TokensAdditionalProps
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'data' => :'data'
       }
     end
 
@@ -31,7 +27,6 @@ module Fastly
     # Attribute type mapping.
     def self.fastly_types
       {
-        :'data' => :'ValidatorResultData'
       }
     end
 
@@ -41,24 +36,28 @@ module Fastly
       ])
     end
 
+    # List of class defined in anyOf (OpenAPI v3)
+    def self.fastly_any_of
+      [
+      :'Float',
+      :'String'
+      ]
+    end
+
     # Initializes the object
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Fastly::ValidatorResult` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Fastly::TokensAdditionalProps` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `Fastly::ValidatorResult`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `Fastly::TokensAdditionalProps`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
-
-      if attributes.key?(:'data')
-        self.data = attributes[:'data']
-      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -71,6 +70,18 @@ module Fastly
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      _any_of_found = false
+      self.class.fastly_any_of.each do |_class|
+        _any_of = Fastly.const_get(_class).build_from_hash(self.to_hash)
+        if _any_of.valid?
+          _any_of_found = true
+        end
+      end
+
+      if !_any_of_found
+        return false
+      end
+
       true
     end
 
@@ -78,8 +89,7 @@ module Fastly
     # @param [Object] Object to be compared
     def ==(o)
       return true if self.equal?(o)
-      self.class == o.class &&
-          data == o.data
+      self.class == o.class
     end
 
     # @see the `==` method
@@ -91,7 +101,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [data].hash
+      [].hash
     end
 
     # Builds the object from hash

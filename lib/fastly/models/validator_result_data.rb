@@ -12,14 +12,19 @@ require 'date'
 require 'time'
 
 module Fastly
-  # Results from VCL linting
-  class ValidatorResult
-    attr_accessor :data
+  class ValidatorResultData
+    attr_accessor :id
+
+    attr_accessor :type
+
+    attr_accessor :attributes
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'data' => :'data'
+        :'id' => :'id',
+        :'type' => :'type',
+        :'attributes' => :'attributes'
       }
     end
 
@@ -31,7 +36,9 @@ module Fastly
     # Attribute type mapping.
     def self.fastly_types
       {
-        :'data' => :'ValidatorResultData'
+        :'id' => :'String',
+        :'type' => :'String',
+        :'attributes' => :'ValidatorResultDataAttributes'
       }
     end
 
@@ -45,19 +52,27 @@ module Fastly
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Fastly::ValidatorResult` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Fastly::ValidatorResultData` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `Fastly::ValidatorResult`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `Fastly::ValidatorResultData`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'data')
-        self.data = attributes[:'data']
+      if attributes.key?(:'id')
+        self.id = attributes[:'id']
+      end
+
+      if attributes.key?(:'type')
+        self.type = attributes[:'type']
+      end
+
+      if attributes.key?(:'attributes')
+        self.attributes = attributes[:'attributes']
       end
     end
 
@@ -79,7 +94,9 @@ module Fastly
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          data == o.data
+          id == o.id &&
+          type == o.type &&
+          attributes == o.attributes
     end
 
     # @see the `==` method
@@ -91,7 +108,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [data].hash
+      [id, type, attributes].hash
     end
 
     # Builds the object from hash

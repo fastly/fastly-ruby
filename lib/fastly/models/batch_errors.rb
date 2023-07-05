@@ -12,22 +12,26 @@ require 'date'
 require 'time'
 
 module Fastly
-  class ValidatorResultMessages
-    attr_accessor :type
+  class BatchErrors
+    # The key that the error corresponds to. This field will be empty if the object or one of its fields was unable to be parsed.
+    attr_accessor :key
 
-    attr_accessor :warning
+    # The line number of the payload on which the error occurred (starting from 0 for the first line).
+    attr_accessor :index
 
-    attr_accessor :message
+    # The HTTP response code for the request, or a 400 if the request was not able to be completed.
+    attr_accessor :code
 
-    attr_accessor :tokens
+    # A descriptor of this particular item's error.
+    attr_accessor :reason
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'type' => :'type',
-        :'warning' => :'warning',
-        :'message' => :'message',
-        :'tokens' => :'tokens'
+        :'key' => :'key',
+        :'index' => :'index',
+        :'code' => :'code',
+        :'reason' => :'reason'
       }
     end
 
@@ -39,10 +43,10 @@ module Fastly
     # Attribute type mapping.
     def self.fastly_types
       {
-        :'type' => :'String',
-        :'warning' => :'Boolean',
-        :'message' => :'String',
-        :'tokens' => :'Array<Hash<String, AnyOfstringnumber>>'
+        :'key' => :'String',
+        :'index' => :'Integer',
+        :'code' => :'String',
+        :'reason' => :'String'
       }
     end
 
@@ -56,33 +60,31 @@ module Fastly
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Fastly::ValidatorResultMessages` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Fastly::BatchErrors` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `Fastly::ValidatorResultMessages`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `Fastly::BatchErrors`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'type')
-        self.type = attributes[:'type']
+      if attributes.key?(:'key')
+        self.key = attributes[:'key']
       end
 
-      if attributes.key?(:'warning')
-        self.warning = attributes[:'warning']
+      if attributes.key?(:'index')
+        self.index = attributes[:'index']
       end
 
-      if attributes.key?(:'message')
-        self.message = attributes[:'message']
+      if attributes.key?(:'code')
+        self.code = attributes[:'code']
       end
 
-      if attributes.key?(:'tokens')
-        if (value = attributes[:'tokens']).is_a?(Array)
-          self.tokens = value
-        end
+      if attributes.key?(:'reason')
+        self.reason = attributes[:'reason']
       end
     end
 
@@ -90,32 +92,12 @@ module Fastly
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if @type.nil?
-        invalid_properties.push('invalid value for "type", type cannot be nil.')
-      end
-
-      if @warning.nil?
-        invalid_properties.push('invalid value for "warning", warning cannot be nil.')
-      end
-
-      if @message.nil?
-        invalid_properties.push('invalid value for "message", message cannot be nil.')
-      end
-
-      if @tokens.nil?
-        invalid_properties.push('invalid value for "tokens", tokens cannot be nil.')
-      end
-
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if @type.nil?
-      return false if @warning.nil?
-      return false if @message.nil?
-      return false if @tokens.nil?
       true
     end
 
@@ -124,10 +106,10 @@ module Fastly
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          type == o.type &&
-          warning == o.warning &&
-          message == o.message &&
-          tokens == o.tokens
+          key == o.key &&
+          index == o.index &&
+          code == o.code &&
+          reason == o.reason
     end
 
     # @see the `==` method
@@ -139,7 +121,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [type, warning, message, tokens].hash
+      [key, index, code, reason].hash
     end
 
     # Builds the object from hash

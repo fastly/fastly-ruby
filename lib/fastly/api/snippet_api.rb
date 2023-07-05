@@ -22,7 +22,7 @@ module Fastly
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
     # @option opts [Integer] :version_id Integer identifying a service version. (required)
     # @option opts [String] :name The name for the snippet.
-    # @option opts [Integer] :dynamic Sets the snippet version.
+    # @option opts [String] :dynamic Sets the snippet version.
     # @option opts [String] :type The location in generated VCL where the snippet should be placed.
     # @option opts [String] :content The VCL code that specifies exactly what the snippet does.
     # @option opts [String] :priority Priority determines execution order. Lower numbers execute first. (default to '100')
@@ -37,7 +37,7 @@ module Fastly
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
     # @option opts [Integer] :version_id Integer identifying a service version. (required)
     # @option opts [String] :name The name for the snippet.
-    # @option opts [Integer] :dynamic Sets the snippet version.
+    # @option opts [String] :dynamic Sets the snippet version.
     # @option opts [String] :type The location in generated VCL where the snippet should be placed.
     # @option opts [String] :content The VCL code that specifies exactly what the snippet does.
     # @option opts [String] :priority Priority determines execution order. Lower numbers execute first. (default to '100')
@@ -57,7 +57,7 @@ module Fastly
       if @api_client.config.client_side_validation && version_id.nil?
         fail ArgumentError, "Missing the required parameter 'version_id' when calling SnippetApi.create_snippet"
       end
-      allowable_values = [0, 1]
+      allowable_values = ["0", "1"]
       if @api_client.config.client_side_validation && opts[:'dynamic'] && !allowable_values.include?(opts[:'dynamic'])
         fail ArgumentError, "invalid value for \"dynamic\", must be one of #{allowable_values}"
       end
@@ -414,7 +414,7 @@ module Fastly
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
     # @option opts [String] :snippet_id Alphanumeric string identifying a VCL Snippet. (required)
     # @option opts [String] :name The name for the snippet.
-    # @option opts [Integer] :dynamic Sets the snippet version.
+    # @option opts [String] :dynamic Sets the snippet version.
     # @option opts [String] :type The location in generated VCL where the snippet should be placed.
     # @option opts [String] :content The VCL code that specifies exactly what the snippet does.
     # @option opts [String] :priority Priority determines execution order. Lower numbers execute first. (default to '100')
@@ -429,7 +429,7 @@ module Fastly
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
     # @option opts [String] :snippet_id Alphanumeric string identifying a VCL Snippet. (required)
     # @option opts [String] :name The name for the snippet.
-    # @option opts [Integer] :dynamic Sets the snippet version.
+    # @option opts [String] :dynamic Sets the snippet version.
     # @option opts [String] :type The location in generated VCL where the snippet should be placed.
     # @option opts [String] :content The VCL code that specifies exactly what the snippet does.
     # @option opts [String] :priority Priority determines execution order. Lower numbers execute first. (default to '100')
@@ -449,7 +449,7 @@ module Fastly
       if @api_client.config.client_side_validation && snippet_id.nil?
         fail ArgumentError, "Missing the required parameter 'snippet_id' when calling SnippetApi.update_snippet_dynamic"
       end
-      allowable_values = [0, 1]
+      allowable_values = ["0", "1"]
       if @api_client.config.client_side_validation && opts[:'dynamic'] && !allowable_values.include?(opts[:'dynamic'])
         fail ArgumentError, "invalid value for \"dynamic\", must be one of #{allowable_values}"
       end

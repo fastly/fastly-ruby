@@ -34,7 +34,7 @@ opts = {
     service_id: 'service_id_example', # String | Alphanumeric string identifying the service.
     version_id: 56, # Integer | Integer identifying a service version.
     name: 'name_example', # String | The name for the snippet.
-    dynamic: 0, # Integer | Sets the snippet version.
+    dynamic: '0', # String | Sets the snippet version.
     type: 'init', # String | The location in generated VCL where the snippet should be placed.
     content: 'content_example', # String | The VCL code that specifies exactly what the snippet does.
     priority: 'priority_example', # String | Priority determines execution order. Lower numbers execute first.
@@ -56,7 +56,7 @@ end
 | **service_id** | **String** | Alphanumeric string identifying the service. |  |
 | **version_id** | **Integer** | Integer identifying a service version. |  |
 | **name** | **String** | The name for the snippet. | [optional] |
-| **dynamic** | **Integer** | Sets the snippet version. | [optional] |
+| **dynamic** | **String** | Sets the snippet version. | [optional] |
 | **type** | **String** | The location in generated VCL where the snippet should be placed. | [optional] |
 | **content** | **String** | The VCL code that specifies exactly what the snippet does. | [optional] |
 | **priority** | **String** | Priority determines execution order. Lower numbers execute first. | [optional][default to &#39;100&#39;] |
@@ -243,7 +243,7 @@ opts = {
     service_id: 'service_id_example', # String | Alphanumeric string identifying the service.
     snippet_id: 'snippet_id_example', # String | Alphanumeric string identifying a VCL Snippet.
     name: 'name_example', # String | The name for the snippet.
-    dynamic: 0, # Integer | Sets the snippet version.
+    dynamic: '0', # String | Sets the snippet version.
     type: 'init', # String | The location in generated VCL where the snippet should be placed.
     content: 'content_example', # String | The VCL code that specifies exactly what the snippet does.
     priority: 'priority_example', # String | Priority determines execution order. Lower numbers execute first.
@@ -265,7 +265,7 @@ end
 | **service_id** | **String** | Alphanumeric string identifying the service. |  |
 | **snippet_id** | **String** | Alphanumeric string identifying a VCL Snippet. |  |
 | **name** | **String** | The name for the snippet. | [optional] |
-| **dynamic** | **Integer** | Sets the snippet version. | [optional] |
+| **dynamic** | **String** | Sets the snippet version. | [optional] |
 | **type** | **String** | The location in generated VCL where the snippet should be placed. | [optional] |
 | **content** | **String** | The VCL code that specifies exactly what the snippet does. | [optional] |
 | **priority** | **String** | Priority determines execution order. Lower numbers execute first. | [optional][default to &#39;100&#39;] |

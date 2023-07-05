@@ -12,14 +12,14 @@ require 'date'
 require 'time'
 
 module Fastly
-  # Results from VCL linting
-  class ValidatorResult
-    attr_accessor :data
+  class VclSyntaxHighlightingResponse
+    # VCL with HTML syntax highlighting.
+    attr_accessor :content
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'data' => :'data'
+        :'content' => :'content'
       }
     end
 
@@ -31,7 +31,7 @@ module Fastly
     # Attribute type mapping.
     def self.fastly_types
       {
-        :'data' => :'ValidatorResultData'
+        :'content' => :'String'
       }
     end
 
@@ -45,19 +45,19 @@ module Fastly
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Fastly::ValidatorResult` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Fastly::VclSyntaxHighlightingResponse` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `Fastly::ValidatorResult`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `Fastly::VclSyntaxHighlightingResponse`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'data')
-        self.data = attributes[:'data']
+      if attributes.key?(:'content')
+        self.content = attributes[:'content']
       end
     end
 
@@ -79,7 +79,7 @@ module Fastly
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          data == o.data
+          content == o.content
     end
 
     # @see the `==` method
@@ -91,7 +91,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [data].hash
+      [content].hash
     end
 
     # Builds the object from hash
