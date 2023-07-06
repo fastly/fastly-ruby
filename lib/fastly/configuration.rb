@@ -314,7 +314,37 @@ module Fastly
           description: "No description provided",
           }
         ],
+        "AclEntryApi.create_acl_entry": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
         "AclEntryApi.delete_acl_entry": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "AclEntryApi.get_acl_entry": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "AclEntryApi.list_acl_entries": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "AclEntryApi.update_acl_entry": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "ApexRedirectApi.create_apex_redirect": [
           {
           url: "https://api.fastly.com",
           description: "No description provided",
@@ -590,6 +620,12 @@ module Fastly
           description: "No description provided",
           }
         ],
+        "ContactApi.create_contacts": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
         "ContactApi.delete_contact": [
           {
           url: "https://api.fastly.com",
@@ -597,6 +633,12 @@ module Fastly
           }
         ],
         "ContactApi.list_contacts": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "ContentApi.content_check": [
           {
           url: "https://api.fastly.com",
           description: "No description provided",
@@ -740,6 +782,12 @@ module Fastly
           description: "No description provided",
           }
         ],
+        "DirectorApi.update_director": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
         "DirectorBackendApi.create_director_backend": [
           {
           url: "https://api.fastly.com",
@@ -797,6 +845,30 @@ module Fastly
         "DomainApi.update_domain": [
           {
           url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "DomainInspectorHistoricalApi.get_domain_inspector_historical": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "DomainInspectorRealtimeApi.get_domain_inspector_last120_seconds": [
+          {
+          url: "https://rt.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "DomainInspectorRealtimeApi.get_domain_inspector_last_max_entries": [
+          {
+          url: "https://rt.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "DomainInspectorRealtimeApi.get_domain_inspector_last_second": [
+          {
+          url: "https://rt.fastly.com",
           description: "No description provided",
           }
         ],
@@ -1004,6 +1076,18 @@ module Fastly
           description: "No description provided",
           }
         ],
+        "IamRolesApi.add_role_permissions": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "IamRolesApi.create_a_role": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
         "IamRolesApi.delete_a_role": [
           {
           url: "https://api.fastly.com",
@@ -1028,6 +1112,30 @@ module Fastly
           description: "No description provided",
           }
         ],
+        "IamRolesApi.remove_role_permissions": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "IamRolesApi.update_a_role": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "IamServiceGroupsApi.add_service_group_services": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "IamServiceGroupsApi.create_a_service_group": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
         "IamServiceGroupsApi.delete_a_service_group": [
           {
           url: "https://api.fastly.com",
@@ -1047,6 +1155,42 @@ module Fastly
           }
         ],
         "IamServiceGroupsApi.list_service_groups": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "IamServiceGroupsApi.remove_service_group_services": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "IamServiceGroupsApi.update_a_service_group": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "IamUserGroupsApi.add_user_group_members": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "IamUserGroupsApi.add_user_group_roles": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "IamUserGroupsApi.add_user_group_service_groups": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "IamUserGroupsApi.create_a_user_group": [
           {
           url: "https://api.fastly.com",
           description: "No description provided",
@@ -1083,6 +1227,30 @@ module Fastly
           }
         ],
         "IamUserGroupsApi.list_user_groups": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "IamUserGroupsApi.remove_user_group_members": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "IamUserGroupsApi.remove_user_group_roles": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "IamUserGroupsApi.remove_user_group_service_groups": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "IamUserGroupsApi.update_a_user_group": [
           {
           url: "https://api.fastly.com",
           description: "No description provided",
@@ -1149,6 +1317,174 @@ module Fastly
           }
         ],
         "KvStoreItemApi.set_value_for_key": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "LegacyWafConfigurationSetsApi.list_waf_config_sets": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "LegacyWafConfigurationSetsApi.list_wafs_config_set": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "LegacyWafConfigurationSetsApi.use_waf_config_set": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "LegacyWafFirewallApi.create_legacy_waf_firewall_service": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "LegacyWafFirewallApi.disable_legacy_waf_firewall": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "LegacyWafFirewallApi.enable_legacy_waf_firewall": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "LegacyWafFirewallApi.get_legacy_waf_firewall": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "LegacyWafFirewallApi.get_legacy_waf_firewall_service": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "LegacyWafFirewallApi.list_legacy_waf_firewalls": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "LegacyWafFirewallApi.list_legacy_waf_firewalls_service": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "LegacyWafFirewallApi.update_legacy_waf_firewall_service": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "LegacyWafOwaspApi.create_owasp_settings": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "LegacyWafOwaspApi.get_owasp_settings": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "LegacyWafOwaspApi.update_owasp_settings": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "LegacyWafRuleApi.get_legacy_waf_firewall_rule_vcl": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "LegacyWafRuleApi.get_legacy_waf_rule": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "LegacyWafRuleApi.get_legacy_waf_rule_vcl": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "LegacyWafRuleApi.list_legacy_waf_rules": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "LegacyWafRuleStatusApi.get_waf_firewall_rule_status": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "LegacyWafRuleStatusApi.list_waf_firewall_rule_statuses": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "LegacyWafRuleStatusApi.update_waf_firewall_rule_status": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "LegacyWafRuleStatusApi.update_waf_firewall_rule_statuses_tag": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "LegacyWafRulesetApi.get_waf_ruleset": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "LegacyWafRulesetApi.get_waf_ruleset_vcl": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "LegacyWafRulesetApi.update_waf_ruleset": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "LegacyWafTagApi.list_legacy_waf_tags": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "LegacyWafUpdateStatusApi.get_waf_update_status": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "LegacyWafUpdateStatusApi.list_waf_update_statuses": [
           {
           url: "https://api.fastly.com",
           description: "No description provided",
@@ -1508,6 +1844,12 @@ module Fastly
           description: "No description provided",
           }
         ],
+        "LoggingKafkaApi.update_log_kafka": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
         "LoggingKinesisApi.create_log_kinesis": [
           {
           url: "https://api.fastly.com",
@@ -1527,6 +1869,12 @@ module Fastly
           }
         ],
         "LoggingKinesisApi.list_log_kinesis": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "LoggingKinesisApi.update_log_kinesis": [
           {
           url: "https://api.fastly.com",
           description: "No description provided",
@@ -1952,6 +2300,30 @@ module Fastly
           description: "No description provided",
           }
         ],
+        "OriginInspectorHistoricalApi.get_origin_inspector_historical": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "OriginInspectorRealtimeApi.get_origin_inspector_last120_seconds": [
+          {
+          url: "https://rt.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "OriginInspectorRealtimeApi.get_origin_inspector_last_max_entries": [
+          {
+          url: "https://rt.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "OriginInspectorRealtimeApi.get_origin_inspector_last_second": [
+          {
+          url: "https://rt.fastly.com",
+          description: "No description provided",
+          }
+        ],
         "PackageApi.get_package": [
           {
           url: "https://api.fastly.com",
@@ -2084,6 +2456,12 @@ module Fastly
           description: "No description provided",
           }
         ],
+        "RequestSettingsApi.create_request_settings": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
         "RequestSettingsApi.delete_request_settings": [
           {
           url: "https://api.fastly.com",
@@ -2138,6 +2516,12 @@ module Fastly
           description: "No description provided",
           }
         ],
+        "ResponseObjectApi.create_response_object": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
         "ResponseObjectApi.delete_response_object": [
           {
           url: "https://api.fastly.com",
@@ -2151,6 +2535,84 @@ module Fastly
           }
         ],
         "ResponseObjectApi.list_response_objects": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "ResponseObjectApi.update_response_object": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "SecretStoreApi.client_key": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "SecretStoreApi.create_secret_store": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "SecretStoreApi.delete_secret_store": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "SecretStoreApi.get_secret_store": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "SecretStoreApi.get_secret_stores": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "SecretStoreApi.signing_key": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "SecretStoreItemApi.create_secret": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "SecretStoreItemApi.delete_secret": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "SecretStoreItemApi.get_secret": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "SecretStoreItemApi.get_secrets": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "SecretStoreItemApi.must_recreate_secret": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "SecretStoreItemApi.recreate_secret": [
           {
           url: "https://api.fastly.com",
           description: "No description provided",
@@ -2246,6 +2708,12 @@ module Fastly
           description: "No description provided",
           }
         ],
+        "ServiceAuthorizationsApi.delete_service_authorization2": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
         "ServiceAuthorizationsApi.list_service_authorization": [
           {
           url: "https://api.fastly.com",
@@ -2259,6 +2727,12 @@ module Fastly
           }
         ],
         "ServiceAuthorizationsApi.update_service_authorization": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "ServiceAuthorizationsApi.update_service_authorization2": [
           {
           url: "https://api.fastly.com",
           description: "No description provided",
@@ -2306,6 +2780,12 @@ module Fastly
           description: "No description provided",
           }
         ],
+        "SnippetApi.update_snippet": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
         "SnippetApi.update_snippet_dynamic": [
           {
           url: "https://api.fastly.com",
@@ -2337,6 +2817,12 @@ module Fastly
           }
         ],
         "StatsApi.get_service_stats": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "SudoApi.request_sudo_access": [
           {
           url: "https://api.fastly.com",
           description: "No description provided",
@@ -2517,6 +3003,18 @@ module Fastly
           }
         ],
         "TlsSubscriptionsApi.patch_tls_sub": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "TokensApi.bulk_revoke_tokens": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "TokensApi.create_token": [
           {
           url: "https://api.fastly.com",
           description: "No description provided",
@@ -2733,6 +3231,12 @@ module Fastly
           }
         ],
         "VersionApi.validate_service_version": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "WafActiveRulesApi.bulk_delete_waf_active_rules": [
           {
           url: "https://api.fastly.com",
           description: "No description provided",

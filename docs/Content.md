@@ -5,8 +5,8 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **hash** | **String** |  | [optional] |
-| **request** | **Object** |  | [optional] |
-| **response** | **Object** |  | [optional] |
+| **request** | **Hash&lt;String, Object&gt;** |  | [optional] |
+| **response** | **Hash&lt;String, Object&gt;** |  | [optional] |
 | **response_time** | **Float** |  | [optional] |
 | **server** | **String** |  | [optional] |
 | **pop** | **String** |  | [optional] |

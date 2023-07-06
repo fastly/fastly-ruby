@@ -1,4 +1,4 @@
-# Fastly::HistoricalFieldResultsAttributesAllOf
+# Fastly::HistoricalFieldResultsAttributesAdditional
 
 ## Properties
 

@@ -10,6 +10,8 @@ api_instance = Fastly::TokensApi.new
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
+| [**bulk_revoke_tokens**](TokensApi.md#bulk_revoke_tokens) | **DELETE** /tokens | Revoke multiple tokens |
+| [**create_token**](TokensApi.md#create_token) | **POST** /tokens | Create a token |
 | [**get_token**](TokensApi.md#get_token) | **GET** /tokens/{token_id} | Get a token |
 | [**get_token_current**](TokensApi.md#get_token_current) | **GET** /tokens/self | Get the current token |
 | [**list_tokens_customer**](TokensApi.md#list_tokens_customer) | **GET** /customer/{customer_id}/tokens | List tokens for a customer |
@@ -18,6 +20,74 @@ api_instance = Fastly::TokensApi.new
 | [**revoke_token_current**](TokensApi.md#revoke_token_current) | **DELETE** /tokens/self | Revoke the current token |
 
 
+## `bulk_revoke_tokens()`
+
+```ruby
+bulk_revoke_tokens(opts) # Revoke multiple tokens
+```
+
+Revoke Tokens in bulk format. Users may only revoke their own tokens. Superusers may revoke tokens of others.
+
+### Examples
+
+```ruby
+api_instance = Fastly::TokensApi.new
+opts = {
+    request_body: { key: 3.56}, # Hash<String, Object> | 
+}
+
+begin
+  # Revoke multiple tokens
+  api_instance.bulk_revoke_tokens(opts)
+rescue Fastly::ApiError => e
+  puts "Error when calling TokensApi->bulk_revoke_tokens: #{e}"
+end
+```
+
+### Options
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **request_body** | [**Hash&lt;String, Object&gt;**](Object.md) |  | [optional] |
+
+### Return type
+
+nil (empty response body)
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+## `create_token()`
+
+```ruby
+create_token: <TokenCreatedResponse> # Create a token
+```
+
+Create an API token. If two-factor authentication is enabled for your account, review [the instructions](/reference/api/auth-tokens/user/) for including a one-time password in the request. 
+
+### Examples
+
+```ruby
+api_instance = Fastly::TokensApi.new
+
+begin
+  # Create a token
+  result = api_instance.create_token
+  p result
+rescue Fastly::ApiError => e
+  puts "Error when calling TokensApi->create_token: #{e}"
+end
+```
+
+### Options
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**TokenCreatedResponse**](TokenCreatedResponse.md)
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
 ## `get_token()`
 
 ```ruby

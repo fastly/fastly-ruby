@@ -17,6 +17,81 @@ module Fastly
     def initialize(api_client = ApiClient.default)
       @api_client = api_client
     end
+    # Delete multiple active rules from a WAF
+    # Delete many active rules on a particular firewall version using the active rule ID. Limited to 500 rules per request.
+    # @option opts [String] :firewall_id Alphanumeric string identifying a WAF Firewall. (required)
+    # @option opts [Integer] :version_id Integer identifying a service version. (required)
+    # @option opts [Hash<String, Object>] :request_body 
+    # @return [nil]
+    def bulk_delete_waf_active_rules(opts = {})
+      bulk_delete_waf_active_rules_with_http_info(opts)
+      nil
+    end
+
+    # Delete multiple active rules from a WAF
+    # Delete many active rules on a particular firewall version using the active rule ID. Limited to 500 rules per request.
+    # @option opts [String] :firewall_id Alphanumeric string identifying a WAF Firewall. (required)
+    # @option opts [Integer] :version_id Integer identifying a service version. (required)
+    # @option opts [Hash<String, Object>] :request_body 
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    def bulk_delete_waf_active_rules_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: WafActiveRulesApi.bulk_delete_waf_active_rules ...'
+      end
+      # unbox the parameters from the hash
+      firewall_id = opts[:'firewall_id']
+      version_id = opts[:'version_id']
+      # verify the required parameter 'firewall_id' is set
+      if @api_client.config.client_side_validation && firewall_id.nil?
+        fail ArgumentError, "Missing the required parameter 'firewall_id' when calling WafActiveRulesApi.bulk_delete_waf_active_rules"
+      end
+      # verify the required parameter 'version_id' is set
+      if @api_client.config.client_side_validation && version_id.nil?
+        fail ArgumentError, "Missing the required parameter 'version_id' when calling WafActiveRulesApi.bulk_delete_waf_active_rules"
+      end
+      # resource path
+      local_var_path = '/waf/firewalls/{firewall_id}/versions/{version_id}/active-rules'.sub('{' + 'firewall_id' + '}', CGI.escape(firewall_id.to_s)).sub('{' + 'version_id' + '}', CGI.escape(version_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/vnd.api+json; ext=bulk'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(opts[:'request_body'])
+
+      # return_type
+      return_type = opts[:debug_return_type]
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['token']
+
+      new_options = opts.merge(
+        :operation => :"WafActiveRulesApi.bulk_delete_waf_active_rules",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: WafActiveRulesApi#bulk_delete_waf_active_rules\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Update multiple active rules
     # Bulk update all active rules on a [firewall version](https://developer.fastly.com/reference/api/waf/firewall-version/). This endpoint will not add new active rules, only update existing active rules.
     # @option opts [String] :firewall_id Alphanumeric string identifying a WAF Firewall. (required)

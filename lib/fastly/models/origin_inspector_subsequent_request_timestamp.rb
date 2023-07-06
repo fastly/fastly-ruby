@@ -12,16 +12,11 @@ require 'date'
 require 'time'
 
 module Fastly
-  class HistoricalFieldResultsAttributesAllOf
-    attr_accessor :service_id
-
-    attr_accessor :start_time
-
+  # Value to use for subsequent requests.
+  class OriginInspectorSubsequentRequestTimestamp
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'service_id' => :'service_id',
-        :'start_time' => :'start_time'
       }
     end
 
@@ -33,8 +28,6 @@ module Fastly
     # Attribute type mapping.
     def self.fastly_types
       {
-        :'service_id' => :'ReadOnlyIdService',
-        :'start_time' => :'Integer'
       }
     end
 
@@ -48,24 +41,16 @@ module Fastly
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Fastly::HistoricalFieldResultsAttributesAllOf` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Fastly::OriginInspectorSubsequentRequestTimestamp` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `Fastly::HistoricalFieldResultsAttributesAllOf`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `Fastly::OriginInspectorSubsequentRequestTimestamp`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
-
-      if attributes.key?(:'service_id')
-        self.service_id = attributes[:'service_id']
-      end
-
-      if attributes.key?(:'start_time')
-        self.start_time = attributes[:'start_time']
-      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -85,9 +70,7 @@ module Fastly
     # @param [Object] Object to be compared
     def ==(o)
       return true if self.equal?(o)
-      self.class == o.class &&
-          service_id == o.service_id &&
-          start_time == o.start_time
+      self.class == o.class
     end
 
     # @see the `==` method
@@ -99,7 +82,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [service_id, start_time].hash
+      [].hash
     end
 
     # Builds the object from hash

@@ -17,6 +17,117 @@ module Fastly
     def initialize(api_client = ApiClient.default)
       @api_client = api_client
     end
+    # Create an apex redirect
+    # Create an apex redirect for a particular service and version.
+    # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
+    # @option opts [Integer] :version_id Integer identifying a service version. (required)
+    # @option opts [String] :service_id 
+    # @option opts [Integer] :version 
+    # @option opts [Time] :created_at Date and time in ISO 8601 format.
+    # @option opts [Time] :deleted_at Date and time in ISO 8601 format.
+    # @option opts [Time] :updated_at Date and time in ISO 8601 format.
+    # @option opts [Integer] :status_code HTTP status code used to redirect the client.
+    # @option opts [Array<String>] :domains Array of apex domains that should redirect to their WWW subdomain.
+    # @option opts [Integer] :feature_revision Revision number of the apex redirect feature implementation. Defaults to the most recent revision.
+    # @return [ApexRedirect]
+    def create_apex_redirect(opts = {})
+      data, _status_code, _headers = create_apex_redirect_with_http_info(opts)
+      data
+    end
+
+    # Create an apex redirect
+    # Create an apex redirect for a particular service and version.
+    # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
+    # @option opts [Integer] :version_id Integer identifying a service version. (required)
+    # @option opts [String] :service_id 
+    # @option opts [Integer] :version 
+    # @option opts [Time] :created_at Date and time in ISO 8601 format.
+    # @option opts [Time] :deleted_at Date and time in ISO 8601 format.
+    # @option opts [Time] :updated_at Date and time in ISO 8601 format.
+    # @option opts [Integer] :status_code HTTP status code used to redirect the client.
+    # @option opts [Array<String>] :domains Array of apex domains that should redirect to their WWW subdomain.
+    # @option opts [Integer] :feature_revision Revision number of the apex redirect feature implementation. Defaults to the most recent revision.
+    # @return [Array<(ApexRedirect, Integer, Hash)>] ApexRedirect data, response status code and response headers
+    def create_apex_redirect_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ApexRedirectApi.create_apex_redirect ...'
+      end
+      # unbox the parameters from the hash
+      service_id = opts[:'service_id']
+      version_id = opts[:'version_id']
+      # verify the required parameter 'service_id' is set
+      if @api_client.config.client_side_validation && service_id.nil?
+        fail ArgumentError, "Missing the required parameter 'service_id' when calling ApexRedirectApi.create_apex_redirect"
+      end
+      # verify the required parameter 'version_id' is set
+      if @api_client.config.client_side_validation && version_id.nil?
+        fail ArgumentError, "Missing the required parameter 'version_id' when calling ApexRedirectApi.create_apex_redirect"
+      end
+      allowable_values = [301, 302, 307, 308]
+      if @api_client.config.client_side_validation && opts[:'status_code'] && !allowable_values.include?(opts[:'status_code'])
+        fail ArgumentError, "invalid value for \"status_code\", must be one of #{allowable_values}"
+      end
+      if @api_client.config.client_side_validation && !opts[:'domains'].nil? && opts[:'domains'].length < 1
+        fail ArgumentError, 'invalid value for "opts[:"domains"]" when calling ApexRedirectApi.create_apex_redirect, number of items must be greater than or equal to 1.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'feature_revision'].nil? && opts[:'feature_revision'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"feature_revision"]" when calling ApexRedirectApi.create_apex_redirect, must be greater than or equal to 1.'
+      end
+
+      # resource path
+      local_var_path = '/service/{service_id}/version/{version_id}/apex-redirects'.sub('{' + 'service_id' + '}', CGI.escape(service_id.to_s)).sub('{' + 'version_id' + '}', CGI.escape(version_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/x-www-form-urlencoded'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+      form_params['service_id'] = opts[:'service_id'] if !opts[:'service_id'].nil?
+      form_params['version'] = opts[:'version'] if !opts[:'version'].nil?
+      form_params['created_at'] = opts[:'created_at'] if !opts[:'created_at'].nil?
+      form_params['deleted_at'] = opts[:'deleted_at'] if !opts[:'deleted_at'].nil?
+      form_params['updated_at'] = opts[:'updated_at'] if !opts[:'updated_at'].nil?
+      form_params['status_code'] = opts[:'status_code'] if !opts[:'status_code'].nil?
+      form_params['domains'] = @api_client.build_collection_param(opts[:'domains'], :csv) if !opts[:'domains'].nil?
+      form_params['feature_revision'] = opts[:'feature_revision'] if !opts[:'feature_revision'].nil?
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'ApexRedirect'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['token']
+
+      new_options = opts.merge(
+        :operation => :"ApexRedirectApi.create_apex_redirect",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ApexRedirectApi#create_apex_redirect\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Delete an apex redirect
     # Delete an apex redirect by its ID.
     # @option opts [String] :apex_redirect_id  (required)

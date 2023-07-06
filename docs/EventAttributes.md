@@ -10,7 +10,7 @@
 | **description** | **String** | Description of the event. | [optional] |
 | **event_type** | **String** | Type of event. Can be used with `filter[event_type]` | [optional] |
 | **ip** | **String** | IP addresses that the event was requested from. | [optional] |
-| **metadata** | **Object** | Hash of key value pairs of additional information. | [optional] |
+| **metadata** | **Hash&lt;String, Object&gt;** | Hash of key value pairs of additional information. | [optional] |
 | **service_id** | **String** |  | [optional][readonly] |
 | **user_id** | **String** |  | [optional][readonly] |
 | **token_id** | **String** |  | [optional][readonly] |

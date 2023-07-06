@@ -91,7 +91,7 @@ module Fastly
         :'description' => :'String',
         :'event_type' => :'String',
         :'ip' => :'String',
-        :'metadata' => :'Object',
+        :'metadata' => :'Hash<String, Object>',
         :'service_id' => :'String',
         :'user_id' => :'String',
         :'token_id' => :'String'
@@ -145,7 +145,9 @@ module Fastly
       end
 
       if attributes.key?(:'metadata')
-        self.metadata = attributes[:'metadata']
+        if (value = attributes[:'metadata']).is_a?(Hash)
+          self.metadata = value
+        end
       end
 
       if attributes.key?(:'service_id')

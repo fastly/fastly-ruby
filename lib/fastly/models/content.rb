@@ -46,8 +46,8 @@ module Fastly
     def self.fastly_types
       {
         :'hash' => :'String',
-        :'request' => :'Object',
-        :'response' => :'Object',
+        :'request' => :'Hash<String, Object>',
+        :'response' => :'Hash<String, Object>',
         :'response_time' => :'Float',
         :'server' => :'String',
         :'pop' => :'String'
@@ -80,11 +80,15 @@ module Fastly
       end
 
       if attributes.key?(:'request')
-        self.request = attributes[:'request']
+        if (value = attributes[:'request']).is_a?(Hash)
+          self.request = value
+        end
       end
 
       if attributes.key?(:'response')
-        self.response = attributes[:'response']
+        if (value = attributes[:'response']).is_a?(Hash)
+          self.response = value
+        end
       end
 
       if attributes.key?(:'response_time')

@@ -114,7 +114,7 @@ module Fastly
       if attributes.key?(:'negated')
         self.negated = attributes[:'negated']
       else
-        self.negated = NEGATED::N0
+        self.negated = NEGATED::disable
       end
 
       if attributes.key?(:'comment')

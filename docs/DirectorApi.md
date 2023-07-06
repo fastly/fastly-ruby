@@ -14,6 +14,7 @@ api_instance = Fastly::DirectorApi.new
 | [**delete_director**](DirectorApi.md#delete_director) | **DELETE** /service/{service_id}/version/{version_id}/director/{director_name} | Delete a director |
 | [**get_director**](DirectorApi.md#get_director) | **GET** /service/{service_id}/version/{version_id}/director/{director_name} | Get a director |
 | [**list_directors**](DirectorApi.md#list_directors) | **GET** /service/{service_id}/version/{version_id}/director | List directors |
+| [**update_director**](DirectorApi.md#update_director) | **PUT** /service/{service_id}/version/{version_id}/director/{director_name} | Update a director |
 
 
 ## `create_director()`
@@ -189,6 +190,47 @@ end
 ### Return type
 
 [**Array&lt;DirectorResponse&gt;**](DirectorResponse.md)
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+## `update_director()`
+
+```ruby
+update_director(opts): <DirectorResponse> # Update a director
+```
+
+Update the director for a particular service and version.
+
+### Examples
+
+```ruby
+api_instance = Fastly::DirectorApi.new
+opts = {
+    service_id: 'service_id_example', # String | Alphanumeric string identifying the service.
+    version_id: 56, # Integer | Integer identifying a service version.
+    director_name: 'director_name_example', # String | Name for the Director.
+}
+
+begin
+  # Update a director
+  result = api_instance.update_director(opts)
+  p result
+rescue Fastly::ApiError => e
+  puts "Error when calling DirectorApi->update_director: #{e}"
+end
+```
+
+### Options
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **service_id** | **String** | Alphanumeric string identifying the service. |  |
+| **version_id** | **Integer** | Integer identifying a service version. |  |
+| **director_name** | **String** | Name for the Director. |  |
+
+### Return type
+
+[**DirectorResponse**](DirectorResponse.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)

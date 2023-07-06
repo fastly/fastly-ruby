@@ -12,12 +12,24 @@ require 'date'
 require 'time'
 
 module Fastly
-  class EventsResponseAllOf
+  class HistoricalDomains
+    # Whether or not we were able to successfully execute the query.
+    attr_accessor :status
+
+    attr_accessor :meta
+
+    # If the query was not successful, this will provide a string that explains why.
+    attr_accessor :msg
+
+    # A list of [entries](#entry-data-model), each representing one unique combination of dimensions, such as domain, region, or POP.
     attr_accessor :data
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'status' => :'status',
+        :'meta' => :'meta',
+        :'msg' => :'msg',
         :'data' => :'data'
       }
     end
@@ -30,13 +42,17 @@ module Fastly
     # Attribute type mapping.
     def self.fastly_types
       {
-        :'data' => :'Array<Event>'
+        :'status' => :'String',
+        :'meta' => :'HistoricalDomainsMeta',
+        :'msg' => :'String',
+        :'data' => :'Array<HistoricalDomainsData>'
       }
     end
 
     # List of attributes with nullable: true
     def self.fastly_nullable
       Set.new([
+        :'msg',
       ])
     end
 
@@ -44,16 +60,28 @@ module Fastly
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Fastly::EventsResponseAllOf` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Fastly::HistoricalDomains` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `Fastly::EventsResponseAllOf`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `Fastly::HistoricalDomains`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
+
+      if attributes.key?(:'status')
+        self.status = attributes[:'status']
+      end
+
+      if attributes.key?(:'meta')
+        self.meta = attributes[:'meta']
+      end
+
+      if attributes.key?(:'msg')
+        self.msg = attributes[:'msg']
+      end
 
       if attributes.key?(:'data')
         if (value = attributes[:'data']).is_a?(Array)
@@ -80,6 +108,9 @@ module Fastly
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          status == o.status &&
+          meta == o.meta &&
+          msg == o.msg &&
           data == o.data
     end
 
@@ -92,7 +123,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [data].hash
+      [status, meta, msg, data].hash
     end
 
     # Builds the object from hash

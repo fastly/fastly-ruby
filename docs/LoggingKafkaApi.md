@@ -14,6 +14,7 @@ api_instance = Fastly::LoggingKafkaApi.new
 | [**delete_log_kafka**](LoggingKafkaApi.md#delete_log_kafka) | **DELETE** /service/{service_id}/version/{version_id}/logging/kafka/{logging_kafka_name} | Delete the Kafka log endpoint |
 | [**get_log_kafka**](LoggingKafkaApi.md#get_log_kafka) | **GET** /service/{service_id}/version/{version_id}/logging/kafka/{logging_kafka_name} | Get a Kafka log endpoint |
 | [**list_log_kafka**](LoggingKafkaApi.md#list_log_kafka) | **GET** /service/{service_id}/version/{version_id}/logging/kafka | List Kafka log endpoints |
+| [**update_log_kafka**](LoggingKafkaApi.md#update_log_kafka) | **PUT** /service/{service_id}/version/{version_id}/logging/kafka/{logging_kafka_name} | Update the Kafka log endpoint |
 
 
 ## `create_log_kafka()`
@@ -211,6 +212,47 @@ end
 ### Return type
 
 [**Array&lt;LoggingKafkaResponse&gt;**](LoggingKafkaResponse.md)
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+## `update_log_kafka()`
+
+```ruby
+update_log_kafka(opts): <LoggingKafkaResponse> # Update the Kafka log endpoint
+```
+
+Update the Kafka logging endpoint for a particular service and version.
+
+### Examples
+
+```ruby
+api_instance = Fastly::LoggingKafkaApi.new
+opts = {
+    service_id: 'service_id_example', # String | Alphanumeric string identifying the service.
+    version_id: 56, # Integer | Integer identifying a service version.
+    logging_kafka_name: 'logging_kafka_name_example', # String | The name for the real-time logging configuration.
+}
+
+begin
+  # Update the Kafka log endpoint
+  result = api_instance.update_log_kafka(opts)
+  p result
+rescue Fastly::ApiError => e
+  puts "Error when calling LoggingKafkaApi->update_log_kafka: #{e}"
+end
+```
+
+### Options
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **service_id** | **String** | Alphanumeric string identifying the service. |  |
+| **version_id** | **Integer** | Integer identifying a service version. |  |
+| **logging_kafka_name** | **String** | The name for the real-time logging configuration. |  |
+
+### Return type
+
+[**LoggingKafkaResponse**](LoggingKafkaResponse.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)

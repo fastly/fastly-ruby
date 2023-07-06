@@ -18,7 +18,7 @@
 | **errors** | **Integer** | Number of cache errors. | [optional] |
 | **hits_time** | **Float** | Total amount of time spent processing cache hits (in seconds). | [optional] |
 | **miss_time** | **Float** | Total amount of time spent processing cache misses (in seconds). | [optional] |
-| **miss_histogram** | **Object** | A histogram. Each key represents the upper bound of a span of 10 milliseconds and the values represent the number of requests to origin during that 10ms period. Any origin request that takes more than 60 seconds to return will be in the 60000 bucket. | [optional] |
+| **miss_histogram** | **Hash&lt;String, Object&gt;** | A histogram. Each key represents the upper bound of a span of 10 milliseconds and the values represent the number of requests to origin during that 10ms period. Any origin request that takes more than 60 seconds to return will be in the 60000 bucket. | [optional] |
 | **compute_requests** | **Integer** | The total number of requests that were received for your service by Fastly. | [optional] |
 | **compute_execution_time_ms** | **Float** | The amount of active CPU time used to process your requests (in milliseconds). | [optional] |
 | **compute_ram_used** | **Integer** | The amount of RAM used for your service by Fastly (in bytes). | [optional] |

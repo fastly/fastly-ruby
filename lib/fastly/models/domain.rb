@@ -12,6 +12,7 @@ require 'date'
 require 'time'
 
 module Fastly
+  # Domain details
   class Domain
     # A freeform descriptive note.
     attr_accessor :comment

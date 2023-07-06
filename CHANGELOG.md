@@ -1,5 +1,60 @@
 # Changelog
 
+## [v6.0.0](https://github.com/fastly/fastly-ruby/releases/tag/release/v6.0.0) (2023-07-06)
+
+Substantial changes were made to the underlying OpenAPI specification that produces this API client. These changes have resulted in multiple new endpoints being supported as well as multiple breaking type changes and so we're publishing these changes as a new major release.
+
+**Enhancements:**
+
+- feat(acl_entry): support 'create' endpoint.
+- feat(acl_entry): support 'delete' endpoint.
+- feat(acl_entry): support 'list' endpoint.
+- feat(acl_entry): support 'update' endpoint.
+- feat(apex_redirect): support all endpoints.
+- feat(contact): support 'create' endpoint.
+- feat(content): support 'check status' endpoint.
+- feat(director): support 'update' endpoint.
+- feat(domain_inspector): support all endpoints.
+- feat(iam_roles): support 'add permissions' endpoint.
+- feat(iam_roles): support 'create role' endpoint.
+- feat(iam_roles): support 'delete permissions' endpoint.
+- feat(iam_roles): support 'update role' endpoint.
+- feat(iam_services): support 'add services' endpoint.
+- feat(iam_services): support 'create service group' endpoint.
+- feat(iam_services): support 'remove services' endpoint.
+- feat(iam_services): support 'update service group' endpoint.
+- feat(iam_users): support 'add members' endpoint.
+- feat(iam_users): support 'add roles' endpoint.
+- feat(iam_users): support 'add service groups' endpoint.
+- feat(iam_users): support 'create user group' endpoint.
+- feat(iam_users): support 'remove members' endpoint.
+- feat(iam_users): support 'remove roles' endpoint.
+- feat(iam_users): support 'remove service groups' endpoint.
+- feat(iam_users): support 'update user group' endpoint.
+- feat(legacy_waf): support all endpoints.
+- feat(logging_kafka): support 'update' endpoint.
+- feat(logging_kinesis): support 'update' endpoint.
+- feat(origin_inspector): support all endpoints.
+- feat(request_settings): support 'create' endpoint.
+- feat(response_object): support 'create' endpoint.
+- feat(response_object): support 'update' endpoint.
+- feat(secret_store): support all endpoints.
+- feat(service_authorizations): support 'delete' endpoint.
+- feat(service_authorizations): support 'update' endpoint.
+- feat(snippet): support 'update versioned snippet' endpoint.
+- feat(sudo): support 'request sudo access' endpoint.
+- feat(tokens): support 'revoke multiple tokens' endpoint.
+- feat(tokens): support 'create token' endpoint.
+- feat(waf_active_rules): support 'delete' endpoint.
+
+**Bug fixes:**
+
+- fix(acl_entry): generate NEGATED enum.
+- fix(content): update request/response types.
+- fix(events): update metadata type.
+- fix(realtime_entry): update recorded/aggregated type.
+- fix(realtime_measurements): update miss_histogram type.
+
 ## [v5.3.1](https://github.com/fastly/fastly-ruby/releases/tag/release/v5.3.1) (2023-07-05)
 
 **Bug fixes:**

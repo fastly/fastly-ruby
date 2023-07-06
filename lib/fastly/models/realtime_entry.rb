@@ -14,10 +14,8 @@ require 'time'
 module Fastly
   # A list of records, each representing one second of time. The `Data` property provides access to [measurement data](#measurements-data-model) for that time period, grouped in various ways.
   class RealtimeEntry
-    # The Unix timestamp at which this record's data was generated.
     attr_accessor :recorded
 
-    # Aggregates [measurements](#measurements-data-model) across all Fastly POPs.
     attr_accessor :aggregated
 
     # Groups [measurements](#measurements-data-model) by POP. See the [POPs API](/reference/api/utils/pops/) for details of POP identifiers.
@@ -40,8 +38,8 @@ module Fastly
     # Attribute type mapping.
     def self.fastly_types
       {
-        :'recorded' => :'Integer',
-        :'aggregated' => :'RealtimeMeasurements',
+        :'recorded' => :'RealtimeEntryRecorded',
+        :'aggregated' => :'RealtimeEntryAggregated',
         :'datacenter' => :'Hash<String, RealtimeMeasurements>'
       }
     end
@@ -72,9 +70,6 @@ module Fastly
       end
 
       if attributes.key?(:'aggregated')
-        if (value = attributes[:'aggregated']).is_a?(Hash)
-          self.aggregated = value
-        end
         self.aggregated = attributes[:'aggregated']
       end
 

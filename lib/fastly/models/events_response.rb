@@ -51,7 +51,7 @@ module Fastly
     # List of class defined in allOf (OpenAPI v3)
     def self.fastly_all_of
       [
-      :'EventsResponseAllOf',
+      :'EventData',
       :'Pagination'
       ]
     end

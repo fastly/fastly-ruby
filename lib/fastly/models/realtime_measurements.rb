@@ -914,7 +914,7 @@ module Fastly
         :'errors' => :'Integer',
         :'hits_time' => :'Float',
         :'miss_time' => :'Float',
-        :'miss_histogram' => :'Object',
+        :'miss_histogram' => :'Hash<String, Object>',
         :'compute_requests' => :'Integer',
         :'compute_execution_time_ms' => :'Float',
         :'compute_ram_used' => :'Integer',
@@ -1199,7 +1199,9 @@ module Fastly
       end
 
       if attributes.key?(:'miss_histogram')
-        self.miss_histogram = attributes[:'miss_histogram']
+        if (value = attributes[:'miss_histogram']).is_a?(Hash)
+          self.miss_histogram = value
+        end
       end
 
       if attributes.key?(:'compute_requests')
