@@ -99,6 +99,9 @@ module Fastly
     # List of attributes with nullable: true
     def self.fastly_nullable
       Set.new([
+        :'locked',
+        :'require_new_password',
+        :'two_factor_auth_enabled',
         :'created_at',
         :'deleted_at',
         :'updated_at',
@@ -108,9 +111,9 @@ module Fastly
     # List of class defined in allOf (OpenAPI v3)
     def self.fastly_all_of
       [
+      :'SchemasUserResponseReadOnly',
       :'Timestamps',
-      :'User',
-      :'UserResponseAllOf'
+      :'User'
       ]
     end
 

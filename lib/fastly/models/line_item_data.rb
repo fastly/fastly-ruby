@@ -12,7 +12,7 @@ require 'date'
 require 'time'
 
 module Fastly
-  class BillingResponseLineItemAllOf
+  class LineItemData
     attr_accessor :amount
 
     attr_accessor :aria_invoice_id
@@ -79,7 +79,7 @@ module Fastly
     def self.fastly_types
       {
         :'amount' => :'Float',
-        :'aria_invoice_id' => :'String',
+        :'aria_invoice_id' => :'LineItemDataReadOnlyInvoiceId',
         :'client_service_id' => :'String',
         :'credit_coupon_code' => :'String',
         :'description' => :'String',
@@ -113,13 +113,13 @@ module Fastly
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Fastly::BillingResponseLineItemAllOf` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Fastly::LineItemData` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `Fastly::BillingResponseLineItemAllOf`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `Fastly::LineItemData`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }

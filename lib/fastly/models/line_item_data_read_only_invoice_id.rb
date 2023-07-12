@@ -12,13 +12,10 @@ require 'date'
 require 'time'
 
 module Fastly
-  class BillingEstimateResponseAllOf
-    attr_accessor :lines
-
+  class LineItemDataReadOnlyInvoiceId
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'lines' => :'lines'
       }
     end
 
@@ -30,7 +27,6 @@ module Fastly
     # Attribute type mapping.
     def self.fastly_types
       {
-        :'lines' => :'Array<BillingEstimateResponseAllOfLines>'
       }
     end
 
@@ -44,22 +40,16 @@ module Fastly
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Fastly::BillingEstimateResponseAllOf` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Fastly::LineItemDataReadOnlyInvoiceId` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `Fastly::BillingEstimateResponseAllOf`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `Fastly::LineItemDataReadOnlyInvoiceId`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
-
-      if attributes.key?(:'lines')
-        if (value = attributes[:'lines']).is_a?(Array)
-          self.lines = value
-        end
-      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -79,8 +69,7 @@ module Fastly
     # @param [Object] Object to be compared
     def ==(o)
       return true if self.equal?(o)
-      self.class == o.class &&
-          lines == o.lines
+      self.class == o.class
     end
 
     # @see the `==` method
@@ -92,7 +81,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [lines].hash
+      [].hash
     end
 
     # Builds the object from hash

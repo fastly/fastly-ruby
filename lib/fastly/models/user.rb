@@ -71,6 +71,9 @@ module Fastly
     # List of attributes with nullable: true
     def self.fastly_nullable
       Set.new([
+        :'locked',
+        :'require_new_password',
+        :'two_factor_auth_enabled',
       ])
     end
 

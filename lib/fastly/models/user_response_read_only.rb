@@ -12,13 +12,20 @@ require 'date'
 require 'time'
 
 module Fastly
-  class BillingResponseAllOf
-    attr_accessor :line_items
+  class UserResponseReadOnly
+    attr_accessor :id
+
+    # The alphanumeric string identifying a email login.
+    attr_accessor :email_hash
+
+    attr_accessor :customer_id
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'line_items' => :'line_items'
+        :'id' => :'id',
+        :'email_hash' => :'email_hash',
+        :'customer_id' => :'customer_id'
       }
     end
 
@@ -30,7 +37,9 @@ module Fastly
     # Attribute type mapping.
     def self.fastly_types
       {
-        :'line_items' => :'Array<BillingResponseLineItem>'
+        :'id' => :'String',
+        :'email_hash' => :'String',
+        :'customer_id' => :'String'
       }
     end
 
@@ -44,21 +53,27 @@ module Fastly
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Fastly::BillingResponseAllOf` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Fastly::UserResponseReadOnly` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `Fastly::BillingResponseAllOf`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `Fastly::UserResponseReadOnly`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'line_items')
-        if (value = attributes[:'line_items']).is_a?(Array)
-          self.line_items = value
-        end
+      if attributes.key?(:'id')
+        self.id = attributes[:'id']
+      end
+
+      if attributes.key?(:'email_hash')
+        self.email_hash = attributes[:'email_hash']
+      end
+
+      if attributes.key?(:'customer_id')
+        self.customer_id = attributes[:'customer_id']
       end
     end
 
@@ -80,7 +95,9 @@ module Fastly
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          line_items == o.line_items
+          id == o.id &&
+          email_hash == o.email_hash &&
+          customer_id == o.customer_id
     end
 
     # @see the `==` method
@@ -92,7 +109,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [line_items].hash
+      [id, email_hash, customer_id].hash
     end
 
     # Builds the object from hash

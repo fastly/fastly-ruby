@@ -33,7 +33,7 @@ module Fastly
     # Breakdown of regional data for products that are region based.
     attr_accessor :regions
 
-    attr_accessor :lines
+    attr_accessor :line_items
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -46,7 +46,7 @@ module Fastly
         :'status' => :'status',
         :'total' => :'total',
         :'regions' => :'regions',
-        :'lines' => :'lines'
+        :'line_items' => :'line_items'
       }
     end
 
@@ -66,7 +66,7 @@ module Fastly
         :'status' => :'BillingStatus',
         :'total' => :'BillingTotal',
         :'regions' => :'Hash<String, Hash<String, Object>>',
-        :'lines' => :'Array<BillingEstimateResponseAllOfLines>'
+        :'line_items' => :'Array<BillingEstimateLinesLineItems>'
       }
     end
 
@@ -82,7 +82,7 @@ module Fastly
     def self.fastly_all_of
       [
       :'Billing',
-      :'BillingEstimateResponseAllOf'
+      :'BillingEstimateLines'
       ]
     end
 
@@ -135,9 +135,9 @@ module Fastly
         end
       end
 
-      if attributes.key?(:'lines')
-        if (value = attributes[:'lines']).is_a?(Array)
-          self.lines = value
+      if attributes.key?(:'line_items')
+        if (value = attributes[:'line_items']).is_a?(Array)
+          self.line_items = value
         end
       end
     end
@@ -168,7 +168,7 @@ module Fastly
           status == o.status &&
           total == o.total &&
           regions == o.regions &&
-          lines == o.lines
+          line_items == o.line_items
     end
 
     # @see the `==` method
@@ -180,7 +180,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [end_time, start_time, invoice_id, customer_id, vendor_state, status, total, regions, lines].hash
+      [end_time, start_time, invoice_id, customer_id, vendor_state, status, total, regions, line_items].hash
     end
 
     # Builds the object from hash

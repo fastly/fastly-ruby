@@ -94,7 +94,7 @@ module Fastly
         :'deleted_at' => :'Time',
         :'updated_at' => :'Time',
         :'amount' => :'Float',
-        :'aria_invoice_id' => :'String',
+        :'aria_invoice_id' => :'LineItemDataReadOnlyInvoiceId',
         :'client_service_id' => :'String',
         :'credit_coupon_code' => :'String',
         :'description' => :'String',
@@ -130,7 +130,7 @@ module Fastly
     # List of class defined in allOf (OpenAPI v3)
     def self.fastly_all_of
       [
-      :'BillingResponseLineItemAllOf',
+      :'LineItemData',
       :'Timestamps'
       ]
     end

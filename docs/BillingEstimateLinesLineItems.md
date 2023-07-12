@@ -1,4 +1,4 @@
-# Fastly::BillingEstimateResponseAllOfLine
+# Fastly::BillingEstimateLinesLineItems
 
 ## Properties
 

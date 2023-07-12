@@ -1,5 +1,13 @@
 # Changelog
 
+## [v6.0.1](https://github.com/fastly/fastly-ruby/releases/tag/release/v6.0.1) (2023-07-12)
+
+**Bug fixes:**
+
+- fix(billing): rename response field 'lines' to 'line_items'.
+- fix(billing): restructure response models like 'aria_invoice_id'.
+- fix(billing): make 'sent_at', 'locked', 'require_new_password', 'two_factor_auth_enabled' nullable.
+
 ## [v6.0.0](https://github.com/fastly/fastly-ruby/releases/tag/release/v6.0.0) (2023-07-06)
 
 Substantial changes were made to the underlying OpenAPI specification that produces this API client. These changes have resulted in multiple new endpoints being supported as well as multiple breaking type changes and so we're publishing these changes as a new major release.

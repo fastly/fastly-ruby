@@ -16,6 +16,7 @@ module Fastly
     # What the current status of this invoice can be.
     attr_accessor :status
 
+    # Date and time in ISO 8601 format.
     attr_accessor :sent_at
 
     class EnumAttributeValidator
@@ -64,6 +65,7 @@ module Fastly
     # List of attributes with nullable: true
     def self.fastly_nullable
       Set.new([
+        :'sent_at'
       ])
     end
 

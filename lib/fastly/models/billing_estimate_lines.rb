@@ -12,37 +12,13 @@ require 'date'
 require 'time'
 
 module Fastly
-  class BillingEstimateResponseAllOfLine
-    attr_accessor :plan_no
-
-    attr_accessor :description
-
-    attr_accessor :units
-
-    attr_accessor :per_unit_cost
-
-    attr_accessor :service_no
-
-    attr_accessor :service_type
-
-    attr_accessor :amount
-
-    attr_accessor :client_service_id
-
-    attr_accessor :client_plan_id
+  class BillingEstimateLines
+    attr_accessor :line_items
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'plan_no' => :'plan_no',
-        :'description' => :'description',
-        :'units' => :'units',
-        :'per_unit_cost' => :'per_unit_cost',
-        :'service_no' => :'service_no',
-        :'service_type' => :'service_type',
-        :'amount' => :'amount',
-        :'client_service_id' => :'client_service_id',
-        :'client_plan_id' => :'client_plan_id'
+        :'line_items' => :'line_items'
       }
     end
 
@@ -54,15 +30,7 @@ module Fastly
     # Attribute type mapping.
     def self.fastly_types
       {
-        :'plan_no' => :'Integer',
-        :'description' => :'String',
-        :'units' => :'Float',
-        :'per_unit_cost' => :'Float',
-        :'service_no' => :'Float',
-        :'service_type' => :'String',
-        :'amount' => :'Float',
-        :'client_service_id' => :'String',
-        :'client_plan_id' => :'String'
+        :'line_items' => :'Array<BillingEstimateLinesLineItems>'
       }
     end
 
@@ -76,51 +44,21 @@ module Fastly
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Fastly::BillingEstimateResponseAllOfLine` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Fastly::BillingEstimateLines` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `Fastly::BillingEstimateResponseAllOfLine`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `Fastly::BillingEstimateLines`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'plan_no')
-        self.plan_no = attributes[:'plan_no']
-      end
-
-      if attributes.key?(:'description')
-        self.description = attributes[:'description']
-      end
-
-      if attributes.key?(:'units')
-        self.units = attributes[:'units']
-      end
-
-      if attributes.key?(:'per_unit_cost')
-        self.per_unit_cost = attributes[:'per_unit_cost']
-      end
-
-      if attributes.key?(:'service_no')
-        self.service_no = attributes[:'service_no']
-      end
-
-      if attributes.key?(:'service_type')
-        self.service_type = attributes[:'service_type']
-      end
-
-      if attributes.key?(:'amount')
-        self.amount = attributes[:'amount']
-      end
-
-      if attributes.key?(:'client_service_id')
-        self.client_service_id = attributes[:'client_service_id']
-      end
-
-      if attributes.key?(:'client_plan_id')
-        self.client_plan_id = attributes[:'client_plan_id']
+      if attributes.key?(:'line_items')
+        if (value = attributes[:'line_items']).is_a?(Array)
+          self.line_items = value
+        end
       end
     end
 
@@ -142,15 +80,7 @@ module Fastly
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          plan_no == o.plan_no &&
-          description == o.description &&
-          units == o.units &&
-          per_unit_cost == o.per_unit_cost &&
-          service_no == o.service_no &&
-          service_type == o.service_type &&
-          amount == o.amount &&
-          client_service_id == o.client_service_id &&
-          client_plan_id == o.client_plan_id
+          line_items == o.line_items
     end
 
     # @see the `==` method
@@ -162,7 +92,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [plan_no, description, units, per_unit_cost, service_no, service_type, amount, client_service_id, client_plan_id].hash
+      [line_items].hash
     end
 
     # Builds the object from hash
