@@ -16,7 +16,6 @@ module Fastly
     # The name of the GCS bucket.
     attr_accessor :bucket_name
 
-    # The path to upload logs to.
     attr_accessor :path
 
     # A PGP public key that Fastly will use to encrypt your log files before writing them to disk.
@@ -78,6 +77,8 @@ module Fastly
 
       if attributes.key?(:'path')
         self.path = attributes[:'path']
+      else
+        self.path = '/'
       end
 
       if attributes.key?(:'public_key')

@@ -35,7 +35,7 @@ module Fastly
     # @option opts [String] :secret_key Your Google Cloud Platform account secret key. The &#x60;private_key&#x60; field in your service account authentication JSON. Not required if &#x60;account_name&#x60; is specified.
     # @option opts [String] :account_name The name of the Google Cloud Platform service account associated with the target log collection service. Not required if &#x60;user&#x60; and &#x60;secret_key&#x60; are provided.
     # @option opts [String] :bucket_name The name of the GCS bucket.
-    # @option opts [String] :path The path to upload logs to.
+    # @option opts [String] :path  (default to '/')
     # @option opts [String] :public_key A PGP public key that Fastly will use to encrypt your log files before writing them to disk. (default to 'null')
     # @option opts [String] :project_id Your Google Cloud Platform project ID. Required
     # @return [LoggingGcsResponse]
@@ -62,7 +62,7 @@ module Fastly
     # @option opts [String] :secret_key Your Google Cloud Platform account secret key. The &#x60;private_key&#x60; field in your service account authentication JSON. Not required if &#x60;account_name&#x60; is specified.
     # @option opts [String] :account_name The name of the Google Cloud Platform service account associated with the target log collection service. Not required if &#x60;user&#x60; and &#x60;secret_key&#x60; are provided.
     # @option opts [String] :bucket_name The name of the GCS bucket.
-    # @option opts [String] :path The path to upload logs to.
+    # @option opts [String] :path  (default to '/')
     # @option opts [String] :public_key A PGP public key that Fastly will use to encrypt your log files before writing them to disk. (default to 'null')
     # @option opts [String] :project_id Your Google Cloud Platform project ID. Required
     # @return [Array<(LoggingGcsResponse, Integer, Hash)>] LoggingGcsResponse data, response status code and response headers
@@ -402,7 +402,7 @@ module Fastly
     # @option opts [String] :secret_key Your Google Cloud Platform account secret key. The &#x60;private_key&#x60; field in your service account authentication JSON. Not required if &#x60;account_name&#x60; is specified.
     # @option opts [String] :account_name The name of the Google Cloud Platform service account associated with the target log collection service. Not required if &#x60;user&#x60; and &#x60;secret_key&#x60; are provided.
     # @option opts [String] :bucket_name The name of the GCS bucket.
-    # @option opts [String] :path The path to upload logs to.
+    # @option opts [String] :path  (default to '/')
     # @option opts [String] :public_key A PGP public key that Fastly will use to encrypt your log files before writing them to disk. (default to 'null')
     # @option opts [String] :project_id Your Google Cloud Platform project ID. Required
     # @return [LoggingGcsResponse]
@@ -430,7 +430,7 @@ module Fastly
     # @option opts [String] :secret_key Your Google Cloud Platform account secret key. The &#x60;private_key&#x60; field in your service account authentication JSON. Not required if &#x60;account_name&#x60; is specified.
     # @option opts [String] :account_name The name of the Google Cloud Platform service account associated with the target log collection service. Not required if &#x60;user&#x60; and &#x60;secret_key&#x60; are provided.
     # @option opts [String] :bucket_name The name of the GCS bucket.
-    # @option opts [String] :path The path to upload logs to.
+    # @option opts [String] :path  (default to '/')
     # @option opts [String] :public_key A PGP public key that Fastly will use to encrypt your log files before writing them to disk. (default to 'null')
     # @option opts [String] :project_id Your Google Cloud Platform project ID. Required
     # @return [Array<(LoggingGcsResponse, Integer, Hash)>] LoggingGcsResponse data, response status code and response headers

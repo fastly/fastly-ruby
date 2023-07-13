@@ -1,5 +1,13 @@
 # Changelog
 
+## [v6.0.2](https://github.com/fastly/fastly-ruby/releases/tag/release/v6.0.2) (2023-07-13)
+
+**Bug fixes:**
+
+- fix(logging_gcs): set expected default value for 'path'.
+- fix(origin_inspector_historical): use correct type for 'values'.
+- fix(tls_subscriptions): fix argument order for deleting globalsign email challenge.
+
 ## [v6.0.1](https://github.com/fastly/fastly-ruby/releases/tag/release/v6.0.1) (2023-07-12)
 
 **Bug fixes:**

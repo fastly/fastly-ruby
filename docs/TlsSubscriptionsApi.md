@@ -113,8 +113,8 @@ Deletes a GlobalSign email challenge. After a GlobalSign email challenge is dele
 api_instance = Fastly::TlsSubscriptionsApi.new
 opts = {
     tls_subscription_id: 'tls_subscription_id_example', # String | Alphanumeric string identifying a TLS subscription.
-    globalsign_email_challenge_id: 'gU3guUGZzb2W9Euo4Mo0r', # String | Alphanumeric string identifying a GlobalSign email challenge.
     tls_authorization_id: 'tls_authorization_id_example', # String | Alphanumeric string identifying a TLS subscription.
+    globalsign_email_challenge_id: 'gU3guUGZzb2W9Euo4Mo0r', # String | Alphanumeric string identifying a GlobalSign email challenge.
 }
 
 begin
@@ -130,8 +130,8 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **tls_subscription_id** | **String** | Alphanumeric string identifying a TLS subscription. |  |
-| **globalsign_email_challenge_id** | **String** | Alphanumeric string identifying a GlobalSign email challenge. |  |
 | **tls_authorization_id** | **String** | Alphanumeric string identifying a TLS subscription. |  |
+| **globalsign_email_challenge_id** | **String** | Alphanumeric string identifying a GlobalSign email challenge. |  |
 
 ### Return type
 

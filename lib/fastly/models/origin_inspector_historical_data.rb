@@ -15,6 +15,7 @@ module Fastly
   class OriginInspectorHistoricalData
     attr_accessor :dimensions
 
+    # An array of values representing the metric values at each point in time. Note that this dataset is sparse: only the keys with non-zero values will be included in the record. 
     attr_accessor :values
 
     # Attribute mapping from ruby-style variable name to JSON key.
@@ -34,7 +35,7 @@ module Fastly
     def self.fastly_types
       {
         :'dimensions' => :'OriginInspectorDimensions',
-        :'values' => :'Values'
+        :'values' => :'Array<OriginInspectorValues>'
       }
     end
 
@@ -64,7 +65,9 @@ module Fastly
       end
 
       if attributes.key?(:'values')
-        self.values = attributes[:'values']
+        if (value = attributes[:'values']).is_a?(Array)
+          self.values = value
+        end
       end
     end
 

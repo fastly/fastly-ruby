@@ -163,8 +163,8 @@ module Fastly
     # Delete a GlobalSign email challenge
     # Deletes a GlobalSign email challenge. After a GlobalSign email challenge is deleted, the domain can use HTTP and DNS validation methods again.
     # @option opts [String] :tls_subscription_id Alphanumeric string identifying a TLS subscription. (required)
-    # @option opts [String] :globalsign_email_challenge_id Alphanumeric string identifying a GlobalSign email challenge. (required)
     # @option opts [String] :tls_authorization_id Alphanumeric string identifying a TLS subscription. (required)
+    # @option opts [String] :globalsign_email_challenge_id Alphanumeric string identifying a GlobalSign email challenge. (required)
     # @return [nil]
     def delete_globalsign_email_challenge(opts = {})
       delete_globalsign_email_challenge_with_http_info(opts)
@@ -174,8 +174,8 @@ module Fastly
     # Delete a GlobalSign email challenge
     # Deletes a GlobalSign email challenge. After a GlobalSign email challenge is deleted, the domain can use HTTP and DNS validation methods again.
     # @option opts [String] :tls_subscription_id Alphanumeric string identifying a TLS subscription. (required)
-    # @option opts [String] :globalsign_email_challenge_id Alphanumeric string identifying a GlobalSign email challenge. (required)
     # @option opts [String] :tls_authorization_id Alphanumeric string identifying a TLS subscription. (required)
+    # @option opts [String] :globalsign_email_challenge_id Alphanumeric string identifying a GlobalSign email challenge. (required)
     # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def delete_globalsign_email_challenge_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -183,22 +183,22 @@ module Fastly
       end
       # unbox the parameters from the hash
       tls_subscription_id = opts[:'tls_subscription_id']
-      globalsign_email_challenge_id = opts[:'globalsign_email_challenge_id']
       tls_authorization_id = opts[:'tls_authorization_id']
+      globalsign_email_challenge_id = opts[:'globalsign_email_challenge_id']
       # verify the required parameter 'tls_subscription_id' is set
       if @api_client.config.client_side_validation && tls_subscription_id.nil?
         fail ArgumentError, "Missing the required parameter 'tls_subscription_id' when calling TlsSubscriptionsApi.delete_globalsign_email_challenge"
-      end
-      # verify the required parameter 'globalsign_email_challenge_id' is set
-      if @api_client.config.client_side_validation && globalsign_email_challenge_id.nil?
-        fail ArgumentError, "Missing the required parameter 'globalsign_email_challenge_id' when calling TlsSubscriptionsApi.delete_globalsign_email_challenge"
       end
       # verify the required parameter 'tls_authorization_id' is set
       if @api_client.config.client_side_validation && tls_authorization_id.nil?
         fail ArgumentError, "Missing the required parameter 'tls_authorization_id' when calling TlsSubscriptionsApi.delete_globalsign_email_challenge"
       end
+      # verify the required parameter 'globalsign_email_challenge_id' is set
+      if @api_client.config.client_side_validation && globalsign_email_challenge_id.nil?
+        fail ArgumentError, "Missing the required parameter 'globalsign_email_challenge_id' when calling TlsSubscriptionsApi.delete_globalsign_email_challenge"
+      end
       # resource path
-      local_var_path = '/tls/subscriptions/{tls_subscription_id}/authorizations/{tls_authorization_id}/globalsign_email_challenges/{globalsign_email_challenge_id}'.sub('{' + 'tls_subscription_id' + '}', CGI.escape(tls_subscription_id.to_s)).sub('{' + 'globalsign_email_challenge_id' + '}', CGI.escape(globalsign_email_challenge_id.to_s)).sub('{' + 'tls_authorization_id' + '}', CGI.escape(tls_authorization_id.to_s))
+      local_var_path = '/tls/subscriptions/{tls_subscription_id}/authorizations/{tls_authorization_id}/globalsign_email_challenges/{globalsign_email_challenge_id}'.sub('{' + 'tls_subscription_id' + '}', CGI.escape(tls_subscription_id.to_s)).sub('{' + 'tls_authorization_id' + '}', CGI.escape(tls_authorization_id.to_s)).sub('{' + 'globalsign_email_challenge_id' + '}', CGI.escape(globalsign_email_challenge_id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
