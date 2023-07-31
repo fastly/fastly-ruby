@@ -66,7 +66,7 @@ module Fastly
         :'extensions' => :'String',
         :'name' => :'String',
         :'service_id' => :'String',
-        :'version' => :'Integer',
+        :'version' => :'String',
         :'created_at' => :'Time',
         :'deleted_at' => :'Time',
         :'updated_at' => :'Time'
@@ -89,7 +89,7 @@ module Fastly
     def self.fastly_all_of
       [
       :'Gzip',
-      :'ServiceIdAndVersion',
+      :'ServiceIdAndVersionString',
       :'Timestamps'
       ]
     end

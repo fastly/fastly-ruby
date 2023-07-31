@@ -22,7 +22,7 @@ module Fastly
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
     # @option opts [Integer] :version_id Integer identifying a service version. (required)
     # @option opts [String] :domain_name The name of the domain or domains associated with this service. (required)
-    # @return [Array<DomainCheckItem>]
+    # @return [Array<Object>]
     def check_domain(opts = {})
       data, _status_code, _headers = check_domain_with_http_info(opts)
       data
@@ -33,7 +33,7 @@ module Fastly
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
     # @option opts [Integer] :version_id Integer identifying a service version. (required)
     # @option opts [String] :domain_name The name of the domain or domains associated with this service. (required)
-    # @return [Array<(Array<DomainCheckItem>, Integer, Hash)>] Array<DomainCheckItem> data, response status code and response headers
+    # @return [Array<(Array<Object>, Integer, Hash)>] Array<Object> data, response status code and response headers
     def check_domain_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DomainApi.check_domain ...'
@@ -72,7 +72,7 @@ module Fastly
       post_body = opts[:debug_body]
 
       # return_type
-      return_type = opts[:debug_return_type] || 'Array<DomainCheckItem>'
+      return_type = opts[:debug_return_type] || 'Array<Object>'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['token']

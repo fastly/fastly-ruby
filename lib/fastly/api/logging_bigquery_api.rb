@@ -23,9 +23,9 @@ module Fastly
     # @option opts [Integer] :version_id Integer identifying a service version. (required)
     # @option opts [String] :name The name of the BigQuery logging object. Used as a primary key for API access.
     # @option opts [String] :placement Where in the generated VCL the logging call should be placed. If not set, endpoints with &#x60;format_version&#x60; of 2 are placed in &#x60;vcl_log&#x60; and those with &#x60;format_version&#x60; of 1 are placed in &#x60;vcl_deliver&#x60;. 
-    # @option opts [Integer] :format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;.  (default to FORMAT_VERSION::v2)
     # @option opts [String] :response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute.
     # @option opts [String] :format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce JSON that matches the schema of your BigQuery table.
+    # @option opts [Integer] :format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;.  (default to FORMAT_VERSION::v2)
     # @option opts [String] :user Your Google Cloud Platform service account email address. The &#x60;client_email&#x60; field in your service account authentication JSON. Not required if &#x60;account_name&#x60; is specified.
     # @option opts [String] :secret_key Your Google Cloud Platform account secret key. The &#x60;private_key&#x60; field in your service account authentication JSON. Not required if &#x60;account_name&#x60; is specified.
     # @option opts [String] :account_name The name of the Google Cloud Platform service account associated with the target log collection service. Not required if &#x60;user&#x60; and &#x60;secret_key&#x60; are provided.
@@ -45,9 +45,9 @@ module Fastly
     # @option opts [Integer] :version_id Integer identifying a service version. (required)
     # @option opts [String] :name The name of the BigQuery logging object. Used as a primary key for API access.
     # @option opts [String] :placement Where in the generated VCL the logging call should be placed. If not set, endpoints with &#x60;format_version&#x60; of 2 are placed in &#x60;vcl_log&#x60; and those with &#x60;format_version&#x60; of 1 are placed in &#x60;vcl_deliver&#x60;. 
-    # @option opts [Integer] :format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;.  (default to FORMAT_VERSION::v2)
     # @option opts [String] :response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute.
     # @option opts [String] :format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce JSON that matches the schema of your BigQuery table.
+    # @option opts [Integer] :format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;.  (default to FORMAT_VERSION::v2)
     # @option opts [String] :user Your Google Cloud Platform service account email address. The &#x60;client_email&#x60; field in your service account authentication JSON. Not required if &#x60;account_name&#x60; is specified.
     # @option opts [String] :secret_key Your Google Cloud Platform account secret key. The &#x60;private_key&#x60; field in your service account authentication JSON. Not required if &#x60;account_name&#x60; is specified.
     # @option opts [String] :account_name The name of the Google Cloud Platform service account associated with the target log collection service. Not required if &#x60;user&#x60; and &#x60;secret_key&#x60; are provided.
@@ -99,9 +99,9 @@ module Fastly
       form_params = opts[:form_params] || {}
       form_params['name'] = opts[:'name'] if !opts[:'name'].nil?
       form_params['placement'] = opts[:'placement'] if !opts[:'placement'].nil?
-      form_params['format_version'] = opts[:'format_version'] if !opts[:'format_version'].nil?
       form_params['response_condition'] = opts[:'response_condition'] if !opts[:'response_condition'].nil?
       form_params['format'] = opts[:'format'] if !opts[:'format'].nil?
+      form_params['format_version'] = opts[:'format_version'] if !opts[:'format_version'].nil?
       form_params['user'] = opts[:'user'] if !opts[:'user'].nil?
       form_params['secret_key'] = opts[:'secret_key'] if !opts[:'secret_key'].nil?
       form_params['account_name'] = opts[:'account_name'] if !opts[:'account_name'].nil?
@@ -367,9 +367,9 @@ module Fastly
     # @option opts [String] :logging_bigquery_name The name for the real-time logging configuration. (required)
     # @option opts [String] :name The name of the BigQuery logging object. Used as a primary key for API access.
     # @option opts [String] :placement Where in the generated VCL the logging call should be placed. If not set, endpoints with &#x60;format_version&#x60; of 2 are placed in &#x60;vcl_log&#x60; and those with &#x60;format_version&#x60; of 1 are placed in &#x60;vcl_deliver&#x60;. 
-    # @option opts [Integer] :format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;.  (default to FORMAT_VERSION::v2)
     # @option opts [String] :response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute.
     # @option opts [String] :format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce JSON that matches the schema of your BigQuery table.
+    # @option opts [Integer] :format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;.  (default to FORMAT_VERSION::v2)
     # @option opts [String] :user Your Google Cloud Platform service account email address. The &#x60;client_email&#x60; field in your service account authentication JSON. Not required if &#x60;account_name&#x60; is specified.
     # @option opts [String] :secret_key Your Google Cloud Platform account secret key. The &#x60;private_key&#x60; field in your service account authentication JSON. Not required if &#x60;account_name&#x60; is specified.
     # @option opts [String] :account_name The name of the Google Cloud Platform service account associated with the target log collection service. Not required if &#x60;user&#x60; and &#x60;secret_key&#x60; are provided.
@@ -390,9 +390,9 @@ module Fastly
     # @option opts [String] :logging_bigquery_name The name for the real-time logging configuration. (required)
     # @option opts [String] :name The name of the BigQuery logging object. Used as a primary key for API access.
     # @option opts [String] :placement Where in the generated VCL the logging call should be placed. If not set, endpoints with &#x60;format_version&#x60; of 2 are placed in &#x60;vcl_log&#x60; and those with &#x60;format_version&#x60; of 1 are placed in &#x60;vcl_deliver&#x60;. 
-    # @option opts [Integer] :format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;.  (default to FORMAT_VERSION::v2)
     # @option opts [String] :response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute.
     # @option opts [String] :format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce JSON that matches the schema of your BigQuery table.
+    # @option opts [Integer] :format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;.  (default to FORMAT_VERSION::v2)
     # @option opts [String] :user Your Google Cloud Platform service account email address. The &#x60;client_email&#x60; field in your service account authentication JSON. Not required if &#x60;account_name&#x60; is specified.
     # @option opts [String] :secret_key Your Google Cloud Platform account secret key. The &#x60;private_key&#x60; field in your service account authentication JSON. Not required if &#x60;account_name&#x60; is specified.
     # @option opts [String] :account_name The name of the Google Cloud Platform service account associated with the target log collection service. Not required if &#x60;user&#x60; and &#x60;secret_key&#x60; are provided.
@@ -449,9 +449,9 @@ module Fastly
       form_params = opts[:form_params] || {}
       form_params['name'] = opts[:'name'] if !opts[:'name'].nil?
       form_params['placement'] = opts[:'placement'] if !opts[:'placement'].nil?
-      form_params['format_version'] = opts[:'format_version'] if !opts[:'format_version'].nil?
       form_params['response_condition'] = opts[:'response_condition'] if !opts[:'response_condition'].nil?
       form_params['format'] = opts[:'format'] if !opts[:'format'].nil?
+      form_params['format_version'] = opts[:'format_version'] if !opts[:'format_version'].nil?
       form_params['user'] = opts[:'user'] if !opts[:'user'].nil?
       form_params['secret_key'] = opts[:'secret_key'] if !opts[:'secret_key'].nil?
       form_params['account_name'] = opts[:'account_name'] if !opts[:'account_name'].nil?

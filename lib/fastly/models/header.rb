@@ -22,14 +22,8 @@ module Fastly
     # Header to set.
     attr_accessor :dst
 
-    # Don't add the header if it is added already. Only applies to 'set' action.
-    attr_accessor :ignore_if_set
-
     # A handle to refer to this Header object.
     attr_accessor :name
-
-    # Priority determines execution order. Lower numbers execute first.
-    attr_accessor :priority
 
     # Regular expression to use. Only applies to `regex` and `regex_repeat` actions.
     attr_accessor :regex
@@ -77,9 +71,7 @@ module Fastly
         :'action' => :'action',
         :'cache_condition' => :'cache_condition',
         :'dst' => :'dst',
-        :'ignore_if_set' => :'ignore_if_set',
         :'name' => :'name',
-        :'priority' => :'priority',
         :'regex' => :'regex',
         :'request_condition' => :'request_condition',
         :'response_condition' => :'response_condition',
@@ -100,9 +92,7 @@ module Fastly
         :'action' => :'String',
         :'cache_condition' => :'String',
         :'dst' => :'String',
-        :'ignore_if_set' => :'Integer',
         :'name' => :'String',
-        :'priority' => :'Integer',
         :'regex' => :'String',
         :'request_condition' => :'String',
         :'response_condition' => :'String',
@@ -151,18 +141,8 @@ module Fastly
         self.dst = attributes[:'dst']
       end
 
-      if attributes.key?(:'ignore_if_set')
-        self.ignore_if_set = attributes[:'ignore_if_set']
-      end
-
       if attributes.key?(:'name')
         self.name = attributes[:'name']
-      end
-
-      if attributes.key?(:'priority')
-        self.priority = attributes[:'priority']
-      else
-        self.priority = 100
       end
 
       if attributes.key?(:'regex')
@@ -235,9 +215,7 @@ module Fastly
           action == o.action &&
           cache_condition == o.cache_condition &&
           dst == o.dst &&
-          ignore_if_set == o.ignore_if_set &&
           name == o.name &&
-          priority == o.priority &&
           regex == o.regex &&
           request_condition == o.request_condition &&
           response_condition == o.response_condition &&
@@ -255,7 +233,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [action, cache_condition, dst, ignore_if_set, name, priority, regex, request_condition, response_condition, src, substitution, type].hash
+      [action, cache_condition, dst, name, regex, request_condition, response_condition, src, substitution, type].hash
     end
 
     # Builds the object from hash

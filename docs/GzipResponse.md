@@ -9,7 +9,7 @@
 | **extensions** | **String** | Space-separated list of file extensions to compress. If you omit this field a default list will be used. | [optional] |
 | **name** | **String** | Name of the gzip configuration. | [optional] |
 | **service_id** | **String** |  | [optional][readonly] |
-| **version** | **Integer** |  | [optional][readonly] |
+| **version** | **String** |  | [optional][readonly] |
 | **created_at** | **Time** | Date and time in ISO 8601 format. | [optional][readonly] |
 | **deleted_at** | **Time** | Date and time in ISO 8601 format. | [optional][readonly] |
 | **updated_at** | **Time** | Date and time in ISO 8601 format. | [optional][readonly] |

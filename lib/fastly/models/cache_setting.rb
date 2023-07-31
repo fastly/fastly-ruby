@@ -72,8 +72,8 @@ module Fastly
         :'action' => :'String',
         :'cache_condition' => :'String',
         :'name' => :'String',
-        :'stale_ttl' => :'Integer',
-        :'ttl' => :'Integer'
+        :'stale_ttl' => :'String',
+        :'ttl' => :'String'
       }
     end
 

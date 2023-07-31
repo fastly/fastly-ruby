@@ -90,10 +90,10 @@ module Fastly
         :'action' => :'String',
         :'cache_condition' => :'String',
         :'name' => :'String',
-        :'stale_ttl' => :'Integer',
-        :'ttl' => :'Integer',
+        :'stale_ttl' => :'String',
+        :'ttl' => :'String',
         :'service_id' => :'String',
-        :'version' => :'Integer',
+        :'version' => :'String',
         :'created_at' => :'Time',
         :'deleted_at' => :'Time',
         :'updated_at' => :'Time'
@@ -115,7 +115,7 @@ module Fastly
     def self.fastly_all_of
       [
       :'CacheSetting',
-      :'ServiceIdAndVersion',
+      :'ServiceIdAndVersionString',
       :'Timestamps'
       ]
     end

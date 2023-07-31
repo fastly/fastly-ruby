@@ -19,9 +19,6 @@ module Fastly
     # Where in the generated VCL the logging call should be placed. If not set, endpoints with `format_version` of 2 are placed in `vcl_log` and those with `format_version` of 1 are placed in `vcl_deliver`. 
     attr_accessor :placement
 
-    # The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in `vcl_log` if `format_version` is set to `2` and in `vcl_deliver` if `format_version` is set to `1`. 
-    attr_accessor :format_version
-
     # The name of an existing condition in the configured endpoint, or leave blank to always execute.
     attr_accessor :response_condition
 
@@ -55,7 +52,6 @@ module Fastly
       {
         :'name' => :'name',
         :'placement' => :'placement',
-        :'format_version' => :'format_version',
         :'response_condition' => :'response_condition',
         :'format' => :'format'
       }
@@ -71,7 +67,6 @@ module Fastly
       {
         :'name' => :'String',
         :'placement' => :'String',
-        :'format_version' => :'Integer',
         :'response_condition' => :'String',
         :'format' => :'String'
       }
@@ -108,12 +103,6 @@ module Fastly
         self.placement = attributes[:'placement']
       end
 
-      if attributes.key?(:'format_version')
-        self.format_version = attributes[:'format_version']
-      else
-        self.format_version = FORMAT_VERSION::v2
-      end
-
       if attributes.key?(:'response_condition')
         self.response_condition = attributes[:'response_condition']
       end
@@ -137,8 +126,6 @@ module Fastly
     def valid?
       placement_validator = EnumAttributeValidator.new('String', ["none", "waf_debug", "null"])
       return false unless placement_validator.valid?(@placement)
-      format_version_validator = EnumAttributeValidator.new('Integer', [1, 2])
-      return false unless format_version_validator.valid?(@format_version)
       true
     end
 
@@ -152,16 +139,6 @@ module Fastly
       @placement = placement
     end
 
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] format_version Object to be assigned
-    def format_version=(format_version)
-      validator = EnumAttributeValidator.new('Integer', [1, 2])
-      unless validator.valid?(format_version)
-        fail ArgumentError, "invalid value for \"format_version\", must be one of #{validator.allowable_values}."
-      end
-      @format_version = format_version
-    end
-
     # Checks equality by comparing each attribute.
     # @param [Object] Object to be compared
     def ==(o)
@@ -169,7 +146,6 @@ module Fastly
       self.class == o.class &&
           name == o.name &&
           placement == o.placement &&
-          format_version == o.format_version &&
           response_condition == o.response_condition &&
           format == o.format
     end
@@ -183,7 +159,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, placement, format_version, response_condition, format].hash
+      [name, placement, response_condition, format].hash
     end
 
     # Builds the object from hash

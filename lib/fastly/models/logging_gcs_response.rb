@@ -19,14 +19,14 @@ module Fastly
     # Where in the generated VCL the logging call should be placed. If not set, endpoints with `format_version` of 2 are placed in `vcl_log` and those with `format_version` of 1 are placed in `vcl_deliver`. 
     attr_accessor :placement
 
-    # The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in `vcl_log` if `format_version` is set to `2` and in `vcl_deliver` if `format_version` is set to `1`. 
-    attr_accessor :format_version
-
     # The name of an existing condition in the configured endpoint, or leave blank to always execute.
     attr_accessor :response_condition
 
     # A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats).
     attr_accessor :format
+
+    # The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in `vcl_log` if `format_version` is set to `2` and in `vcl_deliver` if `format_version` is set to `1`. 
+    attr_accessor :format_version
 
     # How the message should be formatted.
     attr_accessor :message_type
@@ -34,14 +34,14 @@ module Fastly
     # A timestamp format
     attr_accessor :timestamp_format
 
+    # The codec used for compressing your logs. Valid values are `zstd`, `snappy`, and `gzip`. Specifying both `compression_codec` and `gzip_level` in the same API request will result in an error.
+    attr_accessor :compression_codec
+
     # How frequently log files are finalized so they can be available for reading (in seconds).
     attr_accessor :period
 
     # The level of gzip encoding when sending logs (default `0`, no compression). Specifying both `compression_codec` and `gzip_level` in the same API request will result in an error.
     attr_accessor :gzip_level
-
-    # The codec used for compressing your logs. Valid values are `zstd`, `snappy`, and `gzip`. Specifying both `compression_codec` and `gzip_level` in the same API request will result in an error.
-    attr_accessor :compression_codec
 
     # Your Google Cloud Platform service account email address. The `client_email` field in your service account authentication JSON. Not required if `account_name` is specified.
     attr_accessor :user
@@ -51,17 +51,6 @@ module Fastly
 
     # The name of the Google Cloud Platform service account associated with the target log collection service. Not required if `user` and `secret_key` are provided.
     attr_accessor :account_name
-
-    # The name of the GCS bucket.
-    attr_accessor :bucket_name
-
-    attr_accessor :path
-
-    # A PGP public key that Fastly will use to encrypt your log files before writing them to disk.
-    attr_accessor :public_key
-
-    # Your Google Cloud Platform project ID. Required
-    attr_accessor :project_id
 
     # Date and time in ISO 8601 format.
     attr_accessor :created_at
@@ -75,6 +64,17 @@ module Fastly
     attr_accessor :service_id
 
     attr_accessor :version
+
+    # The name of the GCS bucket.
+    attr_accessor :bucket_name
+
+    attr_accessor :path
+
+    # A PGP public key that Fastly will use to encrypt your log files before writing them to disk.
+    attr_accessor :public_key
+
+    # Your Google Cloud Platform project ID. Required
+    attr_accessor :project_id
 
     class EnumAttributeValidator
       attr_reader :datatype
@@ -103,26 +103,26 @@ module Fastly
       {
         :'name' => :'name',
         :'placement' => :'placement',
-        :'format_version' => :'format_version',
         :'response_condition' => :'response_condition',
         :'format' => :'format',
+        :'format_version' => :'format_version',
         :'message_type' => :'message_type',
         :'timestamp_format' => :'timestamp_format',
+        :'compression_codec' => :'compression_codec',
         :'period' => :'period',
         :'gzip_level' => :'gzip_level',
-        :'compression_codec' => :'compression_codec',
         :'user' => :'user',
         :'secret_key' => :'secret_key',
         :'account_name' => :'account_name',
-        :'bucket_name' => :'bucket_name',
-        :'path' => :'path',
-        :'public_key' => :'public_key',
-        :'project_id' => :'project_id',
         :'created_at' => :'created_at',
         :'deleted_at' => :'deleted_at',
         :'updated_at' => :'updated_at',
         :'service_id' => :'service_id',
-        :'version' => :'version'
+        :'version' => :'version',
+        :'bucket_name' => :'bucket_name',
+        :'path' => :'path',
+        :'public_key' => :'public_key',
+        :'project_id' => :'project_id'
       }
     end
 
@@ -136,26 +136,26 @@ module Fastly
       {
         :'name' => :'String',
         :'placement' => :'String',
-        :'format_version' => :'Integer',
         :'response_condition' => :'String',
         :'format' => :'String',
+        :'format_version' => :'String',
         :'message_type' => :'String',
         :'timestamp_format' => :'String',
-        :'period' => :'Integer',
-        :'gzip_level' => :'Integer',
         :'compression_codec' => :'String',
+        :'period' => :'String',
+        :'gzip_level' => :'String',
         :'user' => :'String',
         :'secret_key' => :'String',
         :'account_name' => :'String',
-        :'bucket_name' => :'String',
-        :'path' => :'String',
-        :'public_key' => :'String',
-        :'project_id' => :'String',
         :'created_at' => :'Time',
         :'deleted_at' => :'Time',
         :'updated_at' => :'Time',
         :'service_id' => :'String',
-        :'version' => :'Integer'
+        :'version' => :'String',
+        :'bucket_name' => :'String',
+        :'path' => :'String',
+        :'public_key' => :'String',
+        :'project_id' => :'String'
       }
     end
 
@@ -165,18 +165,21 @@ module Fastly
         :'placement',
         :'response_condition',
         :'timestamp_format',
-        :'public_key',
         :'created_at',
         :'deleted_at',
         :'updated_at',
+        :'public_key',
       ])
     end
 
     # List of class defined in allOf (OpenAPI v3)
     def self.fastly_all_of
       [
-      :'LoggingGcs',
-      :'ServiceIdAndVersion',
+      :'LoggingCommonResponse',
+      :'LoggingGcsAdditional',
+      :'LoggingGcsCommon',
+      :'LoggingGenericCommonResponse',
+      :'ServiceIdAndVersionString',
       :'Timestamps'
       ]
     end
@@ -204,12 +207,6 @@ module Fastly
         self.placement = attributes[:'placement']
       end
 
-      if attributes.key?(:'format_version')
-        self.format_version = attributes[:'format_version']
-      else
-        self.format_version = FORMAT_VERSION::v2
-      end
-
       if attributes.key?(:'response_condition')
         self.response_condition = attributes[:'response_condition']
       end
@@ -218,6 +215,12 @@ module Fastly
         self.format = attributes[:'format']
       else
         self.format = '%h %l %u %t \"%r\" %&gt;s %b'
+      end
+
+      if attributes.key?(:'format_version')
+        self.format_version = attributes[:'format_version']
+      else
+        self.format_version = '2'
       end
 
       if attributes.key?(:'message_type')
@@ -230,20 +233,20 @@ module Fastly
         self.timestamp_format = attributes[:'timestamp_format']
       end
 
+      if attributes.key?(:'compression_codec')
+        self.compression_codec = attributes[:'compression_codec']
+      end
+
       if attributes.key?(:'period')
         self.period = attributes[:'period']
       else
-        self.period = 3600
+        self.period = '3600'
       end
 
       if attributes.key?(:'gzip_level')
         self.gzip_level = attributes[:'gzip_level']
       else
-        self.gzip_level = 0
-      end
-
-      if attributes.key?(:'compression_codec')
-        self.compression_codec = attributes[:'compression_codec']
+        self.gzip_level = '0'
       end
 
       if attributes.key?(:'user')
@@ -256,26 +259,6 @@ module Fastly
 
       if attributes.key?(:'account_name')
         self.account_name = attributes[:'account_name']
-      end
-
-      if attributes.key?(:'bucket_name')
-        self.bucket_name = attributes[:'bucket_name']
-      end
-
-      if attributes.key?(:'path')
-        self.path = attributes[:'path']
-      else
-        self.path = '/'
-      end
-
-      if attributes.key?(:'public_key')
-        self.public_key = attributes[:'public_key']
-      else
-        self.public_key = 'null'
-      end
-
-      if attributes.key?(:'project_id')
-        self.project_id = attributes[:'project_id']
       end
 
       if attributes.key?(:'created_at')
@@ -297,6 +280,26 @@ module Fastly
       if attributes.key?(:'version')
         self.version = attributes[:'version']
       end
+
+      if attributes.key?(:'bucket_name')
+        self.bucket_name = attributes[:'bucket_name']
+      end
+
+      if attributes.key?(:'path')
+        self.path = attributes[:'path']
+      else
+        self.path = '/'
+      end
+
+      if attributes.key?(:'public_key')
+        self.public_key = attributes[:'public_key']
+      else
+        self.public_key = 'null'
+      end
+
+      if attributes.key?(:'project_id')
+        self.project_id = attributes[:'project_id']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -311,7 +314,7 @@ module Fastly
     def valid?
       placement_validator = EnumAttributeValidator.new('String', ["none", "waf_debug", "null"])
       return false unless placement_validator.valid?(@placement)
-      format_version_validator = EnumAttributeValidator.new('Integer', [1, 2])
+      format_version_validator = EnumAttributeValidator.new('String', ["1", "2"])
       return false unless format_version_validator.valid?(@format_version)
       message_type_validator = EnumAttributeValidator.new('String', ["classic", "loggly", "logplex", "blank"])
       return false unless message_type_validator.valid?(@message_type)
@@ -333,7 +336,7 @@ module Fastly
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] format_version Object to be assigned
     def format_version=(format_version)
-      validator = EnumAttributeValidator.new('Integer', [1, 2])
+      validator = EnumAttributeValidator.new('String', ["1", "2"])
       unless validator.valid?(format_version)
         fail ArgumentError, "invalid value for \"format_version\", must be one of #{validator.allowable_values}."
       end
@@ -367,26 +370,26 @@ module Fastly
       self.class == o.class &&
           name == o.name &&
           placement == o.placement &&
-          format_version == o.format_version &&
           response_condition == o.response_condition &&
           format == o.format &&
+          format_version == o.format_version &&
           message_type == o.message_type &&
           timestamp_format == o.timestamp_format &&
+          compression_codec == o.compression_codec &&
           period == o.period &&
           gzip_level == o.gzip_level &&
-          compression_codec == o.compression_codec &&
           user == o.user &&
           secret_key == o.secret_key &&
           account_name == o.account_name &&
-          bucket_name == o.bucket_name &&
-          path == o.path &&
-          public_key == o.public_key &&
-          project_id == o.project_id &&
           created_at == o.created_at &&
           deleted_at == o.deleted_at &&
           updated_at == o.updated_at &&
           service_id == o.service_id &&
-          version == o.version
+          version == o.version &&
+          bucket_name == o.bucket_name &&
+          path == o.path &&
+          public_key == o.public_key &&
+          project_id == o.project_id
     end
 
     # @see the `==` method
@@ -398,7 +401,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, placement, format_version, response_condition, format, message_type, timestamp_format, period, gzip_level, compression_codec, user, secret_key, account_name, bucket_name, path, public_key, project_id, created_at, deleted_at, updated_at, service_id, version].hash
+      [name, placement, response_condition, format, format_version, message_type, timestamp_format, compression_codec, period, gzip_level, user, secret_key, account_name, created_at, deleted_at, updated_at, service_id, version, bucket_name, path, public_key, project_id].hash
     end
 
     # Builds the object from hash

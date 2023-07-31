@@ -322,17 +322,17 @@ module Fastly
     # @option opts [Integer] :version_id Integer identifying a service version. (required)
     # @option opts [String] :request_settings_name Name for the request settings. (required)
     # @option opts [String] :action Allows you to terminate request handling and immediately perform an action.
-    # @option opts [Integer] :bypass_busy_wait Disable collapsed forwarding, so you don&#39;t wait for other objects to origin.
     # @option opts [String] :default_host Sets the host header.
+    # @option opts [String] :hash_keys Comma separated list of varnish request object fields that should be in the hash key.
+    # @option opts [String] :name Name for the request settings.
+    # @option opts [String] :request_condition Condition which, if met, will select this configuration during a request. Optional.
+    # @option opts [String] :xff Short for X-Forwarded-For.
+    # @option opts [Integer] :bypass_busy_wait Disable collapsed forwarding, so you don&#39;t wait for other objects to origin.
     # @option opts [Integer] :force_miss Allows you to force a cache miss for the request. Replaces the item in the cache if the content is cacheable.
     # @option opts [Integer] :force_ssl Forces the request use SSL (redirects a non-SSL to SSL).
     # @option opts [Integer] :geo_headers Injects Fastly-Geo-Country, Fastly-Geo-City, and Fastly-Geo-Region into the request headers.
-    # @option opts [String] :hash_keys Comma separated list of varnish request object fields that should be in the hash key.
     # @option opts [Integer] :max_stale_age How old an object is allowed to be to serve stale-if-error or stale-while-revalidate.
-    # @option opts [String] :name Name for the request settings.
-    # @option opts [String] :request_condition Condition which, if met, will select this configuration during a request. Optional.
     # @option opts [Integer] :timer_support Injects the X-Timer info into the request for viewing origin fetch durations.
-    # @option opts [String] :xff Short for X-Forwarded-For.
     # @return [RequestSettingsResponse]
     def update_request_settings(opts = {})
       data, _status_code, _headers = update_request_settings_with_http_info(opts)
@@ -345,17 +345,17 @@ module Fastly
     # @option opts [Integer] :version_id Integer identifying a service version. (required)
     # @option opts [String] :request_settings_name Name for the request settings. (required)
     # @option opts [String] :action Allows you to terminate request handling and immediately perform an action.
-    # @option opts [Integer] :bypass_busy_wait Disable collapsed forwarding, so you don&#39;t wait for other objects to origin.
     # @option opts [String] :default_host Sets the host header.
+    # @option opts [String] :hash_keys Comma separated list of varnish request object fields that should be in the hash key.
+    # @option opts [String] :name Name for the request settings.
+    # @option opts [String] :request_condition Condition which, if met, will select this configuration during a request. Optional.
+    # @option opts [String] :xff Short for X-Forwarded-For.
+    # @option opts [Integer] :bypass_busy_wait Disable collapsed forwarding, so you don&#39;t wait for other objects to origin.
     # @option opts [Integer] :force_miss Allows you to force a cache miss for the request. Replaces the item in the cache if the content is cacheable.
     # @option opts [Integer] :force_ssl Forces the request use SSL (redirects a non-SSL to SSL).
     # @option opts [Integer] :geo_headers Injects Fastly-Geo-Country, Fastly-Geo-City, and Fastly-Geo-Region into the request headers.
-    # @option opts [String] :hash_keys Comma separated list of varnish request object fields that should be in the hash key.
     # @option opts [Integer] :max_stale_age How old an object is allowed to be to serve stale-if-error or stale-while-revalidate.
-    # @option opts [String] :name Name for the request settings.
-    # @option opts [String] :request_condition Condition which, if met, will select this configuration during a request. Optional.
     # @option opts [Integer] :timer_support Injects the X-Timer info into the request for viewing origin fetch durations.
-    # @option opts [String] :xff Short for X-Forwarded-For.
     # @return [Array<(RequestSettingsResponse, Integer, Hash)>] RequestSettingsResponse data, response status code and response headers
     def update_request_settings_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -404,17 +404,17 @@ module Fastly
       # form parameters
       form_params = opts[:form_params] || {}
       form_params['action'] = opts[:'action'] if !opts[:'action'].nil?
-      form_params['bypass_busy_wait'] = opts[:'bypass_busy_wait'] if !opts[:'bypass_busy_wait'].nil?
       form_params['default_host'] = opts[:'default_host'] if !opts[:'default_host'].nil?
+      form_params['hash_keys'] = opts[:'hash_keys'] if !opts[:'hash_keys'].nil?
+      form_params['name'] = opts[:'name'] if !opts[:'name'].nil?
+      form_params['request_condition'] = opts[:'request_condition'] if !opts[:'request_condition'].nil?
+      form_params['xff'] = opts[:'xff'] if !opts[:'xff'].nil?
+      form_params['bypass_busy_wait'] = opts[:'bypass_busy_wait'] if !opts[:'bypass_busy_wait'].nil?
       form_params['force_miss'] = opts[:'force_miss'] if !opts[:'force_miss'].nil?
       form_params['force_ssl'] = opts[:'force_ssl'] if !opts[:'force_ssl'].nil?
       form_params['geo_headers'] = opts[:'geo_headers'] if !opts[:'geo_headers'].nil?
-      form_params['hash_keys'] = opts[:'hash_keys'] if !opts[:'hash_keys'].nil?
       form_params['max_stale_age'] = opts[:'max_stale_age'] if !opts[:'max_stale_age'].nil?
-      form_params['name'] = opts[:'name'] if !opts[:'name'].nil?
-      form_params['request_condition'] = opts[:'request_condition'] if !opts[:'request_condition'].nil?
       form_params['timer_support'] = opts[:'timer_support'] if !opts[:'timer_support'].nil?
-      form_params['xff'] = opts[:'xff'] if !opts[:'xff'].nil?
 
       # http body (model)
       post_body = opts[:debug_body]

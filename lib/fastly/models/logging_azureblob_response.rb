@@ -19,14 +19,14 @@ module Fastly
     # Where in the generated VCL the logging call should be placed. If not set, endpoints with `format_version` of 2 are placed in `vcl_log` and those with `format_version` of 1 are placed in `vcl_deliver`. 
     attr_accessor :placement
 
-    # The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in `vcl_log` if `format_version` is set to `2` and in `vcl_deliver` if `format_version` is set to `1`. 
-    attr_accessor :format_version
-
     # The name of an existing condition in the configured endpoint, or leave blank to always execute.
     attr_accessor :response_condition
 
     # A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats).
     attr_accessor :format
+
+    # The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in `vcl_log` if `format_version` is set to `2` and in `vcl_deliver` if `format_version` is set to `1`. 
+    attr_accessor :format_version
 
     # How the message should be formatted.
     attr_accessor :message_type
@@ -34,14 +34,27 @@ module Fastly
     # A timestamp format
     attr_accessor :timestamp_format
 
+    # The codec used for compressing your logs. Valid values are `zstd`, `snappy`, and `gzip`. Specifying both `compression_codec` and `gzip_level` in the same API request will result in an error.
+    attr_accessor :compression_codec
+
     # How frequently log files are finalized so they can be available for reading (in seconds).
     attr_accessor :period
 
     # The level of gzip encoding when sending logs (default `0`, no compression). Specifying both `compression_codec` and `gzip_level` in the same API request will result in an error.
     attr_accessor :gzip_level
 
-    # The codec used for compressing your logs. Valid values are `zstd`, `snappy`, and `gzip`. Specifying both `compression_codec` and `gzip_level` in the same API request will result in an error.
-    attr_accessor :compression_codec
+    # Date and time in ISO 8601 format.
+    attr_accessor :created_at
+
+    # Date and time in ISO 8601 format.
+    attr_accessor :deleted_at
+
+    # Date and time in ISO 8601 format.
+    attr_accessor :updated_at
+
+    attr_accessor :service_id
+
+    attr_accessor :version
 
     # The path to upload logs to.
     attr_accessor :path
@@ -60,19 +73,6 @@ module Fastly
 
     # The maximum number of bytes for each uploaded file. A value of 0 can be used to indicate there is no limit on the size of uploaded files, otherwise the minimum value is 1048576 bytes (1 MiB.)
     attr_accessor :file_max_bytes
-
-    # Date and time in ISO 8601 format.
-    attr_accessor :created_at
-
-    # Date and time in ISO 8601 format.
-    attr_accessor :deleted_at
-
-    # Date and time in ISO 8601 format.
-    attr_accessor :updated_at
-
-    attr_accessor :service_id
-
-    attr_accessor :version
 
     class EnumAttributeValidator
       attr_reader :datatype
@@ -101,25 +101,25 @@ module Fastly
       {
         :'name' => :'name',
         :'placement' => :'placement',
-        :'format_version' => :'format_version',
         :'response_condition' => :'response_condition',
         :'format' => :'format',
+        :'format_version' => :'format_version',
         :'message_type' => :'message_type',
         :'timestamp_format' => :'timestamp_format',
+        :'compression_codec' => :'compression_codec',
         :'period' => :'period',
         :'gzip_level' => :'gzip_level',
-        :'compression_codec' => :'compression_codec',
+        :'created_at' => :'created_at',
+        :'deleted_at' => :'deleted_at',
+        :'updated_at' => :'updated_at',
+        :'service_id' => :'service_id',
+        :'version' => :'version',
         :'path' => :'path',
         :'account_name' => :'account_name',
         :'container' => :'container',
         :'sas_token' => :'sas_token',
         :'public_key' => :'public_key',
-        :'file_max_bytes' => :'file_max_bytes',
-        :'created_at' => :'created_at',
-        :'deleted_at' => :'deleted_at',
-        :'updated_at' => :'updated_at',
-        :'service_id' => :'service_id',
-        :'version' => :'version'
+        :'file_max_bytes' => :'file_max_bytes'
       }
     end
 
@@ -133,25 +133,25 @@ module Fastly
       {
         :'name' => :'String',
         :'placement' => :'String',
-        :'format_version' => :'Integer',
         :'response_condition' => :'String',
         :'format' => :'String',
+        :'format_version' => :'String',
         :'message_type' => :'String',
         :'timestamp_format' => :'String',
-        :'period' => :'Integer',
-        :'gzip_level' => :'Integer',
         :'compression_codec' => :'String',
+        :'period' => :'String',
+        :'gzip_level' => :'String',
+        :'created_at' => :'Time',
+        :'deleted_at' => :'Time',
+        :'updated_at' => :'Time',
+        :'service_id' => :'String',
+        :'version' => :'String',
         :'path' => :'String',
         :'account_name' => :'String',
         :'container' => :'String',
         :'sas_token' => :'String',
         :'public_key' => :'String',
-        :'file_max_bytes' => :'Integer',
-        :'created_at' => :'Time',
-        :'deleted_at' => :'Time',
-        :'updated_at' => :'Time',
-        :'service_id' => :'String',
-        :'version' => :'Integer'
+        :'file_max_bytes' => :'Integer'
       }
     end
 
@@ -161,19 +161,21 @@ module Fastly
         :'placement',
         :'response_condition',
         :'timestamp_format',
-        :'path',
-        :'public_key',
         :'created_at',
         :'deleted_at',
         :'updated_at',
+        :'path',
+        :'public_key',
       ])
     end
 
     # List of class defined in allOf (OpenAPI v3)
     def self.fastly_all_of
       [
-      :'LoggingAzureblob',
-      :'ServiceIdAndVersion',
+      :'LoggingAzureblobAdditional',
+      :'LoggingCommonResponse',
+      :'LoggingGenericCommonResponse',
+      :'ServiceIdAndVersionString',
       :'Timestamps'
       ]
     end
@@ -201,12 +203,6 @@ module Fastly
         self.placement = attributes[:'placement']
       end
 
-      if attributes.key?(:'format_version')
-        self.format_version = attributes[:'format_version']
-      else
-        self.format_version = FORMAT_VERSION::v2
-      end
-
       if attributes.key?(:'response_condition')
         self.response_condition = attributes[:'response_condition']
       end
@@ -215,6 +211,12 @@ module Fastly
         self.format = attributes[:'format']
       else
         self.format = '%h %l %u %t \"%r\" %&gt;s %b'
+      end
+
+      if attributes.key?(:'format_version')
+        self.format_version = attributes[:'format_version']
+      else
+        self.format_version = '2'
       end
 
       if attributes.key?(:'message_type')
@@ -227,20 +229,40 @@ module Fastly
         self.timestamp_format = attributes[:'timestamp_format']
       end
 
+      if attributes.key?(:'compression_codec')
+        self.compression_codec = attributes[:'compression_codec']
+      end
+
       if attributes.key?(:'period')
         self.period = attributes[:'period']
       else
-        self.period = 3600
+        self.period = '3600'
       end
 
       if attributes.key?(:'gzip_level')
         self.gzip_level = attributes[:'gzip_level']
       else
-        self.gzip_level = 0
+        self.gzip_level = '0'
       end
 
-      if attributes.key?(:'compression_codec')
-        self.compression_codec = attributes[:'compression_codec']
+      if attributes.key?(:'created_at')
+        self.created_at = attributes[:'created_at']
+      end
+
+      if attributes.key?(:'deleted_at')
+        self.deleted_at = attributes[:'deleted_at']
+      end
+
+      if attributes.key?(:'updated_at')
+        self.updated_at = attributes[:'updated_at']
+      end
+
+      if attributes.key?(:'service_id')
+        self.service_id = attributes[:'service_id']
+      end
+
+      if attributes.key?(:'version')
+        self.version = attributes[:'version']
       end
 
       if attributes.key?(:'path')
@@ -270,26 +292,6 @@ module Fastly
       if attributes.key?(:'file_max_bytes')
         self.file_max_bytes = attributes[:'file_max_bytes']
       end
-
-      if attributes.key?(:'created_at')
-        self.created_at = attributes[:'created_at']
-      end
-
-      if attributes.key?(:'deleted_at')
-        self.deleted_at = attributes[:'deleted_at']
-      end
-
-      if attributes.key?(:'updated_at')
-        self.updated_at = attributes[:'updated_at']
-      end
-
-      if attributes.key?(:'service_id')
-        self.service_id = attributes[:'service_id']
-      end
-
-      if attributes.key?(:'version')
-        self.version = attributes[:'version']
-      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -308,7 +310,7 @@ module Fastly
     def valid?
       placement_validator = EnumAttributeValidator.new('String', ["none", "waf_debug", "null"])
       return false unless placement_validator.valid?(@placement)
-      format_version_validator = EnumAttributeValidator.new('Integer', [1, 2])
+      format_version_validator = EnumAttributeValidator.new('String', ["1", "2"])
       return false unless format_version_validator.valid?(@format_version)
       message_type_validator = EnumAttributeValidator.new('String', ["classic", "loggly", "logplex", "blank"])
       return false unless message_type_validator.valid?(@message_type)
@@ -331,7 +333,7 @@ module Fastly
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] format_version Object to be assigned
     def format_version=(format_version)
-      validator = EnumAttributeValidator.new('Integer', [1, 2])
+      validator = EnumAttributeValidator.new('String', ["1", "2"])
       unless validator.valid?(format_version)
         fail ArgumentError, "invalid value for \"format_version\", must be one of #{validator.allowable_values}."
       end
@@ -375,25 +377,25 @@ module Fastly
       self.class == o.class &&
           name == o.name &&
           placement == o.placement &&
-          format_version == o.format_version &&
           response_condition == o.response_condition &&
           format == o.format &&
+          format_version == o.format_version &&
           message_type == o.message_type &&
           timestamp_format == o.timestamp_format &&
+          compression_codec == o.compression_codec &&
           period == o.period &&
           gzip_level == o.gzip_level &&
-          compression_codec == o.compression_codec &&
+          created_at == o.created_at &&
+          deleted_at == o.deleted_at &&
+          updated_at == o.updated_at &&
+          service_id == o.service_id &&
+          version == o.version &&
           path == o.path &&
           account_name == o.account_name &&
           container == o.container &&
           sas_token == o.sas_token &&
           public_key == o.public_key &&
-          file_max_bytes == o.file_max_bytes &&
-          created_at == o.created_at &&
-          deleted_at == o.deleted_at &&
-          updated_at == o.updated_at &&
-          service_id == o.service_id &&
-          version == o.version
+          file_max_bytes == o.file_max_bytes
     end
 
     # @see the `==` method
@@ -405,7 +407,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, placement, format_version, response_condition, format, message_type, timestamp_format, period, gzip_level, compression_codec, path, account_name, container, sas_token, public_key, file_max_bytes, created_at, deleted_at, updated_at, service_id, version].hash
+      [name, placement, response_condition, format, format_version, message_type, timestamp_format, compression_codec, period, gzip_level, created_at, deleted_at, updated_at, service_id, version, path, account_name, container, sas_token, public_key, file_max_bytes].hash
     end
 
     # Builds the object from hash

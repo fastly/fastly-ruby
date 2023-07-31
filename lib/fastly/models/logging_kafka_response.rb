@@ -19,14 +19,14 @@ module Fastly
     # Where in the generated VCL the logging call should be placed. If not set, endpoints with `format_version` of 2 are placed in `vcl_log` and those with `format_version` of 1 are placed in `vcl_deliver`. 
     attr_accessor :placement
 
-    # The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in `vcl_log` if `format_version` is set to `2` and in `vcl_deliver` if `format_version` is set to `1`. 
-    attr_accessor :format_version
-
     # The name of an existing condition in the configured endpoint, or leave blank to always execute.
     attr_accessor :response_condition
 
     # A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats).
     attr_accessor :format
+
+    # The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in `vcl_log` if `format_version` is set to `2` and in `vcl_deliver` if `format_version` is set to `1`. 
+    attr_accessor :format_version
 
     # A secure certificate to authenticate a server with. Must be in PEM format.
     attr_accessor :tls_ca_cert
@@ -39,6 +39,19 @@ module Fastly
 
     # The hostname to verify the server's certificate. This should be one of the Subject Alternative Name (SAN) fields for the certificate. Common Names (CN) are not supported.
     attr_accessor :tls_hostname
+
+    # Date and time in ISO 8601 format.
+    attr_accessor :created_at
+
+    # Date and time in ISO 8601 format.
+    attr_accessor :deleted_at
+
+    # Date and time in ISO 8601 format.
+    attr_accessor :updated_at
+
+    attr_accessor :service_id
+
+    attr_accessor :version
 
     # The Kafka topic to send logs to. Required.
     attr_accessor :topic
@@ -69,19 +82,6 @@ module Fastly
 
     attr_accessor :use_tls
 
-    # Date and time in ISO 8601 format.
-    attr_accessor :created_at
-
-    # Date and time in ISO 8601 format.
-    attr_accessor :deleted_at
-
-    # Date and time in ISO 8601 format.
-    attr_accessor :updated_at
-
-    attr_accessor :service_id
-
-    attr_accessor :version
-
     class EnumAttributeValidator
       attr_reader :datatype
       attr_reader :allowable_values
@@ -109,13 +109,18 @@ module Fastly
       {
         :'name' => :'name',
         :'placement' => :'placement',
-        :'format_version' => :'format_version',
         :'response_condition' => :'response_condition',
         :'format' => :'format',
+        :'format_version' => :'format_version',
         :'tls_ca_cert' => :'tls_ca_cert',
         :'tls_client_cert' => :'tls_client_cert',
         :'tls_client_key' => :'tls_client_key',
         :'tls_hostname' => :'tls_hostname',
+        :'created_at' => :'created_at',
+        :'deleted_at' => :'deleted_at',
+        :'updated_at' => :'updated_at',
+        :'service_id' => :'service_id',
+        :'version' => :'version',
         :'topic' => :'topic',
         :'brokers' => :'brokers',
         :'compression_codec' => :'compression_codec',
@@ -125,12 +130,7 @@ module Fastly
         :'auth_method' => :'auth_method',
         :'user' => :'user',
         :'password' => :'password',
-        :'use_tls' => :'use_tls',
-        :'created_at' => :'created_at',
-        :'deleted_at' => :'deleted_at',
-        :'updated_at' => :'updated_at',
-        :'service_id' => :'service_id',
-        :'version' => :'version'
+        :'use_tls' => :'use_tls'
       }
     end
 
@@ -144,13 +144,18 @@ module Fastly
       {
         :'name' => :'String',
         :'placement' => :'String',
-        :'format_version' => :'Integer',
         :'response_condition' => :'String',
         :'format' => :'String',
+        :'format_version' => :'String',
         :'tls_ca_cert' => :'String',
         :'tls_client_cert' => :'String',
         :'tls_client_key' => :'String',
         :'tls_hostname' => :'String',
+        :'created_at' => :'Time',
+        :'deleted_at' => :'Time',
+        :'updated_at' => :'Time',
+        :'service_id' => :'String',
+        :'version' => :'String',
         :'topic' => :'String',
         :'brokers' => :'String',
         :'compression_codec' => :'String',
@@ -160,12 +165,7 @@ module Fastly
         :'auth_method' => :'String',
         :'user' => :'String',
         :'password' => :'String',
-        :'use_tls' => :'LoggingUseTls',
-        :'created_at' => :'Time',
-        :'deleted_at' => :'Time',
-        :'updated_at' => :'Time',
-        :'service_id' => :'String',
-        :'version' => :'Integer'
+        :'use_tls' => :'LoggingUseTls'
       }
     end
 
@@ -178,18 +178,20 @@ module Fastly
         :'tls_client_cert',
         :'tls_client_key',
         :'tls_hostname',
-        :'compression_codec',
         :'created_at',
         :'deleted_at',
         :'updated_at',
+        :'compression_codec',
       ])
     end
 
     # List of class defined in allOf (OpenAPI v3)
     def self.fastly_all_of
       [
-      :'LoggingKafka',
-      :'ServiceIdAndVersion',
+      :'LoggingCommonResponse',
+      :'LoggingKafkaAdditional',
+      :'LoggingTlsCommon',
+      :'ServiceIdAndVersionString',
       :'Timestamps'
       ]
     end
@@ -217,12 +219,6 @@ module Fastly
         self.placement = attributes[:'placement']
       end
 
-      if attributes.key?(:'format_version')
-        self.format_version = attributes[:'format_version']
-      else
-        self.format_version = FORMAT_VERSION::v2
-      end
-
       if attributes.key?(:'response_condition')
         self.response_condition = attributes[:'response_condition']
       end
@@ -231,6 +227,12 @@ module Fastly
         self.format = attributes[:'format']
       else
         self.format = '%h %l %u %t \"%r\" %&gt;s %b'
+      end
+
+      if attributes.key?(:'format_version')
+        self.format_version = attributes[:'format_version']
+      else
+        self.format_version = '2'
       end
 
       if attributes.key?(:'tls_ca_cert')
@@ -255,6 +257,26 @@ module Fastly
         self.tls_hostname = attributes[:'tls_hostname']
       else
         self.tls_hostname = 'null'
+      end
+
+      if attributes.key?(:'created_at')
+        self.created_at = attributes[:'created_at']
+      end
+
+      if attributes.key?(:'deleted_at')
+        self.deleted_at = attributes[:'deleted_at']
+      end
+
+      if attributes.key?(:'updated_at')
+        self.updated_at = attributes[:'updated_at']
+      end
+
+      if attributes.key?(:'service_id')
+        self.service_id = attributes[:'service_id']
+      end
+
+      if attributes.key?(:'version')
+        self.version = attributes[:'version']
       end
 
       if attributes.key?(:'topic')
@@ -302,26 +324,6 @@ module Fastly
       else
         self.use_tls = LoggingUseTls::no_tls
       end
-
-      if attributes.key?(:'created_at')
-        self.created_at = attributes[:'created_at']
-      end
-
-      if attributes.key?(:'deleted_at')
-        self.deleted_at = attributes[:'deleted_at']
-      end
-
-      if attributes.key?(:'updated_at')
-        self.updated_at = attributes[:'updated_at']
-      end
-
-      if attributes.key?(:'service_id')
-        self.service_id = attributes[:'service_id']
-      end
-
-      if attributes.key?(:'version')
-        self.version = attributes[:'version']
-      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -336,7 +338,7 @@ module Fastly
     def valid?
       placement_validator = EnumAttributeValidator.new('String', ["none", "waf_debug", "null"])
       return false unless placement_validator.valid?(@placement)
-      format_version_validator = EnumAttributeValidator.new('Integer', [1, 2])
+      format_version_validator = EnumAttributeValidator.new('String', ["1", "2"])
       return false unless format_version_validator.valid?(@format_version)
       compression_codec_validator = EnumAttributeValidator.new('String', ["gzip", "snappy", "lz4", "null"])
       return false unless compression_codec_validator.valid?(@compression_codec)
@@ -360,7 +362,7 @@ module Fastly
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] format_version Object to be assigned
     def format_version=(format_version)
-      validator = EnumAttributeValidator.new('Integer', [1, 2])
+      validator = EnumAttributeValidator.new('String', ["1", "2"])
       unless validator.valid?(format_version)
         fail ArgumentError, "invalid value for \"format_version\", must be one of #{validator.allowable_values}."
       end
@@ -404,13 +406,18 @@ module Fastly
       self.class == o.class &&
           name == o.name &&
           placement == o.placement &&
-          format_version == o.format_version &&
           response_condition == o.response_condition &&
           format == o.format &&
+          format_version == o.format_version &&
           tls_ca_cert == o.tls_ca_cert &&
           tls_client_cert == o.tls_client_cert &&
           tls_client_key == o.tls_client_key &&
           tls_hostname == o.tls_hostname &&
+          created_at == o.created_at &&
+          deleted_at == o.deleted_at &&
+          updated_at == o.updated_at &&
+          service_id == o.service_id &&
+          version == o.version &&
           topic == o.topic &&
           brokers == o.brokers &&
           compression_codec == o.compression_codec &&
@@ -420,12 +427,7 @@ module Fastly
           auth_method == o.auth_method &&
           user == o.user &&
           password == o.password &&
-          use_tls == o.use_tls &&
-          created_at == o.created_at &&
-          deleted_at == o.deleted_at &&
-          updated_at == o.updated_at &&
-          service_id == o.service_id &&
-          version == o.version
+          use_tls == o.use_tls
     end
 
     # @see the `==` method
@@ -437,7 +439,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, placement, format_version, response_condition, format, tls_ca_cert, tls_client_cert, tls_client_key, tls_hostname, topic, brokers, compression_codec, required_acks, request_max_bytes, parse_log_keyvals, auth_method, user, password, use_tls, created_at, deleted_at, updated_at, service_id, version].hash
+      [name, placement, response_condition, format, format_version, tls_ca_cert, tls_client_cert, tls_client_key, tls_hostname, created_at, deleted_at, updated_at, service_id, version, topic, brokers, compression_codec, required_acks, request_max_bytes, parse_log_keyvals, auth_method, user, password, use_tls].hash
     end
 
     # Builds the object from hash

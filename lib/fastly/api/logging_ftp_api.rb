@@ -23,22 +23,22 @@ module Fastly
     # @option opts [Integer] :version_id Integer identifying a service version. (required)
     # @option opts [String] :name The name for the real-time logging configuration.
     # @option opts [String] :placement Where in the generated VCL the logging call should be placed. If not set, endpoints with &#x60;format_version&#x60; of 2 are placed in &#x60;vcl_log&#x60; and those with &#x60;format_version&#x60; of 1 are placed in &#x60;vcl_deliver&#x60;. 
-    # @option opts [Integer] :format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;.  (default to FORMAT_VERSION::v2)
     # @option opts [String] :response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute.
     # @option opts [String] :format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (default to '%h %l %u %t \"%r\" %&gt;s %b')
+    # @option opts [Integer] :format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;.  (default to FORMAT_VERSION::v2)
     # @option opts [String] :message_type How the message should be formatted. (default to 'classic')
     # @option opts [String] :timestamp_format A timestamp format
+    # @option opts [String] :compression_codec The codec used for compressing your logs. Valid values are &#x60;zstd&#x60;, &#x60;snappy&#x60;, and &#x60;gzip&#x60;. Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error.
     # @option opts [Integer] :period How frequently log files are finalized so they can be available for reading (in seconds). (default to 3600)
     # @option opts [Integer] :gzip_level The level of gzip encoding when sending logs (default &#x60;0&#x60;, no compression). Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error. (default to 0)
-    # @option opts [String] :compression_codec The codec used for compressing your logs. Valid values are &#x60;zstd&#x60;, &#x60;snappy&#x60;, and &#x60;gzip&#x60;. Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error.
     # @option opts [String] :address An hostname or IPv4 address.
     # @option opts [String] :hostname Hostname used.
     # @option opts [String] :ipv4 IPv4 address of the host.
     # @option opts [String] :password The password for the server. For anonymous use an email address.
     # @option opts [String] :path The path to upload log files to. If the path ends in &#x60;/&#x60; then it is treated as a directory.
-    # @option opts [Integer] :port The port number. (default to 21)
     # @option opts [String] :public_key A PGP public key that Fastly will use to encrypt your log files before writing them to disk. (default to 'null')
     # @option opts [String] :user The username for the server. Can be anonymous.
+    # @option opts [Integer] :port The port number. (default to 21)
     # @return [LoggingFtpResponse]
     def create_log_ftp(opts = {})
       data, _status_code, _headers = create_log_ftp_with_http_info(opts)
@@ -51,22 +51,22 @@ module Fastly
     # @option opts [Integer] :version_id Integer identifying a service version. (required)
     # @option opts [String] :name The name for the real-time logging configuration.
     # @option opts [String] :placement Where in the generated VCL the logging call should be placed. If not set, endpoints with &#x60;format_version&#x60; of 2 are placed in &#x60;vcl_log&#x60; and those with &#x60;format_version&#x60; of 1 are placed in &#x60;vcl_deliver&#x60;. 
-    # @option opts [Integer] :format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;.  (default to FORMAT_VERSION::v2)
     # @option opts [String] :response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute.
     # @option opts [String] :format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (default to '%h %l %u %t \"%r\" %&gt;s %b')
+    # @option opts [Integer] :format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;.  (default to FORMAT_VERSION::v2)
     # @option opts [String] :message_type How the message should be formatted. (default to 'classic')
     # @option opts [String] :timestamp_format A timestamp format
+    # @option opts [String] :compression_codec The codec used for compressing your logs. Valid values are &#x60;zstd&#x60;, &#x60;snappy&#x60;, and &#x60;gzip&#x60;. Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error.
     # @option opts [Integer] :period How frequently log files are finalized so they can be available for reading (in seconds). (default to 3600)
     # @option opts [Integer] :gzip_level The level of gzip encoding when sending logs (default &#x60;0&#x60;, no compression). Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error. (default to 0)
-    # @option opts [String] :compression_codec The codec used for compressing your logs. Valid values are &#x60;zstd&#x60;, &#x60;snappy&#x60;, and &#x60;gzip&#x60;. Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error.
     # @option opts [String] :address An hostname or IPv4 address.
     # @option opts [String] :hostname Hostname used.
     # @option opts [String] :ipv4 IPv4 address of the host.
     # @option opts [String] :password The password for the server. For anonymous use an email address.
     # @option opts [String] :path The path to upload log files to. If the path ends in &#x60;/&#x60; then it is treated as a directory.
-    # @option opts [Integer] :port The port number. (default to 21)
     # @option opts [String] :public_key A PGP public key that Fastly will use to encrypt your log files before writing them to disk. (default to 'null')
     # @option opts [String] :user The username for the server. Can be anonymous.
+    # @option opts [Integer] :port The port number. (default to 21)
     # @return [Array<(LoggingFtpResponse, Integer, Hash)>] LoggingFtpResponse data, response status code and response headers
     def create_log_ftp_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -119,22 +119,22 @@ module Fastly
       form_params = opts[:form_params] || {}
       form_params['name'] = opts[:'name'] if !opts[:'name'].nil?
       form_params['placement'] = opts[:'placement'] if !opts[:'placement'].nil?
-      form_params['format_version'] = opts[:'format_version'] if !opts[:'format_version'].nil?
       form_params['response_condition'] = opts[:'response_condition'] if !opts[:'response_condition'].nil?
       form_params['format'] = opts[:'format'] if !opts[:'format'].nil?
+      form_params['format_version'] = opts[:'format_version'] if !opts[:'format_version'].nil?
       form_params['message_type'] = opts[:'message_type'] if !opts[:'message_type'].nil?
       form_params['timestamp_format'] = opts[:'timestamp_format'] if !opts[:'timestamp_format'].nil?
+      form_params['compression_codec'] = opts[:'compression_codec'] if !opts[:'compression_codec'].nil?
       form_params['period'] = opts[:'period'] if !opts[:'period'].nil?
       form_params['gzip_level'] = opts[:'gzip_level'] if !opts[:'gzip_level'].nil?
-      form_params['compression_codec'] = opts[:'compression_codec'] if !opts[:'compression_codec'].nil?
       form_params['address'] = opts[:'address'] if !opts[:'address'].nil?
       form_params['hostname'] = opts[:'hostname'] if !opts[:'hostname'].nil?
       form_params['ipv4'] = opts[:'ipv4'] if !opts[:'ipv4'].nil?
       form_params['password'] = opts[:'password'] if !opts[:'password'].nil?
       form_params['path'] = opts[:'path'] if !opts[:'path'].nil?
-      form_params['port'] = opts[:'port'] if !opts[:'port'].nil?
       form_params['public_key'] = opts[:'public_key'] if !opts[:'public_key'].nil?
       form_params['user'] = opts[:'user'] if !opts[:'user'].nil?
+      form_params['port'] = opts[:'port'] if !opts[:'port'].nil?
 
       # http body (model)
       post_body = opts[:debug_body]
@@ -393,22 +393,22 @@ module Fastly
     # @option opts [String] :logging_ftp_name The name for the real-time logging configuration. (required)
     # @option opts [String] :name The name for the real-time logging configuration.
     # @option opts [String] :placement Where in the generated VCL the logging call should be placed. If not set, endpoints with &#x60;format_version&#x60; of 2 are placed in &#x60;vcl_log&#x60; and those with &#x60;format_version&#x60; of 1 are placed in &#x60;vcl_deliver&#x60;. 
-    # @option opts [Integer] :format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;.  (default to FORMAT_VERSION::v2)
     # @option opts [String] :response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute.
     # @option opts [String] :format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (default to '%h %l %u %t \"%r\" %&gt;s %b')
+    # @option opts [Integer] :format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;.  (default to FORMAT_VERSION::v2)
     # @option opts [String] :message_type How the message should be formatted. (default to 'classic')
     # @option opts [String] :timestamp_format A timestamp format
+    # @option opts [String] :compression_codec The codec used for compressing your logs. Valid values are &#x60;zstd&#x60;, &#x60;snappy&#x60;, and &#x60;gzip&#x60;. Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error.
     # @option opts [Integer] :period How frequently log files are finalized so they can be available for reading (in seconds). (default to 3600)
     # @option opts [Integer] :gzip_level The level of gzip encoding when sending logs (default &#x60;0&#x60;, no compression). Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error. (default to 0)
-    # @option opts [String] :compression_codec The codec used for compressing your logs. Valid values are &#x60;zstd&#x60;, &#x60;snappy&#x60;, and &#x60;gzip&#x60;. Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error.
     # @option opts [String] :address An hostname or IPv4 address.
     # @option opts [String] :hostname Hostname used.
     # @option opts [String] :ipv4 IPv4 address of the host.
     # @option opts [String] :password The password for the server. For anonymous use an email address.
     # @option opts [String] :path The path to upload log files to. If the path ends in &#x60;/&#x60; then it is treated as a directory.
-    # @option opts [Integer] :port The port number. (default to 21)
     # @option opts [String] :public_key A PGP public key that Fastly will use to encrypt your log files before writing them to disk. (default to 'null')
     # @option opts [String] :user The username for the server. Can be anonymous.
+    # @option opts [Integer] :port The port number. (default to 21)
     # @return [LoggingFtpResponse]
     def update_log_ftp(opts = {})
       data, _status_code, _headers = update_log_ftp_with_http_info(opts)
@@ -422,22 +422,22 @@ module Fastly
     # @option opts [String] :logging_ftp_name The name for the real-time logging configuration. (required)
     # @option opts [String] :name The name for the real-time logging configuration.
     # @option opts [String] :placement Where in the generated VCL the logging call should be placed. If not set, endpoints with &#x60;format_version&#x60; of 2 are placed in &#x60;vcl_log&#x60; and those with &#x60;format_version&#x60; of 1 are placed in &#x60;vcl_deliver&#x60;. 
-    # @option opts [Integer] :format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;.  (default to FORMAT_VERSION::v2)
     # @option opts [String] :response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute.
     # @option opts [String] :format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (default to '%h %l %u %t \"%r\" %&gt;s %b')
+    # @option opts [Integer] :format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;.  (default to FORMAT_VERSION::v2)
     # @option opts [String] :message_type How the message should be formatted. (default to 'classic')
     # @option opts [String] :timestamp_format A timestamp format
+    # @option opts [String] :compression_codec The codec used for compressing your logs. Valid values are &#x60;zstd&#x60;, &#x60;snappy&#x60;, and &#x60;gzip&#x60;. Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error.
     # @option opts [Integer] :period How frequently log files are finalized so they can be available for reading (in seconds). (default to 3600)
     # @option opts [Integer] :gzip_level The level of gzip encoding when sending logs (default &#x60;0&#x60;, no compression). Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error. (default to 0)
-    # @option opts [String] :compression_codec The codec used for compressing your logs. Valid values are &#x60;zstd&#x60;, &#x60;snappy&#x60;, and &#x60;gzip&#x60;. Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error.
     # @option opts [String] :address An hostname or IPv4 address.
     # @option opts [String] :hostname Hostname used.
     # @option opts [String] :ipv4 IPv4 address of the host.
     # @option opts [String] :password The password for the server. For anonymous use an email address.
     # @option opts [String] :path The path to upload log files to. If the path ends in &#x60;/&#x60; then it is treated as a directory.
-    # @option opts [Integer] :port The port number. (default to 21)
     # @option opts [String] :public_key A PGP public key that Fastly will use to encrypt your log files before writing them to disk. (default to 'null')
     # @option opts [String] :user The username for the server. Can be anonymous.
+    # @option opts [Integer] :port The port number. (default to 21)
     # @return [Array<(LoggingFtpResponse, Integer, Hash)>] LoggingFtpResponse data, response status code and response headers
     def update_log_ftp_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -495,22 +495,22 @@ module Fastly
       form_params = opts[:form_params] || {}
       form_params['name'] = opts[:'name'] if !opts[:'name'].nil?
       form_params['placement'] = opts[:'placement'] if !opts[:'placement'].nil?
-      form_params['format_version'] = opts[:'format_version'] if !opts[:'format_version'].nil?
       form_params['response_condition'] = opts[:'response_condition'] if !opts[:'response_condition'].nil?
       form_params['format'] = opts[:'format'] if !opts[:'format'].nil?
+      form_params['format_version'] = opts[:'format_version'] if !opts[:'format_version'].nil?
       form_params['message_type'] = opts[:'message_type'] if !opts[:'message_type'].nil?
       form_params['timestamp_format'] = opts[:'timestamp_format'] if !opts[:'timestamp_format'].nil?
+      form_params['compression_codec'] = opts[:'compression_codec'] if !opts[:'compression_codec'].nil?
       form_params['period'] = opts[:'period'] if !opts[:'period'].nil?
       form_params['gzip_level'] = opts[:'gzip_level'] if !opts[:'gzip_level'].nil?
-      form_params['compression_codec'] = opts[:'compression_codec'] if !opts[:'compression_codec'].nil?
       form_params['address'] = opts[:'address'] if !opts[:'address'].nil?
       form_params['hostname'] = opts[:'hostname'] if !opts[:'hostname'].nil?
       form_params['ipv4'] = opts[:'ipv4'] if !opts[:'ipv4'].nil?
       form_params['password'] = opts[:'password'] if !opts[:'password'].nil?
       form_params['path'] = opts[:'path'] if !opts[:'path'].nil?
-      form_params['port'] = opts[:'port'] if !opts[:'port'].nil?
       form_params['public_key'] = opts[:'public_key'] if !opts[:'public_key'].nil?
       form_params['user'] = opts[:'user'] if !opts[:'user'].nil?
+      form_params['port'] = opts[:'port'] if !opts[:'port'].nil?
 
       # http body (model)
       post_body = opts[:debug_body]

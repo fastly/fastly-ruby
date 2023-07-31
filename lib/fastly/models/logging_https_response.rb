@@ -19,14 +19,14 @@ module Fastly
     # Where in the generated VCL the logging call should be placed. If not set, endpoints with `format_version` of 2 are placed in `vcl_log` and those with `format_version` of 1 are placed in `vcl_deliver`. 
     attr_accessor :placement
 
-    # The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in `vcl_log` if `format_version` is set to `2` and in `vcl_deliver` if `format_version` is set to `1`. 
-    attr_accessor :format_version
-
     # The name of an existing condition in the configured endpoint, or leave blank to always execute.
     attr_accessor :response_condition
 
     # A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats).
     attr_accessor :format
+
+    # The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in `vcl_log` if `format_version` is set to `2` and in `vcl_deliver` if `format_version` is set to `1`. 
+    attr_accessor :format_version
 
     # A secure certificate to authenticate a server with. Must be in PEM format.
     attr_accessor :tls_ca_cert
@@ -106,9 +106,9 @@ module Fastly
       {
         :'name' => :'name',
         :'placement' => :'placement',
-        :'format_version' => :'format_version',
         :'response_condition' => :'response_condition',
         :'format' => :'format',
+        :'format_version' => :'format_version',
         :'tls_ca_cert' => :'tls_ca_cert',
         :'tls_client_cert' => :'tls_client_cert',
         :'tls_client_key' => :'tls_client_key',
@@ -140,9 +140,9 @@ module Fastly
       {
         :'name' => :'String',
         :'placement' => :'String',
-        :'format_version' => :'Integer',
         :'response_condition' => :'String',
         :'format' => :'String',
+        :'format_version' => :'String',
         :'tls_ca_cert' => :'String',
         :'tls_client_cert' => :'String',
         :'tls_client_key' => :'String',
@@ -160,7 +160,7 @@ module Fastly
         :'deleted_at' => :'Time',
         :'updated_at' => :'Time',
         :'service_id' => :'String',
-        :'version' => :'Integer'
+        :'version' => :'String'
       }
     end
 
@@ -185,8 +185,11 @@ module Fastly
     # List of class defined in allOf (OpenAPI v3)
     def self.fastly_all_of
       [
-      :'LoggingHttps',
-      :'ServiceIdAndVersion',
+      :'LoggingCommonResponse',
+      :'LoggingHttpsAdditional',
+      :'LoggingRequestCapsCommon',
+      :'LoggingTlsCommon',
+      :'ServiceIdAndVersionString',
       :'Timestamps'
       ]
     end
@@ -214,12 +217,6 @@ module Fastly
         self.placement = attributes[:'placement']
       end
 
-      if attributes.key?(:'format_version')
-        self.format_version = attributes[:'format_version']
-      else
-        self.format_version = FORMAT_VERSION::v2
-      end
-
       if attributes.key?(:'response_condition')
         self.response_condition = attributes[:'response_condition']
       end
@@ -228,6 +225,12 @@ module Fastly
         self.format = attributes[:'format']
       else
         self.format = '%h %l %u %t \"%r\" %&gt;s %b'
+      end
+
+      if attributes.key?(:'format_version')
+        self.format_version = attributes[:'format_version']
+      else
+        self.format_version = '2'
       end
 
       if attributes.key?(:'tls_ca_cert')
@@ -337,7 +340,7 @@ module Fastly
     def valid?
       placement_validator = EnumAttributeValidator.new('String', ["none", "waf_debug", "null"])
       return false unless placement_validator.valid?(@placement)
-      format_version_validator = EnumAttributeValidator.new('Integer', [1, 2])
+      format_version_validator = EnumAttributeValidator.new('String', ["1", "2"])
       return false unless format_version_validator.valid?(@format_version)
       method_validator = EnumAttributeValidator.new('String', ["POST", "PUT"])
       return false unless method_validator.valid?(@method)
@@ -359,7 +362,7 @@ module Fastly
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] format_version Object to be assigned
     def format_version=(format_version)
-      validator = EnumAttributeValidator.new('Integer', [1, 2])
+      validator = EnumAttributeValidator.new('String', ["1", "2"])
       unless validator.valid?(format_version)
         fail ArgumentError, "invalid value for \"format_version\", must be one of #{validator.allowable_values}."
       end
@@ -393,9 +396,9 @@ module Fastly
       self.class == o.class &&
           name == o.name &&
           placement == o.placement &&
-          format_version == o.format_version &&
           response_condition == o.response_condition &&
           format == o.format &&
+          format_version == o.format_version &&
           tls_ca_cert == o.tls_ca_cert &&
           tls_client_cert == o.tls_client_cert &&
           tls_client_key == o.tls_client_key &&
@@ -425,7 +428,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, placement, format_version, response_condition, format, tls_ca_cert, tls_client_cert, tls_client_key, tls_hostname, request_max_entries, request_max_bytes, url, content_type, header_name, message_type, header_value, method, json_format, created_at, deleted_at, updated_at, service_id, version].hash
+      [name, placement, response_condition, format, format_version, tls_ca_cert, tls_client_cert, tls_client_key, tls_hostname, request_max_entries, request_max_bytes, url, content_type, header_name, message_type, header_value, method, json_format, created_at, deleted_at, updated_at, service_id, version].hash
     end
 
     # Builds the object from hash

@@ -1,5 +1,24 @@
 # Changelog
 
+## [v7.0.0](https://github.com/fastly/fastly-ruby/releases/tag/release/v7.0.0) (2023-07-31)
+
+**Breaking:**
+
+The following restructures have helped resolve some issues with our OpenAPI schemas but as a side-effect this has resulted in a break to our API client interface as different types are now being generated.
+
+- refactor: general restructure OpenAPI schemas.
+- refactor(domain): remove explicit schema type for 'any'.
+
+**Bug fixes:**
+
+- fix: change response `version` type to string.
+- fix(cache_settings): change response `stale_ttl` and `ttl` types to strings.
+- fix(header): change response `ignore_if_set` and `priority` types to strings.
+- fix(logging): change response `period` and `gzip_level` types to strings.
+- fix(pool): change response `use_tls`, `max_conn_default`, `first_byte_timeout`, `quorum` and `tls_check_cert` types to strings.
+- fix(request_settings): change response `bypass_busy_wait`, `force_miss`, `force_ssl`, `geo_headers`, `max_stale_age` and `timer_support` types to strings.
+- fix(response_object): change response `status` type to string.
+
 ## [v6.0.2](https://github.com/fastly/fastly-ruby/releases/tag/release/v6.0.2) (2023-07-13)
 
 **Bug fixes:**

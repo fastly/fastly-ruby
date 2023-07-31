@@ -23,14 +23,14 @@ module Fastly
     # @option opts [Integer] :version_id Integer identifying a service version. (required)
     # @option opts [String] :name The name for the real-time logging configuration.
     # @option opts [String] :placement Where in the generated VCL the logging call should be placed. If not set, endpoints with &#x60;format_version&#x60; of 2 are placed in &#x60;vcl_log&#x60; and those with &#x60;format_version&#x60; of 1 are placed in &#x60;vcl_deliver&#x60;. 
-    # @option opts [Integer] :format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;.  (default to FORMAT_VERSION::v2)
     # @option opts [String] :response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute.
     # @option opts [String] :format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (default to '%h %l %u %t \"%r\" %&gt;s %b')
+    # @option opts [Integer] :format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;.  (default to FORMAT_VERSION::v2)
     # @option opts [String] :message_type How the message should be formatted. (default to 'classic')
     # @option opts [String] :timestamp_format A timestamp format
+    # @option opts [String] :compression_codec The codec used for compressing your logs. Valid values are &#x60;zstd&#x60;, &#x60;snappy&#x60;, and &#x60;gzip&#x60;. Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error.
     # @option opts [Integer] :period How frequently log files are finalized so they can be available for reading (in seconds). (default to 3600)
     # @option opts [Integer] :gzip_level The level of gzip encoding when sending logs (default &#x60;0&#x60;, no compression). Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error. (default to 0)
-    # @option opts [String] :compression_codec The codec used for compressing your logs. Valid values are &#x60;zstd&#x60;, &#x60;snappy&#x60;, and &#x60;gzip&#x60;. Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error.
     # @option opts [String] :bucket_name The name of the DigitalOcean Space.
     # @option opts [String] :access_key Your DigitalOcean Spaces account access key.
     # @option opts [String] :secret_key Your DigitalOcean Spaces account secret key.
@@ -49,14 +49,14 @@ module Fastly
     # @option opts [Integer] :version_id Integer identifying a service version. (required)
     # @option opts [String] :name The name for the real-time logging configuration.
     # @option opts [String] :placement Where in the generated VCL the logging call should be placed. If not set, endpoints with &#x60;format_version&#x60; of 2 are placed in &#x60;vcl_log&#x60; and those with &#x60;format_version&#x60; of 1 are placed in &#x60;vcl_deliver&#x60;. 
-    # @option opts [Integer] :format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;.  (default to FORMAT_VERSION::v2)
     # @option opts [String] :response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute.
     # @option opts [String] :format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (default to '%h %l %u %t \"%r\" %&gt;s %b')
+    # @option opts [Integer] :format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;.  (default to FORMAT_VERSION::v2)
     # @option opts [String] :message_type How the message should be formatted. (default to 'classic')
     # @option opts [String] :timestamp_format A timestamp format
+    # @option opts [String] :compression_codec The codec used for compressing your logs. Valid values are &#x60;zstd&#x60;, &#x60;snappy&#x60;, and &#x60;gzip&#x60;. Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error.
     # @option opts [Integer] :period How frequently log files are finalized so they can be available for reading (in seconds). (default to 3600)
     # @option opts [Integer] :gzip_level The level of gzip encoding when sending logs (default &#x60;0&#x60;, no compression). Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error. (default to 0)
-    # @option opts [String] :compression_codec The codec used for compressing your logs. Valid values are &#x60;zstd&#x60;, &#x60;snappy&#x60;, and &#x60;gzip&#x60;. Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error.
     # @option opts [String] :bucket_name The name of the DigitalOcean Space.
     # @option opts [String] :access_key Your DigitalOcean Spaces account access key.
     # @option opts [String] :secret_key Your DigitalOcean Spaces account secret key.
@@ -115,14 +115,14 @@ module Fastly
       form_params = opts[:form_params] || {}
       form_params['name'] = opts[:'name'] if !opts[:'name'].nil?
       form_params['placement'] = opts[:'placement'] if !opts[:'placement'].nil?
-      form_params['format_version'] = opts[:'format_version'] if !opts[:'format_version'].nil?
       form_params['response_condition'] = opts[:'response_condition'] if !opts[:'response_condition'].nil?
       form_params['format'] = opts[:'format'] if !opts[:'format'].nil?
+      form_params['format_version'] = opts[:'format_version'] if !opts[:'format_version'].nil?
       form_params['message_type'] = opts[:'message_type'] if !opts[:'message_type'].nil?
       form_params['timestamp_format'] = opts[:'timestamp_format'] if !opts[:'timestamp_format'].nil?
+      form_params['compression_codec'] = opts[:'compression_codec'] if !opts[:'compression_codec'].nil?
       form_params['period'] = opts[:'period'] if !opts[:'period'].nil?
       form_params['gzip_level'] = opts[:'gzip_level'] if !opts[:'gzip_level'].nil?
-      form_params['compression_codec'] = opts[:'compression_codec'] if !opts[:'compression_codec'].nil?
       form_params['bucket_name'] = opts[:'bucket_name'] if !opts[:'bucket_name'].nil?
       form_params['access_key'] = opts[:'access_key'] if !opts[:'access_key'].nil?
       form_params['secret_key'] = opts[:'secret_key'] if !opts[:'secret_key'].nil?
@@ -387,14 +387,14 @@ module Fastly
     # @option opts [String] :logging_digitalocean_name The name for the real-time logging configuration. (required)
     # @option opts [String] :name The name for the real-time logging configuration.
     # @option opts [String] :placement Where in the generated VCL the logging call should be placed. If not set, endpoints with &#x60;format_version&#x60; of 2 are placed in &#x60;vcl_log&#x60; and those with &#x60;format_version&#x60; of 1 are placed in &#x60;vcl_deliver&#x60;. 
-    # @option opts [Integer] :format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;.  (default to FORMAT_VERSION::v2)
     # @option opts [String] :response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute.
     # @option opts [String] :format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (default to '%h %l %u %t \"%r\" %&gt;s %b')
+    # @option opts [Integer] :format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;.  (default to FORMAT_VERSION::v2)
     # @option opts [String] :message_type How the message should be formatted. (default to 'classic')
     # @option opts [String] :timestamp_format A timestamp format
+    # @option opts [String] :compression_codec The codec used for compressing your logs. Valid values are &#x60;zstd&#x60;, &#x60;snappy&#x60;, and &#x60;gzip&#x60;. Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error.
     # @option opts [Integer] :period How frequently log files are finalized so they can be available for reading (in seconds). (default to 3600)
     # @option opts [Integer] :gzip_level The level of gzip encoding when sending logs (default &#x60;0&#x60;, no compression). Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error. (default to 0)
-    # @option opts [String] :compression_codec The codec used for compressing your logs. Valid values are &#x60;zstd&#x60;, &#x60;snappy&#x60;, and &#x60;gzip&#x60;. Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error.
     # @option opts [String] :bucket_name The name of the DigitalOcean Space.
     # @option opts [String] :access_key Your DigitalOcean Spaces account access key.
     # @option opts [String] :secret_key Your DigitalOcean Spaces account secret key.
@@ -414,14 +414,14 @@ module Fastly
     # @option opts [String] :logging_digitalocean_name The name for the real-time logging configuration. (required)
     # @option opts [String] :name The name for the real-time logging configuration.
     # @option opts [String] :placement Where in the generated VCL the logging call should be placed. If not set, endpoints with &#x60;format_version&#x60; of 2 are placed in &#x60;vcl_log&#x60; and those with &#x60;format_version&#x60; of 1 are placed in &#x60;vcl_deliver&#x60;. 
-    # @option opts [Integer] :format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;.  (default to FORMAT_VERSION::v2)
     # @option opts [String] :response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute.
     # @option opts [String] :format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (default to '%h %l %u %t \"%r\" %&gt;s %b')
+    # @option opts [Integer] :format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;.  (default to FORMAT_VERSION::v2)
     # @option opts [String] :message_type How the message should be formatted. (default to 'classic')
     # @option opts [String] :timestamp_format A timestamp format
+    # @option opts [String] :compression_codec The codec used for compressing your logs. Valid values are &#x60;zstd&#x60;, &#x60;snappy&#x60;, and &#x60;gzip&#x60;. Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error.
     # @option opts [Integer] :period How frequently log files are finalized so they can be available for reading (in seconds). (default to 3600)
     # @option opts [Integer] :gzip_level The level of gzip encoding when sending logs (default &#x60;0&#x60;, no compression). Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error. (default to 0)
-    # @option opts [String] :compression_codec The codec used for compressing your logs. Valid values are &#x60;zstd&#x60;, &#x60;snappy&#x60;, and &#x60;gzip&#x60;. Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error.
     # @option opts [String] :bucket_name The name of the DigitalOcean Space.
     # @option opts [String] :access_key Your DigitalOcean Spaces account access key.
     # @option opts [String] :secret_key Your DigitalOcean Spaces account secret key.
@@ -485,14 +485,14 @@ module Fastly
       form_params = opts[:form_params] || {}
       form_params['name'] = opts[:'name'] if !opts[:'name'].nil?
       form_params['placement'] = opts[:'placement'] if !opts[:'placement'].nil?
-      form_params['format_version'] = opts[:'format_version'] if !opts[:'format_version'].nil?
       form_params['response_condition'] = opts[:'response_condition'] if !opts[:'response_condition'].nil?
       form_params['format'] = opts[:'format'] if !opts[:'format'].nil?
+      form_params['format_version'] = opts[:'format_version'] if !opts[:'format_version'].nil?
       form_params['message_type'] = opts[:'message_type'] if !opts[:'message_type'].nil?
       form_params['timestamp_format'] = opts[:'timestamp_format'] if !opts[:'timestamp_format'].nil?
+      form_params['compression_codec'] = opts[:'compression_codec'] if !opts[:'compression_codec'].nil?
       form_params['period'] = opts[:'period'] if !opts[:'period'].nil?
       form_params['gzip_level'] = opts[:'gzip_level'] if !opts[:'gzip_level'].nil?
-      form_params['compression_codec'] = opts[:'compression_codec'] if !opts[:'compression_codec'].nil?
       form_params['bucket_name'] = opts[:'bucket_name'] if !opts[:'bucket_name'].nil?
       form_params['access_key'] = opts[:'access_key'] if !opts[:'access_key'].nil?
       form_params['secret_key'] = opts[:'secret_key'] if !opts[:'secret_key'].nil?

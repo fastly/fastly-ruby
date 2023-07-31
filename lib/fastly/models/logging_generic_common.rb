@@ -19,12 +19,6 @@ module Fastly
     # A timestamp format
     attr_accessor :timestamp_format
 
-    # How frequently log files are finalized so they can be available for reading (in seconds).
-    attr_accessor :period
-
-    # The level of gzip encoding when sending logs (default `0`, no compression). Specifying both `compression_codec` and `gzip_level` in the same API request will result in an error.
-    attr_accessor :gzip_level
-
     # The codec used for compressing your logs. Valid values are `zstd`, `snappy`, and `gzip`. Specifying both `compression_codec` and `gzip_level` in the same API request will result in an error.
     attr_accessor :compression_codec
 
@@ -55,8 +49,6 @@ module Fastly
       {
         :'message_type' => :'message_type',
         :'timestamp_format' => :'timestamp_format',
-        :'period' => :'period',
-        :'gzip_level' => :'gzip_level',
         :'compression_codec' => :'compression_codec'
       }
     end
@@ -71,8 +63,6 @@ module Fastly
       {
         :'message_type' => :'String',
         :'timestamp_format' => :'String',
-        :'period' => :'Integer',
-        :'gzip_level' => :'Integer',
         :'compression_codec' => :'String'
       }
     end
@@ -107,18 +97,6 @@ module Fastly
 
       if attributes.key?(:'timestamp_format')
         self.timestamp_format = attributes[:'timestamp_format']
-      end
-
-      if attributes.key?(:'period')
-        self.period = attributes[:'period']
-      else
-        self.period = 3600
-      end
-
-      if attributes.key?(:'gzip_level')
-        self.gzip_level = attributes[:'gzip_level']
-      else
-        self.gzip_level = 0
       end
 
       if attributes.key?(:'compression_codec')
@@ -170,8 +148,6 @@ module Fastly
       self.class == o.class &&
           message_type == o.message_type &&
           timestamp_format == o.timestamp_format &&
-          period == o.period &&
-          gzip_level == o.gzip_level &&
           compression_codec == o.compression_codec
     end
 
@@ -184,7 +160,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [message_type, timestamp_format, period, gzip_level, compression_codec].hash
+      [message_type, timestamp_format, compression_codec].hash
     end
 
     # Builds the object from hash

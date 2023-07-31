@@ -35,8 +35,8 @@ opts = {
     action: 'pass', # String | If set, will cause vcl_fetch to terminate after processing this rule with the return state specified. If not set, other configuration logic in vcl_fetch with a lower priority will run after this rule. 
     cache_condition: 'cache_condition_example', # String | Name of the cache condition controlling when this configuration applies.
     name: 'name_example', # String | Name for the cache settings object.
-    stale_ttl: 56, # Integer | Maximum time in seconds to continue to use a stale version of the object if future requests to your backend server fail (also known as 'stale if error').
-    ttl: 56, # Integer | Maximum time to consider the object fresh in the cache (the cache 'time to live').
+    stale_ttl: 'stale_ttl_example', # String | Maximum time in seconds to continue to use a stale version of the object if future requests to your backend server fail (also known as 'stale if error').
+    ttl: 'ttl_example', # String | Maximum time to consider the object fresh in the cache (the cache 'time to live').
 }
 
 begin
@@ -57,8 +57,8 @@ end
 | **action** | **String** | If set, will cause vcl_fetch to terminate after processing this rule with the return state specified. If not set, other configuration logic in vcl_fetch with a lower priority will run after this rule.  | [optional] |
 | **cache_condition** | **String** | Name of the cache condition controlling when this configuration applies. | [optional] |
 | **name** | **String** | Name for the cache settings object. | [optional] |
-| **stale_ttl** | **Integer** | Maximum time in seconds to continue to use a stale version of the object if future requests to your backend server fail (also known as &#39;stale if error&#39;). | [optional] |
-| **ttl** | **Integer** | Maximum time to consider the object fresh in the cache (the cache &#39;time to live&#39;). | [optional] |
+| **stale_ttl** | **String** | Maximum time in seconds to continue to use a stale version of the object if future requests to your backend server fail (also known as &#39;stale if error&#39;). | [optional] |
+| **ttl** | **String** | Maximum time to consider the object fresh in the cache (the cache &#39;time to live&#39;). | [optional] |
 
 ### Return type
 
@@ -206,8 +206,8 @@ opts = {
     action: 'pass', # String | If set, will cause vcl_fetch to terminate after processing this rule with the return state specified. If not set, other configuration logic in vcl_fetch with a lower priority will run after this rule. 
     cache_condition: 'cache_condition_example', # String | Name of the cache condition controlling when this configuration applies.
     name: 'name_example', # String | Name for the cache settings object.
-    stale_ttl: 56, # Integer | Maximum time in seconds to continue to use a stale version of the object if future requests to your backend server fail (also known as 'stale if error').
-    ttl: 56, # Integer | Maximum time to consider the object fresh in the cache (the cache 'time to live').
+    stale_ttl: 'stale_ttl_example', # String | Maximum time in seconds to continue to use a stale version of the object if future requests to your backend server fail (also known as 'stale if error').
+    ttl: 'ttl_example', # String | Maximum time to consider the object fresh in the cache (the cache 'time to live').
 }
 
 begin
@@ -229,8 +229,8 @@ end
 | **action** | **String** | If set, will cause vcl_fetch to terminate after processing this rule with the return state specified. If not set, other configuration logic in vcl_fetch with a lower priority will run after this rule.  | [optional] |
 | **cache_condition** | **String** | Name of the cache condition controlling when this configuration applies. | [optional] |
 | **name** | **String** | Name for the cache settings object. | [optional] |
-| **stale_ttl** | **Integer** | Maximum time in seconds to continue to use a stale version of the object if future requests to your backend server fail (also known as &#39;stale if error&#39;). | [optional] |
-| **ttl** | **Integer** | Maximum time to consider the object fresh in the cache (the cache &#39;time to live&#39;). | [optional] |
+| **stale_ttl** | **String** | Maximum time in seconds to continue to use a stale version of the object if future requests to your backend server fail (also known as &#39;stale if error&#39;). | [optional] |
+| **ttl** | **String** | Maximum time to consider the object fresh in the cache (the cache &#39;time to live&#39;). | [optional] |
 
 ### Return type
 

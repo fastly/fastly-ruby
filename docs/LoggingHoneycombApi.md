@@ -20,7 +20,7 @@ api_instance = Fastly::LoggingHoneycombApi.new
 ## `create_log_honeycomb()`
 
 ```ruby
-create_log_honeycomb(opts): <LoggingHoneycomb> # Create a Honeycomb log endpoint
+create_log_honeycomb(opts): <LoggingHoneycombResponse> # Create a Honeycomb log endpoint
 ```
 
 Create a Honeycomb logging object for a particular service and version.
@@ -34,9 +34,9 @@ opts = {
     version_id: 56, # Integer | Integer identifying a service version.
     name: 'name_example', # String | The name for the real-time logging configuration.
     placement: 'none', # String | Where in the generated VCL the logging call should be placed. If not set, endpoints with `format_version` of 2 are placed in `vcl_log` and those with `format_version` of 1 are placed in `vcl_deliver`. 
-    format_version: 1, # Integer | The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in `vcl_log` if `format_version` is set to `2` and in `vcl_deliver` if `format_version` is set to `1`. 
     response_condition: 'response_condition_example', # String | The name of an existing condition in the configured endpoint, or leave blank to always execute.
     format: 'format_example', # String | A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce valid JSON that Honeycomb can ingest.
+    format_version: 1, # Integer | The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in `vcl_log` if `format_version` is set to `2` and in `vcl_deliver` if `format_version` is set to `1`. 
     dataset: 'dataset_example', # String | The Honeycomb Dataset you want to log to.
     token: 'token_example', # String | The Write Key from the Account page of your Honeycomb account.
 }
@@ -58,15 +58,15 @@ end
 | **version_id** | **Integer** | Integer identifying a service version. |  |
 | **name** | **String** | The name for the real-time logging configuration. | [optional] |
 | **placement** | **String** | Where in the generated VCL the logging call should be placed. If not set, endpoints with `format_version` of 2 are placed in `vcl_log` and those with `format_version` of 1 are placed in `vcl_deliver`.  | [optional] |
-| **format_version** | **Integer** | The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in `vcl_log` if `format_version` is set to `2` and in `vcl_deliver` if `format_version` is set to `1`.  | [optional][default to FORMAT_VERSION::v2] |
 | **response_condition** | **String** | The name of an existing condition in the configured endpoint, or leave blank to always execute. | [optional] |
 | **format** | **String** | A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce valid JSON that Honeycomb can ingest. | [optional] |
+| **format_version** | **Integer** | The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in `vcl_log` if `format_version` is set to `2` and in `vcl_deliver` if `format_version` is set to `1`.  | [optional][default to FORMAT_VERSION::v2] |
 | **dataset** | **String** | The Honeycomb Dataset you want to log to. | [optional] |
 | **token** | **String** | The Write Key from the Account page of your Honeycomb account. | [optional] |
 
 ### Return type
 
-[**LoggingHoneycomb**](LoggingHoneycomb.md)
+[**LoggingHoneycombResponse**](LoggingHoneycombResponse.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)
@@ -114,7 +114,7 @@ end
 ## `get_log_honeycomb()`
 
 ```ruby
-get_log_honeycomb(opts): <LoggingHoneycomb> # Get a Honeycomb log endpoint
+get_log_honeycomb(opts): <LoggingHoneycombResponse> # Get a Honeycomb log endpoint
 ```
 
 Get the details of a Honeycomb logging object for a particular service and version.
@@ -148,7 +148,7 @@ end
 
 ### Return type
 
-[**LoggingHoneycomb**](LoggingHoneycomb.md)
+[**LoggingHoneycombResponse**](LoggingHoneycombResponse.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)
@@ -209,9 +209,9 @@ opts = {
     logging_honeycomb_name: 'logging_honeycomb_name_example', # String | The name for the real-time logging configuration.
     name: 'name_example', # String | The name for the real-time logging configuration.
     placement: 'none', # String | Where in the generated VCL the logging call should be placed. If not set, endpoints with `format_version` of 2 are placed in `vcl_log` and those with `format_version` of 1 are placed in `vcl_deliver`. 
-    format_version: 1, # Integer | The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in `vcl_log` if `format_version` is set to `2` and in `vcl_deliver` if `format_version` is set to `1`. 
     response_condition: 'response_condition_example', # String | The name of an existing condition in the configured endpoint, or leave blank to always execute.
     format: 'format_example', # String | A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce valid JSON that Honeycomb can ingest.
+    format_version: 1, # Integer | The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in `vcl_log` if `format_version` is set to `2` and in `vcl_deliver` if `format_version` is set to `1`. 
     dataset: 'dataset_example', # String | The Honeycomb Dataset you want to log to.
     token: 'token_example', # String | The Write Key from the Account page of your Honeycomb account.
 }
@@ -234,9 +234,9 @@ end
 | **logging_honeycomb_name** | **String** | The name for the real-time logging configuration. |  |
 | **name** | **String** | The name for the real-time logging configuration. | [optional] |
 | **placement** | **String** | Where in the generated VCL the logging call should be placed. If not set, endpoints with `format_version` of 2 are placed in `vcl_log` and those with `format_version` of 1 are placed in `vcl_deliver`.  | [optional] |
-| **format_version** | **Integer** | The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in `vcl_log` if `format_version` is set to `2` and in `vcl_deliver` if `format_version` is set to `1`.  | [optional][default to FORMAT_VERSION::v2] |
 | **response_condition** | **String** | The name of an existing condition in the configured endpoint, or leave blank to always execute. | [optional] |
 | **format** | **String** | A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce valid JSON that Honeycomb can ingest. | [optional] |
+| **format_version** | **Integer** | The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in `vcl_log` if `format_version` is set to `2` and in `vcl_deliver` if `format_version` is set to `1`.  | [optional][default to FORMAT_VERSION::v2] |
 | **dataset** | **String** | The Honeycomb Dataset you want to log to. | [optional] |
 | **token** | **String** | The Write Key from the Account page of your Honeycomb account. | [optional] |
 

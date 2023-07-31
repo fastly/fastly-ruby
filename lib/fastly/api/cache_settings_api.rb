@@ -24,8 +24,8 @@ module Fastly
     # @option opts [String] :action If set, will cause vcl_fetch to terminate after processing this rule with the return state specified. If not set, other configuration logic in vcl_fetch with a lower priority will run after this rule. 
     # @option opts [String] :cache_condition Name of the cache condition controlling when this configuration applies.
     # @option opts [String] :name Name for the cache settings object.
-    # @option opts [Integer] :stale_ttl Maximum time in seconds to continue to use a stale version of the object if future requests to your backend server fail (also known as &#39;stale if error&#39;).
-    # @option opts [Integer] :ttl Maximum time to consider the object fresh in the cache (the cache &#39;time to live&#39;).
+    # @option opts [String] :stale_ttl Maximum time in seconds to continue to use a stale version of the object if future requests to your backend server fail (also known as &#39;stale if error&#39;).
+    # @option opts [String] :ttl Maximum time to consider the object fresh in the cache (the cache &#39;time to live&#39;).
     # @return [CacheSettingResponse]
     def create_cache_settings(opts = {})
       data, _status_code, _headers = create_cache_settings_with_http_info(opts)
@@ -39,8 +39,8 @@ module Fastly
     # @option opts [String] :action If set, will cause vcl_fetch to terminate after processing this rule with the return state specified. If not set, other configuration logic in vcl_fetch with a lower priority will run after this rule. 
     # @option opts [String] :cache_condition Name of the cache condition controlling when this configuration applies.
     # @option opts [String] :name Name for the cache settings object.
-    # @option opts [Integer] :stale_ttl Maximum time in seconds to continue to use a stale version of the object if future requests to your backend server fail (also known as &#39;stale if error&#39;).
-    # @option opts [Integer] :ttl Maximum time to consider the object fresh in the cache (the cache &#39;time to live&#39;).
+    # @option opts [String] :stale_ttl Maximum time in seconds to continue to use a stale version of the object if future requests to your backend server fail (also known as &#39;stale if error&#39;).
+    # @option opts [String] :ttl Maximum time to consider the object fresh in the cache (the cache &#39;time to live&#39;).
     # @return [Array<(CacheSettingResponse, Integer, Hash)>] CacheSettingResponse data, response status code and response headers
     def create_cache_settings_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -343,8 +343,8 @@ module Fastly
     # @option opts [String] :action If set, will cause vcl_fetch to terminate after processing this rule with the return state specified. If not set, other configuration logic in vcl_fetch with a lower priority will run after this rule. 
     # @option opts [String] :cache_condition Name of the cache condition controlling when this configuration applies.
     # @option opts [String] :name Name for the cache settings object.
-    # @option opts [Integer] :stale_ttl Maximum time in seconds to continue to use a stale version of the object if future requests to your backend server fail (also known as &#39;stale if error&#39;).
-    # @option opts [Integer] :ttl Maximum time to consider the object fresh in the cache (the cache &#39;time to live&#39;).
+    # @option opts [String] :stale_ttl Maximum time in seconds to continue to use a stale version of the object if future requests to your backend server fail (also known as &#39;stale if error&#39;).
+    # @option opts [String] :ttl Maximum time to consider the object fresh in the cache (the cache &#39;time to live&#39;).
     # @return [CacheSettingResponse]
     def update_cache_settings(opts = {})
       data, _status_code, _headers = update_cache_settings_with_http_info(opts)
@@ -359,8 +359,8 @@ module Fastly
     # @option opts [String] :action If set, will cause vcl_fetch to terminate after processing this rule with the return state specified. If not set, other configuration logic in vcl_fetch with a lower priority will run after this rule. 
     # @option opts [String] :cache_condition Name of the cache condition controlling when this configuration applies.
     # @option opts [String] :name Name for the cache settings object.
-    # @option opts [Integer] :stale_ttl Maximum time in seconds to continue to use a stale version of the object if future requests to your backend server fail (also known as &#39;stale if error&#39;).
-    # @option opts [Integer] :ttl Maximum time to consider the object fresh in the cache (the cache &#39;time to live&#39;).
+    # @option opts [String] :stale_ttl Maximum time in seconds to continue to use a stale version of the object if future requests to your backend server fail (also known as &#39;stale if error&#39;).
+    # @option opts [String] :ttl Maximum time to consider the object fresh in the cache (the cache &#39;time to live&#39;).
     # @return [Array<(CacheSettingResponse, Integer, Hash)>] CacheSettingResponse data, response status code and response headers
     def update_cache_settings_with_http_info(opts = {})
       if @api_client.config.debugging

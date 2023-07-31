@@ -19,14 +19,14 @@ module Fastly
     # Where in the generated VCL the logging call should be placed. If not set, endpoints with `format_version` of 2 are placed in `vcl_log` and those with `format_version` of 1 are placed in `vcl_deliver`. 
     attr_accessor :placement
 
-    # The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in `vcl_log` if `format_version` is set to `2` and in `vcl_deliver` if `format_version` is set to `1`. 
-    attr_accessor :format_version
-
     # The name of an existing condition in the configured endpoint, or leave blank to always execute.
     attr_accessor :response_condition
 
     # A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats).
     attr_accessor :format
+
+    # The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in `vcl_log` if `format_version` is set to `2` and in `vcl_deliver` if `format_version` is set to `1`. 
+    attr_accessor :format_version
 
     # How the message should be formatted.
     attr_accessor :message_type
@@ -34,20 +34,21 @@ module Fastly
     # A timestamp format
     attr_accessor :timestamp_format
 
-    # How frequently log files are finalized so they can be available for reading (in seconds).
-    attr_accessor :period
-
-    # The level of gzip encoding when sending logs (default `0`, no compression). Specifying both `compression_codec` and `gzip_level` in the same API request will result in an error.
-    attr_accessor :gzip_level
-
     # The codec used for compressing your logs. Valid values are `zstd`, `snappy`, and `gzip`. Specifying both `compression_codec` and `gzip_level` in the same API request will result in an error.
     attr_accessor :compression_codec
 
-    # A hostname or IPv4 address.
-    attr_accessor :address
+    # Date and time in ISO 8601 format.
+    attr_accessor :created_at
 
-    # The port number.
-    attr_accessor :port
+    # Date and time in ISO 8601 format.
+    attr_accessor :deleted_at
+
+    # Date and time in ISO 8601 format.
+    attr_accessor :updated_at
+
+    attr_accessor :service_id
+
+    attr_accessor :version
 
     # The password for the server. If both `password` and `secret_key` are passed, `secret_key` will be used in preference.
     attr_accessor :password
@@ -67,18 +68,17 @@ module Fastly
     # The username for the server.
     attr_accessor :user
 
-    # Date and time in ISO 8601 format.
-    attr_accessor :created_at
+    # A hostname or IPv4 address.
+    attr_accessor :address
 
-    # Date and time in ISO 8601 format.
-    attr_accessor :deleted_at
+    # The port number.
+    attr_accessor :port
 
-    # Date and time in ISO 8601 format.
-    attr_accessor :updated_at
+    # How frequently log files are finalized so they can be available for reading (in seconds).
+    attr_accessor :period
 
-    attr_accessor :service_id
-
-    attr_accessor :version
+    # The level of gzip encoding when sending logs (default `0`, no compression). Specifying both `compression_codec` and `gzip_level` in the same API request will result in an error.
+    attr_accessor :gzip_level
 
     class EnumAttributeValidator
       attr_reader :datatype
@@ -107,27 +107,27 @@ module Fastly
       {
         :'name' => :'name',
         :'placement' => :'placement',
-        :'format_version' => :'format_version',
         :'response_condition' => :'response_condition',
         :'format' => :'format',
+        :'format_version' => :'format_version',
         :'message_type' => :'message_type',
         :'timestamp_format' => :'timestamp_format',
-        :'period' => :'period',
-        :'gzip_level' => :'gzip_level',
         :'compression_codec' => :'compression_codec',
-        :'address' => :'address',
-        :'port' => :'port',
+        :'created_at' => :'created_at',
+        :'deleted_at' => :'deleted_at',
+        :'updated_at' => :'updated_at',
+        :'service_id' => :'service_id',
+        :'version' => :'version',
         :'password' => :'password',
         :'path' => :'path',
         :'public_key' => :'public_key',
         :'secret_key' => :'secret_key',
         :'ssh_known_hosts' => :'ssh_known_hosts',
         :'user' => :'user',
-        :'created_at' => :'created_at',
-        :'deleted_at' => :'deleted_at',
-        :'updated_at' => :'updated_at',
-        :'service_id' => :'service_id',
-        :'version' => :'version'
+        :'address' => :'address',
+        :'port' => :'port',
+        :'period' => :'period',
+        :'gzip_level' => :'gzip_level'
       }
     end
 
@@ -141,27 +141,27 @@ module Fastly
       {
         :'name' => :'String',
         :'placement' => :'String',
-        :'format_version' => :'Integer',
         :'response_condition' => :'String',
         :'format' => :'String',
+        :'format_version' => :'String',
         :'message_type' => :'String',
         :'timestamp_format' => :'String',
-        :'period' => :'Integer',
-        :'gzip_level' => :'Integer',
         :'compression_codec' => :'String',
-        :'address' => :'String',
-        :'port' => :'Integer',
+        :'created_at' => :'Time',
+        :'deleted_at' => :'Time',
+        :'updated_at' => :'Time',
+        :'service_id' => :'String',
+        :'version' => :'String',
         :'password' => :'String',
         :'path' => :'String',
         :'public_key' => :'String',
         :'secret_key' => :'String',
         :'ssh_known_hosts' => :'String',
         :'user' => :'String',
-        :'created_at' => :'Time',
-        :'deleted_at' => :'Time',
-        :'updated_at' => :'Time',
-        :'service_id' => :'String',
-        :'version' => :'Integer'
+        :'address' => :'String',
+        :'port' => :'String',
+        :'period' => :'String',
+        :'gzip_level' => :'Integer'
       }
     end
 
@@ -171,20 +171,23 @@ module Fastly
         :'placement',
         :'response_condition',
         :'timestamp_format',
-        :'path',
-        :'public_key',
-        :'secret_key',
         :'created_at',
         :'deleted_at',
         :'updated_at',
+        :'path',
+        :'public_key',
+        :'secret_key',
       ])
     end
 
     # List of class defined in allOf (OpenAPI v3)
     def self.fastly_all_of
       [
-      :'LoggingSftp',
-      :'ServiceIdAndVersion',
+      :'LoggingCommonResponse',
+      :'LoggingGenericCommon',
+      :'LoggingSftpAdditional',
+      :'LoggingSftpResponseAllOf',
+      :'ServiceIdAndVersionString',
       :'Timestamps'
       ]
     end
@@ -212,12 +215,6 @@ module Fastly
         self.placement = attributes[:'placement']
       end
 
-      if attributes.key?(:'format_version')
-        self.format_version = attributes[:'format_version']
-      else
-        self.format_version = FORMAT_VERSION::v2
-      end
-
       if attributes.key?(:'response_condition')
         self.response_condition = attributes[:'response_condition']
       end
@@ -226,6 +223,12 @@ module Fastly
         self.format = attributes[:'format']
       else
         self.format = '%h %l %u %t \"%r\" %&gt;s %b'
+      end
+
+      if attributes.key?(:'format_version')
+        self.format_version = attributes[:'format_version']
+      else
+        self.format_version = '2'
       end
 
       if attributes.key?(:'message_type')
@@ -238,30 +241,28 @@ module Fastly
         self.timestamp_format = attributes[:'timestamp_format']
       end
 
-      if attributes.key?(:'period')
-        self.period = attributes[:'period']
-      else
-        self.period = 3600
-      end
-
-      if attributes.key?(:'gzip_level')
-        self.gzip_level = attributes[:'gzip_level']
-      else
-        self.gzip_level = 0
-      end
-
       if attributes.key?(:'compression_codec')
         self.compression_codec = attributes[:'compression_codec']
       end
 
-      if attributes.key?(:'address')
-        self.address = attributes[:'address']
+      if attributes.key?(:'created_at')
+        self.created_at = attributes[:'created_at']
       end
 
-      if attributes.key?(:'port')
-        self.port = attributes[:'port']
-      else
-        self.port = 22
+      if attributes.key?(:'deleted_at')
+        self.deleted_at = attributes[:'deleted_at']
+      end
+
+      if attributes.key?(:'updated_at')
+        self.updated_at = attributes[:'updated_at']
+      end
+
+      if attributes.key?(:'service_id')
+        self.service_id = attributes[:'service_id']
+      end
+
+      if attributes.key?(:'version')
+        self.version = attributes[:'version']
       end
 
       if attributes.key?(:'password')
@@ -294,24 +295,26 @@ module Fastly
         self.user = attributes[:'user']
       end
 
-      if attributes.key?(:'created_at')
-        self.created_at = attributes[:'created_at']
+      if attributes.key?(:'address')
+        self.address = attributes[:'address']
       end
 
-      if attributes.key?(:'deleted_at')
-        self.deleted_at = attributes[:'deleted_at']
+      if attributes.key?(:'port')
+        self.port = attributes[:'port']
+      else
+        self.port = '22'
       end
 
-      if attributes.key?(:'updated_at')
-        self.updated_at = attributes[:'updated_at']
+      if attributes.key?(:'period')
+        self.period = attributes[:'period']
+      else
+        self.period = '3600'
       end
 
-      if attributes.key?(:'service_id')
-        self.service_id = attributes[:'service_id']
-      end
-
-      if attributes.key?(:'version')
-        self.version = attributes[:'version']
+      if attributes.key?(:'gzip_level')
+        self.gzip_level = attributes[:'gzip_level']
+      else
+        self.gzip_level = 0
       end
     end
 
@@ -327,7 +330,7 @@ module Fastly
     def valid?
       placement_validator = EnumAttributeValidator.new('String', ["none", "waf_debug", "null"])
       return false unless placement_validator.valid?(@placement)
-      format_version_validator = EnumAttributeValidator.new('Integer', [1, 2])
+      format_version_validator = EnumAttributeValidator.new('String', ["1", "2"])
       return false unless format_version_validator.valid?(@format_version)
       message_type_validator = EnumAttributeValidator.new('String', ["classic", "loggly", "logplex", "blank"])
       return false unless message_type_validator.valid?(@message_type)
@@ -349,7 +352,7 @@ module Fastly
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] format_version Object to be assigned
     def format_version=(format_version)
-      validator = EnumAttributeValidator.new('Integer', [1, 2])
+      validator = EnumAttributeValidator.new('String', ["1", "2"])
       unless validator.valid?(format_version)
         fail ArgumentError, "invalid value for \"format_version\", must be one of #{validator.allowable_values}."
       end
@@ -383,27 +386,27 @@ module Fastly
       self.class == o.class &&
           name == o.name &&
           placement == o.placement &&
-          format_version == o.format_version &&
           response_condition == o.response_condition &&
           format == o.format &&
+          format_version == o.format_version &&
           message_type == o.message_type &&
           timestamp_format == o.timestamp_format &&
-          period == o.period &&
-          gzip_level == o.gzip_level &&
           compression_codec == o.compression_codec &&
-          address == o.address &&
-          port == o.port &&
+          created_at == o.created_at &&
+          deleted_at == o.deleted_at &&
+          updated_at == o.updated_at &&
+          service_id == o.service_id &&
+          version == o.version &&
           password == o.password &&
           path == o.path &&
           public_key == o.public_key &&
           secret_key == o.secret_key &&
           ssh_known_hosts == o.ssh_known_hosts &&
           user == o.user &&
-          created_at == o.created_at &&
-          deleted_at == o.deleted_at &&
-          updated_at == o.updated_at &&
-          service_id == o.service_id &&
-          version == o.version
+          address == o.address &&
+          port == o.port &&
+          period == o.period &&
+          gzip_level == o.gzip_level
     end
 
     # @see the `==` method
@@ -415,7 +418,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, placement, format_version, response_condition, format, message_type, timestamp_format, period, gzip_level, compression_codec, address, port, password, path, public_key, secret_key, ssh_known_hosts, user, created_at, deleted_at, updated_at, service_id, version].hash
+      [name, placement, response_condition, format, format_version, message_type, timestamp_format, compression_codec, created_at, deleted_at, updated_at, service_id, version, password, path, public_key, secret_key, ssh_known_hosts, user, address, port, period, gzip_level].hash
     end
 
     # Builds the object from hash

@@ -28,6 +28,19 @@ module Fastly
     # Whether to use TLS.
     attr_accessor :use_tls
 
+    # Date and time in ISO 8601 format.
+    attr_accessor :created_at
+
+    # Date and time in ISO 8601 format.
+    attr_accessor :deleted_at
+
+    # Date and time in ISO 8601 format.
+    attr_accessor :updated_at
+
+    attr_accessor :service_id
+
+    attr_accessor :version
+
     # Name for the Pool.
     attr_accessor :name
 
@@ -37,26 +50,11 @@ module Fastly
     # Condition which, if met, will select this configuration during a request. Optional.
     attr_accessor :request_condition
 
-    # Maximum number of connections. Optional.
-    attr_accessor :max_conn_default
-
-    # How long to wait for a timeout in milliseconds. Optional.
-    attr_accessor :connect_timeout
-
-    # How long to wait for the first byte in milliseconds. Optional.
-    attr_accessor :first_byte_timeout
-
-    # Percentage of capacity (`0-100`) that needs to be operationally available for a pool to be considered up.
-    attr_accessor :quorum
-
     # List of OpenSSL ciphers (see the [openssl.org manpages](https://www.openssl.org/docs/man1.1.1/man1/ciphers.html) for details). Optional.
     attr_accessor :tls_ciphers
 
     # SNI hostname. Optional.
     attr_accessor :tls_sni_hostname
-
-    # Be strict on checking TLS certs. Optional.
-    attr_accessor :tls_check_cert
 
     # Minimum allowed TLS version on connections to this server. Optional.
     attr_accessor :min_tls_version
@@ -76,20 +74,25 @@ module Fastly
     # The hostname to [override the Host header](https://docs.fastly.com/en/guides/specifying-an-override-host). Defaults to `null` meaning no override of the Host header will occur. This setting can also be added to a Server definition. If the field is set on a Server definition it will override the Pool setting.
     attr_accessor :override_host
 
-    # Date and time in ISO 8601 format.
-    attr_accessor :created_at
+    # Maximum duration in milliseconds that Fastly will wait while receiving no data on a download from a backend. If exceeded, the response received so far will be considered complete and the fetch will end. May be set at runtime using `bereq.between_bytes_timeout`.
+    attr_accessor :between_bytes_timeout
 
-    # Date and time in ISO 8601 format.
-    attr_accessor :deleted_at
+    # How long to wait for a timeout in milliseconds.
+    attr_accessor :connect_timeout
 
-    # Date and time in ISO 8601 format.
-    attr_accessor :updated_at
+    # How long to wait for the first byte in milliseconds.
+    attr_accessor :first_byte_timeout
 
-    attr_accessor :service_id
+    # Maximum number of connections.
+    attr_accessor :max_conn_default
 
-    attr_accessor :version
+    # Be strict on checking TLS certs.
+    attr_accessor :tls_check_cert
 
     attr_accessor :id
+
+    # Percentage of capacity (`0-100`) that needs to be operationally available for a pool to be considered up.
+    attr_accessor :quorum
 
     class EnumAttributeValidator
       attr_reader :datatype
@@ -121,28 +124,29 @@ module Fastly
         :'tls_client_key' => :'tls_client_key',
         :'tls_cert_hostname' => :'tls_cert_hostname',
         :'use_tls' => :'use_tls',
+        :'created_at' => :'created_at',
+        :'deleted_at' => :'deleted_at',
+        :'updated_at' => :'updated_at',
+        :'service_id' => :'service_id',
+        :'version' => :'version',
         :'name' => :'name',
         :'shield' => :'shield',
         :'request_condition' => :'request_condition',
-        :'max_conn_default' => :'max_conn_default',
-        :'connect_timeout' => :'connect_timeout',
-        :'first_byte_timeout' => :'first_byte_timeout',
-        :'quorum' => :'quorum',
         :'tls_ciphers' => :'tls_ciphers',
         :'tls_sni_hostname' => :'tls_sni_hostname',
-        :'tls_check_cert' => :'tls_check_cert',
         :'min_tls_version' => :'min_tls_version',
         :'max_tls_version' => :'max_tls_version',
         :'healthcheck' => :'healthcheck',
         :'comment' => :'comment',
         :'type' => :'type',
         :'override_host' => :'override_host',
-        :'created_at' => :'created_at',
-        :'deleted_at' => :'deleted_at',
-        :'updated_at' => :'updated_at',
-        :'service_id' => :'service_id',
-        :'version' => :'version',
-        :'id' => :'id'
+        :'between_bytes_timeout' => :'between_bytes_timeout',
+        :'connect_timeout' => :'connect_timeout',
+        :'first_byte_timeout' => :'first_byte_timeout',
+        :'max_conn_default' => :'max_conn_default',
+        :'tls_check_cert' => :'tls_check_cert',
+        :'id' => :'id',
+        :'quorum' => :'quorum'
       }
     end
 
@@ -158,29 +162,30 @@ module Fastly
         :'tls_client_cert' => :'String',
         :'tls_client_key' => :'String',
         :'tls_cert_hostname' => :'String',
-        :'use_tls' => :'Integer',
+        :'use_tls' => :'String',
+        :'created_at' => :'Time',
+        :'deleted_at' => :'Time',
+        :'updated_at' => :'Time',
+        :'service_id' => :'String',
+        :'version' => :'String',
         :'name' => :'String',
         :'shield' => :'String',
         :'request_condition' => :'String',
-        :'max_conn_default' => :'Integer',
-        :'connect_timeout' => :'Integer',
-        :'first_byte_timeout' => :'Integer',
-        :'quorum' => :'Integer',
         :'tls_ciphers' => :'String',
         :'tls_sni_hostname' => :'String',
-        :'tls_check_cert' => :'Integer',
         :'min_tls_version' => :'Integer',
         :'max_tls_version' => :'Integer',
         :'healthcheck' => :'String',
         :'comment' => :'String',
         :'type' => :'String',
         :'override_host' => :'String',
-        :'created_at' => :'Time',
-        :'deleted_at' => :'Time',
-        :'updated_at' => :'Time',
-        :'service_id' => :'String',
-        :'version' => :'Integer',
-        :'id' => :'String'
+        :'between_bytes_timeout' => :'String',
+        :'connect_timeout' => :'String',
+        :'first_byte_timeout' => :'String',
+        :'max_conn_default' => :'String',
+        :'tls_check_cert' => :'String',
+        :'id' => :'String',
+        :'quorum' => :'String'
       }
     end
 
@@ -191,29 +196,31 @@ module Fastly
         :'tls_client_cert',
         :'tls_client_key',
         :'tls_cert_hostname',
+        :'created_at',
+        :'deleted_at',
+        :'updated_at',
         :'shield',
         :'request_condition',
         :'tls_ciphers',
         :'tls_sni_hostname',
-        :'tls_check_cert',
         :'min_tls_version',
         :'max_tls_version',
         :'healthcheck',
         :'comment',
         :'override_host',
-        :'created_at',
-        :'deleted_at',
-        :'updated_at',
+        :'tls_check_cert',
       ])
     end
 
     # List of class defined in allOf (OpenAPI v3)
     def self.fastly_all_of
       [
-      :'Pool',
+      :'PoolAdditional',
       :'PoolResponseAllOf',
-      :'ServiceIdAndVersion',
-      :'Timestamps'
+      :'PoolResponseCommon',
+      :'ServiceIdAndVersionString',
+      :'Timestamps',
+      :'TlsCommonResponse'
       ]
     end
 
@@ -259,7 +266,27 @@ module Fastly
       if attributes.key?(:'use_tls')
         self.use_tls = attributes[:'use_tls']
       else
-        self.use_tls = USE_TLS::no_tls
+        self.use_tls = '0'
+      end
+
+      if attributes.key?(:'created_at')
+        self.created_at = attributes[:'created_at']
+      end
+
+      if attributes.key?(:'deleted_at')
+        self.deleted_at = attributes[:'deleted_at']
+      end
+
+      if attributes.key?(:'updated_at')
+        self.updated_at = attributes[:'updated_at']
+      end
+
+      if attributes.key?(:'service_id')
+        self.service_id = attributes[:'service_id']
+      end
+
+      if attributes.key?(:'version')
+        self.version = attributes[:'version']
       end
 
       if attributes.key?(:'name')
@@ -276,36 +303,12 @@ module Fastly
         self.request_condition = attributes[:'request_condition']
       end
 
-      if attributes.key?(:'max_conn_default')
-        self.max_conn_default = attributes[:'max_conn_default']
-      else
-        self.max_conn_default = 200
-      end
-
-      if attributes.key?(:'connect_timeout')
-        self.connect_timeout = attributes[:'connect_timeout']
-      end
-
-      if attributes.key?(:'first_byte_timeout')
-        self.first_byte_timeout = attributes[:'first_byte_timeout']
-      end
-
-      if attributes.key?(:'quorum')
-        self.quorum = attributes[:'quorum']
-      else
-        self.quorum = 75
-      end
-
       if attributes.key?(:'tls_ciphers')
         self.tls_ciphers = attributes[:'tls_ciphers']
       end
 
       if attributes.key?(:'tls_sni_hostname')
         self.tls_sni_hostname = attributes[:'tls_sni_hostname']
-      end
-
-      if attributes.key?(:'tls_check_cert')
-        self.tls_check_cert = attributes[:'tls_check_cert']
       end
 
       if attributes.key?(:'min_tls_version')
@@ -334,28 +337,36 @@ module Fastly
         self.override_host = 'null'
       end
 
-      if attributes.key?(:'created_at')
-        self.created_at = attributes[:'created_at']
+      if attributes.key?(:'between_bytes_timeout')
+        self.between_bytes_timeout = attributes[:'between_bytes_timeout']
       end
 
-      if attributes.key?(:'deleted_at')
-        self.deleted_at = attributes[:'deleted_at']
+      if attributes.key?(:'connect_timeout')
+        self.connect_timeout = attributes[:'connect_timeout']
       end
 
-      if attributes.key?(:'updated_at')
-        self.updated_at = attributes[:'updated_at']
+      if attributes.key?(:'first_byte_timeout')
+        self.first_byte_timeout = attributes[:'first_byte_timeout']
       end
 
-      if attributes.key?(:'service_id')
-        self.service_id = attributes[:'service_id']
+      if attributes.key?(:'max_conn_default')
+        self.max_conn_default = attributes[:'max_conn_default']
+      else
+        self.max_conn_default = '200'
       end
 
-      if attributes.key?(:'version')
-        self.version = attributes[:'version']
+      if attributes.key?(:'tls_check_cert')
+        self.tls_check_cert = attributes[:'tls_check_cert']
       end
 
       if attributes.key?(:'id')
         self.id = attributes[:'id']
+      end
+
+      if attributes.key?(:'quorum')
+        self.quorum = attributes[:'quorum']
+      else
+        self.quorum = '75'
       end
     end
 
@@ -363,24 +374,14 @@ module Fastly
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if !@quorum.nil? && @quorum > 100
-        invalid_properties.push('invalid value for "quorum", must be smaller than or equal to 100.')
-      end
-
-      if !@quorum.nil? && @quorum < 0
-        invalid_properties.push('invalid value for "quorum", must be greater than or equal to 0.')
-      end
-
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      use_tls_validator = EnumAttributeValidator.new('Integer', [0, 1])
+      use_tls_validator = EnumAttributeValidator.new('String', ["0", "1"])
       return false unless use_tls_validator.valid?(@use_tls)
-      return false if !@quorum.nil? && @quorum > 100
-      return false if !@quorum.nil? && @quorum < 0
       type_validator = EnumAttributeValidator.new('String', ["random", "hash", "client"])
       return false unless type_validator.valid?(@type)
       true
@@ -389,25 +390,11 @@ module Fastly
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] use_tls Object to be assigned
     def use_tls=(use_tls)
-      validator = EnumAttributeValidator.new('Integer', [0, 1])
+      validator = EnumAttributeValidator.new('String', ["0", "1"])
       unless validator.valid?(use_tls)
         fail ArgumentError, "invalid value for \"use_tls\", must be one of #{validator.allowable_values}."
       end
       @use_tls = use_tls
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] quorum Value to be assigned
-    def quorum=(quorum)
-      if !quorum.nil? && quorum > 100
-        fail ArgumentError, 'invalid value for "quorum", must be smaller than or equal to 100.'
-      end
-
-      if !quorum.nil? && quorum < 0
-        fail ArgumentError, 'invalid value for "quorum", must be greater than or equal to 0.'
-      end
-
-      @quorum = quorum
     end
 
     # Custom attribute writer method checking allowed values (enum).
@@ -430,28 +417,29 @@ module Fastly
           tls_client_key == o.tls_client_key &&
           tls_cert_hostname == o.tls_cert_hostname &&
           use_tls == o.use_tls &&
+          created_at == o.created_at &&
+          deleted_at == o.deleted_at &&
+          updated_at == o.updated_at &&
+          service_id == o.service_id &&
+          version == o.version &&
           name == o.name &&
           shield == o.shield &&
           request_condition == o.request_condition &&
-          max_conn_default == o.max_conn_default &&
-          connect_timeout == o.connect_timeout &&
-          first_byte_timeout == o.first_byte_timeout &&
-          quorum == o.quorum &&
           tls_ciphers == o.tls_ciphers &&
           tls_sni_hostname == o.tls_sni_hostname &&
-          tls_check_cert == o.tls_check_cert &&
           min_tls_version == o.min_tls_version &&
           max_tls_version == o.max_tls_version &&
           healthcheck == o.healthcheck &&
           comment == o.comment &&
           type == o.type &&
           override_host == o.override_host &&
-          created_at == o.created_at &&
-          deleted_at == o.deleted_at &&
-          updated_at == o.updated_at &&
-          service_id == o.service_id &&
-          version == o.version &&
-          id == o.id
+          between_bytes_timeout == o.between_bytes_timeout &&
+          connect_timeout == o.connect_timeout &&
+          first_byte_timeout == o.first_byte_timeout &&
+          max_conn_default == o.max_conn_default &&
+          tls_check_cert == o.tls_check_cert &&
+          id == o.id &&
+          quorum == o.quorum
     end
 
     # @see the `==` method
@@ -463,7 +451,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [tls_ca_cert, tls_client_cert, tls_client_key, tls_cert_hostname, use_tls, name, shield, request_condition, max_conn_default, connect_timeout, first_byte_timeout, quorum, tls_ciphers, tls_sni_hostname, tls_check_cert, min_tls_version, max_tls_version, healthcheck, comment, type, override_host, created_at, deleted_at, updated_at, service_id, version, id].hash
+      [tls_ca_cert, tls_client_cert, tls_client_key, tls_cert_hostname, use_tls, created_at, deleted_at, updated_at, service_id, version, name, shield, request_condition, tls_ciphers, tls_sni_hostname, min_tls_version, max_tls_version, healthcheck, comment, type, override_host, between_bytes_timeout, connect_timeout, first_byte_timeout, max_conn_default, tls_check_cert, id, quorum].hash
     end
 
     # Builds the object from hash

@@ -77,11 +77,11 @@ module Fastly
         :'content' => :'String',
         :'content_type' => :'String',
         :'name' => :'String',
-        :'status' => :'Integer',
+        :'status' => :'String',
         :'response' => :'String',
         :'request_condition' => :'String',
         :'service_id' => :'String',
-        :'version' => :'Integer',
+        :'version' => :'String',
         :'created_at' => :'Time',
         :'deleted_at' => :'Time',
         :'updated_at' => :'Time'
@@ -104,7 +104,7 @@ module Fastly
     def self.fastly_all_of
       [
       :'ResponseObject',
-      :'ServiceIdAndVersion',
+      :'ServiceIdAndVersionString',
       :'Timestamps'
       ]
     end
@@ -143,7 +143,7 @@ module Fastly
       if attributes.key?(:'status')
         self.status = attributes[:'status']
       else
-        self.status = 200
+        self.status = '200'
       end
 
       if attributes.key?(:'response')

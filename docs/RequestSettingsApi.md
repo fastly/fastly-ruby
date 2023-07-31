@@ -194,17 +194,17 @@ opts = {
     version_id: 56, # Integer | Integer identifying a service version.
     request_settings_name: 'request_settings_name_example', # String | Name for the request settings.
     action: 'lookup', # String | Allows you to terminate request handling and immediately perform an action.
-    bypass_busy_wait: 56, # Integer | Disable collapsed forwarding, so you don't wait for other objects to origin.
     default_host: 'default_host_example', # String | Sets the host header.
+    hash_keys: 'hash_keys_example', # String | Comma separated list of varnish request object fields that should be in the hash key.
+    name: 'name_example', # String | Name for the request settings.
+    request_condition: 'request_condition_example', # String | Condition which, if met, will select this configuration during a request. Optional.
+    xff: 'clear', # String | Short for X-Forwarded-For.
+    bypass_busy_wait: 56, # Integer | Disable collapsed forwarding, so you don't wait for other objects to origin.
     force_miss: 56, # Integer | Allows you to force a cache miss for the request. Replaces the item in the cache if the content is cacheable.
     force_ssl: 56, # Integer | Forces the request use SSL (redirects a non-SSL to SSL).
     geo_headers: 56, # Integer | Injects Fastly-Geo-Country, Fastly-Geo-City, and Fastly-Geo-Region into the request headers.
-    hash_keys: 'hash_keys_example', # String | Comma separated list of varnish request object fields that should be in the hash key.
     max_stale_age: 56, # Integer | How old an object is allowed to be to serve stale-if-error or stale-while-revalidate.
-    name: 'name_example', # String | Name for the request settings.
-    request_condition: 'request_condition_example', # String | Condition which, if met, will select this configuration during a request. Optional.
     timer_support: 56, # Integer | Injects the X-Timer info into the request for viewing origin fetch durations.
-    xff: 'clear', # String | Short for X-Forwarded-For.
 }
 
 begin
@@ -224,17 +224,17 @@ end
 | **version_id** | **Integer** | Integer identifying a service version. |  |
 | **request_settings_name** | **String** | Name for the request settings. |  |
 | **action** | **String** | Allows you to terminate request handling and immediately perform an action. | [optional] |
-| **bypass_busy_wait** | **Integer** | Disable collapsed forwarding, so you don&#39;t wait for other objects to origin. | [optional] |
 | **default_host** | **String** | Sets the host header. | [optional] |
+| **hash_keys** | **String** | Comma separated list of varnish request object fields that should be in the hash key. | [optional] |
+| **name** | **String** | Name for the request settings. | [optional] |
+| **request_condition** | **String** | Condition which, if met, will select this configuration during a request. Optional. | [optional] |
+| **xff** | **String** | Short for X-Forwarded-For. | [optional] |
+| **bypass_busy_wait** | **Integer** | Disable collapsed forwarding, so you don&#39;t wait for other objects to origin. | [optional] |
 | **force_miss** | **Integer** | Allows you to force a cache miss for the request. Replaces the item in the cache if the content is cacheable. | [optional] |
 | **force_ssl** | **Integer** | Forces the request use SSL (redirects a non-SSL to SSL). | [optional] |
 | **geo_headers** | **Integer** | Injects Fastly-Geo-Country, Fastly-Geo-City, and Fastly-Geo-Region into the request headers. | [optional] |
-| **hash_keys** | **String** | Comma separated list of varnish request object fields that should be in the hash key. | [optional] |
 | **max_stale_age** | **Integer** | How old an object is allowed to be to serve stale-if-error or stale-while-revalidate. | [optional] |
-| **name** | **String** | Name for the request settings. | [optional] |
-| **request_condition** | **String** | Condition which, if met, will select this configuration during a request. Optional. | [optional] |
 | **timer_support** | **Integer** | Injects the X-Timer info into the request for viewing origin fetch durations. | [optional] |
-| **xff** | **String** | Short for X-Forwarded-For. | [optional] |
 
 ### Return type
 

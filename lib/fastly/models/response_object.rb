@@ -59,7 +59,7 @@ module Fastly
         :'content' => :'String',
         :'content_type' => :'String',
         :'name' => :'String',
-        :'status' => :'Integer',
+        :'status' => :'String',
         :'response' => :'String',
         :'request_condition' => :'String'
       }
@@ -108,7 +108,7 @@ module Fastly
       if attributes.key?(:'status')
         self.status = attributes[:'status']
       else
-        self.status = 200
+        self.status = '200'
       end
 
       if attributes.key?(:'response')

@@ -13,12 +13,13 @@ require 'time'
 
 module Fastly
   class PoolResponseAllOf
-    attr_accessor :id
+    # Percentage of capacity (`0-100`) that needs to be operationally available for a pool to be considered up.
+    attr_accessor :quorum
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'id' => :'id'
+        :'quorum' => :'quorum'
       }
     end
 
@@ -30,7 +31,7 @@ module Fastly
     # Attribute type mapping.
     def self.fastly_types
       {
-        :'id' => :'String'
+        :'quorum' => :'String'
       }
     end
 
@@ -55,8 +56,10 @@ module Fastly
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'id')
-        self.id = attributes[:'id']
+      if attributes.key?(:'quorum')
+        self.quorum = attributes[:'quorum']
+      else
+        self.quorum = '75'
       end
     end
 
@@ -78,7 +81,7 @@ module Fastly
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          id == o.id
+          quorum == o.quorum
     end
 
     # @see the `==` method
@@ -90,7 +93,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id].hash
+      [quorum].hash
     end
 
     # Builds the object from hash

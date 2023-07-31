@@ -23,13 +23,13 @@ module Fastly
     # @option opts [Integer] :version_id Integer identifying a service version. (required)
     # @option opts [String] :name The name for the real-time logging configuration.
     # @option opts [LoggingPlacement] :placement 
-    # @option opts [LoggingFormatVersion] :format_version  (default to 2)
     # @option opts [String] :format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce valid JSON that Kinesis can ingest. (default to '{\"timestamp\":\"%{begin:%Y-%m-%dT%H:%M:%S}t\",\"time_elapsed\":\"%{time.elapsed.usec}V\",\"is_tls\":\"%{if(req.is_ssl, \\\"true\\\", \\\"false\\\")}V\",\"client_ip\":\"%{req.http.Fastly-Client-IP}V\",\"geo_city\":\"%{client.geo.city}V\",\"geo_country_code\":\"%{client.geo.country_code}V\",\"request\":\"%{req.request}V\",\"host\":\"%{req.http.Fastly-Orig-Host}V\",\"url\":\"%{json.escape(req.url)}V\",\"request_referer\":\"%{json.escape(req.http.Referer)}V\",\"request_user_agent\":\"%{json.escape(req.http.User-Agent)}V\",\"request_accept_language\":\"%{json.escape(req.http.Accept-Language)}V\",\"request_accept_charset\":\"%{json.escape(req.http.Accept-Charset)}V\",\"cache_status\":\"%{regsub(fastly_info.state, \\\"^(HIT-(SYNTH)|(HITPASS|HIT|MISS|PASS|ERROR|PIPE)).*\\\", \\\"\\\\2\\\\3\\\") }V\"}')
     # @option opts [String] :topic The Amazon Kinesis stream to send logs to. Required.
     # @option opts [AwsRegion] :region 
     # @option opts [String] :secret_key The secret key associated with the target Amazon Kinesis stream. Not required if &#x60;iam_role&#x60; is specified.
     # @option opts [String] :access_key The access key associated with the target Amazon Kinesis stream. Not required if &#x60;iam_role&#x60; is specified.
     # @option opts [String] :iam_role The ARN for an IAM role granting Fastly access to the target Amazon Kinesis stream. Not required if &#x60;access_key&#x60; and &#x60;secret_key&#x60; are provided.
+    # @option opts [Integer] :format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;.  (default to FORMAT_VERSION::v2)
     # @return [LoggingKinesisResponse]
     def create_log_kinesis(opts = {})
       data, _status_code, _headers = create_log_kinesis_with_http_info(opts)
@@ -42,13 +42,13 @@ module Fastly
     # @option opts [Integer] :version_id Integer identifying a service version. (required)
     # @option opts [String] :name The name for the real-time logging configuration.
     # @option opts [LoggingPlacement] :placement 
-    # @option opts [LoggingFormatVersion] :format_version  (default to 2)
     # @option opts [String] :format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce valid JSON that Kinesis can ingest. (default to '{\"timestamp\":\"%{begin:%Y-%m-%dT%H:%M:%S}t\",\"time_elapsed\":\"%{time.elapsed.usec}V\",\"is_tls\":\"%{if(req.is_ssl, \\\"true\\\", \\\"false\\\")}V\",\"client_ip\":\"%{req.http.Fastly-Client-IP}V\",\"geo_city\":\"%{client.geo.city}V\",\"geo_country_code\":\"%{client.geo.country_code}V\",\"request\":\"%{req.request}V\",\"host\":\"%{req.http.Fastly-Orig-Host}V\",\"url\":\"%{json.escape(req.url)}V\",\"request_referer\":\"%{json.escape(req.http.Referer)}V\",\"request_user_agent\":\"%{json.escape(req.http.User-Agent)}V\",\"request_accept_language\":\"%{json.escape(req.http.Accept-Language)}V\",\"request_accept_charset\":\"%{json.escape(req.http.Accept-Charset)}V\",\"cache_status\":\"%{regsub(fastly_info.state, \\\"^(HIT-(SYNTH)|(HITPASS|HIT|MISS|PASS|ERROR|PIPE)).*\\\", \\\"\\\\2\\\\3\\\") }V\"}')
     # @option opts [String] :topic The Amazon Kinesis stream to send logs to. Required.
     # @option opts [AwsRegion] :region 
     # @option opts [String] :secret_key The secret key associated with the target Amazon Kinesis stream. Not required if &#x60;iam_role&#x60; is specified.
     # @option opts [String] :access_key The access key associated with the target Amazon Kinesis stream. Not required if &#x60;iam_role&#x60; is specified.
     # @option opts [String] :iam_role The ARN for an IAM role granting Fastly access to the target Amazon Kinesis stream. Not required if &#x60;access_key&#x60; and &#x60;secret_key&#x60; are provided.
+    # @option opts [Integer] :format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;.  (default to FORMAT_VERSION::v2)
     # @return [Array<(LoggingKinesisResponse, Integer, Hash)>] LoggingKinesisResponse data, response status code and response headers
     def create_log_kinesis_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -64,6 +64,10 @@ module Fastly
       # verify the required parameter 'version_id' is set
       if @api_client.config.client_side_validation && version_id.nil?
         fail ArgumentError, "Missing the required parameter 'version_id' when calling LoggingKinesisApi.create_log_kinesis"
+      end
+      allowable_values = [1, 2]
+      if @api_client.config.client_side_validation && opts[:'format_version'] && !allowable_values.include?(opts[:'format_version'])
+        fail ArgumentError, "invalid value for \"format_version\", must be one of #{allowable_values}"
       end
       # resource path
       local_var_path = '/service/{service_id}/version/{version_id}/logging/kinesis'.sub('{' + 'service_id' + '}', CGI.escape(service_id.to_s)).sub('{' + 'version_id' + '}', CGI.escape(version_id.to_s))
@@ -85,13 +89,13 @@ module Fastly
       form_params = opts[:form_params] || {}
       form_params['name'] = opts[:'name'] if !opts[:'name'].nil?
       form_params['placement'] = opts[:'placement'] if !opts[:'placement'].nil?
-      form_params['format_version'] = opts[:'format_version'] if !opts[:'format_version'].nil?
       form_params['format'] = opts[:'format'] if !opts[:'format'].nil?
       form_params['topic'] = opts[:'topic'] if !opts[:'topic'].nil?
       form_params['region'] = opts[:'region'] if !opts[:'region'].nil?
       form_params['secret_key'] = opts[:'secret_key'] if !opts[:'secret_key'].nil?
       form_params['access_key'] = opts[:'access_key'] if !opts[:'access_key'].nil?
       form_params['iam_role'] = opts[:'iam_role'] if !opts[:'iam_role'].nil?
+      form_params['format_version'] = opts[:'format_version'] if !opts[:'format_version'].nil?
 
       # http body (model)
       post_body = opts[:debug_body]

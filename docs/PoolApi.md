@@ -20,7 +20,7 @@ api_instance = Fastly::PoolApi.new
 ## `create_server_pool()`
 
 ```ruby
-create_server_pool(opts): <PoolResponse> # Create a server pool
+create_server_pool(opts): <PoolResponsePost> # Create a server pool
 ```
 
 Creates a pool for a particular service and version.
@@ -37,22 +37,28 @@ opts = {
     tls_client_key: 'tls_client_key_example', # String | The client private key used to make authenticated requests. Must be in PEM format.
     tls_cert_hostname: 'tls_cert_hostname_example', # String | The hostname used to verify a server's certificate. It can either be the Common Name (CN) or a Subject Alternative Name (SAN).
     use_tls: 0, # Integer | Whether to use TLS.
+    created_at: Time.parse('2013-10-20T19:20:30+01:00'), # Time | Date and time in ISO 8601 format.
+    deleted_at: Time.parse('2013-10-20T19:20:30+01:00'), # Time | Date and time in ISO 8601 format.
+    updated_at: Time.parse('2013-10-20T19:20:30+01:00'), # Time | Date and time in ISO 8601 format.
+    service_id: 'service_id_example', # String | 
+    version: 'version_example', # String | 
     name: 'name_example', # String | Name for the Pool.
     shield: 'shield_example', # String | Selected POP to serve as a shield for the servers. Defaults to `null` meaning no origin shielding if not set. Refer to the [POPs API endpoint](/reference/api/utils/pops/) to get a list of available POPs used for shielding.
     request_condition: 'request_condition_example', # String | Condition which, if met, will select this configuration during a request. Optional.
-    max_conn_default: 56, # Integer | Maximum number of connections. Optional.
-    connect_timeout: 56, # Integer | How long to wait for a timeout in milliseconds. Optional.
-    first_byte_timeout: 56, # Integer | How long to wait for the first byte in milliseconds. Optional.
-    quorum: 56, # Integer | Percentage of capacity (`0-100`) that needs to be operationally available for a pool to be considered up.
     tls_ciphers: 'tls_ciphers_example', # String | List of OpenSSL ciphers (see the [openssl.org manpages](https://www.openssl.org/docs/man1.1.1/man1/ciphers.html) for details). Optional.
     tls_sni_hostname: 'tls_sni_hostname_example', # String | SNI hostname. Optional.
-    tls_check_cert: 56, # Integer | Be strict on checking TLS certs. Optional.
     min_tls_version: 56, # Integer | Minimum allowed TLS version on connections to this server. Optional.
     max_tls_version: 56, # Integer | Maximum allowed TLS version on connections to this server. Optional.
     healthcheck: 'healthcheck_example', # String | Name of the healthcheck to use with this pool. Can be empty and could be reused across multiple backend and pools.
     comment: 'comment_example', # String | A freeform descriptive note.
     type: 'random', # String | What type of load balance group to use.
     override_host: 'override_host_example', # String | The hostname to [override the Host header](https://docs.fastly.com/en/guides/specifying-an-override-host). Defaults to `null` meaning no override of the Host header will occur. This setting can also be added to a Server definition. If the field is set on a Server definition it will override the Pool setting.
+    between_bytes_timeout: 56, # Integer | Maximum duration in milliseconds that Fastly will wait while receiving no data on a download from a backend. If exceeded, the response received so far will be considered complete and the fetch will end. May be set at runtime using `bereq.between_bytes_timeout`.
+    connect_timeout: 56, # Integer | How long to wait for a timeout in milliseconds. Optional.
+    first_byte_timeout: 56, # Integer | How long to wait for the first byte in milliseconds. Optional.
+    max_conn_default: 56, # Integer | Maximum number of connections. Optional.
+    quorum: 56, # Integer | Percentage of capacity (`0-100`) that needs to be operationally available for a pool to be considered up.
+    tls_check_cert: 56, # Integer | Be strict on checking TLS certs. Optional.
 }
 
 begin
@@ -75,26 +81,32 @@ end
 | **tls_client_key** | **String** | The client private key used to make authenticated requests. Must be in PEM format. | [optional][default to &#39;null&#39;] |
 | **tls_cert_hostname** | **String** | The hostname used to verify a server&#39;s certificate. It can either be the Common Name (CN) or a Subject Alternative Name (SAN). | [optional][default to &#39;null&#39;] |
 | **use_tls** | **Integer** | Whether to use TLS. | [optional][default to 0] |
+| **created_at** | **Time** | Date and time in ISO 8601 format. | [optional] |
+| **deleted_at** | **Time** | Date and time in ISO 8601 format. | [optional] |
+| **updated_at** | **Time** | Date and time in ISO 8601 format. | [optional] |
+| **service_id** | **String** |  | [optional] |
+| **version** | **String** |  | [optional] |
 | **name** | **String** | Name for the Pool. | [optional] |
 | **shield** | **String** | Selected POP to serve as a shield for the servers. Defaults to `null` meaning no origin shielding if not set. Refer to the [POPs API endpoint](/reference/api/utils/pops/) to get a list of available POPs used for shielding. | [optional][default to &#39;null&#39;] |
 | **request_condition** | **String** | Condition which, if met, will select this configuration during a request. Optional. | [optional] |
-| **max_conn_default** | **Integer** | Maximum number of connections. Optional. | [optional][default to 200] |
-| **connect_timeout** | **Integer** | How long to wait for a timeout in milliseconds. Optional. | [optional] |
-| **first_byte_timeout** | **Integer** | How long to wait for the first byte in milliseconds. Optional. | [optional] |
-| **quorum** | **Integer** | Percentage of capacity (`0-100`) that needs to be operationally available for a pool to be considered up. | [optional][default to 75] |
 | **tls_ciphers** | **String** | List of OpenSSL ciphers (see the [openssl.org manpages](https://www.openssl.org/docs/man1.1.1/man1/ciphers.html) for details). Optional. | [optional] |
 | **tls_sni_hostname** | **String** | SNI hostname. Optional. | [optional] |
-| **tls_check_cert** | **Integer** | Be strict on checking TLS certs. Optional. | [optional] |
 | **min_tls_version** | **Integer** | Minimum allowed TLS version on connections to this server. Optional. | [optional] |
 | **max_tls_version** | **Integer** | Maximum allowed TLS version on connections to this server. Optional. | [optional] |
 | **healthcheck** | **String** | Name of the healthcheck to use with this pool. Can be empty and could be reused across multiple backend and pools. | [optional] |
 | **comment** | **String** | A freeform descriptive note. | [optional] |
 | **type** | **String** | What type of load balance group to use. | [optional] |
 | **override_host** | **String** | The hostname to [override the Host header](https://docs.fastly.com/en/guides/specifying-an-override-host). Defaults to `null` meaning no override of the Host header will occur. This setting can also be added to a Server definition. If the field is set on a Server definition it will override the Pool setting. | [optional][default to &#39;null&#39;] |
+| **between_bytes_timeout** | **Integer** | Maximum duration in milliseconds that Fastly will wait while receiving no data on a download from a backend. If exceeded, the response received so far will be considered complete and the fetch will end. May be set at runtime using `bereq.between_bytes_timeout`. | [optional][default to 10000] |
+| **connect_timeout** | **Integer** | How long to wait for a timeout in milliseconds. Optional. | [optional] |
+| **first_byte_timeout** | **Integer** | How long to wait for the first byte in milliseconds. Optional. | [optional] |
+| **max_conn_default** | **Integer** | Maximum number of connections. Optional. | [optional][default to 200] |
+| **quorum** | **Integer** | Percentage of capacity (`0-100`) that needs to be operationally available for a pool to be considered up. | [optional][default to 75] |
+| **tls_check_cert** | **Integer** | Be strict on checking TLS certs. Optional. | [optional] |
 
 ### Return type
 
-[**PoolResponse**](PoolResponse.md)
+[**PoolResponsePost**](PoolResponsePost.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)
@@ -240,22 +252,28 @@ opts = {
     tls_client_key: 'tls_client_key_example', # String | The client private key used to make authenticated requests. Must be in PEM format.
     tls_cert_hostname: 'tls_cert_hostname_example', # String | The hostname used to verify a server's certificate. It can either be the Common Name (CN) or a Subject Alternative Name (SAN).
     use_tls: 0, # Integer | Whether to use TLS.
+    created_at: Time.parse('2013-10-20T19:20:30+01:00'), # Time | Date and time in ISO 8601 format.
+    deleted_at: Time.parse('2013-10-20T19:20:30+01:00'), # Time | Date and time in ISO 8601 format.
+    updated_at: Time.parse('2013-10-20T19:20:30+01:00'), # Time | Date and time in ISO 8601 format.
+    service_id: 'service_id_example', # String | 
+    version: 'version_example', # String | 
     name: 'name_example', # String | Name for the Pool.
     shield: 'shield_example', # String | Selected POP to serve as a shield for the servers. Defaults to `null` meaning no origin shielding if not set. Refer to the [POPs API endpoint](/reference/api/utils/pops/) to get a list of available POPs used for shielding.
     request_condition: 'request_condition_example', # String | Condition which, if met, will select this configuration during a request. Optional.
-    max_conn_default: 56, # Integer | Maximum number of connections. Optional.
-    connect_timeout: 56, # Integer | How long to wait for a timeout in milliseconds. Optional.
-    first_byte_timeout: 56, # Integer | How long to wait for the first byte in milliseconds. Optional.
-    quorum: 56, # Integer | Percentage of capacity (`0-100`) that needs to be operationally available for a pool to be considered up.
     tls_ciphers: 'tls_ciphers_example', # String | List of OpenSSL ciphers (see the [openssl.org manpages](https://www.openssl.org/docs/man1.1.1/man1/ciphers.html) for details). Optional.
     tls_sni_hostname: 'tls_sni_hostname_example', # String | SNI hostname. Optional.
-    tls_check_cert: 56, # Integer | Be strict on checking TLS certs. Optional.
     min_tls_version: 56, # Integer | Minimum allowed TLS version on connections to this server. Optional.
     max_tls_version: 56, # Integer | Maximum allowed TLS version on connections to this server. Optional.
     healthcheck: 'healthcheck_example', # String | Name of the healthcheck to use with this pool. Can be empty and could be reused across multiple backend and pools.
     comment: 'comment_example', # String | A freeform descriptive note.
     type: 'random', # String | What type of load balance group to use.
     override_host: 'override_host_example', # String | The hostname to [override the Host header](https://docs.fastly.com/en/guides/specifying-an-override-host). Defaults to `null` meaning no override of the Host header will occur. This setting can also be added to a Server definition. If the field is set on a Server definition it will override the Pool setting.
+    between_bytes_timeout: 56, # Integer | Maximum duration in milliseconds that Fastly will wait while receiving no data on a download from a backend. If exceeded, the response received so far will be considered complete and the fetch will end. May be set at runtime using `bereq.between_bytes_timeout`.
+    connect_timeout: 56, # Integer | How long to wait for a timeout in milliseconds. Optional.
+    first_byte_timeout: 56, # Integer | How long to wait for the first byte in milliseconds. Optional.
+    max_conn_default: 56, # Integer | Maximum number of connections. Optional.
+    quorum: 56, # Integer | Percentage of capacity (`0-100`) that needs to be operationally available for a pool to be considered up.
+    tls_check_cert: 56, # Integer | Be strict on checking TLS certs. Optional.
 }
 
 begin
@@ -279,22 +297,28 @@ end
 | **tls_client_key** | **String** | The client private key used to make authenticated requests. Must be in PEM format. | [optional][default to &#39;null&#39;] |
 | **tls_cert_hostname** | **String** | The hostname used to verify a server&#39;s certificate. It can either be the Common Name (CN) or a Subject Alternative Name (SAN). | [optional][default to &#39;null&#39;] |
 | **use_tls** | **Integer** | Whether to use TLS. | [optional][default to USE_TLS::no_tls] |
+| **created_at** | **Time** | Date and time in ISO 8601 format. | [optional] |
+| **deleted_at** | **Time** | Date and time in ISO 8601 format. | [optional] |
+| **updated_at** | **Time** | Date and time in ISO 8601 format. | [optional] |
+| **service_id** | **String** |  | [optional] |
+| **version** | **String** |  | [optional] |
 | **name** | **String** | Name for the Pool. | [optional] |
 | **shield** | **String** | Selected POP to serve as a shield for the servers. Defaults to `null` meaning no origin shielding if not set. Refer to the [POPs API endpoint](/reference/api/utils/pops/) to get a list of available POPs used for shielding. | [optional][default to &#39;null&#39;] |
 | **request_condition** | **String** | Condition which, if met, will select this configuration during a request. Optional. | [optional] |
-| **max_conn_default** | **Integer** | Maximum number of connections. Optional. | [optional][default to 200] |
-| **connect_timeout** | **Integer** | How long to wait for a timeout in milliseconds. Optional. | [optional] |
-| **first_byte_timeout** | **Integer** | How long to wait for the first byte in milliseconds. Optional. | [optional] |
-| **quorum** | **Integer** | Percentage of capacity (`0-100`) that needs to be operationally available for a pool to be considered up. | [optional][default to 75] |
 | **tls_ciphers** | **String** | List of OpenSSL ciphers (see the [openssl.org manpages](https://www.openssl.org/docs/man1.1.1/man1/ciphers.html) for details). Optional. | [optional] |
 | **tls_sni_hostname** | **String** | SNI hostname. Optional. | [optional] |
-| **tls_check_cert** | **Integer** | Be strict on checking TLS certs. Optional. | [optional] |
 | **min_tls_version** | **Integer** | Minimum allowed TLS version on connections to this server. Optional. | [optional] |
 | **max_tls_version** | **Integer** | Maximum allowed TLS version on connections to this server. Optional. | [optional] |
 | **healthcheck** | **String** | Name of the healthcheck to use with this pool. Can be empty and could be reused across multiple backend and pools. | [optional] |
 | **comment** | **String** | A freeform descriptive note. | [optional] |
 | **type** | **String** | What type of load balance group to use. | [optional] |
 | **override_host** | **String** | The hostname to [override the Host header](https://docs.fastly.com/en/guides/specifying-an-override-host). Defaults to `null` meaning no override of the Host header will occur. This setting can also be added to a Server definition. If the field is set on a Server definition it will override the Pool setting. | [optional][default to &#39;null&#39;] |
+| **between_bytes_timeout** | **Integer** | Maximum duration in milliseconds that Fastly will wait while receiving no data on a download from a backend. If exceeded, the response received so far will be considered complete and the fetch will end. May be set at runtime using `bereq.between_bytes_timeout`. | [optional][default to 10000] |
+| **connect_timeout** | **Integer** | How long to wait for a timeout in milliseconds. Optional. | [optional] |
+| **first_byte_timeout** | **Integer** | How long to wait for the first byte in milliseconds. Optional. | [optional] |
+| **max_conn_default** | **Integer** | Maximum number of connections. Optional. | [optional][default to 200] |
+| **quorum** | **Integer** | Percentage of capacity (`0-100`) that needs to be operationally available for a pool to be considered up. | [optional][default to 75] |
+| **tls_check_cert** | **Integer** | Be strict on checking TLS certs. Optional. | [optional] |
 
 ### Return type
 

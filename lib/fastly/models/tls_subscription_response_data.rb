@@ -44,13 +44,6 @@ module Fastly
       ])
     end
 
-    # List of class defined in allOf (OpenAPI v3)
-    def self.fastly_all_of
-      [
-      :'TlsSubscriptionResponseDataAllOf'
-      ]
-    end
-
     # Initializes the object
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})

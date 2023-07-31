@@ -18,8 +18,6 @@ module Fastly
 
     attr_accessor :placement
 
-    attr_accessor :format_version
-
     # A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce valid JSON that Kinesis can ingest.
     attr_accessor :format
 
@@ -37,6 +35,9 @@ module Fastly
     # The ARN for an IAM role granting Fastly access to the target Amazon Kinesis stream. Not required if `access_key` and `secret_key` are provided.
     attr_accessor :iam_role
 
+    # The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in `vcl_log` if `format_version` is set to `2` and in `vcl_deliver` if `format_version` is set to `1`. 
+    attr_accessor :format_version
+
     # Date and time in ISO 8601 format.
     attr_accessor :created_at
 
@@ -50,18 +51,40 @@ module Fastly
 
     attr_accessor :version
 
+    class EnumAttributeValidator
+      attr_reader :datatype
+      attr_reader :allowable_values
+
+      def initialize(datatype, allowable_values)
+        @allowable_values = allowable_values.map do |value|
+          case datatype.to_s
+          when /Integer/i
+            value.to_i
+          when /Float/i
+            value.to_f
+          else
+            value
+          end
+        end
+      end
+
+      def valid?(value)
+        !value || allowable_values.include?(value)
+      end
+    end
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'name' => :'name',
         :'placement' => :'placement',
-        :'format_version' => :'format_version',
         :'format' => :'format',
         :'topic' => :'topic',
         :'region' => :'region',
         :'secret_key' => :'secret_key',
         :'access_key' => :'access_key',
         :'iam_role' => :'iam_role',
+        :'format_version' => :'format_version',
         :'created_at' => :'created_at',
         :'deleted_at' => :'deleted_at',
         :'updated_at' => :'updated_at',
@@ -80,18 +103,18 @@ module Fastly
       {
         :'name' => :'String',
         :'placement' => :'LoggingPlacement',
-        :'format_version' => :'LoggingFormatVersion',
         :'format' => :'String',
         :'topic' => :'String',
         :'region' => :'AwsRegion',
         :'secret_key' => :'String',
         :'access_key' => :'String',
         :'iam_role' => :'String',
+        :'format_version' => :'String',
         :'created_at' => :'Time',
         :'deleted_at' => :'Time',
         :'updated_at' => :'Time',
         :'service_id' => :'String',
-        :'version' => :'Integer'
+        :'version' => :'String'
       }
     end
 
@@ -111,8 +134,9 @@ module Fastly
     # List of class defined in allOf (OpenAPI v3)
     def self.fastly_all_of
       [
-      :'LoggingKinesis',
-      :'ServiceIdAndVersion',
+      :'LoggingFormatVersionString',
+      :'LoggingKinesisAdditional',
+      :'ServiceIdAndVersionString',
       :'Timestamps'
       ]
     end
@@ -140,12 +164,6 @@ module Fastly
         self.placement = attributes[:'placement']
       end
 
-      if attributes.key?(:'format_version')
-        self.format_version = attributes[:'format_version']
-      else
-        self.format_version = LoggingFormatVersion::v2
-      end
-
       if attributes.key?(:'format')
         self.format = attributes[:'format']
       else
@@ -170,6 +188,12 @@ module Fastly
 
       if attributes.key?(:'iam_role')
         self.iam_role = attributes[:'iam_role']
+      end
+
+      if attributes.key?(:'format_version')
+        self.format_version = attributes[:'format_version']
+      else
+        self.format_version = '2'
       end
 
       if attributes.key?(:'created_at')
@@ -203,7 +227,19 @@ module Fastly
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      format_version_validator = EnumAttributeValidator.new('String', ["1", "2"])
+      return false unless format_version_validator.valid?(@format_version)
       true
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] format_version Object to be assigned
+    def format_version=(format_version)
+      validator = EnumAttributeValidator.new('String', ["1", "2"])
+      unless validator.valid?(format_version)
+        fail ArgumentError, "invalid value for \"format_version\", must be one of #{validator.allowable_values}."
+      end
+      @format_version = format_version
     end
 
     # Checks equality by comparing each attribute.
@@ -213,13 +249,13 @@ module Fastly
       self.class == o.class &&
           name == o.name &&
           placement == o.placement &&
-          format_version == o.format_version &&
           format == o.format &&
           topic == o.topic &&
           region == o.region &&
           secret_key == o.secret_key &&
           access_key == o.access_key &&
           iam_role == o.iam_role &&
+          format_version == o.format_version &&
           created_at == o.created_at &&
           deleted_at == o.deleted_at &&
           updated_at == o.updated_at &&
@@ -236,7 +272,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, placement, format_version, format, topic, region, secret_key, access_key, iam_role, created_at, deleted_at, updated_at, service_id, version].hash
+      [name, placement, format, topic, region, secret_key, access_key, iam_role, format_version, created_at, deleted_at, updated_at, service_id, version].hash
     end
 
     # Builds the object from hash

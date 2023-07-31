@@ -13,14 +13,39 @@ require 'time'
 
 module Fastly
   class RequestSettingsResponse
+    # Date and time in ISO 8601 format.
+    attr_accessor :created_at
+
+    # Date and time in ISO 8601 format.
+    attr_accessor :deleted_at
+
+    # Date and time in ISO 8601 format.
+    attr_accessor :updated_at
+
+    attr_accessor :service_id
+
+    attr_accessor :version
+
     # Allows you to terminate request handling and immediately perform an action.
     attr_accessor :action
 
-    # Disable collapsed forwarding, so you don't wait for other objects to origin.
-    attr_accessor :bypass_busy_wait
-
     # Sets the host header.
     attr_accessor :default_host
+
+    # Comma separated list of varnish request object fields that should be in the hash key.
+    attr_accessor :hash_keys
+
+    # Name for the request settings.
+    attr_accessor :name
+
+    # Condition which, if met, will select this configuration during a request. Optional.
+    attr_accessor :request_condition
+
+    # Short for X-Forwarded-For.
+    attr_accessor :xff
+
+    # Disable collapsed forwarding, so you don't wait for other objects to origin.
+    attr_accessor :bypass_busy_wait
 
     # Allows you to force a cache miss for the request. Replaces the item in the cache if the content is cacheable.
     attr_accessor :force_miss
@@ -31,36 +56,11 @@ module Fastly
     # Injects Fastly-Geo-Country, Fastly-Geo-City, and Fastly-Geo-Region into the request headers.
     attr_accessor :geo_headers
 
-    # Comma separated list of varnish request object fields that should be in the hash key.
-    attr_accessor :hash_keys
-
     # How old an object is allowed to be to serve stale-if-error or stale-while-revalidate.
     attr_accessor :max_stale_age
 
-    # Name for the request settings.
-    attr_accessor :name
-
-    # Condition which, if met, will select this configuration during a request. Optional.
-    attr_accessor :request_condition
-
     # Injects the X-Timer info into the request for viewing origin fetch durations.
     attr_accessor :timer_support
-
-    # Short for X-Forwarded-For.
-    attr_accessor :xff
-
-    attr_accessor :service_id
-
-    attr_accessor :version
-
-    # Date and time in ISO 8601 format.
-    attr_accessor :created_at
-
-    # Date and time in ISO 8601 format.
-    attr_accessor :deleted_at
-
-    # Date and time in ISO 8601 format.
-    attr_accessor :updated_at
 
     class EnumAttributeValidator
       attr_reader :datatype
@@ -87,23 +87,23 @@ module Fastly
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'created_at' => :'created_at',
+        :'deleted_at' => :'deleted_at',
+        :'updated_at' => :'updated_at',
+        :'service_id' => :'service_id',
+        :'version' => :'version',
         :'action' => :'action',
-        :'bypass_busy_wait' => :'bypass_busy_wait',
         :'default_host' => :'default_host',
+        :'hash_keys' => :'hash_keys',
+        :'name' => :'name',
+        :'request_condition' => :'request_condition',
+        :'xff' => :'xff',
+        :'bypass_busy_wait' => :'bypass_busy_wait',
         :'force_miss' => :'force_miss',
         :'force_ssl' => :'force_ssl',
         :'geo_headers' => :'geo_headers',
-        :'hash_keys' => :'hash_keys',
         :'max_stale_age' => :'max_stale_age',
-        :'name' => :'name',
-        :'request_condition' => :'request_condition',
-        :'timer_support' => :'timer_support',
-        :'xff' => :'xff',
-        :'service_id' => :'service_id',
-        :'version' => :'version',
-        :'created_at' => :'created_at',
-        :'deleted_at' => :'deleted_at',
-        :'updated_at' => :'updated_at'
+        :'timer_support' => :'timer_support'
       }
     end
 
@@ -115,44 +115,45 @@ module Fastly
     # Attribute type mapping.
     def self.fastly_types
       {
-        :'action' => :'String',
-        :'bypass_busy_wait' => :'Integer',
-        :'default_host' => :'String',
-        :'force_miss' => :'Integer',
-        :'force_ssl' => :'Integer',
-        :'geo_headers' => :'Integer',
-        :'hash_keys' => :'String',
-        :'max_stale_age' => :'Integer',
-        :'name' => :'String',
-        :'request_condition' => :'String',
-        :'timer_support' => :'Integer',
-        :'xff' => :'String',
-        :'service_id' => :'String',
-        :'version' => :'Integer',
         :'created_at' => :'Time',
         :'deleted_at' => :'Time',
-        :'updated_at' => :'Time'
+        :'updated_at' => :'Time',
+        :'service_id' => :'String',
+        :'version' => :'String',
+        :'action' => :'String',
+        :'default_host' => :'String',
+        :'hash_keys' => :'String',
+        :'name' => :'String',
+        :'request_condition' => :'String',
+        :'xff' => :'String',
+        :'bypass_busy_wait' => :'String',
+        :'force_miss' => :'String',
+        :'force_ssl' => :'String',
+        :'geo_headers' => :'String',
+        :'max_stale_age' => :'String',
+        :'timer_support' => :'String'
       }
     end
 
     # List of attributes with nullable: true
     def self.fastly_nullable
       Set.new([
+        :'created_at',
+        :'deleted_at',
+        :'updated_at',
         :'action',
         :'default_host',
         :'hash_keys',
         :'request_condition',
-        :'created_at',
-        :'deleted_at',
-        :'updated_at'
       ])
     end
 
     # List of class defined in allOf (OpenAPI v3)
     def self.fastly_all_of
       [
-      :'RequestSettings',
-      :'ServiceIdAndVersion',
+      :'RequestSettingsAdditional',
+      :'RequestSettingsResponseAllOf',
+      :'ServiceIdAndVersionString',
       :'Timestamps'
       ]
     end
@@ -172,16 +173,52 @@ module Fastly
         h[k.to_sym] = v
       }
 
+      if attributes.key?(:'created_at')
+        self.created_at = attributes[:'created_at']
+      end
+
+      if attributes.key?(:'deleted_at')
+        self.deleted_at = attributes[:'deleted_at']
+      end
+
+      if attributes.key?(:'updated_at')
+        self.updated_at = attributes[:'updated_at']
+      end
+
+      if attributes.key?(:'service_id')
+        self.service_id = attributes[:'service_id']
+      end
+
+      if attributes.key?(:'version')
+        self.version = attributes[:'version']
+      end
+
       if attributes.key?(:'action')
         self.action = attributes[:'action']
       end
 
-      if attributes.key?(:'bypass_busy_wait')
-        self.bypass_busy_wait = attributes[:'bypass_busy_wait']
-      end
-
       if attributes.key?(:'default_host')
         self.default_host = attributes[:'default_host']
+      end
+
+      if attributes.key?(:'hash_keys')
+        self.hash_keys = attributes[:'hash_keys']
+      end
+
+      if attributes.key?(:'name')
+        self.name = attributes[:'name']
+      end
+
+      if attributes.key?(:'request_condition')
+        self.request_condition = attributes[:'request_condition']
+      end
+
+      if attributes.key?(:'xff')
+        self.xff = attributes[:'xff']
+      end
+
+      if attributes.key?(:'bypass_busy_wait')
+        self.bypass_busy_wait = attributes[:'bypass_busy_wait']
       end
 
       if attributes.key?(:'force_miss')
@@ -196,48 +233,12 @@ module Fastly
         self.geo_headers = attributes[:'geo_headers']
       end
 
-      if attributes.key?(:'hash_keys')
-        self.hash_keys = attributes[:'hash_keys']
-      end
-
       if attributes.key?(:'max_stale_age')
         self.max_stale_age = attributes[:'max_stale_age']
       end
 
-      if attributes.key?(:'name')
-        self.name = attributes[:'name']
-      end
-
-      if attributes.key?(:'request_condition')
-        self.request_condition = attributes[:'request_condition']
-      end
-
       if attributes.key?(:'timer_support')
         self.timer_support = attributes[:'timer_support']
-      end
-
-      if attributes.key?(:'xff')
-        self.xff = attributes[:'xff']
-      end
-
-      if attributes.key?(:'service_id')
-        self.service_id = attributes[:'service_id']
-      end
-
-      if attributes.key?(:'version')
-        self.version = attributes[:'version']
-      end
-
-      if attributes.key?(:'created_at')
-        self.created_at = attributes[:'created_at']
-      end
-
-      if attributes.key?(:'deleted_at')
-        self.deleted_at = attributes[:'deleted_at']
-      end
-
-      if attributes.key?(:'updated_at')
-        self.updated_at = attributes[:'updated_at']
       end
     end
 
@@ -283,23 +284,23 @@ module Fastly
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          created_at == o.created_at &&
+          deleted_at == o.deleted_at &&
+          updated_at == o.updated_at &&
+          service_id == o.service_id &&
+          version == o.version &&
           action == o.action &&
-          bypass_busy_wait == o.bypass_busy_wait &&
           default_host == o.default_host &&
+          hash_keys == o.hash_keys &&
+          name == o.name &&
+          request_condition == o.request_condition &&
+          xff == o.xff &&
+          bypass_busy_wait == o.bypass_busy_wait &&
           force_miss == o.force_miss &&
           force_ssl == o.force_ssl &&
           geo_headers == o.geo_headers &&
-          hash_keys == o.hash_keys &&
           max_stale_age == o.max_stale_age &&
-          name == o.name &&
-          request_condition == o.request_condition &&
-          timer_support == o.timer_support &&
-          xff == o.xff &&
-          service_id == o.service_id &&
-          version == o.version &&
-          created_at == o.created_at &&
-          deleted_at == o.deleted_at &&
-          updated_at == o.updated_at
+          timer_support == o.timer_support
     end
 
     # @see the `==` method
@@ -311,7 +312,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [action, bypass_busy_wait, default_host, force_miss, force_ssl, geo_headers, hash_keys, max_stale_age, name, request_condition, timer_support, xff, service_id, version, created_at, deleted_at, updated_at].hash
+      [created_at, deleted_at, updated_at, service_id, version, action, default_host, hash_keys, name, request_condition, xff, bypass_busy_wait, force_miss, force_ssl, geo_headers, max_stale_age, timer_support].hash
     end
 
     # Builds the object from hash

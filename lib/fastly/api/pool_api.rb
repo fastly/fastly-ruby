@@ -26,23 +26,29 @@ module Fastly
     # @option opts [String] :tls_client_key The client private key used to make authenticated requests. Must be in PEM format. (default to 'null')
     # @option opts [String] :tls_cert_hostname The hostname used to verify a server&#39;s certificate. It can either be the Common Name (CN) or a Subject Alternative Name (SAN). (default to 'null')
     # @option opts [Integer] :use_tls Whether to use TLS. (default to 0)
+    # @option opts [Time] :created_at Date and time in ISO 8601 format.
+    # @option opts [Time] :deleted_at Date and time in ISO 8601 format.
+    # @option opts [Time] :updated_at Date and time in ISO 8601 format.
+    # @option opts [String] :service_id 
+    # @option opts [String] :version 
     # @option opts [String] :name Name for the Pool.
     # @option opts [String] :shield Selected POP to serve as a shield for the servers. Defaults to &#x60;null&#x60; meaning no origin shielding if not set. Refer to the [POPs API endpoint](/reference/api/utils/pops/) to get a list of available POPs used for shielding. (default to 'null')
     # @option opts [String] :request_condition Condition which, if met, will select this configuration during a request. Optional.
-    # @option opts [Integer] :max_conn_default Maximum number of connections. Optional. (default to 200)
-    # @option opts [Integer] :connect_timeout How long to wait for a timeout in milliseconds. Optional.
-    # @option opts [Integer] :first_byte_timeout How long to wait for the first byte in milliseconds. Optional.
-    # @option opts [Integer] :quorum Percentage of capacity (&#x60;0-100&#x60;) that needs to be operationally available for a pool to be considered up. (default to 75)
     # @option opts [String] :tls_ciphers List of OpenSSL ciphers (see the [openssl.org manpages](https://www.openssl.org/docs/man1.1.1/man1/ciphers.html) for details). Optional.
     # @option opts [String] :tls_sni_hostname SNI hostname. Optional.
-    # @option opts [Integer] :tls_check_cert Be strict on checking TLS certs. Optional.
     # @option opts [Integer] :min_tls_version Minimum allowed TLS version on connections to this server. Optional.
     # @option opts [Integer] :max_tls_version Maximum allowed TLS version on connections to this server. Optional.
     # @option opts [String] :healthcheck Name of the healthcheck to use with this pool. Can be empty and could be reused across multiple backend and pools.
     # @option opts [String] :comment A freeform descriptive note.
     # @option opts [String] :type What type of load balance group to use.
     # @option opts [String] :override_host The hostname to [override the Host header](https://docs.fastly.com/en/guides/specifying-an-override-host). Defaults to &#x60;null&#x60; meaning no override of the Host header will occur. This setting can also be added to a Server definition. If the field is set on a Server definition it will override the Pool setting. (default to 'null')
-    # @return [PoolResponse]
+    # @option opts [Integer] :between_bytes_timeout Maximum duration in milliseconds that Fastly will wait while receiving no data on a download from a backend. If exceeded, the response received so far will be considered complete and the fetch will end. May be set at runtime using &#x60;bereq.between_bytes_timeout&#x60;. (default to 10000)
+    # @option opts [Integer] :connect_timeout How long to wait for a timeout in milliseconds. Optional.
+    # @option opts [Integer] :first_byte_timeout How long to wait for the first byte in milliseconds. Optional.
+    # @option opts [Integer] :max_conn_default Maximum number of connections. Optional. (default to 200)
+    # @option opts [Integer] :quorum Percentage of capacity (&#x60;0-100&#x60;) that needs to be operationally available for a pool to be considered up. (default to 75)
+    # @option opts [Integer] :tls_check_cert Be strict on checking TLS certs. Optional.
+    # @return [PoolResponsePost]
     def create_server_pool(opts = {})
       data, _status_code, _headers = create_server_pool_with_http_info(opts)
       data
@@ -57,23 +63,29 @@ module Fastly
     # @option opts [String] :tls_client_key The client private key used to make authenticated requests. Must be in PEM format. (default to 'null')
     # @option opts [String] :tls_cert_hostname The hostname used to verify a server&#39;s certificate. It can either be the Common Name (CN) or a Subject Alternative Name (SAN). (default to 'null')
     # @option opts [Integer] :use_tls Whether to use TLS. (default to 0)
+    # @option opts [Time] :created_at Date and time in ISO 8601 format.
+    # @option opts [Time] :deleted_at Date and time in ISO 8601 format.
+    # @option opts [Time] :updated_at Date and time in ISO 8601 format.
+    # @option opts [String] :service_id 
+    # @option opts [String] :version 
     # @option opts [String] :name Name for the Pool.
     # @option opts [String] :shield Selected POP to serve as a shield for the servers. Defaults to &#x60;null&#x60; meaning no origin shielding if not set. Refer to the [POPs API endpoint](/reference/api/utils/pops/) to get a list of available POPs used for shielding. (default to 'null')
     # @option opts [String] :request_condition Condition which, if met, will select this configuration during a request. Optional.
-    # @option opts [Integer] :max_conn_default Maximum number of connections. Optional. (default to 200)
-    # @option opts [Integer] :connect_timeout How long to wait for a timeout in milliseconds. Optional.
-    # @option opts [Integer] :first_byte_timeout How long to wait for the first byte in milliseconds. Optional.
-    # @option opts [Integer] :quorum Percentage of capacity (&#x60;0-100&#x60;) that needs to be operationally available for a pool to be considered up. (default to 75)
     # @option opts [String] :tls_ciphers List of OpenSSL ciphers (see the [openssl.org manpages](https://www.openssl.org/docs/man1.1.1/man1/ciphers.html) for details). Optional.
     # @option opts [String] :tls_sni_hostname SNI hostname. Optional.
-    # @option opts [Integer] :tls_check_cert Be strict on checking TLS certs. Optional.
     # @option opts [Integer] :min_tls_version Minimum allowed TLS version on connections to this server. Optional.
     # @option opts [Integer] :max_tls_version Maximum allowed TLS version on connections to this server. Optional.
     # @option opts [String] :healthcheck Name of the healthcheck to use with this pool. Can be empty and could be reused across multiple backend and pools.
     # @option opts [String] :comment A freeform descriptive note.
     # @option opts [String] :type What type of load balance group to use.
     # @option opts [String] :override_host The hostname to [override the Host header](https://docs.fastly.com/en/guides/specifying-an-override-host). Defaults to &#x60;null&#x60; meaning no override of the Host header will occur. This setting can also be added to a Server definition. If the field is set on a Server definition it will override the Pool setting. (default to 'null')
-    # @return [Array<(PoolResponse, Integer, Hash)>] PoolResponse data, response status code and response headers
+    # @option opts [Integer] :between_bytes_timeout Maximum duration in milliseconds that Fastly will wait while receiving no data on a download from a backend. If exceeded, the response received so far will be considered complete and the fetch will end. May be set at runtime using &#x60;bereq.between_bytes_timeout&#x60;. (default to 10000)
+    # @option opts [Integer] :connect_timeout How long to wait for a timeout in milliseconds. Optional.
+    # @option opts [Integer] :first_byte_timeout How long to wait for the first byte in milliseconds. Optional.
+    # @option opts [Integer] :max_conn_default Maximum number of connections. Optional. (default to 200)
+    # @option opts [Integer] :quorum Percentage of capacity (&#x60;0-100&#x60;) that needs to be operationally available for a pool to be considered up. (default to 75)
+    # @option opts [Integer] :tls_check_cert Be strict on checking TLS certs. Optional.
+    # @return [Array<(PoolResponsePost, Integer, Hash)>] PoolResponsePost data, response status code and response headers
     def create_server_pool_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: PoolApi.create_server_pool ...'
@@ -93,6 +105,10 @@ module Fastly
       if @api_client.config.client_side_validation && opts[:'use_tls'] && !allowable_values.include?(opts[:'use_tls'])
         fail ArgumentError, "invalid value for \"use_tls\", must be one of #{allowable_values}"
       end
+      allowable_values = ["random", "hash", "client"]
+      if @api_client.config.client_side_validation && opts[:'type'] && !allowable_values.include?(opts[:'type'])
+        fail ArgumentError, "invalid value for \"type\", must be one of #{allowable_values}"
+      end
       if @api_client.config.client_side_validation && !opts[:'quorum'].nil? && opts[:'quorum'] > 100
         fail ArgumentError, 'invalid value for "opts[:"quorum"]" when calling PoolApi.create_server_pool, must be smaller than or equal to 100.'
       end
@@ -101,10 +117,6 @@ module Fastly
         fail ArgumentError, 'invalid value for "opts[:"quorum"]" when calling PoolApi.create_server_pool, must be greater than or equal to 0.'
       end
 
-      allowable_values = ["random", "hash", "client"]
-      if @api_client.config.client_side_validation && opts[:'type'] && !allowable_values.include?(opts[:'type'])
-        fail ArgumentError, "invalid value for \"type\", must be one of #{allowable_values}"
-      end
       # resource path
       local_var_path = '/service/{service_id}/version/{version_id}/pool'.sub('{' + 'service_id' + '}', CGI.escape(service_id.to_s)).sub('{' + 'version_id' + '}', CGI.escape(version_id.to_s))
 
@@ -128,28 +140,34 @@ module Fastly
       form_params['tls_client_key'] = opts[:'tls_client_key'] if !opts[:'tls_client_key'].nil?
       form_params['tls_cert_hostname'] = opts[:'tls_cert_hostname'] if !opts[:'tls_cert_hostname'].nil?
       form_params['use_tls'] = opts[:'use_tls'] if !opts[:'use_tls'].nil?
+      form_params['created_at'] = opts[:'created_at'] if !opts[:'created_at'].nil?
+      form_params['deleted_at'] = opts[:'deleted_at'] if !opts[:'deleted_at'].nil?
+      form_params['updated_at'] = opts[:'updated_at'] if !opts[:'updated_at'].nil?
+      form_params['service_id'] = opts[:'service_id'] if !opts[:'service_id'].nil?
+      form_params['version'] = opts[:'version'] if !opts[:'version'].nil?
       form_params['name'] = opts[:'name'] if !opts[:'name'].nil?
       form_params['shield'] = opts[:'shield'] if !opts[:'shield'].nil?
       form_params['request_condition'] = opts[:'request_condition'] if !opts[:'request_condition'].nil?
-      form_params['max_conn_default'] = opts[:'max_conn_default'] if !opts[:'max_conn_default'].nil?
-      form_params['connect_timeout'] = opts[:'connect_timeout'] if !opts[:'connect_timeout'].nil?
-      form_params['first_byte_timeout'] = opts[:'first_byte_timeout'] if !opts[:'first_byte_timeout'].nil?
-      form_params['quorum'] = opts[:'quorum'] if !opts[:'quorum'].nil?
       form_params['tls_ciphers'] = opts[:'tls_ciphers'] if !opts[:'tls_ciphers'].nil?
       form_params['tls_sni_hostname'] = opts[:'tls_sni_hostname'] if !opts[:'tls_sni_hostname'].nil?
-      form_params['tls_check_cert'] = opts[:'tls_check_cert'] if !opts[:'tls_check_cert'].nil?
       form_params['min_tls_version'] = opts[:'min_tls_version'] if !opts[:'min_tls_version'].nil?
       form_params['max_tls_version'] = opts[:'max_tls_version'] if !opts[:'max_tls_version'].nil?
       form_params['healthcheck'] = opts[:'healthcheck'] if !opts[:'healthcheck'].nil?
       form_params['comment'] = opts[:'comment'] if !opts[:'comment'].nil?
       form_params['type'] = opts[:'type'] if !opts[:'type'].nil?
       form_params['override_host'] = opts[:'override_host'] if !opts[:'override_host'].nil?
+      form_params['between_bytes_timeout'] = opts[:'between_bytes_timeout'] if !opts[:'between_bytes_timeout'].nil?
+      form_params['connect_timeout'] = opts[:'connect_timeout'] if !opts[:'connect_timeout'].nil?
+      form_params['first_byte_timeout'] = opts[:'first_byte_timeout'] if !opts[:'first_byte_timeout'].nil?
+      form_params['max_conn_default'] = opts[:'max_conn_default'] if !opts[:'max_conn_default'].nil?
+      form_params['quorum'] = opts[:'quorum'] if !opts[:'quorum'].nil?
+      form_params['tls_check_cert'] = opts[:'tls_check_cert'] if !opts[:'tls_check_cert'].nil?
 
       # http body (model)
       post_body = opts[:debug_body]
 
       # return_type
-      return_type = opts[:debug_return_type] || 'PoolResponse'
+      return_type = opts[:debug_return_type] || 'PoolResponsePost'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['token']
@@ -405,22 +423,28 @@ module Fastly
     # @option opts [String] :tls_client_key The client private key used to make authenticated requests. Must be in PEM format. (default to 'null')
     # @option opts [String] :tls_cert_hostname The hostname used to verify a server&#39;s certificate. It can either be the Common Name (CN) or a Subject Alternative Name (SAN). (default to 'null')
     # @option opts [Integer] :use_tls Whether to use TLS. (default to USE_TLS::no_tls)
+    # @option opts [Time] :created_at Date and time in ISO 8601 format.
+    # @option opts [Time] :deleted_at Date and time in ISO 8601 format.
+    # @option opts [Time] :updated_at Date and time in ISO 8601 format.
+    # @option opts [String] :service_id 
+    # @option opts [String] :version 
     # @option opts [String] :name Name for the Pool.
     # @option opts [String] :shield Selected POP to serve as a shield for the servers. Defaults to &#x60;null&#x60; meaning no origin shielding if not set. Refer to the [POPs API endpoint](/reference/api/utils/pops/) to get a list of available POPs used for shielding. (default to 'null')
     # @option opts [String] :request_condition Condition which, if met, will select this configuration during a request. Optional.
-    # @option opts [Integer] :max_conn_default Maximum number of connections. Optional. (default to 200)
-    # @option opts [Integer] :connect_timeout How long to wait for a timeout in milliseconds. Optional.
-    # @option opts [Integer] :first_byte_timeout How long to wait for the first byte in milliseconds. Optional.
-    # @option opts [Integer] :quorum Percentage of capacity (&#x60;0-100&#x60;) that needs to be operationally available for a pool to be considered up. (default to 75)
     # @option opts [String] :tls_ciphers List of OpenSSL ciphers (see the [openssl.org manpages](https://www.openssl.org/docs/man1.1.1/man1/ciphers.html) for details). Optional.
     # @option opts [String] :tls_sni_hostname SNI hostname. Optional.
-    # @option opts [Integer] :tls_check_cert Be strict on checking TLS certs. Optional.
     # @option opts [Integer] :min_tls_version Minimum allowed TLS version on connections to this server. Optional.
     # @option opts [Integer] :max_tls_version Maximum allowed TLS version on connections to this server. Optional.
     # @option opts [String] :healthcheck Name of the healthcheck to use with this pool. Can be empty and could be reused across multiple backend and pools.
     # @option opts [String] :comment A freeform descriptive note.
     # @option opts [String] :type What type of load balance group to use.
     # @option opts [String] :override_host The hostname to [override the Host header](https://docs.fastly.com/en/guides/specifying-an-override-host). Defaults to &#x60;null&#x60; meaning no override of the Host header will occur. This setting can also be added to a Server definition. If the field is set on a Server definition it will override the Pool setting. (default to 'null')
+    # @option opts [Integer] :between_bytes_timeout Maximum duration in milliseconds that Fastly will wait while receiving no data on a download from a backend. If exceeded, the response received so far will be considered complete and the fetch will end. May be set at runtime using &#x60;bereq.between_bytes_timeout&#x60;. (default to 10000)
+    # @option opts [Integer] :connect_timeout How long to wait for a timeout in milliseconds. Optional.
+    # @option opts [Integer] :first_byte_timeout How long to wait for the first byte in milliseconds. Optional.
+    # @option opts [Integer] :max_conn_default Maximum number of connections. Optional. (default to 200)
+    # @option opts [Integer] :quorum Percentage of capacity (&#x60;0-100&#x60;) that needs to be operationally available for a pool to be considered up. (default to 75)
+    # @option opts [Integer] :tls_check_cert Be strict on checking TLS certs. Optional.
     # @return [PoolResponse]
     def update_server_pool(opts = {})
       data, _status_code, _headers = update_server_pool_with_http_info(opts)
@@ -437,22 +461,28 @@ module Fastly
     # @option opts [String] :tls_client_key The client private key used to make authenticated requests. Must be in PEM format. (default to 'null')
     # @option opts [String] :tls_cert_hostname The hostname used to verify a server&#39;s certificate. It can either be the Common Name (CN) or a Subject Alternative Name (SAN). (default to 'null')
     # @option opts [Integer] :use_tls Whether to use TLS. (default to USE_TLS::no_tls)
+    # @option opts [Time] :created_at Date and time in ISO 8601 format.
+    # @option opts [Time] :deleted_at Date and time in ISO 8601 format.
+    # @option opts [Time] :updated_at Date and time in ISO 8601 format.
+    # @option opts [String] :service_id 
+    # @option opts [String] :version 
     # @option opts [String] :name Name for the Pool.
     # @option opts [String] :shield Selected POP to serve as a shield for the servers. Defaults to &#x60;null&#x60; meaning no origin shielding if not set. Refer to the [POPs API endpoint](/reference/api/utils/pops/) to get a list of available POPs used for shielding. (default to 'null')
     # @option opts [String] :request_condition Condition which, if met, will select this configuration during a request. Optional.
-    # @option opts [Integer] :max_conn_default Maximum number of connections. Optional. (default to 200)
-    # @option opts [Integer] :connect_timeout How long to wait for a timeout in milliseconds. Optional.
-    # @option opts [Integer] :first_byte_timeout How long to wait for the first byte in milliseconds. Optional.
-    # @option opts [Integer] :quorum Percentage of capacity (&#x60;0-100&#x60;) that needs to be operationally available for a pool to be considered up. (default to 75)
     # @option opts [String] :tls_ciphers List of OpenSSL ciphers (see the [openssl.org manpages](https://www.openssl.org/docs/man1.1.1/man1/ciphers.html) for details). Optional.
     # @option opts [String] :tls_sni_hostname SNI hostname. Optional.
-    # @option opts [Integer] :tls_check_cert Be strict on checking TLS certs. Optional.
     # @option opts [Integer] :min_tls_version Minimum allowed TLS version on connections to this server. Optional.
     # @option opts [Integer] :max_tls_version Maximum allowed TLS version on connections to this server. Optional.
     # @option opts [String] :healthcheck Name of the healthcheck to use with this pool. Can be empty and could be reused across multiple backend and pools.
     # @option opts [String] :comment A freeform descriptive note.
     # @option opts [String] :type What type of load balance group to use.
     # @option opts [String] :override_host The hostname to [override the Host header](https://docs.fastly.com/en/guides/specifying-an-override-host). Defaults to &#x60;null&#x60; meaning no override of the Host header will occur. This setting can also be added to a Server definition. If the field is set on a Server definition it will override the Pool setting. (default to 'null')
+    # @option opts [Integer] :between_bytes_timeout Maximum duration in milliseconds that Fastly will wait while receiving no data on a download from a backend. If exceeded, the response received so far will be considered complete and the fetch will end. May be set at runtime using &#x60;bereq.between_bytes_timeout&#x60;. (default to 10000)
+    # @option opts [Integer] :connect_timeout How long to wait for a timeout in milliseconds. Optional.
+    # @option opts [Integer] :first_byte_timeout How long to wait for the first byte in milliseconds. Optional.
+    # @option opts [Integer] :max_conn_default Maximum number of connections. Optional. (default to 200)
+    # @option opts [Integer] :quorum Percentage of capacity (&#x60;0-100&#x60;) that needs to be operationally available for a pool to be considered up. (default to 75)
+    # @option opts [Integer] :tls_check_cert Be strict on checking TLS certs. Optional.
     # @return [Array<(PoolResponse, Integer, Hash)>] PoolResponse data, response status code and response headers
     def update_server_pool_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -478,6 +508,10 @@ module Fastly
       if @api_client.config.client_side_validation && opts[:'use_tls'] && !allowable_values.include?(opts[:'use_tls'])
         fail ArgumentError, "invalid value for \"use_tls\", must be one of #{allowable_values}"
       end
+      allowable_values = ["random", "hash", "client"]
+      if @api_client.config.client_side_validation && opts[:'type'] && !allowable_values.include?(opts[:'type'])
+        fail ArgumentError, "invalid value for \"type\", must be one of #{allowable_values}"
+      end
       if @api_client.config.client_side_validation && !opts[:'quorum'].nil? && opts[:'quorum'] > 100
         fail ArgumentError, 'invalid value for "opts[:"quorum"]" when calling PoolApi.update_server_pool, must be smaller than or equal to 100.'
       end
@@ -486,10 +520,6 @@ module Fastly
         fail ArgumentError, 'invalid value for "opts[:"quorum"]" when calling PoolApi.update_server_pool, must be greater than or equal to 0.'
       end
 
-      allowable_values = ["random", "hash", "client"]
-      if @api_client.config.client_side_validation && opts[:'type'] && !allowable_values.include?(opts[:'type'])
-        fail ArgumentError, "invalid value for \"type\", must be one of #{allowable_values}"
-      end
       # resource path
       local_var_path = '/service/{service_id}/version/{version_id}/pool/{pool_name}'.sub('{' + 'service_id' + '}', CGI.escape(service_id.to_s)).sub('{' + 'version_id' + '}', CGI.escape(version_id.to_s)).sub('{' + 'pool_name' + '}', CGI.escape(pool_name.to_s))
 
@@ -513,22 +543,28 @@ module Fastly
       form_params['tls_client_key'] = opts[:'tls_client_key'] if !opts[:'tls_client_key'].nil?
       form_params['tls_cert_hostname'] = opts[:'tls_cert_hostname'] if !opts[:'tls_cert_hostname'].nil?
       form_params['use_tls'] = opts[:'use_tls'] if !opts[:'use_tls'].nil?
+      form_params['created_at'] = opts[:'created_at'] if !opts[:'created_at'].nil?
+      form_params['deleted_at'] = opts[:'deleted_at'] if !opts[:'deleted_at'].nil?
+      form_params['updated_at'] = opts[:'updated_at'] if !opts[:'updated_at'].nil?
+      form_params['service_id'] = opts[:'service_id'] if !opts[:'service_id'].nil?
+      form_params['version'] = opts[:'version'] if !opts[:'version'].nil?
       form_params['name'] = opts[:'name'] if !opts[:'name'].nil?
       form_params['shield'] = opts[:'shield'] if !opts[:'shield'].nil?
       form_params['request_condition'] = opts[:'request_condition'] if !opts[:'request_condition'].nil?
-      form_params['max_conn_default'] = opts[:'max_conn_default'] if !opts[:'max_conn_default'].nil?
-      form_params['connect_timeout'] = opts[:'connect_timeout'] if !opts[:'connect_timeout'].nil?
-      form_params['first_byte_timeout'] = opts[:'first_byte_timeout'] if !opts[:'first_byte_timeout'].nil?
-      form_params['quorum'] = opts[:'quorum'] if !opts[:'quorum'].nil?
       form_params['tls_ciphers'] = opts[:'tls_ciphers'] if !opts[:'tls_ciphers'].nil?
       form_params['tls_sni_hostname'] = opts[:'tls_sni_hostname'] if !opts[:'tls_sni_hostname'].nil?
-      form_params['tls_check_cert'] = opts[:'tls_check_cert'] if !opts[:'tls_check_cert'].nil?
       form_params['min_tls_version'] = opts[:'min_tls_version'] if !opts[:'min_tls_version'].nil?
       form_params['max_tls_version'] = opts[:'max_tls_version'] if !opts[:'max_tls_version'].nil?
       form_params['healthcheck'] = opts[:'healthcheck'] if !opts[:'healthcheck'].nil?
       form_params['comment'] = opts[:'comment'] if !opts[:'comment'].nil?
       form_params['type'] = opts[:'type'] if !opts[:'type'].nil?
       form_params['override_host'] = opts[:'override_host'] if !opts[:'override_host'].nil?
+      form_params['between_bytes_timeout'] = opts[:'between_bytes_timeout'] if !opts[:'between_bytes_timeout'].nil?
+      form_params['connect_timeout'] = opts[:'connect_timeout'] if !opts[:'connect_timeout'].nil?
+      form_params['first_byte_timeout'] = opts[:'first_byte_timeout'] if !opts[:'first_byte_timeout'].nil?
+      form_params['max_conn_default'] = opts[:'max_conn_default'] if !opts[:'max_conn_default'].nil?
+      form_params['quorum'] = opts[:'quorum'] if !opts[:'quorum'].nil?
+      form_params['tls_check_cert'] = opts[:'tls_check_cert'] if !opts[:'tls_check_cert'].nil?
 
       # http body (model)
       post_body = opts[:debug_body]

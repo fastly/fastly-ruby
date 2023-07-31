@@ -22,7 +22,7 @@ api_instance = Fastly::DomainApi.new
 ## `check_domain()`
 
 ```ruby
-check_domain(opts): <Array<DomainCheckItem>> # Validate DNS configuration for a single domain on a service
+check_domain(opts): Array&lt;Object&gt; # Validate DNS configuration for a single domain on a service
 ```
 
 Checks the status of a specific domain's DNS record for a Service Version. Returns an array in the same format as domain/check_all.
@@ -56,7 +56,7 @@ end
 
 ### Return type
 
-[**Array&lt;DomainCheckItem&gt;**](DomainCheckItem.md)
+**Array&lt;Object&gt;**
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)

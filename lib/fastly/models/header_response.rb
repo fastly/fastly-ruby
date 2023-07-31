@@ -22,14 +22,8 @@ module Fastly
     # Header to set.
     attr_accessor :dst
 
-    # Don't add the header if it is added already. Only applies to 'set' action.
-    attr_accessor :ignore_if_set
-
     # A handle to refer to this Header object.
     attr_accessor :name
-
-    # Priority determines execution order. Lower numbers execute first.
-    attr_accessor :priority
 
     # Regular expression to use. Only applies to `regex` and `regex_repeat` actions.
     attr_accessor :regex
@@ -48,6 +42,12 @@ module Fastly
 
     # Accepts a string value.
     attr_accessor :type
+
+    # Don't add the header if it is added already. Only applies to 'set' action. Numerical value (\"0\" = false, \"1\" = true)
+    attr_accessor :ignore_if_set
+
+    # Priority determines execution order. Lower numbers execute first.
+    attr_accessor :priority
 
     attr_accessor :service_id
 
@@ -90,15 +90,15 @@ module Fastly
         :'action' => :'action',
         :'cache_condition' => :'cache_condition',
         :'dst' => :'dst',
-        :'ignore_if_set' => :'ignore_if_set',
         :'name' => :'name',
-        :'priority' => :'priority',
         :'regex' => :'regex',
         :'request_condition' => :'request_condition',
         :'response_condition' => :'response_condition',
         :'src' => :'src',
         :'substitution' => :'substitution',
         :'type' => :'type',
+        :'ignore_if_set' => :'ignore_if_set',
+        :'priority' => :'priority',
         :'service_id' => :'service_id',
         :'version' => :'version',
         :'created_at' => :'created_at',
@@ -118,17 +118,17 @@ module Fastly
         :'action' => :'String',
         :'cache_condition' => :'String',
         :'dst' => :'String',
-        :'ignore_if_set' => :'Integer',
         :'name' => :'String',
-        :'priority' => :'Integer',
         :'regex' => :'String',
         :'request_condition' => :'String',
         :'response_condition' => :'String',
         :'src' => :'String',
         :'substitution' => :'String',
         :'type' => :'String',
+        :'ignore_if_set' => :'String',
+        :'priority' => :'String',
         :'service_id' => :'String',
-        :'version' => :'Integer',
+        :'version' => :'String',
         :'created_at' => :'Time',
         :'deleted_at' => :'Time',
         :'updated_at' => :'Time'
@@ -154,7 +154,8 @@ module Fastly
     def self.fastly_all_of
       [
       :'Header',
-      :'ServiceIdAndVersion',
+      :'HeaderResponseAdditional',
+      :'ServiceIdAndVersionString',
       :'Timestamps'
       ]
     end
@@ -186,18 +187,8 @@ module Fastly
         self.dst = attributes[:'dst']
       end
 
-      if attributes.key?(:'ignore_if_set')
-        self.ignore_if_set = attributes[:'ignore_if_set']
-      end
-
       if attributes.key?(:'name')
         self.name = attributes[:'name']
-      end
-
-      if attributes.key?(:'priority')
-        self.priority = attributes[:'priority']
-      else
-        self.priority = 100
       end
 
       if attributes.key?(:'regex')
@@ -222,6 +213,16 @@ module Fastly
 
       if attributes.key?(:'type')
         self.type = attributes[:'type']
+      end
+
+      if attributes.key?(:'ignore_if_set')
+        self.ignore_if_set = attributes[:'ignore_if_set']
+      end
+
+      if attributes.key?(:'priority')
+        self.priority = attributes[:'priority']
+      else
+        self.priority = '100'
       end
 
       if attributes.key?(:'service_id')
@@ -290,15 +291,15 @@ module Fastly
           action == o.action &&
           cache_condition == o.cache_condition &&
           dst == o.dst &&
-          ignore_if_set == o.ignore_if_set &&
           name == o.name &&
-          priority == o.priority &&
           regex == o.regex &&
           request_condition == o.request_condition &&
           response_condition == o.response_condition &&
           src == o.src &&
           substitution == o.substitution &&
           type == o.type &&
+          ignore_if_set == o.ignore_if_set &&
+          priority == o.priority &&
           service_id == o.service_id &&
           version == o.version &&
           created_at == o.created_at &&
@@ -315,7 +316,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [action, cache_condition, dst, ignore_if_set, name, priority, regex, request_condition, response_condition, src, substitution, type, service_id, version, created_at, deleted_at, updated_at].hash
+      [action, cache_condition, dst, name, regex, request_condition, response_condition, src, substitution, type, ignore_if_set, priority, service_id, version, created_at, deleted_at, updated_at].hash
     end
 
     # Builds the object from hash

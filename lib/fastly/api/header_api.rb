@@ -24,15 +24,15 @@ module Fastly
     # @option opts [String] :action Accepts a string value.
     # @option opts [String] :cache_condition Name of the cache condition controlling when this configuration applies.
     # @option opts [String] :dst Header to set.
-    # @option opts [Integer] :ignore_if_set Don&#39;t add the header if it is added already. Only applies to &#39;set&#39; action.
     # @option opts [String] :name A handle to refer to this Header object.
-    # @option opts [Integer] :priority Priority determines execution order. Lower numbers execute first. (default to 100)
     # @option opts [String] :regex Regular expression to use. Only applies to &#x60;regex&#x60; and &#x60;regex_repeat&#x60; actions.
     # @option opts [String] :request_condition Condition which, if met, will select this configuration during a request. Optional.
     # @option opts [String] :response_condition Optional name of a response condition to apply.
     # @option opts [String] :src Variable to be used as a source for the header content. Does not apply to &#x60;delete&#x60; action.
     # @option opts [String] :substitution Value to substitute in place of regular expression. Only applies to &#x60;regex&#x60; and &#x60;regex_repeat&#x60; actions.
     # @option opts [String] :type Accepts a string value.
+    # @option opts [Integer] :ignore_if_set Don&#39;t add the header if it is added already. Only applies to &#39;set&#39; action.
+    # @option opts [Integer] :priority Priority determines execution order. Lower numbers execute first. (default to 100)
     # @return [HeaderResponse]
     def create_header_object(opts = {})
       data, _status_code, _headers = create_header_object_with_http_info(opts)
@@ -46,15 +46,15 @@ module Fastly
     # @option opts [String] :action Accepts a string value.
     # @option opts [String] :cache_condition Name of the cache condition controlling when this configuration applies.
     # @option opts [String] :dst Header to set.
-    # @option opts [Integer] :ignore_if_set Don&#39;t add the header if it is added already. Only applies to &#39;set&#39; action.
     # @option opts [String] :name A handle to refer to this Header object.
-    # @option opts [Integer] :priority Priority determines execution order. Lower numbers execute first. (default to 100)
     # @option opts [String] :regex Regular expression to use. Only applies to &#x60;regex&#x60; and &#x60;regex_repeat&#x60; actions.
     # @option opts [String] :request_condition Condition which, if met, will select this configuration during a request. Optional.
     # @option opts [String] :response_condition Optional name of a response condition to apply.
     # @option opts [String] :src Variable to be used as a source for the header content. Does not apply to &#x60;delete&#x60; action.
     # @option opts [String] :substitution Value to substitute in place of regular expression. Only applies to &#x60;regex&#x60; and &#x60;regex_repeat&#x60; actions.
     # @option opts [String] :type Accepts a string value.
+    # @option opts [Integer] :ignore_if_set Don&#39;t add the header if it is added already. Only applies to &#39;set&#39; action.
+    # @option opts [Integer] :priority Priority determines execution order. Lower numbers execute first. (default to 100)
     # @return [Array<(HeaderResponse, Integer, Hash)>] HeaderResponse data, response status code and response headers
     def create_header_object_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -100,15 +100,15 @@ module Fastly
       form_params['action'] = opts[:'action'] if !opts[:'action'].nil?
       form_params['cache_condition'] = opts[:'cache_condition'] if !opts[:'cache_condition'].nil?
       form_params['dst'] = opts[:'dst'] if !opts[:'dst'].nil?
-      form_params['ignore_if_set'] = opts[:'ignore_if_set'] if !opts[:'ignore_if_set'].nil?
       form_params['name'] = opts[:'name'] if !opts[:'name'].nil?
-      form_params['priority'] = opts[:'priority'] if !opts[:'priority'].nil?
       form_params['regex'] = opts[:'regex'] if !opts[:'regex'].nil?
       form_params['request_condition'] = opts[:'request_condition'] if !opts[:'request_condition'].nil?
       form_params['response_condition'] = opts[:'response_condition'] if !opts[:'response_condition'].nil?
       form_params['src'] = opts[:'src'] if !opts[:'src'].nil?
       form_params['substitution'] = opts[:'substitution'] if !opts[:'substitution'].nil?
       form_params['type'] = opts[:'type'] if !opts[:'type'].nil?
+      form_params['ignore_if_set'] = opts[:'ignore_if_set'] if !opts[:'ignore_if_set'].nil?
+      form_params['priority'] = opts[:'priority'] if !opts[:'priority'].nil?
 
       # http body (model)
       post_body = opts[:debug_body]
@@ -368,15 +368,15 @@ module Fastly
     # @option opts [String] :action Accepts a string value.
     # @option opts [String] :cache_condition Name of the cache condition controlling when this configuration applies.
     # @option opts [String] :dst Header to set.
-    # @option opts [Integer] :ignore_if_set Don&#39;t add the header if it is added already. Only applies to &#39;set&#39; action.
     # @option opts [String] :name A handle to refer to this Header object.
-    # @option opts [Integer] :priority Priority determines execution order. Lower numbers execute first. (default to 100)
     # @option opts [String] :regex Regular expression to use. Only applies to &#x60;regex&#x60; and &#x60;regex_repeat&#x60; actions.
     # @option opts [String] :request_condition Condition which, if met, will select this configuration during a request. Optional.
     # @option opts [String] :response_condition Optional name of a response condition to apply.
     # @option opts [String] :src Variable to be used as a source for the header content. Does not apply to &#x60;delete&#x60; action.
     # @option opts [String] :substitution Value to substitute in place of regular expression. Only applies to &#x60;regex&#x60; and &#x60;regex_repeat&#x60; actions.
     # @option opts [String] :type Accepts a string value.
+    # @option opts [Integer] :ignore_if_set Don&#39;t add the header if it is added already. Only applies to &#39;set&#39; action.
+    # @option opts [Integer] :priority Priority determines execution order. Lower numbers execute first. (default to 100)
     # @return [HeaderResponse]
     def update_header_object(opts = {})
       data, _status_code, _headers = update_header_object_with_http_info(opts)
@@ -391,15 +391,15 @@ module Fastly
     # @option opts [String] :action Accepts a string value.
     # @option opts [String] :cache_condition Name of the cache condition controlling when this configuration applies.
     # @option opts [String] :dst Header to set.
-    # @option opts [Integer] :ignore_if_set Don&#39;t add the header if it is added already. Only applies to &#39;set&#39; action.
     # @option opts [String] :name A handle to refer to this Header object.
-    # @option opts [Integer] :priority Priority determines execution order. Lower numbers execute first. (default to 100)
     # @option opts [String] :regex Regular expression to use. Only applies to &#x60;regex&#x60; and &#x60;regex_repeat&#x60; actions.
     # @option opts [String] :request_condition Condition which, if met, will select this configuration during a request. Optional.
     # @option opts [String] :response_condition Optional name of a response condition to apply.
     # @option opts [String] :src Variable to be used as a source for the header content. Does not apply to &#x60;delete&#x60; action.
     # @option opts [String] :substitution Value to substitute in place of regular expression. Only applies to &#x60;regex&#x60; and &#x60;regex_repeat&#x60; actions.
     # @option opts [String] :type Accepts a string value.
+    # @option opts [Integer] :ignore_if_set Don&#39;t add the header if it is added already. Only applies to &#39;set&#39; action.
+    # @option opts [Integer] :priority Priority determines execution order. Lower numbers execute first. (default to 100)
     # @return [Array<(HeaderResponse, Integer, Hash)>] HeaderResponse data, response status code and response headers
     def update_header_object_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -450,15 +450,15 @@ module Fastly
       form_params['action'] = opts[:'action'] if !opts[:'action'].nil?
       form_params['cache_condition'] = opts[:'cache_condition'] if !opts[:'cache_condition'].nil?
       form_params['dst'] = opts[:'dst'] if !opts[:'dst'].nil?
-      form_params['ignore_if_set'] = opts[:'ignore_if_set'] if !opts[:'ignore_if_set'].nil?
       form_params['name'] = opts[:'name'] if !opts[:'name'].nil?
-      form_params['priority'] = opts[:'priority'] if !opts[:'priority'].nil?
       form_params['regex'] = opts[:'regex'] if !opts[:'regex'].nil?
       form_params['request_condition'] = opts[:'request_condition'] if !opts[:'request_condition'].nil?
       form_params['response_condition'] = opts[:'response_condition'] if !opts[:'response_condition'].nil?
       form_params['src'] = opts[:'src'] if !opts[:'src'].nil?
       form_params['substitution'] = opts[:'substitution'] if !opts[:'substitution'].nil?
       form_params['type'] = opts[:'type'] if !opts[:'type'].nil?
+      form_params['ignore_if_set'] = opts[:'ignore_if_set'] if !opts[:'ignore_if_set'].nil?
+      form_params['priority'] = opts[:'priority'] if !opts[:'priority'].nil?
 
       # http body (model)
       post_body = opts[:debug_body]
