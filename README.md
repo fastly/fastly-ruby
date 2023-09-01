@@ -8,7 +8,7 @@ A Ruby client library for interacting with most facets of the [Fastly API](https
 To install via RubyGems, add the following to your project's `Gemfile`:
 
 ```ruby
-gem 'fastly', '~> 7.0.0'
+gem 'fastly', '~> 7.1.0'
 ```
 
 Then run `bundle install`.
@@ -348,6 +348,11 @@ Class | Method | Description
 [*Fastly::LoggingNewrelicApi*](docs/LoggingNewrelicApi.md) | [**get_log_newrelic**](docs/LoggingNewrelicApi.md#get_log_newrelic) | Get a New Relic log endpoint
 [*Fastly::LoggingNewrelicApi*](docs/LoggingNewrelicApi.md) | [**list_log_newrelic**](docs/LoggingNewrelicApi.md#list_log_newrelic) | List New Relic log endpoints
 [*Fastly::LoggingNewrelicApi*](docs/LoggingNewrelicApi.md) | [**update_log_newrelic**](docs/LoggingNewrelicApi.md#update_log_newrelic) | Update a New Relic log endpoint
+[*Fastly::LoggingNewrelicotlpApi*](docs/LoggingNewrelicotlpApi.md) | [**create_log_newrelicotlp**](docs/LoggingNewrelicotlpApi.md#create_log_newrelicotlp) | Create a New Relic OTLP endpoint
+[*Fastly::LoggingNewrelicotlpApi*](docs/LoggingNewrelicotlpApi.md) | [**delete_log_newrelicotlp**](docs/LoggingNewrelicotlpApi.md#delete_log_newrelicotlp) | Delete a New Relic OTLP endpoint
+[*Fastly::LoggingNewrelicotlpApi*](docs/LoggingNewrelicotlpApi.md) | [**get_log_newrelicotlp**](docs/LoggingNewrelicotlpApi.md#get_log_newrelicotlp) | Get a New Relic OTLP endpoint
+[*Fastly::LoggingNewrelicotlpApi*](docs/LoggingNewrelicotlpApi.md) | [**list_log_newrelicotlp**](docs/LoggingNewrelicotlpApi.md#list_log_newrelicotlp) | List New Relic OTLP endpoints
+[*Fastly::LoggingNewrelicotlpApi*](docs/LoggingNewrelicotlpApi.md) | [**update_log_newrelicotlp**](docs/LoggingNewrelicotlpApi.md#update_log_newrelicotlp) | Update a New Relic log endpoint
 [*Fastly::LoggingOpenstackApi*](docs/LoggingOpenstackApi.md) | [**create_log_openstack**](docs/LoggingOpenstackApi.md#create_log_openstack) | Create an OpenStack log endpoint
 [*Fastly::LoggingOpenstackApi*](docs/LoggingOpenstackApi.md) | [**delete_log_openstack**](docs/LoggingOpenstackApi.md#delete_log_openstack) | Delete an OpenStack log endpoint
 [*Fastly::LoggingOpenstackApi*](docs/LoggingOpenstackApi.md) | [**get_log_openstack**](docs/LoggingOpenstackApi.md#get_log_openstack) | Get an OpenStack log endpoint
@@ -442,7 +447,7 @@ Class | Method | Description
 [*Fastly::SecretStoreApi*](docs/SecretStoreApi.md) | [**client_key**](docs/SecretStoreApi.md#client_key) | Create new client key
 [*Fastly::SecretStoreApi*](docs/SecretStoreApi.md) | [**create_secret_store**](docs/SecretStoreApi.md#create_secret_store) | Create new secret store
 [*Fastly::SecretStoreApi*](docs/SecretStoreApi.md) | [**delete_secret_store**](docs/SecretStoreApi.md#delete_secret_store) | Delete secret store
-[*Fastly::SecretStoreApi*](docs/SecretStoreApi.md) | [**get_secret_store**](docs/SecretStoreApi.md#get_secret_store) | Create secret store by ID
+[*Fastly::SecretStoreApi*](docs/SecretStoreApi.md) | [**get_secret_store**](docs/SecretStoreApi.md#get_secret_store) | Get secret store by ID
 [*Fastly::SecretStoreApi*](docs/SecretStoreApi.md) | [**get_secret_stores**](docs/SecretStoreApi.md#get_secret_stores) | Get all secret stores
 [*Fastly::SecretStoreApi*](docs/SecretStoreApi.md) | [**signing_key**](docs/SecretStoreApi.md#signing_key) | Get public key
 [*Fastly::SecretStoreItemApi*](docs/SecretStoreItemApi.md) | [**create_secret**](docs/SecretStoreItemApi.md#create_secret) | Create a new secret in a store.

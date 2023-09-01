@@ -189,7 +189,7 @@ Show a TLS subscription.
 api_instance = Fastly::TlsSubscriptionsApi.new
 opts = {
     tls_subscription_id: 'tls_subscription_id_example', # String | Alphanumeric string identifying a TLS subscription.
-    include: 'tls_authorizations', # String | Include related objects. Optional, comma-separated values. Permitted values: `tls_authorizations` and `tls_authorizations.globalsign_email_challenge`. 
+    include: 'tls_authorizations', # String | Include related objects. Optional, comma-separated values. Permitted values: `tls_authorizations`, `tls_authorizations.globalsign_email_challenge`, and `tls_authorizations.self_managed_http_challenge`. 
 }
 
 begin
@@ -205,7 +205,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **include** | **String** | Include related objects. Optional, comma-separated values. Permitted values: `tls_authorizations` and `tls_authorizations.globalsign_email_challenge`.  | [optional] |
+| **include** | **String** | Include related objects. Optional, comma-separated values. Permitted values: `tls_authorizations`, `tls_authorizations.globalsign_email_challenge`, and `tls_authorizations.self_managed_http_challenge`.  | [optional] |
 | **tls_subscription_id** | **String** | Alphanumeric string identifying a TLS subscription. |  |
 
 ### Return type
@@ -230,7 +230,7 @@ opts = {
     filter_state: 'filter_state_example', # String | Limit the returned subscriptions by state. Valid values are `pending`, `processing`, `issued`, `renewing`, and `failed`. Accepts parameters: `not` (e.g., `filter[state][not]=renewing`). 
     filter_tls_domains_id: 'filter_tls_domains_id_example', # String | Limit the returned subscriptions to those that include the specific domain.
     filter_has_active_order: true, # Boolean | Limit the returned subscriptions to those that have currently active orders. Permitted values: `true`. 
-    include: 'tls_authorizations', # String | Include related objects. Optional, comma-separated values. Permitted values: `tls_authorizations` and `tls_authorizations.globalsign_email_challenge`. 
+    include: 'tls_authorizations', # String | Include related objects. Optional, comma-separated values. Permitted values: `tls_authorizations`, `tls_authorizations.globalsign_email_challenge`, and `tls_authorizations.self_managed_http_challenge`. 
     page_number: 1, # Integer | Current page.
     page_size: 20, # Integer | Number of records per page.
     sort: 'created_at', # String | The order in which to list the results by creation date.
@@ -252,7 +252,7 @@ end
 | **filter_state** | **String** | Limit the returned subscriptions by state. Valid values are `pending`, `processing`, `issued`, `renewing`, and `failed`. Accepts parameters: `not` (e.g., `filter[state][not]&#x3D;renewing`).  | [optional] |
 | **filter_tls_domains_id** | **String** | Limit the returned subscriptions to those that include the specific domain. | [optional] |
 | **filter_has_active_order** | **Boolean** | Limit the returned subscriptions to those that have currently active orders. Permitted values: `true`.  | [optional] |
-| **include** | **String** | Include related objects. Optional, comma-separated values. Permitted values: `tls_authorizations` and `tls_authorizations.globalsign_email_challenge`.  | [optional] |
+| **include** | **String** | Include related objects. Optional, comma-separated values. Permitted values: `tls_authorizations`, `tls_authorizations.globalsign_email_challenge`, and `tls_authorizations.self_managed_http_challenge`.  | [optional] |
 | **page_number** | **Integer** | Current page. | [optional] |
 | **page_size** | **Integer** | Number of records per page. | [optional][default to 20] |
 | **sort** | **String** | The order in which to list the results by creation date. | [optional][default to &#39;created_at&#39;] |

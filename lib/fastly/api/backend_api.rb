@@ -40,6 +40,7 @@ module Fastly
     # @option opts [String] :override_host If set, will replace the client-supplied HTTP &#x60;Host&#x60; header on connections to this backend. Applied after VCL has been processed, so this setting will take precedence over changing &#x60;bereq.http.Host&#x60; in VCL.
     # @option opts [Integer] :port Port on which the backend server is listening for connections from Fastly. Setting &#x60;port&#x60; to 80 or 443 will also set &#x60;use_ssl&#x60; automatically (to false and true respectively), unless explicitly overridden by setting &#x60;use_ssl&#x60; in the same request.
     # @option opts [String] :request_condition Name of a Condition, which if satisfied, will select this backend during a request. If set, will override any &#x60;auto_loadbalance&#x60; setting. By default, the first backend added to a service is selected for all requests.
+    # @option opts [String] :share_key Value that when shared across backends will enable those backends to share the same health check.
     # @option opts [String] :shield Identifier of the POP to use as a [shield](https://docs.fastly.com/en/guides/shielding).
     # @option opts [String] :ssl_ca_cert CA certificate attached to origin.
     # @option opts [String] :ssl_cert_hostname Overrides &#x60;ssl_hostname&#x60;, but only for cert verification. Does not affect SNI at all.
@@ -80,6 +81,7 @@ module Fastly
     # @option opts [String] :override_host If set, will replace the client-supplied HTTP &#x60;Host&#x60; header on connections to this backend. Applied after VCL has been processed, so this setting will take precedence over changing &#x60;bereq.http.Host&#x60; in VCL.
     # @option opts [Integer] :port Port on which the backend server is listening for connections from Fastly. Setting &#x60;port&#x60; to 80 or 443 will also set &#x60;use_ssl&#x60; automatically (to false and true respectively), unless explicitly overridden by setting &#x60;use_ssl&#x60; in the same request.
     # @option opts [String] :request_condition Name of a Condition, which if satisfied, will select this backend during a request. If set, will override any &#x60;auto_loadbalance&#x60; setting. By default, the first backend added to a service is selected for all requests.
+    # @option opts [String] :share_key Value that when shared across backends will enable those backends to share the same health check.
     # @option opts [String] :shield Identifier of the POP to use as a [shield](https://docs.fastly.com/en/guides/shielding).
     # @option opts [String] :ssl_ca_cert CA certificate attached to origin.
     # @option opts [String] :ssl_cert_hostname Overrides &#x60;ssl_hostname&#x60;, but only for cert verification. Does not affect SNI at all.
@@ -107,6 +109,11 @@ module Fastly
       if @api_client.config.client_side_validation && version_id.nil?
         fail ArgumentError, "Missing the required parameter 'version_id' when calling BackendApi.create_backend"
       end
+      pattern = Regexp.new(/^[A-Za-z0-9]+$/)
+      if @api_client.config.client_side_validation && !opts[:'share_key'].nil? && opts[:'share_key'] !~ pattern
+        fail ArgumentError, "invalid value for 'opts[:\"share_key\"]' when calling BackendApi.create_backend, must conform to the pattern #{pattern}."
+      end
+
       # resource path
       local_var_path = '/service/{service_id}/version/{version_id}/backend'.sub('{' + 'service_id' + '}', CGI.escape(service_id.to_s)).sub('{' + 'version_id' + '}', CGI.escape(version_id.to_s))
 
@@ -144,6 +151,7 @@ module Fastly
       form_params['override_host'] = opts[:'override_host'] if !opts[:'override_host'].nil?
       form_params['port'] = opts[:'port'] if !opts[:'port'].nil?
       form_params['request_condition'] = opts[:'request_condition'] if !opts[:'request_condition'].nil?
+      form_params['share_key'] = opts[:'share_key'] if !opts[:'share_key'].nil?
       form_params['shield'] = opts[:'shield'] if !opts[:'shield'].nil?
       form_params['ssl_ca_cert'] = opts[:'ssl_ca_cert'] if !opts[:'ssl_ca_cert'].nil?
       form_params['ssl_cert_hostname'] = opts[:'ssl_cert_hostname'] if !opts[:'ssl_cert_hostname'].nil?
@@ -430,6 +438,7 @@ module Fastly
     # @option opts [String] :override_host If set, will replace the client-supplied HTTP &#x60;Host&#x60; header on connections to this backend. Applied after VCL has been processed, so this setting will take precedence over changing &#x60;bereq.http.Host&#x60; in VCL.
     # @option opts [Integer] :port Port on which the backend server is listening for connections from Fastly. Setting &#x60;port&#x60; to 80 or 443 will also set &#x60;use_ssl&#x60; automatically (to false and true respectively), unless explicitly overridden by setting &#x60;use_ssl&#x60; in the same request.
     # @option opts [String] :request_condition Name of a Condition, which if satisfied, will select this backend during a request. If set, will override any &#x60;auto_loadbalance&#x60; setting. By default, the first backend added to a service is selected for all requests.
+    # @option opts [String] :share_key Value that when shared across backends will enable those backends to share the same health check.
     # @option opts [String] :shield Identifier of the POP to use as a [shield](https://docs.fastly.com/en/guides/shielding).
     # @option opts [String] :ssl_ca_cert CA certificate attached to origin.
     # @option opts [String] :ssl_cert_hostname Overrides &#x60;ssl_hostname&#x60;, but only for cert verification. Does not affect SNI at all.
@@ -471,6 +480,7 @@ module Fastly
     # @option opts [String] :override_host If set, will replace the client-supplied HTTP &#x60;Host&#x60; header on connections to this backend. Applied after VCL has been processed, so this setting will take precedence over changing &#x60;bereq.http.Host&#x60; in VCL.
     # @option opts [Integer] :port Port on which the backend server is listening for connections from Fastly. Setting &#x60;port&#x60; to 80 or 443 will also set &#x60;use_ssl&#x60; automatically (to false and true respectively), unless explicitly overridden by setting &#x60;use_ssl&#x60; in the same request.
     # @option opts [String] :request_condition Name of a Condition, which if satisfied, will select this backend during a request. If set, will override any &#x60;auto_loadbalance&#x60; setting. By default, the first backend added to a service is selected for all requests.
+    # @option opts [String] :share_key Value that when shared across backends will enable those backends to share the same health check.
     # @option opts [String] :shield Identifier of the POP to use as a [shield](https://docs.fastly.com/en/guides/shielding).
     # @option opts [String] :ssl_ca_cert CA certificate attached to origin.
     # @option opts [String] :ssl_cert_hostname Overrides &#x60;ssl_hostname&#x60;, but only for cert verification. Does not affect SNI at all.
@@ -503,6 +513,11 @@ module Fastly
       if @api_client.config.client_side_validation && backend_name.nil?
         fail ArgumentError, "Missing the required parameter 'backend_name' when calling BackendApi.update_backend"
       end
+      pattern = Regexp.new(/^[A-Za-z0-9]+$/)
+      if @api_client.config.client_side_validation && !opts[:'share_key'].nil? && opts[:'share_key'] !~ pattern
+        fail ArgumentError, "invalid value for 'opts[:\"share_key\"]' when calling BackendApi.update_backend, must conform to the pattern #{pattern}."
+      end
+
       # resource path
       local_var_path = '/service/{service_id}/version/{version_id}/backend/{backend_name}'.sub('{' + 'service_id' + '}', CGI.escape(service_id.to_s)).sub('{' + 'version_id' + '}', CGI.escape(version_id.to_s)).sub('{' + 'backend_name' + '}', CGI.escape(backend_name.to_s))
 
@@ -540,6 +555,7 @@ module Fastly
       form_params['override_host'] = opts[:'override_host'] if !opts[:'override_host'].nil?
       form_params['port'] = opts[:'port'] if !opts[:'port'].nil?
       form_params['request_condition'] = opts[:'request_condition'] if !opts[:'request_condition'].nil?
+      form_params['share_key'] = opts[:'share_key'] if !opts[:'share_key'].nil?
       form_params['shield'] = opts[:'shield'] if !opts[:'shield'].nil?
       form_params['ssl_ca_cert'] = opts[:'ssl_ca_cert'] if !opts[:'ssl_ca_cert'].nil?
       form_params['ssl_cert_hostname'] = opts[:'ssl_cert_hostname'] if !opts[:'ssl_cert_hostname'].nil?

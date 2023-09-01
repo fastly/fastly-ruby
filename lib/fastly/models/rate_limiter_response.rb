@@ -335,7 +335,7 @@ module Fastly
       return false if !@action.nil? && @action.to_s.length < 1
       return false if !@response_object_name.nil? && @response_object_name.to_s.length > 255
       return false if !@response_object_name.nil? && @response_object_name.to_s.length < 1
-      logger_type_validator = EnumAttributeValidator.new('String', ["azureblob", "bigquery", "cloudfiles", "datadog", "digitalocean", "elasticsearch", "ftp", "gcs", "googleanalytics", "heroku", "honeycomb", "http", "https", "kafka", "kinesis", "logentries", "loggly", "logshuttle", "newrelic", "openstack", "papertrail", "pubsub", "s3", "scalyr", "sftp", "splunk", "stackdriver", "sumologic", "syslog"])
+      logger_type_validator = EnumAttributeValidator.new('String', ["azureblob", "bigquery", "cloudfiles", "datadog", "digitalocean", "elasticsearch", "ftp", "gcs", "googleanalytics", "heroku", "honeycomb", "http", "https", "kafka", "kinesis", "logentries", "loggly", "logshuttle", "newrelic", "newrelicotlp", "openstack", "papertrail", "pubsub", "s3", "scalyr", "sftp", "splunk", "stackdriver", "sumologic", "syslog"])
       return false unless logger_type_validator.valid?(@logger_type)
       true
     end
@@ -443,7 +443,7 @@ module Fastly
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] logger_type Object to be assigned
     def logger_type=(logger_type)
-      validator = EnumAttributeValidator.new('String', ["azureblob", "bigquery", "cloudfiles", "datadog", "digitalocean", "elasticsearch", "ftp", "gcs", "googleanalytics", "heroku", "honeycomb", "http", "https", "kafka", "kinesis", "logentries", "loggly", "logshuttle", "newrelic", "openstack", "papertrail", "pubsub", "s3", "scalyr", "sftp", "splunk", "stackdriver", "sumologic", "syslog"])
+      validator = EnumAttributeValidator.new('String', ["azureblob", "bigquery", "cloudfiles", "datadog", "digitalocean", "elasticsearch", "ftp", "gcs", "googleanalytics", "heroku", "honeycomb", "http", "https", "kafka", "kinesis", "logentries", "loggly", "logshuttle", "newrelic", "newrelicotlp", "openstack", "papertrail", "pubsub", "s3", "scalyr", "sftp", "splunk", "stackdriver", "sumologic", "syslog"])
       unless validator.valid?(logger_type)
         fail ArgumentError, "invalid value for \"logger_type\", must be one of #{validator.allowable_values}."
       end

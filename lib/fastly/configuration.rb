@@ -2000,6 +2000,36 @@ module Fastly
           description: "No description provided",
           }
         ],
+        "LoggingNewrelicotlpApi.create_log_newrelicotlp": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "LoggingNewrelicotlpApi.delete_log_newrelicotlp": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "LoggingNewrelicotlpApi.get_log_newrelicotlp": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "LoggingNewrelicotlpApi.list_log_newrelicotlp": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "LoggingNewrelicotlpApi.update_log_newrelicotlp": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
         "LoggingOpenstackApi.create_log_openstack": [
           {
           url: "https://api.fastly.com",

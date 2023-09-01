@@ -133,7 +133,7 @@ module Fastly
         fail ArgumentError, 'invalid value for "opts[:"response_object_name"]" when calling RateLimiterApi.create_rate_limiter, the character length must be great than or equal to 1.'
       end
 
-      allowable_values = ["azureblob", "bigquery", "cloudfiles", "datadog", "digitalocean", "elasticsearch", "ftp", "gcs", "googleanalytics", "heroku", "honeycomb", "http", "https", "kafka", "kinesis", "logentries", "loggly", "logshuttle", "newrelic", "openstack", "papertrail", "pubsub", "s3", "scalyr", "sftp", "splunk", "stackdriver", "sumologic", "syslog"]
+      allowable_values = ["azureblob", "bigquery", "cloudfiles", "datadog", "digitalocean", "elasticsearch", "ftp", "gcs", "googleanalytics", "heroku", "honeycomb", "http", "https", "kafka", "kinesis", "logentries", "loggly", "logshuttle", "newrelic", "newrelicotlp", "openstack", "papertrail", "pubsub", "s3", "scalyr", "sftp", "splunk", "stackdriver", "sumologic", "syslog"]
       if @api_client.config.client_side_validation && opts[:'logger_type'] && !allowable_values.include?(opts[:'logger_type'])
         fail ArgumentError, "invalid value for \"logger_type\", must be one of #{allowable_values}"
       end
@@ -498,7 +498,7 @@ module Fastly
         fail ArgumentError, 'invalid value for "opts[:"response_object_name"]" when calling RateLimiterApi.update_rate_limiter, the character length must be great than or equal to 1.'
       end
 
-      allowable_values = ["azureblob", "bigquery", "cloudfiles", "datadog", "digitalocean", "elasticsearch", "ftp", "gcs", "googleanalytics", "heroku", "honeycomb", "http", "https", "kafka", "kinesis", "logentries", "loggly", "logshuttle", "newrelic", "openstack", "papertrail", "pubsub", "s3", "scalyr", "sftp", "splunk", "stackdriver", "sumologic", "syslog"]
+      allowable_values = ["azureblob", "bigquery", "cloudfiles", "datadog", "digitalocean", "elasticsearch", "ftp", "gcs", "googleanalytics", "heroku", "honeycomb", "http", "https", "kafka", "kinesis", "logentries", "loggly", "logshuttle", "newrelic", "newrelicotlp", "openstack", "papertrail", "pubsub", "s3", "scalyr", "sftp", "splunk", "stackdriver", "sumologic", "syslog"]
       if @api_client.config.client_side_validation && opts[:'logger_type'] && !allowable_values.include?(opts[:'logger_type'])
         fail ArgumentError, "invalid value for \"logger_type\", must be one of #{allowable_values}"
       end

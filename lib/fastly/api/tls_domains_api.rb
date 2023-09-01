@@ -22,7 +22,7 @@ module Fastly
     # @option opts [String] :filter_in_use Optional. Limit the returned domains to those currently using Fastly to terminate TLS with SNI (that is, domains considered \&quot;in use\&quot;) Permitted values: true, false.
     # @option opts [String] :filter_tls_certificates_id Optional. Limit the returned domains to those listed in the given TLS certificate&#39;s SAN list.
     # @option opts [String] :filter_tls_subscriptions_id Optional. Limit the returned domains to those for a given TLS subscription.
-    # @option opts [String] :include Include related objects. Optional, comma-separated values. Permitted values: &#x60;tls_activations&#x60;, &#x60;tls_certificates&#x60;, &#x60;tls_subscriptions&#x60;, &#x60;tls_subscriptions.tls_authorizations&#x60;, and &#x60;tls_authorizations.globalsign_email_challenge&#x60;. 
+    # @option opts [String] :include Include related objects. Optional, comma-separated values. Permitted values: &#x60;tls_activations&#x60;, &#x60;tls_certificates&#x60;, &#x60;tls_subscriptions&#x60;, &#x60;tls_subscriptions.tls_authorizations&#x60;, &#x60;tls_authorizations.globalsign_email_challenge&#x60;, and &#x60;tls_authorizations.self_managed_http_challenge&#x60;. 
     # @option opts [Integer] :page_number Current page.
     # @option opts [Integer] :page_size Number of records per page. (default to 20)
     # @option opts [String] :sort The order in which to list the results by creation date. (default to 'created_at')
@@ -37,7 +37,7 @@ module Fastly
     # @option opts [String] :filter_in_use Optional. Limit the returned domains to those currently using Fastly to terminate TLS with SNI (that is, domains considered \&quot;in use\&quot;) Permitted values: true, false.
     # @option opts [String] :filter_tls_certificates_id Optional. Limit the returned domains to those listed in the given TLS certificate&#39;s SAN list.
     # @option opts [String] :filter_tls_subscriptions_id Optional. Limit the returned domains to those for a given TLS subscription.
-    # @option opts [String] :include Include related objects. Optional, comma-separated values. Permitted values: &#x60;tls_activations&#x60;, &#x60;tls_certificates&#x60;, &#x60;tls_subscriptions&#x60;, &#x60;tls_subscriptions.tls_authorizations&#x60;, and &#x60;tls_authorizations.globalsign_email_challenge&#x60;. 
+    # @option opts [String] :include Include related objects. Optional, comma-separated values. Permitted values: &#x60;tls_activations&#x60;, &#x60;tls_certificates&#x60;, &#x60;tls_subscriptions&#x60;, &#x60;tls_subscriptions.tls_authorizations&#x60;, &#x60;tls_authorizations.globalsign_email_challenge&#x60;, and &#x60;tls_authorizations.self_managed_http_challenge&#x60;. 
     # @option opts [Integer] :page_number Current page.
     # @option opts [Integer] :page_size Number of records per page. (default to 20)
     # @option opts [String] :sort The order in which to list the results by creation date. (default to 'created_at')

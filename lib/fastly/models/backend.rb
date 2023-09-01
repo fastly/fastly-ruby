@@ -70,6 +70,9 @@ module Fastly
     # Name of a Condition, which if satisfied, will select this backend during a request. If set, will override any `auto_loadbalance` setting. By default, the first backend added to a service is selected for all requests.
     attr_accessor :request_condition
 
+    # Value that when shared across backends will enable those backends to share the same health check.
+    attr_accessor :share_key
+
     # Identifier of the POP to use as a [shield](https://docs.fastly.com/en/guides/shielding).
     attr_accessor :shield
 
@@ -125,6 +128,7 @@ module Fastly
         :'override_host' => :'override_host',
         :'port' => :'port',
         :'request_condition' => :'request_condition',
+        :'share_key' => :'share_key',
         :'shield' => :'shield',
         :'ssl_ca_cert' => :'ssl_ca_cert',
         :'ssl_cert_hostname' => :'ssl_cert_hostname',
@@ -166,6 +170,7 @@ module Fastly
         :'override_host' => :'String',
         :'port' => :'Integer',
         :'request_condition' => :'String',
+        :'share_key' => :'String',
         :'shield' => :'String',
         :'ssl_ca_cert' => :'String',
         :'ssl_cert_hostname' => :'String',
@@ -193,6 +198,7 @@ module Fastly
         :'max_tls_version',
         :'min_tls_version',
         :'override_host',
+        :'share_key',
         :'shield',
         :'ssl_ca_cert',
         :'ssl_cert_hostname',
@@ -296,6 +302,10 @@ module Fastly
         self.request_condition = attributes[:'request_condition']
       end
 
+      if attributes.key?(:'share_key')
+        self.share_key = attributes[:'share_key']
+      end
+
       if attributes.key?(:'shield')
         self.shield = attributes[:'shield']
       end
@@ -347,13 +357,30 @@ module Fastly
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+      pattern = Regexp.new(/^[A-Za-z0-9]+$/)
+      if !@share_key.nil? && @share_key !~ pattern
+        invalid_properties.push("invalid value for \"share_key\", must conform to the pattern #{pattern}.")
+      end
+
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if !@share_key.nil? && @share_key !~ Regexp.new(/^[A-Za-z0-9]+$/)
       true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] share_key Value to be assigned
+    def share_key=(share_key)
+      pattern = Regexp.new(/^[A-Za-z0-9]+$/)
+      if !share_key.nil? && share_key !~ pattern
+        fail ArgumentError, "invalid value for \"share_key\", must conform to the pattern #{pattern}."
+      end
+
+      @share_key = share_key
     end
 
     # Checks equality by comparing each attribute.
@@ -380,6 +407,7 @@ module Fastly
           override_host == o.override_host &&
           port == o.port &&
           request_condition == o.request_condition &&
+          share_key == o.share_key &&
           shield == o.shield &&
           ssl_ca_cert == o.ssl_ca_cert &&
           ssl_cert_hostname == o.ssl_cert_hostname &&
@@ -402,7 +430,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [address, auto_loadbalance, between_bytes_timeout, client_cert, comment, connect_timeout, first_byte_timeout, healthcheck, hostname, ipv4, ipv6, keepalive_time, max_conn, max_tls_version, min_tls_version, name, override_host, port, request_condition, shield, ssl_ca_cert, ssl_cert_hostname, ssl_check_cert, ssl_ciphers, ssl_client_cert, ssl_client_key, ssl_hostname, ssl_sni_hostname, use_ssl, weight].hash
+      [address, auto_loadbalance, between_bytes_timeout, client_cert, comment, connect_timeout, first_byte_timeout, healthcheck, hostname, ipv4, ipv6, keepalive_time, max_conn, max_tls_version, min_tls_version, name, override_host, port, request_condition, share_key, shield, ssl_ca_cert, ssl_cert_hostname, ssl_check_cert, ssl_ciphers, ssl_client_cert, ssl_client_key, ssl_hostname, ssl_sni_hostname, use_ssl, weight].hash
     end
 
     # Builds the object from hash

@@ -197,7 +197,7 @@ module Fastly
       return data, status_code, headers
     end
 
-    # Create secret store by ID
+    # Get secret store by ID
     # Get a secret store by ID.
     # @option opts [String] :store_id  (required)
     # @return [SecretStoreResponse]
@@ -206,7 +206,7 @@ module Fastly
       data
     end
 
-    # Create secret store by ID
+    # Get secret store by ID
     # Get a secret store by ID.
     # @option opts [String] :store_id  (required)
     # @return [Array<(SecretStoreResponse, Integer, Hash)>] SecretStoreResponse data, response status code and response headers
