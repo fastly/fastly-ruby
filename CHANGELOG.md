@@ -5,7 +5,6 @@
 **Enhancements:**
 
 - feat(backend): support share_key field.
-- feat(events): support extra created_at filters.
 - feat(logging/newrelic): add OTLP endpoints.
 - feat(tls/subscriptions): support self_managed_http_challenge field.
 
