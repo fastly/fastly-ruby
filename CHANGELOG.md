@@ -1,5 +1,11 @@
 # Changelog
 
+## [v7.1.1](https://github.com/fastly/fastly-ruby/releases/tag/release/v7.1.1) (2023-09-01)
+
+**Enhancements:**
+
+- feat(events): support extra created_at filters.
+
 ## [v7.1.0](https://github.com/fastly/fastly-ruby/releases/tag/release/v7.1.0) (2023-09-01)
 
 **Enhancements:**

@@ -88,6 +88,10 @@ module Fastly
     # @option opts [String] :filter_user_id Limit the results returned to a specific user.
     # @option opts [String] :filter_token_id Limit the returned events to a specific token.
     # @option opts [String] :filter_created_at Limit the returned events to a specific time frame. Accepts sub-parameters: lt, lte, gt, gte (e.g., filter[created_at][gt]&#x3D;2022-01-12). 
+    # @option opts [String] :filter_created_at_lte Return events on and before a date and time in ISO 8601 format. 
+    # @option opts [String] :filter_created_at_lt Return events before a date and time in ISO 8601 format. 
+    # @option opts [String] :filter_created_at_gte Return events on and after a date and time in ISO 8601 format. 
+    # @option opts [String] :filter_created_at_gt Return events after a date and time in ISO 8601 format. 
     # @option opts [Integer] :page_number Current page.
     # @option opts [Integer] :page_size Number of records per page. (default to 20)
     # @option opts [String] :sort The order in which to list the results by creation date. (default to 'created_at')
@@ -105,6 +109,10 @@ module Fastly
     # @option opts [String] :filter_user_id Limit the results returned to a specific user.
     # @option opts [String] :filter_token_id Limit the returned events to a specific token.
     # @option opts [String] :filter_created_at Limit the returned events to a specific time frame. Accepts sub-parameters: lt, lte, gt, gte (e.g., filter[created_at][gt]&#x3D;2022-01-12). 
+    # @option opts [String] :filter_created_at_lte Return events on and before a date and time in ISO 8601 format. 
+    # @option opts [String] :filter_created_at_lt Return events before a date and time in ISO 8601 format. 
+    # @option opts [String] :filter_created_at_gte Return events on and after a date and time in ISO 8601 format. 
+    # @option opts [String] :filter_created_at_gt Return events after a date and time in ISO 8601 format. 
     # @option opts [Integer] :page_number Current page.
     # @option opts [Integer] :page_size Number of records per page. (default to 20)
     # @option opts [String] :sort The order in which to list the results by creation date. (default to 'created_at')
@@ -137,6 +145,10 @@ module Fastly
       query_params[:'filter[user_id]'] = opts[:'filter_user_id'] if !opts[:'filter_user_id'].nil?
       query_params[:'filter[token_id]'] = opts[:'filter_token_id'] if !opts[:'filter_token_id'].nil?
       query_params[:'filter[created_at]'] = opts[:'filter_created_at'] if !opts[:'filter_created_at'].nil?
+      query_params[:'filter[created_at][lte]'] = opts[:'filter_created_at_lte'] if !opts[:'filter_created_at_lte'].nil?
+      query_params[:'filter[created_at][lt]'] = opts[:'filter_created_at_lt'] if !opts[:'filter_created_at_lt'].nil?
+      query_params[:'filter[created_at][gte]'] = opts[:'filter_created_at_gte'] if !opts[:'filter_created_at_gte'].nil?
+      query_params[:'filter[created_at][gt]'] = opts[:'filter_created_at_gt'] if !opts[:'filter_created_at_gt'].nil?
       query_params[:'page[number]'] = opts[:'page_number'] if !opts[:'page_number'].nil?
       query_params[:'page[size]'] = opts[:'page_size'] if !opts[:'page_size'].nil?
       query_params[:'sort'] = opts[:'sort'] if !opts[:'sort'].nil?
