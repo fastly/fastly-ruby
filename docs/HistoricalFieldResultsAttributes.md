@@ -220,6 +220,15 @@
 | **ddos_action_tarpit** | **Integer** | The number of times the tarpit action was taken. The tarpit action delays writing the response to the client. | [optional] |
 | **ddos_action_close** | **Integer** | The number of times the close action was taken. The close action aborts the connection as soon as possible. The close action takes effect either right after accept, right after the client hello, or right after the response was sent. | [optional] |
 | **ddos_action_blackhole** | **Integer** | The number of times the blackhole action was taken. The blackhole action quietly closes a TCP connection without sending a reset. The blackhole action quietly closes a TCP connection without notifying its peer (all TCP state is dropped). | [optional] |
+| **bot_challenge_starts** | **Integer** | The number of challenge-start tokens created. | [optional] |
+| **bot_challenge_complete_tokens_passed** | **Integer** | The number of challenge-complete tokens that passed validation. | [optional] |
+| **bot_challenge_complete_tokens_failed** | **Integer** | The number of challenge-complete tokens that failed validation. | [optional] |
+| **bot_challenge_complete_tokens_checked** | **Integer** | The number of challenge-complete tokens checked. | [optional] |
+| **bot_challenge_complete_tokens_disabled** | **Integer** | The number of challenge-complete tokens not checked because the feature was disabled. | [optional] |
+| **bot_challenge_complete_tokens_issued** | **Integer** | The number of challenge-complete tokens issued. For example, issuing a challenge-complete token after a series of CAPTCHA challenges ending in success. | [optional] |
+| **bot_challenges_issued** | **Integer** | The number of challenges issued. For example, the issuance of a CAPTCHA challenge. | [optional] |
+| **bot_challenges_succeeded** | **Integer** | The number of successful challenge solutions processed. For example, a correct CAPTCHA solution. | [optional] |
+| **bot_challenges_failed** | **Integer** | The number of failed challenge solutions processed. For example, an incorrect CAPTCHA solution. | [optional] |
 | **service_id** | [**ReadOnlyIdService**](ReadOnlyIdService.md) |  | [optional] |
 | **start_time** | **Integer** |  | [optional] |
 

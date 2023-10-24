@@ -22,11 +22,11 @@ module Fastly
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
     # @option opts [Integer] :version_id Integer identifying a service version. (required)
     # @option opts [String] :name The name for the snippet.
-    # @option opts [String] :dynamic Sets the snippet version.
     # @option opts [String] :type The location in generated VCL where the snippet should be placed.
     # @option opts [String] :content The VCL code that specifies exactly what the snippet does.
     # @option opts [String] :priority Priority determines execution order. Lower numbers execute first. (default to '100')
-    # @return [SnippetResponse]
+    # @option opts [String] :dynamic Sets the snippet version.
+    # @return [SnippetResponsePost]
     def create_snippet(opts = {})
       data, _status_code, _headers = create_snippet_with_http_info(opts)
       data
@@ -37,11 +37,11 @@ module Fastly
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
     # @option opts [Integer] :version_id Integer identifying a service version. (required)
     # @option opts [String] :name The name for the snippet.
-    # @option opts [String] :dynamic Sets the snippet version.
     # @option opts [String] :type The location in generated VCL where the snippet should be placed.
     # @option opts [String] :content The VCL code that specifies exactly what the snippet does.
     # @option opts [String] :priority Priority determines execution order. Lower numbers execute first. (default to '100')
-    # @return [Array<(SnippetResponse, Integer, Hash)>] SnippetResponse data, response status code and response headers
+    # @option opts [String] :dynamic Sets the snippet version.
+    # @return [Array<(SnippetResponsePost, Integer, Hash)>] SnippetResponsePost data, response status code and response headers
     def create_snippet_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: SnippetApi.create_snippet ...'
@@ -57,13 +57,13 @@ module Fastly
       if @api_client.config.client_side_validation && version_id.nil?
         fail ArgumentError, "Missing the required parameter 'version_id' when calling SnippetApi.create_snippet"
       end
-      allowable_values = ["0", "1"]
-      if @api_client.config.client_side_validation && opts[:'dynamic'] && !allowable_values.include?(opts[:'dynamic'])
-        fail ArgumentError, "invalid value for \"dynamic\", must be one of #{allowable_values}"
-      end
       allowable_values = ["init", "recv", "hash", "hit", "miss", "pass", "fetch", "error", "deliver", "log", "none"]
       if @api_client.config.client_side_validation && opts[:'type'] && !allowable_values.include?(opts[:'type'])
         fail ArgumentError, "invalid value for \"type\", must be one of #{allowable_values}"
+      end
+      allowable_values = ["0", "1"]
+      if @api_client.config.client_side_validation && opts[:'dynamic'] && !allowable_values.include?(opts[:'dynamic'])
+        fail ArgumentError, "invalid value for \"dynamic\", must be one of #{allowable_values}"
       end
       # resource path
       local_var_path = '/service/{service_id}/version/{version_id}/snippet'.sub('{' + 'service_id' + '}', CGI.escape(service_id.to_s)).sub('{' + 'version_id' + '}', CGI.escape(version_id.to_s))
@@ -84,16 +84,16 @@ module Fastly
       # form parameters
       form_params = opts[:form_params] || {}
       form_params['name'] = opts[:'name'] if !opts[:'name'].nil?
-      form_params['dynamic'] = opts[:'dynamic'] if !opts[:'dynamic'].nil?
       form_params['type'] = opts[:'type'] if !opts[:'type'].nil?
       form_params['content'] = opts[:'content'] if !opts[:'content'].nil?
       form_params['priority'] = opts[:'priority'] if !opts[:'priority'].nil?
+      form_params['dynamic'] = opts[:'dynamic'] if !opts[:'dynamic'].nil?
 
       # http body (model)
       post_body = opts[:debug_body]
 
       # return_type
-      return_type = opts[:debug_return_type] || 'SnippetResponse'
+      return_type = opts[:debug_return_type] || 'SnippetResponsePost'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['token']
@@ -496,10 +496,10 @@ module Fastly
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
     # @option opts [String] :snippet_id Alphanumeric string identifying a VCL Snippet. (required)
     # @option opts [String] :name The name for the snippet.
-    # @option opts [String] :dynamic Sets the snippet version.
     # @option opts [String] :type The location in generated VCL where the snippet should be placed.
     # @option opts [String] :content The VCL code that specifies exactly what the snippet does.
     # @option opts [String] :priority Priority determines execution order. Lower numbers execute first. (default to '100')
+    # @option opts [String] :dynamic Sets the snippet version.
     # @return [SnippetResponse]
     def update_snippet_dynamic(opts = {})
       data, _status_code, _headers = update_snippet_dynamic_with_http_info(opts)
@@ -511,10 +511,10 @@ module Fastly
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
     # @option opts [String] :snippet_id Alphanumeric string identifying a VCL Snippet. (required)
     # @option opts [String] :name The name for the snippet.
-    # @option opts [String] :dynamic Sets the snippet version.
     # @option opts [String] :type The location in generated VCL where the snippet should be placed.
     # @option opts [String] :content The VCL code that specifies exactly what the snippet does.
     # @option opts [String] :priority Priority determines execution order. Lower numbers execute first. (default to '100')
+    # @option opts [String] :dynamic Sets the snippet version.
     # @return [Array<(SnippetResponse, Integer, Hash)>] SnippetResponse data, response status code and response headers
     def update_snippet_dynamic_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -531,13 +531,13 @@ module Fastly
       if @api_client.config.client_side_validation && snippet_id.nil?
         fail ArgumentError, "Missing the required parameter 'snippet_id' when calling SnippetApi.update_snippet_dynamic"
       end
-      allowable_values = ["0", "1"]
-      if @api_client.config.client_side_validation && opts[:'dynamic'] && !allowable_values.include?(opts[:'dynamic'])
-        fail ArgumentError, "invalid value for \"dynamic\", must be one of #{allowable_values}"
-      end
       allowable_values = ["init", "recv", "hash", "hit", "miss", "pass", "fetch", "error", "deliver", "log", "none"]
       if @api_client.config.client_side_validation && opts[:'type'] && !allowable_values.include?(opts[:'type'])
         fail ArgumentError, "invalid value for \"type\", must be one of #{allowable_values}"
+      end
+      allowable_values = ["0", "1"]
+      if @api_client.config.client_side_validation && opts[:'dynamic'] && !allowable_values.include?(opts[:'dynamic'])
+        fail ArgumentError, "invalid value for \"dynamic\", must be one of #{allowable_values}"
       end
       # resource path
       local_var_path = '/service/{service_id}/snippet/{snippet_id}'.sub('{' + 'service_id' + '}', CGI.escape(service_id.to_s)).sub('{' + 'snippet_id' + '}', CGI.escape(snippet_id.to_s))
@@ -558,10 +558,10 @@ module Fastly
       # form parameters
       form_params = opts[:form_params] || {}
       form_params['name'] = opts[:'name'] if !opts[:'name'].nil?
-      form_params['dynamic'] = opts[:'dynamic'] if !opts[:'dynamic'].nil?
       form_params['type'] = opts[:'type'] if !opts[:'type'].nil?
       form_params['content'] = opts[:'content'] if !opts[:'content'].nil?
       form_params['priority'] = opts[:'priority'] if !opts[:'priority'].nil?
+      form_params['dynamic'] = opts[:'dynamic'] if !opts[:'dynamic'].nil?
 
       # http body (model)
       post_body = opts[:debug_body]

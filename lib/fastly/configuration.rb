@@ -3440,6 +3440,12 @@ module Fastly
           description: "No description provided",
           }
         ],
+        "WholePlatformDdosHistoricalApi.get_platform_ddos_historical": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
       }
     end
 

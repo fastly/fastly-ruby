@@ -12,74 +12,35 @@ require 'date'
 require 'time'
 
 module Fastly
-  class SchemasSnippetResponse
-    # The name for the snippet.
-    attr_accessor :name
+  # The results of the query, optionally filtered and grouped over the requested timespan.
+  class ValuesDdos
+    # For HTTP/2, the number of connections the limit-streams action was applied to. The limit-streams action caps the allowed number of concurrent streams in a connection.
+    attr_accessor :ddos_action_limit_streams_connections
 
-    # The location in generated VCL where the snippet should be placed.
-    attr_accessor :type
+    # For HTTP/2, the number of requests made on a connection for which the limit-streams action was taken. The limit-streams action caps the allowed number of concurrent streams in a connection.
+    attr_accessor :ddos_action_limit_streams_requests
 
-    # The VCL code that specifies exactly what the snippet does.
-    attr_accessor :content
+    # The number of times the tarpit-accept action was taken. The tarpit-accept action adds a delay when accepting future connections.
+    attr_accessor :ddos_action_tarpit_accept
 
-    # Priority determines execution order. Lower numbers execute first.
-    attr_accessor :priority
+    # The number of times the tarpit action was taken. The tarpit action delays writing the response to the client.
+    attr_accessor :ddos_action_tarpit
 
-    # Sets the snippet version.
-    attr_accessor :dynamic
+    # The number of times the close action was taken. The close action aborts the connection as soon as possible. The close action takes effect either right after accept, right after the client hello, or right after the response was sent.
+    attr_accessor :ddos_action_close
 
-    # Date and time in ISO 8601 format.
-    attr_accessor :created_at
-
-    # Date and time in ISO 8601 format.
-    attr_accessor :deleted_at
-
-    # Date and time in ISO 8601 format.
-    attr_accessor :updated_at
-
-    attr_accessor :service_id
-
-    # String representing the number identifying a version of the service.
-    attr_accessor :version
-
-    attr_accessor :id
-
-    class EnumAttributeValidator
-      attr_reader :datatype
-      attr_reader :allowable_values
-
-      def initialize(datatype, allowable_values)
-        @allowable_values = allowable_values.map do |value|
-          case datatype.to_s
-          when /Integer/i
-            value.to_i
-          when /Float/i
-            value.to_f
-          else
-            value
-          end
-        end
-      end
-
-      def valid?(value)
-        !value || allowable_values.include?(value)
-      end
-    end
+    # The number of times the blackhole action was taken. The blackhole action quietly closes a TCP connection without sending a reset. The blackhole action quietly closes a TCP connection without notifying its peer (all TCP state is dropped).
+    attr_accessor :ddos_action_blackhole
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'name' => :'name',
-        :'type' => :'type',
-        :'content' => :'content',
-        :'priority' => :'priority',
-        :'dynamic' => :'dynamic',
-        :'created_at' => :'created_at',
-        :'deleted_at' => :'deleted_at',
-        :'updated_at' => :'updated_at',
-        :'service_id' => :'service_id',
-        :'version' => :'version',
-        :'id' => :'id'
+        :'ddos_action_limit_streams_connections' => :'ddos_action_limit_streams_connections',
+        :'ddos_action_limit_streams_requests' => :'ddos_action_limit_streams_requests',
+        :'ddos_action_tarpit_accept' => :'ddos_action_tarpit_accept',
+        :'ddos_action_tarpit' => :'ddos_action_tarpit',
+        :'ddos_action_close' => :'ddos_action_close',
+        :'ddos_action_blackhole' => :'ddos_action_blackhole'
       }
     end
 
@@ -91,96 +52,58 @@ module Fastly
     # Attribute type mapping.
     def self.fastly_types
       {
-        :'name' => :'String',
-        :'type' => :'String',
-        :'content' => :'String',
-        :'priority' => :'String',
-        :'dynamic' => :'String',
-        :'created_at' => :'Time',
-        :'deleted_at' => :'Time',
-        :'updated_at' => :'Time',
-        :'service_id' => :'String',
-        :'version' => :'String',
-        :'id' => :'String'
+        :'ddos_action_limit_streams_connections' => :'Integer',
+        :'ddos_action_limit_streams_requests' => :'Integer',
+        :'ddos_action_tarpit_accept' => :'Integer',
+        :'ddos_action_tarpit' => :'Integer',
+        :'ddos_action_close' => :'Integer',
+        :'ddos_action_blackhole' => :'Integer'
       }
     end
 
     # List of attributes with nullable: true
     def self.fastly_nullable
       Set.new([
-        :'created_at',
-        :'deleted_at',
-        :'updated_at',
       ])
-    end
-
-    # List of class defined in allOf (OpenAPI v3)
-    def self.fastly_all_of
-      [
-      :'SchemasSnippetResponseCommon',
-      :'Snippet'
-      ]
     end
 
     # Initializes the object
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Fastly::SchemasSnippetResponse` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Fastly::ValuesDdos` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `Fastly::SchemasSnippetResponse`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `Fastly::ValuesDdos`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'name')
-        self.name = attributes[:'name']
+      if attributes.key?(:'ddos_action_limit_streams_connections')
+        self.ddos_action_limit_streams_connections = attributes[:'ddos_action_limit_streams_connections']
       end
 
-      if attributes.key?(:'type')
-        self.type = attributes[:'type']
+      if attributes.key?(:'ddos_action_limit_streams_requests')
+        self.ddos_action_limit_streams_requests = attributes[:'ddos_action_limit_streams_requests']
       end
 
-      if attributes.key?(:'content')
-        self.content = attributes[:'content']
+      if attributes.key?(:'ddos_action_tarpit_accept')
+        self.ddos_action_tarpit_accept = attributes[:'ddos_action_tarpit_accept']
       end
 
-      if attributes.key?(:'priority')
-        self.priority = attributes[:'priority']
-      else
-        self.priority = '100'
+      if attributes.key?(:'ddos_action_tarpit')
+        self.ddos_action_tarpit = attributes[:'ddos_action_tarpit']
       end
 
-      if attributes.key?(:'dynamic')
-        self.dynamic = attributes[:'dynamic']
+      if attributes.key?(:'ddos_action_close')
+        self.ddos_action_close = attributes[:'ddos_action_close']
       end
 
-      if attributes.key?(:'created_at')
-        self.created_at = attributes[:'created_at']
-      end
-
-      if attributes.key?(:'deleted_at')
-        self.deleted_at = attributes[:'deleted_at']
-      end
-
-      if attributes.key?(:'updated_at')
-        self.updated_at = attributes[:'updated_at']
-      end
-
-      if attributes.key?(:'service_id')
-        self.service_id = attributes[:'service_id']
-      end
-
-      if attributes.key?(:'version')
-        self.version = attributes[:'version']
-      end
-
-      if attributes.key?(:'id')
-        self.id = attributes[:'id']
+      if attributes.key?(:'ddos_action_blackhole')
+        self.ddos_action_blackhole = attributes[:'ddos_action_blackhole']
       end
     end
 
@@ -194,31 +117,7 @@ module Fastly
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      type_validator = EnumAttributeValidator.new('String', ["init", "recv", "hash", "hit", "miss", "pass", "fetch", "error", "deliver", "log", "none"])
-      return false unless type_validator.valid?(@type)
-      dynamic_validator = EnumAttributeValidator.new('String', ["0", "1"])
-      return false unless dynamic_validator.valid?(@dynamic)
       true
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] type Object to be assigned
-    def type=(type)
-      validator = EnumAttributeValidator.new('String', ["init", "recv", "hash", "hit", "miss", "pass", "fetch", "error", "deliver", "log", "none"])
-      unless validator.valid?(type)
-        fail ArgumentError, "invalid value for \"type\", must be one of #{validator.allowable_values}."
-      end
-      @type = type
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] dynamic Object to be assigned
-    def dynamic=(dynamic)
-      validator = EnumAttributeValidator.new('String', ["0", "1"])
-      unless validator.valid?(dynamic)
-        fail ArgumentError, "invalid value for \"dynamic\", must be one of #{validator.allowable_values}."
-      end
-      @dynamic = dynamic
     end
 
     # Checks equality by comparing each attribute.
@@ -226,17 +125,12 @@ module Fastly
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          name == o.name &&
-          type == o.type &&
-          content == o.content &&
-          priority == o.priority &&
-          dynamic == o.dynamic &&
-          created_at == o.created_at &&
-          deleted_at == o.deleted_at &&
-          updated_at == o.updated_at &&
-          service_id == o.service_id &&
-          version == o.version &&
-          id == o.id
+          ddos_action_limit_streams_connections == o.ddos_action_limit_streams_connections &&
+          ddos_action_limit_streams_requests == o.ddos_action_limit_streams_requests &&
+          ddos_action_tarpit_accept == o.ddos_action_tarpit_accept &&
+          ddos_action_tarpit == o.ddos_action_tarpit &&
+          ddos_action_close == o.ddos_action_close &&
+          ddos_action_blackhole == o.ddos_action_blackhole
     end
 
     # @see the `==` method
@@ -248,7 +142,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, type, content, priority, dynamic, created_at, deleted_at, updated_at, service_id, version, id].hash
+      [ddos_action_limit_streams_connections, ddos_action_limit_streams_requests, ddos_action_tarpit_accept, ddos_action_tarpit, ddos_action_close, ddos_action_blackhole].hash
     end
 
     # Builds the object from hash

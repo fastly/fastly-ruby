@@ -17,8 +17,8 @@ module Fastly
     def initialize(api_client = ApiClient.default)
       @api_client = api_client
     end
-    # Create an kv store.
-    # Create a new kv store.
+    # Create a KV store.
+    # Create a new KV store.
     # @option opts [String] :location 
     # @option opts [Store] :store 
     # @return [StoreResponse]
@@ -27,8 +27,8 @@ module Fastly
       data
     end
 
-    # Create an kv store.
-    # Create a new kv store.
+    # Create a KV store.
+    # Create a new KV store.
     # @option opts [String] :location 
     # @option opts [Store] :store 
     # @return [Array<(StoreResponse, Integer, Hash)>] StoreResponse data, response status code and response headers
@@ -83,8 +83,8 @@ module Fastly
       return data, status_code, headers
     end
 
-    # Delete an kv store.
-    # An kv store must be empty before it can be deleted.  Deleting an kv store that still contains keys will result in a `409` (Conflict).
+    # Delete a KV store.
+    # A KV store must be empty before it can be deleted.  Deleting a KV store that still contains keys will result in a `409` (Conflict).
     # @option opts [String] :store_id  (required)
     # @return [nil]
     def delete_store(opts = {})
@@ -92,8 +92,8 @@ module Fastly
       nil
     end
 
-    # Delete an kv store.
-    # An kv store must be empty before it can be deleted.  Deleting an kv store that still contains keys will result in a &#x60;409&#x60; (Conflict).
+    # Delete a KV store.
+    # A KV store must be empty before it can be deleted.  Deleting a KV store that still contains keys will result in a &#x60;409&#x60; (Conflict).
     # @option opts [String] :store_id  (required)
     # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def delete_store_with_http_info(opts = {})
@@ -144,8 +144,8 @@ module Fastly
       return data, status_code, headers
     end
 
-    # Describe an kv store.
-    # Get an kv store by ID.
+    # Describe a KV store.
+    # Get a KV store by ID.
     # @option opts [String] :store_id  (required)
     # @return [StoreResponse]
     def get_store(opts = {})
@@ -153,8 +153,8 @@ module Fastly
       data
     end
 
-    # Describe an kv store.
-    # Get an kv store by ID.
+    # Describe a KV store.
+    # Get a KV store by ID.
     # @option opts [String] :store_id  (required)
     # @return [Array<(StoreResponse, Integer, Hash)>] StoreResponse data, response status code and response headers
     def get_store_with_http_info(opts = {})
@@ -207,7 +207,7 @@ module Fastly
       return data, status_code, headers
     end
 
-    # List kv stores.
+    # List KV stores.
     # Get all stores for a given customer.
     # @option opts [String] :cursor 
     # @option opts [Integer] :limit  (default to 100)
@@ -217,7 +217,7 @@ module Fastly
       data
     end
 
-    # List kv stores.
+    # List KV stores.
     # Get all stores for a given customer.
     # @option opts [String] :cursor 
     # @option opts [Integer] :limit  (default to 100)

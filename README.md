@@ -8,7 +8,7 @@ A Ruby client library for interacting with most facets of the [Fastly API](https
 To install via RubyGems, add the following to your project's `Gemfile`:
 
 ```ruby
-gem 'fastly', '~> 7.1.1'
+gem 'fastly', '~> 7.2.0'
 ```
 
 Then run `bundle install`.
@@ -227,10 +227,10 @@ Class | Method | Description
 [*Fastly::InvitationsApi*](docs/InvitationsApi.md) | [**create_invitation**](docs/InvitationsApi.md#create_invitation) | Create an invitation
 [*Fastly::InvitationsApi*](docs/InvitationsApi.md) | [**delete_invitation**](docs/InvitationsApi.md#delete_invitation) | Delete an invitation
 [*Fastly::InvitationsApi*](docs/InvitationsApi.md) | [**list_invitations**](docs/InvitationsApi.md#list_invitations) | List invitations
-[*Fastly::KvStoreApi*](docs/KvStoreApi.md) | [**create_store**](docs/KvStoreApi.md#create_store) | Create an kv store.
-[*Fastly::KvStoreApi*](docs/KvStoreApi.md) | [**delete_store**](docs/KvStoreApi.md#delete_store) | Delete an kv store.
-[*Fastly::KvStoreApi*](docs/KvStoreApi.md) | [**get_store**](docs/KvStoreApi.md#get_store) | Describe an kv store.
-[*Fastly::KvStoreApi*](docs/KvStoreApi.md) | [**get_stores**](docs/KvStoreApi.md#get_stores) | List kv stores.
+[*Fastly::KvStoreApi*](docs/KvStoreApi.md) | [**create_store**](docs/KvStoreApi.md#create_store) | Create a KV store.
+[*Fastly::KvStoreApi*](docs/KvStoreApi.md) | [**delete_store**](docs/KvStoreApi.md#delete_store) | Delete a KV store.
+[*Fastly::KvStoreApi*](docs/KvStoreApi.md) | [**get_store**](docs/KvStoreApi.md#get_store) | Describe a KV store.
+[*Fastly::KvStoreApi*](docs/KvStoreApi.md) | [**get_stores**](docs/KvStoreApi.md#get_stores) | List KV stores.
 [*Fastly::KvStoreItemApi*](docs/KvStoreItemApi.md) | [**delete_key_from_store**](docs/KvStoreItemApi.md#delete_key_from_store) | Delete kv store item.
 [*Fastly::KvStoreItemApi*](docs/KvStoreItemApi.md) | [**get_keys**](docs/KvStoreItemApi.md#get_keys) | List kv store keys.
 [*Fastly::KvStoreItemApi*](docs/KvStoreItemApi.md) | [**get_value_for_key**](docs/KvStoreItemApi.md#get_value_for_key) | Get the value of an kv store item
@@ -588,6 +588,7 @@ Class | Method | Description
 [*Fastly::WafRulesApi*](docs/WafRulesApi.md) | [**get_waf_rule**](docs/WafRulesApi.md#get_waf_rule) | Get a rule
 [*Fastly::WafRulesApi*](docs/WafRulesApi.md) | [**list_waf_rules**](docs/WafRulesApi.md#list_waf_rules) | List available WAF rules
 [*Fastly::WafTagsApi*](docs/WafTagsApi.md) | [**list_waf_tags**](docs/WafTagsApi.md#list_waf_tags) | List tags
+[*Fastly::WholePlatformDdosHistoricalApi*](docs/WholePlatformDdosHistoricalApi.md) | [**get_platform_ddos_historical**](docs/WholePlatformDdosHistoricalApi.md#get_platform_ddos_historical) | Get historical DDoS metrics for the entire Fastly platform
 
 
 ## Issues

@@ -1,4 +1,4 @@
-# Fastly::SchemasSnippetResponse
+# Fastly::SnippetResponsePost
 
 ## Properties
 
@@ -8,7 +8,7 @@
 | **type** | **String** | The location in generated VCL where the snippet should be placed. | [optional] |
 | **content** | **String** | The VCL code that specifies exactly what the snippet does. | [optional] |
 | **priority** | **String** | Priority determines execution order. Lower numbers execute first. | [optional][default to &#39;100&#39;] |
-| **dynamic** | **String** | Sets the snippet version. | [optional] |
+| **dynamic** | **Float** | Sets the snippet version. | [optional] |
 | **created_at** | **Time** | Date and time in ISO 8601 format. | [optional][readonly] |
 | **deleted_at** | **Time** | Date and time in ISO 8601 format. | [optional][readonly] |
 | **updated_at** | **Time** | Date and time in ISO 8601 format. | [optional][readonly] |

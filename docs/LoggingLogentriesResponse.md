@@ -10,7 +10,7 @@
 | **format** | **String** | A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). | [optional][default to &#39;%h %l %u %t \&quot;%r\&quot; %&amp;gt;s %b&#39;] |
 | **format_version** | **String** | The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in `vcl_log` if `format_version` is set to `2` and in `vcl_deliver` if `format_version` is set to `1`.  | [optional][default to &#39;2&#39;] |
 | **port** | **Integer** | The port number. | [optional][default to 20000] |
-| **token** | **String** | Use token based authentication ([https://logentries.com/doc/input-token/](https://logentries.com/doc/input-token/)). | [optional] |
+| **token** | **String** | Use token based authentication. | [optional] |
 | **use_tls** | [**LoggingUseTls**](LoggingUseTls.md) |  | [optional][default to LoggingUseTls::no_tls] |
 | **region** | **String** | The region to which to stream logs. | [optional] |
 | **created_at** | **Time** | Date and time in ISO 8601 format. | [optional][readonly] |

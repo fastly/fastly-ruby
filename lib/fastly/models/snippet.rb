@@ -16,9 +16,6 @@ module Fastly
     # The name for the snippet.
     attr_accessor :name
 
-    # Sets the snippet version.
-    attr_accessor :dynamic
-
     # The location in generated VCL where the snippet should be placed.
     attr_accessor :type
 
@@ -27,6 +24,9 @@ module Fastly
 
     # Priority determines execution order. Lower numbers execute first.
     attr_accessor :priority
+
+    # Sets the snippet version.
+    attr_accessor :dynamic
 
     class EnumAttributeValidator
       attr_reader :datatype
@@ -54,10 +54,10 @@ module Fastly
     def self.attribute_map
       {
         :'name' => :'name',
-        :'dynamic' => :'dynamic',
         :'type' => :'type',
         :'content' => :'content',
-        :'priority' => :'priority'
+        :'priority' => :'priority',
+        :'dynamic' => :'dynamic'
       }
     end
 
@@ -70,10 +70,10 @@ module Fastly
     def self.fastly_types
       {
         :'name' => :'String',
-        :'dynamic' => :'String',
         :'type' => :'String',
         :'content' => :'String',
-        :'priority' => :'String'
+        :'priority' => :'String',
+        :'dynamic' => :'String'
       }
     end
 
@@ -81,6 +81,14 @@ module Fastly
     def self.fastly_nullable
       Set.new([
       ])
+    end
+
+    # List of class defined in allOf (OpenAPI v3)
+    def self.fastly_all_of
+      [
+      :'SnippetAllOf',
+      :'SnippetCommon'
+      ]
     end
 
     # Initializes the object
@@ -102,10 +110,6 @@ module Fastly
         self.name = attributes[:'name']
       end
 
-      if attributes.key?(:'dynamic')
-        self.dynamic = attributes[:'dynamic']
-      end
-
       if attributes.key?(:'type')
         self.type = attributes[:'type']
       end
@@ -119,6 +123,10 @@ module Fastly
       else
         self.priority = '100'
       end
+
+      if attributes.key?(:'dynamic')
+        self.dynamic = attributes[:'dynamic']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -131,21 +139,11 @@ module Fastly
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      dynamic_validator = EnumAttributeValidator.new('String', ["0", "1"])
-      return false unless dynamic_validator.valid?(@dynamic)
       type_validator = EnumAttributeValidator.new('String', ["init", "recv", "hash", "hit", "miss", "pass", "fetch", "error", "deliver", "log", "none"])
       return false unless type_validator.valid?(@type)
+      dynamic_validator = EnumAttributeValidator.new('String', ["0", "1"])
+      return false unless dynamic_validator.valid?(@dynamic)
       true
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] dynamic Object to be assigned
-    def dynamic=(dynamic)
-      validator = EnumAttributeValidator.new('String', ["0", "1"])
-      unless validator.valid?(dynamic)
-        fail ArgumentError, "invalid value for \"dynamic\", must be one of #{validator.allowable_values}."
-      end
-      @dynamic = dynamic
     end
 
     # Custom attribute writer method checking allowed values (enum).
@@ -158,16 +156,26 @@ module Fastly
       @type = type
     end
 
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] dynamic Object to be assigned
+    def dynamic=(dynamic)
+      validator = EnumAttributeValidator.new('String', ["0", "1"])
+      unless validator.valid?(dynamic)
+        fail ArgumentError, "invalid value for \"dynamic\", must be one of #{validator.allowable_values}."
+      end
+      @dynamic = dynamic
+    end
+
     # Checks equality by comparing each attribute.
     # @param [Object] Object to be compared
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
           name == o.name &&
-          dynamic == o.dynamic &&
           type == o.type &&
           content == o.content &&
-          priority == o.priority
+          priority == o.priority &&
+          dynamic == o.dynamic
     end
 
     # @see the `==` method
@@ -179,7 +187,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, dynamic, type, content, priority].hash
+      [name, type, content, priority, dynamic].hash
     end
 
     # Builds the object from hash

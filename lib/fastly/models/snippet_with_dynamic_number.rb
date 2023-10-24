@@ -12,7 +12,7 @@ require 'date'
 require 'time'
 
 module Fastly
-  class SchemasSnippetResponse
+  class SnippetWithDynamicNumber
     # The name for the snippet.
     attr_accessor :name
 
@@ -27,22 +27,6 @@ module Fastly
 
     # Sets the snippet version.
     attr_accessor :dynamic
-
-    # Date and time in ISO 8601 format.
-    attr_accessor :created_at
-
-    # Date and time in ISO 8601 format.
-    attr_accessor :deleted_at
-
-    # Date and time in ISO 8601 format.
-    attr_accessor :updated_at
-
-    attr_accessor :service_id
-
-    # String representing the number identifying a version of the service.
-    attr_accessor :version
-
-    attr_accessor :id
 
     class EnumAttributeValidator
       attr_reader :datatype
@@ -73,13 +57,7 @@ module Fastly
         :'type' => :'type',
         :'content' => :'content',
         :'priority' => :'priority',
-        :'dynamic' => :'dynamic',
-        :'created_at' => :'created_at',
-        :'deleted_at' => :'deleted_at',
-        :'updated_at' => :'updated_at',
-        :'service_id' => :'service_id',
-        :'version' => :'version',
-        :'id' => :'id'
+        :'dynamic' => :'dynamic'
       }
     end
 
@@ -95,30 +73,21 @@ module Fastly
         :'type' => :'String',
         :'content' => :'String',
         :'priority' => :'String',
-        :'dynamic' => :'String',
-        :'created_at' => :'Time',
-        :'deleted_at' => :'Time',
-        :'updated_at' => :'Time',
-        :'service_id' => :'String',
-        :'version' => :'String',
-        :'id' => :'String'
+        :'dynamic' => :'Float'
       }
     end
 
     # List of attributes with nullable: true
     def self.fastly_nullable
       Set.new([
-        :'created_at',
-        :'deleted_at',
-        :'updated_at',
       ])
     end
 
     # List of class defined in allOf (OpenAPI v3)
     def self.fastly_all_of
       [
-      :'SchemasSnippetResponseCommon',
-      :'Snippet'
+      :'SnippetCommon',
+      :'SnippetWithDynamicNumberAllOf'
       ]
     end
 
@@ -126,13 +95,13 @@ module Fastly
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Fastly::SchemasSnippetResponse` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Fastly::SnippetWithDynamicNumber` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `Fastly::SchemasSnippetResponse`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `Fastly::SnippetWithDynamicNumber`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
@@ -158,30 +127,6 @@ module Fastly
       if attributes.key?(:'dynamic')
         self.dynamic = attributes[:'dynamic']
       end
-
-      if attributes.key?(:'created_at')
-        self.created_at = attributes[:'created_at']
-      end
-
-      if attributes.key?(:'deleted_at')
-        self.deleted_at = attributes[:'deleted_at']
-      end
-
-      if attributes.key?(:'updated_at')
-        self.updated_at = attributes[:'updated_at']
-      end
-
-      if attributes.key?(:'service_id')
-        self.service_id = attributes[:'service_id']
-      end
-
-      if attributes.key?(:'version')
-        self.version = attributes[:'version']
-      end
-
-      if attributes.key?(:'id')
-        self.id = attributes[:'id']
-      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -196,7 +141,7 @@ module Fastly
     def valid?
       type_validator = EnumAttributeValidator.new('String', ["init", "recv", "hash", "hit", "miss", "pass", "fetch", "error", "deliver", "log", "none"])
       return false unless type_validator.valid?(@type)
-      dynamic_validator = EnumAttributeValidator.new('String', ["0", "1"])
+      dynamic_validator = EnumAttributeValidator.new('Float', [0, 1])
       return false unless dynamic_validator.valid?(@dynamic)
       true
     end
@@ -214,7 +159,7 @@ module Fastly
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] dynamic Object to be assigned
     def dynamic=(dynamic)
-      validator = EnumAttributeValidator.new('String', ["0", "1"])
+      validator = EnumAttributeValidator.new('Float', [0, 1])
       unless validator.valid?(dynamic)
         fail ArgumentError, "invalid value for \"dynamic\", must be one of #{validator.allowable_values}."
       end
@@ -230,13 +175,7 @@ module Fastly
           type == o.type &&
           content == o.content &&
           priority == o.priority &&
-          dynamic == o.dynamic &&
-          created_at == o.created_at &&
-          deleted_at == o.deleted_at &&
-          updated_at == o.updated_at &&
-          service_id == o.service_id &&
-          version == o.version &&
-          id == o.id
+          dynamic == o.dynamic
     end
 
     # @see the `==` method
@@ -248,7 +187,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, type, content, priority, dynamic, created_at, deleted_at, updated_at, service_id, version, id].hash
+      [name, type, content, priority, dynamic].hash
     end
 
     # Builds the object from hash

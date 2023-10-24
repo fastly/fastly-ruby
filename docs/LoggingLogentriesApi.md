@@ -38,7 +38,7 @@ opts = {
     format: 'format_example', # String | A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats).
     format_version: 1, # Integer | The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in `vcl_log` if `format_version` is set to `2` and in `vcl_deliver` if `format_version` is set to `1`. 
     port: 56, # Integer | The port number.
-    token: 'token_example', # String | Use token based authentication ([https://logentries.com/doc/input-token/](https://logentries.com/doc/input-token/)).
+    token: 'token_example', # String | Use token based authentication.
     use_tls: Fastly::LoggingUseTls::no_tls, # LoggingUseTls | 
     region: 'US', # String | The region to which to stream logs.
 }
@@ -64,7 +64,7 @@ end
 | **format** | **String** | A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). | [optional][default to &#39;%h %l %u %t \&quot;%r\&quot; %&amp;gt;s %b&#39;] |
 | **format_version** | **Integer** | The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in `vcl_log` if `format_version` is set to `2` and in `vcl_deliver` if `format_version` is set to `1`.  | [optional][default to FORMAT_VERSION::v2] |
 | **port** | **Integer** | The port number. | [optional][default to 20000] |
-| **token** | **String** | Use token based authentication ([https://logentries.com/doc/input-token/](https://logentries.com/doc/input-token/)). | [optional] |
+| **token** | **String** | Use token based authentication. | [optional] |
 | **use_tls** | [**LoggingUseTls**](LoggingUseTls.md) |  | [optional][default to LoggingUseTls::no_tls] |
 | **region** | **String** | The region to which to stream logs. | [optional] |
 
@@ -217,7 +217,7 @@ opts = {
     format: 'format_example', # String | A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats).
     format_version: 1, # Integer | The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in `vcl_log` if `format_version` is set to `2` and in `vcl_deliver` if `format_version` is set to `1`. 
     port: 56, # Integer | The port number.
-    token: 'token_example', # String | Use token based authentication ([https://logentries.com/doc/input-token/](https://logentries.com/doc/input-token/)).
+    token: 'token_example', # String | Use token based authentication.
     use_tls: Fastly::LoggingUseTls::no_tls, # LoggingUseTls | 
     region: 'US', # String | The region to which to stream logs.
 }
@@ -244,7 +244,7 @@ end
 | **format** | **String** | A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). | [optional][default to &#39;%h %l %u %t \&quot;%r\&quot; %&amp;gt;s %b&#39;] |
 | **format_version** | **Integer** | The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in `vcl_log` if `format_version` is set to `2` and in `vcl_deliver` if `format_version` is set to `1`.  | [optional][default to FORMAT_VERSION::v2] |
 | **port** | **Integer** | The port number. | [optional][default to 20000] |
-| **token** | **String** | Use token based authentication ([https://logentries.com/doc/input-token/](https://logentries.com/doc/input-token/)). | [optional] |
+| **token** | **String** | Use token based authentication. | [optional] |
 | **use_tls** | [**LoggingUseTls**](LoggingUseTls.md) |  | [optional][default to LoggingUseTls::no_tls] |
 | **region** | **String** | The region to which to stream logs. | [optional] |
 

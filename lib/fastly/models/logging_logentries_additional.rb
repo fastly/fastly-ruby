@@ -16,7 +16,7 @@ module Fastly
     # The port number.
     attr_accessor :port
 
-    # Use token based authentication ([https://logentries.com/doc/input-token/](https://logentries.com/doc/input-token/)).
+    # Use token based authentication.
     attr_accessor :token
 
     attr_accessor :use_tls

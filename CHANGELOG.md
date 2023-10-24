@@ -1,5 +1,16 @@
 # Changelog
 
+## [v7.2.0](https://github.com/fastly/fastly-ruby/releases/tag/release/v7.2.0) (2023-10-24)
+
+**Enhancements:**
+
+- feat(stats): add historical DDoS metrics.
+- feat(stats): add bot challenges.
+
+**Bug fixes:**
+
+- fix(snippets): ensure POST response's dynamic field is numerical.
+
 ## [v7.1.1](https://github.com/fastly/fastly-ruby/releases/tag/release/v7.1.1) (2023-09-01)
 
 **Enhancements:**
