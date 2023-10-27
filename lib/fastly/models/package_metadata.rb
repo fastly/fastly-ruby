@@ -14,25 +14,25 @@ require 'time'
 module Fastly
   # [Package metadata](#metadata-model) that has been extracted from the uploaded package. 
   class PackageMetadata
-    # Name of the Compute@Edge package.
+    # Name of the Compute package.
     attr_accessor :name
 
-    # Description of the Compute@Edge package.
+    # Description of the Compute package.
     attr_accessor :description
 
     # A list of package authors' email addresses.
     attr_accessor :authors
 
-    # The language of the Compute@Edge package.
+    # The language of the Compute package.
     attr_accessor :language
 
-    # Size of the Compute@Edge package in bytes.
+    # Size of the Compute package in bytes.
     attr_accessor :size
 
-    # Hash of the Compute@Edge package.
+    # Hash of the Compute package.
     attr_accessor :hashsum
 
-    # Hash of the files within the Compute@Edge package.
+    # Hash of the files within the Compute package.
     attr_accessor :files_hash
 
     # Attribute mapping from ruby-style variable name to JSON key.

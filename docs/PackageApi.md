@@ -10,17 +10,17 @@ api_instance = Fastly::PackageApi.new
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
-| [**get_package**](PackageApi.md#get_package) | **GET** /service/{service_id}/version/{version_id}/package | Get details of the service&#39;s Compute@Edge package. |
-| [**put_package**](PackageApi.md#put_package) | **PUT** /service/{service_id}/version/{version_id}/package | Upload a Compute@Edge package. |
+| [**get_package**](PackageApi.md#get_package) | **GET** /service/{service_id}/version/{version_id}/package | Get details of the service&#39;s Compute package. |
+| [**put_package**](PackageApi.md#put_package) | **PUT** /service/{service_id}/version/{version_id}/package | Upload a Compute package. |
 
 
 ## `get_package()`
 
 ```ruby
-get_package(opts): <PackageResponse> # Get details of the service's Compute@Edge package.
+get_package(opts): <PackageResponse> # Get details of the service's Compute package.
 ```
 
-List detailed information about the Compute@Edge package for the specified service.
+List detailed information about the Compute package for the specified service.
 
 ### Examples
 
@@ -32,7 +32,7 @@ opts = {
 }
 
 begin
-  # Get details of the service's Compute@Edge package.
+  # Get details of the service's Compute package.
   result = api_instance.get_package(opts)
   p result
 rescue Fastly::ApiError => e
@@ -56,10 +56,10 @@ end
 ## `put_package()`
 
 ```ruby
-put_package(opts): <PackageResponse> # Upload a Compute@Edge package.
+put_package(opts): <PackageResponse> # Upload a Compute package.
 ```
 
-Upload a Compute@Edge package associated with the specified service version.
+Upload a Compute package associated with the specified service version.
 
 ### Examples
 
@@ -73,7 +73,7 @@ opts = {
 }
 
 begin
-  # Upload a Compute@Edge package.
+  # Upload a Compute package.
   result = api_instance.put_package(opts)
   p result
 rescue Fastly::ApiError => e

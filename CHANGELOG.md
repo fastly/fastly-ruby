@@ -1,5 +1,11 @@
 # Changelog
 
+## [v7.2.1](https://github.com/fastly/fastly-ruby/releases/tag/release/v7.2.1) (2023-10-27)
+
+**Documentation:**
+
+- docs: rename Compute@Edge to Compute.
+
 ## [v7.2.0](https://github.com/fastly/fastly-ruby/releases/tag/release/v7.2.0) (2023-10-24)
 
 **Enhancements:**

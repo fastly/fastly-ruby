@@ -472,43 +472,43 @@ module Fastly
     # The amount of active CPU time used to process your requests (in milliseconds).
     attr_accessor :compute_execution_time_ms
 
-    # Total header bytes received by Compute@Edge.
+    # Total header bytes received by the Compute platform.
     attr_accessor :compute_req_header_bytes
 
-    # Total body bytes received by Compute@Edge.
+    # Total body bytes received by the Compute platform.
     attr_accessor :compute_req_body_bytes
 
-    # Total header bytes sent from Compute@Edge to end user.
+    # Total header bytes sent from Compute to end user.
     attr_accessor :compute_resp_header_bytes
 
-    # Total body bytes sent from Compute@Edge to end user.
+    # Total body bytes sent from Compute to end user.
     attr_accessor :compute_resp_body_bytes
 
-    # Number of \"Informational\" category status codes delivered by Compute@Edge.
+    # Number of \"Informational\" category status codes delivered by the Compute platform.
     attr_accessor :compute_resp_status_1xx
 
-    # Number of \"Success\" category status codes delivered by Compute@Edge.
+    # Number of \"Success\" category status codes delivered by the Compute platform.
     attr_accessor :compute_resp_status_2xx
 
-    # Number of \"Redirection\" category status codes delivered by Compute@Edge.
+    # Number of \"Redirection\" category status codes delivered by the Compute platform.
     attr_accessor :compute_resp_status_3xx
 
-    # Number of \"Client Error\" category status codes delivered by Compute@Edge.
+    # Number of \"Client Error\" category status codes delivered by the Compute platform.
     attr_accessor :compute_resp_status_4xx
 
-    # Number of \"Server Error\" category status codes delivered by Compute@Edge.
+    # Number of \"Server Error\" category status codes delivered by the Compute platform.
     attr_accessor :compute_resp_status_5xx
 
-    # Total header bytes sent to backends (origins) by Compute@Edge.
+    # Total header bytes sent to backends (origins) by the Compute platform.
     attr_accessor :compute_bereq_header_bytes
 
-    # Total body bytes sent to backends (origins) by Compute@Edge.
+    # Total body bytes sent to backends (origins) by the Compute platform.
     attr_accessor :compute_bereq_body_bytes
 
-    # Total header bytes received from backends (origins) by Compute@Edge.
+    # Total header bytes received from backends (origins) by the Compute platform.
     attr_accessor :compute_beresp_header_bytes
 
-    # Total body bytes received from backends (origins) by Compute@Edge.
+    # Total body bytes received from backends (origins) by the Compute platform.
     attr_accessor :compute_beresp_body_bytes
 
     # Number of backend requests started.

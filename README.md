@@ -8,7 +8,7 @@ A Ruby client library for interacting with most facets of the [Fastly API](https
 To install via RubyGems, add the following to your project's `Gemfile`:
 
 ```ruby
-gem 'fastly', '~> 7.2.0'
+gem 'fastly', '~> 7.2.1'
 ```
 
 Then run `bundle install`.
@@ -407,8 +407,8 @@ Class | Method | Description
 [*Fastly::OriginInspectorRealtimeApi*](docs/OriginInspectorRealtimeApi.md) | [**get_origin_inspector_last120_seconds**](docs/OriginInspectorRealtimeApi.md#get_origin_inspector_last120_seconds) | Get real-time origin data for the last 120 seconds
 [*Fastly::OriginInspectorRealtimeApi*](docs/OriginInspectorRealtimeApi.md) | [**get_origin_inspector_last_max_entries**](docs/OriginInspectorRealtimeApi.md#get_origin_inspector_last_max_entries) | Get a limited number of real-time origin data entries
 [*Fastly::OriginInspectorRealtimeApi*](docs/OriginInspectorRealtimeApi.md) | [**get_origin_inspector_last_second**](docs/OriginInspectorRealtimeApi.md#get_origin_inspector_last_second) | Get real-time origin data from specific time.
-[*Fastly::PackageApi*](docs/PackageApi.md) | [**get_package**](docs/PackageApi.md#get_package) | Get details of the service's Compute@Edge package.
-[*Fastly::PackageApi*](docs/PackageApi.md) | [**put_package**](docs/PackageApi.md#put_package) | Upload a Compute@Edge package.
+[*Fastly::PackageApi*](docs/PackageApi.md) | [**get_package**](docs/PackageApi.md#get_package) | Get details of the service's Compute package.
+[*Fastly::PackageApi*](docs/PackageApi.md) | [**put_package**](docs/PackageApi.md#put_package) | Upload a Compute package.
 [*Fastly::PoolApi*](docs/PoolApi.md) | [**create_server_pool**](docs/PoolApi.md#create_server_pool) | Create a server pool
 [*Fastly::PoolApi*](docs/PoolApi.md) | [**delete_server_pool**](docs/PoolApi.md#delete_server_pool) | Delete a server pool
 [*Fastly::PoolApi*](docs/PoolApi.md) | [**get_server_pool**](docs/PoolApi.md#get_server_pool) | Get a server pool

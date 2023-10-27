@@ -17,8 +17,8 @@ module Fastly
     def initialize(api_client = ApiClient.default)
       @api_client = api_client
     end
-    # Get details of the service's Compute@Edge package.
-    # List detailed information about the Compute@Edge package for the specified service.
+    # Get details of the service's Compute package.
+    # List detailed information about the Compute package for the specified service.
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
     # @option opts [Integer] :version_id Integer identifying a service version. (required)
     # @return [PackageResponse]
@@ -27,8 +27,8 @@ module Fastly
       data
     end
 
-    # Get details of the service&#39;s Compute@Edge package.
-    # List detailed information about the Compute@Edge package for the specified service.
+    # Get details of the service&#39;s Compute package.
+    # List detailed information about the Compute package for the specified service.
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
     # @option opts [Integer] :version_id Integer identifying a service version. (required)
     # @return [Array<(PackageResponse, Integer, Hash)>] PackageResponse data, response status code and response headers
@@ -87,8 +87,8 @@ module Fastly
       return data, status_code, headers
     end
 
-    # Upload a Compute@Edge package.
-    # Upload a Compute@Edge package associated with the specified service version.
+    # Upload a Compute package.
+    # Upload a Compute package associated with the specified service version.
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
     # @option opts [Integer] :version_id Integer identifying a service version. (required)
     # @option opts [String] :expect We recommend using the Expect header because it may identify issues with the request based upon the headers alone instead of requiring you to wait until the entire binary package upload has completed.
@@ -99,8 +99,8 @@ module Fastly
       data
     end
 
-    # Upload a Compute@Edge package.
-    # Upload a Compute@Edge package associated with the specified service version.
+    # Upload a Compute package.
+    # Upload a Compute package associated with the specified service version.
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
     # @option opts [Integer] :version_id Integer identifying a service version. (required)
     # @option opts [String] :expect We recommend using the Expect header because it may identify issues with the request based upon the headers alone instead of requiring you to wait until the entire binary package upload has completed.

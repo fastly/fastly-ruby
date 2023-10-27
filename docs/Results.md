@@ -157,19 +157,19 @@
 | **compute_request_time_billed_ms** | **Float** | The total amount of request processing time you will be billed for, measured in 50 millisecond increments. | [optional] |
 | **compute_ram_used** | **Integer** | The amount of RAM used for your service by Fastly (in bytes). | [optional] |
 | **compute_execution_time_ms** | **Float** | The amount of active CPU time used to process your requests (in milliseconds). | [optional] |
-| **compute_req_header_bytes** | **Integer** | Total header bytes received by Compute@Edge. | [optional] |
-| **compute_req_body_bytes** | **Integer** | Total body bytes received by Compute@Edge. | [optional] |
-| **compute_resp_header_bytes** | **Integer** | Total header bytes sent from Compute@Edge to end user. | [optional] |
-| **compute_resp_body_bytes** | **Integer** | Total body bytes sent from Compute@Edge to end user. | [optional] |
-| **compute_resp_status_1xx** | **Integer** | Number of \&quot;Informational\&quot; category status codes delivered by Compute@Edge. | [optional] |
-| **compute_resp_status_2xx** | **Integer** | Number of \&quot;Success\&quot; category status codes delivered by Compute@Edge. | [optional] |
-| **compute_resp_status_3xx** | **Integer** | Number of \&quot;Redirection\&quot; category status codes delivered by Compute@Edge. | [optional] |
-| **compute_resp_status_4xx** | **Integer** | Number of \&quot;Client Error\&quot; category status codes delivered by Compute@Edge. | [optional] |
-| **compute_resp_status_5xx** | **Integer** | Number of \&quot;Server Error\&quot; category status codes delivered by Compute@Edge. | [optional] |
-| **compute_bereq_header_bytes** | **Integer** | Total header bytes sent to backends (origins) by Compute@Edge. | [optional] |
-| **compute_bereq_body_bytes** | **Integer** | Total body bytes sent to backends (origins) by Compute@Edge. | [optional] |
-| **compute_beresp_header_bytes** | **Integer** | Total header bytes received from backends (origins) by Compute@Edge. | [optional] |
-| **compute_beresp_body_bytes** | **Integer** | Total body bytes received from backends (origins) by Compute@Edge. | [optional] |
+| **compute_req_header_bytes** | **Integer** | Total header bytes received by the Compute platform. | [optional] |
+| **compute_req_body_bytes** | **Integer** | Total body bytes received by the Compute platform. | [optional] |
+| **compute_resp_header_bytes** | **Integer** | Total header bytes sent from Compute to end user. | [optional] |
+| **compute_resp_body_bytes** | **Integer** | Total body bytes sent from Compute to end user. | [optional] |
+| **compute_resp_status_1xx** | **Integer** | Number of \&quot;Informational\&quot; category status codes delivered by the Compute platform. | [optional] |
+| **compute_resp_status_2xx** | **Integer** | Number of \&quot;Success\&quot; category status codes delivered by the Compute platform. | [optional] |
+| **compute_resp_status_3xx** | **Integer** | Number of \&quot;Redirection\&quot; category status codes delivered by the Compute platform. | [optional] |
+| **compute_resp_status_4xx** | **Integer** | Number of \&quot;Client Error\&quot; category status codes delivered by the Compute platform. | [optional] |
+| **compute_resp_status_5xx** | **Integer** | Number of \&quot;Server Error\&quot; category status codes delivered by the Compute platform. | [optional] |
+| **compute_bereq_header_bytes** | **Integer** | Total header bytes sent to backends (origins) by the Compute platform. | [optional] |
+| **compute_bereq_body_bytes** | **Integer** | Total body bytes sent to backends (origins) by the Compute platform. | [optional] |
+| **compute_beresp_header_bytes** | **Integer** | Total header bytes received from backends (origins) by the Compute platform. | [optional] |
+| **compute_beresp_body_bytes** | **Integer** | Total body bytes received from backends (origins) by the Compute platform. | [optional] |
 | **compute_bereqs** | **Integer** | Number of backend requests started. | [optional] |
 | **compute_bereq_errors** | **Integer** | Number of backend request errors, including timeouts. | [optional] |
 | **compute_resource_limit_exceeded** | **Integer** | Number of times a guest exceeded its resource limit, includes heap, stack, globals, and code execution timeout. | [optional] |

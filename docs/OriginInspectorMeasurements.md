@@ -80,44 +80,44 @@
 | **waf_latency_5000_to_10000ms** | **Integer** | Number of responses with latency between 5,000 and 10,000 milliseconds received for origin requests made by the Fastly WAF. | [optional] |
 | **waf_latency_10000_to_60000ms** | **Integer** | Number of responses with latency between 10,000 and 60,000 milliseconds received for origin requests made by the Fastly WAF. | [optional] |
 | **waf_latency_60000ms** | **Integer** | Number of responses with latency of 60,000 milliseconds and above received for origin requests made by the Fastly WAF. | [optional] |
-| **compute_responses** | **Integer** | Number of responses for origin received by Compute@Edge. | [optional] |
-| **compute_resp_header_bytes** | **Integer** | Number of header bytes for origin received by Compute@Edge. | [optional] |
-| **compute_resp_body_bytes** | **Integer** | Number of body bytes for origin received by Compute@Edge. | [optional] |
-| **compute_status_1xx** | **Integer** | Number of 1xx \&quot;Informational\&quot; status codes for origin received by Compute@Edge. | [optional] |
-| **compute_status_2xx** | **Integer** | Number of 2xx \&quot;Success\&quot; status codes for origin received by Compute@Edge. | [optional] |
-| **compute_status_3xx** | **Integer** | Number of 3xx \&quot;Redirection\&quot; codes for origin received by Compute@Edge. | [optional] |
-| **compute_status_4xx** | **Integer** | Number of 4xx \&quot;Client Error\&quot; codes for origin received by Compute@Edge. | [optional] |
-| **compute_status_5xx** | **Integer** | Number of 5xx \&quot;Server Error\&quot; codes for origin received by Compute@Edge. | [optional] |
-| **compute_status_200** | **Integer** | Number of responses received with status code 200 (Success) for origin received by Compute@Edge. | [optional] |
-| **compute_status_204** | **Integer** | Number of responses received with status code 204 (No Content) for origin received by Compute@Edge. | [optional] |
-| **compute_status_206** | **Integer** | Number of responses received with status code 206 (Partial Content) for origin received by Compute@Edge. | [optional] |
-| **compute_status_301** | **Integer** | Number of responses received with status code 301 (Moved Permanently) for origin received by Compute@Edge. | [optional] |
-| **compute_status_302** | **Integer** | Number of responses received with status code 302 (Found) for origin received by Compute@Edge. | [optional] |
-| **compute_status_304** | **Integer** | Number of responses received with status code 304 (Not Modified) for origin received by Compute@Edge. | [optional] |
-| **compute_status_400** | **Integer** | Number of responses received with status code 400 (Bad Request) for origin received by Compute@Edge. | [optional] |
-| **compute_status_401** | **Integer** | Number of responses received with status code 401 (Unauthorized) for origin received by Compute@Edge. | [optional] |
-| **compute_status_403** | **Integer** | Number of responses received with status code 403 (Forbidden) for origin received by Compute@Edge. | [optional] |
-| **compute_status_404** | **Integer** | Number of responses received with status code 404 (Not Found) for origin received by Compute@Edge. | [optional] |
-| **compute_status_416** | **Integer** | Number of responses received with status code 416 (Range Not Satisfiable) for origin received by Compute@Edge. | [optional] |
-| **compute_status_429** | **Integer** | Number of responses received with status code 429 (Too Many Requests) for origin received by Compute@Edge. | [optional] |
-| **compute_status_500** | **Integer** | Number of responses received with status code 500 (Internal Server Error) for origin received by Compute@Edge. | [optional] |
-| **compute_status_501** | **Integer** | Number of responses received with status code 501 (Not Implemented) for origin received by Compute@Edge. | [optional] |
-| **compute_status_502** | **Integer** | Number of responses received with status code 502 (Bad Gateway) for origin received by Compute@Edge. | [optional] |
-| **compute_status_503** | **Integer** | Number of responses received with status code 503 (Service Unavailable) for origin received by Compute@Edge. | [optional] |
-| **compute_status_504** | **Integer** | Number of responses received with status code 504 (Gateway Timeout) for origin received by Compute@Edge. | [optional] |
-| **compute_status_505** | **Integer** | Number of responses received with status code 505 (HTTP Version Not Supported) for origin received by Compute@Edge. | [optional] |
-| **compute_latency_0_to_1ms** | **Integer** | Number of responses with latency between 0 and 1 millisecond for origin received by Compute@Edge. | [optional] |
-| **compute_latency_1_to_5ms** | **Integer** | Number of responses with latency between 1 and 5 milliseconds for origin received by Compute@Edge. | [optional] |
-| **compute_latency_5_to_10ms** | **Integer** | Number of responses with latency between 5 and 10 milliseconds for origin received by Compute@Edge. | [optional] |
-| **compute_latency_10_to_50ms** | **Integer** | Number of responses with latency between 10 and 50 milliseconds for origin received by Compute@Edge. | [optional] |
-| **compute_latency_50_to_100ms** | **Integer** | Number of responses with latency between 50 and 100 milliseconds for origin received by Compute@Edge. | [optional] |
-| **compute_latency_100_to_250ms** | **Integer** | Number of responses with latency between 100 and 250 milliseconds for origin received by Compute@Edge. | [optional] |
-| **compute_latency_250_to_500ms** | **Integer** | Number of responses with latency between 250 and 500 milliseconds for origin received by Compute@Edge. | [optional] |
-| **compute_latency_500_to_1000ms** | **Integer** | Number of responses with latency between 500 and 1,000 milliseconds for origin received by Compute@Edge. | [optional] |
-| **compute_latency_1000_to_5000ms** | **Integer** | Number of responses with latency between 1,000 and 5,000 milliseconds for origin received by Compute@Edge. | [optional] |
-| **compute_latency_5000_to_10000ms** | **Integer** | Number of responses with latency between 5,000 and 10,000 milliseconds for origin received by Compute@Edge. | [optional] |
-| **compute_latency_10000_to_60000ms** | **Integer** | Number of responses with latency between 10,000 and 60,000 milliseconds for origin received by Compute@Edge. | [optional] |
-| **compute_latency_60000ms** | **Integer** | Number of responses with latency of 60,000 milliseconds and above for origin received by Compute@Edge. | [optional] |
+| **compute_responses** | **Integer** | Number of responses for origin received by the Compute platform. | [optional] |
+| **compute_resp_header_bytes** | **Integer** | Number of header bytes for origin received by the Compute platform. | [optional] |
+| **compute_resp_body_bytes** | **Integer** | Number of body bytes for origin received by the Compute platform. | [optional] |
+| **compute_status_1xx** | **Integer** | Number of 1xx \&quot;Informational\&quot; status codes for origin received by the Compute platform. | [optional] |
+| **compute_status_2xx** | **Integer** | Number of 2xx \&quot;Success\&quot; status codes for origin received by the Compute platform. | [optional] |
+| **compute_status_3xx** | **Integer** | Number of 3xx \&quot;Redirection\&quot; codes for origin received by the Compute platform. | [optional] |
+| **compute_status_4xx** | **Integer** | Number of 4xx \&quot;Client Error\&quot; codes for origin received by the Compute platform. | [optional] |
+| **compute_status_5xx** | **Integer** | Number of 5xx \&quot;Server Error\&quot; codes for origin received by the Compute platform. | [optional] |
+| **compute_status_200** | **Integer** | Number of responses received with status code 200 (Success) for origin received by the Compute platform. | [optional] |
+| **compute_status_204** | **Integer** | Number of responses received with status code 204 (No Content) for origin received by the Compute platform. | [optional] |
+| **compute_status_206** | **Integer** | Number of responses received with status code 206 (Partial Content) for origin received by the Compute platform. | [optional] |
+| **compute_status_301** | **Integer** | Number of responses received with status code 301 (Moved Permanently) for origin received by the Compute platform. | [optional] |
+| **compute_status_302** | **Integer** | Number of responses received with status code 302 (Found) for origin received by the Compute platform. | [optional] |
+| **compute_status_304** | **Integer** | Number of responses received with status code 304 (Not Modified) for origin received by the Compute platform. | [optional] |
+| **compute_status_400** | **Integer** | Number of responses received with status code 400 (Bad Request) for origin received by the Compute platform. | [optional] |
+| **compute_status_401** | **Integer** | Number of responses received with status code 401 (Unauthorized) for origin received by the Compute platform. | [optional] |
+| **compute_status_403** | **Integer** | Number of responses received with status code 403 (Forbidden) for origin received by the Compute platform. | [optional] |
+| **compute_status_404** | **Integer** | Number of responses received with status code 404 (Not Found) for origin received by the Compute platform. | [optional] |
+| **compute_status_416** | **Integer** | Number of responses received with status code 416 (Range Not Satisfiable) for origin received by the Compute platform. | [optional] |
+| **compute_status_429** | **Integer** | Number of responses received with status code 429 (Too Many Requests) for origin received by the Compute platform. | [optional] |
+| **compute_status_500** | **Integer** | Number of responses received with status code 500 (Internal Server Error) for origin received by the Compute platform. | [optional] |
+| **compute_status_501** | **Integer** | Number of responses received with status code 501 (Not Implemented) for origin received by the Compute platform. | [optional] |
+| **compute_status_502** | **Integer** | Number of responses received with status code 502 (Bad Gateway) for origin received by the Compute platform. | [optional] |
+| **compute_status_503** | **Integer** | Number of responses received with status code 503 (Service Unavailable) for origin received by the Compute platform. | [optional] |
+| **compute_status_504** | **Integer** | Number of responses received with status code 504 (Gateway Timeout) for origin received by the Compute platform. | [optional] |
+| **compute_status_505** | **Integer** | Number of responses received with status code 505 (HTTP Version Not Supported) for origin received by the Compute platform. | [optional] |
+| **compute_latency_0_to_1ms** | **Integer** | Number of responses with latency between 0 and 1 millisecond for origin received by the Compute platform. | [optional] |
+| **compute_latency_1_to_5ms** | **Integer** | Number of responses with latency between 1 and 5 milliseconds for origin received by the Compute platform. | [optional] |
+| **compute_latency_5_to_10ms** | **Integer** | Number of responses with latency between 5 and 10 milliseconds for origin received by the Compute platform. | [optional] |
+| **compute_latency_10_to_50ms** | **Integer** | Number of responses with latency between 10 and 50 milliseconds for origin received by the Compute platform. | [optional] |
+| **compute_latency_50_to_100ms** | **Integer** | Number of responses with latency between 50 and 100 milliseconds for origin received by the Compute platform. | [optional] |
+| **compute_latency_100_to_250ms** | **Integer** | Number of responses with latency between 100 and 250 milliseconds for origin received by the Compute platform. | [optional] |
+| **compute_latency_250_to_500ms** | **Integer** | Number of responses with latency between 250 and 500 milliseconds for origin received by the Compute platform. | [optional] |
+| **compute_latency_500_to_1000ms** | **Integer** | Number of responses with latency between 500 and 1,000 milliseconds for origin received by the Compute platform. | [optional] |
+| **compute_latency_1000_to_5000ms** | **Integer** | Number of responses with latency between 1,000 and 5,000 milliseconds for origin received by the Compute platform. | [optional] |
+| **compute_latency_5000_to_10000ms** | **Integer** | Number of responses with latency between 5,000 and 10,000 milliseconds for origin received by the Compute platform. | [optional] |
+| **compute_latency_10000_to_60000ms** | **Integer** | Number of responses with latency between 10,000 and 60,000 milliseconds for origin received by the Compute platform. | [optional] |
+| **compute_latency_60000ms** | **Integer** | Number of responses with latency of 60,000 milliseconds and above for origin received by the Compute platform. | [optional] |
 | **all_responses** | **Integer** | Number of responses received for origin requests made by all sources. | [optional] |
 | **all_resp_header_bytes** | **Integer** | Number of header bytes received for origin requests made by all sources. | [optional] |
 | **all_resp_body_bytes** | **Integer** | Number of body bytes received for origin requests made by all sources. | [optional] |

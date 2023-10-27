@@ -129,10 +129,10 @@
 | **hit_resp_body_bytes** | **Integer** | Total body bytes delivered for cache hits. | [optional] |
 | **miss_resp_body_bytes** | **Integer** | Total body bytes delivered for cache misses. | [optional] |
 | **pass_resp_body_bytes** | **Integer** | Total body bytes delivered for cache passes. | [optional] |
-| **compute_req_header_bytes** | **Integer** | Total header bytes received by Compute@Edge. | [optional] |
-| **compute_req_body_bytes** | **Integer** | Total body bytes received by Compute@Edge. | [optional] |
-| **compute_resp_header_bytes** | **Integer** | Total header bytes sent from Compute@Edge to end user. | [optional] |
-| **compute_resp_body_bytes** | **Integer** | Total body bytes sent from Compute@Edge to end user. | [optional] |
+| **compute_req_header_bytes** | **Integer** | Total header bytes received by the Compute platform. | [optional] |
+| **compute_req_body_bytes** | **Integer** | Total body bytes received by the Compute platform. | [optional] |
+| **compute_resp_header_bytes** | **Integer** | Total header bytes sent from Compute to end user. | [optional] |
+| **compute_resp_body_bytes** | **Integer** | Total body bytes sent from Compute to end user. | [optional] |
 | **imgvideo** | **Integer** | Number of video responses that came from the Fastly Image Optimizer service. | [optional] |
 | **imgvideo_frames** | **Integer** | Number of video frames that came from the Fastly Image Optimizer service. A video frame is an individual image within a sequence of video. | [optional] |
 | **imgvideo_resp_header_bytes** | **Integer** | Total header bytes of video delivered from the Fastly Image Optimizer service. | [optional] |
@@ -159,17 +159,17 @@
 | **shield_fetch_resp_body_bytes** | **Integer** | Total response body bytes sent from a shield to the edge. | [optional] |
 | **segblock_origin_fetches** | **Integer** | Number of `Range` requests to origin for segments of resources when using segmented caching. | [optional] |
 | **segblock_shield_fetches** | **Integer** | Number of `Range` requests to a shield for segments of resources when using segmented caching. | [optional] |
-| **compute_resp_status_1xx** | **Integer** | Number of \&quot;Informational\&quot; category status codes delivered by Compute@Edge. | [optional] |
-| **compute_resp_status_2xx** | **Integer** | Number of \&quot;Success\&quot; category status codes delivered by Compute@Edge. | [optional] |
-| **compute_resp_status_3xx** | **Integer** | Number of \&quot;Redirection\&quot; category status codes delivered by Compute@Edge. | [optional] |
-| **compute_resp_status_4xx** | **Integer** | Number of \&quot;Client Error\&quot; category status codes delivered by Compute@Edge. | [optional] |
-| **compute_resp_status_5xx** | **Integer** | Number of \&quot;Server Error\&quot; category status codes delivered by Compute@Edge. | [optional] |
+| **compute_resp_status_1xx** | **Integer** | Number of \&quot;Informational\&quot; category status codes delivered by the Compute platform. | [optional] |
+| **compute_resp_status_2xx** | **Integer** | Number of \&quot;Success\&quot; category status codes delivered by the Compute platform. | [optional] |
+| **compute_resp_status_3xx** | **Integer** | Number of \&quot;Redirection\&quot; category status codes delivered by the Compute platform. | [optional] |
+| **compute_resp_status_4xx** | **Integer** | Number of \&quot;Client Error\&quot; category status codes delivered by the Compute platform. | [optional] |
+| **compute_resp_status_5xx** | **Integer** | Number of \&quot;Server Error\&quot; category status codes delivered by the Compute platform. | [optional] |
 | **edge_hit_requests** | **Integer** | Number of requests sent by end users to Fastly that resulted in a hit at the edge. | [optional] |
 | **edge_miss_requests** | **Integer** | Number of requests sent by end users to Fastly that resulted in a miss at the edge. | [optional] |
-| **compute_bereq_header_bytes** | **Integer** | Total header bytes sent to backends (origins) by Compute@Edge. | [optional] |
-| **compute_bereq_body_bytes** | **Integer** | Total body bytes sent to backends (origins) by Compute@Edge. | [optional] |
-| **compute_beresp_header_bytes** | **Integer** | Total header bytes received from backends (origins) by Compute@Edge. | [optional] |
-| **compute_beresp_body_bytes** | **Integer** | Total body bytes received from backends (origins) by Compute@Edge. | [optional] |
+| **compute_bereq_header_bytes** | **Integer** | Total header bytes sent to backends (origins) by the Compute platform. | [optional] |
+| **compute_bereq_body_bytes** | **Integer** | Total body bytes sent to backends (origins) by the Compute platform. | [optional] |
+| **compute_beresp_header_bytes** | **Integer** | Total header bytes received from backends (origins) by the Compute platform. | [optional] |
+| **compute_beresp_body_bytes** | **Integer** | Total body bytes received from backends (origins) by the Compute platform. | [optional] |
 | **origin_cache_fetches** | **Integer** | The total number of completed requests made to backends (origins) that returned cacheable content. | [optional] |
 | **shield_cache_fetches** | **Integer** | The total number of completed requests made to shields that returned cacheable content. | [optional] |
 | **compute_bereqs** | **Integer** | Number of backend requests started. | [optional] |
