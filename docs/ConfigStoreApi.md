@@ -207,7 +207,7 @@ end
 ## `list_config_stores()`
 
 ```ruby
-list_config_stores: <Array<ConfigStoreResponse>> # List config stores
+list_config_stores(opts): <Array<ConfigStoreResponse>> # List config stores
 ```
 
 List config stores.
@@ -216,10 +216,13 @@ List config stores.
 
 ```ruby
 api_instance = Fastly::ConfigStoreApi.new
+opts = {
+    name: 'name_example', # String | Returns a one-element array containing the details for the named config store.
+}
 
 begin
   # List config stores
-  result = api_instance.list_config_stores
+  result = api_instance.list_config_stores(opts)
   p result
 rescue Fastly::ApiError => e
   puts "Error when calling ConfigStoreApi->list_config_stores: #{e}"
@@ -228,7 +231,9 @@ end
 
 ### Options
 
-This endpoint does not need any parameter.
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **name** | **String** | Returns a one-element array containing the details for the named config store. | [optional] |
 
 ### Return type
 

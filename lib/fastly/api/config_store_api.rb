@@ -335,6 +335,7 @@ module Fastly
 
     # List config stores
     # List config stores.
+    # @option opts [String] :name Returns a one-element array containing the details for the named config store.
     # @return [Array<ConfigStoreResponse>]
     def list_config_stores(opts = {})
       data, _status_code, _headers = list_config_stores_with_http_info(opts)
@@ -343,6 +344,7 @@ module Fastly
 
     # List config stores
     # List config stores.
+    # @option opts [String] :name Returns a one-element array containing the details for the named config store.
     # @return [Array<(Array<ConfigStoreResponse>, Integer, Hash)>] Array<ConfigStoreResponse> data, response status code and response headers
     def list_config_stores_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -354,6 +356,7 @@ module Fastly
 
       # query parameters
       query_params = opts[:query_params] || {}
+      query_params[:'name'] = opts[:'name'] if !opts[:'name'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}
