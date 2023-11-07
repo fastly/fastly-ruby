@@ -1,5 +1,11 @@
 # Changelog
 
+## [v7.2.2](https://github.com/fastly/fastly-ruby/releases/tag/release/v7.2.2) (2023-11-07)
+
+**Enhancements:**
+
+- feat(config_store): add `name` query param to list endpoint.
+
 ## [v7.2.1](https://github.com/fastly/fastly-ruby/releases/tag/release/v7.2.1) (2023-10-27)
 
 **Documentation:**
