@@ -12,7 +12,7 @@ require 'date'
 require 'time'
 
 module Fastly
-  class HistoricalUsageAggregateResponse
+  class HistoricalUsageAggregatedResponse
     # Whether or not we were able to successfully execute the query.
     attr_accessor :status
 
@@ -21,6 +21,7 @@ module Fastly
     # If the query was not successful, this will provide a string that explains why.
     attr_accessor :msg
 
+    # Organized by *region*.
     attr_accessor :data
 
     # Attribute mapping from ruby-style variable name to JSON key.
@@ -44,7 +45,7 @@ module Fastly
         :'status' => :'String',
         :'meta' => :'HistoricalMeta',
         :'msg' => :'String',
-        :'data' => :'HistoricalUsageResults'
+        :'data' => :'Hash<String, HistoricalUsageData>'
       }
     end
 
@@ -59,7 +60,7 @@ module Fastly
     def self.fastly_all_of
       [
       :'Historical',
-      :'HistoricalUsageServiceResponseAllOf'
+      :'HistoricalUsageAggregatedResponseAllOf'
       ]
     end
 
@@ -67,13 +68,13 @@ module Fastly
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Fastly::HistoricalUsageAggregateResponse` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Fastly::HistoricalUsageAggregatedResponse` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `Fastly::HistoricalUsageAggregateResponse`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `Fastly::HistoricalUsageAggregatedResponse`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
@@ -91,7 +92,9 @@ module Fastly
       end
 
       if attributes.key?(:'data')
-        self.data = attributes[:'data']
+        if (value = attributes[:'data']).is_a?(Hash)
+          self.data = value
+        end
       end
     end
 

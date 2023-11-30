@@ -21,6 +21,7 @@ module Fastly
     # If the query was not successful, this will provide a string that explains why.
     attr_accessor :msg
 
+    # Organized by *region*.
     attr_accessor :data
 
     # Attribute mapping from ruby-style variable name to JSON key.
@@ -44,7 +45,7 @@ module Fastly
         :'status' => :'String',
         :'meta' => :'HistoricalMeta',
         :'msg' => :'String',
-        :'data' => :'HistoricalUsageResults'
+        :'data' => :'Hash<String, Hash<String, HistoricalUsageData>>'
       }
     end
 
@@ -91,7 +92,9 @@ module Fastly
       end
 
       if attributes.key?(:'data')
-        self.data = attributes[:'data']
+        if (value = attributes[:'data']).is_a?(Hash)
+          self.data = value
+        end
       end
     end
 

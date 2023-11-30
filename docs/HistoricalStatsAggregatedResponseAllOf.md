@@ -1,10 +1,10 @@
-# Fastly::HistoricalFieldResponseDataField
+# Fastly::HistoricalStatsAggregatedResponseAllOf
 
 ## Properties
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **data** | **Hash&lt;String, Array&gt;** |  | [optional] |
+| **data** | [**Array&lt;Results&gt;**](Results.md) |  | [optional] |
 
 [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
 

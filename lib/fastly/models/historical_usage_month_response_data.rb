@@ -15,8 +15,10 @@ module Fastly
   class HistoricalUsageMonthResponseData
     attr_accessor :customer_id
 
+    # Organized by *service id*.
     attr_accessor :services
 
+    # Organized by *region*.
     attr_accessor :total
 
     # Attribute mapping from ruby-style variable name to JSON key.
@@ -37,8 +39,8 @@ module Fastly
     def self.fastly_types
       {
         :'customer_id' => :'String',
-        :'services' => :'Hash<String, HistoricalService>',
-        :'total' => :'HistoricalUsageResults'
+        :'services' => :'Hash<String, HistoricalUsageService>',
+        :'total' => :'Hash<String, HistoricalUsageData>'
       }
     end
 
@@ -74,7 +76,9 @@ module Fastly
       end
 
       if attributes.key?(:'total')
-        self.total = attributes[:'total']
+        if (value = attributes[:'total']).is_a?(Hash)
+          self.total = value
+        end
       end
     end
 

@@ -13,6 +13,7 @@ require 'time'
 
 module Fastly
   class HistoricalUsageServiceResponseAllOf
+    # Organized by *region*.
     attr_accessor :data
 
     # Attribute mapping from ruby-style variable name to JSON key.
@@ -30,7 +31,7 @@ module Fastly
     # Attribute type mapping.
     def self.fastly_types
       {
-        :'data' => :'HistoricalUsageResults'
+        :'data' => :'Hash<String, Hash<String, HistoricalUsageData>>'
       }
     end
 
@@ -56,7 +57,9 @@ module Fastly
       }
 
       if attributes.key?(:'data')
-        self.data = attributes[:'data']
+        if (value = attributes[:'data']).is_a?(Hash)
+          self.data = value
+        end
       end
     end
 

@@ -1,5 +1,19 @@
 # Changelog
 
+## [v8.0.0](https://github.com/fastly/fastly-ruby/releases/tag/release/v8.0.0) (2023-11-29)
+
+**Breaking:**
+
+- breaking(historical): restructure OpenAPI schema to avoid duplicated data rendering.
+
+**Bug fixes:**
+
+- fix: no longer display Markdown syntax in code comments.
+
+**Enhancements:**
+
+- feat(stats): expose new `service_id` and `start_time` fields.
+
 ## [v7.2.2](https://github.com/fastly/fastly-ruby/releases/tag/release/v7.2.2) (2023-11-07)
 
 **Enhancements:**

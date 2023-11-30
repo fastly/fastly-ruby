@@ -12,13 +12,14 @@ require 'date'
 require 'time'
 
 module Fastly
-  class HistoricalFieldResponseDataField
-    attr_accessor :data
+  class HistoricalUsageService
+    # The name of the service.
+    attr_accessor :name
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'data' => :'data'
+        :'name' => :'name'
       }
     end
 
@@ -30,7 +31,7 @@ module Fastly
     # Attribute type mapping.
     def self.fastly_types
       {
-        :'data' => :'Hash<String, Array>'
+        :'name' => :'String'
       }
     end
 
@@ -44,21 +45,19 @@ module Fastly
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Fastly::HistoricalFieldResponseDataField` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Fastly::HistoricalUsageService` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `Fastly::HistoricalFieldResponseDataField`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `Fastly::HistoricalUsageService`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'data')
-        if (value = attributes[:'data']).is_a?(Hash)
-          self.data = value
-        end
+      if attributes.key?(:'name')
+        self.name = attributes[:'name']
       end
     end
 
@@ -80,7 +79,7 @@ module Fastly
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          data == o.data
+          name == o.name
     end
 
     # @see the `==` method
@@ -92,7 +91,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [data].hash
+      [name].hash
     end
 
     # Builds the object from hash

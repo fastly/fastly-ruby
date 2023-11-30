@@ -24,7 +24,7 @@ api_instance = Fastly::HistoricalApi.new
 ## `get_hist_stats()`
 
 ```ruby
-get_hist_stats(opts): <HistoricalResponse> # Get historical stats
+get_hist_stats(opts): <HistoricalStatsByServiceResponse> # Get historical stats
 ```
 
 Fetches historical stats for each of your Fastly services and groups the results by service ID.
@@ -60,14 +60,14 @@ end
 
 ### Return type
 
-[**HistoricalResponse**](HistoricalResponse.md)
+[**HistoricalStatsByServiceResponse**](HistoricalStatsByServiceResponse.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)
 ## `get_hist_stats_aggregated()`
 
 ```ruby
-get_hist_stats_aggregated(opts): <HistoricalAggregateResponse> # Get aggregated historical stats
+get_hist_stats_aggregated(opts): <HistoricalStatsAggregatedResponse> # Get aggregated historical stats
 ```
 
 Fetches historical stats information aggregated across all of your Fastly services.
@@ -103,14 +103,14 @@ end
 
 ### Return type
 
-[**HistoricalAggregateResponse**](HistoricalAggregateResponse.md)
+[**HistoricalStatsAggregatedResponse**](HistoricalStatsAggregatedResponse.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)
 ## `get_hist_stats_field()`
 
 ```ruby
-get_hist_stats_field(opts): <HistoricalFieldResponse> # Get historical stats for a single field
+get_hist_stats_field(opts): <HistoricalStatsByServiceResponse> # Get historical stats for a single field
 ```
 
 Fetches the specified field from the historical stats for each of your services and groups the results by service ID.
@@ -148,14 +148,14 @@ end
 
 ### Return type
 
-[**HistoricalFieldResponse**](HistoricalFieldResponse.md)
+[**HistoricalStatsByServiceResponse**](HistoricalStatsByServiceResponse.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)
 ## `get_hist_stats_service()`
 
 ```ruby
-get_hist_stats_service(opts): <HistoricalAggregateResponse> # Get historical stats for a single service
+get_hist_stats_service(opts): <HistoricalStatsAggregatedResponse> # Get historical stats for a single service
 ```
 
 Fetches historical stats for a given service.
@@ -193,14 +193,14 @@ end
 
 ### Return type
 
-[**HistoricalAggregateResponse**](HistoricalAggregateResponse.md)
+[**HistoricalStatsAggregatedResponse**](HistoricalStatsAggregatedResponse.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)
 ## `get_hist_stats_service_field()`
 
 ```ruby
-get_hist_stats_service_field(opts): <HistoricalFieldAggregateResponse> # Get historical stats for a single service/field combination
+get_hist_stats_service_field(opts): <HistoricalStatsAggregatedResponse> # Get historical stats for a single service/field combination
 ```
 
 Fetches the specified field from the historical stats for a given service.
@@ -240,7 +240,7 @@ end
 
 ### Return type
 
-[**HistoricalFieldAggregateResponse**](HistoricalFieldAggregateResponse.md)
+[**HistoricalStatsAggregatedResponse**](HistoricalStatsAggregatedResponse.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)
@@ -279,7 +279,7 @@ This endpoint does not need any parameter.
 ## `get_usage()`
 
 ```ruby
-get_usage(opts): <HistoricalUsageAggregateResponse> # Get usage statistics
+get_usage(opts): <HistoricalUsageAggregatedResponse> # Get usage statistics
 ```
 
 Returns usage information aggregated across all Fastly services and grouped by region. To aggregate across all Fastly services by time period, see [`/stats/aggregate`](#get-hist-stats-aggregated).
@@ -311,7 +311,7 @@ end
 
 ### Return type
 
-[**HistoricalUsageAggregateResponse**](HistoricalUsageAggregateResponse.md)
+[**HistoricalUsageAggregatedResponse**](HistoricalUsageAggregatedResponse.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)

@@ -1,4 +1,4 @@
-# Fastly::HistoricalUsageResults
+# Fastly::HistoricalUsageData
 
 ## Properties
 

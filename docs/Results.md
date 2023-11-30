@@ -229,6 +229,8 @@
 | **bot_challenges_issued** | **Integer** | The number of challenges issued. For example, the issuance of a CAPTCHA challenge. | [optional] |
 | **bot_challenges_succeeded** | **Integer** | The number of successful challenge solutions processed. For example, a correct CAPTCHA solution. | [optional] |
 | **bot_challenges_failed** | **Integer** | The number of failed challenge solutions processed. For example, an incorrect CAPTCHA solution. | [optional] |
+| **service_id** | **String** |  | [optional][readonly] |
+| **start_time** | **Integer** | Timestamp for the start of the time period being reported | [optional] |
 
 [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
 
