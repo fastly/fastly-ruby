@@ -21,6 +21,7 @@ module Fastly
     # Creates a new Response Object.
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
     # @option opts [Integer] :version_id Integer identifying a service version. (required)
+    # @option opts [CreateResponseObjectRequest] :create_response_object_request 
     # @return [ResponseObjectResponse]
     def create_response_object(opts = {})
       data, _status_code, _headers = create_response_object_with_http_info(opts)
@@ -31,6 +32,7 @@ module Fastly
     # Creates a new Response Object.
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
     # @option opts [Integer] :version_id Integer identifying a service version. (required)
+    # @option opts [CreateResponseObjectRequest] :create_response_object_request 
     # @return [Array<(ResponseObjectResponse, Integer, Hash)>] ResponseObjectResponse data, response status code and response headers
     def create_response_object_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -58,7 +60,7 @@ module Fastly
       # HTTP header 'Accept' (if needed)
       header_params['Accept'] = @api_client.select_header_accept(['application/json'])
       # HTTP header 'Content-Type'
-      content_type = @api_client.select_header_content_type(['application/x-www-form-urlencoded'])
+      content_type = @api_client.select_header_content_type(['application/json'])
       if !content_type.nil?
           header_params['Content-Type'] = content_type
       end
@@ -67,7 +69,7 @@ module Fastly
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body]
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(opts[:'create_response_object_request'])
 
       # return_type
       return_type = opts[:debug_return_type] || 'ResponseObjectResponse'
@@ -321,6 +323,7 @@ module Fastly
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
     # @option opts [Integer] :version_id Integer identifying a service version. (required)
     # @option opts [String] :response_object_name Name for the request settings. (required)
+    # @option opts [CreateResponseObjectRequest] :create_response_object_request 
     # @return [ResponseObjectResponse]
     def update_response_object(opts = {})
       data, _status_code, _headers = update_response_object_with_http_info(opts)
@@ -332,6 +335,7 @@ module Fastly
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
     # @option opts [Integer] :version_id Integer identifying a service version. (required)
     # @option opts [String] :response_object_name Name for the request settings. (required)
+    # @option opts [CreateResponseObjectRequest] :create_response_object_request 
     # @return [Array<(ResponseObjectResponse, Integer, Hash)>] ResponseObjectResponse data, response status code and response headers
     def update_response_object_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -364,7 +368,7 @@ module Fastly
       # HTTP header 'Accept' (if needed)
       header_params['Accept'] = @api_client.select_header_accept(['application/json'])
       # HTTP header 'Content-Type'
-      content_type = @api_client.select_header_content_type(['application/x-www-form-urlencoded'])
+      content_type = @api_client.select_header_content_type(['application/json'])
       if !content_type.nil?
           header_params['Content-Type'] = content_type
       end
@@ -373,7 +377,7 @@ module Fastly
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body]
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(opts[:'create_response_object_request'])
 
       # return_type
       return_type = opts[:debug_return_type] || 'ResponseObjectResponse'

@@ -12,38 +12,38 @@ require 'date'
 require 'time'
 
 module Fastly
-  class TlsConfigurationResponseAttributes
-    # Date and time in ISO 8601 format.
-    attr_accessor :created_at
+  class CreateResponseObjectRequest
+    # The name of the response object to create.
+    attr_accessor :name
 
-    # Date and time in ISO 8601 format.
-    attr_accessor :deleted_at
+    # The status code the response will have. Defaults to 200.
+    attr_accessor :status
 
-    # Date and time in ISO 8601 format.
-    attr_accessor :updated_at
+    # The status text the response will have. Defaults to 'OK'.
+    attr_accessor :response
 
-    # Signifies whether or not Fastly will use this configuration as a default when creating a new [TLS Activation](/reference/api/tls/custom-certs/activations/).
-    attr_accessor :default
+    # The content the response will deliver.
+    attr_accessor :content
 
-    # HTTP protocols available on your configuration.
-    attr_accessor :http_protocols
+    # The MIME type of your response content.
+    attr_accessor :content_type
 
-    # TLS protocols available on your configuration.
-    attr_accessor :tls_protocols
+    # Condition which, if met, will select this configuration during a request. Optional.
+    attr_accessor :request_condition
 
-    # Signifies whether the configuration is used for Platform TLS or not.
-    attr_accessor :bulk
+    # Name of the cache condition controlling when this configuration applies.
+    attr_accessor :cache_condition
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'created_at' => :'created_at',
-        :'deleted_at' => :'deleted_at',
-        :'updated_at' => :'updated_at',
-        :'default' => :'default',
-        :'http_protocols' => :'http_protocols',
-        :'tls_protocols' => :'tls_protocols',
-        :'bulk' => :'bulk'
+        :'name' => :'name',
+        :'status' => :'status',
+        :'response' => :'response',
+        :'content' => :'content',
+        :'content_type' => :'content_type',
+        :'request_condition' => :'request_condition',
+        :'cache_condition' => :'cache_condition'
       }
     end
 
@@ -55,78 +55,66 @@ module Fastly
     # Attribute type mapping.
     def self.fastly_types
       {
-        :'created_at' => :'Time',
-        :'deleted_at' => :'Time',
-        :'updated_at' => :'Time',
-        :'default' => :'Boolean',
-        :'http_protocols' => :'Array<String>',
-        :'tls_protocols' => :'Array<String>',
-        :'bulk' => :'Boolean'
+        :'name' => :'String',
+        :'status' => :'String',
+        :'response' => :'String',
+        :'content' => :'String',
+        :'content_type' => :'String',
+        :'request_condition' => :'String',
+        :'cache_condition' => :'String'
       }
     end
 
     # List of attributes with nullable: true
     def self.fastly_nullable
       Set.new([
-        :'created_at',
-        :'deleted_at',
-        :'updated_at',
+        :'content_type',
+        :'request_condition',
+        :'cache_condition'
       ])
-    end
-
-    # List of class defined in allOf (OpenAPI v3)
-    def self.fastly_all_of
-      [
-      :'Timestamps',
-      :'TlsConfigurationResponseAttributesAllOf'
-      ]
     end
 
     # Initializes the object
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Fastly::TlsConfigurationResponseAttributes` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Fastly::CreateResponseObjectRequest` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `Fastly::TlsConfigurationResponseAttributes`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `Fastly::CreateResponseObjectRequest`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'created_at')
-        self.created_at = attributes[:'created_at']
+      if attributes.key?(:'name')
+        self.name = attributes[:'name']
       end
 
-      if attributes.key?(:'deleted_at')
-        self.deleted_at = attributes[:'deleted_at']
+      if attributes.key?(:'status')
+        self.status = attributes[:'status']
       end
 
-      if attributes.key?(:'updated_at')
-        self.updated_at = attributes[:'updated_at']
+      if attributes.key?(:'response')
+        self.response = attributes[:'response']
       end
 
-      if attributes.key?(:'default')
-        self.default = attributes[:'default']
+      if attributes.key?(:'content')
+        self.content = attributes[:'content']
       end
 
-      if attributes.key?(:'http_protocols')
-        if (value = attributes[:'http_protocols']).is_a?(Array)
-          self.http_protocols = value
-        end
+      if attributes.key?(:'content_type')
+        self.content_type = attributes[:'content_type']
       end
 
-      if attributes.key?(:'tls_protocols')
-        if (value = attributes[:'tls_protocols']).is_a?(Array)
-          self.tls_protocols = value
-        end
+      if attributes.key?(:'request_condition')
+        self.request_condition = attributes[:'request_condition']
       end
 
-      if attributes.key?(:'bulk')
-        self.bulk = attributes[:'bulk']
+      if attributes.key?(:'cache_condition')
+        self.cache_condition = attributes[:'cache_condition']
       end
     end
 
@@ -148,13 +136,13 @@ module Fastly
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          created_at == o.created_at &&
-          deleted_at == o.deleted_at &&
-          updated_at == o.updated_at &&
-          default == o.default &&
-          http_protocols == o.http_protocols &&
-          tls_protocols == o.tls_protocols &&
-          bulk == o.bulk
+          name == o.name &&
+          status == o.status &&
+          response == o.response &&
+          content == o.content &&
+          content_type == o.content_type &&
+          request_condition == o.request_condition &&
+          cache_condition == o.cache_condition
     end
 
     # @see the `==` method
@@ -166,7 +154,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [created_at, deleted_at, updated_at, default, http_protocols, tls_protocols, bulk].hash
+      [name, status, response, content, content_type, request_condition, cache_condition].hash
     end
 
     # Builds the object from hash

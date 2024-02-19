@@ -1,5 +1,12 @@
 # Changelog
 
+## [v8.0.1](https://github.com/fastly/fastly-ruby/releases/tag/release/v8.0.1) (2024-02-19)
+
+**Bug fixes:**
+
+- fix(response_object): strongly type response_object create_update requests
+- fix(tls_configurations): fix `tls_protocols` field to be a string array type
+
 ## [v8.0.0](https://github.com/fastly/fastly-ruby/releases/tag/release/v8.0.0) (2023-11-29)
 
 **Breaking:**

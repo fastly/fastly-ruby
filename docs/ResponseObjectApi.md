@@ -32,6 +32,7 @@ api_instance = Fastly::ResponseObjectApi.new
 opts = {
     service_id: 'service_id_example', # String | Alphanumeric string identifying the service.
     version_id: 56, # Integer | Integer identifying a service version.
+    create_response_object_request: Fastly::CreateResponseObjectRequest.new, # CreateResponseObjectRequest | 
 }
 
 begin
@@ -49,6 +50,7 @@ end
 | ---- | ---- | ----------- | ----- |
 | **service_id** | **String** | Alphanumeric string identifying the service. |  |
 | **version_id** | **Integer** | Integer identifying a service version. |  |
+| **create_response_object_request** | [**CreateResponseObjectRequest**](CreateResponseObjectRequest.md) |  | [optional] |
 
 ### Return type
 
@@ -193,6 +195,7 @@ opts = {
     service_id: 'service_id_example', # String | Alphanumeric string identifying the service.
     version_id: 56, # Integer | Integer identifying a service version.
     response_object_name: 'response_object_name_example', # String | Name for the request settings.
+    create_response_object_request: Fastly::CreateResponseObjectRequest.new, # CreateResponseObjectRequest | 
 }
 
 begin
@@ -211,6 +214,7 @@ end
 | **service_id** | **String** | Alphanumeric string identifying the service. |  |
 | **version_id** | **Integer** | Integer identifying a service version. |  |
 | **response_object_name** | **String** | Name for the request settings. |  |
+| **create_response_object_request** | [**CreateResponseObjectRequest**](CreateResponseObjectRequest.md) |  | [optional] |
 
 ### Return type
 

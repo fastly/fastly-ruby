@@ -45,7 +45,7 @@ module Fastly
       {
         :'default' => :'Boolean',
         :'http_protocols' => :'Array<String>',
-        :'tls_protocols' => :'Array<Float>',
+        :'tls_protocols' => :'Array<String>',
         :'bulk' => :'Boolean'
       }
     end
