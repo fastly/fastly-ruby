@@ -13,7 +13,7 @@ require 'time'
 
 module Fastly
   class Pop
-    # the three-letter code for the [POP](https://developer.fastly.com/learning/concepts/pop/)
+    # the three-letter code for the [POP](https://www.fastly.com/documentation/learning/concepts/pop/)
     attr_accessor :code
 
     # the name of the POP
@@ -31,7 +31,7 @@ module Fastly
 
     attr_accessor :coordinates
 
-    # the name of the [shield code](https://developer.fastly.com/learning/concepts/shielding/#choosing-a-shield-location) if this POP is suitable for shielding
+    # the name of the [shield code](https://www.fastly.com/documentation/learning/concepts/shielding/#choosing-a-shield-location) if this POP is suitable for shielding
     attr_accessor :shield
 
     class EnumAttributeValidator

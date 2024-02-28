@@ -19,7 +19,7 @@ module Fastly
     # Groups [measurements](#measurements-data-model) by backend name.
     attr_accessor :aggregated
 
-    # Groups [measurements](#measurements-data-model) by POP, then backend name. See the [POPs API](/reference/api/utils/pops/) for details about POP identifiers.
+    # Groups [measurements](#measurements-data-model) by POP, then backend name. See the [POPs API](https://www.fastly.com/documentation/reference/api/utils/pops/) for details about POP identifiers.
     attr_accessor :datacenter
 
     # Attribute mapping from ruby-style variable name to JSON key.

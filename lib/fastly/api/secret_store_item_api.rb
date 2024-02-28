@@ -228,7 +228,7 @@ module Fastly
     # List secrets within a store.
     # List all secrets within a store.
     # @option opts [String] :store_id  (required)
-    # @option opts [String] :cursor Cursor value from a previous response to retrieve the next page. To request the first page, this should be empty.
+    # @option opts [String] :cursor Cursor value from the &#x60;next_cursor&#x60; field of a previous response, used to retrieve the next page. To request the first page, this should be empty.
     # @option opts [String] :limit Number of results per page. The maximum is 200. (default to '100')
     # @return [InlineResponse2006]
     def get_secrets(opts = {})
@@ -239,7 +239,7 @@ module Fastly
     # List secrets within a store.
     # List all secrets within a store.
     # @option opts [String] :store_id  (required)
-    # @option opts [String] :cursor Cursor value from a previous response to retrieve the next page. To request the first page, this should be empty.
+    # @option opts [String] :cursor Cursor value from the &#x60;next_cursor&#x60; field of a previous response, used to retrieve the next page. To request the first page, this should be empty.
     # @option opts [String] :limit Number of results per page. The maximum is 200. (default to '100')
     # @return [Array<(InlineResponse2006, Integer, Hash)>] InlineResponse2006 data, response status code and response headers
     def get_secrets_with_http_info(opts = {})

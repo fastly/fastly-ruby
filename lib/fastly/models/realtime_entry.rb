@@ -18,7 +18,7 @@ module Fastly
 
     attr_accessor :aggregated
 
-    # Groups [measurements](#measurements-data-model) by POP. See the [POPs API](/reference/api/utils/pops/) for details of POP identifiers.
+    # Groups [measurements](#measurements-data-model) by POP. See the [POPs API](https://www.fastly.com/documentation/reference/api/utils/pops/) for details of POP identifiers.
     attr_accessor :datacenter
 
     # Attribute mapping from ruby-style variable name to JSON key.

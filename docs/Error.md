@@ -1,13 +1,13 @@
-# Fastly::ErrorResponse
+# Fastly::Error
 
 ## Properties
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **detail** | **String** |  | [optional] |
-| **errors** | **Array&lt;Object&gt;** |  | [optional] |
-| **status** | **Integer** |  | [optional] |
+| **type** | **String** |  | [optional] |
 | **title** | **String** |  | [optional] |
+| **code** | **String** |  | [optional] |
+| **status** | **String** |  | [optional] |
 
 [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
 

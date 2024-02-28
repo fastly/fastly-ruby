@@ -25,6 +25,9 @@ module Fastly
     # The current state of your subscription.
     attr_accessor :state
 
+    # Subscription has an active order
+    attr_accessor :has_active_order
+
     class EnumAttributeValidator
       attr_reader :datatype
       attr_reader :allowable_values
@@ -53,7 +56,8 @@ module Fastly
         :'created_at' => :'created_at',
         :'deleted_at' => :'deleted_at',
         :'updated_at' => :'updated_at',
-        :'state' => :'state'
+        :'state' => :'state',
+        :'has_active_order' => :'has_active_order'
       }
     end
 
@@ -68,7 +72,8 @@ module Fastly
         :'created_at' => :'Time',
         :'deleted_at' => :'Time',
         :'updated_at' => :'Time',
-        :'state' => :'String'
+        :'state' => :'String',
+        :'has_active_order' => :'Boolean'
       }
     end
 
@@ -119,6 +124,10 @@ module Fastly
       if attributes.key?(:'state')
         self.state = attributes[:'state']
       end
+
+      if attributes.key?(:'has_active_order')
+        self.has_active_order = attributes[:'has_active_order']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -154,7 +163,8 @@ module Fastly
           created_at == o.created_at &&
           deleted_at == o.deleted_at &&
           updated_at == o.updated_at &&
-          state == o.state
+          state == o.state &&
+          has_active_order == o.has_active_order
     end
 
     # @see the `==` method
@@ -166,7 +176,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [created_at, deleted_at, updated_at, state].hash
+      [created_at, deleted_at, updated_at, state, has_active_order].hash
     end
 
     # Builds the object from hash

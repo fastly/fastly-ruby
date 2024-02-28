@@ -79,7 +79,7 @@ module Fastly
     end
 
     # Create a token
-    # Create an API token. If two-factor authentication is enabled for your account, review [the instructions](/reference/api/auth-tokens/user/) for including a one-time password in the request. 
+    # Create an API token. If two-factor authentication is enabled for your account, review [the instructions](https://www.fastly.com/documentation/reference/api/auth-tokens/user/) for including a one-time password in the request. 
     # @return [TokenCreatedResponse]
     def create_token(opts = {})
       data, _status_code, _headers = create_token_with_http_info(opts)
@@ -87,7 +87,7 @@ module Fastly
     end
 
     # Create a token
-    # Create an API token. If two-factor authentication is enabled for your account, review [the instructions](/reference/api/auth-tokens/user/) for including a one-time password in the request. 
+    # Create an API token. If two-factor authentication is enabled for your account, review [the instructions](https://www.fastly.com/documentation/reference/api/auth-tokens/user/) for including a one-time password in the request. 
     # @return [Array<(TokenCreatedResponse, Integer, Hash)>] TokenCreatedResponse data, response status code and response headers
     def create_token_with_http_info(opts = {})
       if @api_client.config.debugging

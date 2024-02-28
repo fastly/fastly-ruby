@@ -259,7 +259,7 @@ module Fastly
     end
 
     # Get boilerplate VCL
-    # Return boilerplate VCL with the service's TTL from the [settings](/reference/api/vcl-services/settings/).
+    # Return boilerplate VCL with the service's TTL from the [settings](https://www.fastly.com/documentation/reference/api/vcl-services/settings/).
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
     # @option opts [Integer] :version_id Integer identifying a service version. (required)
     # @return [String]
@@ -269,7 +269,7 @@ module Fastly
     end
 
     # Get boilerplate VCL
-    # Return boilerplate VCL with the service&#39;s TTL from the [settings](/reference/api/vcl-services/settings/).
+    # Return boilerplate VCL with the service&#39;s TTL from the [settings](https://www.fastly.com/documentation/reference/api/vcl-services/settings/).
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
     # @option opts [Integer] :version_id Integer identifying a service version. (required)
     # @return [Array<(String, Integer, Hash)>] String data, response status code and response headers

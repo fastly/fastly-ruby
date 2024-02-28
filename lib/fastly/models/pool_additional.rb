@@ -16,7 +16,7 @@ module Fastly
     # Name for the Pool.
     attr_accessor :name
 
-    # Selected POP to serve as a shield for the servers. Defaults to `null` meaning no origin shielding if not set. Refer to the [POPs API endpoint](/reference/api/utils/pops/) to get a list of available POPs used for shielding.
+    # Selected POP to serve as a shield for the servers. Defaults to `null` meaning no origin shielding if not set. Refer to the [POPs API endpoint](https://www.fastly.com/documentation/reference/api/utils/pops/) to get a list of available POPs used for shielding.
     attr_accessor :shield
 
     # Condition which, if met, will select this configuration during a request. Optional.

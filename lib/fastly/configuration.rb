@@ -476,6 +476,18 @@ module Fastly
           description: "No description provided",
           }
         ],
+        "BillingInvoicesApi.get_invoice_by_invoice_id": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "BillingInvoicesApi.list_invoices": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
         "CacheSettingsApi.create_cache_settings": [
           {
           url: "https://api.fastly.com",
@@ -2961,6 +2973,12 @@ module Fastly
           }
         ],
         "TlsConfigurationsApi.update_tls_config": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "TlsCsrsApi.create_csr": [
           {
           url: "https://api.fastly.com",
           description: "No description provided",

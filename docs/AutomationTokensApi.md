@@ -174,7 +174,7 @@ end
 ## `revoke_automation_token_id()`
 
 ```ruby
-revoke_automation_token_id(opts): <ErrorResponse> # Revoke an Automation Token by ID
+revoke_automation_token_id(opts): <AutomationTokenErrorResponse> # Revoke an Automation Token by ID
 ```
 
 Revoke an automation token by ID.
@@ -204,7 +204,7 @@ end
 
 ### Return type
 
-[**ErrorResponse**](ErrorResponse.md)
+[**AutomationTokenErrorResponse**](AutomationTokenErrorResponse.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)

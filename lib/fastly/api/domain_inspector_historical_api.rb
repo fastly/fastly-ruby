@@ -23,10 +23,10 @@ module Fastly
     # @option opts [String] :start A valid ISO-8601-formatted date and time, or UNIX timestamp, indicating the inclusive start of the query time range. If not provided, a default is chosen based on the provided &#x60;downsample&#x60; value.
     # @option opts [String] :_end A valid ISO-8601-formatted date and time, or UNIX timestamp, indicating the exclusive end of the query time range. If not provided, a default is chosen based on the provided &#x60;downsample&#x60; value.
     # @option opts [String] :downsample Duration of sample windows. (default to 'hour')
-    # @option opts [String] :metric The metric to retrieve. Up to ten comma-separated metrics are accepted. (default to 'edge_requests')
+    # @option opts [String] :metric The metrics to retrieve. Multiple values should be comma-separated. (default to 'edge_requests')
     # @option opts [String] :group_by Dimensions to return in the query. Multiple dimensions may be separated by commas. For example, &#x60;group_by&#x3D;domain&#x60; will return one timeseries for every domain, as a total across all datacenters (POPs). 
     # @option opts [String] :limit Number of results per page. The maximum is 200. (default to '100')
-    # @option opts [String] :cursor Cursor value from a previous response to retrieve the next page. To request the first page, this should be empty.
+    # @option opts [String] :cursor Cursor value from the &#x60;next_cursor&#x60; field of a previous response, used to retrieve the next page. To request the first page, this should be empty.
     # @option opts [String] :region Limit query to one or more specific geographic regions. Values should be comma-separated. 
     # @option opts [String] :datacenter Limit query to one or more specific POPs. Values should be comma-separated.
     # @option opts [String] :domain Limit query to one or more specific domains. Values should be comma-separated.
@@ -42,10 +42,10 @@ module Fastly
     # @option opts [String] :start A valid ISO-8601-formatted date and time, or UNIX timestamp, indicating the inclusive start of the query time range. If not provided, a default is chosen based on the provided &#x60;downsample&#x60; value.
     # @option opts [String] :_end A valid ISO-8601-formatted date and time, or UNIX timestamp, indicating the exclusive end of the query time range. If not provided, a default is chosen based on the provided &#x60;downsample&#x60; value.
     # @option opts [String] :downsample Duration of sample windows. (default to 'hour')
-    # @option opts [String] :metric The metric to retrieve. Up to ten comma-separated metrics are accepted. (default to 'edge_requests')
+    # @option opts [String] :metric The metrics to retrieve. Multiple values should be comma-separated. (default to 'edge_requests')
     # @option opts [String] :group_by Dimensions to return in the query. Multiple dimensions may be separated by commas. For example, &#x60;group_by&#x3D;domain&#x60; will return one timeseries for every domain, as a total across all datacenters (POPs). 
     # @option opts [String] :limit Number of results per page. The maximum is 200. (default to '100')
-    # @option opts [String] :cursor Cursor value from a previous response to retrieve the next page. To request the first page, this should be empty.
+    # @option opts [String] :cursor Cursor value from the &#x60;next_cursor&#x60; field of a previous response, used to retrieve the next page. To request the first page, this should be empty.
     # @option opts [String] :region Limit query to one or more specific geographic regions. Values should be comma-separated. 
     # @option opts [String] :datacenter Limit query to one or more specific POPs. Values should be comma-separated.
     # @option opts [String] :domain Limit query to one or more specific domains. Values should be comma-separated.

@@ -27,7 +27,7 @@ module Fastly
     # @option opts [String] :format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (default to '%h %l %u %t \"%r\" %&gt;s %b')
     # @option opts [Integer] :format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;.  (default to FORMAT_VERSION::v2)
     # @option opts [String] :region The region that log data will be sent to. (default to 'US')
-    # @option opts [String] :token The token to use for authentication ([https://www.scalyr.com/keys](https://www.scalyr.com/keys)).
+    # @option opts [String] :token The token to use for authentication.
     # @option opts [String] :project_id The name of the logfile within Scalyr. (default to 'logplex')
     # @return [LoggingScalyrResponse]
     def create_log_scalyr(opts = {})
@@ -45,7 +45,7 @@ module Fastly
     # @option opts [String] :format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (default to '%h %l %u %t \"%r\" %&gt;s %b')
     # @option opts [Integer] :format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;.  (default to FORMAT_VERSION::v2)
     # @option opts [String] :region The region that log data will be sent to. (default to 'US')
-    # @option opts [String] :token The token to use for authentication ([https://www.scalyr.com/keys](https://www.scalyr.com/keys)).
+    # @option opts [String] :token The token to use for authentication.
     # @option opts [String] :project_id The name of the logfile within Scalyr. (default to 'logplex')
     # @return [Array<(LoggingScalyrResponse, Integer, Hash)>] LoggingScalyrResponse data, response status code and response headers
     def create_log_scalyr_with_http_info(opts = {})
@@ -363,7 +363,7 @@ module Fastly
     # @option opts [String] :format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (default to '%h %l %u %t \"%r\" %&gt;s %b')
     # @option opts [Integer] :format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;.  (default to FORMAT_VERSION::v2)
     # @option opts [String] :region The region that log data will be sent to. (default to 'US')
-    # @option opts [String] :token The token to use for authentication ([https://www.scalyr.com/keys](https://www.scalyr.com/keys)).
+    # @option opts [String] :token The token to use for authentication.
     # @option opts [String] :project_id The name of the logfile within Scalyr. (default to 'logplex')
     # @return [LoggingScalyrResponse]
     def update_log_scalyr(opts = {})
@@ -382,7 +382,7 @@ module Fastly
     # @option opts [String] :format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (default to '%h %l %u %t \"%r\" %&gt;s %b')
     # @option opts [Integer] :format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;.  (default to FORMAT_VERSION::v2)
     # @option opts [String] :region The region that log data will be sent to. (default to 'US')
-    # @option opts [String] :token The token to use for authentication ([https://www.scalyr.com/keys](https://www.scalyr.com/keys)).
+    # @option opts [String] :token The token to use for authentication.
     # @option opts [String] :project_id The name of the logfile within Scalyr. (default to 'logplex')
     # @return [Array<(LoggingScalyrResponse, Integer, Hash)>] LoggingScalyrResponse data, response status code and response headers
     def update_log_scalyr_with_http_info(opts = {})

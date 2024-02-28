@@ -173,8 +173,9 @@ Get all secret stores.
 ```ruby
 api_instance = Fastly::SecretStoreApi.new
 opts = {
-    cursor: 'cursor_example', # String | Cursor value from a previous response to retrieve the next page. To request the first page, this should be empty.
+    cursor: 'cursor_example', # String | Cursor value from the `next_cursor` field of a previous response, used to retrieve the next page. To request the first page, this should be empty.
     limit: 'limit_example', # String | Number of results per page. The maximum is 200.
+    name: 'name_example', # String | Returns a one-element array containing the details for the named secret store.
 }
 
 begin
@@ -190,8 +191,9 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **cursor** | **String** | Cursor value from a previous response to retrieve the next page. To request the first page, this should be empty. | [optional] |
+| **cursor** | **String** | Cursor value from the `next_cursor` field of a previous response, used to retrieve the next page. To request the first page, this should be empty. | [optional] |
 | **limit** | **String** | Number of results per page. The maximum is 200. | [optional][default to &#39;100&#39;] |
+| **name** | **String** | Returns a one-element array containing the details for the named secret store. | [optional] |
 
 ### Return type
 

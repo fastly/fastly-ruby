@@ -45,7 +45,7 @@ module Fastly
     # @option opts [String] :ssl_ca_cert CA certificate attached to origin.
     # @option opts [String] :ssl_cert_hostname Overrides &#x60;ssl_hostname&#x60;, but only for cert verification. Does not affect SNI at all.
     # @option opts [Boolean] :ssl_check_cert Be strict on checking SSL certs. (default to true)
-    # @option opts [String] :ssl_ciphers List of [OpenSSL ciphers](https://www.openssl.org/docs/manmaster/man1/ciphers.html) to support for connections to this origin. If your backend server is not able to negotiate a connection meeting this constraint, a synthetic &#x60;503&#x60; error response will be generated.
+    # @option opts [String] :ssl_ciphers List of [OpenSSL ciphers](https://www.openssl.org/docs/man1.1.1/man1/ciphers.html) to support for connections to this origin. If your backend server is not able to negotiate a connection meeting this constraint, a synthetic &#x60;503&#x60; error response will be generated.
     # @option opts [String] :ssl_client_cert Client certificate attached to origin.
     # @option opts [String] :ssl_client_key Client key attached to origin.
     # @option opts [String] :ssl_hostname Use &#x60;ssl_cert_hostname&#x60; and &#x60;ssl_sni_hostname&#x60; to configure certificate validation.
@@ -86,7 +86,7 @@ module Fastly
     # @option opts [String] :ssl_ca_cert CA certificate attached to origin.
     # @option opts [String] :ssl_cert_hostname Overrides &#x60;ssl_hostname&#x60;, but only for cert verification. Does not affect SNI at all.
     # @option opts [Boolean] :ssl_check_cert Be strict on checking SSL certs. (default to true)
-    # @option opts [String] :ssl_ciphers List of [OpenSSL ciphers](https://www.openssl.org/docs/manmaster/man1/ciphers.html) to support for connections to this origin. If your backend server is not able to negotiate a connection meeting this constraint, a synthetic &#x60;503&#x60; error response will be generated.
+    # @option opts [String] :ssl_ciphers List of [OpenSSL ciphers](https://www.openssl.org/docs/man1.1.1/man1/ciphers.html) to support for connections to this origin. If your backend server is not able to negotiate a connection meeting this constraint, a synthetic &#x60;503&#x60; error response will be generated.
     # @option opts [String] :ssl_client_cert Client certificate attached to origin.
     # @option opts [String] :ssl_client_key Client key attached to origin.
     # @option opts [String] :ssl_hostname Use &#x60;ssl_cert_hostname&#x60; and &#x60;ssl_sni_hostname&#x60; to configure certificate validation.
@@ -443,7 +443,7 @@ module Fastly
     # @option opts [String] :ssl_ca_cert CA certificate attached to origin.
     # @option opts [String] :ssl_cert_hostname Overrides &#x60;ssl_hostname&#x60;, but only for cert verification. Does not affect SNI at all.
     # @option opts [Boolean] :ssl_check_cert Be strict on checking SSL certs. (default to true)
-    # @option opts [String] :ssl_ciphers List of [OpenSSL ciphers](https://www.openssl.org/docs/manmaster/man1/ciphers.html) to support for connections to this origin. If your backend server is not able to negotiate a connection meeting this constraint, a synthetic &#x60;503&#x60; error response will be generated.
+    # @option opts [String] :ssl_ciphers List of [OpenSSL ciphers](https://www.openssl.org/docs/man1.1.1/man1/ciphers.html) to support for connections to this origin. If your backend server is not able to negotiate a connection meeting this constraint, a synthetic &#x60;503&#x60; error response will be generated.
     # @option opts [String] :ssl_client_cert Client certificate attached to origin.
     # @option opts [String] :ssl_client_key Client key attached to origin.
     # @option opts [String] :ssl_hostname Use &#x60;ssl_cert_hostname&#x60; and &#x60;ssl_sni_hostname&#x60; to configure certificate validation.
@@ -485,7 +485,7 @@ module Fastly
     # @option opts [String] :ssl_ca_cert CA certificate attached to origin.
     # @option opts [String] :ssl_cert_hostname Overrides &#x60;ssl_hostname&#x60;, but only for cert verification. Does not affect SNI at all.
     # @option opts [Boolean] :ssl_check_cert Be strict on checking SSL certs. (default to true)
-    # @option opts [String] :ssl_ciphers List of [OpenSSL ciphers](https://www.openssl.org/docs/manmaster/man1/ciphers.html) to support for connections to this origin. If your backend server is not able to negotiate a connection meeting this constraint, a synthetic &#x60;503&#x60; error response will be generated.
+    # @option opts [String] :ssl_ciphers List of [OpenSSL ciphers](https://www.openssl.org/docs/man1.1.1/man1/ciphers.html) to support for connections to this origin. If your backend server is not able to negotiate a connection meeting this constraint, a synthetic &#x60;503&#x60; error response will be generated.
     # @option opts [String] :ssl_client_cert Client certificate attached to origin.
     # @option opts [String] :ssl_client_key Client key attached to origin.
     # @option opts [String] :ssl_hostname Use &#x60;ssl_cert_hostname&#x60; and &#x60;ssl_sni_hostname&#x60; to configure certificate validation.

@@ -16,7 +16,7 @@ module Fastly
     # The region that log data will be sent to.
     attr_accessor :region
 
-    # The token to use for authentication ([https://www.scalyr.com/keys](https://www.scalyr.com/keys)).
+    # The token to use for authentication.
     attr_accessor :token
 
     # The name of the logfile within Scalyr.

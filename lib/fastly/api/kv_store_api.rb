@@ -210,7 +210,7 @@ module Fastly
     # List KV stores.
     # Get all stores for a given customer.
     # @option opts [String] :cursor 
-    # @option opts [Integer] :limit  (default to 100)
+    # @option opts [Integer] :limit  (default to 1000)
     # @return [InlineResponse2003]
     def get_stores(opts = {})
       data, _status_code, _headers = get_stores_with_http_info(opts)
@@ -220,7 +220,7 @@ module Fastly
     # List KV stores.
     # Get all stores for a given customer.
     # @option opts [String] :cursor 
-    # @option opts [Integer] :limit  (default to 100)
+    # @option opts [Integer] :limit  (default to 1000)
     # @return [Array<(InlineResponse2003, Integer, Hash)>] InlineResponse2003 data, response status code and response headers
     def get_stores_with_http_info(opts = {})
       if @api_client.config.debugging

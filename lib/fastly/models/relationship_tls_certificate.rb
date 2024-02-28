@@ -12,7 +12,7 @@ require 'date'
 require 'time'
 
 module Fastly
-  # The [TLS certificate](/reference/api/tls/custom-certs/certificates/) being used to terminate TLS traffic for a domain. Required.
+  # The [TLS certificate](https://www.fastly.com/documentation/reference/api/tls/custom-certs/certificates/) being used to terminate TLS traffic for a domain. Required.
   class RelationshipTlsCertificate
     attr_accessor :tls_certificate
 

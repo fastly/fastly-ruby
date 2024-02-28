@@ -26,7 +26,7 @@ module Fastly
     # @option opts [String] :comment A freeform descriptive note.
     # @option opts [String] :name Name for the Director.
     # @option opts [Integer] :quorum The percentage of capacity that needs to be up for a director to be considered up. &#x60;0&#x60; to &#x60;100&#x60;. (default to 75)
-    # @option opts [String] :shield Selected POP to serve as a shield for the backends. Defaults to &#x60;null&#x60; meaning no origin shielding if not set. Refer to the [POPs API endpoint](/reference/api/utils/pops/) to get a list of available POPs used for shielding. (default to 'null')
+    # @option opts [String] :shield Selected POP to serve as a shield for the backends. Defaults to &#x60;null&#x60; meaning no origin shielding if not set. Refer to the [POPs API endpoint](https://www.fastly.com/documentation/reference/api/utils/pops/) to get a list of available POPs used for shielding. (default to 'null')
     # @option opts [Integer] :type What type of load balance group to use. (default to 1)
     # @option opts [Integer] :retries How many backends to search if it fails. (default to 5)
     # @return [DirectorResponse]
@@ -44,7 +44,7 @@ module Fastly
     # @option opts [String] :comment A freeform descriptive note.
     # @option opts [String] :name Name for the Director.
     # @option opts [Integer] :quorum The percentage of capacity that needs to be up for a director to be considered up. &#x60;0&#x60; to &#x60;100&#x60;. (default to 75)
-    # @option opts [String] :shield Selected POP to serve as a shield for the backends. Defaults to &#x60;null&#x60; meaning no origin shielding if not set. Refer to the [POPs API endpoint](/reference/api/utils/pops/) to get a list of available POPs used for shielding. (default to 'null')
+    # @option opts [String] :shield Selected POP to serve as a shield for the backends. Defaults to &#x60;null&#x60; meaning no origin shielding if not set. Refer to the [POPs API endpoint](https://www.fastly.com/documentation/reference/api/utils/pops/) to get a list of available POPs used for shielding. (default to 'null')
     # @option opts [Integer] :type What type of load balance group to use. (default to 1)
     # @option opts [Integer] :retries How many backends to search if it fails. (default to 5)
     # @return [Array<(DirectorResponse, Integer, Hash)>] DirectorResponse data, response status code and response headers

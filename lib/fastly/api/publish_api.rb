@@ -18,7 +18,7 @@ module Fastly
       @api_client = api_client
     end
     # Send messages to Fanout subscribers
-    # Send one or more messages to [Fanout](https://developer.fastly.com/learning/concepts/real-time-messaging/fanout) subscribers. Each message specifies a channel, and Fanout will deliver the message to all subscribers of its channel. > **IMPORTANT:** For compatibility with GRIP, this endpoint requires a trailing slash, and the API token may be provided in the `Authorization` header (instead of the `Fastly-Key` header) using the `Bearer` scheme. 
+    # Send one or more messages to [Fanout](https://www.fastly.com/documentation/learning/concepts/real-time-messaging/fanout) subscribers. Each message specifies a channel, and Fanout will deliver the message to all subscribers of its channel. > **IMPORTANT:** For compatibility with GRIP, this endpoint requires a trailing slash, and the API token may be provided in the `Authorization` header (instead of the `Fastly-Key` header) using the `Bearer` scheme. 
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
     # @option opts [PublishRequest] :publish_request 
     # @return [String]
@@ -28,7 +28,7 @@ module Fastly
     end
 
     # Send messages to Fanout subscribers
-    # Send one or more messages to [Fanout](https://developer.fastly.com/learning/concepts/real-time-messaging/fanout) subscribers. Each message specifies a channel, and Fanout will deliver the message to all subscribers of its channel. &gt; **IMPORTANT:** For compatibility with GRIP, this endpoint requires a trailing slash, and the API token may be provided in the &#x60;Authorization&#x60; header (instead of the &#x60;Fastly-Key&#x60; header) using the &#x60;Bearer&#x60; scheme. 
+    # Send one or more messages to [Fanout](https://www.fastly.com/documentation/learning/concepts/real-time-messaging/fanout) subscribers. Each message specifies a channel, and Fanout will deliver the message to all subscribers of its channel. &gt; **IMPORTANT:** For compatibility with GRIP, this endpoint requires a trailing slash, and the API token may be provided in the &#x60;Authorization&#x60; header (instead of the &#x60;Fastly-Key&#x60; header) using the &#x60;Bearer&#x60; scheme. 
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
     # @option opts [PublishRequest] :publish_request 
     # @return [Array<(String, Integer, Hash)>] String data, response status code and response headers

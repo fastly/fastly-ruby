@@ -32,7 +32,7 @@ module Fastly
     # @option opts [String] :service_id 
     # @option opts [String] :version 
     # @option opts [String] :name Name for the Pool.
-    # @option opts [String] :shield Selected POP to serve as a shield for the servers. Defaults to &#x60;null&#x60; meaning no origin shielding if not set. Refer to the [POPs API endpoint](/reference/api/utils/pops/) to get a list of available POPs used for shielding. (default to 'null')
+    # @option opts [String] :shield Selected POP to serve as a shield for the servers. Defaults to &#x60;null&#x60; meaning no origin shielding if not set. Refer to the [POPs API endpoint](https://www.fastly.com/documentation/reference/api/utils/pops/) to get a list of available POPs used for shielding. (default to 'null')
     # @option opts [String] :request_condition Condition which, if met, will select this configuration during a request. Optional.
     # @option opts [String] :tls_ciphers List of OpenSSL ciphers (see the [openssl.org manpages](https://www.openssl.org/docs/man1.1.1/man1/ciphers.html) for details). Optional.
     # @option opts [String] :tls_sni_hostname SNI hostname. Optional.
@@ -69,7 +69,7 @@ module Fastly
     # @option opts [String] :service_id 
     # @option opts [String] :version 
     # @option opts [String] :name Name for the Pool.
-    # @option opts [String] :shield Selected POP to serve as a shield for the servers. Defaults to &#x60;null&#x60; meaning no origin shielding if not set. Refer to the [POPs API endpoint](/reference/api/utils/pops/) to get a list of available POPs used for shielding. (default to 'null')
+    # @option opts [String] :shield Selected POP to serve as a shield for the servers. Defaults to &#x60;null&#x60; meaning no origin shielding if not set. Refer to the [POPs API endpoint](https://www.fastly.com/documentation/reference/api/utils/pops/) to get a list of available POPs used for shielding. (default to 'null')
     # @option opts [String] :request_condition Condition which, if met, will select this configuration during a request. Optional.
     # @option opts [String] :tls_ciphers List of OpenSSL ciphers (see the [openssl.org manpages](https://www.openssl.org/docs/man1.1.1/man1/ciphers.html) for details). Optional.
     # @option opts [String] :tls_sni_hostname SNI hostname. Optional.
@@ -429,7 +429,7 @@ module Fastly
     # @option opts [String] :service_id 
     # @option opts [String] :version 
     # @option opts [String] :name Name for the Pool.
-    # @option opts [String] :shield Selected POP to serve as a shield for the servers. Defaults to &#x60;null&#x60; meaning no origin shielding if not set. Refer to the [POPs API endpoint](/reference/api/utils/pops/) to get a list of available POPs used for shielding. (default to 'null')
+    # @option opts [String] :shield Selected POP to serve as a shield for the servers. Defaults to &#x60;null&#x60; meaning no origin shielding if not set. Refer to the [POPs API endpoint](https://www.fastly.com/documentation/reference/api/utils/pops/) to get a list of available POPs used for shielding. (default to 'null')
     # @option opts [String] :request_condition Condition which, if met, will select this configuration during a request. Optional.
     # @option opts [String] :tls_ciphers List of OpenSSL ciphers (see the [openssl.org manpages](https://www.openssl.org/docs/man1.1.1/man1/ciphers.html) for details). Optional.
     # @option opts [String] :tls_sni_hostname SNI hostname. Optional.
@@ -467,7 +467,7 @@ module Fastly
     # @option opts [String] :service_id 
     # @option opts [String] :version 
     # @option opts [String] :name Name for the Pool.
-    # @option opts [String] :shield Selected POP to serve as a shield for the servers. Defaults to &#x60;null&#x60; meaning no origin shielding if not set. Refer to the [POPs API endpoint](/reference/api/utils/pops/) to get a list of available POPs used for shielding. (default to 'null')
+    # @option opts [String] :shield Selected POP to serve as a shield for the servers. Defaults to &#x60;null&#x60; meaning no origin shielding if not set. Refer to the [POPs API endpoint](https://www.fastly.com/documentation/reference/api/utils/pops/) to get a list of available POPs used for shielding. (default to 'null')
     # @option opts [String] :request_condition Condition which, if met, will select this configuration during a request. Optional.
     # @option opts [String] :tls_ciphers List of OpenSSL ciphers (see the [openssl.org manpages](https://www.openssl.org/docs/man1.1.1/man1/ciphers.html) for details). Optional.
     # @option opts [String] :tls_sni_hostname SNI hostname. Optional.

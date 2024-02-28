@@ -22,7 +22,7 @@ module Fastly
     # Date and time in ISO 8601 format.
     attr_accessor :updated_at
 
-    # Signifies whether or not Fastly will use this configuration as a default when creating a new [TLS Activation](/reference/api/tls/custom-certs/activations/).
+    # Signifies whether or not Fastly will use this configuration as a default when creating a new [TLS Activation](https://www.fastly.com/documentation/reference/api/tls/custom-certs/activations/).
     attr_accessor :default
 
     # HTTP protocols available on your configuration.

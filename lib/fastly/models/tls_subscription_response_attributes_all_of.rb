@@ -16,6 +16,9 @@ module Fastly
     # The current state of your subscription.
     attr_accessor :state
 
+    # Subscription has an active order
+    attr_accessor :has_active_order
+
     class EnumAttributeValidator
       attr_reader :datatype
       attr_reader :allowable_values
@@ -41,7 +44,8 @@ module Fastly
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'state' => :'state'
+        :'state' => :'state',
+        :'has_active_order' => :'has_active_order'
       }
     end
 
@@ -53,7 +57,8 @@ module Fastly
     # Attribute type mapping.
     def self.fastly_types
       {
-        :'state' => :'String'
+        :'state' => :'String',
+        :'has_active_order' => :'Boolean'
       }
     end
 
@@ -80,6 +85,10 @@ module Fastly
 
       if attributes.key?(:'state')
         self.state = attributes[:'state']
+      end
+
+      if attributes.key?(:'has_active_order')
+        self.has_active_order = attributes[:'has_active_order']
       end
     end
 
@@ -113,7 +122,8 @@ module Fastly
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          state == o.state
+          state == o.state &&
+          has_active_order == o.has_active_order
     end
 
     # @see the `==` method
@@ -125,7 +135,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [state].hash
+      [state, has_active_order].hash
     end
 
     # Builds the object from hash

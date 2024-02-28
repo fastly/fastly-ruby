@@ -42,7 +42,7 @@ module Fastly
     # Whether the service is paused. Services are paused due to a lack of traffic for an extended period of time. Services are resumed either when a draft version is activated or a locked version is cloned and reactivated.
     attr_accessor :paused
 
-    # A list of [versions](/reference/api/services/version/) associated with the service.
+    # A list of [versions](https://www.fastly.com/documentation/reference/api/services/version/) associated with the service.
     attr_accessor :versions
 
     class EnumAttributeValidator

@@ -28,7 +28,7 @@ module Fastly
     # The percentage of capacity that needs to be up for a director to be considered up. `0` to `100`.
     attr_accessor :quorum
 
-    # Selected POP to serve as a shield for the backends. Defaults to `null` meaning no origin shielding if not set. Refer to the [POPs API endpoint](/reference/api/utils/pops/) to get a list of available POPs used for shielding.
+    # Selected POP to serve as a shield for the backends. Defaults to `null` meaning no origin shielding if not set. Refer to the [POPs API endpoint](https://www.fastly.com/documentation/reference/api/utils/pops/) to get a list of available POPs used for shielding.
     attr_accessor :shield
 
     # What type of load balance group to use.

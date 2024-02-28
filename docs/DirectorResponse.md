@@ -9,7 +9,7 @@
 | **comment** | **String** | A freeform descriptive note. | [optional] |
 | **name** | **String** | Name for the Director. | [optional] |
 | **quorum** | **Integer** | The percentage of capacity that needs to be up for a director to be considered up. `0` to `100`. | [optional][default to 75] |
-| **shield** | **String** | Selected POP to serve as a shield for the backends. Defaults to `null` meaning no origin shielding if not set. Refer to the [POPs API endpoint](/reference/api/utils/pops/) to get a list of available POPs used for shielding. | [optional][default to &#39;null&#39;] |
+| **shield** | **String** | Selected POP to serve as a shield for the backends. Defaults to `null` meaning no origin shielding if not set. Refer to the [POPs API endpoint](https://www.fastly.com/documentation/reference/api/utils/pops/) to get a list of available POPs used for shielding. | [optional][default to &#39;null&#39;] |
 | **type** | **Integer** | What type of load balance group to use. | [optional][default to TYPE::random] |
 | **retries** | **Integer** | How many backends to search if it fails. | [optional][default to 5] |
 | **service_id** | **String** |  | [optional][readonly] |

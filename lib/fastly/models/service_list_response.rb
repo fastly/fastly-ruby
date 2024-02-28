@@ -36,10 +36,10 @@ module Fastly
 
     attr_accessor :id
 
-    # Current [version](/reference/api/services/version/) of the service.
+    # Current [version](https://www.fastly.com/documentation/reference/api/services/version/) of the service.
     attr_accessor :version
 
-    # A list of [versions](/reference/api/services/version/) associated with the service.
+    # A list of [versions](https://www.fastly.com/documentation/reference/api/services/version/) associated with the service.
     attr_accessor :versions
 
     class EnumAttributeValidator

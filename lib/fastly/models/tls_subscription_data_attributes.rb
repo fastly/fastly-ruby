@@ -93,7 +93,7 @@ module Fastly
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      certificate_authority_validator = EnumAttributeValidator.new('String', ["lets-encrypt", "globalsign"])
+      certificate_authority_validator = EnumAttributeValidator.new('String', ["lets-encrypt", "certainly", "globalsign"])
       return false unless certificate_authority_validator.valid?(@certificate_authority)
       true
     end
@@ -101,7 +101,7 @@ module Fastly
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] certificate_authority Object to be assigned
     def certificate_authority=(certificate_authority)
-      validator = EnumAttributeValidator.new('String', ["lets-encrypt", "globalsign"])
+      validator = EnumAttributeValidator.new('String', ["lets-encrypt", "certainly", "globalsign"])
       unless validator.valid?(certificate_authority)
         fail ArgumentError, "invalid value for \"certificate_authority\", must be one of #{validator.allowable_values}."
       end

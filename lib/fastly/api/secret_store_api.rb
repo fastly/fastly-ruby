@@ -262,8 +262,9 @@ module Fastly
 
     # Get all secret stores
     # Get all secret stores.
-    # @option opts [String] :cursor Cursor value from a previous response to retrieve the next page. To request the first page, this should be empty.
+    # @option opts [String] :cursor Cursor value from the &#x60;next_cursor&#x60; field of a previous response, used to retrieve the next page. To request the first page, this should be empty.
     # @option opts [String] :limit Number of results per page. The maximum is 200. (default to '100')
+    # @option opts [String] :name Returns a one-element array containing the details for the named secret store.
     # @return [InlineResponse2005]
     def get_secret_stores(opts = {})
       data, _status_code, _headers = get_secret_stores_with_http_info(opts)
@@ -272,8 +273,9 @@ module Fastly
 
     # Get all secret stores
     # Get all secret stores.
-    # @option opts [String] :cursor Cursor value from a previous response to retrieve the next page. To request the first page, this should be empty.
+    # @option opts [String] :cursor Cursor value from the &#x60;next_cursor&#x60; field of a previous response, used to retrieve the next page. To request the first page, this should be empty.
     # @option opts [String] :limit Number of results per page. The maximum is 200. (default to '100')
+    # @option opts [String] :name Returns a one-element array containing the details for the named secret store.
     # @return [Array<(InlineResponse2005, Integer, Hash)>] InlineResponse2005 data, response status code and response headers
     def get_secret_stores_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -287,6 +289,7 @@ module Fastly
       query_params = opts[:query_params] || {}
       query_params[:'cursor'] = opts[:'cursor'] if !opts[:'cursor'].nil?
       query_params[:'limit'] = opts[:'limit'] if !opts[:'limit'].nil?
+      query_params[:'name'] = opts[:'name'] if !opts[:'name'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}

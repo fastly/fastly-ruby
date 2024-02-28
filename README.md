@@ -8,7 +8,7 @@ A Ruby client library for interacting with most facets of the [Fastly API](https
 To install via RubyGems, add the following to your project's `Gemfile`:
 
 ```ruby
-gem 'fastly', '~> 8.0.1'
+gem 'fastly', '~> 8.1.0'
 ```
 
 Then run `bundle install`.
@@ -94,6 +94,8 @@ Class | Method | Description
 [*Fastly::BillingAddressApi*](docs/BillingAddressApi.md) | [**delete_billing_addr**](docs/BillingAddressApi.md#delete_billing_addr) | Delete a billing address
 [*Fastly::BillingAddressApi*](docs/BillingAddressApi.md) | [**get_billing_addr**](docs/BillingAddressApi.md#get_billing_addr) | Get a billing address
 [*Fastly::BillingAddressApi*](docs/BillingAddressApi.md) | [**update_billing_addr**](docs/BillingAddressApi.md#update_billing_addr) | Update a billing address
+[*Fastly::BillingInvoicesApi*](docs/BillingInvoicesApi.md) | [**get_invoice_by_invoice_id**](docs/BillingInvoicesApi.md#get_invoice_by_invoice_id) | Get invoice by ID.
+[*Fastly::BillingInvoicesApi*](docs/BillingInvoicesApi.md) | [**list_invoices**](docs/BillingInvoicesApi.md#list_invoices) | List of invoices.
 [*Fastly::CacheSettingsApi*](docs/CacheSettingsApi.md) | [**create_cache_settings**](docs/CacheSettingsApi.md#create_cache_settings) | Create a cache settings object
 [*Fastly::CacheSettingsApi*](docs/CacheSettingsApi.md) | [**delete_cache_settings**](docs/CacheSettingsApi.md#delete_cache_settings) | Delete a cache settings object
 [*Fastly::CacheSettingsApi*](docs/CacheSettingsApi.md) | [**get_cache_settings**](docs/CacheSettingsApi.md#get_cache_settings) | Get a cache settings object
@@ -509,6 +511,7 @@ Class | Method | Description
 [*Fastly::TlsConfigurationsApi*](docs/TlsConfigurationsApi.md) | [**get_tls_config**](docs/TlsConfigurationsApi.md#get_tls_config) | Get a TLS configuration
 [*Fastly::TlsConfigurationsApi*](docs/TlsConfigurationsApi.md) | [**list_tls_configs**](docs/TlsConfigurationsApi.md#list_tls_configs) | List TLS configurations
 [*Fastly::TlsConfigurationsApi*](docs/TlsConfigurationsApi.md) | [**update_tls_config**](docs/TlsConfigurationsApi.md#update_tls_config) | Update a TLS configuration
+[*Fastly::TlsCsrsApi*](docs/TlsCsrsApi.md) | [**create_csr**](docs/TlsCsrsApi.md#create_csr) | Create CSR
 [*Fastly::TlsDomainsApi*](docs/TlsDomainsApi.md) | [**list_tls_domains**](docs/TlsDomainsApi.md#list_tls_domains) | List TLS domains
 [*Fastly::TlsPrivateKeysApi*](docs/TlsPrivateKeysApi.md) | [**create_tls_key**](docs/TlsPrivateKeysApi.md#create_tls_key) | Create a TLS private key
 [*Fastly::TlsPrivateKeysApi*](docs/TlsPrivateKeysApi.md) | [**delete_tls_key**](docs/TlsPrivateKeysApi.md#delete_tls_key) | Delete a TLS private key
@@ -595,12 +598,15 @@ Class | Method | Description
 
 The fastly-ruby API client currently does not support the following endpoints:
 
-- [`/resources/stores/kv/{store_id}/batch`](https://developer.fastly.com/reference/api/services/resources/kv-store-item) (PUT)
-- [`/tls/activations/{tls_activation_id}`](https://developer.fastly.com/reference/api/tls/mutual-tls/activations) (GET, PATCH)
-- [`/tls/activations`](https://developer.fastly.com/reference/api/tls/mutual-tls/activations) (GET)
-- [`/v1/channel/{service_id}/ts/h/limit/{max_entries}`](https://developer.fastly.com/reference/api/metrics-stats/origin-insights) (GET)
-- [`/v1/channel/{service_id}/ts/h`](https://developer.fastly.com/reference/api/metrics-stats/origin-insights) (GET)
-- [`/v1/channel/{service_id}/ts/{start_timestamp}`](https://developer.fastly.com/reference/api/metrics-stats/origin-insights) (GET)
+- [`/alerts/definitions/{definition_id}`](https://www.fastly.com/documentation/reference/api/observability/alerts/definitions) (DELETE, GET, PUT)
+- [`/alerts/definitions`](https://www.fastly.com/documentation/reference/api/observability/alerts/definitions) (GET, POST)
+- [`/alerts/history`](https://www.fastly.com/documentation/reference/api/observability/alerts/history) (GET)
+- [`/resources/stores/kv/{store_id}/batch`](https://www.fastly.com/documentation/reference/api/services/resources/kv-store-item) (PUT)
+- [`/tls/activations/{tls_activation_id}`](https://www.fastly.com/documentation/reference/api/tls/mutual-tls/activations) (GET, PATCH)
+- [`/tls/activations`](https://www.fastly.com/documentation/reference/api/tls/mutual-tls/activations) (GET)
+- [`/v1/channel/{service_id}/ts/h/limit/{max_entries}`](https://www.fastly.com/documentation/reference/api/metrics-stats/origin-insights) (GET)
+- [`/v1/channel/{service_id}/ts/h`](https://www.fastly.com/documentation/reference/api/metrics-stats/origin-insights) (GET)
+- [`/v1/channel/{service_id}/ts/{start_timestamp}`](https://www.fastly.com/documentation/reference/api/metrics-stats/origin-insights) (GET)
 
 
 If you encounter any non-security-related bug or unexpected behavior, please [file an issue][bug]

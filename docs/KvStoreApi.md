@@ -159,7 +159,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **cursor** | **String** |  | [optional] |
-| **limit** | **Integer** |  | [optional][default to 100] |
+| **limit** | **Integer** |  | [optional][default to 1000] |
 
 ### Return type
 
