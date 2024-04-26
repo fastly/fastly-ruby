@@ -145,6 +145,12 @@ module Fastly
         :'default_host',
         :'hash_keys',
         :'request_condition',
+        :'xff',
+        :'bypass_busy_wait',
+        :'force_miss',
+        :'geo_headers',
+        :'max_stale_age',
+        :'timer_support'
       ])
     end
 

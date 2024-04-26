@@ -89,6 +89,7 @@ module Fastly
         :'default_host',
         :'hash_keys',
         :'request_condition',
+        :'xff'
       ])
     end
 

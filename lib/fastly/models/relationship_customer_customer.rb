@@ -30,7 +30,7 @@ module Fastly
     # Attribute type mapping.
     def self.fastly_types
       {
-        :'data' => :'Array<RelationshipMemberCustomer>'
+        :'data' => :'RelationshipMemberCustomer'
       }
     end
 
@@ -56,9 +56,7 @@ module Fastly
       }
 
       if attributes.key?(:'data')
-        if (value = attributes[:'data']).is_a?(Array)
-          self.data = value
-        end
+        self.data = attributes[:'data']
       end
     end
 

@@ -1,5 +1,30 @@
 # Changelog
 
+## [v8.2.0](https://github.com/fastly/fastly-ruby/releases/tag/release/v8.2.0) (2024-04-25)
+
+**Bug fixes:**
+
+- bugfix(billing_address, invitations): Correct customer relationship schema to be single entry rather than array
+- bugfix(request_settings): Mark request_settings fields as nullable: bypass_busy_wait, force_miss, geo_headers,
+  max_stale_age, timer_support, and xff
+
+**Enhancements:**
+
+- feat(generator): The API Client Generator now uses a new automatic changelog generation process.
+- feat(historical, realtime): Add the following new metrics: `ddos_action_downgrade`,
+  `ddos_action_downgraded_connections`, `vcl_on_compute_hit_requests`, `vcl_on_compute_miss_requests`,
+  `vcl_on_compute_pass_requests`, `vcl_on_compute_error_requests`, `vcl_on_compute_synth_requests`,
+  `vcl_on_compute_edge_hit_requests`, `vcl_on_compute_edge_miss_requests`, `all_hit_requests`,
+  `all_miss_requests`, `all_pass_requests`, `all_error_requests`, `all_synth_requests`, `all_edge_hit_requests`,
+  `all_edge_miss_requests`, `all_status_1xx`, `all_status_2xx`, `all_status_3xx`, `all_status_4xx`, and
+  `all_status_5xx`.
+- feat(backend): Add `tcp_keepalive_*` properties to the Backend API, which allow configuring TCP keepalives for
+  backend connections.
+
+**Documentation:**
+
+- doc(realtime): Correct description of miss_histogram structure in real-time stats.
+
 ## [v8.1.0](https://github.com/fastly/fastly-ruby/releases/tag/release/v8.1.0) (2024-02-28)
 
 **Enhancements:**

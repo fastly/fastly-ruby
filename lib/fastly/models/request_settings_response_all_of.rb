@@ -63,6 +63,11 @@ module Fastly
     # List of attributes with nullable: true
     def self.fastly_nullable
       Set.new([
+        :'bypass_busy_wait',
+        :'force_miss',
+        :'geo_headers',
+        :'max_stale_age',
+        :'timer_support'
       ])
     end
 

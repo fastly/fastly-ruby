@@ -100,6 +100,18 @@ module Fastly
     # Overrides `ssl_hostname`, but only for SNI in the handshake. Does not affect cert validation at all.
     attr_accessor :ssl_sni_hostname
 
+    # Whether to enable TCP keepalives for backend connections. Varnish defaults to using keepalives if this is unspecified.
+    attr_accessor :tcp_keepalive_enable
+
+    # Interval in seconds between subsequent keepalive probes.
+    attr_accessor :tcp_keepalive_interval
+
+    # Number of unacknowledged probes to send before considering the connection dead.
+    attr_accessor :tcp_keepalive_probes
+
+    # Interval in seconds between the last data packet sent and the first keepalive probe.
+    attr_accessor :tcp_keepalive_time
+
     # Whether or not to require TLS for connections to this backend.
     attr_accessor :use_ssl
 
@@ -138,6 +150,10 @@ module Fastly
         :'ssl_client_key' => :'ssl_client_key',
         :'ssl_hostname' => :'ssl_hostname',
         :'ssl_sni_hostname' => :'ssl_sni_hostname',
+        :'tcp_keepalive_enable' => :'tcp_keepalive_enable',
+        :'tcp_keepalive_interval' => :'tcp_keepalive_interval',
+        :'tcp_keepalive_probes' => :'tcp_keepalive_probes',
+        :'tcp_keepalive_time' => :'tcp_keepalive_time',
         :'use_ssl' => :'use_ssl',
         :'weight' => :'weight'
       }
@@ -180,6 +196,10 @@ module Fastly
         :'ssl_client_key' => :'String',
         :'ssl_hostname' => :'String',
         :'ssl_sni_hostname' => :'String',
+        :'tcp_keepalive_enable' => :'Boolean',
+        :'tcp_keepalive_interval' => :'Integer',
+        :'tcp_keepalive_probes' => :'Integer',
+        :'tcp_keepalive_time' => :'Integer',
         :'use_ssl' => :'Boolean',
         :'weight' => :'Integer'
       }
@@ -208,6 +228,9 @@ module Fastly
         :'ssl_client_key',
         :'ssl_hostname',
         :'ssl_sni_hostname',
+        :'tcp_keepalive_interval',
+        :'tcp_keepalive_probes',
+        :'tcp_keepalive_time',
       ])
     end
 
@@ -344,6 +367,22 @@ module Fastly
         self.ssl_sni_hostname = attributes[:'ssl_sni_hostname']
       end
 
+      if attributes.key?(:'tcp_keepalive_enable')
+        self.tcp_keepalive_enable = attributes[:'tcp_keepalive_enable']
+      end
+
+      if attributes.key?(:'tcp_keepalive_interval')
+        self.tcp_keepalive_interval = attributes[:'tcp_keepalive_interval']
+      end
+
+      if attributes.key?(:'tcp_keepalive_probes')
+        self.tcp_keepalive_probes = attributes[:'tcp_keepalive_probes']
+      end
+
+      if attributes.key?(:'tcp_keepalive_time')
+        self.tcp_keepalive_time = attributes[:'tcp_keepalive_time']
+      end
+
       if attributes.key?(:'use_ssl')
         self.use_ssl = attributes[:'use_ssl']
       end
@@ -417,6 +456,10 @@ module Fastly
           ssl_client_key == o.ssl_client_key &&
           ssl_hostname == o.ssl_hostname &&
           ssl_sni_hostname == o.ssl_sni_hostname &&
+          tcp_keepalive_enable == o.tcp_keepalive_enable &&
+          tcp_keepalive_interval == o.tcp_keepalive_interval &&
+          tcp_keepalive_probes == o.tcp_keepalive_probes &&
+          tcp_keepalive_time == o.tcp_keepalive_time &&
           use_ssl == o.use_ssl &&
           weight == o.weight
     end
@@ -430,7 +473,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [address, auto_loadbalance, between_bytes_timeout, client_cert, comment, connect_timeout, first_byte_timeout, healthcheck, hostname, ipv4, ipv6, keepalive_time, max_conn, max_tls_version, min_tls_version, name, override_host, port, request_condition, share_key, shield, ssl_ca_cert, ssl_cert_hostname, ssl_check_cert, ssl_ciphers, ssl_client_cert, ssl_client_key, ssl_hostname, ssl_sni_hostname, use_ssl, weight].hash
+      [address, auto_loadbalance, between_bytes_timeout, client_cert, comment, connect_timeout, first_byte_timeout, healthcheck, hostname, ipv4, ipv6, keepalive_time, max_conn, max_tls_version, min_tls_version, name, override_host, port, request_condition, share_key, shield, ssl_ca_cert, ssl_cert_hostname, ssl_check_cert, ssl_ciphers, ssl_client_cert, ssl_client_key, ssl_hostname, ssl_sni_hostname, tcp_keepalive_enable, tcp_keepalive_interval, tcp_keepalive_probes, tcp_keepalive_time, use_ssl, weight].hash
     end
 
     # Builds the object from hash

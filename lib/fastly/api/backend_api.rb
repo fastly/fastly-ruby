@@ -50,6 +50,10 @@ module Fastly
     # @option opts [String] :ssl_client_key Client key attached to origin.
     # @option opts [String] :ssl_hostname Use &#x60;ssl_cert_hostname&#x60; and &#x60;ssl_sni_hostname&#x60; to configure certificate validation.
     # @option opts [String] :ssl_sni_hostname Overrides &#x60;ssl_hostname&#x60;, but only for SNI in the handshake. Does not affect cert validation at all.
+    # @option opts [Boolean] :tcp_keepalive_enable Whether to enable TCP keepalives for backend connections. Varnish defaults to using keepalives if this is unspecified.
+    # @option opts [Integer] :tcp_keepalive_interval Interval in seconds between subsequent keepalive probes.
+    # @option opts [Integer] :tcp_keepalive_probes Number of unacknowledged probes to send before considering the connection dead.
+    # @option opts [Integer] :tcp_keepalive_time Interval in seconds between the last data packet sent and the first keepalive probe.
     # @option opts [Boolean] :use_ssl Whether or not to require TLS for connections to this backend.
     # @option opts [Integer] :weight Weight used to load balance this backend against others. May be any positive integer. If &#x60;auto_loadbalance&#x60; is true, the chance of this backend being selected is equal to its own weight over the sum of all weights for backends that have &#x60;auto_loadbalance&#x60; set to true.
     # @return [BackendResponse]
@@ -91,6 +95,10 @@ module Fastly
     # @option opts [String] :ssl_client_key Client key attached to origin.
     # @option opts [String] :ssl_hostname Use &#x60;ssl_cert_hostname&#x60; and &#x60;ssl_sni_hostname&#x60; to configure certificate validation.
     # @option opts [String] :ssl_sni_hostname Overrides &#x60;ssl_hostname&#x60;, but only for SNI in the handshake. Does not affect cert validation at all.
+    # @option opts [Boolean] :tcp_keepalive_enable Whether to enable TCP keepalives for backend connections. Varnish defaults to using keepalives if this is unspecified.
+    # @option opts [Integer] :tcp_keepalive_interval Interval in seconds between subsequent keepalive probes.
+    # @option opts [Integer] :tcp_keepalive_probes Number of unacknowledged probes to send before considering the connection dead.
+    # @option opts [Integer] :tcp_keepalive_time Interval in seconds between the last data packet sent and the first keepalive probe.
     # @option opts [Boolean] :use_ssl Whether or not to require TLS for connections to this backend.
     # @option opts [Integer] :weight Weight used to load balance this backend against others. May be any positive integer. If &#x60;auto_loadbalance&#x60; is true, the chance of this backend being selected is equal to its own weight over the sum of all weights for backends that have &#x60;auto_loadbalance&#x60; set to true.
     # @return [Array<(BackendResponse, Integer, Hash)>] BackendResponse data, response status code and response headers
@@ -161,6 +169,10 @@ module Fastly
       form_params['ssl_client_key'] = opts[:'ssl_client_key'] if !opts[:'ssl_client_key'].nil?
       form_params['ssl_hostname'] = opts[:'ssl_hostname'] if !opts[:'ssl_hostname'].nil?
       form_params['ssl_sni_hostname'] = opts[:'ssl_sni_hostname'] if !opts[:'ssl_sni_hostname'].nil?
+      form_params['tcp_keepalive_enable'] = opts[:'tcp_keepalive_enable'] if !opts[:'tcp_keepalive_enable'].nil?
+      form_params['tcp_keepalive_interval'] = opts[:'tcp_keepalive_interval'] if !opts[:'tcp_keepalive_interval'].nil?
+      form_params['tcp_keepalive_probes'] = opts[:'tcp_keepalive_probes'] if !opts[:'tcp_keepalive_probes'].nil?
+      form_params['tcp_keepalive_time'] = opts[:'tcp_keepalive_time'] if !opts[:'tcp_keepalive_time'].nil?
       form_params['use_ssl'] = opts[:'use_ssl'] if !opts[:'use_ssl'].nil?
       form_params['weight'] = opts[:'weight'] if !opts[:'weight'].nil?
 
@@ -448,6 +460,10 @@ module Fastly
     # @option opts [String] :ssl_client_key Client key attached to origin.
     # @option opts [String] :ssl_hostname Use &#x60;ssl_cert_hostname&#x60; and &#x60;ssl_sni_hostname&#x60; to configure certificate validation.
     # @option opts [String] :ssl_sni_hostname Overrides &#x60;ssl_hostname&#x60;, but only for SNI in the handshake. Does not affect cert validation at all.
+    # @option opts [Boolean] :tcp_keepalive_enable Whether to enable TCP keepalives for backend connections. Varnish defaults to using keepalives if this is unspecified.
+    # @option opts [Integer] :tcp_keepalive_interval Interval in seconds between subsequent keepalive probes.
+    # @option opts [Integer] :tcp_keepalive_probes Number of unacknowledged probes to send before considering the connection dead.
+    # @option opts [Integer] :tcp_keepalive_time Interval in seconds between the last data packet sent and the first keepalive probe.
     # @option opts [Boolean] :use_ssl Whether or not to require TLS for connections to this backend.
     # @option opts [Integer] :weight Weight used to load balance this backend against others. May be any positive integer. If &#x60;auto_loadbalance&#x60; is true, the chance of this backend being selected is equal to its own weight over the sum of all weights for backends that have &#x60;auto_loadbalance&#x60; set to true.
     # @return [BackendResponse]
@@ -490,6 +506,10 @@ module Fastly
     # @option opts [String] :ssl_client_key Client key attached to origin.
     # @option opts [String] :ssl_hostname Use &#x60;ssl_cert_hostname&#x60; and &#x60;ssl_sni_hostname&#x60; to configure certificate validation.
     # @option opts [String] :ssl_sni_hostname Overrides &#x60;ssl_hostname&#x60;, but only for SNI in the handshake. Does not affect cert validation at all.
+    # @option opts [Boolean] :tcp_keepalive_enable Whether to enable TCP keepalives for backend connections. Varnish defaults to using keepalives if this is unspecified.
+    # @option opts [Integer] :tcp_keepalive_interval Interval in seconds between subsequent keepalive probes.
+    # @option opts [Integer] :tcp_keepalive_probes Number of unacknowledged probes to send before considering the connection dead.
+    # @option opts [Integer] :tcp_keepalive_time Interval in seconds between the last data packet sent and the first keepalive probe.
     # @option opts [Boolean] :use_ssl Whether or not to require TLS for connections to this backend.
     # @option opts [Integer] :weight Weight used to load balance this backend against others. May be any positive integer. If &#x60;auto_loadbalance&#x60; is true, the chance of this backend being selected is equal to its own weight over the sum of all weights for backends that have &#x60;auto_loadbalance&#x60; set to true.
     # @return [Array<(BackendResponse, Integer, Hash)>] BackendResponse data, response status code and response headers
@@ -565,6 +585,10 @@ module Fastly
       form_params['ssl_client_key'] = opts[:'ssl_client_key'] if !opts[:'ssl_client_key'].nil?
       form_params['ssl_hostname'] = opts[:'ssl_hostname'] if !opts[:'ssl_hostname'].nil?
       form_params['ssl_sni_hostname'] = opts[:'ssl_sni_hostname'] if !opts[:'ssl_sni_hostname'].nil?
+      form_params['tcp_keepalive_enable'] = opts[:'tcp_keepalive_enable'] if !opts[:'tcp_keepalive_enable'].nil?
+      form_params['tcp_keepalive_interval'] = opts[:'tcp_keepalive_interval'] if !opts[:'tcp_keepalive_interval'].nil?
+      form_params['tcp_keepalive_probes'] = opts[:'tcp_keepalive_probes'] if !opts[:'tcp_keepalive_probes'].nil?
+      form_params['tcp_keepalive_time'] = opts[:'tcp_keepalive_time'] if !opts[:'tcp_keepalive_time'].nil?
       form_params['use_ssl'] = opts[:'use_ssl'] if !opts[:'use_ssl'].nil?
       form_params['weight'] = opts[:'weight'] if !opts[:'weight'].nil?
 
