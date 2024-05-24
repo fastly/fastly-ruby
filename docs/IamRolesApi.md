@@ -8,16 +8,19 @@ api_instance = Fastly::IamRolesApi.new
 
 ## Methods
 
-| Method | HTTP request | Description |
-| ------ | ------------ | ----------- |
-| [**add_role_permissions**](IamRolesApi.md#add_role_permissions) | **POST** /roles/{role_id}/permissions | Add permissions to a role |
-| [**create_a_role**](IamRolesApi.md#create_a_role) | **POST** /roles | Create a role |
-| [**delete_a_role**](IamRolesApi.md#delete_a_role) | **DELETE** /roles/{role_id} | Delete a role |
-| [**get_a_role**](IamRolesApi.md#get_a_role) | **GET** /roles/{role_id} | Get a role |
-| [**list_role_permissions**](IamRolesApi.md#list_role_permissions) | **GET** /roles/{role_id}/permissions | List permissions in a role |
-| [**list_roles**](IamRolesApi.md#list_roles) | **GET** /roles | List roles |
-| [**remove_role_permissions**](IamRolesApi.md#remove_role_permissions) | **DELETE** /roles/{role_id}/permissions | Remove permissions from a role |
-| [**update_a_role**](IamRolesApi.md#update_a_role) | **PATCH** /roles/{role_id} | Update a role |
+> [!NOTE]
+> All URIs are relative to `https://api.fastly.com`
+
+Method | HTTP request | Description
+------ | ------------ | -----------
+[**add_role_permissions**](IamRolesApi.md#add_role_permissions) | **POST** /roles/{role_id}/permissions | Add permissions to a role
+[**create_a_role**](IamRolesApi.md#create_a_role) | **POST** /roles | Create a role
+[**delete_a_role**](IamRolesApi.md#delete_a_role) | **DELETE** /roles/{role_id} | Delete a role
+[**get_a_role**](IamRolesApi.md#get_a_role) | **GET** /roles/{role_id} | Get a role
+[**list_role_permissions**](IamRolesApi.md#list_role_permissions) | **GET** /roles/{role_id}/permissions | List permissions in a role
+[**list_roles**](IamRolesApi.md#list_roles) | **GET** /roles | List roles
+[**remove_role_permissions**](IamRolesApi.md#remove_role_permissions) | **DELETE** /roles/{role_id}/permissions | Remove permissions from a role
+[**update_a_role**](IamRolesApi.md#update_a_role) | **PATCH** /roles/{role_id} | Update a role
 
 
 ## `add_role_permissions()`

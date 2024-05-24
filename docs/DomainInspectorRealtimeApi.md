@@ -8,11 +8,14 @@ api_instance = Fastly::DomainInspectorRealtimeApi.new
 
 ## Methods
 
-| Method | HTTP request | Description |
-| ------ | ------------ | ----------- |
-| [**get_domain_inspector_last120_seconds**](DomainInspectorRealtimeApi.md#get_domain_inspector_last120_seconds) | **GET** /v1/domains/{service_id}/ts/h | Get real-time domain data for the last 120 seconds |
-| [**get_domain_inspector_last_max_entries**](DomainInspectorRealtimeApi.md#get_domain_inspector_last_max_entries) | **GET** /v1/domains/{service_id}/ts/h/limit/{max_entries} | Get a limited number of real-time domain data entries |
-| [**get_domain_inspector_last_second**](DomainInspectorRealtimeApi.md#get_domain_inspector_last_second) | **GET** /v1/domains/{service_id}/ts/{start_timestamp} | Get real-time domain data from a specified time |
+> [!NOTE]
+> All URIs are relative to `https://api.fastly.com`
+
+Method | HTTP request | Description
+------ | ------------ | -----------
+[**get_domain_inspector_last120_seconds**](DomainInspectorRealtimeApi.md#get_domain_inspector_last120_seconds) | **GET** /v1/domains/{service_id}/ts/h | Get real-time domain data for the last 120 seconds
+[**get_domain_inspector_last_max_entries**](DomainInspectorRealtimeApi.md#get_domain_inspector_last_max_entries) | **GET** /v1/domains/{service_id}/ts/h/limit/{max_entries} | Get a limited number of real-time domain data entries
+[**get_domain_inspector_last_second**](DomainInspectorRealtimeApi.md#get_domain_inspector_last_second) | **GET** /v1/domains/{service_id}/ts/{start_timestamp} | Get real-time domain data from a specified time
 
 
 ## `get_domain_inspector_last120_seconds()`

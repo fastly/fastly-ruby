@@ -8,15 +8,18 @@ api_instance = Fastly::TlsSubscriptionsApi.new
 
 ## Methods
 
-| Method | HTTP request | Description |
-| ------ | ------------ | ----------- |
-| [**create_globalsign_email_challenge**](TlsSubscriptionsApi.md#create_globalsign_email_challenge) | **POST** /tls/subscriptions/{tls_subscription_id}/authorizations/{tls_authorization_id}/globalsign_email_challenges | Creates a GlobalSign email challenge. |
-| [**create_tls_sub**](TlsSubscriptionsApi.md#create_tls_sub) | **POST** /tls/subscriptions | Create a TLS subscription |
-| [**delete_globalsign_email_challenge**](TlsSubscriptionsApi.md#delete_globalsign_email_challenge) | **DELETE** /tls/subscriptions/{tls_subscription_id}/authorizations/{tls_authorization_id}/globalsign_email_challenges/{globalsign_email_challenge_id} | Delete a GlobalSign email challenge |
-| [**delete_tls_sub**](TlsSubscriptionsApi.md#delete_tls_sub) | **DELETE** /tls/subscriptions/{tls_subscription_id} | Delete a TLS subscription |
-| [**get_tls_sub**](TlsSubscriptionsApi.md#get_tls_sub) | **GET** /tls/subscriptions/{tls_subscription_id} | Get a TLS subscription |
-| [**list_tls_subs**](TlsSubscriptionsApi.md#list_tls_subs) | **GET** /tls/subscriptions | List TLS subscriptions |
-| [**patch_tls_sub**](TlsSubscriptionsApi.md#patch_tls_sub) | **PATCH** /tls/subscriptions/{tls_subscription_id} | Update a TLS subscription |
+> [!NOTE]
+> All URIs are relative to `https://api.fastly.com`
+
+Method | HTTP request | Description
+------ | ------------ | -----------
+[**create_globalsign_email_challenge**](TlsSubscriptionsApi.md#create_globalsign_email_challenge) | **POST** /tls/subscriptions/{tls_subscription_id}/authorizations/{tls_authorization_id}/globalsign_email_challenges | Creates a GlobalSign email challenge.
+[**create_tls_sub**](TlsSubscriptionsApi.md#create_tls_sub) | **POST** /tls/subscriptions | Create a TLS subscription
+[**delete_globalsign_email_challenge**](TlsSubscriptionsApi.md#delete_globalsign_email_challenge) | **DELETE** /tls/subscriptions/{tls_subscription_id}/authorizations/{tls_authorization_id}/globalsign_email_challenges/{globalsign_email_challenge_id} | Delete a GlobalSign email challenge
+[**delete_tls_sub**](TlsSubscriptionsApi.md#delete_tls_sub) | **DELETE** /tls/subscriptions/{tls_subscription_id} | Delete a TLS subscription
+[**get_tls_sub**](TlsSubscriptionsApi.md#get_tls_sub) | **GET** /tls/subscriptions/{tls_subscription_id} | Get a TLS subscription
+[**list_tls_subs**](TlsSubscriptionsApi.md#list_tls_subs) | **GET** /tls/subscriptions | List TLS subscriptions
+[**patch_tls_sub**](TlsSubscriptionsApi.md#patch_tls_sub) | **PATCH** /tls/subscriptions/{tls_subscription_id} | Update a TLS subscription
 
 
 ## `create_globalsign_email_challenge()`
@@ -189,7 +192,7 @@ Show a TLS subscription.
 api_instance = Fastly::TlsSubscriptionsApi.new
 opts = {
     tls_subscription_id: 'tls_subscription_id_example', # String | Alphanumeric string identifying a TLS subscription.
-    include: 'tls_authorizations', # String | Include related objects. Optional, comma-separated values. Permitted values: `tls_authorizations`, `tls_authorizations.globalsign_email_challenge`, and `tls_authorizations.self_managed_http_challenge`. 
+    include: 'tls_authorizations', # String | Include related objects. Optional, comma-separated values. Permitted values: `tls_authorizations`, `tls_authorizations.globalsign_email_challenge`, `tls_authorizations.self_managed_http_challenge`, and `tls_certificates`. 
 }
 
 begin
@@ -205,7 +208,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **include** | **String** | Include related objects. Optional, comma-separated values. Permitted values: `tls_authorizations`, `tls_authorizations.globalsign_email_challenge`, and `tls_authorizations.self_managed_http_challenge`.  | [optional] |
+| **include** | **String** | Include related objects. Optional, comma-separated values. Permitted values: `tls_authorizations`, `tls_authorizations.globalsign_email_challenge`, `tls_authorizations.self_managed_http_challenge`, and `tls_certificates`.  | [optional] |
 | **tls_subscription_id** | **String** | Alphanumeric string identifying a TLS subscription. |  |
 
 ### Return type
@@ -230,7 +233,8 @@ opts = {
     filter_state: 'filter_state_example', # String | Limit the returned subscriptions by state. Valid values are `pending`, `processing`, `issued`, `renewing`, and `failed`. Accepts parameters: `not` (e.g., `filter[state][not]=renewing`). 
     filter_tls_domains_id: 'filter_tls_domains_id_example', # String | Limit the returned subscriptions to those that include the specific domain.
     filter_has_active_order: true, # Boolean | Limit the returned subscriptions to those that have currently active orders. Permitted values: `true`. 
-    include: 'tls_authorizations', # String | Include related objects. Optional, comma-separated values. Permitted values: `tls_authorizations`, `tls_authorizations.globalsign_email_challenge`, and `tls_authorizations.self_managed_http_challenge`. 
+    filter_certificate_authority: 'filter_certificate_authority_example', # String | Limit the returned subscriptions to a specific certification authority. Values may include `certainly`, `lets-encrypt`, or `globalsign`. 
+    include: 'tls_authorizations', # String | Include related objects. Optional, comma-separated values. Permitted values: `tls_authorizations`, `tls_authorizations.globalsign_email_challenge`, `tls_authorizations.self_managed_http_challenge`, and `tls_certificates`. 
     page_number: 1, # Integer | Current page.
     page_size: 20, # Integer | Number of records per page.
     sort: 'created_at', # String | The order in which to list the results by creation date.
@@ -252,7 +256,8 @@ end
 | **filter_state** | **String** | Limit the returned subscriptions by state. Valid values are `pending`, `processing`, `issued`, `renewing`, and `failed`. Accepts parameters: `not` (e.g., `filter[state][not]&#x3D;renewing`).  | [optional] |
 | **filter_tls_domains_id** | **String** | Limit the returned subscriptions to those that include the specific domain. | [optional] |
 | **filter_has_active_order** | **Boolean** | Limit the returned subscriptions to those that have currently active orders. Permitted values: `true`.  | [optional] |
-| **include** | **String** | Include related objects. Optional, comma-separated values. Permitted values: `tls_authorizations`, `tls_authorizations.globalsign_email_challenge`, and `tls_authorizations.self_managed_http_challenge`.  | [optional] |
+| **filter_certificate_authority** | **String** | Limit the returned subscriptions to a specific certification authority. Values may include `certainly`, `lets-encrypt`, or `globalsign`.  | [optional] |
+| **include** | **String** | Include related objects. Optional, comma-separated values. Permitted values: `tls_authorizations`, `tls_authorizations.globalsign_email_challenge`, `tls_authorizations.self_managed_http_challenge`, and `tls_certificates`.  | [optional] |
 | **page_number** | **Integer** | Current page. | [optional] |
 | **page_size** | **Integer** | Number of records per page. | [optional][default to 20] |
 | **sort** | **String** | The order in which to list the results by creation date. | [optional][default to &#39;created_at&#39;] |

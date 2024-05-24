@@ -8,10 +8,13 @@ api_instance = Fastly::LegacyWafUpdateStatusApi.new
 
 ## Methods
 
-| Method | HTTP request | Description |
-| ------ | ------------ | ----------- |
-| [**get_waf_update_status**](LegacyWafUpdateStatusApi.md#get_waf_update_status) | **GET** /service/{service_id}/wafs/{firewall_id}/update_statuses/{update_status_id} | Get the status of a WAF update |
-| [**list_waf_update_statuses**](LegacyWafUpdateStatusApi.md#list_waf_update_statuses) | **GET** /service/{service_id}/wafs/{firewall_id}/update_statuses | List update statuses |
+> [!NOTE]
+> All URIs are relative to `https://api.fastly.com`
+
+Method | HTTP request | Description
+------ | ------------ | -----------
+[**get_waf_update_status**](LegacyWafUpdateStatusApi.md#get_waf_update_status) | **GET** /service/{service_id}/wafs/{firewall_id}/update_statuses/{update_status_id} | Get the status of a WAF update
+[**list_waf_update_statuses**](LegacyWafUpdateStatusApi.md#list_waf_update_statuses) | **GET** /service/{service_id}/wafs/{firewall_id}/update_statuses | List update statuses
 
 
 ## `get_waf_update_status()`

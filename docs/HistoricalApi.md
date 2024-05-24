@@ -8,17 +8,20 @@ api_instance = Fastly::HistoricalApi.new
 
 ## Methods
 
-| Method | HTTP request | Description |
-| ------ | ------------ | ----------- |
-| [**get_hist_stats**](HistoricalApi.md#get_hist_stats) | **GET** /stats | Get historical stats |
-| [**get_hist_stats_aggregated**](HistoricalApi.md#get_hist_stats_aggregated) | **GET** /stats/aggregate | Get aggregated historical stats |
-| [**get_hist_stats_field**](HistoricalApi.md#get_hist_stats_field) | **GET** /stats/field/{field} | Get historical stats for a single field |
-| [**get_hist_stats_service**](HistoricalApi.md#get_hist_stats_service) | **GET** /stats/service/{service_id} | Get historical stats for a single service |
-| [**get_hist_stats_service_field**](HistoricalApi.md#get_hist_stats_service_field) | **GET** /stats/service/{service_id}/field/{field} | Get historical stats for a single service/field combination |
-| [**get_regions**](HistoricalApi.md#get_regions) | **GET** /stats/regions | Get region codes |
-| [**get_usage**](HistoricalApi.md#get_usage) | **GET** /stats/usage | Get usage statistics |
-| [**get_usage_month**](HistoricalApi.md#get_usage_month) | **GET** /stats/usage_by_month | Get month-to-date usage statistics |
-| [**get_usage_service**](HistoricalApi.md#get_usage_service) | **GET** /stats/usage_by_service | Get usage statistics per service |
+> [!NOTE]
+> All URIs are relative to `https://api.fastly.com`
+
+Method | HTTP request | Description
+------ | ------------ | -----------
+[**get_hist_stats**](HistoricalApi.md#get_hist_stats) | **GET** /stats | Get historical stats
+[**get_hist_stats_aggregated**](HistoricalApi.md#get_hist_stats_aggregated) | **GET** /stats/aggregate | Get aggregated historical stats
+[**get_hist_stats_field**](HistoricalApi.md#get_hist_stats_field) | **GET** /stats/field/{field} | Get historical stats for a single field
+[**get_hist_stats_service**](HistoricalApi.md#get_hist_stats_service) | **GET** /stats/service/{service_id} | Get historical stats for a single service
+[**get_hist_stats_service_field**](HistoricalApi.md#get_hist_stats_service_field) | **GET** /stats/service/{service_id}/field/{field} | Get historical stats for a single service/field combination
+[**get_regions**](HistoricalApi.md#get_regions) | **GET** /stats/regions | Get region codes
+[**get_usage**](HistoricalApi.md#get_usage) | **GET** /stats/usage | Get usage statistics
+[**get_usage_month**](HistoricalApi.md#get_usage_month) | **GET** /stats/usage_by_month | Get month-to-date usage statistics
+[**get_usage_service**](HistoricalApi.md#get_usage_service) | **GET** /stats/usage_by_service | Get usage statistics per service
 
 
 ## `get_hist_stats()`

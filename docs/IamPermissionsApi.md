@@ -8,9 +8,12 @@ api_instance = Fastly::IamPermissionsApi.new
 
 ## Methods
 
-| Method | HTTP request | Description |
-| ------ | ------------ | ----------- |
-| [**list_permissions**](IamPermissionsApi.md#list_permissions) | **GET** /permissions | List permissions |
+> [!NOTE]
+> All URIs are relative to `https://api.fastly.com`
+
+Method | HTTP request | Description
+------ | ------------ | -----------
+[**list_permissions**](IamPermissionsApi.md#list_permissions) | **GET** /permissions | List permissions
 
 
 ## `list_permissions()`

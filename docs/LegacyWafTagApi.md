@@ -8,9 +8,12 @@ api_instance = Fastly::LegacyWafTagApi.new
 
 ## Methods
 
-| Method | HTTP request | Description |
-| ------ | ------------ | ----------- |
-| [**list_legacy_waf_tags**](LegacyWafTagApi.md#list_legacy_waf_tags) | **GET** /wafs/tags | List WAF tags |
+> [!NOTE]
+> All URIs are relative to `https://api.fastly.com`
+
+Method | HTTP request | Description
+------ | ------------ | -----------
+[**list_legacy_waf_tags**](LegacyWafTagApi.md#list_legacy_waf_tags) | **GET** /wafs/tags | List WAF tags
 
 
 ## `list_legacy_waf_tags()`

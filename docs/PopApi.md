@@ -8,9 +8,12 @@ api_instance = Fastly::PopApi.new
 
 ## Methods
 
-| Method | HTTP request | Description |
-| ------ | ------------ | ----------- |
-| [**list_pops**](PopApi.md#list_pops) | **GET** /datacenters | List Fastly POPs |
+> [!NOTE]
+> All URIs are relative to `https://api.fastly.com`
+
+Method | HTTP request | Description
+------ | ------------ | -----------
+[**list_pops**](PopApi.md#list_pops) | **GET** /datacenters | List Fastly POPs
 
 
 ## `list_pops()`

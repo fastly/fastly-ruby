@@ -1,6 +1,6 @@
 # fastly-ruby
 
-A Ruby client library for interacting with most facets of the [Fastly API](https://developer.fastly.com/reference/api).
+A Ruby client library for interacting with most facets of the [Fastly API](https://www.fastly.com/documentation/reference/api/).
 
 
 ## Installation
@@ -8,7 +8,7 @@ A Ruby client library for interacting with most facets of the [Fastly API](https
 To install via RubyGems, add the following to your project's `Gemfile`:
 
 ```ruby
-gem 'fastly', '~> 8.2.0'
+gem 'fastly', '~> 8.3.0'
 ```
 
 Then run `bundle install`.
@@ -43,7 +43,10 @@ end
 
 ## Authorization
 
-The Fastly API requires an [API token](https://developer.fastly.com/reference/api/#authentication) for most operations.  Set it in the Ruby client by assigning to `api_token` of a configuration as shown:
+> [!NOTE]
+> The Fastly API requires an [API token](https://www.fastly.com/documentation/reference/api/#authentication) for most operations.
+
+Set up the API token in the Ruby client by assigning to `api_token` of a configuration as shown:
 
 ```ruby
 # Authorize the client with a Fastly API token.
@@ -55,12 +58,16 @@ end
 
 Alternatively, set the `FASTLY_API_TOKEN` environment variable instead of setting `api_token`.
 
-## Documentation for API Endpoints
+## API Endpoints
 
-The main documentation for the Fastly API can be found on our [Developer Hub](https://developer.fastly.com/reference/api).
+The main documentation for the Fastly API can be found on our [Developer Hub](https://www.fastly.com/documentation/reference/api/).
+
+<details>
+
+<summary>Table of API endpoints</summary>
 
 Class | Method | Description
------------- | ------------- | -------------
+----- | ------ | -----------
 [*Fastly::AclApi*](docs/AclApi.md) | [**create_acl**](docs/AclApi.md#create_acl) | Create a new ACL
 [*Fastly::AclApi*](docs/AclApi.md) | [**delete_acl**](docs/AclApi.md#delete_acl) | Delete an ACL
 [*Fastly::AclApi*](docs/AclApi.md) | [**get_acl**](docs/AclApi.md#get_acl) | Describe an ACL
@@ -226,6 +233,8 @@ Class | Method | Description
 [*Fastly::IamUserGroupsApi*](docs/IamUserGroupsApi.md) | [**remove_user_group_roles**](docs/IamUserGroupsApi.md#remove_user_group_roles) | Remove roles from a user group
 [*Fastly::IamUserGroupsApi*](docs/IamUserGroupsApi.md) | [**remove_user_group_service_groups**](docs/IamUserGroupsApi.md#remove_user_group_service_groups) | Remove service groups from a user group
 [*Fastly::IamUserGroupsApi*](docs/IamUserGroupsApi.md) | [**update_a_user_group**](docs/IamUserGroupsApi.md#update_a_user_group) | Update a user group
+[*Fastly::ImageOptimizerDefaultSettingsApi*](docs/ImageOptimizerDefaultSettingsApi.md) | [**get_default_settings**](docs/ImageOptimizerDefaultSettingsApi.md#get_default_settings) | Get current Image Optimizer Default Settings
+[*Fastly::ImageOptimizerDefaultSettingsApi*](docs/ImageOptimizerDefaultSettingsApi.md) | [**update_default_settings**](docs/ImageOptimizerDefaultSettingsApi.md#update_default_settings) | Update Image Optimizer Default Settings
 [*Fastly::InvitationsApi*](docs/InvitationsApi.md) | [**create_invitation**](docs/InvitationsApi.md#create_invitation) | Create an invitation
 [*Fastly::InvitationsApi*](docs/InvitationsApi.md) | [**delete_invitation**](docs/InvitationsApi.md#delete_invitation) | Delete an invitation
 [*Fastly::InvitationsApi*](docs/InvitationsApi.md) | [**list_invitations**](docs/InvitationsApi.md#list_invitations) | List invitations
@@ -593,6 +602,8 @@ Class | Method | Description
 [*Fastly::WafTagsApi*](docs/WafTagsApi.md) | [**list_waf_tags**](docs/WafTagsApi.md#list_waf_tags) | List tags
 [*Fastly::WholePlatformDdosHistoricalApi*](docs/WholePlatformDdosHistoricalApi.md) | [**get_platform_ddos_historical**](docs/WholePlatformDdosHistoricalApi.md#get_platform_ddos_historical) | Get historical DDoS metrics for the entire Fastly platform
 
+
+</details>
 
 ## Issues
 

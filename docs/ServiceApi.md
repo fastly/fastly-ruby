@@ -8,16 +8,19 @@ api_instance = Fastly::ServiceApi.new
 
 ## Methods
 
-| Method | HTTP request | Description |
-| ------ | ------------ | ----------- |
-| [**create_service**](ServiceApi.md#create_service) | **POST** /service | Create a service |
-| [**delete_service**](ServiceApi.md#delete_service) | **DELETE** /service/{service_id} | Delete a service |
-| [**get_service**](ServiceApi.md#get_service) | **GET** /service/{service_id} | Get a service |
-| [**get_service_detail**](ServiceApi.md#get_service_detail) | **GET** /service/{service_id}/details | Get service details |
-| [**list_service_domains**](ServiceApi.md#list_service_domains) | **GET** /service/{service_id}/domain | List the domains within a service |
-| [**list_services**](ServiceApi.md#list_services) | **GET** /service | List services |
-| [**search_service**](ServiceApi.md#search_service) | **GET** /service/search | Search for a service by name |
-| [**update_service**](ServiceApi.md#update_service) | **PUT** /service/{service_id} | Update a service |
+> [!NOTE]
+> All URIs are relative to `https://api.fastly.com`
+
+Method | HTTP request | Description
+------ | ------------ | -----------
+[**create_service**](ServiceApi.md#create_service) | **POST** /service | Create a service
+[**delete_service**](ServiceApi.md#delete_service) | **DELETE** /service/{service_id} | Delete a service
+[**get_service**](ServiceApi.md#get_service) | **GET** /service/{service_id} | Get a service
+[**get_service_detail**](ServiceApi.md#get_service_detail) | **GET** /service/{service_id}/details | Get service details
+[**list_service_domains**](ServiceApi.md#list_service_domains) | **GET** /service/{service_id}/domain | List the domains within a service
+[**list_services**](ServiceApi.md#list_services) | **GET** /service | List services
+[**search_service**](ServiceApi.md#search_service) | **GET** /service/search | Search for a service by name
+[**update_service**](ServiceApi.md#update_service) | **PUT** /service/{service_id} | Update a service
 
 
 ## `create_service()`

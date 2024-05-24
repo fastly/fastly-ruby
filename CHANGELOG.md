@@ -1,5 +1,25 @@
 # Changelog
 
+## [v8.3.0](https://github.com/fastly/fastly-ruby/releases/tag/release/v8.3.0) (2024-05-24)
+
+**Bug fixes:**
+
+- fix(backend): Correct tcp_keepalive_enable to be nullable
+- bugfix(resource): Correct `type_resource` accepted values
+- bugfix(sudo): Mark API to require authentication token
+
+**Enhancements:**
+
+- feat(image-optimizer-default-settings): Add Image Optimizer Default Settings APIs
+- feat(tls-subscriptions): Add `certificate_authority` filter parameter
+
+**Documentation:**
+
+- docs(generator): Update links in docs and comments with unified docs site URL structure
+- docs(generator): Clean up README by using GitHub alert icons and collapsible sections
+- doc(logging-kinesis): Update description of `format` field.
+- doc(tls-subscriptions): Update descriptions of `certificate_authority` and `tls_subscription_include` fields.
+
 ## [v8.2.0](https://github.com/fastly/fastly-ruby/releases/tag/release/v8.2.0) (2024-04-25)
 
 **Bug fixes:**

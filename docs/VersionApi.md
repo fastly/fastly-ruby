@@ -8,17 +8,20 @@ api_instance = Fastly::VersionApi.new
 
 ## Methods
 
-| Method | HTTP request | Description |
-| ------ | ------------ | ----------- |
-| [**activate_service_version**](VersionApi.md#activate_service_version) | **PUT** /service/{service_id}/version/{version_id}/activate | Activate a service version |
-| [**clone_service_version**](VersionApi.md#clone_service_version) | **PUT** /service/{service_id}/version/{version_id}/clone | Clone a service version |
-| [**create_service_version**](VersionApi.md#create_service_version) | **POST** /service/{service_id}/version | Create a service version |
-| [**deactivate_service_version**](VersionApi.md#deactivate_service_version) | **PUT** /service/{service_id}/version/{version_id}/deactivate | Deactivate a service version |
-| [**get_service_version**](VersionApi.md#get_service_version) | **GET** /service/{service_id}/version/{version_id} | Get a version of a service |
-| [**list_service_versions**](VersionApi.md#list_service_versions) | **GET** /service/{service_id}/version | List versions of a service |
-| [**lock_service_version**](VersionApi.md#lock_service_version) | **PUT** /service/{service_id}/version/{version_id}/lock | Lock a service version |
-| [**update_service_version**](VersionApi.md#update_service_version) | **PUT** /service/{service_id}/version/{version_id} | Update a service version |
-| [**validate_service_version**](VersionApi.md#validate_service_version) | **GET** /service/{service_id}/version/{version_id}/validate | Validate a service version |
+> [!NOTE]
+> All URIs are relative to `https://api.fastly.com`
+
+Method | HTTP request | Description
+------ | ------------ | -----------
+[**activate_service_version**](VersionApi.md#activate_service_version) | **PUT** /service/{service_id}/version/{version_id}/activate | Activate a service version
+[**clone_service_version**](VersionApi.md#clone_service_version) | **PUT** /service/{service_id}/version/{version_id}/clone | Clone a service version
+[**create_service_version**](VersionApi.md#create_service_version) | **POST** /service/{service_id}/version | Create a service version
+[**deactivate_service_version**](VersionApi.md#deactivate_service_version) | **PUT** /service/{service_id}/version/{version_id}/deactivate | Deactivate a service version
+[**get_service_version**](VersionApi.md#get_service_version) | **GET** /service/{service_id}/version/{version_id} | Get a version of a service
+[**list_service_versions**](VersionApi.md#list_service_versions) | **GET** /service/{service_id}/version | List versions of a service
+[**lock_service_version**](VersionApi.md#lock_service_version) | **PUT** /service/{service_id}/version/{version_id}/lock | Lock a service version
+[**update_service_version**](VersionApi.md#update_service_version) | **PUT** /service/{service_id}/version/{version_id} | Update a service version
+[**validate_service_version**](VersionApi.md#validate_service_version) | **GET** /service/{service_id}/version/{version_id}/validate | Validate a service version
 
 
 ## `activate_service_version()`

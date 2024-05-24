@@ -8,9 +8,12 @@ api_instance = Fastly::TlsCsrsApi.new
 
 ## Methods
 
-| Method | HTTP request | Description |
-| ------ | ------------ | ----------- |
-| [**create_csr**](TlsCsrsApi.md#create_csr) | **POST** /tls/certificate_signing_requests | Create CSR |
+> [!NOTE]
+> All URIs are relative to `https://api.fastly.com`
+
+Method | HTTP request | Description
+------ | ------------ | -----------
+[**create_csr**](TlsCsrsApi.md#create_csr) | **POST** /tls/certificate_signing_requests | Create CSR
 
 
 ## `create_csr()`

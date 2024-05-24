@@ -1,7 +1,7 @@
 =begin
 #Fastly API
 
-#Via the Fastly API you can perform any of the operations that are possible within the management console,  including creating services, domains, and backends, configuring rules or uploading your own application code, as well as account operations such as user administration and billing reports. The API is organized into collections of endpoints that allow manipulation of objects related to Fastly services and accounts. For the most accurate and up-to-date API reference content, visit our [Developer Hub](https://developer.fastly.com/reference/api/) 
+#Via the Fastly API you can perform any of the operations that are possible within the management console,  including creating services, domains, and backends, configuring rules or uploading your own application code, as well as account operations such as user administration and billing reports. The API is organized into collections of endpoints that allow manipulation of objects related to Fastly services and accounts. For the most accurate and up-to-date API reference content, visit our [Developer Hub](https://www.fastly.com/documentation/reference/api/) 
 
 The version of the OpenAPI document: 1.0.0
 Contact: oss@fastly.com
@@ -299,7 +299,7 @@ module Fastly
     # Get a TLS subscription
     # Show a TLS subscription.
     # @option opts [String] :tls_subscription_id Alphanumeric string identifying a TLS subscription. (required)
-    # @option opts [String] :include Include related objects. Optional, comma-separated values. Permitted values: &#x60;tls_authorizations&#x60;, &#x60;tls_authorizations.globalsign_email_challenge&#x60;, and &#x60;tls_authorizations.self_managed_http_challenge&#x60;. 
+    # @option opts [String] :include Include related objects. Optional, comma-separated values. Permitted values: &#x60;tls_authorizations&#x60;, &#x60;tls_authorizations.globalsign_email_challenge&#x60;, &#x60;tls_authorizations.self_managed_http_challenge&#x60;, and &#x60;tls_certificates&#x60;. 
     # @return [TlsSubscriptionResponse]
     def get_tls_sub(opts = {})
       data, _status_code, _headers = get_tls_sub_with_http_info(opts)
@@ -309,7 +309,7 @@ module Fastly
     # Get a TLS subscription
     # Show a TLS subscription.
     # @option opts [String] :tls_subscription_id Alphanumeric string identifying a TLS subscription. (required)
-    # @option opts [String] :include Include related objects. Optional, comma-separated values. Permitted values: &#x60;tls_authorizations&#x60;, &#x60;tls_authorizations.globalsign_email_challenge&#x60;, and &#x60;tls_authorizations.self_managed_http_challenge&#x60;. 
+    # @option opts [String] :include Include related objects. Optional, comma-separated values. Permitted values: &#x60;tls_authorizations&#x60;, &#x60;tls_authorizations.globalsign_email_challenge&#x60;, &#x60;tls_authorizations.self_managed_http_challenge&#x60;, and &#x60;tls_certificates&#x60;. 
     # @return [Array<(TlsSubscriptionResponse, Integer, Hash)>] TlsSubscriptionResponse data, response status code and response headers
     def get_tls_sub_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -367,7 +367,8 @@ module Fastly
     # @option opts [String] :filter_state Limit the returned subscriptions by state. Valid values are &#x60;pending&#x60;, &#x60;processing&#x60;, &#x60;issued&#x60;, &#x60;renewing&#x60;, and &#x60;failed&#x60;. Accepts parameters: &#x60;not&#x60; (e.g., &#x60;filter[state][not]&#x3D;renewing&#x60;). 
     # @option opts [String] :filter_tls_domains_id Limit the returned subscriptions to those that include the specific domain.
     # @option opts [Boolean] :filter_has_active_order Limit the returned subscriptions to those that have currently active orders. Permitted values: &#x60;true&#x60;. 
-    # @option opts [String] :include Include related objects. Optional, comma-separated values. Permitted values: &#x60;tls_authorizations&#x60;, &#x60;tls_authorizations.globalsign_email_challenge&#x60;, and &#x60;tls_authorizations.self_managed_http_challenge&#x60;. 
+    # @option opts [String] :filter_certificate_authority Limit the returned subscriptions to a specific certification authority. Values may include &#x60;certainly&#x60;, &#x60;lets-encrypt&#x60;, or &#x60;globalsign&#x60;. 
+    # @option opts [String] :include Include related objects. Optional, comma-separated values. Permitted values: &#x60;tls_authorizations&#x60;, &#x60;tls_authorizations.globalsign_email_challenge&#x60;, &#x60;tls_authorizations.self_managed_http_challenge&#x60;, and &#x60;tls_certificates&#x60;. 
     # @option opts [Integer] :page_number Current page.
     # @option opts [Integer] :page_size Number of records per page. (default to 20)
     # @option opts [String] :sort The order in which to list the results by creation date. (default to 'created_at')
@@ -382,7 +383,8 @@ module Fastly
     # @option opts [String] :filter_state Limit the returned subscriptions by state. Valid values are &#x60;pending&#x60;, &#x60;processing&#x60;, &#x60;issued&#x60;, &#x60;renewing&#x60;, and &#x60;failed&#x60;. Accepts parameters: &#x60;not&#x60; (e.g., &#x60;filter[state][not]&#x3D;renewing&#x60;). 
     # @option opts [String] :filter_tls_domains_id Limit the returned subscriptions to those that include the specific domain.
     # @option opts [Boolean] :filter_has_active_order Limit the returned subscriptions to those that have currently active orders. Permitted values: &#x60;true&#x60;. 
-    # @option opts [String] :include Include related objects. Optional, comma-separated values. Permitted values: &#x60;tls_authorizations&#x60;, &#x60;tls_authorizations.globalsign_email_challenge&#x60;, and &#x60;tls_authorizations.self_managed_http_challenge&#x60;. 
+    # @option opts [String] :filter_certificate_authority Limit the returned subscriptions to a specific certification authority. Values may include &#x60;certainly&#x60;, &#x60;lets-encrypt&#x60;, or &#x60;globalsign&#x60;. 
+    # @option opts [String] :include Include related objects. Optional, comma-separated values. Permitted values: &#x60;tls_authorizations&#x60;, &#x60;tls_authorizations.globalsign_email_challenge&#x60;, &#x60;tls_authorizations.self_managed_http_challenge&#x60;, and &#x60;tls_certificates&#x60;. 
     # @option opts [Integer] :page_number Current page.
     # @option opts [Integer] :page_size Number of records per page. (default to 20)
     # @option opts [String] :sort The order in which to list the results by creation date. (default to 'created_at')
@@ -412,6 +414,7 @@ module Fastly
       query_params[:'filter[state]'] = opts[:'filter_state'] if !opts[:'filter_state'].nil?
       query_params[:'filter[tls_domains.id]'] = opts[:'filter_tls_domains_id'] if !opts[:'filter_tls_domains_id'].nil?
       query_params[:'filter[has_active_order]'] = opts[:'filter_has_active_order'] if !opts[:'filter_has_active_order'].nil?
+      query_params[:'filter[certificate_authority]'] = opts[:'filter_certificate_authority'] if !opts[:'filter_certificate_authority'].nil?
       query_params[:'include'] = opts[:'include'] if !opts[:'include'].nil?
       query_params[:'page[number]'] = opts[:'page_number'] if !opts[:'page_number'].nil?
       query_params[:'page[size]'] = opts[:'page_size'] if !opts[:'page_size'].nil?

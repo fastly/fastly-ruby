@@ -8,9 +8,12 @@ api_instance = Fastly::SudoApi.new
 
 ## Methods
 
-| Method | HTTP request | Description |
-| ------ | ------------ | ----------- |
-| [**request_sudo_access**](SudoApi.md#request_sudo_access) | **POST** /sudo | Request Sudo access |
+> [!NOTE]
+> All URIs are relative to `https://api.fastly.com`
+
+Method | HTTP request | Description
+------ | ------------ | -----------
+[**request_sudo_access**](SudoApi.md#request_sudo_access) | **POST** /sudo | Request Sudo access
 
 
 ## `request_sudo_access()`

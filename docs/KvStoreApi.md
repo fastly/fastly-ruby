@@ -8,12 +8,15 @@ api_instance = Fastly::KvStoreApi.new
 
 ## Methods
 
-| Method | HTTP request | Description |
-| ------ | ------------ | ----------- |
-| [**create_store**](KvStoreApi.md#create_store) | **POST** /resources/stores/kv | Create a KV store. |
-| [**delete_store**](KvStoreApi.md#delete_store) | **DELETE** /resources/stores/kv/{store_id} | Delete a KV store. |
-| [**get_store**](KvStoreApi.md#get_store) | **GET** /resources/stores/kv/{store_id} | Describe a KV store. |
-| [**get_stores**](KvStoreApi.md#get_stores) | **GET** /resources/stores/kv | List KV stores. |
+> [!NOTE]
+> All URIs are relative to `https://api.fastly.com`
+
+Method | HTTP request | Description
+------ | ------------ | -----------
+[**create_store**](KvStoreApi.md#create_store) | **POST** /resources/stores/kv | Create a KV store.
+[**delete_store**](KvStoreApi.md#delete_store) | **DELETE** /resources/stores/kv/{store_id} | Delete a KV store.
+[**get_store**](KvStoreApi.md#get_store) | **GET** /resources/stores/kv/{store_id} | Describe a KV store.
+[**get_stores**](KvStoreApi.md#get_stores) | **GET** /resources/stores/kv | List KV stores.
 
 
 ## `create_store()`

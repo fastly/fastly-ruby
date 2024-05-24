@@ -8,15 +8,18 @@ api_instance = Fastly::UserApi.new
 
 ## Methods
 
-| Method | HTTP request | Description |
-| ------ | ------------ | ----------- |
-| [**create_user**](UserApi.md#create_user) | **POST** /user | Create a user |
-| [**delete_user**](UserApi.md#delete_user) | **DELETE** /user/{user_id} | Delete a user |
-| [**get_current_user**](UserApi.md#get_current_user) | **GET** /current_user | Get the current user |
-| [**get_user**](UserApi.md#get_user) | **GET** /user/{user_id} | Get a user |
-| [**request_password_reset**](UserApi.md#request_password_reset) | **POST** /user/{user_login}/password/request_reset | Request a password reset |
-| [**update_user**](UserApi.md#update_user) | **PUT** /user/{user_id} | Update a user |
-| [**update_user_password**](UserApi.md#update_user_password) | **POST** /current_user/password | Update the user&#39;s password |
+> [!NOTE]
+> All URIs are relative to `https://api.fastly.com`
+
+Method | HTTP request | Description
+------ | ------------ | -----------
+[**create_user**](UserApi.md#create_user) | **POST** /user | Create a user
+[**delete_user**](UserApi.md#delete_user) | **DELETE** /user/{user_id} | Delete a user
+[**get_current_user**](UserApi.md#get_current_user) | **GET** /current_user | Get the current user
+[**get_user**](UserApi.md#get_user) | **GET** /user/{user_id} | Get a user
+[**request_password_reset**](UserApi.md#request_password_reset) | **POST** /user/{user_login}/password/request_reset | Request a password reset
+[**update_user**](UserApi.md#update_user) | **PUT** /user/{user_id} | Update a user
+[**update_user_password**](UserApi.md#update_user_password) | **POST** /current_user/password | Update the user&#39;s password
 
 
 ## `create_user()`

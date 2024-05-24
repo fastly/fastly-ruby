@@ -8,11 +8,14 @@ api_instance = Fastly::InvitationsApi.new
 
 ## Methods
 
-| Method | HTTP request | Description |
-| ------ | ------------ | ----------- |
-| [**create_invitation**](InvitationsApi.md#create_invitation) | **POST** /invitations | Create an invitation |
-| [**delete_invitation**](InvitationsApi.md#delete_invitation) | **DELETE** /invitations/{invitation_id} | Delete an invitation |
-| [**list_invitations**](InvitationsApi.md#list_invitations) | **GET** /invitations | List invitations |
+> [!NOTE]
+> All URIs are relative to `https://api.fastly.com`
+
+Method | HTTP request | Description
+------ | ------------ | -----------
+[**create_invitation**](InvitationsApi.md#create_invitation) | **POST** /invitations | Create an invitation
+[**delete_invitation**](InvitationsApi.md#delete_invitation) | **DELETE** /invitations/{invitation_id} | Delete an invitation
+[**list_invitations**](InvitationsApi.md#list_invitations) | **GET** /invitations | List invitations
 
 
 ## `create_invitation()`

@@ -8,9 +8,12 @@ api_instance = Fastly::DomainInspectorHistoricalApi.new
 
 ## Methods
 
-| Method | HTTP request | Description |
-| ------ | ------------ | ----------- |
-| [**get_domain_inspector_historical**](DomainInspectorHistoricalApi.md#get_domain_inspector_historical) | **GET** /metrics/domains/services/{service_id} | Get historical domain data for a service |
+> [!NOTE]
+> All URIs are relative to `https://api.fastly.com`
+
+Method | HTTP request | Description
+------ | ------------ | -----------
+[**get_domain_inspector_historical**](DomainInspectorHistoricalApi.md#get_domain_inspector_historical) | **GET** /metrics/domains/services/{service_id} | Get historical domain data for a service
 
 
 ## `get_domain_inspector_historical()`

@@ -8,16 +8,19 @@ api_instance = Fastly::TokensApi.new
 
 ## Methods
 
-| Method | HTTP request | Description |
-| ------ | ------------ | ----------- |
-| [**bulk_revoke_tokens**](TokensApi.md#bulk_revoke_tokens) | **DELETE** /tokens | Revoke multiple tokens |
-| [**create_token**](TokensApi.md#create_token) | **POST** /tokens | Create a token |
-| [**get_token**](TokensApi.md#get_token) | **GET** /tokens/{token_id} | Get a token |
-| [**get_token_current**](TokensApi.md#get_token_current) | **GET** /tokens/self | Get the current token |
-| [**list_tokens_customer**](TokensApi.md#list_tokens_customer) | **GET** /customer/{customer_id}/tokens | List tokens for a customer |
-| [**list_tokens_user**](TokensApi.md#list_tokens_user) | **GET** /tokens | List tokens for the authenticated user |
-| [**revoke_token**](TokensApi.md#revoke_token) | **DELETE** /tokens/{token_id} | Revoke a token |
-| [**revoke_token_current**](TokensApi.md#revoke_token_current) | **DELETE** /tokens/self | Revoke the current token |
+> [!NOTE]
+> All URIs are relative to `https://api.fastly.com`
+
+Method | HTTP request | Description
+------ | ------------ | -----------
+[**bulk_revoke_tokens**](TokensApi.md#bulk_revoke_tokens) | **DELETE** /tokens | Revoke multiple tokens
+[**create_token**](TokensApi.md#create_token) | **POST** /tokens | Create a token
+[**get_token**](TokensApi.md#get_token) | **GET** /tokens/{token_id} | Get a token
+[**get_token_current**](TokensApi.md#get_token_current) | **GET** /tokens/self | Get the current token
+[**list_tokens_customer**](TokensApi.md#list_tokens_customer) | **GET** /customer/{customer_id}/tokens | List tokens for a customer
+[**list_tokens_user**](TokensApi.md#list_tokens_user) | **GET** /tokens | List tokens for the authenticated user
+[**revoke_token**](TokensApi.md#revoke_token) | **DELETE** /tokens/{token_id} | Revoke a token
+[**revoke_token_current**](TokensApi.md#revoke_token_current) | **DELETE** /tokens/self | Revoke the current token
 
 
 ## `bulk_revoke_tokens()`

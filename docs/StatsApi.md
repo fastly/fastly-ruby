@@ -8,9 +8,12 @@ api_instance = Fastly::StatsApi.new
 
 ## Methods
 
-| Method | HTTP request | Description |
-| ------ | ------------ | ----------- |
-| [**get_service_stats**](StatsApi.md#get_service_stats) | **GET** /service/{service_id}/stats/summary | Get stats for a service |
+> [!NOTE]
+> All URIs are relative to `https://api.fastly.com`
+
+Method | HTTP request | Description
+------ | ------------ | -----------
+[**get_service_stats**](StatsApi.md#get_service_stats) | **GET** /service/{service_id}/stats/summary | Get stats for a service
 
 
 ## `get_service_stats()`

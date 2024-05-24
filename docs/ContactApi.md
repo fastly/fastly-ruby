@@ -8,11 +8,14 @@ api_instance = Fastly::ContactApi.new
 
 ## Methods
 
-| Method | HTTP request | Description |
-| ------ | ------------ | ----------- |
-| [**create_contacts**](ContactApi.md#create_contacts) | **POST** /customer/{customer_id}/contacts | Add a new customer contact |
-| [**delete_contact**](ContactApi.md#delete_contact) | **DELETE** /customer/{customer_id}/contact/{contact_id} | Delete a contact |
-| [**list_contacts**](ContactApi.md#list_contacts) | **GET** /customer/{customer_id}/contacts | List contacts |
+> [!NOTE]
+> All URIs are relative to `https://api.fastly.com`
+
+Method | HTTP request | Description
+------ | ------------ | -----------
+[**create_contacts**](ContactApi.md#create_contacts) | **POST** /customer/{customer_id}/contacts | Add a new customer contact
+[**delete_contact**](ContactApi.md#delete_contact) | **DELETE** /customer/{customer_id}/contact/{contact_id} | Delete a contact
+[**list_contacts**](ContactApi.md#list_contacts) | **GET** /customer/{customer_id}/contacts | List contacts
 
 
 ## `create_contacts()`

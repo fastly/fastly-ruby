@@ -8,9 +8,12 @@ api_instance = Fastly::ContentApi.new
 
 ## Methods
 
-| Method | HTTP request | Description |
-| ------ | ------------ | ----------- |
-| [**content_check**](ContentApi.md#content_check) | **GET** /content/edge_check | Check status of content in each POP&#39;s cache |
+> [!NOTE]
+> All URIs are relative to `https://api.fastly.com`
+
+Method | HTTP request | Description
+------ | ------------ | -----------
+[**content_check**](ContentApi.md#content_check) | **GET** /content/edge_check | Check status of content in each POP&#39;s cache
 
 
 ## `content_check()`
