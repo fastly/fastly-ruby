@@ -30,6 +30,7 @@
 | **secret_key** | **String** | The secret key for your S3 account. Not required if `iam_role` is provided. | [optional] |
 | **server_side_encryption_kms_key_id** | **String** | Optional server-side KMS Key Id. Must be set if `server_side_encryption` is set to `aws:kms` or `AES256`. | [optional][default to &#39;null&#39;] |
 | **server_side_encryption** | **String** | Set this to `AES256` or `aws:kms` to enable S3 Server Side Encryption. | [optional][default to &#39;null&#39;] |
+| **file_max_bytes** | **Integer** | The maximum number of bytes for each uploaded file. A value of 0 can be used to indicate there is no limit on the size of uploaded files, otherwise the minimum value is 1048576 bytes (1 MiB.) | [optional] |
 
 [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
 

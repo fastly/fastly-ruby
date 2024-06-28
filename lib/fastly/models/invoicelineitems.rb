@@ -34,6 +34,9 @@ module Fastly
     # The broader classification of the product (e.g., `Compute` or `Full-Site Delivery`).
     attr_accessor :product_group
 
+    # The broader classification of the product (e.g., `Network Services` or `Security`).
+    attr_accessor :product_line
+
     # The geographical area applicable for regionally based products.
     attr_accessor :region
 
@@ -50,6 +53,7 @@ module Fastly
         :'units' => :'units',
         :'product_name' => :'ProductName',
         :'product_group' => :'ProductGroup',
+        :'product_line' => :'ProductLine',
         :'region' => :'Region',
         :'usage_type' => :'UsageType'
       }
@@ -70,6 +74,7 @@ module Fastly
         :'units' => :'Float',
         :'product_name' => :'String',
         :'product_group' => :'String',
+        :'product_line' => :'String',
         :'region' => :'String',
         :'usage_type' => :'String'
       }
@@ -124,6 +129,10 @@ module Fastly
         self.product_group = attributes[:'product_group']
       end
 
+      if attributes.key?(:'product_line')
+        self.product_line = attributes[:'product_line']
+      end
+
       if attributes.key?(:'region')
         self.region = attributes[:'region']
       end
@@ -158,6 +167,7 @@ module Fastly
           units == o.units &&
           product_name == o.product_name &&
           product_group == o.product_group &&
+          product_line == o.product_line &&
           region == o.region &&
           usage_type == o.usage_type
     end
@@ -171,7 +181,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [description, amount, credit_coupon_code, rate, units, product_name, product_group, region, usage_type].hash
+      [description, amount, credit_coupon_code, rate, units, product_name, product_group, product_line, region, usage_type].hash
     end
 
     # Builds the object from hash

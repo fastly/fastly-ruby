@@ -42,6 +42,7 @@ module Fastly
     # @option opts [String] :secret_key The secret key for your S3 account. Not required if &#x60;iam_role&#x60; is provided.
     # @option opts [String] :server_side_encryption_kms_key_id Optional server-side KMS Key Id. Must be set if &#x60;server_side_encryption&#x60; is set to &#x60;aws:kms&#x60; or &#x60;AES256&#x60;. (default to 'null')
     # @option opts [String] :server_side_encryption Set this to &#x60;AES256&#x60; or &#x60;aws:kms&#x60; to enable S3 Server Side Encryption. (default to 'null')
+    # @option opts [Integer] :file_max_bytes The maximum number of bytes for each uploaded file. A value of 0 can be used to indicate there is no limit on the size of uploaded files, otherwise the minimum value is 1048576 bytes (1 MiB.)
     # @return [LoggingS3Response]
     def create_log_aws_s3(opts = {})
       data, _status_code, _headers = create_log_aws_s3_with_http_info(opts)
@@ -73,6 +74,7 @@ module Fastly
     # @option opts [String] :secret_key The secret key for your S3 account. Not required if &#x60;iam_role&#x60; is provided.
     # @option opts [String] :server_side_encryption_kms_key_id Optional server-side KMS Key Id. Must be set if &#x60;server_side_encryption&#x60; is set to &#x60;aws:kms&#x60; or &#x60;AES256&#x60;. (default to 'null')
     # @option opts [String] :server_side_encryption Set this to &#x60;AES256&#x60; or &#x60;aws:kms&#x60; to enable S3 Server Side Encryption. (default to 'null')
+    # @option opts [Integer] :file_max_bytes The maximum number of bytes for each uploaded file. A value of 0 can be used to indicate there is no limit on the size of uploaded files, otherwise the minimum value is 1048576 bytes (1 MiB.)
     # @return [Array<(LoggingS3Response, Integer, Hash)>] LoggingS3Response data, response status code and response headers
     def create_log_aws_s3_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -105,6 +107,10 @@ module Fastly
       if @api_client.config.client_side_validation && opts[:'compression_codec'] && !allowable_values.include?(opts[:'compression_codec'])
         fail ArgumentError, "invalid value for \"compression_codec\", must be one of #{allowable_values}"
       end
+      if @api_client.config.client_side_validation && !opts[:'file_max_bytes'].nil? && opts[:'file_max_bytes'] < 1048576
+        fail ArgumentError, 'invalid value for "opts[:"file_max_bytes"]" when calling LoggingS3Api.create_log_aws_s3, must be greater than or equal to 1048576.'
+      end
+
       # resource path
       local_var_path = '/service/{service_id}/version/{version_id}/logging/s3'.sub('{' + 'service_id' + '}', CGI.escape(service_id.to_s)).sub('{' + 'version_id' + '}', CGI.escape(version_id.to_s))
 
@@ -144,6 +150,7 @@ module Fastly
       form_params['secret_key'] = opts[:'secret_key'] if !opts[:'secret_key'].nil?
       form_params['server_side_encryption_kms_key_id'] = opts[:'server_side_encryption_kms_key_id'] if !opts[:'server_side_encryption_kms_key_id'].nil?
       form_params['server_side_encryption'] = opts[:'server_side_encryption'] if !opts[:'server_side_encryption'].nil?
+      form_params['file_max_bytes'] = opts[:'file_max_bytes'] if !opts[:'file_max_bytes'].nil?
 
       # http body (model)
       post_body = opts[:debug_body]
@@ -421,6 +428,7 @@ module Fastly
     # @option opts [String] :secret_key The secret key for your S3 account. Not required if &#x60;iam_role&#x60; is provided.
     # @option opts [String] :server_side_encryption_kms_key_id Optional server-side KMS Key Id. Must be set if &#x60;server_side_encryption&#x60; is set to &#x60;aws:kms&#x60; or &#x60;AES256&#x60;. (default to 'null')
     # @option opts [String] :server_side_encryption Set this to &#x60;AES256&#x60; or &#x60;aws:kms&#x60; to enable S3 Server Side Encryption. (default to 'null')
+    # @option opts [Integer] :file_max_bytes The maximum number of bytes for each uploaded file. A value of 0 can be used to indicate there is no limit on the size of uploaded files, otherwise the minimum value is 1048576 bytes (1 MiB.)
     # @return [LoggingS3Response]
     def update_log_aws_s3(opts = {})
       data, _status_code, _headers = update_log_aws_s3_with_http_info(opts)
@@ -453,6 +461,7 @@ module Fastly
     # @option opts [String] :secret_key The secret key for your S3 account. Not required if &#x60;iam_role&#x60; is provided.
     # @option opts [String] :server_side_encryption_kms_key_id Optional server-side KMS Key Id. Must be set if &#x60;server_side_encryption&#x60; is set to &#x60;aws:kms&#x60; or &#x60;AES256&#x60;. (default to 'null')
     # @option opts [String] :server_side_encryption Set this to &#x60;AES256&#x60; or &#x60;aws:kms&#x60; to enable S3 Server Side Encryption. (default to 'null')
+    # @option opts [Integer] :file_max_bytes The maximum number of bytes for each uploaded file. A value of 0 can be used to indicate there is no limit on the size of uploaded files, otherwise the minimum value is 1048576 bytes (1 MiB.)
     # @return [Array<(LoggingS3Response, Integer, Hash)>] LoggingS3Response data, response status code and response headers
     def update_log_aws_s3_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -490,6 +499,10 @@ module Fastly
       if @api_client.config.client_side_validation && opts[:'compression_codec'] && !allowable_values.include?(opts[:'compression_codec'])
         fail ArgumentError, "invalid value for \"compression_codec\", must be one of #{allowable_values}"
       end
+      if @api_client.config.client_side_validation && !opts[:'file_max_bytes'].nil? && opts[:'file_max_bytes'] < 1048576
+        fail ArgumentError, 'invalid value for "opts[:"file_max_bytes"]" when calling LoggingS3Api.update_log_aws_s3, must be greater than or equal to 1048576.'
+      end
+
       # resource path
       local_var_path = '/service/{service_id}/version/{version_id}/logging/s3/{logging_s3_name}'.sub('{' + 'service_id' + '}', CGI.escape(service_id.to_s)).sub('{' + 'version_id' + '}', CGI.escape(version_id.to_s)).sub('{' + 'logging_s3_name' + '}', CGI.escape(logging_s3_name.to_s))
 
@@ -529,6 +542,7 @@ module Fastly
       form_params['secret_key'] = opts[:'secret_key'] if !opts[:'secret_key'].nil?
       form_params['server_side_encryption_kms_key_id'] = opts[:'server_side_encryption_kms_key_id'] if !opts[:'server_side_encryption_kms_key_id'].nil?
       form_params['server_side_encryption'] = opts[:'server_side_encryption'] if !opts[:'server_side_encryption'].nil?
+      form_params['file_max_bytes'] = opts[:'file_max_bytes'] if !opts[:'file_max_bytes'].nil?
 
       # http body (model)
       post_body = opts[:debug_body]

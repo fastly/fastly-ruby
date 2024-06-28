@@ -1,5 +1,29 @@
 # Changelog
 
+## [v8.4.0](https://github.com/fastly/fastly-ruby/releases/tag/release/v8.4.0) (2024-06-27)
+
+**Bug fixes:**
+
+- bugfix(alerts-definitions): For Origin derived metrics, correct `all_bandwidth` type to `integer`
+
+**Enhancements:**
+
+- feat(logging-s3): Add `file_max_bytes` configuration field
+- feat(alerts-definitions): Add `integration_id` parameter to the List Alert Definitions endpoint
+- feat(alerts-definitions): For Origin derived metrics, add `all_status_4xx_excl_404_rate` and `all_status_404_rate` properties
+- feat(alerts-definitions): For Domain derived metrics, add `status_4xx_excl_404_rate` and `status_404_rate` properties
+- feat(alerts-definitions): For Stats derived metrics, add `status_4xx_excl_404_rate`, `status_404_rate`, `all_status_5xx_rate`,
+                            `all_status_4xx_rate`, `all_status_gte_400_rate`, and `all_status_lt_500_rate` properties
+- feat(billing-invoices): For invoice line items, added `ProductLine` property
+
+**Documentation:**
+
+- doc(billing-invoices): "Billing Invoices API" relabeled to "Invoices API"
+- doc(billing-invoices): Updated documentation of `billing_start_date` and `billing_end_date` query parameters of
+                         List of invoices endpoint
+- doc(alerts-definitions): Updated documentation of several fields
+- doc(notification-service): Updated documentation examples for several fields
+
 ## [v8.3.0](https://github.com/fastly/fastly-ruby/releases/tag/release/v8.3.0) (2024-05-24)
 
 **Bug fixes:**

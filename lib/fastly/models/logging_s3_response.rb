@@ -89,6 +89,9 @@ module Fastly
     # Set this to `AES256` or `aws:kms` to enable S3 Server Side Encryption.
     attr_accessor :server_side_encryption
 
+    # The maximum number of bytes for each uploaded file. A value of 0 can be used to indicate there is no limit on the size of uploaded files, otherwise the minimum value is 1048576 bytes (1 MiB.)
+    attr_accessor :file_max_bytes
+
     class EnumAttributeValidator
       attr_reader :datatype
       attr_reader :allowable_values
@@ -139,7 +142,8 @@ module Fastly
         :'redundancy' => :'redundancy',
         :'secret_key' => :'secret_key',
         :'server_side_encryption_kms_key_id' => :'server_side_encryption_kms_key_id',
-        :'server_side_encryption' => :'server_side_encryption'
+        :'server_side_encryption' => :'server_side_encryption',
+        :'file_max_bytes' => :'file_max_bytes'
       }
     end
 
@@ -176,7 +180,8 @@ module Fastly
         :'redundancy' => :'String',
         :'secret_key' => :'String',
         :'server_side_encryption_kms_key_id' => :'String',
-        :'server_side_encryption' => :'String'
+        :'server_side_encryption' => :'String',
+        :'file_max_bytes' => :'Integer'
       }
     end
 
@@ -196,7 +201,7 @@ module Fastly
         :'redundancy',
         :'secret_key',
         :'server_side_encryption_kms_key_id',
-        :'server_side_encryption'
+        :'server_side_encryption',
       ])
     end
 
@@ -349,12 +354,20 @@ module Fastly
       else
         self.server_side_encryption = 'null'
       end
+
+      if attributes.key?(:'file_max_bytes')
+        self.file_max_bytes = attributes[:'file_max_bytes']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+      if !@file_max_bytes.nil? && @file_max_bytes < 1048576
+        invalid_properties.push('invalid value for "file_max_bytes", must be greater than or equal to 1048576.')
+      end
+
       invalid_properties
     end
 
@@ -369,6 +382,7 @@ module Fastly
       return false unless message_type_validator.valid?(@message_type)
       compression_codec_validator = EnumAttributeValidator.new('String', ["zstd", "snappy", "gzip"])
       return false unless compression_codec_validator.valid?(@compression_codec)
+      return false if !@file_max_bytes.nil? && @file_max_bytes < 1048576
       true
     end
 
@@ -412,6 +426,16 @@ module Fastly
       @compression_codec = compression_codec
     end
 
+    # Custom attribute writer method with validation
+    # @param [Object] file_max_bytes Value to be assigned
+    def file_max_bytes=(file_max_bytes)
+      if !file_max_bytes.nil? && file_max_bytes < 1048576
+        fail ArgumentError, 'invalid value for "file_max_bytes", must be greater than or equal to 1048576.'
+      end
+
+      @file_max_bytes = file_max_bytes
+    end
+
     # Checks equality by comparing each attribute.
     # @param [Object] Object to be compared
     def ==(o)
@@ -442,7 +466,8 @@ module Fastly
           redundancy == o.redundancy &&
           secret_key == o.secret_key &&
           server_side_encryption_kms_key_id == o.server_side_encryption_kms_key_id &&
-          server_side_encryption == o.server_side_encryption
+          server_side_encryption == o.server_side_encryption &&
+          file_max_bytes == o.file_max_bytes
     end
 
     # @see the `==` method
@@ -454,7 +479,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, placement, response_condition, format, format_version, message_type, timestamp_format, compression_codec, period, gzip_level, created_at, deleted_at, updated_at, service_id, version, access_key, acl, bucket_name, domain, iam_role, path, public_key, redundancy, secret_key, server_side_encryption_kms_key_id, server_side_encryption].hash
+      [name, placement, response_condition, format, format_version, message_type, timestamp_format, compression_codec, period, gzip_level, created_at, deleted_at, updated_at, service_id, version, access_key, acl, bucket_name, domain, iam_role, path, public_key, redundancy, secret_key, server_side_encryption_kms_key_id, server_side_encryption, file_max_bytes].hash
     end
 
     # Builds the object from hash

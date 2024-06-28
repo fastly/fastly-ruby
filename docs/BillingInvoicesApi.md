@@ -67,8 +67,8 @@ Returns the list of invoices, sorted by billing start date (newest to oldest).
 ```ruby
 api_instance = Fastly::BillingInvoicesApi.new
 opts = {
-    billing_start_date: '2023-01-01T00:00:00Z', # String | 
-    billing_end_date: '2023-01-31T00:00:00Z', # String | 
+    billing_start_date: '2023-01-01', # String | 
+    billing_end_date: '2023-01-31', # String | 
     limit: 'limit_example', # String | Number of results per page. The maximum is 200.
     cursor: 'cursor_example', # String | Cursor value from the `next_cursor` field of a previous response, used to retrieve the next page. To request the first page, this should be empty.
 }

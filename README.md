@@ -8,7 +8,7 @@ A Ruby client library for interacting with most facets of the [Fastly API](https
 To install via RubyGems, add the following to your project's `Gemfile`:
 
 ```ruby
-gem 'fastly', '~> 8.3.0'
+gem 'fastly', '~> 8.4.0'
 ```
 
 Then run `bundle install`.
@@ -621,6 +621,8 @@ The fastly-ruby API client currently does not support the following endpoints:
 - [`/resources/stores/kv/{store_id}/batch`](https://www.fastly.com/documentation/reference/api/services/resources/kv-store-item) (PUT)
 - [`/tls/activations/{tls_activation_id}`](https://www.fastly.com/documentation/reference/api/tls/mutual-tls/activations) (GET, PATCH)
 - [`/tls/activations`](https://www.fastly.com/documentation/reference/api/tls/mutual-tls/activations) (GET)
+- [`/tls/preview/domains/{tls_preview_domain_id}`](https://www.fastly.com/documentation/reference/api/) (GET, PATCH)
+- [`/tls/preview/domains`](https://www.fastly.com/documentation/reference/api/) (GET, POST)
 - [`/v1/channel/{service_id}/ts/h/limit/{max_entries}`](https://www.fastly.com/documentation/reference/api/metrics-stats/origin-insights) (GET)
 - [`/v1/channel/{service_id}/ts/h`](https://www.fastly.com/documentation/reference/api/metrics-stats/origin-insights) (GET)
 - [`/v1/channel/{service_id}/ts/{start_timestamp}`](https://www.fastly.com/documentation/reference/api/metrics-stats/origin-insights) (GET)
