@@ -50,7 +50,7 @@ opts = {
     hostname: 'hostname_example', # String | The hostname used for the syslog endpoint.
     ipv4: 'ipv4_example', # String | The IPv4 address used for the syslog endpoint.
     token: 'token_example', # String | Whether to prepend each message with a specific token.
-    use_tls: Fastly::LoggingUseTls::no_tls, # LoggingUseTls | 
+    use_tls: Fastly::LoggingUseTlsString::no_tls, # LoggingUseTlsString | 
 }
 
 begin
@@ -83,7 +83,7 @@ end
 | **hostname** | **String** | The hostname used for the syslog endpoint. | [optional] |
 | **ipv4** | **String** | The IPv4 address used for the syslog endpoint. | [optional] |
 | **token** | **String** | Whether to prepend each message with a specific token. | [optional][default to &#39;null&#39;] |
-| **use_tls** | [**LoggingUseTls**](LoggingUseTls.md) |  | [optional][default to LoggingUseTls::no_tls] |
+| **use_tls** | [**LoggingUseTlsString**](LoggingUseTlsString.md) |  | [optional][default to &#39;0&#39;] |
 
 ### Return type
 
@@ -243,7 +243,7 @@ opts = {
     hostname: 'hostname_example', # String | The hostname used for the syslog endpoint.
     ipv4: 'ipv4_example', # String | The IPv4 address used for the syslog endpoint.
     token: 'token_example', # String | Whether to prepend each message with a specific token.
-    use_tls: Fastly::LoggingUseTls::no_tls, # LoggingUseTls | 
+    use_tls: Fastly::LoggingUseTlsString::no_tls, # LoggingUseTlsString | 
 }
 
 begin
@@ -277,7 +277,7 @@ end
 | **hostname** | **String** | The hostname used for the syslog endpoint. | [optional] |
 | **ipv4** | **String** | The IPv4 address used for the syslog endpoint. | [optional] |
 | **token** | **String** | Whether to prepend each message with a specific token. | [optional][default to &#39;null&#39;] |
-| **use_tls** | [**LoggingUseTls**](LoggingUseTls.md) |  | [optional][default to LoggingUseTls::no_tls] |
+| **use_tls** | [**LoggingUseTlsString**](LoggingUseTlsString.md) |  | [optional][default to &#39;0&#39;] |
 
 ### Return type
 

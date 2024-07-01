@@ -69,7 +69,7 @@ module Fastly
       if @api_client.config.client_side_validation && opts[:'format_version'] && !allowable_values.include?(opts[:'format_version'])
         fail ArgumentError, "invalid value for \"format_version\", must be one of #{allowable_values}"
       end
-      allowable_values = ["US", "EU"]
+      allowable_values = ["US", "US3", "US5", "EU (legacy, same as EU1)", "EU1", "AP1"]
       if @api_client.config.client_side_validation && opts[:'region'] && !allowable_values.include?(opts[:'region'])
         fail ArgumentError, "invalid value for \"region\", must be one of #{allowable_values}"
       end
@@ -408,7 +408,7 @@ module Fastly
       if @api_client.config.client_side_validation && opts[:'format_version'] && !allowable_values.include?(opts[:'format_version'])
         fail ArgumentError, "invalid value for \"format_version\", must be one of #{allowable_values}"
       end
-      allowable_values = ["US", "EU"]
+      allowable_values = ["US", "US3", "US5", "EU (legacy, same as EU1)", "EU1", "AP1"]
       if @api_client.config.client_side_validation && opts[:'region'] && !allowable_values.include?(opts[:'region'])
         fail ArgumentError, "invalid value for \"region\", must be one of #{allowable_values}"
       end

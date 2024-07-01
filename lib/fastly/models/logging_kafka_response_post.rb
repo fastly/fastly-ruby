@@ -165,7 +165,7 @@ module Fastly
         :'auth_method' => :'String',
         :'user' => :'String',
         :'password' => :'String',
-        :'use_tls' => :'LoggingUseTls'
+        :'use_tls' => :'LoggingUseTlsString'
       }
     end
 
@@ -323,7 +323,7 @@ module Fastly
       if attributes.key?(:'use_tls')
         self.use_tls = attributes[:'use_tls']
       else
-        self.use_tls = LoggingUseTls::no_tls
+        self.use_tls = '0'
       end
     end
 

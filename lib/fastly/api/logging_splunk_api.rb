@@ -34,7 +34,7 @@ module Fastly
     # @option opts [Integer] :request_max_bytes The maximum number of bytes sent in one request. Defaults &#x60;0&#x60; for unbounded. (default to 0)
     # @option opts [String] :url The URL to post logs to.
     # @option opts [String] :token A Splunk token for use in posting logs over HTTP to your collector.
-    # @option opts [LoggingUseTls] :use_tls  (default to LoggingUseTls::no_tls)
+    # @option opts [LoggingUseTlsString] :use_tls  (default to '0')
     # @return [LoggingSplunkResponse]
     def create_log_splunk(opts = {})
       data, _status_code, _headers = create_log_splunk_with_http_info(opts)
@@ -58,7 +58,7 @@ module Fastly
     # @option opts [Integer] :request_max_bytes The maximum number of bytes sent in one request. Defaults &#x60;0&#x60; for unbounded. (default to 0)
     # @option opts [String] :url The URL to post logs to.
     # @option opts [String] :token A Splunk token for use in posting logs over HTTP to your collector.
-    # @option opts [LoggingUseTls] :use_tls  (default to LoggingUseTls::no_tls)
+    # @option opts [LoggingUseTlsString] :use_tls  (default to '0')
     # @return [Array<(LoggingSplunkResponse, Integer, Hash)>] LoggingSplunkResponse data, response status code and response headers
     def create_log_splunk_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -384,7 +384,7 @@ module Fastly
     # @option opts [Integer] :request_max_bytes The maximum number of bytes sent in one request. Defaults &#x60;0&#x60; for unbounded. (default to 0)
     # @option opts [String] :url The URL to post logs to.
     # @option opts [String] :token A Splunk token for use in posting logs over HTTP to your collector.
-    # @option opts [LoggingUseTls] :use_tls  (default to LoggingUseTls::no_tls)
+    # @option opts [LoggingUseTlsString] :use_tls  (default to '0')
     # @return [LoggingSplunkResponse]
     def update_log_splunk(opts = {})
       data, _status_code, _headers = update_log_splunk_with_http_info(opts)
@@ -409,7 +409,7 @@ module Fastly
     # @option opts [Integer] :request_max_bytes The maximum number of bytes sent in one request. Defaults &#x60;0&#x60; for unbounded. (default to 0)
     # @option opts [String] :url The URL to post logs to.
     # @option opts [String] :token A Splunk token for use in posting logs over HTTP to your collector.
-    # @option opts [LoggingUseTls] :use_tls  (default to LoggingUseTls::no_tls)
+    # @option opts [LoggingUseTlsString] :use_tls  (default to '0')
     # @return [Array<(LoggingSplunkResponse, Integer, Hash)>] LoggingSplunkResponse data, response status code and response headers
     def update_log_splunk_with_http_info(opts = {})
       if @api_client.config.debugging

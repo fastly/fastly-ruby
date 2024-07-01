@@ -48,7 +48,7 @@ opts = {
     request_max_bytes: 56, # Integer | The maximum number of bytes sent in one request. Defaults `0` for unbounded.
     url: 'url_example', # String | The URL to post logs to.
     token: 'token_example', # String | A Splunk token for use in posting logs over HTTP to your collector.
-    use_tls: Fastly::LoggingUseTls::no_tls, # LoggingUseTls | 
+    use_tls: Fastly::LoggingUseTlsString::no_tls, # LoggingUseTlsString | 
 }
 
 begin
@@ -79,7 +79,7 @@ end
 | **request_max_bytes** | **Integer** | The maximum number of bytes sent in one request. Defaults `0` for unbounded. | [optional][default to 0] |
 | **url** | **String** | The URL to post logs to. | [optional] |
 | **token** | **String** | A Splunk token for use in posting logs over HTTP to your collector. | [optional] |
-| **use_tls** | [**LoggingUseTls**](LoggingUseTls.md) |  | [optional][default to LoggingUseTls::no_tls] |
+| **use_tls** | [**LoggingUseTlsString**](LoggingUseTlsString.md) |  | [optional][default to &#39;0&#39;] |
 
 ### Return type
 
@@ -237,7 +237,7 @@ opts = {
     request_max_bytes: 56, # Integer | The maximum number of bytes sent in one request. Defaults `0` for unbounded.
     url: 'url_example', # String | The URL to post logs to.
     token: 'token_example', # String | A Splunk token for use in posting logs over HTTP to your collector.
-    use_tls: Fastly::LoggingUseTls::no_tls, # LoggingUseTls | 
+    use_tls: Fastly::LoggingUseTlsString::no_tls, # LoggingUseTlsString | 
 }
 
 begin
@@ -269,7 +269,7 @@ end
 | **request_max_bytes** | **Integer** | The maximum number of bytes sent in one request. Defaults `0` for unbounded. | [optional][default to 0] |
 | **url** | **String** | The URL to post logs to. | [optional] |
 | **token** | **String** | A Splunk token for use in posting logs over HTTP to your collector. | [optional] |
-| **use_tls** | [**LoggingUseTls**](LoggingUseTls.md) |  | [optional][default to LoggingUseTls::no_tls] |
+| **use_tls** | [**LoggingUseTlsString**](LoggingUseTlsString.md) |  | [optional][default to &#39;0&#39;] |
 
 ### Return type
 

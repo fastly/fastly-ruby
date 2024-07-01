@@ -42,7 +42,7 @@ opts = {
     format_version: 1, # Integer | The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in `vcl_log` if `format_version` is set to `2` and in `vcl_deliver` if `format_version` is set to `1`. 
     port: 56, # Integer | The port number.
     token: 'token_example', # String | Use token based authentication.
-    use_tls: Fastly::LoggingUseTls::no_tls, # LoggingUseTls | 
+    use_tls: Fastly::LoggingUseTlsString::no_tls, # LoggingUseTlsString | 
     region: 'US', # String | The region to which to stream logs.
 }
 
@@ -68,7 +68,7 @@ end
 | **format_version** | **Integer** | The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in `vcl_log` if `format_version` is set to `2` and in `vcl_deliver` if `format_version` is set to `1`.  | [optional][default to FORMAT_VERSION::v2] |
 | **port** | **Integer** | The port number. | [optional][default to 20000] |
 | **token** | **String** | Use token based authentication. | [optional] |
-| **use_tls** | [**LoggingUseTls**](LoggingUseTls.md) |  | [optional][default to LoggingUseTls::no_tls] |
+| **use_tls** | [**LoggingUseTlsString**](LoggingUseTlsString.md) |  | [optional][default to &#39;0&#39;] |
 | **region** | **String** | The region to which to stream logs. | [optional] |
 
 ### Return type
@@ -221,7 +221,7 @@ opts = {
     format_version: 1, # Integer | The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in `vcl_log` if `format_version` is set to `2` and in `vcl_deliver` if `format_version` is set to `1`. 
     port: 56, # Integer | The port number.
     token: 'token_example', # String | Use token based authentication.
-    use_tls: Fastly::LoggingUseTls::no_tls, # LoggingUseTls | 
+    use_tls: Fastly::LoggingUseTlsString::no_tls, # LoggingUseTlsString | 
     region: 'US', # String | The region to which to stream logs.
 }
 
@@ -248,7 +248,7 @@ end
 | **format_version** | **Integer** | The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in `vcl_log` if `format_version` is set to `2` and in `vcl_deliver` if `format_version` is set to `1`.  | [optional][default to FORMAT_VERSION::v2] |
 | **port** | **Integer** | The port number. | [optional][default to 20000] |
 | **token** | **String** | Use token based authentication. | [optional] |
-| **use_tls** | [**LoggingUseTls**](LoggingUseTls.md) |  | [optional][default to LoggingUseTls::no_tls] |
+| **use_tls** | [**LoggingUseTlsString**](LoggingUseTlsString.md) |  | [optional][default to &#39;0&#39;] |
 | **region** | **String** | The region to which to stream logs. | [optional] |
 
 ### Return type

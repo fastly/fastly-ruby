@@ -18,7 +18,7 @@ module Fastly
       @api_client = api_client
     end
     # Check status of content in each POP's cache
-    # Retrieve headers and MD5 hash of the content for a particular URL from each Fastly edge server. This API is limited to 200 requests per hour.
+    # Retrieve headers and MD5 hash of the content for a particular URL from each Fastly edge server. This API is limited to 200 requests per hour. If the content takes too long to download, the hash will be set to `error-timeout-$pop`. If the response is too large, it will be set to `warning-too-large-$pop`.
     # @option opts [String] :url Full URL (host and path) to check on all nodes. if protocol is omitted, http will be assumed.
     # @return [Array<Content>]
     def content_check(opts = {})
@@ -27,7 +27,7 @@ module Fastly
     end
 
     # Check status of content in each POP&#39;s cache
-    # Retrieve headers and MD5 hash of the content for a particular URL from each Fastly edge server. This API is limited to 200 requests per hour.
+    # Retrieve headers and MD5 hash of the content for a particular URL from each Fastly edge server. This API is limited to 200 requests per hour. If the content takes too long to download, the hash will be set to &#x60;error-timeout-$pop&#x60;. If the response is too large, it will be set to &#x60;warning-too-large-$pop&#x60;.
     # @option opts [String] :url Full URL (host and path) to check on all nodes. if protocol is omitted, http will be assumed.
     # @return [Array<(Array<Content>, Integer, Hash)>] Array<Content> data, response status code and response headers
     def content_check_with_http_info(opts = {})

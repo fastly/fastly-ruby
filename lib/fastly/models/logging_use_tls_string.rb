@@ -12,9 +12,9 @@ require 'date'
 require 'time'
 
 module Fastly
-  class LoggingUseTls
-    no_tls = 0.freeze
-    use_tls = 1.freeze
+  class LoggingUseTlsString
+    no_tls = "0".freeze
+    use_tls = "1".freeze
 
     # Builds the enum from string
     # @param [String] The enum value in the form of the string
@@ -27,8 +27,8 @@ module Fastly
     # @param [String] The enum value in the form of the string
     # @return [String] The enum value
     def build_from_hash(value)
-      constantValues = LoggingUseTls.constants.select { |c| LoggingUseTls::const_get(c) == value }
-      raise "Invalid ENUM value #{value} for class #LoggingUseTls" if constantValues.empty?
+      constantValues = LoggingUseTlsString.constants.select { |c| LoggingUseTlsString::const_get(c) == value }
+      raise "Invalid ENUM value #{value} for class #LoggingUseTlsString" if constantValues.empty?
       value
     end
   end

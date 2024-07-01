@@ -27,7 +27,7 @@
 | **auth_method** | **String** | SASL authentication method. | [optional] |
 | **user** | **String** | SASL user. | [optional] |
 | **password** | **String** | SASL password. | [optional] |
-| **use_tls** | [**LoggingUseTls**](LoggingUseTls.md) |  | [optional][default to LoggingUseTls::no_tls] |
+| **use_tls** | [**LoggingUseTlsString**](LoggingUseTlsString.md) |  | [optional][default to &#39;0&#39;] |
 
 [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
 

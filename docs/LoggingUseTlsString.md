@@ -1,4 +1,4 @@
-# Fastly::LoggingUseTls
+# Fastly::LoggingUseTlsString
 
 ## Properties
 

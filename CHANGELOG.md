@@ -1,5 +1,17 @@
 # Changelog
 
+## [v8.5.0](https://github.com/fastly/fastly-ruby/releases/tag/release/v8.5.0) (2024-07-01)
+
+**Bug fixes:**
+
+- fix(logging): For several endpoints, correct use_tls to be string
+
+**Enhancements:**
+
+- feat(content): `/content/edge_check` endpoint now returns informational values in `hash` when a timeout occurs or when
+  an object is too large.
+- feat(logging-datalog): Added additional regions
+
 ## [v8.4.0](https://github.com/fastly/fastly-ruby/releases/tag/release/v8.4.0) (2024-06-27)
 
 **Bug fixes:**

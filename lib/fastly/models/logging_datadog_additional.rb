@@ -115,7 +115,7 @@ module Fastly
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      region_validator = EnumAttributeValidator.new('String', ["US", "EU"])
+      region_validator = EnumAttributeValidator.new('String', ["US", "US3", "US5", "EU (legacy, same as EU1)", "EU1", "AP1"])
       return false unless region_validator.valid?(@region)
       true
     end
@@ -123,7 +123,7 @@ module Fastly
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] region Object to be assigned
     def region=(region)
-      validator = EnumAttributeValidator.new('String', ["US", "EU"])
+      validator = EnumAttributeValidator.new('String', ["US", "US3", "US5", "EU (legacy, same as EU1)", "EU1", "AP1"])
       unless validator.valid?(region)
         fail ArgumentError, "invalid value for \"region\", must be one of #{validator.allowable_values}."
       end

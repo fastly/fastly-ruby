@@ -66,7 +66,7 @@ module Fastly
       {
         :'port' => :'Integer',
         :'token' => :'String',
-        :'use_tls' => :'LoggingUseTls',
+        :'use_tls' => :'LoggingUseTlsString',
         :'region' => :'String'
       }
     end
@@ -105,7 +105,7 @@ module Fastly
       if attributes.key?(:'use_tls')
         self.use_tls = attributes[:'use_tls']
       else
-        self.use_tls = LoggingUseTls::no_tls
+        self.use_tls = '0'
       end
 
       if attributes.key?(:'region')

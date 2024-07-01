@@ -36,7 +36,7 @@ module Fastly
     # @option opts [String] :hostname The hostname used for the syslog endpoint.
     # @option opts [String] :ipv4 The IPv4 address used for the syslog endpoint.
     # @option opts [String] :token Whether to prepend each message with a specific token. (default to 'null')
-    # @option opts [LoggingUseTls] :use_tls  (default to LoggingUseTls::no_tls)
+    # @option opts [LoggingUseTlsString] :use_tls  (default to '0')
     # @return [LoggingSyslogResponse]
     def create_log_syslog(opts = {})
       data, _status_code, _headers = create_log_syslog_with_http_info(opts)
@@ -62,7 +62,7 @@ module Fastly
     # @option opts [String] :hostname The hostname used for the syslog endpoint.
     # @option opts [String] :ipv4 The IPv4 address used for the syslog endpoint.
     # @option opts [String] :token Whether to prepend each message with a specific token. (default to 'null')
-    # @option opts [LoggingUseTls] :use_tls  (default to LoggingUseTls::no_tls)
+    # @option opts [LoggingUseTlsString] :use_tls  (default to '0')
     # @return [Array<(LoggingSyslogResponse, Integer, Hash)>] LoggingSyslogResponse data, response status code and response headers
     def create_log_syslog_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -392,7 +392,7 @@ module Fastly
     # @option opts [String] :hostname The hostname used for the syslog endpoint.
     # @option opts [String] :ipv4 The IPv4 address used for the syslog endpoint.
     # @option opts [String] :token Whether to prepend each message with a specific token. (default to 'null')
-    # @option opts [LoggingUseTls] :use_tls  (default to LoggingUseTls::no_tls)
+    # @option opts [LoggingUseTlsString] :use_tls  (default to '0')
     # @return [LoggingSyslogResponse]
     def update_log_syslog(opts = {})
       data, _status_code, _headers = update_log_syslog_with_http_info(opts)
@@ -419,7 +419,7 @@ module Fastly
     # @option opts [String] :hostname The hostname used for the syslog endpoint.
     # @option opts [String] :ipv4 The IPv4 address used for the syslog endpoint.
     # @option opts [String] :token Whether to prepend each message with a specific token. (default to 'null')
-    # @option opts [LoggingUseTls] :use_tls  (default to LoggingUseTls::no_tls)
+    # @option opts [LoggingUseTlsString] :use_tls  (default to '0')
     # @return [Array<(LoggingSyslogResponse, Integer, Hash)>] LoggingSyslogResponse data, response status code and response headers
     def update_log_syslog_with_http_info(opts = {})
       if @api_client.config.debugging

@@ -19,7 +19,7 @@
 | **hostname** | **String** | The hostname used for the syslog endpoint. | [optional] |
 | **ipv4** | **String** | The IPv4 address used for the syslog endpoint. | [optional] |
 | **token** | **String** | Whether to prepend each message with a specific token. | [optional][default to &#39;null&#39;] |
-| **use_tls** | [**LoggingUseTls**](LoggingUseTls.md) |  | [optional][default to LoggingUseTls::no_tls] |
+| **use_tls** | [**LoggingUseTlsString**](LoggingUseTlsString.md) |  | [optional][default to &#39;0&#39;] |
 | **created_at** | **Time** | Date and time in ISO 8601 format. | [optional][readonly] |
 | **deleted_at** | **Time** | Date and time in ISO 8601 format. | [optional][readonly] |
 | **updated_at** | **Time** | Date and time in ISO 8601 format. | [optional][readonly] |

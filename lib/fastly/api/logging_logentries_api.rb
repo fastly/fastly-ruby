@@ -28,7 +28,7 @@ module Fastly
     # @option opts [Integer] :format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;.  (default to FORMAT_VERSION::v2)
     # @option opts [Integer] :port The port number. (default to 20000)
     # @option opts [String] :token Use token based authentication.
-    # @option opts [LoggingUseTls] :use_tls  (default to LoggingUseTls::no_tls)
+    # @option opts [LoggingUseTlsString] :use_tls  (default to '0')
     # @option opts [String] :region The region to which to stream logs.
     # @return [LoggingLogentriesResponse]
     def create_log_logentries(opts = {})
@@ -47,7 +47,7 @@ module Fastly
     # @option opts [Integer] :format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;.  (default to FORMAT_VERSION::v2)
     # @option opts [Integer] :port The port number. (default to 20000)
     # @option opts [String] :token Use token based authentication.
-    # @option opts [LoggingUseTls] :use_tls  (default to LoggingUseTls::no_tls)
+    # @option opts [LoggingUseTlsString] :use_tls  (default to '0')
     # @option opts [String] :region The region to which to stream logs.
     # @return [Array<(LoggingLogentriesResponse, Integer, Hash)>] LoggingLogentriesResponse data, response status code and response headers
     def create_log_logentries_with_http_info(opts = {})
@@ -367,7 +367,7 @@ module Fastly
     # @option opts [Integer] :format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;.  (default to FORMAT_VERSION::v2)
     # @option opts [Integer] :port The port number. (default to 20000)
     # @option opts [String] :token Use token based authentication.
-    # @option opts [LoggingUseTls] :use_tls  (default to LoggingUseTls::no_tls)
+    # @option opts [LoggingUseTlsString] :use_tls  (default to '0')
     # @option opts [String] :region The region to which to stream logs.
     # @return [LoggingLogentriesResponse]
     def update_log_logentries(opts = {})
@@ -387,7 +387,7 @@ module Fastly
     # @option opts [Integer] :format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;.  (default to FORMAT_VERSION::v2)
     # @option opts [Integer] :port The port number. (default to 20000)
     # @option opts [String] :token Use token based authentication.
-    # @option opts [LoggingUseTls] :use_tls  (default to LoggingUseTls::no_tls)
+    # @option opts [LoggingUseTlsString] :use_tls  (default to '0')
     # @option opts [String] :region The region to which to stream logs.
     # @return [Array<(LoggingLogentriesResponse, Integer, Hash)>] LoggingLogentriesResponse data, response status code and response headers
     def update_log_logentries_with_http_info(opts = {})

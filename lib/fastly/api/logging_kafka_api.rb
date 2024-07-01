@@ -39,7 +39,7 @@ module Fastly
     # @option opts [String] :auth_method SASL authentication method.
     # @option opts [String] :user SASL user.
     # @option opts [String] :password SASL password.
-    # @option opts [LoggingUseTls] :use_tls  (default to 0)
+    # @option opts [LoggingUseTlsString] :use_tls  (default to '0')
     # @return [LoggingKafkaResponsePost]
     def create_log_kafka(opts = {})
       data, _status_code, _headers = create_log_kafka_with_http_info(opts)
@@ -68,7 +68,7 @@ module Fastly
     # @option opts [String] :auth_method SASL authentication method.
     # @option opts [String] :user SASL user.
     # @option opts [String] :password SASL password.
-    # @option opts [LoggingUseTls] :use_tls  (default to 0)
+    # @option opts [LoggingUseTlsString] :use_tls  (default to '0')
     # @return [Array<(LoggingKafkaResponsePost, Integer, Hash)>] LoggingKafkaResponsePost data, response status code and response headers
     def create_log_kafka_with_http_info(opts = {})
       if @api_client.config.debugging
