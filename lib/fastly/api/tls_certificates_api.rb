@@ -204,6 +204,69 @@ module Fastly
       return data, status_code, headers
     end
 
+    # Get a TLS certificate blob (Limited Availability)
+    # Retrieve a TLS certificate blob. This feature is part of a [limited availability](https://docs.fastly.com/products/fastly-product-lifecycle#limited-availability) release.
+    # @option opts [String] :tls_certificate_id Alphanumeric string identifying a TLS certificate. (required)
+    # @return [TlsCertificateBlobResponse]
+    def get_tls_cert_blob(opts = {})
+      data, _status_code, _headers = get_tls_cert_blob_with_http_info(opts)
+      data
+    end
+
+    # Get a TLS certificate blob (Limited Availability)
+    # Retrieve a TLS certificate blob. This feature is part of a [limited availability](https://docs.fastly.com/products/fastly-product-lifecycle#limited-availability) release.
+    # @option opts [String] :tls_certificate_id Alphanumeric string identifying a TLS certificate. (required)
+    # @return [Array<(TlsCertificateBlobResponse, Integer, Hash)>] TlsCertificateBlobResponse data, response status code and response headers
+    def get_tls_cert_blob_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: TlsCertificatesApi.get_tls_cert_blob ...'
+      end
+      # unbox the parameters from the hash
+      tls_certificate_id = opts[:'tls_certificate_id']
+      # verify the required parameter 'tls_certificate_id' is set
+      if @api_client.config.client_side_validation && tls_certificate_id.nil?
+        fail ArgumentError, "Missing the required parameter 'tls_certificate_id' when calling TlsCertificatesApi.get_tls_cert_blob"
+      end
+      # resource path
+      local_var_path = '/tls/certificates/{tls_certificate_id}/blob'.sub('{' + 'tls_certificate_id' + '}', CGI.escape(tls_certificate_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'TlsCertificateBlobResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['token']
+
+      new_options = opts.merge(
+        :operation => :"TlsCertificatesApi.get_tls_cert_blob",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: TlsCertificatesApi#get_tls_cert_blob\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # List TLS certificates
     # List all TLS certificates.
     # @option opts [String] :filter_in_use Optional. Limit the returned certificates to those currently using Fastly to terminate TLS (that is, certificates associated with an activation). Permitted values: true, false.

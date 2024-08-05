@@ -20,7 +20,7 @@ module Fastly
     # Get invoice by ID.
     # Returns invoice associated with the invoice id.
     # @option opts [String] :invoice_id Alphanumeric string identifying the invoice. (required)
-    # @return [InvoiceResponse]
+    # @return [EomInvoiceResponse]
     def get_invoice_by_invoice_id(opts = {})
       data, _status_code, _headers = get_invoice_by_invoice_id_with_http_info(opts)
       data
@@ -29,7 +29,7 @@ module Fastly
     # Get invoice by ID.
     # Returns invoice associated with the invoice id.
     # @option opts [String] :invoice_id Alphanumeric string identifying the invoice. (required)
-    # @return [Array<(InvoiceResponse, Integer, Hash)>] InvoiceResponse data, response status code and response headers
+    # @return [Array<(EomInvoiceResponse, Integer, Hash)>] EomInvoiceResponse data, response status code and response headers
     def get_invoice_by_invoice_id_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: BillingInvoicesApi.get_invoice_by_invoice_id ...'
@@ -58,7 +58,7 @@ module Fastly
       post_body = opts[:debug_body]
 
       # return_type
-      return_type = opts[:debug_return_type] || 'InvoiceResponse'
+      return_type = opts[:debug_return_type] || 'EomInvoiceResponse'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['token']
@@ -80,13 +80,69 @@ module Fastly
       return data, status_code, headers
     end
 
+    # Get month-to-date invoice.
+    # Returns month-to-date invoice for the current month.
+    # @return [MtdInvoiceResponse]
+    def get_month_to_date_invoice(opts = {})
+      data, _status_code, _headers = get_month_to_date_invoice_with_http_info(opts)
+      data
+    end
+
+    # Get month-to-date invoice.
+    # Returns month-to-date invoice for the current month.
+    # @return [Array<(MtdInvoiceResponse, Integer, Hash)>] MtdInvoiceResponse data, response status code and response headers
+    def get_month_to_date_invoice_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: BillingInvoicesApi.get_month_to_date_invoice ...'
+      end
+      # unbox the parameters from the hash
+      # resource path
+      local_var_path = '/billing/v3/invoices/month-to-date'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'MtdInvoiceResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['token']
+
+      new_options = opts.merge(
+        :operation => :"BillingInvoicesApi.get_month_to_date_invoice",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: BillingInvoicesApi#get_month_to_date_invoice\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # List of invoices.
     # Returns the list of invoices, sorted by billing start date (newest to oldest).
     # @option opts [String] :billing_start_date 
     # @option opts [String] :billing_end_date 
     # @option opts [String] :limit Number of results per page. The maximum is 200. (default to '100')
     # @option opts [String] :cursor Cursor value from the &#x60;next_cursor&#x60; field of a previous response, used to retrieve the next page. To request the first page, this should be empty.
-    # @return [ListInvoicesResponse]
+    # @return [ListEomInvoicesResponse]
     def list_invoices(opts = {})
       data, _status_code, _headers = list_invoices_with_http_info(opts)
       data
@@ -98,7 +154,7 @@ module Fastly
     # @option opts [String] :billing_end_date 
     # @option opts [String] :limit Number of results per page. The maximum is 200. (default to '100')
     # @option opts [String] :cursor Cursor value from the &#x60;next_cursor&#x60; field of a previous response, used to retrieve the next page. To request the first page, this should be empty.
-    # @return [Array<(ListInvoicesResponse, Integer, Hash)>] ListInvoicesResponse data, response status code and response headers
+    # @return [Array<(ListEomInvoicesResponse, Integer, Hash)>] ListEomInvoicesResponse data, response status code and response headers
     def list_invoices_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: BillingInvoicesApi.list_invoices ...'
@@ -126,7 +182,7 @@ module Fastly
       post_body = opts[:debug_body]
 
       # return_type
-      return_type = opts[:debug_return_type] || 'ListInvoicesResponse'
+      return_type = opts[:debug_return_type] || 'ListEomInvoicesResponse'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['token']

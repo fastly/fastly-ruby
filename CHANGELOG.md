@@ -1,5 +1,15 @@
 # Changelog
 
+## [v8.6.0](https://github.com/fastly/fastly-ruby/releases/tag/release/v8.6.0) (2024-08-04)
+
+**Enhancements:**
+
+- feat(observability): Adds new Observability Custom Dashboards API
+- feat(billing-invoices): Adds month-to-date invoice information
+- feat(billing-usage-metrics): Adds information on service-level usage.
+- feat(tls): Adds an endpoint to get a TLS certificate blob (Limited Availability)
+- feat(stats): Add `origin_offload` metric
+
 ## [v8.5.0](https://github.com/fastly/fastly-ruby/releases/tag/release/v8.5.0) (2024-07-01)
 
 **Bug fixes:**

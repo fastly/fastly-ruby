@@ -42,7 +42,7 @@
 | **origin_fetch_resp_body_bytes** | **Integer** | Total body bytes received from origin. | [optional] |
 | **bandwidth** | **Integer** | Total bytes delivered (`resp_header_bytes` + `resp_body_bytes` + `bereq_header_bytes` + `bereq_body_bytes`). | [optional] |
 | **edge_hit_ratio** | **Float** | Ratio of cache hits to cache misses at the edge, between 0 and 1 (`edge_hit_requests` / (`edge_hit_requests` + `edge_miss_requests`)). | [optional] |
-| **origin_offload** | **Float** | Ratio of response bytes delivered from the edge compared to what is delivered from origin, between 0 and 1. (`edge_resp_body_bytes` + `edge_resp_header_bytes`) / (`origin_fetch_resp_body_bytes` + `origin_fetch_resp_header_bytes` + `edge_resp_body_bytes` + `edge_resp_header_bytes`). | [optional] |
+| **origin_offload** | **Float** | Origin Offload measures the ratio of bytes served to end users that were cached by Fastly, over the bytes served to end users, between 0 and 1. ((`edge_resp_body_bytes` + `edge_resp_header_bytes`) - (`origin_fetch_resp_body_bytes` + `origin_fetch_resp_header_bytes`)) / (`edge_resp_body_bytes` + `edge_resp_header_bytes`). Previously, Origin Offload used a different formula. [Learn more](https://www.fastly.com/documentation/reference/changes/2024/06/add-origin_offload-metric). | [optional] |
 | **origin_status_200** | **Integer** | Number of responses received from origin with status code 200 (Success). | [optional] |
 | **origin_status_204** | **Integer** | Number of responses received from origin with status code 204 (No Content). | [optional] |
 | **origin_status_206** | **Integer** | Number of responses received from origin with status code 206 (Partial Content). | [optional] |

@@ -12,45 +12,35 @@ require 'date'
 require 'time'
 
 module Fastly
-  class InvoiceResponse
-    # Customer ID associated with the invoice.
+  class ServiceusagemetricsData
     attr_accessor :customer_id
 
-    # Alphanumeric string identifying the invoice.
-    attr_accessor :invoice_id
-
-    # Date and time invoice was posted on, in ISO 8601 format.
-    attr_accessor :invoice_posted_on
-
     # Date and time (in ISO 8601 format) for initiation point of a billing cycle, signifying the start of charges for a service or subscription.
-    attr_accessor :billing_start_date
+    attr_accessor :start_time
 
     # Date and time (in ISO 8601 format) for termination point of a billing cycle, signifying the end of charges for a service or subscription.
-    attr_accessor :billing_end_date
+    attr_accessor :end_time
 
-    # Alphanumeric string identifying the statement number.
-    attr_accessor :statement_number
+    # The usage type identifier for the usage. This is a single, billable metric for the product.
+    attr_accessor :usage_type
 
-    # Three-letter code representing a specific currency used for financial transactions.
-    attr_accessor :currency_code
+    # The unit for the usage as shown on an invoice. If there is no explicit unit, this field will be \"unit\" (e.g., a request with `product_id` of 'cdn_usage' and `usage_type` of 'North America Requests' has no unit, and will return \"unit\").
+    attr_accessor :unit
 
-    # Total billable amount for invoiced services charged within a single month.
-    attr_accessor :monthly_transaction_amount
+    attr_accessor :details
 
-    attr_accessor :transaction_line_items
+    attr_accessor :meta
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'customer_id' => :'customer_id',
-        :'invoice_id' => :'invoice_id',
-        :'invoice_posted_on' => :'invoice_posted_on',
-        :'billing_start_date' => :'billing_start_date',
-        :'billing_end_date' => :'billing_end_date',
-        :'statement_number' => :'statement_number',
-        :'currency_code' => :'currency_code',
-        :'monthly_transaction_amount' => :'monthly_transaction_amount',
-        :'transaction_line_items' => :'transaction_line_items'
+        :'start_time' => :'start_time',
+        :'end_time' => :'end_time',
+        :'usage_type' => :'usage_type',
+        :'unit' => :'unit',
+        :'details' => :'details',
+        :'meta' => :'meta'
       }
     end
 
@@ -63,14 +53,12 @@ module Fastly
     def self.fastly_types
       {
         :'customer_id' => :'String',
-        :'invoice_id' => :'String',
-        :'invoice_posted_on' => :'Time',
-        :'billing_start_date' => :'Time',
-        :'billing_end_date' => :'Time',
-        :'statement_number' => :'String',
-        :'currency_code' => :'String',
-        :'monthly_transaction_amount' => :'Float',
-        :'transaction_line_items' => :'Array<Invoicelineitems>'
+        :'start_time' => :'Time',
+        :'end_time' => :'Time',
+        :'usage_type' => :'String',
+        :'unit' => :'String',
+        :'details' => :'Array<Serviceusagemetric>',
+        :'meta' => :'Metadata'
       }
     end
 
@@ -80,24 +68,17 @@ module Fastly
       ])
     end
 
-    # List of class defined in allOf (OpenAPI v3)
-    def self.fastly_all_of
-      [
-      :'Invoice'
-      ]
-    end
-
     # Initializes the object
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Fastly::InvoiceResponse` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Fastly::ServiceusagemetricsData` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `Fastly::InvoiceResponse`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `Fastly::ServiceusagemetricsData`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
@@ -106,38 +87,30 @@ module Fastly
         self.customer_id = attributes[:'customer_id']
       end
 
-      if attributes.key?(:'invoice_id')
-        self.invoice_id = attributes[:'invoice_id']
+      if attributes.key?(:'start_time')
+        self.start_time = attributes[:'start_time']
       end
 
-      if attributes.key?(:'invoice_posted_on')
-        self.invoice_posted_on = attributes[:'invoice_posted_on']
+      if attributes.key?(:'end_time')
+        self.end_time = attributes[:'end_time']
       end
 
-      if attributes.key?(:'billing_start_date')
-        self.billing_start_date = attributes[:'billing_start_date']
+      if attributes.key?(:'usage_type')
+        self.usage_type = attributes[:'usage_type']
       end
 
-      if attributes.key?(:'billing_end_date')
-        self.billing_end_date = attributes[:'billing_end_date']
+      if attributes.key?(:'unit')
+        self.unit = attributes[:'unit']
       end
 
-      if attributes.key?(:'statement_number')
-        self.statement_number = attributes[:'statement_number']
-      end
-
-      if attributes.key?(:'currency_code')
-        self.currency_code = attributes[:'currency_code']
-      end
-
-      if attributes.key?(:'monthly_transaction_amount')
-        self.monthly_transaction_amount = attributes[:'monthly_transaction_amount']
-      end
-
-      if attributes.key?(:'transaction_line_items')
-        if (value = attributes[:'transaction_line_items']).is_a?(Array)
-          self.transaction_line_items = value
+      if attributes.key?(:'details')
+        if (value = attributes[:'details']).is_a?(Array)
+          self.details = value
         end
+      end
+
+      if attributes.key?(:'meta')
+        self.meta = attributes[:'meta']
       end
     end
 
@@ -160,14 +133,12 @@ module Fastly
       return true if self.equal?(o)
       self.class == o.class &&
           customer_id == o.customer_id &&
-          invoice_id == o.invoice_id &&
-          invoice_posted_on == o.invoice_posted_on &&
-          billing_start_date == o.billing_start_date &&
-          billing_end_date == o.billing_end_date &&
-          statement_number == o.statement_number &&
-          currency_code == o.currency_code &&
-          monthly_transaction_amount == o.monthly_transaction_amount &&
-          transaction_line_items == o.transaction_line_items
+          start_time == o.start_time &&
+          end_time == o.end_time &&
+          usage_type == o.usage_type &&
+          unit == o.unit &&
+          details == o.details &&
+          meta == o.meta
     end
 
     # @see the `==` method
@@ -179,7 +150,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [customer_id, invoice_id, invoice_posted_on, billing_start_date, billing_end_date, statement_number, currency_code, monthly_transaction_amount, transaction_line_items].hash
+      [customer_id, start_time, end_time, usage_type, unit, details, meta].hash
     end
 
     # Builds the object from hash

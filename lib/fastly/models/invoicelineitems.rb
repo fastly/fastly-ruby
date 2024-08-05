@@ -51,11 +51,11 @@ module Fastly
         :'credit_coupon_code' => :'credit_coupon_code',
         :'rate' => :'rate',
         :'units' => :'units',
-        :'product_name' => :'ProductName',
-        :'product_group' => :'ProductGroup',
-        :'product_line' => :'ProductLine',
-        :'region' => :'Region',
-        :'usage_type' => :'UsageType'
+        :'product_name' => :'product_name',
+        :'product_group' => :'product_group',
+        :'product_line' => :'product_line',
+        :'region' => :'region',
+        :'usage_type' => :'usage_type'
       }
     end
 

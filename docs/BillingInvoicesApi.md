@@ -14,13 +14,14 @@ api_instance = Fastly::BillingInvoicesApi.new
 Method | HTTP request | Description
 ------ | ------------ | -----------
 [**get_invoice_by_invoice_id**](BillingInvoicesApi.md#get_invoice_by_invoice_id) | **GET** /billing/v3/invoices/{invoice_id} | Get invoice by ID.
+[**get_month_to_date_invoice**](BillingInvoicesApi.md#get_month_to_date_invoice) | **GET** /billing/v3/invoices/month-to-date | Get month-to-date invoice.
 [**list_invoices**](BillingInvoicesApi.md#list_invoices) | **GET** /billing/v3/invoices | List of invoices.
 
 
 ## `get_invoice_by_invoice_id()`
 
 ```ruby
-get_invoice_by_invoice_id(opts): <InvoiceResponse> # Get invoice by ID.
+get_invoice_by_invoice_id(opts): <EomInvoiceResponse> # Get invoice by ID.
 ```
 
 Returns invoice associated with the invoice id.
@@ -50,14 +51,46 @@ end
 
 ### Return type
 
-[**InvoiceResponse**](InvoiceResponse.md)
+[**EomInvoiceResponse**](EomInvoiceResponse.md)
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+## `get_month_to_date_invoice()`
+
+```ruby
+get_month_to_date_invoice: <MtdInvoiceResponse> # Get month-to-date invoice.
+```
+
+Returns month-to-date invoice for the current month.
+
+### Examples
+
+```ruby
+api_instance = Fastly::BillingInvoicesApi.new
+
+begin
+  # Get month-to-date invoice.
+  result = api_instance.get_month_to_date_invoice
+  p result
+rescue Fastly::ApiError => e
+  puts "Error when calling BillingInvoicesApi->get_month_to_date_invoice: #{e}"
+end
+```
+
+### Options
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**MtdInvoiceResponse**](MtdInvoiceResponse.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)
 ## `list_invoices()`
 
 ```ruby
-list_invoices(opts): <ListInvoicesResponse> # List of invoices.
+list_invoices(opts): <ListEomInvoicesResponse> # List of invoices.
 ```
 
 Returns the list of invoices, sorted by billing start date (newest to oldest).
@@ -93,7 +126,7 @@ end
 
 ### Return type
 
-[**ListInvoicesResponse**](ListInvoicesResponse.md)
+[**ListEomInvoicesResponse**](ListEomInvoicesResponse.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)

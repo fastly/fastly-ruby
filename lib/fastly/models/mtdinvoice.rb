@@ -12,13 +12,33 @@ require 'date'
 require 'time'
 
 module Fastly
-  class RelationshipTlsDnsRecords
-    attr_accessor :dns_records
+  class Mtdinvoice
+    # The Customer ID associated with the invoice.
+    attr_accessor :customer_id
+
+    # An alphanumeric string identifying the invoice.
+    attr_accessor :invoice_id
+
+    # The date and time (in ISO 8601 format) for the initiation point of a billing cycle, signifying the start of charges for a service or subscription.
+    attr_accessor :billing_start_date
+
+    # The date and time (in ISO 8601 format) for the termination point of a billing cycle, signifying the end of charges for a service or subscription.
+    attr_accessor :billing_end_date
+
+    # The total billable amount for invoiced services charged within a single month.
+    attr_accessor :monthly_transaction_amount
+
+    attr_accessor :transaction_line_items
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'dns_records' => :'dns_records'
+        :'customer_id' => :'customer_id',
+        :'invoice_id' => :'invoice_id',
+        :'billing_start_date' => :'billing_start_date',
+        :'billing_end_date' => :'billing_end_date',
+        :'monthly_transaction_amount' => :'monthly_transaction_amount',
+        :'transaction_line_items' => :'transaction_line_items'
       }
     end
 
@@ -30,7 +50,12 @@ module Fastly
     # Attribute type mapping.
     def self.fastly_types
       {
-        :'dns_records' => :'RelationshipTlsDnsRecordDnsRecord'
+        :'customer_id' => :'String',
+        :'invoice_id' => :'String',
+        :'billing_start_date' => :'Time',
+        :'billing_end_date' => :'Time',
+        :'monthly_transaction_amount' => :'String',
+        :'transaction_line_items' => :'Array<Mtdlineitems>'
       }
     end
 
@@ -44,19 +69,41 @@ module Fastly
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Fastly::RelationshipTlsDnsRecords` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Fastly::Mtdinvoice` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `Fastly::RelationshipTlsDnsRecords`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `Fastly::Mtdinvoice`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'dns_records')
-        self.dns_records = attributes[:'dns_records']
+      if attributes.key?(:'customer_id')
+        self.customer_id = attributes[:'customer_id']
+      end
+
+      if attributes.key?(:'invoice_id')
+        self.invoice_id = attributes[:'invoice_id']
+      end
+
+      if attributes.key?(:'billing_start_date')
+        self.billing_start_date = attributes[:'billing_start_date']
+      end
+
+      if attributes.key?(:'billing_end_date')
+        self.billing_end_date = attributes[:'billing_end_date']
+      end
+
+      if attributes.key?(:'monthly_transaction_amount')
+        self.monthly_transaction_amount = attributes[:'monthly_transaction_amount']
+      end
+
+      if attributes.key?(:'transaction_line_items')
+        if (value = attributes[:'transaction_line_items']).is_a?(Array)
+          self.transaction_line_items = value
+        end
       end
     end
 
@@ -78,7 +125,12 @@ module Fastly
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          dns_records == o.dns_records
+          customer_id == o.customer_id &&
+          invoice_id == o.invoice_id &&
+          billing_start_date == o.billing_start_date &&
+          billing_end_date == o.billing_end_date &&
+          monthly_transaction_amount == o.monthly_transaction_amount &&
+          transaction_line_items == o.transaction_line_items
     end
 
     # @see the `==` method
@@ -90,7 +142,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [dns_records].hash
+      [customer_id, invoice_id, billing_start_date, billing_end_date, monthly_transaction_amount, transaction_line_items].hash
     end
 
     # Builds the object from hash

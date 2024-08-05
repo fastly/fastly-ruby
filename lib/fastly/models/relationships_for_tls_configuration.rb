@@ -44,7 +44,7 @@ module Fastly
     def self.fastly_any_of
       [
       :'RelationshipService',
-      :'RelationshipTlsDnsRecords'
+      :'RelationshipTlsDnsRecordsResponse'
       ]
     end
 

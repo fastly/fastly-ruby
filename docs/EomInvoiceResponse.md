@@ -1,4 +1,4 @@
-# Fastly::InvoiceResponse
+# Fastly::EomInvoiceResponse
 
 ## Properties
 

@@ -12,9 +12,10 @@ require 'date'
 require 'time'
 
 module Fastly
-  class RelationshipMemberTlsDnsRecord
+  class RelationshipDefaultEcdsaTlsCertificateDefaultEcdsaCertificateData
     attr_accessor :type
 
+    # Alphanumeric string identifying the default ECDSA TLS certificate.
     attr_accessor :id
 
     # Attribute mapping from ruby-style variable name to JSON key.
@@ -33,7 +34,7 @@ module Fastly
     # Attribute type mapping.
     def self.fastly_types
       {
-        :'type' => :'TypeTlsDnsRecord',
+        :'type' => :'TypeTlsCertificate',
         :'id' => :'String'
       }
     end
@@ -48,13 +49,13 @@ module Fastly
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Fastly::RelationshipMemberTlsDnsRecord` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Fastly::RelationshipDefaultEcdsaTlsCertificateDefaultEcdsaCertificateData` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `Fastly::RelationshipMemberTlsDnsRecord`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `Fastly::RelationshipDefaultEcdsaTlsCertificateDefaultEcdsaCertificateData`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
@@ -62,7 +63,7 @@ module Fastly
       if attributes.key?(:'type')
         self.type = attributes[:'type']
       else
-        self.type = 'dns_record'
+        self.type = 'tls_certificate'
       end
 
       if attributes.key?(:'id')

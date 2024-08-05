@@ -1,10 +1,10 @@
-# Fastly::RelationshipTlsDnsRecords
+# Fastly::GetServiceLevelUsageTypesResponse
 
 ## Properties
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **dns_records** | [**RelationshipTlsDnsRecordDnsRecord**](RelationshipTlsDnsRecordDnsRecord.md) |  | [optional] |
+| **data** | [**Array&lt;Serviceusagetype&gt;**](Serviceusagetype.md) |  | [optional] |
 
 [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
 

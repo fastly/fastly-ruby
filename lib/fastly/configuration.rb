@@ -482,7 +482,25 @@ module Fastly
           description: "No description provided",
           }
         ],
+        "BillingInvoicesApi.get_month_to_date_invoice": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
         "BillingInvoicesApi.list_invoices": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "BillingUsageMetricsApi.get_service_level_usage": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "BillingUsageMetricsApi.get_service_level_usage_types": [
           {
           url: "https://api.fastly.com",
           description: "No description provided",
@@ -2354,6 +2372,36 @@ module Fastly
           description: "No description provided",
           }
         ],
+        "ObservabilityCustomDashboardsApi.create_dashboard": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "ObservabilityCustomDashboardsApi.delete_dashboard": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "ObservabilityCustomDashboardsApi.get_dashboard": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "ObservabilityCustomDashboardsApi.list_dashboards": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "ObservabilityCustomDashboardsApi.update_dashboard": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
         "OriginInspectorHistoricalApi.get_origin_inspector_historical": [
           {
           url: "https://api.fastly.com",
@@ -2955,6 +3003,12 @@ module Fastly
           }
         ],
         "TlsCertificatesApi.get_tls_cert": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "TlsCertificatesApi.get_tls_cert_blob": [
           {
           url: "https://api.fastly.com",
           description: "No description provided",

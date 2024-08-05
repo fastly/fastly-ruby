@@ -16,6 +16,7 @@ Method | HTTP request | Description
 [**create_tls_cert**](TlsCertificatesApi.md#create_tls_cert) | **POST** /tls/certificates | Create a TLS certificate
 [**delete_tls_cert**](TlsCertificatesApi.md#delete_tls_cert) | **DELETE** /tls/certificates/{tls_certificate_id} | Delete a TLS certificate
 [**get_tls_cert**](TlsCertificatesApi.md#get_tls_cert) | **GET** /tls/certificates/{tls_certificate_id} | Get a TLS certificate
+[**get_tls_cert_blob**](TlsCertificatesApi.md#get_tls_cert_blob) | **GET** /tls/certificates/{tls_certificate_id}/blob | Get a TLS certificate blob (Limited Availability)
 [**list_tls_certs**](TlsCertificatesApi.md#list_tls_certs) | **GET** /tls/certificates | List TLS certificates
 [**update_tls_cert**](TlsCertificatesApi.md#update_tls_cert) | **PATCH** /tls/certificates/{tls_certificate_id} | Update a TLS certificate
 
@@ -127,6 +128,43 @@ end
 ### Return type
 
 [**TlsCertificateResponse**](TlsCertificateResponse.md)
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+## `get_tls_cert_blob()`
+
+```ruby
+get_tls_cert_blob(opts): <TlsCertificateBlobResponse> # Get a TLS certificate blob (Limited Availability)
+```
+
+Retrieve a TLS certificate blob. This feature is part of a [limited availability](https://docs.fastly.com/products/fastly-product-lifecycle#limited-availability) release.
+
+### Examples
+
+```ruby
+api_instance = Fastly::TlsCertificatesApi.new
+opts = {
+    tls_certificate_id: 'tls_certificate_id_example', # String | Alphanumeric string identifying a TLS certificate.
+}
+
+begin
+  # Get a TLS certificate blob (Limited Availability)
+  result = api_instance.get_tls_cert_blob(opts)
+  p result
+rescue Fastly::ApiError => e
+  puts "Error when calling TlsCertificatesApi->get_tls_cert_blob: #{e}"
+end
+```
+
+### Options
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **tls_certificate_id** | **String** | Alphanumeric string identifying a TLS certificate. |  |
+
+### Return type
+
+[**TlsCertificateBlobResponse**](TlsCertificateBlobResponse.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)

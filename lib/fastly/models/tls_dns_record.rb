@@ -13,19 +13,37 @@ require 'time'
 
 module Fastly
   class TlsDnsRecord
-    # The IP address or hostname of the DNS record.
-    attr_accessor :id
-
-    # Specifies the regions that will be used to route traffic. Select DNS Records with a `global` region to route traffic to the most performant point of presence (POP) worldwide (global pricing will apply). Select DNS records with a `us-eu` region to exclusively land traffic on North American and European POPs.
+    # Specifies the regions that will be used to route traffic. Select DNS records with a `global` region to route traffic to the most performant point of presence (POP) worldwide (global pricing will apply). Select DNS records with a `na/eu` region to exclusively land traffic on North American and European POPs.
     attr_accessor :region
 
     # The type of the DNS record. `A` specifies an IPv4 address to be used for an A record to be used for apex domains (e.g., `example.com`). `AAAA` specifies an IPv6 address for use in an A record for apex domains. `CNAME` specifies the hostname to be used for a CNAME record for subdomains or wildcard domains (e.g., `www.example.com` or `*.example.com`).
     attr_accessor :record_type
 
+    class EnumAttributeValidator
+      attr_reader :datatype
+      attr_reader :allowable_values
+
+      def initialize(datatype, allowable_values)
+        @allowable_values = allowable_values.map do |value|
+          case datatype.to_s
+          when /Integer/i
+            value.to_i
+          when /Float/i
+            value.to_f
+          else
+            value
+          end
+        end
+      end
+
+      def valid?(value)
+        !value || allowable_values.include?(value)
+      end
+    end
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'id' => :'id',
         :'region' => :'region',
         :'record_type' => :'record_type'
       }
@@ -39,7 +57,6 @@ module Fastly
     # Attribute type mapping.
     def self.fastly_types
       {
-        :'id' => :'String',
         :'region' => :'String',
         :'record_type' => :'String'
       }
@@ -66,10 +83,6 @@ module Fastly
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'id')
-        self.id = attributes[:'id']
-      end
-
       if attributes.key?(:'region')
         self.region = attributes[:'region']
       end
@@ -89,7 +102,31 @@ module Fastly
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      region_validator = EnumAttributeValidator.new('String', ["custom", "global", "na/eu"])
+      return false unless region_validator.valid?(@region)
+      record_type_validator = EnumAttributeValidator.new('String', ["CNAME", "A", "AAAA"])
+      return false unless record_type_validator.valid?(@record_type)
       true
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] region Object to be assigned
+    def region=(region)
+      validator = EnumAttributeValidator.new('String', ["custom", "global", "na/eu"])
+      unless validator.valid?(region)
+        fail ArgumentError, "invalid value for \"region\", must be one of #{validator.allowable_values}."
+      end
+      @region = region
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] record_type Object to be assigned
+    def record_type=(record_type)
+      validator = EnumAttributeValidator.new('String', ["CNAME", "A", "AAAA"])
+      unless validator.valid?(record_type)
+        fail ArgumentError, "invalid value for \"record_type\", must be one of #{validator.allowable_values}."
+      end
+      @record_type = record_type
     end
 
     # Checks equality by comparing each attribute.
@@ -97,7 +134,6 @@ module Fastly
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          id == o.id &&
           region == o.region &&
           record_type == o.record_type
     end
@@ -111,7 +147,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, region, record_type].hash
+      [region, record_type].hash
     end
 
     # Builds the object from hash

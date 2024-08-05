@@ -12,16 +12,16 @@ require 'date'
 require 'time'
 
 module Fastly
-  class ListInvoicesResponse
-    attr_accessor :data
+  class RelationshipTlsDnsRecordsRequestDnsRecordsData
+    attr_accessor :type
 
-    attr_accessor :meta
+    attr_accessor :id
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'data' => :'data',
-        :'meta' => :'meta'
+        :'type' => :'type',
+        :'id' => :'id'
       }
     end
 
@@ -33,8 +33,8 @@ module Fastly
     # Attribute type mapping.
     def self.fastly_types
       {
-        :'data' => :'Array<Invoice>',
-        :'meta' => :'Metadata'
+        :'type' => :'TypeTlsDnsRecord',
+        :'id' => :'String'
       }
     end
 
@@ -44,36 +44,29 @@ module Fastly
       ])
     end
 
-    # List of class defined in allOf (OpenAPI v3)
-    def self.fastly_all_of
-      [
-      :'Listinvoices'
-      ]
-    end
-
     # Initializes the object
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Fastly::ListInvoicesResponse` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Fastly::RelationshipTlsDnsRecordsRequestDnsRecordsData` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `Fastly::ListInvoicesResponse`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `Fastly::RelationshipTlsDnsRecordsRequestDnsRecordsData`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'data')
-        if (value = attributes[:'data']).is_a?(Array)
-          self.data = value
-        end
+      if attributes.key?(:'type')
+        self.type = attributes[:'type']
+      else
+        self.type = 'dns_record'
       end
 
-      if attributes.key?(:'meta')
-        self.meta = attributes[:'meta']
+      if attributes.key?(:'id')
+        self.id = attributes[:'id']
       end
     end
 
@@ -95,8 +88,8 @@ module Fastly
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          data == o.data &&
-          meta == o.meta
+          type == o.type &&
+          id == o.id
     end
 
     # @see the `==` method
@@ -108,7 +101,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [data, meta].hash
+      [type, id].hash
     end
 
     # Builds the object from hash
