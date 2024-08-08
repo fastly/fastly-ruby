@@ -24,6 +24,7 @@ module Fastly
 
     attr_accessor :amount
 
+    # An alphanumeric string identifying the invoice.
     attr_accessor :aria_invoice_id
 
     attr_accessor :client_service_id
@@ -94,7 +95,7 @@ module Fastly
         :'deleted_at' => :'Time',
         :'updated_at' => :'Time',
         :'amount' => :'Float',
-        :'aria_invoice_id' => :'LineItemDataReadOnlyInvoiceId',
+        :'aria_invoice_id' => :'String',
         :'client_service_id' => :'String',
         :'credit_coupon_code' => :'String',
         :'description' => :'String',

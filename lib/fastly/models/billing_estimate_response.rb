@@ -19,8 +19,6 @@ module Fastly
     # Date and time in ISO 8601 format.
     attr_accessor :start_time
 
-    attr_accessor :invoice_id
-
     attr_accessor :customer_id
 
     # The current state of our third-party billing vendor. One of `up` or `down`.
@@ -33,6 +31,8 @@ module Fastly
     # Breakdown of regional data for products that are region based.
     attr_accessor :regions
 
+    attr_accessor :invoice_id
+
     attr_accessor :line_items
 
     # Attribute mapping from ruby-style variable name to JSON key.
@@ -40,12 +40,12 @@ module Fastly
       {
         :'end_time' => :'end_time',
         :'start_time' => :'start_time',
-        :'invoice_id' => :'invoice_id',
         :'customer_id' => :'customer_id',
         :'vendor_state' => :'vendor_state',
         :'status' => :'status',
         :'total' => :'total',
         :'regions' => :'regions',
+        :'invoice_id' => :'invoice_id',
         :'line_items' => :'line_items'
       }
     end
@@ -60,12 +60,12 @@ module Fastly
       {
         :'end_time' => :'Time',
         :'start_time' => :'Time',
-        :'invoice_id' => :'String',
         :'customer_id' => :'String',
         :'vendor_state' => :'String',
         :'status' => :'BillingStatus',
         :'total' => :'BillingTotal',
-        :'regions' => :'Hash<String, Hash<String, Object>>',
+        :'regions' => :'Hash<String, BillingRegions>',
+        :'invoice_id' => :'String',
         :'line_items' => :'Array<BillingEstimateLinesLineItems>'
       }
     end
@@ -82,6 +82,7 @@ module Fastly
     def self.fastly_all_of
       [
       :'Billing',
+      :'BillingEstimateInvoiceId',
       :'BillingEstimateLines'
       ]
     end
@@ -109,10 +110,6 @@ module Fastly
         self.start_time = attributes[:'start_time']
       end
 
-      if attributes.key?(:'invoice_id')
-        self.invoice_id = attributes[:'invoice_id']
-      end
-
       if attributes.key?(:'customer_id')
         self.customer_id = attributes[:'customer_id']
       end
@@ -133,6 +130,10 @@ module Fastly
         if (value = attributes[:'regions']).is_a?(Hash)
           self.regions = value
         end
+      end
+
+      if attributes.key?(:'invoice_id')
+        self.invoice_id = attributes[:'invoice_id']
       end
 
       if attributes.key?(:'line_items')
@@ -162,12 +163,12 @@ module Fastly
       self.class == o.class &&
           end_time == o.end_time &&
           start_time == o.start_time &&
-          invoice_id == o.invoice_id &&
           customer_id == o.customer_id &&
           vendor_state == o.vendor_state &&
           status == o.status &&
           total == o.total &&
           regions == o.regions &&
+          invoice_id == o.invoice_id &&
           line_items == o.line_items
     end
 
@@ -180,7 +181,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [end_time, start_time, invoice_id, customer_id, vendor_state, status, total, regions, line_items].hash
+      [end_time, start_time, customer_id, vendor_state, status, total, regions, invoice_id, line_items].hash
     end
 
     # Builds the object from hash

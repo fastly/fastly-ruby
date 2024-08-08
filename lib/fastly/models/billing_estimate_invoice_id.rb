@@ -12,35 +12,13 @@ require 'date'
 require 'time'
 
 module Fastly
-  class Billing
-    # Date and time in ISO 8601 format.
-    attr_accessor :end_time
-
-    # Date and time in ISO 8601 format.
-    attr_accessor :start_time
-
-    attr_accessor :customer_id
-
-    # The current state of our third-party billing vendor. One of `up` or `down`.
-    attr_accessor :vendor_state
-
-    attr_accessor :status
-
-    attr_accessor :total
-
-    # Breakdown of regional data for products that are region based.
-    attr_accessor :regions
+  class BillingEstimateInvoiceId
+    attr_accessor :invoice_id
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'end_time' => :'end_time',
-        :'start_time' => :'start_time',
-        :'customer_id' => :'customer_id',
-        :'vendor_state' => :'vendor_state',
-        :'status' => :'status',
-        :'total' => :'total',
-        :'regions' => :'regions'
+        :'invoice_id' => :'invoice_id'
       }
     end
 
@@ -52,21 +30,13 @@ module Fastly
     # Attribute type mapping.
     def self.fastly_types
       {
-        :'end_time' => :'Time',
-        :'start_time' => :'Time',
-        :'customer_id' => :'String',
-        :'vendor_state' => :'String',
-        :'status' => :'BillingStatus',
-        :'total' => :'BillingTotal',
-        :'regions' => :'Hash<String, BillingRegions>'
+        :'invoice_id' => :'String'
       }
     end
 
     # List of attributes with nullable: true
     def self.fastly_nullable
       Set.new([
-        :'end_time',
-        :'start_time',
       ])
     end
 
@@ -74,45 +44,19 @@ module Fastly
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Fastly::Billing` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Fastly::BillingEstimateInvoiceId` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `Fastly::Billing`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `Fastly::BillingEstimateInvoiceId`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'end_time')
-        self.end_time = attributes[:'end_time']
-      end
-
-      if attributes.key?(:'start_time')
-        self.start_time = attributes[:'start_time']
-      end
-
-      if attributes.key?(:'customer_id')
-        self.customer_id = attributes[:'customer_id']
-      end
-
-      if attributes.key?(:'vendor_state')
-        self.vendor_state = attributes[:'vendor_state']
-      end
-
-      if attributes.key?(:'status')
-        self.status = attributes[:'status']
-      end
-
-      if attributes.key?(:'total')
-        self.total = attributes[:'total']
-      end
-
-      if attributes.key?(:'regions')
-        if (value = attributes[:'regions']).is_a?(Hash)
-          self.regions = value
-        end
+      if attributes.key?(:'invoice_id')
+        self.invoice_id = attributes[:'invoice_id']
       end
     end
 
@@ -134,13 +78,7 @@ module Fastly
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          end_time == o.end_time &&
-          start_time == o.start_time &&
-          customer_id == o.customer_id &&
-          vendor_state == o.vendor_state &&
-          status == o.status &&
-          total == o.total &&
-          regions == o.regions
+          invoice_id == o.invoice_id
     end
 
     # @see the `==` method
@@ -152,7 +90,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [end_time, start_time, customer_id, vendor_state, status, total, regions].hash
+      [invoice_id].hash
     end
 
     # Builds the object from hash

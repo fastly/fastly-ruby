@@ -8,7 +8,7 @@
 | **deleted_at** | **Time** | Date and time in ISO 8601 format. | [optional][readonly] |
 | **updated_at** | **Time** | Date and time in ISO 8601 format. | [optional][readonly] |
 | **amount** | **Float** |  | [optional] |
-| **aria_invoice_id** | [**LineItemDataReadOnlyInvoiceId**](LineItemDataReadOnlyInvoiceId.md) |  | [optional] |
+| **aria_invoice_id** | **String** | An alphanumeric string identifying the invoice. | [optional][readonly] |
 | **client_service_id** | **String** |  | [optional] |
 | **credit_coupon_code** | **String** |  | [optional] |
 | **description** | **String** |  | [optional] |

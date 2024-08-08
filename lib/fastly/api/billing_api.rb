@@ -90,7 +90,7 @@ module Fastly
     # Get an invoice
     # Get the invoice for the given invoice_id.
     # @option opts [String] :customer_id Alphanumeric string identifying the customer. (required)
-    # @option opts [String] :invoice_id Alphanumeric string identifying the invoice. (required)
+    # @option opts [Integer] :invoice_id  (required)
     # @return [BillingResponse]
     def get_invoice_by_id(opts = {})
       data, _status_code, _headers = get_invoice_by_id_with_http_info(opts)
@@ -100,7 +100,7 @@ module Fastly
     # Get an invoice
     # Get the invoice for the given invoice_id.
     # @option opts [String] :customer_id Alphanumeric string identifying the customer. (required)
-    # @option opts [String] :invoice_id Alphanumeric string identifying the invoice. (required)
+    # @option opts [Integer] :invoice_id  (required)
     # @return [Array<(BillingResponse, Integer, Hash)>] BillingResponse data, response status code and response headers
     def get_invoice_by_id_with_http_info(opts = {})
       if @api_client.config.debugging

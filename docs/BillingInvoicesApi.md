@@ -31,7 +31,7 @@ Returns invoice associated with the invoice id.
 ```ruby
 api_instance = Fastly::BillingInvoicesApi.new
 opts = {
-    invoice_id: 'invoice_id_example', # String | Alphanumeric string identifying the invoice.
+    invoice_id: 4183280, # Integer | 
 }
 
 begin
@@ -47,7 +47,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **invoice_id** | **String** | Alphanumeric string identifying the invoice. |  |
+| **invoice_id** | **Integer** |  |  |
 
 ### Return type
 

@@ -16,7 +16,7 @@ module Fastly
     # Customer ID associated with the invoice.
     attr_accessor :customer_id
 
-    # Alphanumeric string identifying the invoice.
+    # Numeric string identifying the invoice.
     attr_accessor :invoice_id
 
     # Date and time invoice was posted on, in ISO 8601 format.

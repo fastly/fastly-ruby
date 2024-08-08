@@ -71,7 +71,7 @@ Get the invoice for the given invoice_id.
 api_instance = Fastly::BillingApi.new
 opts = {
     customer_id: 'customer_id_example', # String | Alphanumeric string identifying the customer.
-    invoice_id: 'invoice_id_example', # String | Alphanumeric string identifying the invoice.
+    invoice_id: 4183280, # Integer | 
 }
 
 begin
@@ -88,7 +88,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **customer_id** | **String** | Alphanumeric string identifying the customer. |  |
-| **invoice_id** | **String** | Alphanumeric string identifying the invoice. |  |
+| **invoice_id** | **Integer** |  |  |
 
 ### Return type
 

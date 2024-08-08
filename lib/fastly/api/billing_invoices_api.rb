@@ -19,7 +19,7 @@ module Fastly
     end
     # Get invoice by ID.
     # Returns invoice associated with the invoice id.
-    # @option opts [String] :invoice_id Alphanumeric string identifying the invoice. (required)
+    # @option opts [Integer] :invoice_id  (required)
     # @return [EomInvoiceResponse]
     def get_invoice_by_invoice_id(opts = {})
       data, _status_code, _headers = get_invoice_by_invoice_id_with_http_info(opts)
@@ -28,7 +28,7 @@ module Fastly
 
     # Get invoice by ID.
     # Returns invoice associated with the invoice id.
-    # @option opts [String] :invoice_id Alphanumeric string identifying the invoice. (required)
+    # @option opts [Integer] :invoice_id  (required)
     # @return [Array<(EomInvoiceResponse, Integer, Hash)>] EomInvoiceResponse data, response status code and response headers
     def get_invoice_by_invoice_id_with_http_info(opts = {})
       if @api_client.config.debugging
