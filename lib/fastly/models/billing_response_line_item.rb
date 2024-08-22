@@ -121,6 +121,7 @@ module Fastly
         :'deleted_at',
         :'updated_at',
         :'credit_coupon_code',
+        :'rate_per_unit',
         :'rate_schedule_no',
         :'rate_schedule_tier_no',
         :'usage_type_cd',

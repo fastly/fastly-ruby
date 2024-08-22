@@ -1,5 +1,12 @@
 # Changelog
 
+## [v8.8.0](https://github.com/fastly/fastly-ruby/releases/tag/release/v8.8.0) (2024-08-21)
+
+**Bug fixes:**
+
+- bugfix(py): Add dependencies to pyproject.toml.
+- fix(billing): make rate-per-unit nullable
+
 ## [v8.7.0](https://github.com/fastly/fastly-ruby/releases/tag/release/v8.7.0) (2024-08-08)
 
 **Bug fixes:**
