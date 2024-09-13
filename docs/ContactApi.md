@@ -14,7 +14,7 @@ api_instance = Fastly::ContactApi.new
 Method | HTTP request | Description
 ------ | ------------ | -----------
 [**create_contacts**](ContactApi.md#create_contacts) | **POST** /customer/{customer_id}/contacts | Add a new customer contact
-[**delete_contact**](ContactApi.md#delete_contact) | **DELETE** /customer/{customer_id}/contact/{contact_id} | Delete a contact
+[**delete_contact**](ContactApi.md#delete_contact) | **DELETE** /customer/{customer_id}/contacts/{contact_id} | Delete a contact
 [**list_contacts**](ContactApi.md#list_contacts) | **GET** /customer/{customer_id}/contacts | List contacts
 
 

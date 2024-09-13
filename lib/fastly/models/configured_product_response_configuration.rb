@@ -12,11 +12,18 @@ require 'date'
 require 'time'
 
 module Fastly
-  # Value to use for subsequent requests.
-  class OriginInspectorSubsequentRequestTimestamp
+  class ConfiguredProductResponseConfiguration
+    # Workspace ID
+    attr_accessor :workspace_id
+
+    # Traffic ramp
+    attr_accessor :traffic_ramp
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'workspace_id' => :'workspace_id',
+        :'traffic_ramp' => :'traffic_ramp'
       }
     end
 
@@ -28,6 +35,8 @@ module Fastly
     # Attribute type mapping.
     def self.fastly_types
       {
+        :'workspace_id' => :'String',
+        :'traffic_ramp' => :'String'
       }
     end
 
@@ -41,16 +50,24 @@ module Fastly
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Fastly::OriginInspectorSubsequentRequestTimestamp` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Fastly::ConfiguredProductResponseConfiguration` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `Fastly::OriginInspectorSubsequentRequestTimestamp`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `Fastly::ConfiguredProductResponseConfiguration`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
+
+      if attributes.key?(:'workspace_id')
+        self.workspace_id = attributes[:'workspace_id']
+      end
+
+      if attributes.key?(:'traffic_ramp')
+        self.traffic_ramp = attributes[:'traffic_ramp']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -70,7 +87,9 @@ module Fastly
     # @param [Object] Object to be compared
     def ==(o)
       return true if self.equal?(o)
-      self.class == o.class
+      self.class == o.class &&
+          workspace_id == o.workspace_id &&
+          traffic_ramp == o.traffic_ramp
     end
 
     # @see the `==` method
@@ -82,7 +101,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [].hash
+      [workspace_id, traffic_ramp].hash
     end
 
     # Builds the object from hash

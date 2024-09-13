@@ -14,6 +14,7 @@ require 'time'
 module Fastly
   # Each reporting period is represented by an entry in the `Data` property of the top level response and provides access to [measurement data](#measurements-data-model) for that time period, grouped in various ways: by domain name, domain IP address, and optionally by POP. The `datacenter` property organizes the measurements by Fastly POP, while the `aggregated` property combines the measurements of all POPs (but still splits by backend name and IP). 
   class DomainInspectorRealtimeEntry
+    # The Unix timestamp at which this record's data was generated.
     attr_accessor :recorded
 
     # Groups [measurements](#measurements-data-model) by backend name and then by IP address.
@@ -39,7 +40,7 @@ module Fastly
     # Attribute type mapping.
     def self.fastly_types
       {
-        :'recorded' => :'RecordedTimestamp',
+        :'recorded' => :'Integer',
         :'aggregated' => :'Hash<String, DomainInspectorMeasurements>',
         :'datacenter' => :'Hash<String, Hash<String, DomainInspectorMeasurements>>'
       }

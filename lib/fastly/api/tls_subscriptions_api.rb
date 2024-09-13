@@ -368,10 +368,10 @@ module Fastly
     # @option opts [String] :filter_tls_domains_id Limit the returned subscriptions to those that include the specific domain.
     # @option opts [Boolean] :filter_has_active_order Limit the returned subscriptions to those that have currently active orders. Permitted values: &#x60;true&#x60;. 
     # @option opts [String] :filter_certificate_authority Limit the returned subscriptions to a specific certification authority. Values may include &#x60;certainly&#x60;, &#x60;lets-encrypt&#x60;, or &#x60;globalsign&#x60;. 
+    # @option opts [String] :sort The order in which to list the results. (default to '-created_at')
     # @option opts [String] :include Include related objects. Optional, comma-separated values. Permitted values: &#x60;tls_authorizations&#x60;, &#x60;tls_authorizations.globalsign_email_challenge&#x60;, &#x60;tls_authorizations.self_managed_http_challenge&#x60;, and &#x60;tls_certificates&#x60;. 
     # @option opts [Integer] :page_number Current page.
     # @option opts [Integer] :page_size Number of records per page. (default to 20)
-    # @option opts [String] :sort The order in which to list the results by creation date. (default to 'created_at')
     # @return [TlsSubscriptionsResponse]
     def list_tls_subs(opts = {})
       data, _status_code, _headers = list_tls_subs_with_http_info(opts)
@@ -384,16 +384,20 @@ module Fastly
     # @option opts [String] :filter_tls_domains_id Limit the returned subscriptions to those that include the specific domain.
     # @option opts [Boolean] :filter_has_active_order Limit the returned subscriptions to those that have currently active orders. Permitted values: &#x60;true&#x60;. 
     # @option opts [String] :filter_certificate_authority Limit the returned subscriptions to a specific certification authority. Values may include &#x60;certainly&#x60;, &#x60;lets-encrypt&#x60;, or &#x60;globalsign&#x60;. 
+    # @option opts [String] :sort The order in which to list the results. (default to '-created_at')
     # @option opts [String] :include Include related objects. Optional, comma-separated values. Permitted values: &#x60;tls_authorizations&#x60;, &#x60;tls_authorizations.globalsign_email_challenge&#x60;, &#x60;tls_authorizations.self_managed_http_challenge&#x60;, and &#x60;tls_certificates&#x60;. 
     # @option opts [Integer] :page_number Current page.
     # @option opts [Integer] :page_size Number of records per page. (default to 20)
-    # @option opts [String] :sort The order in which to list the results by creation date. (default to 'created_at')
     # @return [Array<(TlsSubscriptionsResponse, Integer, Hash)>] TlsSubscriptionsResponse data, response status code and response headers
     def list_tls_subs_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: TlsSubscriptionsApi.list_tls_subs ...'
       end
       # unbox the parameters from the hash
+      allowable_values = ["created_at", "-created_at", "tls_certificates.not_after", "-tls_certificates.not_after"]
+      if @api_client.config.client_side_validation && opts[:'sort'] && !allowable_values.include?(opts[:'sort'])
+        fail ArgumentError, "invalid value for \"sort\", must be one of #{allowable_values}"
+      end
       if @api_client.config.client_side_validation && !opts[:'page_size'].nil? && opts[:'page_size'] > 100
         fail ArgumentError, 'invalid value for "opts[:"page_size"]" when calling TlsSubscriptionsApi.list_tls_subs, must be smaller than or equal to 100.'
       end
@@ -402,10 +406,6 @@ module Fastly
         fail ArgumentError, 'invalid value for "opts[:"page_size"]" when calling TlsSubscriptionsApi.list_tls_subs, must be greater than or equal to 1.'
       end
 
-      allowable_values = ["created_at", "-created_at"]
-      if @api_client.config.client_side_validation && opts[:'sort'] && !allowable_values.include?(opts[:'sort'])
-        fail ArgumentError, "invalid value for \"sort\", must be one of #{allowable_values}"
-      end
       # resource path
       local_var_path = '/tls/subscriptions'
 
@@ -415,10 +415,10 @@ module Fastly
       query_params[:'filter[tls_domains.id]'] = opts[:'filter_tls_domains_id'] if !opts[:'filter_tls_domains_id'].nil?
       query_params[:'filter[has_active_order]'] = opts[:'filter_has_active_order'] if !opts[:'filter_has_active_order'].nil?
       query_params[:'filter[certificate_authority]'] = opts[:'filter_certificate_authority'] if !opts[:'filter_certificate_authority'].nil?
+      query_params[:'sort'] = opts[:'sort'] if !opts[:'sort'].nil?
       query_params[:'include'] = opts[:'include'] if !opts[:'include'].nil?
       query_params[:'page[number]'] = opts[:'page_number'] if !opts[:'page_number'].nil?
       query_params[:'page[size]'] = opts[:'page_size'] if !opts[:'page_size'].nil?
-      query_params[:'sort'] = opts[:'sort'] if !opts[:'sort'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}

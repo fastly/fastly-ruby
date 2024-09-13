@@ -87,6 +87,83 @@ module Fastly
       return data, status_code, headers
     end
 
+    # Activate a service version on the specified environment
+    # Activate a version on a given environment, i.e. \"staging\"
+    # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
+    # @option opts [Integer] :version_id Integer identifying a service version. (required)
+    # @option opts [EnvironmentName] :environment_name  (required)
+    # @return [VersionResponse]
+    def activate_service_version_environment(opts = {})
+      data, _status_code, _headers = activate_service_version_environment_with_http_info(opts)
+      data
+    end
+
+    # Activate a service version on the specified environment
+    # Activate a version on a given environment, i.e. \&quot;staging\&quot;
+    # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
+    # @option opts [Integer] :version_id Integer identifying a service version. (required)
+    # @option opts [EnvironmentName] :environment_name  (required)
+    # @return [Array<(VersionResponse, Integer, Hash)>] VersionResponse data, response status code and response headers
+    def activate_service_version_environment_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: VersionApi.activate_service_version_environment ...'
+      end
+      # unbox the parameters from the hash
+      service_id = opts[:'service_id']
+      version_id = opts[:'version_id']
+      environment_name = opts[:'environment_name']
+      # verify the required parameter 'service_id' is set
+      if @api_client.config.client_side_validation && service_id.nil?
+        fail ArgumentError, "Missing the required parameter 'service_id' when calling VersionApi.activate_service_version_environment"
+      end
+      # verify the required parameter 'version_id' is set
+      if @api_client.config.client_side_validation && version_id.nil?
+        fail ArgumentError, "Missing the required parameter 'version_id' when calling VersionApi.activate_service_version_environment"
+      end
+      # verify the required parameter 'environment_name' is set
+      if @api_client.config.client_side_validation && environment_name.nil?
+        fail ArgumentError, "Missing the required parameter 'environment_name' when calling VersionApi.activate_service_version_environment"
+      end
+      # resource path
+      local_var_path = '/service/{service_id}/version/{version_id}/activate/{environment_name}'.sub('{' + 'service_id' + '}', CGI.escape(service_id.to_s)).sub('{' + 'version_id' + '}', CGI.escape(version_id.to_s)).sub('{' + 'environment_name' + '}', CGI.escape(environment_name.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'VersionResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['token']
+
+      new_options = opts.merge(
+        :operation => :"VersionApi.activate_service_version_environment",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: VersionApi#activate_service_version_environment\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Clone a service version
     # Clone the current configuration into a new version.
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
@@ -286,6 +363,83 @@ module Fastly
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: VersionApi#deactivate_service_version\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Deactivate a service version on an environment
+    # Deactivate the current version on a given environment, i.e. \"staging\"
+    # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
+    # @option opts [Integer] :version_id Integer identifying a service version. (required)
+    # @option opts [EnvironmentName] :environment_name  (required)
+    # @return [VersionResponse]
+    def deactivate_service_version_environment(opts = {})
+      data, _status_code, _headers = deactivate_service_version_environment_with_http_info(opts)
+      data
+    end
+
+    # Deactivate a service version on an environment
+    # Deactivate the current version on a given environment, i.e. \&quot;staging\&quot;
+    # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
+    # @option opts [Integer] :version_id Integer identifying a service version. (required)
+    # @option opts [EnvironmentName] :environment_name  (required)
+    # @return [Array<(VersionResponse, Integer, Hash)>] VersionResponse data, response status code and response headers
+    def deactivate_service_version_environment_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: VersionApi.deactivate_service_version_environment ...'
+      end
+      # unbox the parameters from the hash
+      service_id = opts[:'service_id']
+      version_id = opts[:'version_id']
+      environment_name = opts[:'environment_name']
+      # verify the required parameter 'service_id' is set
+      if @api_client.config.client_side_validation && service_id.nil?
+        fail ArgumentError, "Missing the required parameter 'service_id' when calling VersionApi.deactivate_service_version_environment"
+      end
+      # verify the required parameter 'version_id' is set
+      if @api_client.config.client_side_validation && version_id.nil?
+        fail ArgumentError, "Missing the required parameter 'version_id' when calling VersionApi.deactivate_service_version_environment"
+      end
+      # verify the required parameter 'environment_name' is set
+      if @api_client.config.client_side_validation && environment_name.nil?
+        fail ArgumentError, "Missing the required parameter 'environment_name' when calling VersionApi.deactivate_service_version_environment"
+      end
+      # resource path
+      local_var_path = '/service/{service_id}/version/{version_id}/deactivate/{environment_name}'.sub('{' + 'service_id' + '}', CGI.escape(service_id.to_s)).sub('{' + 'version_id' + '}', CGI.escape(version_id.to_s)).sub('{' + 'environment_name' + '}', CGI.escape(environment_name.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'VersionResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['token']
+
+      new_options = opts.merge(
+        :operation => :"VersionApi.deactivate_service_version_environment",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: VersionApi#deactivate_service_version_environment\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

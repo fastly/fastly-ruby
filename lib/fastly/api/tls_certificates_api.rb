@@ -273,9 +273,9 @@ module Fastly
     # @option opts [String] :filter_not_after Limit the returned certificates to those that expire prior to the specified date in UTC. Accepts parameters: lte (e.g., filter[not_after][lte]&#x3D;2020-05-05). 
     # @option opts [String] :filter_tls_domains_id Limit the returned certificates to those that include the specific domain.
     # @option opts [String] :include Include related objects. Optional, comma-separated values. Permitted values: &#x60;tls_activations&#x60;. 
+    # @option opts [String] :sort The order in which to list the results. (default to '-created_at')
     # @option opts [Integer] :page_number Current page.
     # @option opts [Integer] :page_size Number of records per page. (default to 20)
-    # @option opts [String] :sort The order in which to list the results by creation date. (default to 'created_at')
     # @return [TlsCertificatesResponse]
     def list_tls_certs(opts = {})
       data, _status_code, _headers = list_tls_certs_with_http_info(opts)
@@ -288,15 +288,19 @@ module Fastly
     # @option opts [String] :filter_not_after Limit the returned certificates to those that expire prior to the specified date in UTC. Accepts parameters: lte (e.g., filter[not_after][lte]&#x3D;2020-05-05). 
     # @option opts [String] :filter_tls_domains_id Limit the returned certificates to those that include the specific domain.
     # @option opts [String] :include Include related objects. Optional, comma-separated values. Permitted values: &#x60;tls_activations&#x60;. 
+    # @option opts [String] :sort The order in which to list the results. (default to '-created_at')
     # @option opts [Integer] :page_number Current page.
     # @option opts [Integer] :page_size Number of records per page. (default to 20)
-    # @option opts [String] :sort The order in which to list the results by creation date. (default to 'created_at')
     # @return [Array<(TlsCertificatesResponse, Integer, Hash)>] TlsCertificatesResponse data, response status code and response headers
     def list_tls_certs_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: TlsCertificatesApi.list_tls_certs ...'
       end
       # unbox the parameters from the hash
+      allowable_values = ["created_at", "-created_at", "not_before", "-not_before", "not_after", "-not_after", "tls_activations.created_at", "-tls_activations.created_at"]
+      if @api_client.config.client_side_validation && opts[:'sort'] && !allowable_values.include?(opts[:'sort'])
+        fail ArgumentError, "invalid value for \"sort\", must be one of #{allowable_values}"
+      end
       if @api_client.config.client_side_validation && !opts[:'page_size'].nil? && opts[:'page_size'] > 100
         fail ArgumentError, 'invalid value for "opts[:"page_size"]" when calling TlsCertificatesApi.list_tls_certs, must be smaller than or equal to 100.'
       end
@@ -305,10 +309,6 @@ module Fastly
         fail ArgumentError, 'invalid value for "opts[:"page_size"]" when calling TlsCertificatesApi.list_tls_certs, must be greater than or equal to 1.'
       end
 
-      allowable_values = ["created_at", "-created_at"]
-      if @api_client.config.client_side_validation && opts[:'sort'] && !allowable_values.include?(opts[:'sort'])
-        fail ArgumentError, "invalid value for \"sort\", must be one of #{allowable_values}"
-      end
       # resource path
       local_var_path = '/tls/certificates'
 
@@ -318,9 +318,9 @@ module Fastly
       query_params[:'filter[not_after]'] = opts[:'filter_not_after'] if !opts[:'filter_not_after'].nil?
       query_params[:'filter[tls_domains.id]'] = opts[:'filter_tls_domains_id'] if !opts[:'filter_tls_domains_id'].nil?
       query_params[:'include'] = opts[:'include'] if !opts[:'include'].nil?
+      query_params[:'sort'] = opts[:'sort'] if !opts[:'sort'].nil?
       query_params[:'page[number]'] = opts[:'page_number'] if !opts[:'page_number'].nil?
       query_params[:'page[size]'] = opts[:'page_size'] if !opts[:'page_size'].nil?
-      query_params[:'sort'] = opts[:'sort'] if !opts[:'sort'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}

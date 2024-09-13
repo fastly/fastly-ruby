@@ -45,6 +45,9 @@ module Fastly
 
     attr_accessor :service_id
 
+    # A list of environments where the service has been deployed.
+    attr_accessor :environments
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -58,7 +61,8 @@ module Fastly
         :'created_at' => :'created_at',
         :'deleted_at' => :'deleted_at',
         :'updated_at' => :'updated_at',
-        :'service_id' => :'service_id'
+        :'service_id' => :'service_id',
+        :'environments' => :'environments'
       }
     end
 
@@ -80,7 +84,8 @@ module Fastly
         :'created_at' => :'Time',
         :'deleted_at' => :'Time',
         :'updated_at' => :'Time',
-        :'service_id' => :'String'
+        :'service_id' => :'String',
+        :'environments' => :'Array<Environment>'
       }
     end
 
@@ -169,6 +174,12 @@ module Fastly
       if attributes.key?(:'service_id')
         self.service_id = attributes[:'service_id']
       end
+
+      if attributes.key?(:'environments')
+        if (value = attributes[:'environments']).is_a?(Array)
+          self.environments = value
+        end
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -199,7 +210,8 @@ module Fastly
           created_at == o.created_at &&
           deleted_at == o.deleted_at &&
           updated_at == o.updated_at &&
-          service_id == o.service_id
+          service_id == o.service_id &&
+          environments == o.environments
     end
 
     # @see the `==` method
@@ -211,7 +223,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [active, comment, deployed, locked, number, staging, testing, created_at, deleted_at, updated_at, service_id].hash
+      [active, comment, deployed, locked, number, staging, testing, created_at, deleted_at, updated_at, service_id, environments].hash
     end
 
     # Builds the object from hash

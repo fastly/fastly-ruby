@@ -42,6 +42,9 @@ module Fastly
     # A list of [versions](https://www.fastly.com/documentation/reference/api/services/version/) associated with the service.
     attr_accessor :versions
 
+    # A list of environments where the service has been deployed.
+    attr_accessor :environments
+
     class EnumAttributeValidator
       attr_reader :datatype
       attr_reader :allowable_values
@@ -76,7 +79,8 @@ module Fastly
         :'type' => :'type',
         :'id' => :'id',
         :'version' => :'version',
-        :'versions' => :'versions'
+        :'versions' => :'versions',
+        :'environments' => :'environments'
       }
     end
 
@@ -97,7 +101,8 @@ module Fastly
         :'type' => :'String',
         :'id' => :'String',
         :'version' => :'Integer',
-        :'versions' => :'Array<SchemasVersionResponse>'
+        :'versions' => :'Array<SchemasVersionResponse>',
+        :'environments' => :'Array<Environment>'
       }
     end
 
@@ -176,6 +181,12 @@ module Fastly
           self.versions = value
         end
       end
+
+      if attributes.key?(:'environments')
+        if (value = attributes[:'environments']).is_a?(Array)
+          self.environments = value
+        end
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -217,7 +228,8 @@ module Fastly
           type == o.type &&
           id == o.id &&
           version == o.version &&
-          versions == o.versions
+          versions == o.versions &&
+          environments == o.environments
     end
 
     # @see the `==` method
@@ -229,7 +241,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [created_at, deleted_at, updated_at, comment, name, customer_id, type, id, version, versions].hash
+      [created_at, deleted_at, updated_at, comment, name, customer_id, type, id, version, versions, environments].hash
     end
 
     # Builds the object from hash

@@ -102,10 +102,20 @@ module Fastly
     # List of attributes with nullable: true
     def self.fastly_nullable
       Set.new([
+        :'amount',
+        :'aria_invoice_id',
+        :'client_service_id',
         :'credit_coupon_code',
+        :'description',
+        :'line_number',
+        :'plan_name',
+        :'plan_no',
         :'rate_per_unit',
         :'rate_schedule_no',
         :'rate_schedule_tier_no',
+        :'service_name',
+        :'service_no',
+        :'units',
         :'usage_type_cd',
         :'usage_type_no'
       ])

@@ -185,9 +185,9 @@ opts = {
     filter_not_after: 'filter_not_after_example', # String | Limit the returned certificates to those that expire prior to the specified date in UTC. Accepts parameters: lte (e.g., filter[not_after][lte]=2020-05-05). 
     filter_tls_domains_id: 'filter_tls_domains_id_example', # String | Limit the returned certificates to those that include the specific domain.
     include: 'include_example', # String | Include related objects. Optional, comma-separated values. Permitted values: `tls_activations`. 
+    sort: 'created_at', # String | The order in which to list the results.
     page_number: 1, # Integer | Current page.
     page_size: 20, # Integer | Number of records per page.
-    sort: 'created_at', # String | The order in which to list the results by creation date.
 }
 
 begin
@@ -207,9 +207,9 @@ end
 | **filter_not_after** | **String** | Limit the returned certificates to those that expire prior to the specified date in UTC. Accepts parameters: lte (e.g., filter[not_after][lte]&#x3D;2020-05-05).  | [optional] |
 | **filter_tls_domains_id** | **String** | Limit the returned certificates to those that include the specific domain. | [optional] |
 | **include** | **String** | Include related objects. Optional, comma-separated values. Permitted values: `tls_activations`.  | [optional] |
+| **sort** | **String** | The order in which to list the results. | [optional][default to &#39;-created_at&#39;] |
 | **page_number** | **Integer** | Current page. | [optional] |
 | **page_size** | **Integer** | Number of records per page. | [optional][default to 20] |
-| **sort** | **String** | The order in which to list the results by creation date. | [optional][default to &#39;created_at&#39;] |
 
 ### Return type
 

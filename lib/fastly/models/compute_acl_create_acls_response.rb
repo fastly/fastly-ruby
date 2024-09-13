@@ -12,11 +12,18 @@ require 'date'
 require 'time'
 
 module Fastly
-  # The Unix timestamp at which this record's data was generated.
-  class RecordedTimestamp
+  class ComputeAclCreateAclsResponse
+    # Human readable name of store
+    attr_accessor :name
+
+    # An example identifier (UUID).
+    attr_accessor :id
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'name' => :'name',
+        :'id' => :'id'
       }
     end
 
@@ -28,6 +35,8 @@ module Fastly
     # Attribute type mapping.
     def self.fastly_types
       {
+        :'name' => :'String',
+        :'id' => :'String'
       }
     end
 
@@ -41,16 +50,24 @@ module Fastly
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Fastly::RecordedTimestamp` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Fastly::ComputeAclCreateAclsResponse` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `Fastly::RecordedTimestamp`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `Fastly::ComputeAclCreateAclsResponse`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
+
+      if attributes.key?(:'name')
+        self.name = attributes[:'name']
+      end
+
+      if attributes.key?(:'id')
+        self.id = attributes[:'id']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -70,7 +87,9 @@ module Fastly
     # @param [Object] Object to be compared
     def ==(o)
       return true if self.equal?(o)
-      self.class == o.class
+      self.class == o.class &&
+          name == o.name &&
+          id == o.id
     end
 
     # @see the `==` method
@@ -82,7 +101,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [].hash
+      [name, id].hash
     end
 
     # Builds the object from hash

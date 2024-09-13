@@ -138,7 +138,7 @@ module Fastly
         fail ArgumentError, "Missing the required parameter 'contact_id' when calling ContactApi.delete_contact"
       end
       # resource path
-      local_var_path = '/customer/{customer_id}/contact/{contact_id}'.sub('{' + 'customer_id' + '}', CGI.escape(customer_id.to_s)).sub('{' + 'contact_id' + '}', CGI.escape(contact_id.to_s))
+      local_var_path = '/customer/{customer_id}/contacts/{contact_id}'.sub('{' + 'customer_id' + '}', CGI.escape(customer_id.to_s)).sub('{' + 'contact_id' + '}', CGI.escape(contact_id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}

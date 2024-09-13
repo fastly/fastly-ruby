@@ -14,6 +14,7 @@ require 'time'
 module Fastly
   # Each reporting period is represented by an entry in the `Data` property of the top level response and provides access to [measurement data](#measurements-data-model) for that time period, grouped by origin name and optionally by POP. The `datacenter` property organizes the measurements by Fastly POP, while the `aggregated` property combines the measurements of all POPs. 
   class OriginInspectorRealtimeEntry
+    # The Unix timestamp at which this record's data was generated.
     attr_accessor :recorded
 
     # Groups [measurements](#measurements-data-model) by backend name.
@@ -39,7 +40,7 @@ module Fastly
     # Attribute type mapping.
     def self.fastly_types
       {
-        :'recorded' => :'OriginInspectorRealtimeEntryRecorded',
+        :'recorded' => :'Integer',
         :'aggregated' => :'Hash<String, OriginInspectorMeasurements>',
         :'datacenter' => :'Hash<String, Hash<String, OriginInspectorMeasurements>>'
       }

@@ -14,9 +14,11 @@ api_instance = Fastly::VersionApi.new
 Method | HTTP request | Description
 ------ | ------------ | -----------
 [**activate_service_version**](VersionApi.md#activate_service_version) | **PUT** /service/{service_id}/version/{version_id}/activate | Activate a service version
+[**activate_service_version_environment**](VersionApi.md#activate_service_version_environment) | **PUT** /service/{service_id}/version/{version_id}/activate/{environment_name} | Activate a service version on the specified environment
 [**clone_service_version**](VersionApi.md#clone_service_version) | **PUT** /service/{service_id}/version/{version_id}/clone | Clone a service version
 [**create_service_version**](VersionApi.md#create_service_version) | **POST** /service/{service_id}/version | Create a service version
 [**deactivate_service_version**](VersionApi.md#deactivate_service_version) | **PUT** /service/{service_id}/version/{version_id}/deactivate | Deactivate a service version
+[**deactivate_service_version_environment**](VersionApi.md#deactivate_service_version_environment) | **PUT** /service/{service_id}/version/{version_id}/deactivate/{environment_name} | Deactivate a service version on an environment
 [**get_service_version**](VersionApi.md#get_service_version) | **GET** /service/{service_id}/version/{version_id} | Get a version of a service
 [**list_service_versions**](VersionApi.md#list_service_versions) | **GET** /service/{service_id}/version | List versions of a service
 [**lock_service_version**](VersionApi.md#lock_service_version) | **PUT** /service/{service_id}/version/{version_id}/lock | Lock a service version
@@ -56,6 +58,47 @@ end
 | ---- | ---- | ----------- | ----- |
 | **service_id** | **String** | Alphanumeric string identifying the service. |  |
 | **version_id** | **Integer** | Integer identifying a service version. |  |
+
+### Return type
+
+[**VersionResponse**](VersionResponse.md)
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+## `activate_service_version_environment()`
+
+```ruby
+activate_service_version_environment(opts): <VersionResponse> # Activate a service version on the specified environment
+```
+
+Activate a version on a given environment, i.e. \"staging\"
+
+### Examples
+
+```ruby
+api_instance = Fastly::VersionApi.new
+opts = {
+    service_id: 'service_id_example', # String | Alphanumeric string identifying the service.
+    version_id: 56, # Integer | Integer identifying a service version.
+    environment_name: Fastly::EnvironmentName::STAGING, # EnvironmentName | 
+}
+
+begin
+  # Activate a service version on the specified environment
+  result = api_instance.activate_service_version_environment(opts)
+  p result
+rescue Fastly::ApiError => e
+  puts "Error when calling VersionApi->activate_service_version_environment: #{e}"
+end
+```
+
+### Options
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **service_id** | **String** | Alphanumeric string identifying the service. |  |
+| **version_id** | **Integer** | Integer identifying a service version. |  |
+| **environment_name** | [**EnvironmentName**](.md) |  |  |
 
 ### Return type
 
@@ -171,6 +214,47 @@ end
 | ---- | ---- | ----------- | ----- |
 | **service_id** | **String** | Alphanumeric string identifying the service. |  |
 | **version_id** | **Integer** | Integer identifying a service version. |  |
+
+### Return type
+
+[**VersionResponse**](VersionResponse.md)
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+## `deactivate_service_version_environment()`
+
+```ruby
+deactivate_service_version_environment(opts): <VersionResponse> # Deactivate a service version on an environment
+```
+
+Deactivate the current version on a given environment, i.e. \"staging\"
+
+### Examples
+
+```ruby
+api_instance = Fastly::VersionApi.new
+opts = {
+    service_id: 'service_id_example', # String | Alphanumeric string identifying the service.
+    version_id: 56, # Integer | Integer identifying a service version.
+    environment_name: Fastly::EnvironmentName::STAGING, # EnvironmentName | 
+}
+
+begin
+  # Deactivate a service version on an environment
+  result = api_instance.deactivate_service_version_environment(opts)
+  p result
+rescue Fastly::ApiError => e
+  puts "Error when calling VersionApi->deactivate_service_version_environment: #{e}"
+end
+```
+
+### Options
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **service_id** | **String** | Alphanumeric string identifying the service. |  |
+| **version_id** | **Integer** | Integer identifying a service version. |  |
+| **environment_name** | [**EnvironmentName**](.md) |  |  |
 
 ### Return type
 

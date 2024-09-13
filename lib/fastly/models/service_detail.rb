@@ -45,6 +45,9 @@ module Fastly
     # A list of [versions](https://www.fastly.com/documentation/reference/api/services/version/) associated with the service.
     attr_accessor :versions
 
+    # A list of environments where the service has been deployed.
+    attr_accessor :environments
+
     attr_accessor :active_version
 
     attr_accessor :version
@@ -85,6 +88,7 @@ module Fastly
         :'publish_key' => :'publish_key',
         :'paused' => :'paused',
         :'versions' => :'versions',
+        :'environments' => :'environments',
         :'active_version' => :'active_version',
         :'version' => :'version'
       }
@@ -109,6 +113,7 @@ module Fastly
         :'publish_key' => :'String',
         :'paused' => :'Boolean',
         :'versions' => :'Array<SchemasVersionResponse>',
+        :'environments' => :'Array<Environment>',
         :'active_version' => :'ServiceVersionDetailOrNull',
         :'version' => :'ServiceVersionDetail'
       }
@@ -194,6 +199,12 @@ module Fastly
         end
       end
 
+      if attributes.key?(:'environments')
+        if (value = attributes[:'environments']).is_a?(Array)
+          self.environments = value
+        end
+      end
+
       if attributes.key?(:'active_version')
         self.active_version = attributes[:'active_version']
       end
@@ -244,6 +255,7 @@ module Fastly
           publish_key == o.publish_key &&
           paused == o.paused &&
           versions == o.versions &&
+          environments == o.environments &&
           active_version == o.active_version &&
           version == o.version
     end
@@ -257,7 +269,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [created_at, deleted_at, updated_at, comment, name, customer_id, type, id, publish_key, paused, versions, active_version, version].hash
+      [created_at, deleted_at, updated_at, comment, name, customer_id, type, id, publish_key, paused, versions, environments, active_version, version].hash
     end
 
     # Builds the object from hash

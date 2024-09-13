@@ -45,6 +45,9 @@ module Fastly
 
     attr_accessor :service_id
 
+    # A list of environments where the service has been deployed.
+    attr_accessor :environments
+
     # List of backends associated to this service.
     attr_accessor :backends
 
@@ -100,6 +103,7 @@ module Fastly
         :'deleted_at' => :'deleted_at',
         :'updated_at' => :'updated_at',
         :'service_id' => :'service_id',
+        :'environments' => :'environments',
         :'backends' => :'backends',
         :'cache_settings' => :'cache_settings',
         :'conditions' => :'conditions',
@@ -136,6 +140,7 @@ module Fastly
         :'deleted_at' => :'Time',
         :'updated_at' => :'Time',
         :'service_id' => :'String',
+        :'environments' => :'Array<Environment>',
         :'backends' => :'Array<BackendResponse>',
         :'cache_settings' => :'Array<CacheSettingResponse>',
         :'conditions' => :'Array<ConditionResponse>',
@@ -236,6 +241,12 @@ module Fastly
 
       if attributes.key?(:'service_id')
         self.service_id = attributes[:'service_id']
+      end
+
+      if attributes.key?(:'environments')
+        if (value = attributes[:'environments']).is_a?(Array)
+          self.environments = value
+        end
       end
 
       if attributes.key?(:'backends')
@@ -350,6 +361,7 @@ module Fastly
           deleted_at == o.deleted_at &&
           updated_at == o.updated_at &&
           service_id == o.service_id &&
+          environments == o.environments &&
           backends == o.backends &&
           cache_settings == o.cache_settings &&
           conditions == o.conditions &&
@@ -375,7 +387,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [active, comment, deployed, locked, number, staging, testing, created_at, deleted_at, updated_at, service_id, backends, cache_settings, conditions, directors, domains, gzips, headers, healthchecks, request_settings, response_objects, settings, snippets, vcls, wordpress].hash
+      [active, comment, deployed, locked, number, staging, testing, created_at, deleted_at, updated_at, service_id, environments, backends, cache_settings, conditions, directors, domains, gzips, headers, healthchecks, request_settings, response_objects, settings, snippets, vcls, wordpress].hash
     end
 
     # Builds the object from hash

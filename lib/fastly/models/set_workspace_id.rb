@@ -12,11 +12,14 @@ require 'date'
 require 'time'
 
 module Fastly
-  # The Unix timestamp at which this record's data was generated.
-  class OriginInspectorRealtimeEntryRecorded
+  class SetWorkspaceId
+    # The workspace to link with the Next-Gen WAF product. Note this body is only supported and required when `product_id` is `ngwaf`
+    attr_accessor :workspace_id
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'workspace_id' => :'workspace_id'
       }
     end
 
@@ -28,6 +31,7 @@ module Fastly
     # Attribute type mapping.
     def self.fastly_types
       {
+        :'workspace_id' => :'String'
       }
     end
 
@@ -41,16 +45,20 @@ module Fastly
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Fastly::OriginInspectorRealtimeEntryRecorded` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Fastly::SetWorkspaceId` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `Fastly::OriginInspectorRealtimeEntryRecorded`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `Fastly::SetWorkspaceId`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
+
+      if attributes.key?(:'workspace_id')
+        self.workspace_id = attributes[:'workspace_id']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -70,7 +78,8 @@ module Fastly
     # @param [Object] Object to be compared
     def ==(o)
       return true if self.equal?(o)
-      self.class == o.class
+      self.class == o.class &&
+          workspace_id == o.workspace_id
     end
 
     # @see the `==` method
@@ -82,7 +91,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [].hash
+      [workspace_id].hash
     end
 
     # Builds the object from hash

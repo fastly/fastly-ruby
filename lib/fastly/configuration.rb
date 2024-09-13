@@ -344,6 +344,48 @@ module Fastly
           description: "No description provided",
           }
         ],
+        "AclsInComputeApi.compute_acl_create_acls": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "AclsInComputeApi.compute_acl_delete_s_acl_id": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "AclsInComputeApi.compute_acl_list_acl_entries": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "AclsInComputeApi.compute_acl_list_acls": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "AclsInComputeApi.compute_acl_list_acls_s_acl_id": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "AclsInComputeApi.compute_acl_lookup_acls": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "AclsInComputeApi.compute_acl_update_acls": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
         "ApexRedirectApi.create_apex_redirect": [
           {
           url: "https://api.fastly.com",
@@ -704,6 +746,24 @@ module Fastly
           description: "No description provided",
           }
         ],
+        "CustomerAddressesApi.create_customer_address": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "CustomerAddressesApi.list_customer_addresses": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "CustomerAddressesApi.update_customer_address": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
         "DictionaryApi.create_dictionary": [
           {
           url: "https://api.fastly.com",
@@ -921,6 +981,18 @@ module Fastly
           }
         ],
         "EnabledProductsApi.get_enabled_product": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "EnabledProductsApi.get_product_configuration": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "EnabledProductsApi.set_product_configuration": [
           {
           url: "https://api.fastly.com",
           description: "No description provided",
@@ -3302,6 +3374,12 @@ module Fastly
           description: "No description provided",
           }
         ],
+        "VersionApi.activate_service_version_environment": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
         "VersionApi.clone_service_version": [
           {
           url: "https://api.fastly.com",
@@ -3315,6 +3393,12 @@ module Fastly
           }
         ],
         "VersionApi.deactivate_service_version": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "VersionApi.deactivate_service_version_environment": [
           {
           url: "https://api.fastly.com",
           description: "No description provided",

@@ -21,12 +21,16 @@ module Fastly
     # A list of [versions](https://www.fastly.com/documentation/reference/api/services/version/) associated with the service.
     attr_accessor :versions
 
+    # A list of environments where the service has been deployed.
+    attr_accessor :environments
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'id' => :'id',
         :'version' => :'version',
-        :'versions' => :'versions'
+        :'versions' => :'versions',
+        :'environments' => :'environments'
       }
     end
 
@@ -40,7 +44,8 @@ module Fastly
       {
         :'id' => :'String',
         :'version' => :'Integer',
-        :'versions' => :'Array<SchemasVersionResponse>'
+        :'versions' => :'Array<SchemasVersionResponse>',
+        :'environments' => :'Array<Environment>'
       }
     end
 
@@ -78,6 +83,12 @@ module Fastly
           self.versions = value
         end
       end
+
+      if attributes.key?(:'environments')
+        if (value = attributes[:'environments']).is_a?(Array)
+          self.environments = value
+        end
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -100,7 +111,8 @@ module Fastly
       self.class == o.class &&
           id == o.id &&
           version == o.version &&
-          versions == o.versions
+          versions == o.versions &&
+          environments == o.environments
     end
 
     # @see the `==` method
@@ -112,7 +124,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, version, versions].hash
+      [id, version, versions, environments].hash
     end
 
     # Builds the object from hash

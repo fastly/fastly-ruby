@@ -13,6 +13,7 @@ require 'time'
 
 module Fastly
   class OriginInspector
+    # Value to use for subsequent requests.
     attr_accessor :timestamp
 
     # Offset of entry timestamps from the current time due to processing time.
@@ -38,7 +39,7 @@ module Fastly
     # Attribute type mapping.
     def self.fastly_types
       {
-        :'timestamp' => :'OriginInspectorSubsequentRequestTimestamp',
+        :'timestamp' => :'Integer',
         :'aggregate_delay' => :'Integer',
         :'data' => :'Array<OriginInspectorRealtimeEntry>'
       }

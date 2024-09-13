@@ -12,11 +12,22 @@ require 'date'
 require 'time'
 
 module Fastly
-  # Value to use for subsequent requests.
-  class SubsequentRequestTimestamp
+  class ConfiguredProductResponse
+    attr_accessor :product
+
+    attr_accessor :service
+
+    attr_accessor :configuration
+
+    attr_accessor :_links
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'product' => :'product',
+        :'service' => :'service',
+        :'configuration' => :'configuration',
+        :'_links' => :'_links'
       }
     end
 
@@ -28,6 +39,10 @@ module Fastly
     # Attribute type mapping.
     def self.fastly_types
       {
+        :'product' => :'ConfiguredProductResponseProduct',
+        :'service' => :'EnabledProductResponseService',
+        :'configuration' => :'ConfiguredProductResponseConfiguration',
+        :'_links' => :'ConfiguredProductResponseLinks'
       }
     end
 
@@ -41,16 +56,32 @@ module Fastly
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Fastly::SubsequentRequestTimestamp` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Fastly::ConfiguredProductResponse` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `Fastly::SubsequentRequestTimestamp`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `Fastly::ConfiguredProductResponse`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
+
+      if attributes.key?(:'product')
+        self.product = attributes[:'product']
+      end
+
+      if attributes.key?(:'service')
+        self.service = attributes[:'service']
+      end
+
+      if attributes.key?(:'configuration')
+        self.configuration = attributes[:'configuration']
+      end
+
+      if attributes.key?(:'_links')
+        self._links = attributes[:'_links']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -70,7 +101,11 @@ module Fastly
     # @param [Object] Object to be compared
     def ==(o)
       return true if self.equal?(o)
-      self.class == o.class
+      self.class == o.class &&
+          product == o.product &&
+          service == o.service &&
+          configuration == o.configuration &&
+          _links == o._links
     end
 
     # @see the `==` method
@@ -82,7 +117,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [].hash
+      [product, service, configuration, _links].hash
     end
 
     # Builds the object from hash
