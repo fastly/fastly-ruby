@@ -1,5 +1,11 @@
 # Changelog
 
+## [v8.10.0](https://github.com/fastly/fastly-ruby/releases/tag/release/v8.10.0) (2024-10-23)
+
+**Documentation:**
+
+- doc(backend): Correct spelling in `connect_timeout` and `first_byte_timeout` field descriptions.
+
 ## [v8.9.0](https://github.com/fastly/fastly-ruby/releases/tag/release/v8.9.0) (2024-09-13)
 
 **Bug fixes:**

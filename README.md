@@ -8,7 +8,7 @@ A Ruby client library for interacting with most facets of the [Fastly API](https
 To install via RubyGems, add the following to your project's `Gemfile`:
 
 ```ruby
-gem 'fastly', '~> 8.9.0'
+gem 'fastly', '~> 8.10.0'
 ```
 
 Then run `bundle install`.
