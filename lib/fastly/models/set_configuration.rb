@@ -19,11 +19,15 @@ module Fastly
     # The new traffic ramp. Optional in the `PATCH` request body for `ngwaf`.
     attr_accessor :traffic_ramp
 
+    # The new mode to run the product in. One of `block`, `log`, or `off`. Optional in the `PATCH` request body for `ddos_protection`.
+    attr_accessor :mode
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'workspace_id' => :'workspace_id',
-        :'traffic_ramp' => :'traffic_ramp'
+        :'traffic_ramp' => :'traffic_ramp',
+        :'mode' => :'mode'
       }
     end
 
@@ -36,7 +40,8 @@ module Fastly
     def self.fastly_types
       {
         :'workspace_id' => :'String',
-        :'traffic_ramp' => :'String'
+        :'traffic_ramp' => :'String',
+        :'mode' => :'String'
       }
     end
 
@@ -68,6 +73,10 @@ module Fastly
       if attributes.key?(:'traffic_ramp')
         self.traffic_ramp = attributes[:'traffic_ramp']
       end
+
+      if attributes.key?(:'mode')
+        self.mode = attributes[:'mode']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -89,7 +98,8 @@ module Fastly
       return true if self.equal?(o)
       self.class == o.class &&
           workspace_id == o.workspace_id &&
-          traffic_ramp == o.traffic_ramp
+          traffic_ramp == o.traffic_ramp &&
+          mode == o.mode
     end
 
     # @see the `==` method
@@ -101,7 +111,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [workspace_id, traffic_ramp].hash
+      [workspace_id, traffic_ramp, mode].hash
     end
 
     # Builds the object from hash

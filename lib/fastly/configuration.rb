@@ -542,7 +542,7 @@ module Fastly
           description: "No description provided",
           }
         ],
-        "BillingUsageMetricsApi.get_service_level_usage_types": [
+        "BillingUsageMetricsApi.get_usage_metrics": [
           {
           url: "https://api.fastly.com",
           description: "No description provided",
@@ -1370,6 +1370,12 @@ module Fastly
           description: "No description provided",
           }
         ],
+        "InsightsApi.get_log_insights": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
         "InvitationsApi.create_invitation": [
           {
           url: "https://api.fastly.com",
@@ -1599,6 +1605,12 @@ module Fastly
           }
         ],
         "LegacyWafUpdateStatusApi.list_waf_update_statuses": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "LogExplorerApi.get_log_records": [
           {
           url: "https://api.fastly.com",
           description: "No description provided",
@@ -1839,6 +1851,36 @@ module Fastly
           }
         ],
         "LoggingGcsApi.update_log_gcs": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "LoggingGrafanacloudlogsApi.create_log_grafanacloudlogs": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "LoggingGrafanacloudlogsApi.delete_log_grafanacloudlogs": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "LoggingGrafanacloudlogsApi.get_log_grafanacloudlogs": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "LoggingGrafanacloudlogsApi.list_log_grafanacloudlogs": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "LoggingGrafanacloudlogsApi.update_log_grafanacloudlogs": [
           {
           url: "https://api.fastly.com",
           description: "No description provided",
@@ -2439,6 +2481,30 @@ module Fastly
           }
         ],
         "MutualAuthenticationApi.patch_mutual_authentication": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "ObjectStorageAccessKeysApi.create_access_key": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "ObjectStorageAccessKeysApi.delete_access_key": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "ObjectStorageAccessKeysApi.get_access_key": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "ObjectStorageAccessKeysApi.list_access_keys": [
           {
           url: "https://api.fastly.com",
           description: "No description provided",

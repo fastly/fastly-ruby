@@ -258,7 +258,7 @@ Update an ACL.
 api_instance = Fastly::AclsInComputeApi.new
 opts = {
     acl_id: 'acl_id_example', # String | 
-    compute_acl_update_entry: [Fastly::ComputeAclUpdateEntry.new], # Array<ComputeAclUpdateEntry> | 
+    compute_acl_update: Fastly::ComputeAclUpdate.new, # ComputeAclUpdate | 
 }
 
 begin
@@ -274,7 +274,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **acl_id** | **String** |  |  |
-| **compute_acl_update_entry** | [**Array&lt;ComputeAclUpdateEntry&gt;**](ComputeAclUpdateEntry.md) |  | [optional] |
+| **compute_acl_update** | [**ComputeAclUpdate**](ComputeAclUpdate.md) |  | [optional] |
 
 ### Return type
 

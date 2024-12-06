@@ -1,5 +1,37 @@
 # Changelog
 
+## [v9.0.0](https://github.com/fastly/fastly-ruby/releases/tag/release/v9.0.0) (2024-12-05)
+
+**Breaking Changes:**
+
+- fix(udm-domains): Use v1 versioned HTTP endpoints for UDM domains
+- fix(historical): Remove references to VCL on Compute metrics
+- fix(realtime): Remove references to VCL on Compute metrics
+- feat(billing-usage-metrics): Updated to v3 of the API
+
+**Bug fixes:**
+
+- fix(acls-in-compute): Corrected shape of `compute-acl-update` model.
+
+**Enhancements:**
+
+- feat(object-storage-access-keys): Added Object Storage Access Keys API
+- feat(logging-grafanacloudlogs): Added Grafana Cloud Logs Loggin API
+- feat(log-explorer): Added Log Explorer API
+- feat(insights): Added Insights API
+- feat(kv-store-item): Added `consistency` parameter to `get-keys` operation.
+- feat(enabled-products): Added `mode` property to `set-configuration`.
+
+**Documentation:**
+
+- doc(observability-custom-dashboards): Fix bad link in custom dashboard documentation
+- doc(observability-custom-dashboards): Reformat some enums to fix docs rendering
+- doc(acls-in-compute): Corrections to descriptions of `compute-acl-lookup`, `compute-acl-list-entries`,
+                        `compute-acl-update-entry`, and `compute-acl-update` structures
+- doc(enabled-products): Added support for product ID `log_explorer_insights`.
+- doc(enabled-products): Added support for product ID `ddos_protection`.
+- doc(backend): Correct spelling in `connect_timeout` and `first_byte_timeout` field descriptions.
+
 ## [v8.9.0](https://github.com/fastly/fastly-ruby/releases/tag/release/v8.9.0) (2024-09-13)
 
 **Bug fixes:**

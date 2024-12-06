@@ -74,6 +74,7 @@ opts = {
     cursor: 'cursor_example', # String | 
     limit: 56, # Integer | 
     prefix: 'prefix_example', # String | 
+    consistency: 'consistency_example', # String | 
 }
 
 begin
@@ -93,6 +94,7 @@ end
 | **cursor** | **String** |  | [optional] |
 | **limit** | **Integer** |  | [optional][default to 100] |
 | **prefix** | **String** |  | [optional] |
+| **consistency** | **String** |  | [optional] |
 
 ### Return type
 

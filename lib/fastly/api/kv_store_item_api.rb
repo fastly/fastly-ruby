@@ -91,6 +91,7 @@ module Fastly
     # @option opts [String] :cursor 
     # @option opts [Integer] :limit  (default to 100)
     # @option opts [String] :prefix 
+    # @option opts [String] :consistency 
     # @return [InlineResponse2004]
     def get_keys(opts = {})
       data, _status_code, _headers = get_keys_with_http_info(opts)
@@ -103,6 +104,7 @@ module Fastly
     # @option opts [String] :cursor 
     # @option opts [Integer] :limit  (default to 100)
     # @option opts [String] :prefix 
+    # @option opts [String] :consistency 
     # @return [Array<(InlineResponse2004, Integer, Hash)>] InlineResponse2004 data, response status code and response headers
     def get_keys_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -122,6 +124,7 @@ module Fastly
       query_params[:'cursor'] = opts[:'cursor'] if !opts[:'cursor'].nil?
       query_params[:'limit'] = opts[:'limit'] if !opts[:'limit'].nil?
       query_params[:'prefix'] = opts[:'prefix'] if !opts[:'prefix'].nil?
+      query_params[:'consistency'] = opts[:'consistency'] if !opts[:'consistency'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}

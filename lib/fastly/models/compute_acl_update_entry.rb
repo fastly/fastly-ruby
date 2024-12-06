@@ -12,7 +12,7 @@ require 'date'
 require 'time'
 
 module Fastly
-  # An example of an ACL update request entry.
+  # Defines the structure of an ACL update request entry.
   class ComputeAclUpdateEntry
     # One of \"create\" or \"update\", indicating that the rest of this entry is to be added to/updated in the ACL.
     attr_accessor :op

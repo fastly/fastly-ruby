@@ -12,7 +12,7 @@ require 'date'
 require 'time'
 
 module Fastly
-  # An example of an ACL Lookup response.
+  # Defines the structure of an ACL Lookup response.
   class ComputeAclLookup
     # A valid IPv4 or IPv6 address.
     attr_accessor :prefix

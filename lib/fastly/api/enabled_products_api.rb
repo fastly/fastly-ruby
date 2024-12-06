@@ -18,7 +18,7 @@ module Fastly
       @api_client = api_client
     end
     # Disable a product
-    # Disable a product on a service. Supported product IDs: `brotli_compression`,`domain_inspector`,`fanout`,`image_optimizer`,`origin_inspector`, `websockets`, `bot_management`, and `ngwaf`.
+    # Disable a product on a service. Supported product IDs: `brotli_compression`,`domain_inspector`,`fanout`,`image_optimizer`,`origin_inspector`, `websockets`, `bot_management`, `ngwaf`, `ddos_protection`, and `log_explorer_insights`.
     # @option opts [String] :product_id  (required)
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
     # @return [nil]
@@ -28,7 +28,7 @@ module Fastly
     end
 
     # Disable a product
-    # Disable a product on a service. Supported product IDs: &#x60;brotli_compression&#x60;,&#x60;domain_inspector&#x60;,&#x60;fanout&#x60;,&#x60;image_optimizer&#x60;,&#x60;origin_inspector&#x60;, &#x60;websockets&#x60;, &#x60;bot_management&#x60;, and &#x60;ngwaf&#x60;.
+    # Disable a product on a service. Supported product IDs: &#x60;brotli_compression&#x60;,&#x60;domain_inspector&#x60;,&#x60;fanout&#x60;,&#x60;image_optimizer&#x60;,&#x60;origin_inspector&#x60;, &#x60;websockets&#x60;, &#x60;bot_management&#x60;, &#x60;ngwaf&#x60;, &#x60;ddos_protection&#x60;, and &#x60;log_explorer_insights&#x60;.
     # @option opts [String] :product_id  (required)
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
     # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
@@ -86,7 +86,7 @@ module Fastly
     end
 
     # Enable a product
-    # Enable a product on a service. Supported product IDs: `brotli_compression`,`domain_inspector`,`fanout`,`image_optimizer`,`origin_inspector`, `websockets`, `bot_management`, and `ngwaf`.
+    # Enable a product on a service. Supported product IDs: `brotli_compression`,`domain_inspector`,`fanout`,`image_optimizer`,`origin_inspector`, `websockets`, `bot_management`, `ngwaf`, `ddos_protection`, and `log_explorer_insights`.
     # @option opts [String] :product_id  (required)
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
     # @option opts [SetWorkspaceId] :set_workspace_id 
@@ -97,7 +97,7 @@ module Fastly
     end
 
     # Enable a product
-    # Enable a product on a service. Supported product IDs: &#x60;brotli_compression&#x60;,&#x60;domain_inspector&#x60;,&#x60;fanout&#x60;,&#x60;image_optimizer&#x60;,&#x60;origin_inspector&#x60;, &#x60;websockets&#x60;, &#x60;bot_management&#x60;, and &#x60;ngwaf&#x60;.
+    # Enable a product on a service. Supported product IDs: &#x60;brotli_compression&#x60;,&#x60;domain_inspector&#x60;,&#x60;fanout&#x60;,&#x60;image_optimizer&#x60;,&#x60;origin_inspector&#x60;, &#x60;websockets&#x60;, &#x60;bot_management&#x60;, &#x60;ngwaf&#x60;, &#x60;ddos_protection&#x60;, and &#x60;log_explorer_insights&#x60;.
     # @option opts [String] :product_id  (required)
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
     # @option opts [SetWorkspaceId] :set_workspace_id 
@@ -163,7 +163,7 @@ module Fastly
     end
 
     # Get enabled product
-    # Get enabled product on a service. Supported product IDs: `brotli_compression`,`domain_inspector`,`fanout`,`image_optimizer`,`origin_inspector`, `websockets`, `bot_management`, and `ngwaf`.
+    # Get enabled product on a service. Supported product IDs: `brotli_compression`,`domain_inspector`,`fanout`,`image_optimizer`,`origin_inspector`, `websockets`, `bot_management`, `ngwaf`, `ddos_protection`, and `log_explorer_insights`.
     # @option opts [String] :product_id  (required)
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
     # @return [EnabledProductResponse]
@@ -173,7 +173,7 @@ module Fastly
     end
 
     # Get enabled product
-    # Get enabled product on a service. Supported product IDs: &#x60;brotli_compression&#x60;,&#x60;domain_inspector&#x60;,&#x60;fanout&#x60;,&#x60;image_optimizer&#x60;,&#x60;origin_inspector&#x60;, &#x60;websockets&#x60;, &#x60;bot_management&#x60;, and &#x60;ngwaf&#x60;.
+    # Get enabled product on a service. Supported product IDs: &#x60;brotli_compression&#x60;,&#x60;domain_inspector&#x60;,&#x60;fanout&#x60;,&#x60;image_optimizer&#x60;,&#x60;origin_inspector&#x60;, &#x60;websockets&#x60;, &#x60;bot_management&#x60;, &#x60;ngwaf&#x60;, &#x60;ddos_protection&#x60;, and &#x60;log_explorer_insights&#x60;.
     # @option opts [String] :product_id  (required)
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
     # @return [Array<(EnabledProductResponse, Integer, Hash)>] EnabledProductResponse data, response status code and response headers
@@ -233,7 +233,7 @@ module Fastly
     end
 
     # Get configuration for a product
-    # Get configuration for an enabled product on a service. Supported product IDs: `ngwaf`.
+    # Get configuration for an enabled product on a service. Supported product IDs: `ngwaf` and `ddos_protection`.
     # @option opts [String] :product_id  (required)
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
     # @return [ConfiguredProductResponse]
@@ -243,7 +243,7 @@ module Fastly
     end
 
     # Get configuration for a product
-    # Get configuration for an enabled product on a service. Supported product IDs: &#x60;ngwaf&#x60;.
+    # Get configuration for an enabled product on a service. Supported product IDs: &#x60;ngwaf&#x60; and &#x60;ddos_protection&#x60;.
     # @option opts [String] :product_id  (required)
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
     # @return [Array<(ConfiguredProductResponse, Integer, Hash)>] ConfiguredProductResponse data, response status code and response headers
@@ -303,7 +303,7 @@ module Fastly
     end
 
     # Update configuration for a product
-    # Update configuration for an enabled product on a service. Supported product IDs: `ngwaf`.
+    # Update configuration for an enabled product on a service. Supported product IDs: `ngwaf` and `ddos_protection`.
     # @option opts [String] :product_id  (required)
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
     # @option opts [SetConfiguration] :set_configuration 
@@ -314,7 +314,7 @@ module Fastly
     end
 
     # Update configuration for a product
-    # Update configuration for an enabled product on a service. Supported product IDs: &#x60;ngwaf&#x60;.
+    # Update configuration for an enabled product on a service. Supported product IDs: &#x60;ngwaf&#x60; and &#x60;ddos_protection&#x60;.
     # @option opts [String] :product_id  (required)
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
     # @option opts [SetConfiguration] :set_configuration 

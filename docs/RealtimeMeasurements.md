@@ -233,13 +233,6 @@
 | **bot_challenge_complete_tokens_issued** | **Integer** | The number of challenge-complete tokens issued. For example, issuing a challenge-complete token after a series of CAPTCHA challenges ending in success. | [optional] |
 | **ddos_action_downgrade** | **Integer** | The number of times the downgrade action was taken. The downgrade action restricts the client to http1. | [optional] |
 | **ddos_action_downgraded_connections** | **Integer** | The number of connections the downgrade action was applied to. The downgrade action restricts the connection to http1. | [optional] |
-| **vcl_on_compute_hit_requests** | **Integer** | Number of cache hits for a VCL service running on Compute. | [optional] |
-| **vcl_on_compute_miss_requests** | **Integer** | Number of cache misses for a VCL service running on Compute. | [optional] |
-| **vcl_on_compute_pass_requests** | **Integer** | Number of requests that passed through the CDN without being cached for a VCL service running on Compute. | [optional] |
-| **vcl_on_compute_error_requests** | **Integer** | Number of cache errors for a VCL service running on Compute. | [optional] |
-| **vcl_on_compute_synth_requests** | **Integer** | Number of requests that returned a synthetic response (i.e., response objects created with the `synthetic` VCL statement) for a VCL service running on Compute. | [optional] |
-| **vcl_on_compute_edge_hit_requests** | **Integer** | Number of requests sent by end users to Fastly that resulted in a hit at the edge for a VCL service running on Compute. | [optional] |
-| **vcl_on_compute_edge_miss_requests** | **Integer** | Number of requests sent by end users to Fastly that resulted in a miss at the edge for a VCL service running on Compute. | [optional] |
 | **all_hit_requests** | **Integer** | Number of cache hits for a VCL service. | [optional] |
 | **all_miss_requests** | **Integer** | Number of cache misses for a VCL service. | [optional] |
 | **all_pass_requests** | **Integer** | Number of requests that passed through the CDN without being cached for a VCL service. | [optional] |
@@ -254,6 +247,9 @@
 | **all_status_5xx** | **Integer** | Number of \&quot;Server Error\&quot; codes delivered for all sources. | [optional] |
 | **origin_offload** | **Float** | Origin Offload measures the ratio of bytes served to end users that were cached by Fastly, over the bytes served to end users, between 0 and 1. ((`edge_resp_body_bytes` + `edge_resp_header_bytes`) - (`origin_fetch_resp_body_bytes` + `origin_fetch_resp_header_bytes`)) / (`edge_resp_body_bytes` + `edge_resp_header_bytes`). | [optional] |
 | **request_denied_get_head_body** | **Integer** | Number of requests where Fastly responded with 400 due to the request being a GET or HEAD request containing a body. | [optional] |
+| **service_ddos_requests_detected** | **Integer** | Number of requests classified as a DDoS attack against a customer origin or service. | [optional] |
+| **service_ddos_requests_mitigated** | **Integer** | Number of requests classified as a DDoS attack against a customer origin or service that were mitigated by the Fastly platform. | [optional] |
+| **service_ddos_requests_allowed** | **Integer** | Number of requests analyzed for DDoS attacks against a customer origin or service, but with no DDoS detected. | [optional] |
 
 [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
 

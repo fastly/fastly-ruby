@@ -26,7 +26,7 @@ Method | HTTP request | Description
 disable_product(opts) # Disable a product
 ```
 
-Disable a product on a service. Supported product IDs: `brotli_compression`,`domain_inspector`,`fanout`,`image_optimizer`,`origin_inspector`, `websockets`, `bot_management`, and `ngwaf`.
+Disable a product on a service. Supported product IDs: `brotli_compression`,`domain_inspector`,`fanout`,`image_optimizer`,`origin_inspector`, `websockets`, `bot_management`, `ngwaf`, `ddos_protection`, and `log_explorer_insights`.
 
 ### Examples
 
@@ -64,7 +64,7 @@ nil (empty response body)
 enable_product(opts): <EnabledProductResponse> # Enable a product
 ```
 
-Enable a product on a service. Supported product IDs: `brotli_compression`,`domain_inspector`,`fanout`,`image_optimizer`,`origin_inspector`, `websockets`, `bot_management`, and `ngwaf`.
+Enable a product on a service. Supported product IDs: `brotli_compression`,`domain_inspector`,`fanout`,`image_optimizer`,`origin_inspector`, `websockets`, `bot_management`, `ngwaf`, `ddos_protection`, and `log_explorer_insights`.
 
 ### Examples
 
@@ -105,7 +105,7 @@ end
 get_enabled_product(opts): <EnabledProductResponse> # Get enabled product
 ```
 
-Get enabled product on a service. Supported product IDs: `brotli_compression`,`domain_inspector`,`fanout`,`image_optimizer`,`origin_inspector`, `websockets`, `bot_management`, and `ngwaf`.
+Get enabled product on a service. Supported product IDs: `brotli_compression`,`domain_inspector`,`fanout`,`image_optimizer`,`origin_inspector`, `websockets`, `bot_management`, `ngwaf`, `ddos_protection`, and `log_explorer_insights`.
 
 ### Examples
 
@@ -144,7 +144,7 @@ end
 get_product_configuration(opts): <ConfiguredProductResponse> # Get configuration for a product
 ```
 
-Get configuration for an enabled product on a service. Supported product IDs: `ngwaf`.
+Get configuration for an enabled product on a service. Supported product IDs: `ngwaf` and `ddos_protection`.
 
 ### Examples
 
@@ -183,7 +183,7 @@ end
 set_product_configuration(opts): <ConfiguredProductResponse> # Update configuration for a product
 ```
 
-Update configuration for an enabled product on a service. Supported product IDs: `ngwaf`.
+Update configuration for an enabled product on a service. Supported product IDs: `ngwaf` and `ddos_protection`.
 
 ### Examples
 
