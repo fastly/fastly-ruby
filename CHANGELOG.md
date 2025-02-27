@@ -1,5 +1,60 @@
 # Changelog
 
+## [v10.0.0](https://github.com/fastly/fastly-ruby/releases/tag/release/v10.0.0) (2025-02-26)
+
+**Breaking Changes:**
+
+- fix(snippet): Renamed `snippet_id` and `snippet_name` properties to `id` and `name` respectively.
+- feat(kv_store, kv_store_item): KV store endpoints have new operation names, and the associated data models also have
+                                 new names.
+- feat(product): Product enablement and configuration endpoints have been renamed into per-product operations.
+- fix(historical): Widened integer stats fields to 64 bits.
+- fix(realtime, domain_inspector): Widened integer stats fields to 64 bits.
+- fix(historical): Corrected field names of `ddos_protection_requests_detect_count`,
+                   `ddos_protection_requests_mitigate_count`, and `ddos_protection_requests_allow_count`.
+- fix(realtime): Corrected field names of `ddos_protection_requests_detect_count`,
+                 `ddos_protection_requests_mitigate_count`, and `ddos_protection_requests_allow_count`.
+- fix(billing_usage_metrics): added parameters `req_start_month` and `req_end_month`.
+- deprecated(billing): Billing v2 API has been deprecated.
+- removed(legacy_waf): Legacy WAF API has been removed.
+
+**Bug fixes:**
+
+- fix(snippet): Marked `content` as nullable to support dynamic snippets.
+- fix(billing_usage_metrics): `product_id` and `usage_type_name` parameters are no longer required.
+
+**Enhancements:**
+
+- feat(products): Added `object_storage` and `ai_accelerator` products.
+- feat(historical): Added new metrics: `object_storage_class_a_operations_count`,
+                    `object_storage_class_b_operations_count`, `aia_requests`, `aia_status_1xx`,
+                    `aia_status_2xx`, `aia_status_3xx`, `aia_status_5xx`, `aia_response_usage_tokens`,
+                    `aia_origin_usage_tokens`, `aia_estimated_time_saved_ms`, `request_collapse_usable_count`,
+                    `request_collapse_unusable_count`, `status_530`, and `compute_cache_operations_count`.
+- feat(realtime): Added new metrics: `object_storage_class_a_operations_count`,
+                  `object_storage_class_b_operations_count`, `aia_requests`, `aia_status_1xx`,
+                  `aia_status_2xx`, `aia_status_3xx`, `aia_status_5xx`, `aia_response_usage_tokens`,
+                  `aia_origin_usage_tokens`, `aia_estimated_time_saved_ms`, `request_collapse_usable_count`,
+                  `request_collapse_unusable_count`, `status_530`, and `compute_cache_operations_count`.
+- feat(object_storage_access_keys): Added Object Storage Access Keys API.
+- feat(domain_inspector_historical, domain_inspector_realtime): Added new metrics: `status_530` and `origin_status_530`.
+- feat(origin_inspector_historical, origin_inspector_realtime): Added new metrics: `status_530`, `waf_status_530`,
+                                                                `compute_status_530`, and `all_status_530`.
+- feat(kv_store_item): Added support for `if-generation-match`.
+- feat(acls_in_compute): Added ACLs in Compute API.
+
+**Documentation:**
+
+- doc(billing_usage_metrics): Documented that `start_month` and `end_month` are required.
+- doc(historical): Correct default start time in description of Historical Stats API.
+- doc(domain_inspector_historical): Removed duplicate description.
+- doc(domain_inspector_realtime): Removed duplicate description.
+- doc(origin_inspector_historical): Removed duplicate description.
+- doc(origin_inspector_realtime): Removed duplicate description.
+- doc(backend): Updated description of Backend API.
+- doc(backend): Clarified default behavior of keepalive_time.
+- doc(waf): Updated EOL notice of legacy-waf.
+
 ## [v8.9.0](https://github.com/fastly/fastly-ruby/releases/tag/release/v8.9.0) (2024-09-13)
 
 **Bug fixes:**

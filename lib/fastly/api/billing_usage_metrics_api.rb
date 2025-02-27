@@ -19,12 +19,8 @@ module Fastly
     end
     # Retrieve service-level usage metrics for a product.
     # Returns product usage, broken down by service.
-    # @option opts [String] :customer_id Alphanumeric string identifying the customer. (required)
-    # @option opts [String] :product_id The product identifier for the metrics returned (e.g., &#x60;cdn_usage&#x60;). This field is not required for CSV requests. (required)
-    # @option opts [String] :usage_type_name The usage type name for the metrics returned (e.g., &#x60;North America Requests&#x60;). This field is not required for CSV requests. (required)
-    # @option opts [String] :time_granularity  (required)
-    # @option opts [String] :start_date 
-    # @option opts [String] :end_date 
+    # @option opts [String] :product_id The product identifier for the metrics returned (e.g., &#x60;cdn_usage&#x60;).
+    # @option opts [String] :usage_type_name The usage type name for the metrics returned (e.g., &#x60;North America Requests&#x60;).
     # @option opts [String] :start_month 
     # @option opts [String] :end_month 
     # @option opts [String] :limit Number of results per page. The maximum is 100. (default to '5')
@@ -37,12 +33,8 @@ module Fastly
 
     # Retrieve service-level usage metrics for a product.
     # Returns product usage, broken down by service.
-    # @option opts [String] :customer_id Alphanumeric string identifying the customer. (required)
-    # @option opts [String] :product_id The product identifier for the metrics returned (e.g., &#x60;cdn_usage&#x60;). This field is not required for CSV requests. (required)
-    # @option opts [String] :usage_type_name The usage type name for the metrics returned (e.g., &#x60;North America Requests&#x60;). This field is not required for CSV requests. (required)
-    # @option opts [String] :time_granularity  (required)
-    # @option opts [String] :start_date 
-    # @option opts [String] :end_date 
+    # @option opts [String] :product_id The product identifier for the metrics returned (e.g., &#x60;cdn_usage&#x60;).
+    # @option opts [String] :usage_type_name The usage type name for the metrics returned (e.g., &#x60;North America Requests&#x60;).
     # @option opts [String] :start_month 
     # @option opts [String] :end_month 
     # @option opts [String] :limit Number of results per page. The maximum is 100. (default to '5')
@@ -53,41 +45,6 @@ module Fastly
         @api_client.config.logger.debug 'Calling API: BillingUsageMetricsApi.get_service_level_usage ...'
       end
       # unbox the parameters from the hash
-      customer_id = opts[:'customer_id']
-      product_id = opts[:'product_id']
-      usage_type_name = opts[:'usage_type_name']
-      time_granularity = opts[:'time_granularity']
-      # verify the required parameter 'customer_id' is set
-      if @api_client.config.client_side_validation && customer_id.nil?
-        fail ArgumentError, "Missing the required parameter 'customer_id' when calling BillingUsageMetricsApi.get_service_level_usage"
-      end
-      # verify the required parameter 'product_id' is set
-      if @api_client.config.client_side_validation && product_id.nil?
-        fail ArgumentError, "Missing the required parameter 'product_id' when calling BillingUsageMetricsApi.get_service_level_usage"
-      end
-      # verify the required parameter 'usage_type_name' is set
-      if @api_client.config.client_side_validation && usage_type_name.nil?
-        fail ArgumentError, "Missing the required parameter 'usage_type_name' when calling BillingUsageMetricsApi.get_service_level_usage"
-      end
-      # verify the required parameter 'time_granularity' is set
-      if @api_client.config.client_side_validation && time_granularity.nil?
-        fail ArgumentError, "Missing the required parameter 'time_granularity' when calling BillingUsageMetricsApi.get_service_level_usage"
-      end
-      pattern = Regexp.new(/^day$|^month$/)
-      if @api_client.config.client_side_validation && time_granularity !~ pattern
-        fail ArgumentError, "invalid value for 'time_granularity' when calling BillingUsageMetricsApi.get_service_level_usage, must conform to the pattern #{pattern}."
-      end
-
-      pattern = Regexp.new(/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/)
-      if @api_client.config.client_side_validation && !opts[:'start_date'].nil? && opts[:'start_date'] !~ pattern
-        fail ArgumentError, "invalid value for 'opts[:\"start_date\"]' when calling BillingUsageMetricsApi.get_service_level_usage, must conform to the pattern #{pattern}."
-      end
-
-      pattern = Regexp.new(/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/)
-      if @api_client.config.client_side_validation && !opts[:'end_date'].nil? && opts[:'end_date'] !~ pattern
-        fail ArgumentError, "invalid value for 'opts[:\"end_date\"]' when calling BillingUsageMetricsApi.get_service_level_usage, must conform to the pattern #{pattern}."
-      end
-
       pattern = Regexp.new(/^[0-9]{4}-[0-9]{2}$/)
       if @api_client.config.client_side_validation && !opts[:'start_month'].nil? && opts[:'start_month'] !~ pattern
         fail ArgumentError, "invalid value for 'opts[:\"start_month\"]' when calling BillingUsageMetricsApi.get_service_level_usage, must conform to the pattern #{pattern}."
@@ -99,15 +56,12 @@ module Fastly
       end
 
       # resource path
-      local_var_path = '/billing/v2/account_customers/{customer_id}/service-usage-metrics'.sub('{' + 'customer_id' + '}', CGI.escape(customer_id.to_s))
+      local_var_path = '/billing/v3/service-usage-metrics'
 
       # query parameters
       query_params = opts[:query_params] || {}
-      query_params[:'product_id'] = product_id
-      query_params[:'usage_type_name'] = usage_type_name
-      query_params[:'time_granularity'] = time_granularity
-      query_params[:'start_date'] = opts[:'start_date'] if !opts[:'start_date'].nil?
-      query_params[:'end_date'] = opts[:'end_date'] if !opts[:'end_date'].nil?
+      query_params[:'product_id'] = opts[:'product_id'] if !opts[:'product_id'].nil?
+      query_params[:'usage_type_name'] = opts[:'usage_type_name'] if !opts[:'usage_type_name'].nil?
       query_params[:'start_month'] = opts[:'start_month'] if !opts[:'start_month'].nil?
       query_params[:'end_month'] = opts[:'end_month'] if !opts[:'end_month'].nil?
       query_params[:'limit'] = opts[:'limit'] if !opts[:'limit'].nil?
@@ -147,34 +101,53 @@ module Fastly
       return data, status_code, headers
     end
 
-    # Retrieve product usage types for a customer.
-    # Returns product usage types reported by the customer's services.
-    # @option opts [String] :customer_id Alphanumeric string identifying the customer. (required)
-    # @return [Serviceusagetypes]
-    def get_service_level_usage_types(opts = {})
-      data, _status_code, _headers = get_service_level_usage_types_with_http_info(opts)
+    # Get monthly usage metrics
+    # Returns monthly usage metrics for customer by product.
+    # @option opts [String] :start_month  (required)
+    # @option opts [String] :end_month  (required)
+    # @return [Usagemetric]
+    def get_usage_metrics(opts = {})
+      data, _status_code, _headers = get_usage_metrics_with_http_info(opts)
       data
     end
 
-    # Retrieve product usage types for a customer.
-    # Returns product usage types reported by the customer&#39;s services.
-    # @option opts [String] :customer_id Alphanumeric string identifying the customer. (required)
-    # @return [Array<(Serviceusagetypes, Integer, Hash)>] Serviceusagetypes data, response status code and response headers
-    def get_service_level_usage_types_with_http_info(opts = {})
+    # Get monthly usage metrics
+    # Returns monthly usage metrics for customer by product.
+    # @option opts [String] :start_month  (required)
+    # @option opts [String] :end_month  (required)
+    # @return [Array<(Usagemetric, Integer, Hash)>] Usagemetric data, response status code and response headers
+    def get_usage_metrics_with_http_info(opts = {})
       if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: BillingUsageMetricsApi.get_service_level_usage_types ...'
+        @api_client.config.logger.debug 'Calling API: BillingUsageMetricsApi.get_usage_metrics ...'
       end
       # unbox the parameters from the hash
-      customer_id = opts[:'customer_id']
-      # verify the required parameter 'customer_id' is set
-      if @api_client.config.client_side_validation && customer_id.nil?
-        fail ArgumentError, "Missing the required parameter 'customer_id' when calling BillingUsageMetricsApi.get_service_level_usage_types"
+      start_month = opts[:'start_month']
+      end_month = opts[:'end_month']
+      # verify the required parameter 'start_month' is set
+      if @api_client.config.client_side_validation && start_month.nil?
+        fail ArgumentError, "Missing the required parameter 'start_month' when calling BillingUsageMetricsApi.get_usage_metrics"
       end
+      pattern = Regexp.new(/^[0-9]{4}-[0-9]{2}$/)
+      if @api_client.config.client_side_validation && start_month !~ pattern
+        fail ArgumentError, "invalid value for 'start_month' when calling BillingUsageMetricsApi.get_usage_metrics, must conform to the pattern #{pattern}."
+      end
+
+      # verify the required parameter 'end_month' is set
+      if @api_client.config.client_side_validation && end_month.nil?
+        fail ArgumentError, "Missing the required parameter 'end_month' when calling BillingUsageMetricsApi.get_usage_metrics"
+      end
+      pattern = Regexp.new(/^[0-9]{4}-[0-9]{2}$/)
+      if @api_client.config.client_side_validation && end_month !~ pattern
+        fail ArgumentError, "invalid value for 'end_month' when calling BillingUsageMetricsApi.get_usage_metrics, must conform to the pattern #{pattern}."
+      end
+
       # resource path
-      local_var_path = '/billing/v2/account_customers/{customer_id}/service-usage-types'.sub('{' + 'customer_id' + '}', CGI.escape(customer_id.to_s))
+      local_var_path = '/billing/v3/usage-metrics'
 
       # query parameters
       query_params = opts[:query_params] || {}
+      query_params[:'start_month'] = start_month
+      query_params[:'end_month'] = end_month
 
       # header parameters
       header_params = opts[:header_params] || {}
@@ -188,13 +161,13 @@ module Fastly
       post_body = opts[:debug_body]
 
       # return_type
-      return_type = opts[:debug_return_type] || 'Serviceusagetypes'
+      return_type = opts[:debug_return_type] || 'Usagemetric'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['token']
 
       new_options = opts.merge(
-        :operation => :"BillingUsageMetricsApi.get_service_level_usage_types",
+        :operation => :"BillingUsageMetricsApi.get_usage_metrics",
         :header_params => header_params,
         :query_params => query_params,
         :form_params => form_params,
@@ -205,7 +178,7 @@ module Fastly
 
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: BillingUsageMetricsApi#get_service_level_usage_types\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+        @api_client.config.logger.debug "API called: BillingUsageMetricsApi#get_usage_metrics\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

@@ -92,6 +92,9 @@ module Fastly
     # Number of responses received with status code 505 (HTTP Version Not Supported) from origin.
     attr_accessor :status_505
 
+    # Number of responses received from origin with status code 530.
+    attr_accessor :status_530
+
     # Number of responses from origin with latency between 0 and 1 millisecond.
     attr_accessor :latency_0_to_1ms
 
@@ -205,6 +208,9 @@ module Fastly
 
     # Number of responses received with status code 505 (HTTP Version Not Supported) received for origin requests made by the Fastly WAF.
     attr_accessor :waf_status_505
+
+    # Number of responses received with status code 530 received for origin requests made by the Fastly WAF.
+    attr_accessor :waf_status_530
 
     # Number of responses with latency between 0 and 1 millisecond received for origin requests made by the Fastly WAF.
     attr_accessor :waf_latency_0_to_1ms
@@ -320,6 +326,9 @@ module Fastly
     # Number of responses received with status code 505 (HTTP Version Not Supported) for origin received by the Compute platform.
     attr_accessor :compute_status_505
 
+    # Number of responses received with status code 530 for origin received by the Compute platform.
+    attr_accessor :compute_status_530
+
     # Number of responses with latency between 0 and 1 millisecond for origin received by the Compute platform.
     attr_accessor :compute_latency_0_to_1ms
 
@@ -434,6 +443,9 @@ module Fastly
     # Number of responses received with status code 505 (HTTP Version Not Supported) received for origin requests made by all sources.
     attr_accessor :all_status_505
 
+    # Number of responses received with status code 530 received for origin requests made by all sources.
+    attr_accessor :all_status_530
+
     # Number of responses with latency between 0 and 1 millisecond received for origin requests made by all sources.
     attr_accessor :all_latency_0_to_1ms
 
@@ -499,6 +511,7 @@ module Fastly
         :'status_503' => :'status_503',
         :'status_504' => :'status_504',
         :'status_505' => :'status_505',
+        :'status_530' => :'status_530',
         :'latency_0_to_1ms' => :'latency_0_to_1ms',
         :'latency_1_to_5ms' => :'latency_1_to_5ms',
         :'latency_5_to_10ms' => :'latency_5_to_10ms',
@@ -537,6 +550,7 @@ module Fastly
         :'waf_status_503' => :'waf_status_503',
         :'waf_status_504' => :'waf_status_504',
         :'waf_status_505' => :'waf_status_505',
+        :'waf_status_530' => :'waf_status_530',
         :'waf_latency_0_to_1ms' => :'waf_latency_0_to_1ms',
         :'waf_latency_1_to_5ms' => :'waf_latency_1_to_5ms',
         :'waf_latency_5_to_10ms' => :'waf_latency_5_to_10ms',
@@ -575,6 +589,7 @@ module Fastly
         :'compute_status_503' => :'compute_status_503',
         :'compute_status_504' => :'compute_status_504',
         :'compute_status_505' => :'compute_status_505',
+        :'compute_status_530' => :'compute_status_530',
         :'compute_latency_0_to_1ms' => :'compute_latency_0_to_1ms',
         :'compute_latency_1_to_5ms' => :'compute_latency_1_to_5ms',
         :'compute_latency_5_to_10ms' => :'compute_latency_5_to_10ms',
@@ -613,6 +628,7 @@ module Fastly
         :'all_status_503' => :'all_status_503',
         :'all_status_504' => :'all_status_504',
         :'all_status_505' => :'all_status_505',
+        :'all_status_530' => :'all_status_530',
         :'all_latency_0_to_1ms' => :'all_latency_0_to_1ms',
         :'all_latency_1_to_5ms' => :'all_latency_1_to_5ms',
         :'all_latency_5_to_10ms' => :'all_latency_5_to_10ms',
@@ -662,6 +678,7 @@ module Fastly
         :'status_503' => :'Integer',
         :'status_504' => :'Integer',
         :'status_505' => :'Integer',
+        :'status_530' => :'Integer',
         :'latency_0_to_1ms' => :'Integer',
         :'latency_1_to_5ms' => :'Integer',
         :'latency_5_to_10ms' => :'Integer',
@@ -700,6 +717,7 @@ module Fastly
         :'waf_status_503' => :'Integer',
         :'waf_status_504' => :'Integer',
         :'waf_status_505' => :'Integer',
+        :'waf_status_530' => :'Integer',
         :'waf_latency_0_to_1ms' => :'Integer',
         :'waf_latency_1_to_5ms' => :'Integer',
         :'waf_latency_5_to_10ms' => :'Integer',
@@ -738,6 +756,7 @@ module Fastly
         :'compute_status_503' => :'Integer',
         :'compute_status_504' => :'Integer',
         :'compute_status_505' => :'Integer',
+        :'compute_status_530' => :'Integer',
         :'compute_latency_0_to_1ms' => :'Integer',
         :'compute_latency_1_to_5ms' => :'Integer',
         :'compute_latency_5_to_10ms' => :'Integer',
@@ -776,6 +795,7 @@ module Fastly
         :'all_status_503' => :'Integer',
         :'all_status_504' => :'Integer',
         :'all_status_505' => :'Integer',
+        :'all_status_530' => :'Integer',
         :'all_latency_0_to_1ms' => :'Integer',
         :'all_latency_1_to_5ms' => :'Integer',
         :'all_latency_5_to_10ms' => :'Integer',
@@ -914,6 +934,10 @@ module Fastly
 
       if attributes.key?(:'status_505')
         self.status_505 = attributes[:'status_505']
+      end
+
+      if attributes.key?(:'status_530')
+        self.status_530 = attributes[:'status_530']
       end
 
       if attributes.key?(:'latency_0_to_1ms')
@@ -1068,6 +1092,10 @@ module Fastly
         self.waf_status_505 = attributes[:'waf_status_505']
       end
 
+      if attributes.key?(:'waf_status_530')
+        self.waf_status_530 = attributes[:'waf_status_530']
+      end
+
       if attributes.key?(:'waf_latency_0_to_1ms')
         self.waf_latency_0_to_1ms = attributes[:'waf_latency_0_to_1ms']
       end
@@ -1218,6 +1246,10 @@ module Fastly
 
       if attributes.key?(:'compute_status_505')
         self.compute_status_505 = attributes[:'compute_status_505']
+      end
+
+      if attributes.key?(:'compute_status_530')
+        self.compute_status_530 = attributes[:'compute_status_530']
       end
 
       if attributes.key?(:'compute_latency_0_to_1ms')
@@ -1372,6 +1404,10 @@ module Fastly
         self.all_status_505 = attributes[:'all_status_505']
       end
 
+      if attributes.key?(:'all_status_530')
+        self.all_status_530 = attributes[:'all_status_530']
+      end
+
       if attributes.key?(:'all_latency_0_to_1ms')
         self.all_latency_0_to_1ms = attributes[:'all_latency_0_to_1ms']
       end
@@ -1465,6 +1501,7 @@ module Fastly
           status_503 == o.status_503 &&
           status_504 == o.status_504 &&
           status_505 == o.status_505 &&
+          status_530 == o.status_530 &&
           latency_0_to_1ms == o.latency_0_to_1ms &&
           latency_1_to_5ms == o.latency_1_to_5ms &&
           latency_5_to_10ms == o.latency_5_to_10ms &&
@@ -1503,6 +1540,7 @@ module Fastly
           waf_status_503 == o.waf_status_503 &&
           waf_status_504 == o.waf_status_504 &&
           waf_status_505 == o.waf_status_505 &&
+          waf_status_530 == o.waf_status_530 &&
           waf_latency_0_to_1ms == o.waf_latency_0_to_1ms &&
           waf_latency_1_to_5ms == o.waf_latency_1_to_5ms &&
           waf_latency_5_to_10ms == o.waf_latency_5_to_10ms &&
@@ -1541,6 +1579,7 @@ module Fastly
           compute_status_503 == o.compute_status_503 &&
           compute_status_504 == o.compute_status_504 &&
           compute_status_505 == o.compute_status_505 &&
+          compute_status_530 == o.compute_status_530 &&
           compute_latency_0_to_1ms == o.compute_latency_0_to_1ms &&
           compute_latency_1_to_5ms == o.compute_latency_1_to_5ms &&
           compute_latency_5_to_10ms == o.compute_latency_5_to_10ms &&
@@ -1579,6 +1618,7 @@ module Fastly
           all_status_503 == o.all_status_503 &&
           all_status_504 == o.all_status_504 &&
           all_status_505 == o.all_status_505 &&
+          all_status_530 == o.all_status_530 &&
           all_latency_0_to_1ms == o.all_latency_0_to_1ms &&
           all_latency_1_to_5ms == o.all_latency_1_to_5ms &&
           all_latency_5_to_10ms == o.all_latency_5_to_10ms &&
@@ -1602,7 +1642,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [responses, resp_header_bytes, resp_body_bytes, status_1xx, status_2xx, status_3xx, status_4xx, status_5xx, status_200, status_204, status_206, status_301, status_302, status_304, status_400, status_401, status_403, status_404, status_416, status_429, status_500, status_501, status_502, status_503, status_504, status_505, latency_0_to_1ms, latency_1_to_5ms, latency_5_to_10ms, latency_10_to_50ms, latency_50_to_100ms, latency_100_to_250ms, latency_250_to_500ms, latency_500_to_1000ms, latency_1000_to_5000ms, latency_5000_to_10000ms, latency_10000_to_60000ms, latency_60000ms, waf_responses, waf_resp_header_bytes, waf_resp_body_bytes, waf_status_1xx, waf_status_2xx, waf_status_3xx, waf_status_4xx, waf_status_5xx, waf_status_200, waf_status_204, waf_status_206, waf_status_301, waf_status_302, waf_status_304, waf_status_400, waf_status_401, waf_status_403, waf_status_404, waf_status_416, waf_status_429, waf_status_500, waf_status_501, waf_status_502, waf_status_503, waf_status_504, waf_status_505, waf_latency_0_to_1ms, waf_latency_1_to_5ms, waf_latency_5_to_10ms, waf_latency_10_to_50ms, waf_latency_50_to_100ms, waf_latency_100_to_250ms, waf_latency_250_to_500ms, waf_latency_500_to_1000ms, waf_latency_1000_to_5000ms, waf_latency_5000_to_10000ms, waf_latency_10000_to_60000ms, waf_latency_60000ms, compute_responses, compute_resp_header_bytes, compute_resp_body_bytes, compute_status_1xx, compute_status_2xx, compute_status_3xx, compute_status_4xx, compute_status_5xx, compute_status_200, compute_status_204, compute_status_206, compute_status_301, compute_status_302, compute_status_304, compute_status_400, compute_status_401, compute_status_403, compute_status_404, compute_status_416, compute_status_429, compute_status_500, compute_status_501, compute_status_502, compute_status_503, compute_status_504, compute_status_505, compute_latency_0_to_1ms, compute_latency_1_to_5ms, compute_latency_5_to_10ms, compute_latency_10_to_50ms, compute_latency_50_to_100ms, compute_latency_100_to_250ms, compute_latency_250_to_500ms, compute_latency_500_to_1000ms, compute_latency_1000_to_5000ms, compute_latency_5000_to_10000ms, compute_latency_10000_to_60000ms, compute_latency_60000ms, all_responses, all_resp_header_bytes, all_resp_body_bytes, all_status_1xx, all_status_2xx, all_status_3xx, all_status_4xx, all_status_5xx, all_status_200, all_status_204, all_status_206, all_status_301, all_status_302, all_status_304, all_status_400, all_status_401, all_status_403, all_status_404, all_status_416, all_status_429, all_status_500, all_status_501, all_status_502, all_status_503, all_status_504, all_status_505, all_latency_0_to_1ms, all_latency_1_to_5ms, all_latency_5_to_10ms, all_latency_10_to_50ms, all_latency_50_to_100ms, all_latency_100_to_250ms, all_latency_250_to_500ms, all_latency_500_to_1000ms, all_latency_1000_to_5000ms, all_latency_5000_to_10000ms, all_latency_10000_to_60000ms, all_latency_60000ms].hash
+      [responses, resp_header_bytes, resp_body_bytes, status_1xx, status_2xx, status_3xx, status_4xx, status_5xx, status_200, status_204, status_206, status_301, status_302, status_304, status_400, status_401, status_403, status_404, status_416, status_429, status_500, status_501, status_502, status_503, status_504, status_505, status_530, latency_0_to_1ms, latency_1_to_5ms, latency_5_to_10ms, latency_10_to_50ms, latency_50_to_100ms, latency_100_to_250ms, latency_250_to_500ms, latency_500_to_1000ms, latency_1000_to_5000ms, latency_5000_to_10000ms, latency_10000_to_60000ms, latency_60000ms, waf_responses, waf_resp_header_bytes, waf_resp_body_bytes, waf_status_1xx, waf_status_2xx, waf_status_3xx, waf_status_4xx, waf_status_5xx, waf_status_200, waf_status_204, waf_status_206, waf_status_301, waf_status_302, waf_status_304, waf_status_400, waf_status_401, waf_status_403, waf_status_404, waf_status_416, waf_status_429, waf_status_500, waf_status_501, waf_status_502, waf_status_503, waf_status_504, waf_status_505, waf_status_530, waf_latency_0_to_1ms, waf_latency_1_to_5ms, waf_latency_5_to_10ms, waf_latency_10_to_50ms, waf_latency_50_to_100ms, waf_latency_100_to_250ms, waf_latency_250_to_500ms, waf_latency_500_to_1000ms, waf_latency_1000_to_5000ms, waf_latency_5000_to_10000ms, waf_latency_10000_to_60000ms, waf_latency_60000ms, compute_responses, compute_resp_header_bytes, compute_resp_body_bytes, compute_status_1xx, compute_status_2xx, compute_status_3xx, compute_status_4xx, compute_status_5xx, compute_status_200, compute_status_204, compute_status_206, compute_status_301, compute_status_302, compute_status_304, compute_status_400, compute_status_401, compute_status_403, compute_status_404, compute_status_416, compute_status_429, compute_status_500, compute_status_501, compute_status_502, compute_status_503, compute_status_504, compute_status_505, compute_status_530, compute_latency_0_to_1ms, compute_latency_1_to_5ms, compute_latency_5_to_10ms, compute_latency_10_to_50ms, compute_latency_50_to_100ms, compute_latency_100_to_250ms, compute_latency_250_to_500ms, compute_latency_500_to_1000ms, compute_latency_1000_to_5000ms, compute_latency_5000_to_10000ms, compute_latency_10000_to_60000ms, compute_latency_60000ms, all_responses, all_resp_header_bytes, all_resp_body_bytes, all_status_1xx, all_status_2xx, all_status_3xx, all_status_4xx, all_status_5xx, all_status_200, all_status_204, all_status_206, all_status_301, all_status_302, all_status_304, all_status_400, all_status_401, all_status_403, all_status_404, all_status_416, all_status_429, all_status_500, all_status_501, all_status_502, all_status_503, all_status_504, all_status_505, all_status_530, all_latency_0_to_1ms, all_latency_1_to_5ms, all_latency_5_to_10ms, all_latency_10_to_50ms, all_latency_50_to_100ms, all_latency_100_to_250ms, all_latency_250_to_500ms, all_latency_500_to_1000ms, all_latency_1000_to_5000ms, all_latency_5000_to_10000ms, all_latency_10000_to_60000ms, all_latency_60000ms].hash
     end
 
     # Builds the object from hash

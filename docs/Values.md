@@ -30,6 +30,7 @@
 | **status_503** | **Integer** | Number of responses delivered with status code 503 (Service Unavailable). | [optional] |
 | **status_504** | **Integer** | Number of responses delivered with status code 504 (Gateway Timeout). | [optional] |
 | **status_505** | **Integer** | Number of responses delivered with status code 505 (HTTP Version Not Supported). | [optional] |
+| **status_530** | **Integer** | Number of responses delivered with status code 530. | [optional] |
 | **requests** | **Integer** | Number of requests processed. | [optional] |
 | **resp_header_bytes** | **Integer** | Total header bytes delivered. | [optional] |
 | **resp_body_bytes** | **Integer** | Total body bytes delivered. | [optional] |
@@ -61,6 +62,7 @@
 | **origin_status_503** | **Integer** | Number of responses received from origin with status code 503 (Service Unavailable). | [optional] |
 | **origin_status_504** | **Integer** | Number of responses received from origin with status code 504 (Gateway Timeout). | [optional] |
 | **origin_status_505** | **Integer** | Number of responses received from origin with status code 505 (HTTP Version Not Supported). | [optional] |
+| **origin_status_530** | **Integer** | Number of responses received from origin with status code 530. | [optional] |
 | **origin_status_1xx** | **Integer** | Number of \&quot;Informational\&quot; category status codes received from origin. | [optional] |
 | **origin_status_2xx** | **Integer** | Number of \&quot;Success\&quot; status codes received from origin. | [optional] |
 | **origin_status_3xx** | **Integer** | Number of \&quot;Redirection\&quot; codes received from origin. | [optional] |

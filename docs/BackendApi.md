@@ -40,13 +40,13 @@ opts = {
     between_bytes_timeout: 56, # Integer | Maximum duration in milliseconds that Fastly will wait while receiving no data on a download from a backend. If exceeded, the response received so far will be considered complete and the fetch will end. May be set at runtime using `bereq.between_bytes_timeout`.
     client_cert: 'client_cert_example', # String | Unused.
     comment: 'comment_example', # String | A freeform descriptive note.
-    connect_timeout: 56, # Integer | Maximum duration in milliseconds to wait for a connection to this backend to be established. If exceeded, the connection is aborted and a synthethic `503` response will be presented instead. May be set at runtime using `bereq.connect_timeout`.
-    first_byte_timeout: 56, # Integer | Maximum duration in milliseconds to wait for the server response to begin after a TCP connection is established and the request has been sent. If exceeded, the connection is aborted and a synthethic `503` response will be presented instead. May be set at runtime using `bereq.first_byte_timeout`.
+    connect_timeout: 56, # Integer | Maximum duration in milliseconds to wait for a connection to this backend to be established. If exceeded, the connection is aborted and a synthetic `503` response will be presented instead. May be set at runtime using `bereq.connect_timeout`.
+    first_byte_timeout: 56, # Integer | Maximum duration in milliseconds to wait for the server response to begin after a TCP connection is established and the request has been sent. If exceeded, the connection is aborted and a synthetic `503` response will be presented instead. May be set at runtime using `bereq.first_byte_timeout`.
     healthcheck: 'healthcheck_example', # String | The name of the healthcheck to use with this backend.
     hostname: 'hostname_example', # String | The hostname of the backend. May be used as an alternative to `address` to set the backend location.
     ipv4: 'ipv4_example', # String | IPv4 address of the backend. May be used as an alternative to `address` to set the backend location.
     ipv6: 'ipv6_example', # String | IPv6 address of the backend. May be used as an alternative to `address` to set the backend location.
-    keepalive_time: 56, # Integer | How long in seconds to keep a persistent connection to the backend between requests.
+    keepalive_time: 56, # Integer | How long in seconds to keep a persistent connection to the backend between requests. By default, Varnish keeps connections open as long as it can.
     max_conn: 56, # Integer | Maximum number of concurrent connections this backend will accept.
     max_tls_version: 'max_tls_version_example', # String | Maximum allowed TLS version on SSL connections to this backend. If your backend server is not able to negotiate a connection meeting this constraint, a synthetic `503` error response will be generated.
     min_tls_version: 'min_tls_version_example', # String | Minimum allowed TLS version on SSL connections to this backend. If your backend server is not able to negotiate a connection meeting this constraint, a synthetic `503` error response will be generated.
@@ -92,13 +92,13 @@ end
 | **between_bytes_timeout** | **Integer** | Maximum duration in milliseconds that Fastly will wait while receiving no data on a download from a backend. If exceeded, the response received so far will be considered complete and the fetch will end. May be set at runtime using `bereq.between_bytes_timeout`. | [optional] |
 | **client_cert** | **String** | Unused. | [optional] |
 | **comment** | **String** | A freeform descriptive note. | [optional] |
-| **connect_timeout** | **Integer** | Maximum duration in milliseconds to wait for a connection to this backend to be established. If exceeded, the connection is aborted and a synthethic `503` response will be presented instead. May be set at runtime using `bereq.connect_timeout`. | [optional] |
-| **first_byte_timeout** | **Integer** | Maximum duration in milliseconds to wait for the server response to begin after a TCP connection is established and the request has been sent. If exceeded, the connection is aborted and a synthethic `503` response will be presented instead. May be set at runtime using `bereq.first_byte_timeout`. | [optional] |
+| **connect_timeout** | **Integer** | Maximum duration in milliseconds to wait for a connection to this backend to be established. If exceeded, the connection is aborted and a synthetic `503` response will be presented instead. May be set at runtime using `bereq.connect_timeout`. | [optional] |
+| **first_byte_timeout** | **Integer** | Maximum duration in milliseconds to wait for the server response to begin after a TCP connection is established and the request has been sent. If exceeded, the connection is aborted and a synthetic `503` response will be presented instead. May be set at runtime using `bereq.first_byte_timeout`. | [optional] |
 | **healthcheck** | **String** | The name of the healthcheck to use with this backend. | [optional] |
 | **hostname** | **String** | The hostname of the backend. May be used as an alternative to `address` to set the backend location. | [optional] |
 | **ipv4** | **String** | IPv4 address of the backend. May be used as an alternative to `address` to set the backend location. | [optional] |
 | **ipv6** | **String** | IPv6 address of the backend. May be used as an alternative to `address` to set the backend location. | [optional] |
-| **keepalive_time** | **Integer** | How long in seconds to keep a persistent connection to the backend between requests. | [optional] |
+| **keepalive_time** | **Integer** | How long in seconds to keep a persistent connection to the backend between requests. By default, Varnish keeps connections open as long as it can. | [optional] |
 | **max_conn** | **Integer** | Maximum number of concurrent connections this backend will accept. | [optional] |
 | **max_tls_version** | **String** | Maximum allowed TLS version on SSL connections to this backend. If your backend server is not able to negotiate a connection meeting this constraint, a synthetic `503` error response will be generated. | [optional] |
 | **min_tls_version** | **String** | Minimum allowed TLS version on SSL connections to this backend. If your backend server is not able to negotiate a connection meeting this constraint, a synthetic `503` error response will be generated. | [optional] |
@@ -271,13 +271,13 @@ opts = {
     between_bytes_timeout: 56, # Integer | Maximum duration in milliseconds that Fastly will wait while receiving no data on a download from a backend. If exceeded, the response received so far will be considered complete and the fetch will end. May be set at runtime using `bereq.between_bytes_timeout`.
     client_cert: 'client_cert_example', # String | Unused.
     comment: 'comment_example', # String | A freeform descriptive note.
-    connect_timeout: 56, # Integer | Maximum duration in milliseconds to wait for a connection to this backend to be established. If exceeded, the connection is aborted and a synthethic `503` response will be presented instead. May be set at runtime using `bereq.connect_timeout`.
-    first_byte_timeout: 56, # Integer | Maximum duration in milliseconds to wait for the server response to begin after a TCP connection is established and the request has been sent. If exceeded, the connection is aborted and a synthethic `503` response will be presented instead. May be set at runtime using `bereq.first_byte_timeout`.
+    connect_timeout: 56, # Integer | Maximum duration in milliseconds to wait for a connection to this backend to be established. If exceeded, the connection is aborted and a synthetic `503` response will be presented instead. May be set at runtime using `bereq.connect_timeout`.
+    first_byte_timeout: 56, # Integer | Maximum duration in milliseconds to wait for the server response to begin after a TCP connection is established and the request has been sent. If exceeded, the connection is aborted and a synthetic `503` response will be presented instead. May be set at runtime using `bereq.first_byte_timeout`.
     healthcheck: 'healthcheck_example', # String | The name of the healthcheck to use with this backend.
     hostname: 'hostname_example', # String | The hostname of the backend. May be used as an alternative to `address` to set the backend location.
     ipv4: 'ipv4_example', # String | IPv4 address of the backend. May be used as an alternative to `address` to set the backend location.
     ipv6: 'ipv6_example', # String | IPv6 address of the backend. May be used as an alternative to `address` to set the backend location.
-    keepalive_time: 56, # Integer | How long in seconds to keep a persistent connection to the backend between requests.
+    keepalive_time: 56, # Integer | How long in seconds to keep a persistent connection to the backend between requests. By default, Varnish keeps connections open as long as it can.
     max_conn: 56, # Integer | Maximum number of concurrent connections this backend will accept.
     max_tls_version: 'max_tls_version_example', # String | Maximum allowed TLS version on SSL connections to this backend. If your backend server is not able to negotiate a connection meeting this constraint, a synthetic `503` error response will be generated.
     min_tls_version: 'min_tls_version_example', # String | Minimum allowed TLS version on SSL connections to this backend. If your backend server is not able to negotiate a connection meeting this constraint, a synthetic `503` error response will be generated.
@@ -324,13 +324,13 @@ end
 | **between_bytes_timeout** | **Integer** | Maximum duration in milliseconds that Fastly will wait while receiving no data on a download from a backend. If exceeded, the response received so far will be considered complete and the fetch will end. May be set at runtime using `bereq.between_bytes_timeout`. | [optional] |
 | **client_cert** | **String** | Unused. | [optional] |
 | **comment** | **String** | A freeform descriptive note. | [optional] |
-| **connect_timeout** | **Integer** | Maximum duration in milliseconds to wait for a connection to this backend to be established. If exceeded, the connection is aborted and a synthethic `503` response will be presented instead. May be set at runtime using `bereq.connect_timeout`. | [optional] |
-| **first_byte_timeout** | **Integer** | Maximum duration in milliseconds to wait for the server response to begin after a TCP connection is established and the request has been sent. If exceeded, the connection is aborted and a synthethic `503` response will be presented instead. May be set at runtime using `bereq.first_byte_timeout`. | [optional] |
+| **connect_timeout** | **Integer** | Maximum duration in milliseconds to wait for a connection to this backend to be established. If exceeded, the connection is aborted and a synthetic `503` response will be presented instead. May be set at runtime using `bereq.connect_timeout`. | [optional] |
+| **first_byte_timeout** | **Integer** | Maximum duration in milliseconds to wait for the server response to begin after a TCP connection is established and the request has been sent. If exceeded, the connection is aborted and a synthetic `503` response will be presented instead. May be set at runtime using `bereq.first_byte_timeout`. | [optional] |
 | **healthcheck** | **String** | The name of the healthcheck to use with this backend. | [optional] |
 | **hostname** | **String** | The hostname of the backend. May be used as an alternative to `address` to set the backend location. | [optional] |
 | **ipv4** | **String** | IPv4 address of the backend. May be used as an alternative to `address` to set the backend location. | [optional] |
 | **ipv6** | **String** | IPv6 address of the backend. May be used as an alternative to `address` to set the backend location. | [optional] |
-| **keepalive_time** | **Integer** | How long in seconds to keep a persistent connection to the backend between requests. | [optional] |
+| **keepalive_time** | **Integer** | How long in seconds to keep a persistent connection to the backend between requests. By default, Varnish keeps connections open as long as it can. | [optional] |
 | **max_conn** | **Integer** | Maximum number of concurrent connections this backend will accept. | [optional] |
 | **max_tls_version** | **String** | Maximum allowed TLS version on SSL connections to this backend. If your backend server is not able to negotiate a connection meeting this constraint, a synthetic `503` error response will be generated. | [optional] |
 | **min_tls_version** | **String** | Minimum allowed TLS version on SSL connections to this backend. If your backend server is not able to negotiate a connection meeting this constraint, a synthetic `503` error response will be generated. | [optional] |

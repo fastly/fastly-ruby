@@ -33,8 +33,8 @@ module Fastly
     # Attribute type mapping.
     def self.fastly_types
       {
-        :'data' => :'Array<StoreResponse>',
-        :'meta' => :'InlineResponse2003Meta'
+        :'data' => :'Array<KvStoreDetails>',
+        :'meta' => :'PaginationCursorMeta'
       }
     end
 

@@ -17,44 +17,50 @@ module Fastly
     def initialize(api_client = ApiClient.default)
       @api_client = api_client
     end
-    # Delete kv store item.
-    # Delete an item from an kv store
+    # Delete an item.
+    # Delete an item.
     # @option opts [String] :store_id  (required)
-    # @option opts [String] :key_name  (required)
+    # @option opts [String] :key  (required)
+    # @option opts [Integer] :if_generation_match 
+    # @option opts [Boolean] :force  (default to false)
     # @return [nil]
-    def delete_key_from_store(opts = {})
-      delete_key_from_store_with_http_info(opts)
+    def kv_store_delete_item(opts = {})
+      kv_store_delete_item_with_http_info(opts)
       nil
     end
 
-    # Delete kv store item.
-    # Delete an item from an kv store
+    # Delete an item.
+    # Delete an item.
     # @option opts [String] :store_id  (required)
-    # @option opts [String] :key_name  (required)
+    # @option opts [String] :key  (required)
+    # @option opts [Integer] :if_generation_match 
+    # @option opts [Boolean] :force  (default to false)
     # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
-    def delete_key_from_store_with_http_info(opts = {})
+    def kv_store_delete_item_with_http_info(opts = {})
       if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: KvStoreItemApi.delete_key_from_store ...'
+        @api_client.config.logger.debug 'Calling API: KvStoreItemApi.kv_store_delete_item ...'
       end
       # unbox the parameters from the hash
       store_id = opts[:'store_id']
-      key_name = opts[:'key_name']
+      key = opts[:'key']
       # verify the required parameter 'store_id' is set
       if @api_client.config.client_side_validation && store_id.nil?
-        fail ArgumentError, "Missing the required parameter 'store_id' when calling KvStoreItemApi.delete_key_from_store"
+        fail ArgumentError, "Missing the required parameter 'store_id' when calling KvStoreItemApi.kv_store_delete_item"
       end
-      # verify the required parameter 'key_name' is set
-      if @api_client.config.client_side_validation && key_name.nil?
-        fail ArgumentError, "Missing the required parameter 'key_name' when calling KvStoreItemApi.delete_key_from_store"
+      # verify the required parameter 'key' is set
+      if @api_client.config.client_side_validation && key.nil?
+        fail ArgumentError, "Missing the required parameter 'key' when calling KvStoreItemApi.kv_store_delete_item"
       end
       # resource path
-      local_var_path = '/resources/stores/kv/{store_id}/keys/{key_name}'.sub('{' + 'store_id' + '}', CGI.escape(store_id.to_s)).sub('{' + 'key_name' + '}', CGI.escape(key_name.to_s))
+      local_var_path = '/resources/stores/kv/{store_id}/keys/{key}'.sub('{' + 'store_id' + '}', CGI.escape(store_id.to_s)).sub('{' + 'key' + '}', CGI.escape(key.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
+      query_params[:'force'] = opts[:'force'] if !opts[:'force'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}
+      header_params[:'if-generation-match'] = opts[:'if_generation_match'] if !opts[:'if_generation_match'].nil?
 
       # form parameters
       form_params = opts[:form_params] || {}
@@ -69,7 +75,7 @@ module Fastly
       auth_names = opts[:debug_auth_names] || ['token']
 
       new_options = opts.merge(
-        :operation => :"KvStoreItemApi.delete_key_from_store",
+        :operation => :"KvStoreItemApi.kv_store_delete_item",
         :header_params => header_params,
         :query_params => query_params,
         :form_params => form_params,
@@ -80,39 +86,119 @@ module Fastly
 
       data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
       if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: KvStoreItemApi#delete_key_from_store\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+        @api_client.config.logger.debug "API called: KvStoreItemApi#kv_store_delete_item\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
 
-    # List kv store keys.
-    # List the keys of all items within an kv store.
+    # Get an item.
+    # Get an item, including its value, metadata (if any), and generation marker.
     # @option opts [String] :store_id  (required)
-    # @option opts [String] :cursor 
-    # @option opts [Integer] :limit  (default to 100)
-    # @option opts [String] :prefix 
-    # @return [InlineResponse2004]
-    def get_keys(opts = {})
-      data, _status_code, _headers = get_keys_with_http_info(opts)
+    # @option opts [String] :key  (required)
+    # @return [File]
+    def kv_store_get_item(opts = {})
+      data, _status_code, _headers = kv_store_get_item_with_http_info(opts)
       data
     end
 
-    # List kv store keys.
-    # List the keys of all items within an kv store.
+    # Get an item.
+    # Get an item, including its value, metadata (if any), and generation marker.
+    # @option opts [String] :store_id  (required)
+    # @option opts [String] :key  (required)
+    # @return [Array<(File, Integer, Hash)>] File data, response status code and response headers
+    def kv_store_get_item_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: KvStoreItemApi.kv_store_get_item ...'
+      end
+      # unbox the parameters from the hash
+      store_id = opts[:'store_id']
+      key = opts[:'key']
+      # verify the required parameter 'store_id' is set
+      if @api_client.config.client_side_validation && store_id.nil?
+        fail ArgumentError, "Missing the required parameter 'store_id' when calling KvStoreItemApi.kv_store_get_item"
+      end
+      # verify the required parameter 'key' is set
+      if @api_client.config.client_side_validation && key.nil?
+        fail ArgumentError, "Missing the required parameter 'key' when calling KvStoreItemApi.kv_store_get_item"
+      end
+      # resource path
+      local_var_path = '/resources/stores/kv/{store_id}/keys/{key}'.sub('{' + 'store_id' + '}', CGI.escape(store_id.to_s)).sub('{' + 'key' + '}', CGI.escape(key.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/octet-stream'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'File'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['token']
+
+      new_options = opts.merge(
+        :operation => :"KvStoreItemApi.kv_store_get_item",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: KvStoreItemApi#kv_store_get_item\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # List item keys.
+    # Lists the matching item keys (or all item keys, if no prefix is supplied).
     # @option opts [String] :store_id  (required)
     # @option opts [String] :cursor 
     # @option opts [Integer] :limit  (default to 100)
     # @option opts [String] :prefix 
+    # @option opts [String] :consistency  (default to 'strong')
+    # @return [InlineResponse2004]
+    def kv_store_list_item_keys(opts = {})
+      data, _status_code, _headers = kv_store_list_item_keys_with_http_info(opts)
+      data
+    end
+
+    # List item keys.
+    # Lists the matching item keys (or all item keys, if no prefix is supplied).
+    # @option opts [String] :store_id  (required)
+    # @option opts [String] :cursor 
+    # @option opts [Integer] :limit  (default to 100)
+    # @option opts [String] :prefix 
+    # @option opts [String] :consistency  (default to 'strong')
     # @return [Array<(InlineResponse2004, Integer, Hash)>] InlineResponse2004 data, response status code and response headers
-    def get_keys_with_http_info(opts = {})
+    def kv_store_list_item_keys_with_http_info(opts = {})
       if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: KvStoreItemApi.get_keys ...'
+        @api_client.config.logger.debug 'Calling API: KvStoreItemApi.kv_store_list_item_keys ...'
       end
       # unbox the parameters from the hash
       store_id = opts[:'store_id']
       # verify the required parameter 'store_id' is set
       if @api_client.config.client_side_validation && store_id.nil?
-        fail ArgumentError, "Missing the required parameter 'store_id' when calling KvStoreItemApi.get_keys"
+        fail ArgumentError, "Missing the required parameter 'store_id' when calling KvStoreItemApi.kv_store_list_item_keys"
+      end
+      if @api_client.config.client_side_validation && !opts[:'limit'].nil? && opts[:'limit'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"limit"]" when calling KvStoreItemApi.kv_store_list_item_keys, must be greater than or equal to 1.'
+      end
+
+      allowable_values = ["strong", "eventual"]
+      if @api_client.config.client_side_validation && opts[:'consistency'] && !allowable_values.include?(opts[:'consistency'])
+        fail ArgumentError, "invalid value for \"consistency\", must be one of #{allowable_values}"
       end
       # resource path
       local_var_path = '/resources/stores/kv/{store_id}/keys'.sub('{' + 'store_id' + '}', CGI.escape(store_id.to_s))
@@ -122,6 +208,7 @@ module Fastly
       query_params[:'cursor'] = opts[:'cursor'] if !opts[:'cursor'].nil?
       query_params[:'limit'] = opts[:'limit'] if !opts[:'limit'].nil?
       query_params[:'prefix'] = opts[:'prefix'] if !opts[:'prefix'].nil?
+      query_params[:'consistency'] = opts[:'consistency'] if !opts[:'consistency'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}
@@ -141,7 +228,7 @@ module Fastly
       auth_names = opts[:debug_auth_names] || ['token']
 
       new_options = opts.merge(
-        :operation => :"KvStoreItemApi.get_keys",
+        :operation => :"KvStoreItemApi.kv_store_list_item_keys",
         :header_params => header_params,
         :query_params => query_params,
         :form_params => form_params,
@@ -152,129 +239,59 @@ module Fastly
 
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: KvStoreItemApi#get_keys\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+        @api_client.config.logger.debug "API called: KvStoreItemApi#kv_store_list_item_keys\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
 
-    # Get the value of an kv store item
-    # Get the value associated with a key.
+    # Insert or update an item.
+    # Inserts or updates an item's value and metadata.
     # @option opts [String] :store_id  (required)
-    # @option opts [String] :key_name  (required)
-    # @return [String]
-    def get_value_for_key(opts = {})
-      data, _status_code, _headers = get_value_for_key_with_http_info(opts)
-      data
-    end
-
-    # Get the value of an kv store item
-    # Get the value associated with a key.
-    # @option opts [String] :store_id  (required)
-    # @option opts [String] :key_name  (required)
-    # @return [Array<(String, Integer, Hash)>] String data, response status code and response headers
-    def get_value_for_key_with_http_info(opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: KvStoreItemApi.get_value_for_key ...'
-      end
-      # unbox the parameters from the hash
-      store_id = opts[:'store_id']
-      key_name = opts[:'key_name']
-      # verify the required parameter 'store_id' is set
-      if @api_client.config.client_side_validation && store_id.nil?
-        fail ArgumentError, "Missing the required parameter 'store_id' when calling KvStoreItemApi.get_value_for_key"
-      end
-      # verify the required parameter 'key_name' is set
-      if @api_client.config.client_side_validation && key_name.nil?
-        fail ArgumentError, "Missing the required parameter 'key_name' when calling KvStoreItemApi.get_value_for_key"
-      end
-      # resource path
-      local_var_path = '/resources/stores/kv/{store_id}/keys/{key_name}'.sub('{' + 'store_id' + '}', CGI.escape(store_id.to_s)).sub('{' + 'key_name' + '}', CGI.escape(key_name.to_s))
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/octet-stream'])
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body]
-
-      # return_type
-      return_type = opts[:debug_return_type] || 'String'
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['token']
-
-      new_options = opts.merge(
-        :operation => :"KvStoreItemApi.get_value_for_key",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: KvStoreItemApi#get_value_for_key\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Insert an item into an kv store
-    # Set a new value for a new or existing key in an kv store.
-    # @option opts [String] :store_id  (required)
-    # @option opts [String] :key_name  (required)
+    # @option opts [String] :key  (required)
     # @option opts [Integer] :if_generation_match 
     # @option opts [Integer] :time_to_live_sec 
     # @option opts [String] :metadata 
-    # @option opts [Boolean] :add 
-    # @option opts [Boolean] :append 
-    # @option opts [Boolean] :prepend 
-    # @option opts [Boolean] :background_fetch 
-    # @option opts [String] :body 
-    # @return [String]
-    def set_value_for_key(opts = {})
-      data, _status_code, _headers = set_value_for_key_with_http_info(opts)
-      data
+    # @option opts [Boolean] :add  (default to false)
+    # @option opts [Boolean] :append  (default to false)
+    # @option opts [Boolean] :prepend  (default to false)
+    # @option opts [Boolean] :background_fetch  (default to false)
+    # @option opts [File] :body 
+    # @return [nil]
+    def kv_store_upsert_item(opts = {})
+      kv_store_upsert_item_with_http_info(opts)
+      nil
     end
 
-    # Insert an item into an kv store
-    # Set a new value for a new or existing key in an kv store.
+    # Insert or update an item.
+    # Inserts or updates an item&#39;s value and metadata.
     # @option opts [String] :store_id  (required)
-    # @option opts [String] :key_name  (required)
+    # @option opts [String] :key  (required)
     # @option opts [Integer] :if_generation_match 
     # @option opts [Integer] :time_to_live_sec 
     # @option opts [String] :metadata 
-    # @option opts [Boolean] :add 
-    # @option opts [Boolean] :append 
-    # @option opts [Boolean] :prepend 
-    # @option opts [Boolean] :background_fetch 
-    # @option opts [String] :body 
-    # @return [Array<(String, Integer, Hash)>] String data, response status code and response headers
-    def set_value_for_key_with_http_info(opts = {})
+    # @option opts [Boolean] :add  (default to false)
+    # @option opts [Boolean] :append  (default to false)
+    # @option opts [Boolean] :prepend  (default to false)
+    # @option opts [Boolean] :background_fetch  (default to false)
+    # @option opts [File] :body 
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    def kv_store_upsert_item_with_http_info(opts = {})
       if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: KvStoreItemApi.set_value_for_key ...'
+        @api_client.config.logger.debug 'Calling API: KvStoreItemApi.kv_store_upsert_item ...'
       end
       # unbox the parameters from the hash
       store_id = opts[:'store_id']
-      key_name = opts[:'key_name']
+      key = opts[:'key']
       # verify the required parameter 'store_id' is set
       if @api_client.config.client_side_validation && store_id.nil?
-        fail ArgumentError, "Missing the required parameter 'store_id' when calling KvStoreItemApi.set_value_for_key"
+        fail ArgumentError, "Missing the required parameter 'store_id' when calling KvStoreItemApi.kv_store_upsert_item"
       end
-      # verify the required parameter 'key_name' is set
-      if @api_client.config.client_side_validation && key_name.nil?
-        fail ArgumentError, "Missing the required parameter 'key_name' when calling KvStoreItemApi.set_value_for_key"
+      # verify the required parameter 'key' is set
+      if @api_client.config.client_side_validation && key.nil?
+        fail ArgumentError, "Missing the required parameter 'key' when calling KvStoreItemApi.kv_store_upsert_item"
       end
       # resource path
-      local_var_path = '/resources/stores/kv/{store_id}/keys/{key_name}'.sub('{' + 'store_id' + '}', CGI.escape(store_id.to_s)).sub('{' + 'key_name' + '}', CGI.escape(key_name.to_s))
+      local_var_path = '/resources/stores/kv/{store_id}/keys/{key}'.sub('{' + 'store_id' + '}', CGI.escape(store_id.to_s)).sub('{' + 'key' + '}', CGI.escape(key.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -285,8 +302,6 @@ module Fastly
 
       # header parameters
       header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/octet-stream'])
       # HTTP header 'Content-Type'
       content_type = @api_client.select_header_content_type(['application/octet-stream'])
       if !content_type.nil?
@@ -303,13 +318,13 @@ module Fastly
       post_body = opts[:debug_body] || @api_client.object_to_http_body(opts[:'body'])
 
       # return_type
-      return_type = opts[:debug_return_type] || 'String'
+      return_type = opts[:debug_return_type]
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['token']
 
       new_options = opts.merge(
-        :operation => :"KvStoreItemApi.set_value_for_key",
+        :operation => :"KvStoreItemApi.kv_store_upsert_item",
         :header_params => header_params,
         :query_params => query_params,
         :form_params => form_params,
@@ -320,7 +335,7 @@ module Fastly
 
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
       if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: KvStoreItemApi#set_value_for_key\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+        @api_client.config.logger.debug "API called: KvStoreItemApi#kv_store_upsert_item\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

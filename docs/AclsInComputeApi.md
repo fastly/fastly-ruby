@@ -139,7 +139,7 @@ end
 ## `compute_acl_list_acls()`
 
 ```ruby
-compute_acl_list_acls: <Array<ComputeAclCreateAclsResponse>> # List ACLs
+compute_acl_list_acls: <ComputeAclList> # List ACLs
 ```
 
 List all ACLs.
@@ -164,7 +164,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**Array&lt;ComputeAclCreateAclsResponse&gt;**](ComputeAclCreateAclsResponse.md)
+[**ComputeAclList**](ComputeAclList.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)
@@ -258,7 +258,7 @@ Update an ACL.
 api_instance = Fastly::AclsInComputeApi.new
 opts = {
     acl_id: 'acl_id_example', # String | 
-    compute_acl_update_entry: [Fastly::ComputeAclUpdateEntry.new], # Array<ComputeAclUpdateEntry> | 
+    compute_acl_update: Fastly::ComputeAclUpdate.new, # ComputeAclUpdate | 
 }
 
 begin
@@ -274,7 +274,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **acl_id** | **String** |  |  |
-| **compute_acl_update_entry** | [**Array&lt;ComputeAclUpdateEntry&gt;**](ComputeAclUpdateEntry.md) |  | [optional] |
+| **compute_acl_update** | [**ComputeAclUpdate**](ComputeAclUpdate.md) |  | [optional] |
 
 ### Return type
 

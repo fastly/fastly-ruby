@@ -108,6 +108,7 @@ module Fastly
     # List of attributes with nullable: true
     def self.fastly_nullable
       Set.new([
+        :'content',
         :'created_at',
         :'deleted_at',
         :'updated_at',

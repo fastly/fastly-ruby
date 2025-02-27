@@ -12,13 +12,10 @@ require 'date'
 require 'time'
 
 module Fastly
-  # An example of an ACL Lookup response.
+  # Defines the structure of an ACL Lookup response.
   class ComputeAclLookup
-    # A valid IPv4 or IPv6 address.
+    # A valid IPv4 or IPv6 address and prefix in CIDR notation.
     attr_accessor :prefix
-
-    # The length of address in the IP addressing space.
-    attr_accessor :length
 
     # One of \"ALLOW\" or \"BLOCK\".
     attr_accessor :action
@@ -27,7 +24,6 @@ module Fastly
     def self.attribute_map
       {
         :'prefix' => :'prefix',
-        :'length' => :'length',
         :'action' => :'action'
       }
     end
@@ -41,7 +37,6 @@ module Fastly
     def self.fastly_types
       {
         :'prefix' => :'String',
-        :'length' => :'Integer',
         :'action' => :'String'
       }
     end
@@ -71,10 +66,6 @@ module Fastly
         self.prefix = attributes[:'prefix']
       end
 
-      if attributes.key?(:'length')
-        self.length = attributes[:'length']
-      end
-
       if attributes.key?(:'action')
         self.action = attributes[:'action']
       end
@@ -99,7 +90,6 @@ module Fastly
       return true if self.equal?(o)
       self.class == o.class &&
           prefix == o.prefix &&
-          length == o.length &&
           action == o.action
     end
 
@@ -112,7 +102,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [prefix, length, action].hash
+      [prefix, action].hash
     end
 
     # Builds the object from hash
