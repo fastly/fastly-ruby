@@ -144,6 +144,8 @@ module Fastly
     # List certificates
     # List all certificates.
     # @option opts [String] :filter_tls_domain_id Filter certificates by their matching, fully-qualified domain name.
+    # @option opts [String] :filter_not_before Filter the returned certificates by not_before date in UTC.  Accepts parameters: lt, lte, gt, gte (e.g., filter[not_before][gte]&#x3D;2020-05-05). 
+    # @option opts [String] :filter_not_after Filter the returned certificates by expiry date in UTC.  Accepts parameters: lt, lte, gt, gte (e.g., filter[not_after][lte]&#x3D;2020-05-05). 
     # @option opts [Integer] :page_number Current page.
     # @option opts [Integer] :page_size Number of records per page. (default to 20)
     # @option opts [String] :sort The order in which to list the results by creation date. (default to 'created_at')
@@ -156,6 +158,8 @@ module Fastly
     # List certificates
     # List all certificates.
     # @option opts [String] :filter_tls_domain_id Filter certificates by their matching, fully-qualified domain name.
+    # @option opts [String] :filter_not_before Filter the returned certificates by not_before date in UTC.  Accepts parameters: lt, lte, gt, gte (e.g., filter[not_before][gte]&#x3D;2020-05-05). 
+    # @option opts [String] :filter_not_after Filter the returned certificates by expiry date in UTC.  Accepts parameters: lt, lte, gt, gte (e.g., filter[not_after][lte]&#x3D;2020-05-05). 
     # @option opts [Integer] :page_number Current page.
     # @option opts [Integer] :page_size Number of records per page. (default to 20)
     # @option opts [String] :sort The order in which to list the results by creation date. (default to 'created_at')
@@ -183,6 +187,8 @@ module Fastly
       # query parameters
       query_params = opts[:query_params] || {}
       query_params[:'filter[tls_domain.id]'] = opts[:'filter_tls_domain_id'] if !opts[:'filter_tls_domain_id'].nil?
+      query_params[:'filter[not_before]'] = opts[:'filter_not_before'] if !opts[:'filter_not_before'].nil?
+      query_params[:'filter[not_after]'] = opts[:'filter_not_after'] if !opts[:'filter_not_after'].nil?
       query_params[:'page[number]'] = opts[:'page_number'] if !opts[:'page_number'].nil?
       query_params[:'page[size]'] = opts[:'page_size'] if !opts[:'page_size'].nil?
       query_params[:'sort'] = opts[:'sort'] if !opts[:'sort'].nil?

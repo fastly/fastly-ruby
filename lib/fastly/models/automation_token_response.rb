@@ -24,17 +24,8 @@ module Fastly
     # A space-delimited list of authorization scope.
     attr_accessor :scope
 
-    # (optional) A UTC time-stamp of when the token will expire.
+    # (optional) A UTC timestamp of when the token will expire.
     attr_accessor :expires_at
-
-    # A UTC time-stamp of when the token was created.
-    attr_accessor :created_at
-
-    # Date and time in ISO 8601 format.
-    attr_accessor :deleted_at
-
-    # Date and time in ISO 8601 format.
-    attr_accessor :updated_at
 
     attr_accessor :id
 
@@ -46,10 +37,14 @@ module Fastly
     # The User-Agent header of the client that last used the token.
     attr_accessor :user_agent
 
-    attr_accessor :sudo_expires_at
+    # Indicates whether TLS access is enabled for the token.
+    attr_accessor :tls_access
 
-    # A UTC time-stamp of when the token was last used.
+    # A UTC timestamp of when the token was last used.
     attr_accessor :last_used_at
+
+    # A UTC timestamp of when the token was created.
+    attr_accessor :created_at
 
     class EnumAttributeValidator
       attr_reader :datatype
@@ -81,15 +76,13 @@ module Fastly
         :'services' => :'services',
         :'scope' => :'scope',
         :'expires_at' => :'expires_at',
-        :'created_at' => :'created_at',
-        :'deleted_at' => :'deleted_at',
-        :'updated_at' => :'updated_at',
         :'id' => :'id',
         :'customer_id' => :'customer_id',
         :'ip' => :'ip',
         :'user_agent' => :'user_agent',
-        :'sudo_expires_at' => :'sudo_expires_at',
-        :'last_used_at' => :'last_used_at'
+        :'tls_access' => :'tls_access',
+        :'last_used_at' => :'last_used_at',
+        :'created_at' => :'created_at'
       }
     end
 
@@ -106,23 +99,19 @@ module Fastly
         :'services' => :'Array<String>',
         :'scope' => :'String',
         :'expires_at' => :'String',
-        :'created_at' => :'String',
-        :'deleted_at' => :'Time',
-        :'updated_at' => :'Time',
         :'id' => :'ReadOnlyId',
         :'customer_id' => :'ReadOnlyCustomerId',
         :'ip' => :'String',
         :'user_agent' => :'String',
-        :'sudo_expires_at' => :'String',
-        :'last_used_at' => :'Time'
+        :'tls_access' => :'Boolean',
+        :'last_used_at' => :'Time',
+        :'created_at' => :'String'
       }
     end
 
     # List of attributes with nullable: true
     def self.fastly_nullable
       Set.new([
-        :'deleted_at',
-        :'updated_at',
       ])
     end
 
@@ -130,8 +119,7 @@ module Fastly
     def self.fastly_all_of
       [
       :'AutomationToken',
-      :'AutomationTokenResponseAllOf',
-      :'Timestamps'
+      :'AutomationTokenResponseAllOf'
       ]
     end
 
@@ -174,18 +162,6 @@ module Fastly
         self.expires_at = attributes[:'expires_at']
       end
 
-      if attributes.key?(:'created_at')
-        self.created_at = attributes[:'created_at']
-      end
-
-      if attributes.key?(:'deleted_at')
-        self.deleted_at = attributes[:'deleted_at']
-      end
-
-      if attributes.key?(:'updated_at')
-        self.updated_at = attributes[:'updated_at']
-      end
-
       if attributes.key?(:'id')
         self.id = attributes[:'id']
       end
@@ -202,12 +178,16 @@ module Fastly
         self.user_agent = attributes[:'user_agent']
       end
 
-      if attributes.key?(:'sudo_expires_at')
-        self.sudo_expires_at = attributes[:'sudo_expires_at']
+      if attributes.key?(:'tls_access')
+        self.tls_access = attributes[:'tls_access']
       end
 
       if attributes.key?(:'last_used_at')
         self.last_used_at = attributes[:'last_used_at']
+      end
+
+      if attributes.key?(:'created_at')
+        self.created_at = attributes[:'created_at']
       end
     end
 
@@ -246,15 +226,13 @@ module Fastly
           services == o.services &&
           scope == o.scope &&
           expires_at == o.expires_at &&
-          created_at == o.created_at &&
-          deleted_at == o.deleted_at &&
-          updated_at == o.updated_at &&
           id == o.id &&
           customer_id == o.customer_id &&
           ip == o.ip &&
           user_agent == o.user_agent &&
-          sudo_expires_at == o.sudo_expires_at &&
-          last_used_at == o.last_used_at
+          tls_access == o.tls_access &&
+          last_used_at == o.last_used_at &&
+          created_at == o.created_at
     end
 
     # @see the `==` method
@@ -266,7 +244,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, role, services, scope, expires_at, created_at, deleted_at, updated_at, id, customer_id, ip, user_agent, sudo_expires_at, last_used_at].hash
+      [name, role, services, scope, expires_at, id, customer_id, ip, user_agent, tls_access, last_used_at, created_at].hash
     end
 
     # Builds the object from hash

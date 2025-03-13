@@ -34,7 +34,7 @@ module Fastly
     def self.fastly_types
       {
         :'data' => :'Array<String>',
-        :'meta' => :'InlineResponse2004Meta'
+        :'meta' => :'PaginationCursorMeta'
       }
     end
 

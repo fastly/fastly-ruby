@@ -23,7 +23,7 @@ module Fastly
 
     attr_accessor :scope
 
-    # A UTC time-stamp of when the token will expire.
+    # A UTC timestamp of when the token will expire.
     attr_accessor :expires_at
 
     # Indicates whether TLS access is enabled for the token.

@@ -92,6 +92,9 @@ module Fastly
     # Number of responses delivered with status code 505 (HTTP Version Not Supported).
     attr_accessor :status_505
 
+    # Number of responses delivered with status code 530.
+    attr_accessor :status_530
+
     # Number of requests processed.
     attr_accessor :requests
 
@@ -185,6 +188,9 @@ module Fastly
     # Number of responses received from origin with status code 505 (HTTP Version Not Supported).
     attr_accessor :origin_status_505
 
+    # Number of responses received from origin with status code 530.
+    attr_accessor :origin_status_530
+
     # Number of \"Informational\" category status codes received from origin.
     attr_accessor :origin_status_1xx
 
@@ -229,6 +235,7 @@ module Fastly
         :'status_503' => :'status_503',
         :'status_504' => :'status_504',
         :'status_505' => :'status_505',
+        :'status_530' => :'status_530',
         :'requests' => :'requests',
         :'resp_header_bytes' => :'resp_header_bytes',
         :'resp_body_bytes' => :'resp_body_bytes',
@@ -260,6 +267,7 @@ module Fastly
         :'origin_status_503' => :'origin_status_503',
         :'origin_status_504' => :'origin_status_504',
         :'origin_status_505' => :'origin_status_505',
+        :'origin_status_530' => :'origin_status_530',
         :'origin_status_1xx' => :'origin_status_1xx',
         :'origin_status_2xx' => :'origin_status_2xx',
         :'origin_status_3xx' => :'origin_status_3xx',
@@ -302,6 +310,7 @@ module Fastly
         :'status_503' => :'Integer',
         :'status_504' => :'Integer',
         :'status_505' => :'Integer',
+        :'status_530' => :'Integer',
         :'requests' => :'Integer',
         :'resp_header_bytes' => :'Integer',
         :'resp_body_bytes' => :'Integer',
@@ -333,6 +342,7 @@ module Fastly
         :'origin_status_503' => :'Integer',
         :'origin_status_504' => :'Integer',
         :'origin_status_505' => :'Integer',
+        :'origin_status_530' => :'Integer',
         :'origin_status_1xx' => :'Integer',
         :'origin_status_2xx' => :'Integer',
         :'origin_status_3xx' => :'Integer',
@@ -466,6 +476,10 @@ module Fastly
         self.status_505 = attributes[:'status_505']
       end
 
+      if attributes.key?(:'status_530')
+        self.status_530 = attributes[:'status_530']
+      end
+
       if attributes.key?(:'requests')
         self.requests = attributes[:'requests']
       end
@@ -590,6 +604,10 @@ module Fastly
         self.origin_status_505 = attributes[:'origin_status_505']
       end
 
+      if attributes.key?(:'origin_status_530')
+        self.origin_status_530 = attributes[:'origin_status_530']
+      end
+
       if attributes.key?(:'origin_status_1xx')
         self.origin_status_1xx = attributes[:'origin_status_1xx']
       end
@@ -655,6 +673,7 @@ module Fastly
           status_503 == o.status_503 &&
           status_504 == o.status_504 &&
           status_505 == o.status_505 &&
+          status_530 == o.status_530 &&
           requests == o.requests &&
           resp_header_bytes == o.resp_header_bytes &&
           resp_body_bytes == o.resp_body_bytes &&
@@ -686,6 +705,7 @@ module Fastly
           origin_status_503 == o.origin_status_503 &&
           origin_status_504 == o.origin_status_504 &&
           origin_status_505 == o.origin_status_505 &&
+          origin_status_530 == o.origin_status_530 &&
           origin_status_1xx == o.origin_status_1xx &&
           origin_status_2xx == o.origin_status_2xx &&
           origin_status_3xx == o.origin_status_3xx &&
@@ -702,7 +722,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [edge_requests, edge_resp_header_bytes, edge_resp_body_bytes, status_1xx, status_2xx, status_3xx, status_4xx, status_5xx, status_200, status_204, status_206, status_301, status_302, status_304, status_400, status_401, status_403, status_404, status_416, status_429, status_500, status_501, status_502, status_503, status_504, status_505, requests, resp_header_bytes, resp_body_bytes, bereq_header_bytes, bereq_body_bytes, edge_hit_requests, edge_miss_requests, origin_fetches, origin_fetch_resp_header_bytes, origin_fetch_resp_body_bytes, bandwidth, edge_hit_ratio, origin_offload, origin_status_200, origin_status_204, origin_status_206, origin_status_301, origin_status_302, origin_status_304, origin_status_400, origin_status_401, origin_status_403, origin_status_404, origin_status_416, origin_status_429, origin_status_500, origin_status_501, origin_status_502, origin_status_503, origin_status_504, origin_status_505, origin_status_1xx, origin_status_2xx, origin_status_3xx, origin_status_4xx, origin_status_5xx].hash
+      [edge_requests, edge_resp_header_bytes, edge_resp_body_bytes, status_1xx, status_2xx, status_3xx, status_4xx, status_5xx, status_200, status_204, status_206, status_301, status_302, status_304, status_400, status_401, status_403, status_404, status_416, status_429, status_500, status_501, status_502, status_503, status_504, status_505, status_530, requests, resp_header_bytes, resp_body_bytes, bereq_header_bytes, bereq_body_bytes, edge_hit_requests, edge_miss_requests, origin_fetches, origin_fetch_resp_header_bytes, origin_fetch_resp_body_bytes, bandwidth, edge_hit_ratio, origin_offload, origin_status_200, origin_status_204, origin_status_206, origin_status_301, origin_status_302, origin_status_304, origin_status_400, origin_status_401, origin_status_403, origin_status_404, origin_status_416, origin_status_429, origin_status_500, origin_status_501, origin_status_502, origin_status_503, origin_status_504, origin_status_505, origin_status_530, origin_status_1xx, origin_status_2xx, origin_status_3xx, origin_status_4xx, origin_status_5xx].hash
     end
 
     # Builds the object from hash

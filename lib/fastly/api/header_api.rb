@@ -31,8 +31,8 @@ module Fastly
     # @option opts [String] :src Variable to be used as a source for the header content. Does not apply to &#x60;delete&#x60; action.
     # @option opts [String] :substitution Value to substitute in place of regular expression. Only applies to &#x60;regex&#x60; and &#x60;regex_repeat&#x60; actions.
     # @option opts [String] :type Accepts a string value.
-    # @option opts [Integer] :ignore_if_set Don&#39;t add the header if it is added already. Only applies to &#39;set&#39; action.
-    # @option opts [Integer] :priority Priority determines execution order. Lower numbers execute first. (default to 100)
+    # @option opts [String] :ignore_if_set Don&#39;t add the header if it is added already. Only applies to &#39;set&#39; action. Numerical value (\\\&quot;0\\\&quot; &#x3D; false, \\\&quot;1\\\&quot; &#x3D; true)
+    # @option opts [String] :priority Priority determines execution order. Lower numbers execute first. (default to '100')
     # @return [HeaderResponse]
     def create_header_object(opts = {})
       data, _status_code, _headers = create_header_object_with_http_info(opts)
@@ -53,8 +53,8 @@ module Fastly
     # @option opts [String] :src Variable to be used as a source for the header content. Does not apply to &#x60;delete&#x60; action.
     # @option opts [String] :substitution Value to substitute in place of regular expression. Only applies to &#x60;regex&#x60; and &#x60;regex_repeat&#x60; actions.
     # @option opts [String] :type Accepts a string value.
-    # @option opts [Integer] :ignore_if_set Don&#39;t add the header if it is added already. Only applies to &#39;set&#39; action.
-    # @option opts [Integer] :priority Priority determines execution order. Lower numbers execute first. (default to 100)
+    # @option opts [String] :ignore_if_set Don&#39;t add the header if it is added already. Only applies to &#39;set&#39; action. Numerical value (\\\&quot;0\\\&quot; &#x3D; false, \\\&quot;1\\\&quot; &#x3D; true)
+    # @option opts [String] :priority Priority determines execution order. Lower numbers execute first. (default to '100')
     # @return [Array<(HeaderResponse, Integer, Hash)>] HeaderResponse data, response status code and response headers
     def create_header_object_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -375,8 +375,8 @@ module Fastly
     # @option opts [String] :src Variable to be used as a source for the header content. Does not apply to &#x60;delete&#x60; action.
     # @option opts [String] :substitution Value to substitute in place of regular expression. Only applies to &#x60;regex&#x60; and &#x60;regex_repeat&#x60; actions.
     # @option opts [String] :type Accepts a string value.
-    # @option opts [Integer] :ignore_if_set Don&#39;t add the header if it is added already. Only applies to &#39;set&#39; action.
-    # @option opts [Integer] :priority Priority determines execution order. Lower numbers execute first. (default to 100)
+    # @option opts [String] :ignore_if_set Don&#39;t add the header if it is added already. Only applies to &#39;set&#39; action. Numerical value (\\\&quot;0\\\&quot; &#x3D; false, \\\&quot;1\\\&quot; &#x3D; true)
+    # @option opts [String] :priority Priority determines execution order. Lower numbers execute first. (default to '100')
     # @return [HeaderResponse]
     def update_header_object(opts = {})
       data, _status_code, _headers = update_header_object_with_http_info(opts)
@@ -398,8 +398,8 @@ module Fastly
     # @option opts [String] :src Variable to be used as a source for the header content. Does not apply to &#x60;delete&#x60; action.
     # @option opts [String] :substitution Value to substitute in place of regular expression. Only applies to &#x60;regex&#x60; and &#x60;regex_repeat&#x60; actions.
     # @option opts [String] :type Accepts a string value.
-    # @option opts [Integer] :ignore_if_set Don&#39;t add the header if it is added already. Only applies to &#39;set&#39; action.
-    # @option opts [Integer] :priority Priority determines execution order. Lower numbers execute first. (default to 100)
+    # @option opts [String] :ignore_if_set Don&#39;t add the header if it is added already. Only applies to &#39;set&#39; action. Numerical value (\\\&quot;0\\\&quot; &#x3D; false, \\\&quot;1\\\&quot; &#x3D; true)
+    # @option opts [String] :priority Priority determines execution order. Lower numbers execute first. (default to '100')
     # @return [Array<(HeaderResponse, Integer, Hash)>] HeaderResponse data, response status code and response headers
     def update_header_object_with_http_info(opts = {})
       if @api_client.config.debugging

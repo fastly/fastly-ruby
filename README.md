@@ -8,7 +8,7 @@ A Ruby client library for interacting with most facets of the [Fastly API](https
 To install via RubyGems, add the following to your project's `Gemfile`:
 
 ```ruby
-gem 'fastly', '~> 8.9.0'
+gem 'fastly', '~> 11.0.0'
 ```
 
 Then run `bundle install`.
@@ -101,9 +101,6 @@ Class | Method | Description
 [*Fastly::BackendApi*](docs/BackendApi.md) | [**get_backend**](docs/BackendApi.md#get_backend) | Describe a backend
 [*Fastly::BackendApi*](docs/BackendApi.md) | [**list_backends**](docs/BackendApi.md#list_backends) | List backends
 [*Fastly::BackendApi*](docs/BackendApi.md) | [**update_backend**](docs/BackendApi.md#update_backend) | Update a backend
-[*Fastly::BillingApi*](docs/BillingApi.md) | [**get_invoice**](docs/BillingApi.md#get_invoice) | Get an invoice
-[*Fastly::BillingApi*](docs/BillingApi.md) | [**get_invoice_by_id**](docs/BillingApi.md#get_invoice_by_id) | Get an invoice
-[*Fastly::BillingApi*](docs/BillingApi.md) | [**get_invoice_mtd**](docs/BillingApi.md#get_invoice_mtd) | Get month-to-date billing estimate
 [*Fastly::BillingAddressApi*](docs/BillingAddressApi.md) | [**add_billing_addr**](docs/BillingAddressApi.md#add_billing_addr) | Add a billing address to a customer
 [*Fastly::BillingAddressApi*](docs/BillingAddressApi.md) | [**delete_billing_addr**](docs/BillingAddressApi.md#delete_billing_addr) | Delete a billing address
 [*Fastly::BillingAddressApi*](docs/BillingAddressApi.md) | [**get_billing_addr**](docs/BillingAddressApi.md#get_billing_addr) | Get a billing address
@@ -111,8 +108,8 @@ Class | Method | Description
 [*Fastly::BillingInvoicesApi*](docs/BillingInvoicesApi.md) | [**get_invoice_by_invoice_id**](docs/BillingInvoicesApi.md#get_invoice_by_invoice_id) | Get invoice by ID.
 [*Fastly::BillingInvoicesApi*](docs/BillingInvoicesApi.md) | [**get_month_to_date_invoice**](docs/BillingInvoicesApi.md#get_month_to_date_invoice) | Get month-to-date invoice.
 [*Fastly::BillingInvoicesApi*](docs/BillingInvoicesApi.md) | [**list_invoices**](docs/BillingInvoicesApi.md#list_invoices) | List of invoices.
-[*Fastly::BillingUsageMetricsApi*](docs/BillingUsageMetricsApi.md) | [**get_service_level_usage**](docs/BillingUsageMetricsApi.md#get_service_level_usage) | Retrieve service-level usage metrics for a product.
-[*Fastly::BillingUsageMetricsApi*](docs/BillingUsageMetricsApi.md) | [**get_service_level_usage_types**](docs/BillingUsageMetricsApi.md#get_service_level_usage_types) | Retrieve product usage types for a customer.
+[*Fastly::BillingUsageMetricsApi*](docs/BillingUsageMetricsApi.md) | [**get_service_level_usage**](docs/BillingUsageMetricsApi.md#get_service_level_usage) | Retrieve service-level usage metrics for services with non-zero usage units.
+[*Fastly::BillingUsageMetricsApi*](docs/BillingUsageMetricsApi.md) | [**get_usage_metrics**](docs/BillingUsageMetricsApi.md#get_usage_metrics) | Get monthly usage metrics
 [*Fastly::CacheSettingsApi*](docs/CacheSettingsApi.md) | [**create_cache_settings**](docs/CacheSettingsApi.md#create_cache_settings) | Create a cache settings object
 [*Fastly::CacheSettingsApi*](docs/CacheSettingsApi.md) | [**delete_cache_settings**](docs/CacheSettingsApi.md#delete_cache_settings) | Delete a cache settings object
 [*Fastly::CacheSettingsApi*](docs/CacheSettingsApi.md) | [**get_cache_settings**](docs/CacheSettingsApi.md#get_cache_settings) | Get a cache settings object
@@ -183,11 +180,6 @@ Class | Method | Description
 [*Fastly::DomainInspectorRealtimeApi*](docs/DomainInspectorRealtimeApi.md) | [**get_domain_inspector_last_max_entries**](docs/DomainInspectorRealtimeApi.md#get_domain_inspector_last_max_entries) | Get a limited number of real-time domain data entries
 [*Fastly::DomainInspectorRealtimeApi*](docs/DomainInspectorRealtimeApi.md) | [**get_domain_inspector_last_second**](docs/DomainInspectorRealtimeApi.md#get_domain_inspector_last_second) | Get real-time domain data from a specified time
 [*Fastly::DomainOwnershipsApi*](docs/DomainOwnershipsApi.md) | [**list_domain_ownerships**](docs/DomainOwnershipsApi.md#list_domain_ownerships) | List domain-ownerships
-[*Fastly::EnabledProductsApi*](docs/EnabledProductsApi.md) | [**disable_product**](docs/EnabledProductsApi.md#disable_product) | Disable a product
-[*Fastly::EnabledProductsApi*](docs/EnabledProductsApi.md) | [**enable_product**](docs/EnabledProductsApi.md#enable_product) | Enable a product
-[*Fastly::EnabledProductsApi*](docs/EnabledProductsApi.md) | [**get_enabled_product**](docs/EnabledProductsApi.md#get_enabled_product) | Get enabled product
-[*Fastly::EnabledProductsApi*](docs/EnabledProductsApi.md) | [**get_product_configuration**](docs/EnabledProductsApi.md#get_product_configuration) | Get configuration for a product
-[*Fastly::EnabledProductsApi*](docs/EnabledProductsApi.md) | [**set_product_configuration**](docs/EnabledProductsApi.md#set_product_configuration) | Update configuration for a product
 [*Fastly::EventsApi*](docs/EventsApi.md) | [**get_event**](docs/EventsApi.md#get_event) | Get an event
 [*Fastly::EventsApi*](docs/EventsApi.md) | [**list_events**](docs/EventsApi.md#list_events) | List events
 [*Fastly::GzipApi*](docs/GzipApi.md) | [**create_gzip_config**](docs/GzipApi.md#create_gzip_config) | Create a gzip configuration
@@ -250,45 +242,19 @@ Class | Method | Description
 [*Fastly::IamUserGroupsApi*](docs/IamUserGroupsApi.md) | [**update_a_user_group**](docs/IamUserGroupsApi.md#update_a_user_group) | Update a user group
 [*Fastly::ImageOptimizerDefaultSettingsApi*](docs/ImageOptimizerDefaultSettingsApi.md) | [**get_default_settings**](docs/ImageOptimizerDefaultSettingsApi.md#get_default_settings) | Get current Image Optimizer Default Settings
 [*Fastly::ImageOptimizerDefaultSettingsApi*](docs/ImageOptimizerDefaultSettingsApi.md) | [**update_default_settings**](docs/ImageOptimizerDefaultSettingsApi.md#update_default_settings) | Update Image Optimizer Default Settings
+[*Fastly::InsightsApi*](docs/InsightsApi.md) | [**get_log_insights**](docs/InsightsApi.md#get_log_insights) | Retrieve log insights
 [*Fastly::InvitationsApi*](docs/InvitationsApi.md) | [**create_invitation**](docs/InvitationsApi.md#create_invitation) | Create an invitation
 [*Fastly::InvitationsApi*](docs/InvitationsApi.md) | [**delete_invitation**](docs/InvitationsApi.md#delete_invitation) | Delete an invitation
 [*Fastly::InvitationsApi*](docs/InvitationsApi.md) | [**list_invitations**](docs/InvitationsApi.md#list_invitations) | List invitations
-[*Fastly::KvStoreApi*](docs/KvStoreApi.md) | [**create_store**](docs/KvStoreApi.md#create_store) | Create a KV store.
-[*Fastly::KvStoreApi*](docs/KvStoreApi.md) | [**delete_store**](docs/KvStoreApi.md#delete_store) | Delete a KV store.
-[*Fastly::KvStoreApi*](docs/KvStoreApi.md) | [**get_store**](docs/KvStoreApi.md#get_store) | Describe a KV store.
-[*Fastly::KvStoreApi*](docs/KvStoreApi.md) | [**get_stores**](docs/KvStoreApi.md#get_stores) | List KV stores.
-[*Fastly::KvStoreItemApi*](docs/KvStoreItemApi.md) | [**delete_key_from_store**](docs/KvStoreItemApi.md#delete_key_from_store) | Delete kv store item.
-[*Fastly::KvStoreItemApi*](docs/KvStoreItemApi.md) | [**get_keys**](docs/KvStoreItemApi.md#get_keys) | List kv store keys.
-[*Fastly::KvStoreItemApi*](docs/KvStoreItemApi.md) | [**get_value_for_key**](docs/KvStoreItemApi.md#get_value_for_key) | Get the value of an kv store item
-[*Fastly::KvStoreItemApi*](docs/KvStoreItemApi.md) | [**set_value_for_key**](docs/KvStoreItemApi.md#set_value_for_key) | Insert an item into an kv store
-[*Fastly::LegacyWafConfigurationSetsApi*](docs/LegacyWafConfigurationSetsApi.md) | [**list_waf_config_sets**](docs/LegacyWafConfigurationSetsApi.md#list_waf_config_sets) | List configuration sets
-[*Fastly::LegacyWafConfigurationSetsApi*](docs/LegacyWafConfigurationSetsApi.md) | [**list_wafs_config_set**](docs/LegacyWafConfigurationSetsApi.md#list_wafs_config_set) | List WAFs currently using a configuration set
-[*Fastly::LegacyWafConfigurationSetsApi*](docs/LegacyWafConfigurationSetsApi.md) | [**use_waf_config_set**](docs/LegacyWafConfigurationSetsApi.md#use_waf_config_set) | Apply a configuration set to a WAF
-[*Fastly::LegacyWafFirewallApi*](docs/LegacyWafFirewallApi.md) | [**create_legacy_waf_firewall_service**](docs/LegacyWafFirewallApi.md#create_legacy_waf_firewall_service) | Create a firewall
-[*Fastly::LegacyWafFirewallApi*](docs/LegacyWafFirewallApi.md) | [**disable_legacy_waf_firewall**](docs/LegacyWafFirewallApi.md#disable_legacy_waf_firewall) | Disable a firewall
-[*Fastly::LegacyWafFirewallApi*](docs/LegacyWafFirewallApi.md) | [**enable_legacy_waf_firewall**](docs/LegacyWafFirewallApi.md#enable_legacy_waf_firewall) | Enable a firewall
-[*Fastly::LegacyWafFirewallApi*](docs/LegacyWafFirewallApi.md) | [**get_legacy_waf_firewall**](docs/LegacyWafFirewallApi.md#get_legacy_waf_firewall) | Get a firewall object
-[*Fastly::LegacyWafFirewallApi*](docs/LegacyWafFirewallApi.md) | [**get_legacy_waf_firewall_service**](docs/LegacyWafFirewallApi.md#get_legacy_waf_firewall_service) | Get a firewall
-[*Fastly::LegacyWafFirewallApi*](docs/LegacyWafFirewallApi.md) | [**list_legacy_waf_firewalls**](docs/LegacyWafFirewallApi.md#list_legacy_waf_firewalls) | List active firewalls
-[*Fastly::LegacyWafFirewallApi*](docs/LegacyWafFirewallApi.md) | [**list_legacy_waf_firewalls_service**](docs/LegacyWafFirewallApi.md#list_legacy_waf_firewalls_service) | List firewalls
-[*Fastly::LegacyWafFirewallApi*](docs/LegacyWafFirewallApi.md) | [**update_legacy_waf_firewall_service**](docs/LegacyWafFirewallApi.md#update_legacy_waf_firewall_service) | Update a firewall
-[*Fastly::LegacyWafOwaspApi*](docs/LegacyWafOwaspApi.md) | [**create_owasp_settings**](docs/LegacyWafOwaspApi.md#create_owasp_settings) | Create an OWASP settings object
-[*Fastly::LegacyWafOwaspApi*](docs/LegacyWafOwaspApi.md) | [**get_owasp_settings**](docs/LegacyWafOwaspApi.md#get_owasp_settings) | Get the OWASP settings object
-[*Fastly::LegacyWafOwaspApi*](docs/LegacyWafOwaspApi.md) | [**update_owasp_settings**](docs/LegacyWafOwaspApi.md#update_owasp_settings) | Update the OWASP settings object
-[*Fastly::LegacyWafRuleApi*](docs/LegacyWafRuleApi.md) | [**get_legacy_waf_firewall_rule_vcl**](docs/LegacyWafRuleApi.md#get_legacy_waf_firewall_rule_vcl) | Get VCL for a rule associated with a firewall
-[*Fastly::LegacyWafRuleApi*](docs/LegacyWafRuleApi.md) | [**get_legacy_waf_rule**](docs/LegacyWafRuleApi.md#get_legacy_waf_rule) | Get a rule
-[*Fastly::LegacyWafRuleApi*](docs/LegacyWafRuleApi.md) | [**get_legacy_waf_rule_vcl**](docs/LegacyWafRuleApi.md#get_legacy_waf_rule_vcl) | Get VCL for a rule
-[*Fastly::LegacyWafRuleApi*](docs/LegacyWafRuleApi.md) | [**list_legacy_waf_rules**](docs/LegacyWafRuleApi.md#list_legacy_waf_rules) | List rules in the latest configuration set
-[*Fastly::LegacyWafRuleStatusApi*](docs/LegacyWafRuleStatusApi.md) | [**get_waf_firewall_rule_status**](docs/LegacyWafRuleStatusApi.md#get_waf_firewall_rule_status) | Get the status of a rule on a firewall
-[*Fastly::LegacyWafRuleStatusApi*](docs/LegacyWafRuleStatusApi.md) | [**list_waf_firewall_rule_statuses**](docs/LegacyWafRuleStatusApi.md#list_waf_firewall_rule_statuses) | List rule statuses
-[*Fastly::LegacyWafRuleStatusApi*](docs/LegacyWafRuleStatusApi.md) | [**update_waf_firewall_rule_status**](docs/LegacyWafRuleStatusApi.md#update_waf_firewall_rule_status) | Update the status of a rule
-[*Fastly::LegacyWafRuleStatusApi*](docs/LegacyWafRuleStatusApi.md) | [**update_waf_firewall_rule_statuses_tag**](docs/LegacyWafRuleStatusApi.md#update_waf_firewall_rule_statuses_tag) | Create or update status of a tagged group of rules
-[*Fastly::LegacyWafRulesetApi*](docs/LegacyWafRulesetApi.md) | [**get_waf_ruleset**](docs/LegacyWafRulesetApi.md#get_waf_ruleset) | Get a WAF ruleset
-[*Fastly::LegacyWafRulesetApi*](docs/LegacyWafRulesetApi.md) | [**get_waf_ruleset_vcl**](docs/LegacyWafRulesetApi.md#get_waf_ruleset_vcl) | Generate WAF ruleset VCL
-[*Fastly::LegacyWafRulesetApi*](docs/LegacyWafRulesetApi.md) | [**update_waf_ruleset**](docs/LegacyWafRulesetApi.md#update_waf_ruleset) | Update a WAF ruleset
-[*Fastly::LegacyWafTagApi*](docs/LegacyWafTagApi.md) | [**list_legacy_waf_tags**](docs/LegacyWafTagApi.md#list_legacy_waf_tags) | List WAF tags
-[*Fastly::LegacyWafUpdateStatusApi*](docs/LegacyWafUpdateStatusApi.md) | [**get_waf_update_status**](docs/LegacyWafUpdateStatusApi.md#get_waf_update_status) | Get the status of a WAF update
-[*Fastly::LegacyWafUpdateStatusApi*](docs/LegacyWafUpdateStatusApi.md) | [**list_waf_update_statuses**](docs/LegacyWafUpdateStatusApi.md#list_waf_update_statuses) | List update statuses
+[*Fastly::KvStoreApi*](docs/KvStoreApi.md) | [**kv_store_create**](docs/KvStoreApi.md#kv_store_create) | Create a KV store.
+[*Fastly::KvStoreApi*](docs/KvStoreApi.md) | [**kv_store_delete**](docs/KvStoreApi.md#kv_store_delete) | Delete a KV store.
+[*Fastly::KvStoreApi*](docs/KvStoreApi.md) | [**kv_store_get**](docs/KvStoreApi.md#kv_store_get) | Describe a KV store.
+[*Fastly::KvStoreApi*](docs/KvStoreApi.md) | [**kv_store_list**](docs/KvStoreApi.md#kv_store_list) | List all KV stores.
+[*Fastly::KvStoreItemApi*](docs/KvStoreItemApi.md) | [**kv_store_delete_item**](docs/KvStoreItemApi.md#kv_store_delete_item) | Delete an item.
+[*Fastly::KvStoreItemApi*](docs/KvStoreItemApi.md) | [**kv_store_get_item**](docs/KvStoreItemApi.md#kv_store_get_item) | Get an item.
+[*Fastly::KvStoreItemApi*](docs/KvStoreItemApi.md) | [**kv_store_list_item_keys**](docs/KvStoreItemApi.md#kv_store_list_item_keys) | List item keys.
+[*Fastly::KvStoreItemApi*](docs/KvStoreItemApi.md) | [**kv_store_upsert_item**](docs/KvStoreItemApi.md#kv_store_upsert_item) | Insert or update an item.
+[*Fastly::LogExplorerApi*](docs/LogExplorerApi.md) | [**get_log_records**](docs/LogExplorerApi.md#get_log_records) | Retrieve log records
 [*Fastly::LoggingAzureblobApi*](docs/LoggingAzureblobApi.md) | [**create_log_azure**](docs/LoggingAzureblobApi.md#create_log_azure) | Create an Azure Blob Storage log endpoint
 [*Fastly::LoggingAzureblobApi*](docs/LoggingAzureblobApi.md) | [**delete_log_azure**](docs/LoggingAzureblobApi.md#delete_log_azure) | Delete the Azure Blob Storage log endpoint
 [*Fastly::LoggingAzureblobApi*](docs/LoggingAzureblobApi.md) | [**get_log_azure**](docs/LoggingAzureblobApi.md#get_log_azure) | Get an Azure Blob Storage log endpoint
@@ -329,6 +295,11 @@ Class | Method | Description
 [*Fastly::LoggingGcsApi*](docs/LoggingGcsApi.md) | [**get_log_gcs**](docs/LoggingGcsApi.md#get_log_gcs) | Get a GCS log endpoint
 [*Fastly::LoggingGcsApi*](docs/LoggingGcsApi.md) | [**list_log_gcs**](docs/LoggingGcsApi.md#list_log_gcs) | List GCS log endpoints
 [*Fastly::LoggingGcsApi*](docs/LoggingGcsApi.md) | [**update_log_gcs**](docs/LoggingGcsApi.md#update_log_gcs) | Update a GCS log endpoint
+[*Fastly::LoggingGrafanacloudlogsApi*](docs/LoggingGrafanacloudlogsApi.md) | [**create_log_grafanacloudlogs**](docs/LoggingGrafanacloudlogsApi.md#create_log_grafanacloudlogs) | Create a Grafana Cloud Logs log endpoint
+[*Fastly::LoggingGrafanacloudlogsApi*](docs/LoggingGrafanacloudlogsApi.md) | [**delete_log_grafanacloudlogs**](docs/LoggingGrafanacloudlogsApi.md#delete_log_grafanacloudlogs) | Delete the Grafana Cloud Logs log endpoint
+[*Fastly::LoggingGrafanacloudlogsApi*](docs/LoggingGrafanacloudlogsApi.md) | [**get_log_grafanacloudlogs**](docs/LoggingGrafanacloudlogsApi.md#get_log_grafanacloudlogs) | Get a Grafana Cloud Logs log endpoint
+[*Fastly::LoggingGrafanacloudlogsApi*](docs/LoggingGrafanacloudlogsApi.md) | [**list_log_grafanacloudlogs**](docs/LoggingGrafanacloudlogsApi.md#list_log_grafanacloudlogs) | List Grafana Cloud Logs log endpoints
+[*Fastly::LoggingGrafanacloudlogsApi*](docs/LoggingGrafanacloudlogsApi.md) | [**update_log_grafanacloudlogs**](docs/LoggingGrafanacloudlogsApi.md#update_log_grafanacloudlogs) | Update a Grafana Cloud Logs log endpoint
 [*Fastly::LoggingHerokuApi*](docs/LoggingHerokuApi.md) | [**create_log_heroku**](docs/LoggingHerokuApi.md#create_log_heroku) | Create a Heroku log endpoint
 [*Fastly::LoggingHerokuApi*](docs/LoggingHerokuApi.md) | [**delete_log_heroku**](docs/LoggingHerokuApi.md#delete_log_heroku) | Delete the Heroku log endpoint
 [*Fastly::LoggingHerokuApi*](docs/LoggingHerokuApi.md) | [**get_log_heroku**](docs/LoggingHerokuApi.md#get_log_heroku) | Get a Heroku log endpoint
@@ -429,6 +400,10 @@ Class | Method | Description
 [*Fastly::MutualAuthenticationApi*](docs/MutualAuthenticationApi.md) | [**get_mutual_authentication**](docs/MutualAuthenticationApi.md#get_mutual_authentication) | Get a Mutual Authentication
 [*Fastly::MutualAuthenticationApi*](docs/MutualAuthenticationApi.md) | [**list_mutual_authentications**](docs/MutualAuthenticationApi.md#list_mutual_authentications) | List Mutual Authentications
 [*Fastly::MutualAuthenticationApi*](docs/MutualAuthenticationApi.md) | [**patch_mutual_authentication**](docs/MutualAuthenticationApi.md#patch_mutual_authentication) | Update a Mutual Authentication
+[*Fastly::ObjectStorageAccessKeysApi*](docs/ObjectStorageAccessKeysApi.md) | [**create_access_key**](docs/ObjectStorageAccessKeysApi.md#create_access_key) | Create an access key
+[*Fastly::ObjectStorageAccessKeysApi*](docs/ObjectStorageAccessKeysApi.md) | [**delete_access_key**](docs/ObjectStorageAccessKeysApi.md#delete_access_key) | Delete an access key
+[*Fastly::ObjectStorageAccessKeysApi*](docs/ObjectStorageAccessKeysApi.md) | [**get_access_key**](docs/ObjectStorageAccessKeysApi.md#get_access_key) | Get an access key
+[*Fastly::ObjectStorageAccessKeysApi*](docs/ObjectStorageAccessKeysApi.md) | [**list_access_keys**](docs/ObjectStorageAccessKeysApi.md#list_access_keys) | List access keys
 [*Fastly::ObservabilityCustomDashboardsApi*](docs/ObservabilityCustomDashboardsApi.md) | [**create_dashboard**](docs/ObservabilityCustomDashboardsApi.md#create_dashboard) | Create a new dashboard
 [*Fastly::ObservabilityCustomDashboardsApi*](docs/ObservabilityCustomDashboardsApi.md) | [**delete_dashboard**](docs/ObservabilityCustomDashboardsApi.md#delete_dashboard) | Delete an existing dashboard
 [*Fastly::ObservabilityCustomDashboardsApi*](docs/ObservabilityCustomDashboardsApi.md) | [**get_dashboard**](docs/ObservabilityCustomDashboardsApi.md#get_dashboard) | Retrieve a dashboard by ID
@@ -446,6 +421,46 @@ Class | Method | Description
 [*Fastly::PoolApi*](docs/PoolApi.md) | [**list_server_pools**](docs/PoolApi.md#list_server_pools) | List server pools
 [*Fastly::PoolApi*](docs/PoolApi.md) | [**update_server_pool**](docs/PoolApi.md#update_server_pool) | Update a server pool
 [*Fastly::PopApi*](docs/PopApi.md) | [**list_pops**](docs/PopApi.md#list_pops) | List Fastly POPs
+[*Fastly::ProductAiAcceleratorApi*](docs/ProductAiAcceleratorApi.md) | [**disable_product_ai_accelerator**](docs/ProductAiAcceleratorApi.md#disable_product_ai_accelerator) | Disable product
+[*Fastly::ProductAiAcceleratorApi*](docs/ProductAiAcceleratorApi.md) | [**enable_ai_accelerator**](docs/ProductAiAcceleratorApi.md#enable_ai_accelerator) | Enable product
+[*Fastly::ProductAiAcceleratorApi*](docs/ProductAiAcceleratorApi.md) | [**get_ai_accelerator**](docs/ProductAiAcceleratorApi.md#get_ai_accelerator) | Get product enablement status
+[*Fastly::ProductBotManagementApi*](docs/ProductBotManagementApi.md) | [**disable_product_bot_management**](docs/ProductBotManagementApi.md#disable_product_bot_management) | Disable product
+[*Fastly::ProductBotManagementApi*](docs/ProductBotManagementApi.md) | [**enable_product_bot_management**](docs/ProductBotManagementApi.md#enable_product_bot_management) | Enable product
+[*Fastly::ProductBotManagementApi*](docs/ProductBotManagementApi.md) | [**get_product_bot_management**](docs/ProductBotManagementApi.md#get_product_bot_management) | Get product enablement status
+[*Fastly::ProductBrotliCompressionApi*](docs/ProductBrotliCompressionApi.md) | [**disable_product_brotli_compression**](docs/ProductBrotliCompressionApi.md#disable_product_brotli_compression) | Disable product
+[*Fastly::ProductBrotliCompressionApi*](docs/ProductBrotliCompressionApi.md) | [**enable_product_brotli_compression**](docs/ProductBrotliCompressionApi.md#enable_product_brotli_compression) | Enable product
+[*Fastly::ProductBrotliCompressionApi*](docs/ProductBrotliCompressionApi.md) | [**get_product_brotli_compression**](docs/ProductBrotliCompressionApi.md#get_product_brotli_compression) | Get product enablement status
+[*Fastly::ProductDdosProtectionApi*](docs/ProductDdosProtectionApi.md) | [**disable_product_ddos_protection**](docs/ProductDdosProtectionApi.md#disable_product_ddos_protection) | Disable product
+[*Fastly::ProductDdosProtectionApi*](docs/ProductDdosProtectionApi.md) | [**enable_product_ddos_protection**](docs/ProductDdosProtectionApi.md#enable_product_ddos_protection) | Enable product
+[*Fastly::ProductDdosProtectionApi*](docs/ProductDdosProtectionApi.md) | [**get_product_ddos_protection**](docs/ProductDdosProtectionApi.md#get_product_ddos_protection) | Get product enablement status
+[*Fastly::ProductDdosProtectionApi*](docs/ProductDdosProtectionApi.md) | [**get_product_ddos_protection_configuration**](docs/ProductDdosProtectionApi.md#get_product_ddos_protection_configuration) | Get configuration
+[*Fastly::ProductDdosProtectionApi*](docs/ProductDdosProtectionApi.md) | [**set_product_ddos_protection_configuration**](docs/ProductDdosProtectionApi.md#set_product_ddos_protection_configuration) | Update configuration
+[*Fastly::ProductDomainInspectorApi*](docs/ProductDomainInspectorApi.md) | [**disable_product_domain_inspector**](docs/ProductDomainInspectorApi.md#disable_product_domain_inspector) | Disable product
+[*Fastly::ProductDomainInspectorApi*](docs/ProductDomainInspectorApi.md) | [**enable_product_domain_inspector**](docs/ProductDomainInspectorApi.md#enable_product_domain_inspector) | Enable product
+[*Fastly::ProductDomainInspectorApi*](docs/ProductDomainInspectorApi.md) | [**get_product_domain_inspector**](docs/ProductDomainInspectorApi.md#get_product_domain_inspector) | Get product enablement status
+[*Fastly::ProductFanoutApi*](docs/ProductFanoutApi.md) | [**disable_product_fanout**](docs/ProductFanoutApi.md#disable_product_fanout) | Disable product
+[*Fastly::ProductFanoutApi*](docs/ProductFanoutApi.md) | [**enable_product_fanout**](docs/ProductFanoutApi.md#enable_product_fanout) | Enable product
+[*Fastly::ProductFanoutApi*](docs/ProductFanoutApi.md) | [**get_product_fanout**](docs/ProductFanoutApi.md#get_product_fanout) | Get product enablement status
+[*Fastly::ProductImageOptimizerApi*](docs/ProductImageOptimizerApi.md) | [**disable_product_image_optimizer**](docs/ProductImageOptimizerApi.md#disable_product_image_optimizer) | Disable product
+[*Fastly::ProductImageOptimizerApi*](docs/ProductImageOptimizerApi.md) | [**enable_product_image_optimizer**](docs/ProductImageOptimizerApi.md#enable_product_image_optimizer) | Enable product
+[*Fastly::ProductImageOptimizerApi*](docs/ProductImageOptimizerApi.md) | [**get_product_image_optimizer**](docs/ProductImageOptimizerApi.md#get_product_image_optimizer) | Get product enablement status
+[*Fastly::ProductLogExplorerInsightsApi*](docs/ProductLogExplorerInsightsApi.md) | [**disable_product_log_explorer_insights**](docs/ProductLogExplorerInsightsApi.md#disable_product_log_explorer_insights) | Disable product
+[*Fastly::ProductLogExplorerInsightsApi*](docs/ProductLogExplorerInsightsApi.md) | [**enable_product_log_explorer_insights**](docs/ProductLogExplorerInsightsApi.md#enable_product_log_explorer_insights) | Enable product
+[*Fastly::ProductLogExplorerInsightsApi*](docs/ProductLogExplorerInsightsApi.md) | [**get_product_log_explorer_insights**](docs/ProductLogExplorerInsightsApi.md#get_product_log_explorer_insights) | Get product enablement status
+[*Fastly::ProductNgwafApi*](docs/ProductNgwafApi.md) | [**disable_product_ngwaf**](docs/ProductNgwafApi.md#disable_product_ngwaf) | Disable product
+[*Fastly::ProductNgwafApi*](docs/ProductNgwafApi.md) | [**enable_product_ngwaf**](docs/ProductNgwafApi.md#enable_product_ngwaf) | Enable product
+[*Fastly::ProductNgwafApi*](docs/ProductNgwafApi.md) | [**get_product_ngwaf**](docs/ProductNgwafApi.md#get_product_ngwaf) | Get product enablement status
+[*Fastly::ProductNgwafApi*](docs/ProductNgwafApi.md) | [**get_product_ngwaf_configuration**](docs/ProductNgwafApi.md#get_product_ngwaf_configuration) | Get configuration
+[*Fastly::ProductNgwafApi*](docs/ProductNgwafApi.md) | [**set_product_ngwaf_configuration**](docs/ProductNgwafApi.md#set_product_ngwaf_configuration) | Update configuration
+[*Fastly::ProductObjectStorageApi*](docs/ProductObjectStorageApi.md) | [**disable_product_object_storage**](docs/ProductObjectStorageApi.md#disable_product_object_storage) | Disable product
+[*Fastly::ProductObjectStorageApi*](docs/ProductObjectStorageApi.md) | [**enable_object_storage**](docs/ProductObjectStorageApi.md#enable_object_storage) | Enable product
+[*Fastly::ProductObjectStorageApi*](docs/ProductObjectStorageApi.md) | [**get_object_storage**](docs/ProductObjectStorageApi.md#get_object_storage) | Get product enablement status
+[*Fastly::ProductOriginInspectorApi*](docs/ProductOriginInspectorApi.md) | [**disable_product_origin_inspector**](docs/ProductOriginInspectorApi.md#disable_product_origin_inspector) | Disable product
+[*Fastly::ProductOriginInspectorApi*](docs/ProductOriginInspectorApi.md) | [**enable_product_origin_inspector**](docs/ProductOriginInspectorApi.md#enable_product_origin_inspector) | Enable product
+[*Fastly::ProductOriginInspectorApi*](docs/ProductOriginInspectorApi.md) | [**get_product_origin_inspector**](docs/ProductOriginInspectorApi.md#get_product_origin_inspector) | Get product enablement status
+[*Fastly::ProductWebsocketsApi*](docs/ProductWebsocketsApi.md) | [**disable_product_websockets**](docs/ProductWebsocketsApi.md#disable_product_websockets) | Disable product
+[*Fastly::ProductWebsocketsApi*](docs/ProductWebsocketsApi.md) | [**enable_product_websockets**](docs/ProductWebsocketsApi.md#enable_product_websockets) | Enable product
+[*Fastly::ProductWebsocketsApi*](docs/ProductWebsocketsApi.md) | [**get_product_websockets**](docs/ProductWebsocketsApi.md#get_product_websockets) | Get product enablement status
 [*Fastly::PublicIpListApi*](docs/PublicIpListApi.md) | [**list_fastly_ips**](docs/PublicIpListApi.md#list_fastly_ips) | List Fastly's public IPs
 [*Fastly::PublishApi*](docs/PublishApi.md) | [**publish**](docs/PublishApi.md#publish) | Send messages to Fanout subscribers
 [*Fastly::PurgeApi*](docs/PurgeApi.md) | [**bulk_purge_tag**](docs/PurgeApi.md#bulk_purge_tag) | Purge multiple surrogate key tags
@@ -637,8 +652,8 @@ The fastly-ruby API client currently does not support the following endpoints:
 - [`/alerts/history`](https://www.fastly.com/documentation/reference/api/observability/alerts/history) (GET)
 - [`/dns/configurations/{dns_configuration_id}`](https://www.fastly.com/documentation/reference/api/) (DELETE, GET, PATCH)
 - [`/dns/configurations`](https://www.fastly.com/documentation/reference/api/) (GET, POST)
-- [`/domains/{domain_id}`](https://www.fastly.com/documentation/reference/api/) (DELETE, GET, PATCH)
-- [`/domains`](https://www.fastly.com/documentation/reference/api/) (GET, POST)
+- [`/domains/v1/{domain_id}`](https://www.fastly.com/documentation/reference/api/) (DELETE, GET, PATCH)
+- [`/domains/v1`](https://www.fastly.com/documentation/reference/api/) (GET, POST)
 - [`/notifications/integration-types`](https://developer.fastly.com/reference/api/observability/notification) (GET)
 - [`/notifications/integrations/{integration_id}/rotateSigningKey`](https://developer.fastly.com/reference/api/observability/notification) (POST)
 - [`/notifications/integrations/{integration_id}/signingKey`](https://developer.fastly.com/reference/api/observability/notification) (GET)

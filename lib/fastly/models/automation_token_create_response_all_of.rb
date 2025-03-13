@@ -19,14 +19,15 @@ module Fastly
 
     attr_accessor :customer_id
 
-    attr_accessor :sudo_expires_at
-
-    # A UTC time-stamp of when the token was created. 
+    # A UTC timestamp of when the token was created. 
     attr_accessor :created_at
 
     attr_accessor :access_token
 
-    # A UTC time-stamp of when the token was last used.
+    # Indicates whether TLS access is enabled for the token.
+    attr_accessor :tls_access
+
+    # A UTC timestamp of when the token was last used.
     attr_accessor :last_used_at
 
     # The User-Agent header of the client that last used the token.
@@ -38,9 +39,9 @@ module Fastly
         :'id' => :'id',
         :'user_id' => :'user_id',
         :'customer_id' => :'customer_id',
-        :'sudo_expires_at' => :'sudo_expires_at',
         :'created_at' => :'created_at',
         :'access_token' => :'access_token',
+        :'tls_access' => :'tls_access',
         :'last_used_at' => :'last_used_at',
         :'user_agent' => :'user_agent'
       }
@@ -57,9 +58,9 @@ module Fastly
         :'id' => :'ReadOnlyId',
         :'user_id' => :'ReadOnlyUserId',
         :'customer_id' => :'ReadOnlyCustomerId',
-        :'sudo_expires_at' => :'Time',
         :'created_at' => :'Time',
         :'access_token' => :'String',
+        :'tls_access' => :'Boolean',
         :'last_used_at' => :'Time',
         :'user_agent' => :'String'
       }
@@ -98,16 +99,16 @@ module Fastly
         self.customer_id = attributes[:'customer_id']
       end
 
-      if attributes.key?(:'sudo_expires_at')
-        self.sudo_expires_at = attributes[:'sudo_expires_at']
-      end
-
       if attributes.key?(:'created_at')
         self.created_at = attributes[:'created_at']
       end
 
       if attributes.key?(:'access_token')
         self.access_token = attributes[:'access_token']
+      end
+
+      if attributes.key?(:'tls_access')
+        self.tls_access = attributes[:'tls_access']
       end
 
       if attributes.key?(:'last_used_at')
@@ -140,9 +141,9 @@ module Fastly
           id == o.id &&
           user_id == o.user_id &&
           customer_id == o.customer_id &&
-          sudo_expires_at == o.sudo_expires_at &&
           created_at == o.created_at &&
           access_token == o.access_token &&
+          tls_access == o.tls_access &&
           last_used_at == o.last_used_at &&
           user_agent == o.user_agent
     end
@@ -156,7 +157,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, user_id, customer_id, sudo_expires_at, created_at, access_token, last_used_at, user_agent].hash
+      [id, user_id, customer_id, created_at, access_token, tls_access, last_used_at, user_agent].hash
     end
 
     # Builds the object from hash

@@ -476,24 +476,6 @@ module Fastly
           description: "No description provided",
           }
         ],
-        "BillingApi.get_invoice": [
-          {
-          url: "https://api.fastly.com",
-          description: "No description provided",
-          }
-        ],
-        "BillingApi.get_invoice_by_id": [
-          {
-          url: "https://api.fastly.com",
-          description: "No description provided",
-          }
-        ],
-        "BillingApi.get_invoice_mtd": [
-          {
-          url: "https://api.fastly.com",
-          description: "No description provided",
-          }
-        ],
         "BillingAddressApi.add_billing_addr": [
           {
           url: "https://api.fastly.com",
@@ -542,7 +524,7 @@ module Fastly
           description: "No description provided",
           }
         ],
-        "BillingUsageMetricsApi.get_service_level_usage_types": [
+        "BillingUsageMetricsApi.get_usage_metrics": [
           {
           url: "https://api.fastly.com",
           description: "No description provided",
@@ -968,36 +950,6 @@ module Fastly
           description: "No description provided",
           }
         ],
-        "EnabledProductsApi.disable_product": [
-          {
-          url: "https://api.fastly.com",
-          description: "No description provided",
-          }
-        ],
-        "EnabledProductsApi.enable_product": [
-          {
-          url: "https://api.fastly.com",
-          description: "No description provided",
-          }
-        ],
-        "EnabledProductsApi.get_enabled_product": [
-          {
-          url: "https://api.fastly.com",
-          description: "No description provided",
-          }
-        ],
-        "EnabledProductsApi.get_product_configuration": [
-          {
-          url: "https://api.fastly.com",
-          description: "No description provided",
-          }
-        ],
-        "EnabledProductsApi.set_product_configuration": [
-          {
-          url: "https://api.fastly.com",
-          description: "No description provided",
-          }
-        ],
         "EventsApi.get_event": [
           {
           url: "https://api.fastly.com",
@@ -1370,6 +1322,12 @@ module Fastly
           description: "No description provided",
           }
         ],
+        "InsightsApi.get_log_insights": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
         "InvitationsApi.create_invitation": [
           {
           url: "https://api.fastly.com",
@@ -1388,217 +1346,55 @@ module Fastly
           description: "No description provided",
           }
         ],
-        "KvStoreApi.create_store": [
+        "KvStoreApi.kv_store_create": [
           {
           url: "https://api.fastly.com",
           description: "No description provided",
           }
         ],
-        "KvStoreApi.delete_store": [
+        "KvStoreApi.kv_store_delete": [
           {
           url: "https://api.fastly.com",
           description: "No description provided",
           }
         ],
-        "KvStoreApi.get_store": [
+        "KvStoreApi.kv_store_get": [
           {
           url: "https://api.fastly.com",
           description: "No description provided",
           }
         ],
-        "KvStoreApi.get_stores": [
+        "KvStoreApi.kv_store_list": [
           {
           url: "https://api.fastly.com",
           description: "No description provided",
           }
         ],
-        "KvStoreItemApi.delete_key_from_store": [
+        "KvStoreItemApi.kv_store_delete_item": [
           {
           url: "https://api.fastly.com",
           description: "No description provided",
           }
         ],
-        "KvStoreItemApi.get_keys": [
+        "KvStoreItemApi.kv_store_get_item": [
           {
           url: "https://api.fastly.com",
           description: "No description provided",
           }
         ],
-        "KvStoreItemApi.get_value_for_key": [
+        "KvStoreItemApi.kv_store_list_item_keys": [
           {
           url: "https://api.fastly.com",
           description: "No description provided",
           }
         ],
-        "KvStoreItemApi.set_value_for_key": [
+        "KvStoreItemApi.kv_store_upsert_item": [
           {
           url: "https://api.fastly.com",
           description: "No description provided",
           }
         ],
-        "LegacyWafConfigurationSetsApi.list_waf_config_sets": [
-          {
-          url: "https://api.fastly.com",
-          description: "No description provided",
-          }
-        ],
-        "LegacyWafConfigurationSetsApi.list_wafs_config_set": [
-          {
-          url: "https://api.fastly.com",
-          description: "No description provided",
-          }
-        ],
-        "LegacyWafConfigurationSetsApi.use_waf_config_set": [
-          {
-          url: "https://api.fastly.com",
-          description: "No description provided",
-          }
-        ],
-        "LegacyWafFirewallApi.create_legacy_waf_firewall_service": [
-          {
-          url: "https://api.fastly.com",
-          description: "No description provided",
-          }
-        ],
-        "LegacyWafFirewallApi.disable_legacy_waf_firewall": [
-          {
-          url: "https://api.fastly.com",
-          description: "No description provided",
-          }
-        ],
-        "LegacyWafFirewallApi.enable_legacy_waf_firewall": [
-          {
-          url: "https://api.fastly.com",
-          description: "No description provided",
-          }
-        ],
-        "LegacyWafFirewallApi.get_legacy_waf_firewall": [
-          {
-          url: "https://api.fastly.com",
-          description: "No description provided",
-          }
-        ],
-        "LegacyWafFirewallApi.get_legacy_waf_firewall_service": [
-          {
-          url: "https://api.fastly.com",
-          description: "No description provided",
-          }
-        ],
-        "LegacyWafFirewallApi.list_legacy_waf_firewalls": [
-          {
-          url: "https://api.fastly.com",
-          description: "No description provided",
-          }
-        ],
-        "LegacyWafFirewallApi.list_legacy_waf_firewalls_service": [
-          {
-          url: "https://api.fastly.com",
-          description: "No description provided",
-          }
-        ],
-        "LegacyWafFirewallApi.update_legacy_waf_firewall_service": [
-          {
-          url: "https://api.fastly.com",
-          description: "No description provided",
-          }
-        ],
-        "LegacyWafOwaspApi.create_owasp_settings": [
-          {
-          url: "https://api.fastly.com",
-          description: "No description provided",
-          }
-        ],
-        "LegacyWafOwaspApi.get_owasp_settings": [
-          {
-          url: "https://api.fastly.com",
-          description: "No description provided",
-          }
-        ],
-        "LegacyWafOwaspApi.update_owasp_settings": [
-          {
-          url: "https://api.fastly.com",
-          description: "No description provided",
-          }
-        ],
-        "LegacyWafRuleApi.get_legacy_waf_firewall_rule_vcl": [
-          {
-          url: "https://api.fastly.com",
-          description: "No description provided",
-          }
-        ],
-        "LegacyWafRuleApi.get_legacy_waf_rule": [
-          {
-          url: "https://api.fastly.com",
-          description: "No description provided",
-          }
-        ],
-        "LegacyWafRuleApi.get_legacy_waf_rule_vcl": [
-          {
-          url: "https://api.fastly.com",
-          description: "No description provided",
-          }
-        ],
-        "LegacyWafRuleApi.list_legacy_waf_rules": [
-          {
-          url: "https://api.fastly.com",
-          description: "No description provided",
-          }
-        ],
-        "LegacyWafRuleStatusApi.get_waf_firewall_rule_status": [
-          {
-          url: "https://api.fastly.com",
-          description: "No description provided",
-          }
-        ],
-        "LegacyWafRuleStatusApi.list_waf_firewall_rule_statuses": [
-          {
-          url: "https://api.fastly.com",
-          description: "No description provided",
-          }
-        ],
-        "LegacyWafRuleStatusApi.update_waf_firewall_rule_status": [
-          {
-          url: "https://api.fastly.com",
-          description: "No description provided",
-          }
-        ],
-        "LegacyWafRuleStatusApi.update_waf_firewall_rule_statuses_tag": [
-          {
-          url: "https://api.fastly.com",
-          description: "No description provided",
-          }
-        ],
-        "LegacyWafRulesetApi.get_waf_ruleset": [
-          {
-          url: "https://api.fastly.com",
-          description: "No description provided",
-          }
-        ],
-        "LegacyWafRulesetApi.get_waf_ruleset_vcl": [
-          {
-          url: "https://api.fastly.com",
-          description: "No description provided",
-          }
-        ],
-        "LegacyWafRulesetApi.update_waf_ruleset": [
-          {
-          url: "https://api.fastly.com",
-          description: "No description provided",
-          }
-        ],
-        "LegacyWafTagApi.list_legacy_waf_tags": [
-          {
-          url: "https://api.fastly.com",
-          description: "No description provided",
-          }
-        ],
-        "LegacyWafUpdateStatusApi.get_waf_update_status": [
-          {
-          url: "https://api.fastly.com",
-          description: "No description provided",
-          }
-        ],
-        "LegacyWafUpdateStatusApi.list_waf_update_statuses": [
+        "LogExplorerApi.get_log_records": [
           {
           url: "https://api.fastly.com",
           description: "No description provided",
@@ -1839,6 +1635,36 @@ module Fastly
           }
         ],
         "LoggingGcsApi.update_log_gcs": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "LoggingGrafanacloudlogsApi.create_log_grafanacloudlogs": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "LoggingGrafanacloudlogsApi.delete_log_grafanacloudlogs": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "LoggingGrafanacloudlogsApi.get_log_grafanacloudlogs": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "LoggingGrafanacloudlogsApi.list_log_grafanacloudlogs": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "LoggingGrafanacloudlogsApi.update_log_grafanacloudlogs": [
           {
           url: "https://api.fastly.com",
           description: "No description provided",
@@ -2444,6 +2270,30 @@ module Fastly
           description: "No description provided",
           }
         ],
+        "ObjectStorageAccessKeysApi.create_access_key": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "ObjectStorageAccessKeysApi.delete_access_key": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "ObjectStorageAccessKeysApi.get_access_key": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "ObjectStorageAccessKeysApi.list_access_keys": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
         "ObservabilityCustomDashboardsApi.create_dashboard": [
           {
           url: "https://api.fastly.com",
@@ -2541,6 +2391,246 @@ module Fastly
           }
         ],
         "PopApi.list_pops": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "ProductAiAcceleratorApi.disable_product_ai_accelerator": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "ProductAiAcceleratorApi.enable_ai_accelerator": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "ProductAiAcceleratorApi.get_ai_accelerator": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "ProductBotManagementApi.disable_product_bot_management": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "ProductBotManagementApi.enable_product_bot_management": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "ProductBotManagementApi.get_product_bot_management": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "ProductBrotliCompressionApi.disable_product_brotli_compression": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "ProductBrotliCompressionApi.enable_product_brotli_compression": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "ProductBrotliCompressionApi.get_product_brotli_compression": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "ProductDdosProtectionApi.disable_product_ddos_protection": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "ProductDdosProtectionApi.enable_product_ddos_protection": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "ProductDdosProtectionApi.get_product_ddos_protection": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "ProductDdosProtectionApi.get_product_ddos_protection_configuration": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "ProductDdosProtectionApi.set_product_ddos_protection_configuration": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "ProductDomainInspectorApi.disable_product_domain_inspector": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "ProductDomainInspectorApi.enable_product_domain_inspector": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "ProductDomainInspectorApi.get_product_domain_inspector": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "ProductFanoutApi.disable_product_fanout": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "ProductFanoutApi.enable_product_fanout": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "ProductFanoutApi.get_product_fanout": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "ProductImageOptimizerApi.disable_product_image_optimizer": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "ProductImageOptimizerApi.enable_product_image_optimizer": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "ProductImageOptimizerApi.get_product_image_optimizer": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "ProductLogExplorerInsightsApi.disable_product_log_explorer_insights": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "ProductLogExplorerInsightsApi.enable_product_log_explorer_insights": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "ProductLogExplorerInsightsApi.get_product_log_explorer_insights": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "ProductNgwafApi.disable_product_ngwaf": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "ProductNgwafApi.enable_product_ngwaf": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "ProductNgwafApi.get_product_ngwaf": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "ProductNgwafApi.get_product_ngwaf_configuration": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "ProductNgwafApi.set_product_ngwaf_configuration": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "ProductObjectStorageApi.disable_product_object_storage": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "ProductObjectStorageApi.enable_object_storage": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "ProductObjectStorageApi.get_object_storage": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "ProductOriginInspectorApi.disable_product_origin_inspector": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "ProductOriginInspectorApi.enable_product_origin_inspector": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "ProductOriginInspectorApi.get_product_origin_inspector": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "ProductWebsocketsApi.disable_product_websockets": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "ProductWebsocketsApi.enable_product_websockets": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "ProductWebsocketsApi.get_product_websockets": [
           {
           url: "https://api.fastly.com",
           description: "No description provided",

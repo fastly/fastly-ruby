@@ -212,7 +212,7 @@ module Fastly
 
     # List ACLs
     # List all ACLs.
-    # @return [Array<ComputeAclCreateAclsResponse>]
+    # @return [ComputeAclList]
     def compute_acl_list_acls(opts = {})
       data, _status_code, _headers = compute_acl_list_acls_with_http_info(opts)
       data
@@ -220,7 +220,7 @@ module Fastly
 
     # List ACLs
     # List all ACLs.
-    # @return [Array<(Array<ComputeAclCreateAclsResponse>, Integer, Hash)>] Array<ComputeAclCreateAclsResponse> data, response status code and response headers
+    # @return [Array<(ComputeAclList, Integer, Hash)>] ComputeAclList data, response status code and response headers
     def compute_acl_list_acls_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: AclsInComputeApi.compute_acl_list_acls ...'
@@ -244,7 +244,7 @@ module Fastly
       post_body = opts[:debug_body]
 
       # return_type
-      return_type = opts[:debug_return_type] || 'Array<ComputeAclCreateAclsResponse>'
+      return_type = opts[:debug_return_type] || 'ComputeAclList'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['token']
@@ -402,7 +402,7 @@ module Fastly
     # Update an ACL
     # Update an ACL.
     # @option opts [String] :acl_id  (required)
-    # @option opts [Array<ComputeAclUpdateEntry>] :compute_acl_update_entry 
+    # @option opts [ComputeAclUpdate] :compute_acl_update 
     # @return [nil]
     def compute_acl_update_acls(opts = {})
       compute_acl_update_acls_with_http_info(opts)
@@ -412,7 +412,7 @@ module Fastly
     # Update an ACL
     # Update an ACL.
     # @option opts [String] :acl_id  (required)
-    # @option opts [Array<ComputeAclUpdateEntry>] :compute_acl_update_entry 
+    # @option opts [ComputeAclUpdate] :compute_acl_update 
     # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def compute_acl_update_acls_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -442,7 +442,7 @@ module Fastly
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(opts[:'compute_acl_update_entry'])
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(opts[:'compute_acl_update'])
 
       # return_type
       return_type = opts[:debug_return_type]

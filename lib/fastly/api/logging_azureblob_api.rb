@@ -36,7 +36,7 @@ module Fastly
     # @option opts [String] :container The name of the Azure Blob Storage container in which to store logs. Required.
     # @option opts [String] :sas_token The Azure shared access signature providing write access to the blob service objects. Be sure to update your token before it expires or the logging functionality will not work. Required.
     # @option opts [String] :public_key A PGP public key that Fastly will use to encrypt your log files before writing them to disk. (default to 'null')
-    # @option opts [Integer] :file_max_bytes The maximum number of bytes for each uploaded file. A value of 0 can be used to indicate there is no limit on the size of uploaded files, otherwise the minimum value is 1048576 bytes (1 MiB.)
+    # @option opts [Integer] :file_max_bytes The maximum number of bytes for each uploaded file. A value of 0 can be used to indicate there is no limit on the size of uploaded files, otherwise the minimum value is 1048576 bytes (1 MiB). Note that Microsoft Azure Storage has [block size limits](https://learn.microsoft.com/en-us/rest/api/storageservices/put-block?tabs&#x3D;microsoft-entra-id#remarks).
     # @return [LoggingAzureblobResponse]
     def create_log_azure(opts = {})
       data, _status_code, _headers = create_log_azure_with_http_info(opts)
@@ -62,7 +62,7 @@ module Fastly
     # @option opts [String] :container The name of the Azure Blob Storage container in which to store logs. Required.
     # @option opts [String] :sas_token The Azure shared access signature providing write access to the blob service objects. Be sure to update your token before it expires or the logging functionality will not work. Required.
     # @option opts [String] :public_key A PGP public key that Fastly will use to encrypt your log files before writing them to disk. (default to 'null')
-    # @option opts [Integer] :file_max_bytes The maximum number of bytes for each uploaded file. A value of 0 can be used to indicate there is no limit on the size of uploaded files, otherwise the minimum value is 1048576 bytes (1 MiB.)
+    # @option opts [Integer] :file_max_bytes The maximum number of bytes for each uploaded file. A value of 0 can be used to indicate there is no limit on the size of uploaded files, otherwise the minimum value is 1048576 bytes (1 MiB). Note that Microsoft Azure Storage has [block size limits](https://learn.microsoft.com/en-us/rest/api/storageservices/put-block?tabs&#x3D;microsoft-entra-id#remarks).
     # @return [Array<(LoggingAzureblobResponse, Integer, Hash)>] LoggingAzureblobResponse data, response status code and response headers
     def create_log_azure_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -404,7 +404,7 @@ module Fastly
     # @option opts [String] :container The name of the Azure Blob Storage container in which to store logs. Required.
     # @option opts [String] :sas_token The Azure shared access signature providing write access to the blob service objects. Be sure to update your token before it expires or the logging functionality will not work. Required.
     # @option opts [String] :public_key A PGP public key that Fastly will use to encrypt your log files before writing them to disk. (default to 'null')
-    # @option opts [Integer] :file_max_bytes The maximum number of bytes for each uploaded file. A value of 0 can be used to indicate there is no limit on the size of uploaded files, otherwise the minimum value is 1048576 bytes (1 MiB.)
+    # @option opts [Integer] :file_max_bytes The maximum number of bytes for each uploaded file. A value of 0 can be used to indicate there is no limit on the size of uploaded files, otherwise the minimum value is 1048576 bytes (1 MiB). Note that Microsoft Azure Storage has [block size limits](https://learn.microsoft.com/en-us/rest/api/storageservices/put-block?tabs&#x3D;microsoft-entra-id#remarks).
     # @return [LoggingAzureblobResponse]
     def update_log_azure(opts = {})
       data, _status_code, _headers = update_log_azure_with_http_info(opts)
@@ -431,7 +431,7 @@ module Fastly
     # @option opts [String] :container The name of the Azure Blob Storage container in which to store logs. Required.
     # @option opts [String] :sas_token The Azure shared access signature providing write access to the blob service objects. Be sure to update your token before it expires or the logging functionality will not work. Required.
     # @option opts [String] :public_key A PGP public key that Fastly will use to encrypt your log files before writing them to disk. (default to 'null')
-    # @option opts [Integer] :file_max_bytes The maximum number of bytes for each uploaded file. A value of 0 can be used to indicate there is no limit on the size of uploaded files, otherwise the minimum value is 1048576 bytes (1 MiB.)
+    # @option opts [Integer] :file_max_bytes The maximum number of bytes for each uploaded file. A value of 0 can be used to indicate there is no limit on the size of uploaded files, otherwise the minimum value is 1048576 bytes (1 MiB). Note that Microsoft Azure Storage has [block size limits](https://learn.microsoft.com/en-us/rest/api/storageservices/put-block?tabs&#x3D;microsoft-entra-id#remarks).
     # @return [Array<(LoggingAzureblobResponse, Integer, Hash)>] LoggingAzureblobResponse data, response status code and response headers
     def update_log_azure_with_http_info(opts = {})
       if @api_client.config.debugging

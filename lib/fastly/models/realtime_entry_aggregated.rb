@@ -269,6 +269,9 @@ module Fastly
     # Number of responses sent with status code 505 (HTTP Version Not Supported).
     attr_accessor :status_505
 
+    # Number of responses sent with status code 530.
+    attr_accessor :status_530
+
     # Number of requests that were designated uncachable.
     attr_accessor :uncacheable
 
@@ -701,27 +704,6 @@ module Fastly
     # The number of connections the downgrade action was applied to. The downgrade action restricts the connection to http1.
     attr_accessor :ddos_action_downgraded_connections
 
-    # Number of cache hits for a VCL service running on Compute.
-    attr_accessor :vcl_on_compute_hit_requests
-
-    # Number of cache misses for a VCL service running on Compute.
-    attr_accessor :vcl_on_compute_miss_requests
-
-    # Number of requests that passed through the CDN without being cached for a VCL service running on Compute.
-    attr_accessor :vcl_on_compute_pass_requests
-
-    # Number of cache errors for a VCL service running on Compute.
-    attr_accessor :vcl_on_compute_error_requests
-
-    # Number of requests that returned a synthetic response (i.e., response objects created with the `synthetic` VCL statement) for a VCL service running on Compute.
-    attr_accessor :vcl_on_compute_synth_requests
-
-    # Number of requests sent by end users to Fastly that resulted in a hit at the edge for a VCL service running on Compute.
-    attr_accessor :vcl_on_compute_edge_hit_requests
-
-    # Number of requests sent by end users to Fastly that resulted in a miss at the edge for a VCL service running on Compute.
-    attr_accessor :vcl_on_compute_edge_miss_requests
-
     # Number of cache hits for a VCL service.
     attr_accessor :all_hit_requests
 
@@ -763,6 +745,57 @@ module Fastly
 
     # Number of requests where Fastly responded with 400 due to the request being a GET or HEAD request containing a body.
     attr_accessor :request_denied_get_head_body
+
+    # Number of requests classified as a DDoS attack against a customer origin or service.
+    attr_accessor :ddos_protection_requests_detect_count
+
+    # Number of requests classified as a DDoS attack against a customer origin or service that were mitigated by the Fastly platform.
+    attr_accessor :ddos_protection_requests_mitigate_count
+
+    # Number of requests analyzed for DDoS attacks against a customer origin or service, but with no DDoS detected.
+    attr_accessor :ddos_protection_requests_allow_count
+
+    # A count of the number of Class A Object Storage operations.
+    attr_accessor :object_storage_class_a_operations_count
+
+    # A count of the number of Class B Object Storage operations.
+    attr_accessor :object_storage_class_b_operations_count
+
+    # Number of requests received by AI Accelerator.
+    attr_accessor :aia_requests
+
+    # Number of \"Informational\" category status codes received from AI provider.
+    attr_accessor :aia_status_1xx
+
+    # Number of \"Success\" status codes received from AI provider.
+    attr_accessor :aia_status_2xx
+
+    # Number of \"Redirection\" received from AI provider.
+    attr_accessor :aia_status_3xx
+
+    # Number of \"Client Error\" received from AI provider.
+    attr_accessor :aia_status_4xx
+
+    # Number of \"Server Error\" received from AI provider.
+    attr_accessor :aia_status_5xx
+
+    # The usage tokens associated with the response returned from the AI Accelerator cache.
+    attr_accessor :aia_response_usage_tokens
+
+    # The number of usage tokens reported by the request to the origin from AI Accelerator.
+    attr_accessor :aia_origin_usage_tokens
+
+    # The estimated amount of time saved by responses served from the AI Accelerator semantic cache.
+    attr_accessor :aia_estimated_time_saved_ms
+
+    # Number of requests that were collapsed and satisfied by a usable cache object.
+    attr_accessor :request_collapse_usable_count
+
+    # Number of requests that were collapsed and unable to be satisfied by the resulting cache object.
+    attr_accessor :request_collapse_unusable_count
+
+    # Number of cache operations executed by the Compute platform.
+    attr_accessor :compute_cache_operations_count
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -852,6 +885,7 @@ module Fastly
         :'status_503' => :'status_503',
         :'status_504' => :'status_504',
         :'status_505' => :'status_505',
+        :'status_530' => :'status_530',
         :'uncacheable' => :'uncacheable',
         :'pass_time' => :'pass_time',
         :'tls' => :'tls',
@@ -996,13 +1030,6 @@ module Fastly
         :'bot_challenge_complete_tokens_issued' => :'bot_challenge_complete_tokens_issued',
         :'ddos_action_downgrade' => :'ddos_action_downgrade',
         :'ddos_action_downgraded_connections' => :'ddos_action_downgraded_connections',
-        :'vcl_on_compute_hit_requests' => :'vcl_on_compute_hit_requests',
-        :'vcl_on_compute_miss_requests' => :'vcl_on_compute_miss_requests',
-        :'vcl_on_compute_pass_requests' => :'vcl_on_compute_pass_requests',
-        :'vcl_on_compute_error_requests' => :'vcl_on_compute_error_requests',
-        :'vcl_on_compute_synth_requests' => :'vcl_on_compute_synth_requests',
-        :'vcl_on_compute_edge_hit_requests' => :'vcl_on_compute_edge_hit_requests',
-        :'vcl_on_compute_edge_miss_requests' => :'vcl_on_compute_edge_miss_requests',
         :'all_hit_requests' => :'all_hit_requests',
         :'all_miss_requests' => :'all_miss_requests',
         :'all_pass_requests' => :'all_pass_requests',
@@ -1016,7 +1043,24 @@ module Fastly
         :'all_status_4xx' => :'all_status_4xx',
         :'all_status_5xx' => :'all_status_5xx',
         :'origin_offload' => :'origin_offload',
-        :'request_denied_get_head_body' => :'request_denied_get_head_body'
+        :'request_denied_get_head_body' => :'request_denied_get_head_body',
+        :'ddos_protection_requests_detect_count' => :'ddos_protection_requests_detect_count',
+        :'ddos_protection_requests_mitigate_count' => :'ddos_protection_requests_mitigate_count',
+        :'ddos_protection_requests_allow_count' => :'ddos_protection_requests_allow_count',
+        :'object_storage_class_a_operations_count' => :'object_storage_class_a_operations_count',
+        :'object_storage_class_b_operations_count' => :'object_storage_class_b_operations_count',
+        :'aia_requests' => :'aia_requests',
+        :'aia_status_1xx' => :'aia_status_1xx',
+        :'aia_status_2xx' => :'aia_status_2xx',
+        :'aia_status_3xx' => :'aia_status_3xx',
+        :'aia_status_4xx' => :'aia_status_4xx',
+        :'aia_status_5xx' => :'aia_status_5xx',
+        :'aia_response_usage_tokens' => :'aia_response_usage_tokens',
+        :'aia_origin_usage_tokens' => :'aia_origin_usage_tokens',
+        :'aia_estimated_time_saved_ms' => :'aia_estimated_time_saved_ms',
+        :'request_collapse_usable_count' => :'request_collapse_usable_count',
+        :'request_collapse_unusable_count' => :'request_collapse_unusable_count',
+        :'compute_cache_operations_count' => :'compute_cache_operations_count'
       }
     end
 
@@ -1113,6 +1157,7 @@ module Fastly
         :'status_503' => :'Integer',
         :'status_504' => :'Integer',
         :'status_505' => :'Integer',
+        :'status_530' => :'Integer',
         :'uncacheable' => :'Integer',
         :'pass_time' => :'Float',
         :'tls' => :'Integer',
@@ -1257,13 +1302,6 @@ module Fastly
         :'bot_challenge_complete_tokens_issued' => :'Integer',
         :'ddos_action_downgrade' => :'Integer',
         :'ddos_action_downgraded_connections' => :'Integer',
-        :'vcl_on_compute_hit_requests' => :'Integer',
-        :'vcl_on_compute_miss_requests' => :'Integer',
-        :'vcl_on_compute_pass_requests' => :'Integer',
-        :'vcl_on_compute_error_requests' => :'Integer',
-        :'vcl_on_compute_synth_requests' => :'Integer',
-        :'vcl_on_compute_edge_hit_requests' => :'Integer',
-        :'vcl_on_compute_edge_miss_requests' => :'Integer',
         :'all_hit_requests' => :'Integer',
         :'all_miss_requests' => :'Integer',
         :'all_pass_requests' => :'Integer',
@@ -1277,7 +1315,24 @@ module Fastly
         :'all_status_4xx' => :'Integer',
         :'all_status_5xx' => :'Integer',
         :'origin_offload' => :'Float',
-        :'request_denied_get_head_body' => :'Integer'
+        :'request_denied_get_head_body' => :'Integer',
+        :'ddos_protection_requests_detect_count' => :'Integer',
+        :'ddos_protection_requests_mitigate_count' => :'Integer',
+        :'ddos_protection_requests_allow_count' => :'Integer',
+        :'object_storage_class_a_operations_count' => :'Integer',
+        :'object_storage_class_b_operations_count' => :'Integer',
+        :'aia_requests' => :'Integer',
+        :'aia_status_1xx' => :'Integer',
+        :'aia_status_2xx' => :'Integer',
+        :'aia_status_3xx' => :'Integer',
+        :'aia_status_4xx' => :'Integer',
+        :'aia_status_5xx' => :'Integer',
+        :'aia_response_usage_tokens' => :'Integer',
+        :'aia_origin_usage_tokens' => :'Integer',
+        :'aia_estimated_time_saved_ms' => :'Integer',
+        :'request_collapse_usable_count' => :'Integer',
+        :'request_collapse_unusable_count' => :'Integer',
+        :'compute_cache_operations_count' => :'Integer'
       }
     end
 
@@ -1649,6 +1704,10 @@ module Fastly
 
       if attributes.key?(:'status_505')
         self.status_505 = attributes[:'status_505']
+      end
+
+      if attributes.key?(:'status_530')
+        self.status_530 = attributes[:'status_530']
       end
 
       if attributes.key?(:'uncacheable')
@@ -2227,34 +2286,6 @@ module Fastly
         self.ddos_action_downgraded_connections = attributes[:'ddos_action_downgraded_connections']
       end
 
-      if attributes.key?(:'vcl_on_compute_hit_requests')
-        self.vcl_on_compute_hit_requests = attributes[:'vcl_on_compute_hit_requests']
-      end
-
-      if attributes.key?(:'vcl_on_compute_miss_requests')
-        self.vcl_on_compute_miss_requests = attributes[:'vcl_on_compute_miss_requests']
-      end
-
-      if attributes.key?(:'vcl_on_compute_pass_requests')
-        self.vcl_on_compute_pass_requests = attributes[:'vcl_on_compute_pass_requests']
-      end
-
-      if attributes.key?(:'vcl_on_compute_error_requests')
-        self.vcl_on_compute_error_requests = attributes[:'vcl_on_compute_error_requests']
-      end
-
-      if attributes.key?(:'vcl_on_compute_synth_requests')
-        self.vcl_on_compute_synth_requests = attributes[:'vcl_on_compute_synth_requests']
-      end
-
-      if attributes.key?(:'vcl_on_compute_edge_hit_requests')
-        self.vcl_on_compute_edge_hit_requests = attributes[:'vcl_on_compute_edge_hit_requests']
-      end
-
-      if attributes.key?(:'vcl_on_compute_edge_miss_requests')
-        self.vcl_on_compute_edge_miss_requests = attributes[:'vcl_on_compute_edge_miss_requests']
-      end
-
       if attributes.key?(:'all_hit_requests')
         self.all_hit_requests = attributes[:'all_hit_requests']
       end
@@ -2309,6 +2340,74 @@ module Fastly
 
       if attributes.key?(:'request_denied_get_head_body')
         self.request_denied_get_head_body = attributes[:'request_denied_get_head_body']
+      end
+
+      if attributes.key?(:'ddos_protection_requests_detect_count')
+        self.ddos_protection_requests_detect_count = attributes[:'ddos_protection_requests_detect_count']
+      end
+
+      if attributes.key?(:'ddos_protection_requests_mitigate_count')
+        self.ddos_protection_requests_mitigate_count = attributes[:'ddos_protection_requests_mitigate_count']
+      end
+
+      if attributes.key?(:'ddos_protection_requests_allow_count')
+        self.ddos_protection_requests_allow_count = attributes[:'ddos_protection_requests_allow_count']
+      end
+
+      if attributes.key?(:'object_storage_class_a_operations_count')
+        self.object_storage_class_a_operations_count = attributes[:'object_storage_class_a_operations_count']
+      end
+
+      if attributes.key?(:'object_storage_class_b_operations_count')
+        self.object_storage_class_b_operations_count = attributes[:'object_storage_class_b_operations_count']
+      end
+
+      if attributes.key?(:'aia_requests')
+        self.aia_requests = attributes[:'aia_requests']
+      end
+
+      if attributes.key?(:'aia_status_1xx')
+        self.aia_status_1xx = attributes[:'aia_status_1xx']
+      end
+
+      if attributes.key?(:'aia_status_2xx')
+        self.aia_status_2xx = attributes[:'aia_status_2xx']
+      end
+
+      if attributes.key?(:'aia_status_3xx')
+        self.aia_status_3xx = attributes[:'aia_status_3xx']
+      end
+
+      if attributes.key?(:'aia_status_4xx')
+        self.aia_status_4xx = attributes[:'aia_status_4xx']
+      end
+
+      if attributes.key?(:'aia_status_5xx')
+        self.aia_status_5xx = attributes[:'aia_status_5xx']
+      end
+
+      if attributes.key?(:'aia_response_usage_tokens')
+        self.aia_response_usage_tokens = attributes[:'aia_response_usage_tokens']
+      end
+
+      if attributes.key?(:'aia_origin_usage_tokens')
+        self.aia_origin_usage_tokens = attributes[:'aia_origin_usage_tokens']
+      end
+
+      if attributes.key?(:'aia_estimated_time_saved_ms')
+        self.aia_estimated_time_saved_ms = attributes[:'aia_estimated_time_saved_ms']
+      end
+
+      if attributes.key?(:'request_collapse_usable_count')
+        self.request_collapse_usable_count = attributes[:'request_collapse_usable_count']
+      end
+
+      if attributes.key?(:'request_collapse_unusable_count')
+        self.request_collapse_unusable_count = attributes[:'request_collapse_unusable_count']
+      end
+
+      if attributes.key?(:'compute_cache_operations_count')
+        self.compute_cache_operations_count = attributes[:'compute_cache_operations_count']
       end
     end
 
@@ -2415,6 +2514,7 @@ module Fastly
           status_503 == o.status_503 &&
           status_504 == o.status_504 &&
           status_505 == o.status_505 &&
+          status_530 == o.status_530 &&
           uncacheable == o.uncacheable &&
           pass_time == o.pass_time &&
           tls == o.tls &&
@@ -2559,13 +2659,6 @@ module Fastly
           bot_challenge_complete_tokens_issued == o.bot_challenge_complete_tokens_issued &&
           ddos_action_downgrade == o.ddos_action_downgrade &&
           ddos_action_downgraded_connections == o.ddos_action_downgraded_connections &&
-          vcl_on_compute_hit_requests == o.vcl_on_compute_hit_requests &&
-          vcl_on_compute_miss_requests == o.vcl_on_compute_miss_requests &&
-          vcl_on_compute_pass_requests == o.vcl_on_compute_pass_requests &&
-          vcl_on_compute_error_requests == o.vcl_on_compute_error_requests &&
-          vcl_on_compute_synth_requests == o.vcl_on_compute_synth_requests &&
-          vcl_on_compute_edge_hit_requests == o.vcl_on_compute_edge_hit_requests &&
-          vcl_on_compute_edge_miss_requests == o.vcl_on_compute_edge_miss_requests &&
           all_hit_requests == o.all_hit_requests &&
           all_miss_requests == o.all_miss_requests &&
           all_pass_requests == o.all_pass_requests &&
@@ -2579,7 +2672,24 @@ module Fastly
           all_status_4xx == o.all_status_4xx &&
           all_status_5xx == o.all_status_5xx &&
           origin_offload == o.origin_offload &&
-          request_denied_get_head_body == o.request_denied_get_head_body
+          request_denied_get_head_body == o.request_denied_get_head_body &&
+          ddos_protection_requests_detect_count == o.ddos_protection_requests_detect_count &&
+          ddos_protection_requests_mitigate_count == o.ddos_protection_requests_mitigate_count &&
+          ddos_protection_requests_allow_count == o.ddos_protection_requests_allow_count &&
+          object_storage_class_a_operations_count == o.object_storage_class_a_operations_count &&
+          object_storage_class_b_operations_count == o.object_storage_class_b_operations_count &&
+          aia_requests == o.aia_requests &&
+          aia_status_1xx == o.aia_status_1xx &&
+          aia_status_2xx == o.aia_status_2xx &&
+          aia_status_3xx == o.aia_status_3xx &&
+          aia_status_4xx == o.aia_status_4xx &&
+          aia_status_5xx == o.aia_status_5xx &&
+          aia_response_usage_tokens == o.aia_response_usage_tokens &&
+          aia_origin_usage_tokens == o.aia_origin_usage_tokens &&
+          aia_estimated_time_saved_ms == o.aia_estimated_time_saved_ms &&
+          request_collapse_usable_count == o.request_collapse_usable_count &&
+          request_collapse_unusable_count == o.request_collapse_unusable_count &&
+          compute_cache_operations_count == o.compute_cache_operations_count
     end
 
     # @see the `==` method
@@ -2591,7 +2701,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [requests, logging, log, resp_header_bytes, header_size, resp_body_bytes, body_size, hits, miss, pass, synth, errors, hits_time, miss_time, miss_histogram, compute_requests, compute_execution_time_ms, compute_ram_used, compute_request_time_ms, compute_request_time_billed_ms, shield, ipv6, imgopto, imgopto_shield, imgopto_transforms, otfp, otfp_shield, otfp_manifests, video, pci, http2, http3, restarts, req_header_bytes, req_body_bytes, bereq_header_bytes, bereq_body_bytes, waf_blocked, waf_logged, waf_passed, attack_req_header_bytes, attack_req_body_bytes, attack_resp_synth_bytes, attack_logged_req_header_bytes, attack_logged_req_body_bytes, attack_blocked_req_header_bytes, attack_blocked_req_body_bytes, attack_passed_req_header_bytes, attack_passed_req_body_bytes, shield_resp_header_bytes, shield_resp_body_bytes, otfp_resp_header_bytes, otfp_resp_body_bytes, otfp_shield_resp_header_bytes, otfp_shield_resp_body_bytes, otfp_shield_time, otfp_deliver_time, imgopto_resp_header_bytes, imgopto_resp_body_bytes, imgopto_shield_resp_header_bytes, imgopto_shield_resp_body_bytes, status_1xx, status_2xx, status_3xx, status_4xx, status_5xx, status_200, status_204, status_206, status_301, status_302, status_304, status_400, status_401, status_403, status_404, status_406, status_416, status_429, status_500, status_501, status_502, status_503, status_504, status_505, uncacheable, pass_time, tls, tls_v10, tls_v11, tls_v12, tls_v13, object_size_1k, object_size_10k, object_size_100k, object_size_1m, object_size_10m, object_size_100m, object_size_1g, object_size_other, recv_sub_time, recv_sub_count, hash_sub_time, hash_sub_count, miss_sub_time, miss_sub_count, fetch_sub_time, fetch_sub_count, pass_sub_time, pass_sub_count, pipe_sub_time, pipe_sub_count, deliver_sub_time, deliver_sub_count, error_sub_time, error_sub_count, hit_sub_time, hit_sub_count, prehash_sub_time, prehash_sub_count, predeliver_sub_time, predeliver_sub_count, hit_resp_body_bytes, miss_resp_body_bytes, pass_resp_body_bytes, compute_req_header_bytes, compute_req_body_bytes, compute_resp_header_bytes, compute_resp_body_bytes, imgvideo, imgvideo_frames, imgvideo_resp_header_bytes, imgvideo_resp_body_bytes, imgvideo_shield, imgvideo_shield_frames, imgvideo_shield_resp_header_bytes, imgvideo_shield_resp_body_bytes, log_bytes, edge_requests, edge_resp_header_bytes, edge_resp_body_bytes, origin_revalidations, origin_fetches, origin_fetch_header_bytes, origin_fetch_body_bytes, origin_fetch_resp_header_bytes, origin_fetch_resp_body_bytes, shield_revalidations, shield_fetches, shield_fetch_header_bytes, shield_fetch_body_bytes, shield_fetch_resp_header_bytes, shield_fetch_resp_body_bytes, segblock_origin_fetches, segblock_shield_fetches, compute_resp_status_1xx, compute_resp_status_2xx, compute_resp_status_3xx, compute_resp_status_4xx, compute_resp_status_5xx, edge_hit_requests, edge_miss_requests, compute_bereq_header_bytes, compute_bereq_body_bytes, compute_beresp_header_bytes, compute_beresp_body_bytes, origin_cache_fetches, shield_cache_fetches, compute_bereqs, compute_bereq_errors, compute_resource_limit_exceeded, compute_heap_limit_exceeded, compute_stack_limit_exceeded, compute_globals_limit_exceeded, compute_guest_errors, compute_runtime_errors, edge_hit_resp_body_bytes, edge_hit_resp_header_bytes, edge_miss_resp_body_bytes, edge_miss_resp_header_bytes, origin_cache_fetch_resp_body_bytes, origin_cache_fetch_resp_header_bytes, shield_hit_requests, shield_miss_requests, shield_hit_resp_header_bytes, shield_hit_resp_body_bytes, shield_miss_resp_header_bytes, shield_miss_resp_body_bytes, websocket_req_header_bytes, websocket_req_body_bytes, websocket_resp_header_bytes, websocket_bereq_header_bytes, websocket_bereq_body_bytes, websocket_beresp_header_bytes, websocket_beresp_body_bytes, websocket_conn_time_ms, websocket_resp_body_bytes, fanout_recv_publishes, fanout_send_publishes, kv_store_class_a_operations, kv_store_class_b_operations, object_store_class_a_operations, object_store_class_b_operations, fanout_req_header_bytes, fanout_req_body_bytes, fanout_resp_header_bytes, fanout_resp_body_bytes, fanout_bereq_header_bytes, fanout_bereq_body_bytes, fanout_beresp_header_bytes, fanout_beresp_body_bytes, fanout_conn_time_ms, ddos_action_limit_streams_connections, ddos_action_limit_streams_requests, ddos_action_tarpit_accept, ddos_action_tarpit, ddos_action_close, ddos_action_blackhole, bot_challenge_starts, bot_challenge_complete_tokens_passed, bot_challenge_complete_tokens_failed, bot_challenge_complete_tokens_checked, bot_challenge_complete_tokens_disabled, bot_challenges_issued, bot_challenges_succeeded, bot_challenges_failed, bot_challenge_complete_tokens_issued, ddos_action_downgrade, ddos_action_downgraded_connections, vcl_on_compute_hit_requests, vcl_on_compute_miss_requests, vcl_on_compute_pass_requests, vcl_on_compute_error_requests, vcl_on_compute_synth_requests, vcl_on_compute_edge_hit_requests, vcl_on_compute_edge_miss_requests, all_hit_requests, all_miss_requests, all_pass_requests, all_error_requests, all_synth_requests, all_edge_hit_requests, all_edge_miss_requests, all_status_1xx, all_status_2xx, all_status_3xx, all_status_4xx, all_status_5xx, origin_offload, request_denied_get_head_body].hash
+      [requests, logging, log, resp_header_bytes, header_size, resp_body_bytes, body_size, hits, miss, pass, synth, errors, hits_time, miss_time, miss_histogram, compute_requests, compute_execution_time_ms, compute_ram_used, compute_request_time_ms, compute_request_time_billed_ms, shield, ipv6, imgopto, imgopto_shield, imgopto_transforms, otfp, otfp_shield, otfp_manifests, video, pci, http2, http3, restarts, req_header_bytes, req_body_bytes, bereq_header_bytes, bereq_body_bytes, waf_blocked, waf_logged, waf_passed, attack_req_header_bytes, attack_req_body_bytes, attack_resp_synth_bytes, attack_logged_req_header_bytes, attack_logged_req_body_bytes, attack_blocked_req_header_bytes, attack_blocked_req_body_bytes, attack_passed_req_header_bytes, attack_passed_req_body_bytes, shield_resp_header_bytes, shield_resp_body_bytes, otfp_resp_header_bytes, otfp_resp_body_bytes, otfp_shield_resp_header_bytes, otfp_shield_resp_body_bytes, otfp_shield_time, otfp_deliver_time, imgopto_resp_header_bytes, imgopto_resp_body_bytes, imgopto_shield_resp_header_bytes, imgopto_shield_resp_body_bytes, status_1xx, status_2xx, status_3xx, status_4xx, status_5xx, status_200, status_204, status_206, status_301, status_302, status_304, status_400, status_401, status_403, status_404, status_406, status_416, status_429, status_500, status_501, status_502, status_503, status_504, status_505, status_530, uncacheable, pass_time, tls, tls_v10, tls_v11, tls_v12, tls_v13, object_size_1k, object_size_10k, object_size_100k, object_size_1m, object_size_10m, object_size_100m, object_size_1g, object_size_other, recv_sub_time, recv_sub_count, hash_sub_time, hash_sub_count, miss_sub_time, miss_sub_count, fetch_sub_time, fetch_sub_count, pass_sub_time, pass_sub_count, pipe_sub_time, pipe_sub_count, deliver_sub_time, deliver_sub_count, error_sub_time, error_sub_count, hit_sub_time, hit_sub_count, prehash_sub_time, prehash_sub_count, predeliver_sub_time, predeliver_sub_count, hit_resp_body_bytes, miss_resp_body_bytes, pass_resp_body_bytes, compute_req_header_bytes, compute_req_body_bytes, compute_resp_header_bytes, compute_resp_body_bytes, imgvideo, imgvideo_frames, imgvideo_resp_header_bytes, imgvideo_resp_body_bytes, imgvideo_shield, imgvideo_shield_frames, imgvideo_shield_resp_header_bytes, imgvideo_shield_resp_body_bytes, log_bytes, edge_requests, edge_resp_header_bytes, edge_resp_body_bytes, origin_revalidations, origin_fetches, origin_fetch_header_bytes, origin_fetch_body_bytes, origin_fetch_resp_header_bytes, origin_fetch_resp_body_bytes, shield_revalidations, shield_fetches, shield_fetch_header_bytes, shield_fetch_body_bytes, shield_fetch_resp_header_bytes, shield_fetch_resp_body_bytes, segblock_origin_fetches, segblock_shield_fetches, compute_resp_status_1xx, compute_resp_status_2xx, compute_resp_status_3xx, compute_resp_status_4xx, compute_resp_status_5xx, edge_hit_requests, edge_miss_requests, compute_bereq_header_bytes, compute_bereq_body_bytes, compute_beresp_header_bytes, compute_beresp_body_bytes, origin_cache_fetches, shield_cache_fetches, compute_bereqs, compute_bereq_errors, compute_resource_limit_exceeded, compute_heap_limit_exceeded, compute_stack_limit_exceeded, compute_globals_limit_exceeded, compute_guest_errors, compute_runtime_errors, edge_hit_resp_body_bytes, edge_hit_resp_header_bytes, edge_miss_resp_body_bytes, edge_miss_resp_header_bytes, origin_cache_fetch_resp_body_bytes, origin_cache_fetch_resp_header_bytes, shield_hit_requests, shield_miss_requests, shield_hit_resp_header_bytes, shield_hit_resp_body_bytes, shield_miss_resp_header_bytes, shield_miss_resp_body_bytes, websocket_req_header_bytes, websocket_req_body_bytes, websocket_resp_header_bytes, websocket_bereq_header_bytes, websocket_bereq_body_bytes, websocket_beresp_header_bytes, websocket_beresp_body_bytes, websocket_conn_time_ms, websocket_resp_body_bytes, fanout_recv_publishes, fanout_send_publishes, kv_store_class_a_operations, kv_store_class_b_operations, object_store_class_a_operations, object_store_class_b_operations, fanout_req_header_bytes, fanout_req_body_bytes, fanout_resp_header_bytes, fanout_resp_body_bytes, fanout_bereq_header_bytes, fanout_bereq_body_bytes, fanout_beresp_header_bytes, fanout_beresp_body_bytes, fanout_conn_time_ms, ddos_action_limit_streams_connections, ddos_action_limit_streams_requests, ddos_action_tarpit_accept, ddos_action_tarpit, ddos_action_close, ddos_action_blackhole, bot_challenge_starts, bot_challenge_complete_tokens_passed, bot_challenge_complete_tokens_failed, bot_challenge_complete_tokens_checked, bot_challenge_complete_tokens_disabled, bot_challenges_issued, bot_challenges_succeeded, bot_challenges_failed, bot_challenge_complete_tokens_issued, ddos_action_downgrade, ddos_action_downgraded_connections, all_hit_requests, all_miss_requests, all_pass_requests, all_error_requests, all_synth_requests, all_edge_hit_requests, all_edge_miss_requests, all_status_1xx, all_status_2xx, all_status_3xx, all_status_4xx, all_status_5xx, origin_offload, request_denied_get_head_body, ddos_protection_requests_detect_count, ddos_protection_requests_mitigate_count, ddos_protection_requests_allow_count, object_storage_class_a_operations_count, object_storage_class_b_operations_count, aia_requests, aia_status_1xx, aia_status_2xx, aia_status_3xx, aia_status_4xx, aia_status_5xx, aia_response_usage_tokens, aia_origin_usage_tokens, aia_estimated_time_saved_ms, request_collapse_usable_count, request_collapse_unusable_count, compute_cache_operations_count].hash
     end
 
     # Builds the object from hash

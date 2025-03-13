@@ -12,7 +12,7 @@ require 'date'
 require 'time'
 
 module Fastly
-  # An example of an ACL List Response.
+  # Defines the structure of what the ACL List endpoint returns.
   class ComputeAclListEntries
     attr_accessor :meta
 

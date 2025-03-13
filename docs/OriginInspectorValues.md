@@ -30,6 +30,7 @@
 | **status_503** | **Integer** | Number of responses received with status code 503 (Service Unavailable) from origin. | [optional] |
 | **status_504** | **Integer** | Number of responses received with status code 504 (Gateway Timeout) from origin. | [optional] |
 | **status_505** | **Integer** | Number of responses received with status code 505 (HTTP Version Not Supported) from origin. | [optional] |
+| **status_530** | **Integer** | Number of responses received from origin with status code 530. | [optional] |
 | **latency_0_to_1ms** | **Integer** | Number of responses from origin with latency between 0 and 1 millisecond. | [optional] |
 | **latency_1_to_5ms** | **Integer** | Number of responses from origin with latency between 1 and 5 milliseconds. | [optional] |
 | **latency_5_to_10ms** | **Integer** | Number of responses from origin with latency between 5 and 10 milliseconds. | [optional] |
@@ -68,6 +69,7 @@
 | **waf_status_503** | **Integer** | Number of responses received with status code 503 (Service Unavailable) received for origin requests made by the Fastly WAF. | [optional] |
 | **waf_status_504** | **Integer** | Number of responses received with status code 504 (Gateway Timeout) received for origin requests made by the Fastly WAF. | [optional] |
 | **waf_status_505** | **Integer** | Number of responses received with status code 505 (HTTP Version Not Supported) received for origin requests made by the Fastly WAF. | [optional] |
+| **waf_status_530** | **Integer** | Number of responses received with status code 530 received for origin requests made by the Fastly WAF. | [optional] |
 | **waf_latency_0_to_1ms** | **Integer** | Number of responses with latency between 0 and 1 millisecond received for origin requests made by the Fastly WAF. | [optional] |
 | **waf_latency_1_to_5ms** | **Integer** | Number of responses with latency between 1 and 5 milliseconds received for origin requests made by the Fastly WAF. | [optional] |
 | **waf_latency_5_to_10ms** | **Integer** | Number of responses with latency between 5 and 10 milliseconds received for origin requests made by the Fastly WAF. | [optional] |
@@ -106,6 +108,7 @@
 | **compute_status_503** | **Integer** | Number of responses received with status code 503 (Service Unavailable) for origin received by the Compute platform. | [optional] |
 | **compute_status_504** | **Integer** | Number of responses received with status code 504 (Gateway Timeout) for origin received by the Compute platform. | [optional] |
 | **compute_status_505** | **Integer** | Number of responses received with status code 505 (HTTP Version Not Supported) for origin received by the Compute platform. | [optional] |
+| **compute_status_530** | **Integer** | Number of responses received with status code 530 for origin received by the Compute platform. | [optional] |
 | **compute_latency_0_to_1ms** | **Integer** | Number of responses with latency between 0 and 1 millisecond for origin received by the Compute platform. | [optional] |
 | **compute_latency_1_to_5ms** | **Integer** | Number of responses with latency between 1 and 5 milliseconds for origin received by the Compute platform. | [optional] |
 | **compute_latency_5_to_10ms** | **Integer** | Number of responses with latency between 5 and 10 milliseconds for origin received by the Compute platform. | [optional] |
@@ -144,6 +147,7 @@
 | **all_status_503** | **Integer** | Number of responses received with status code 503 (Service Unavailable) received for origin requests made by all sources. | [optional] |
 | **all_status_504** | **Integer** | Number of responses received with status code 504 (Gateway Timeout) received for origin requests made by all sources. | [optional] |
 | **all_status_505** | **Integer** | Number of responses received with status code 505 (HTTP Version Not Supported) received for origin requests made by all sources. | [optional] |
+| **all_status_530** | **Integer** | Number of responses received with status code 530 received for origin requests made by all sources. | [optional] |
 | **all_latency_0_to_1ms** | **Integer** | Number of responses with latency between 0 and 1 millisecond received for origin requests made by all sources. | [optional] |
 | **all_latency_1_to_5ms** | **Integer** | Number of responses with latency between 1 and 5 milliseconds received for origin requests made by all sources. | [optional] |
 | **all_latency_5_to_10ms** | **Integer** | Number of responses with latency between 5 and 10 milliseconds received for origin requests made by all sources. | [optional] |

@@ -14,18 +14,18 @@ api_instance = Fastly::SnippetApi.new
 Method | HTTP request | Description
 ------ | ------------ | -----------
 [**create_snippet**](SnippetApi.md#create_snippet) | **POST** /service/{service_id}/version/{version_id}/snippet | Create a snippet
-[**delete_snippet**](SnippetApi.md#delete_snippet) | **DELETE** /service/{service_id}/version/{version_id}/snippet/{snippet_name} | Delete a snippet
-[**get_snippet**](SnippetApi.md#get_snippet) | **GET** /service/{service_id}/version/{version_id}/snippet/{snippet_name} | Get a versioned snippet
-[**get_snippet_dynamic**](SnippetApi.md#get_snippet_dynamic) | **GET** /service/{service_id}/snippet/{snippet_id} | Get a dynamic snippet
+[**delete_snippet**](SnippetApi.md#delete_snippet) | **DELETE** /service/{service_id}/version/{version_id}/snippet/{name} | Delete a snippet
+[**get_snippet**](SnippetApi.md#get_snippet) | **GET** /service/{service_id}/version/{version_id}/snippet/{name} | Get a versioned snippet
+[**get_snippet_dynamic**](SnippetApi.md#get_snippet_dynamic) | **GET** /service/{service_id}/snippet/{id} | Get a dynamic snippet
 [**list_snippets**](SnippetApi.md#list_snippets) | **GET** /service/{service_id}/version/{version_id}/snippet | List snippets
-[**update_snippet**](SnippetApi.md#update_snippet) | **PUT** /service/{service_id}/version/{version_id}/snippet/{snippet_name} | Update a versioned snippet
-[**update_snippet_dynamic**](SnippetApi.md#update_snippet_dynamic) | **PUT** /service/{service_id}/snippet/{snippet_id} | Update a dynamic snippet
+[**update_snippet**](SnippetApi.md#update_snippet) | **PUT** /service/{service_id}/version/{version_id}/snippet/{name} | Update a versioned snippet
+[**update_snippet_dynamic**](SnippetApi.md#update_snippet_dynamic) | **PUT** /service/{service_id}/snippet/{id} | Update a dynamic snippet
 
 
 ## `create_snippet()`
 
 ```ruby
-create_snippet(opts): <SnippetResponsePost> # Create a snippet
+create_snippet(opts): <SnippetResponse> # Create a snippet
 ```
 
 Create a snippet for a particular service and version.
@@ -67,7 +67,7 @@ end
 
 ### Return type
 
-[**SnippetResponsePost**](SnippetResponsePost.md)
+[**SnippetResponse**](SnippetResponse.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)
@@ -86,7 +86,7 @@ api_instance = Fastly::SnippetApi.new
 opts = {
     service_id: 'service_id_example', # String | Alphanumeric string identifying the service.
     version_id: 56, # Integer | Integer identifying a service version.
-    snippet_name: 'snippet_name_example', # String | The name for the snippet.
+    name: 'name_example', # String | The name for the snippet.
 }
 
 begin
@@ -104,7 +104,7 @@ end
 | ---- | ---- | ----------- | ----- |
 | **service_id** | **String** | Alphanumeric string identifying the service. |  |
 | **version_id** | **Integer** | Integer identifying a service version. |  |
-| **snippet_name** | **String** | The name for the snippet. |  |
+| **name** | **String** | The name for the snippet. |  |
 
 ### Return type
 
@@ -127,7 +127,7 @@ api_instance = Fastly::SnippetApi.new
 opts = {
     service_id: 'service_id_example', # String | Alphanumeric string identifying the service.
     version_id: 56, # Integer | Integer identifying a service version.
-    snippet_name: 'snippet_name_example', # String | The name for the snippet.
+    name: 'name_example', # String | The name for the snippet.
 }
 
 begin
@@ -145,7 +145,7 @@ end
 | ---- | ---- | ----------- | ----- |
 | **service_id** | **String** | Alphanumeric string identifying the service. |  |
 | **version_id** | **Integer** | Integer identifying a service version. |  |
-| **snippet_name** | **String** | The name for the snippet. |  |
+| **name** | **String** | The name for the snippet. |  |
 
 ### Return type
 
@@ -167,7 +167,7 @@ Get a single dynamic snippet for a particular service.
 api_instance = Fastly::SnippetApi.new
 opts = {
     service_id: 'service_id_example', # String | Alphanumeric string identifying the service.
-    snippet_id: 'snippet_id_example', # String | Alphanumeric string identifying a VCL Snippet.
+    id: 'id_example', # String | Alphanumeric string identifying a VCL Snippet.
 }
 
 begin
@@ -184,7 +184,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **service_id** | **String** | Alphanumeric string identifying the service. |  |
-| **snippet_id** | **String** | Alphanumeric string identifying a VCL Snippet. |  |
+| **id** | **String** | Alphanumeric string identifying a VCL Snippet. |  |
 
 ### Return type
 
@@ -246,7 +246,7 @@ api_instance = Fastly::SnippetApi.new
 opts = {
     service_id: 'service_id_example', # String | Alphanumeric string identifying the service.
     version_id: 56, # Integer | Integer identifying a service version.
-    snippet_name: 'snippet_name_example', # String | The name for the snippet.
+    name: 'name_example', # String | The name for the snippet.
 }
 
 begin
@@ -264,7 +264,7 @@ end
 | ---- | ---- | ----------- | ----- |
 | **service_id** | **String** | Alphanumeric string identifying the service. |  |
 | **version_id** | **Integer** | Integer identifying a service version. |  |
-| **snippet_name** | **String** | The name for the snippet. |  |
+| **name** | **String** | The name for the snippet. |  |
 
 ### Return type
 
@@ -286,7 +286,7 @@ Update a dynamic snippet for a particular service.
 api_instance = Fastly::SnippetApi.new
 opts = {
     service_id: 'service_id_example', # String | Alphanumeric string identifying the service.
-    snippet_id: 'snippet_id_example', # String | Alphanumeric string identifying a VCL Snippet.
+    id: 'id_example', # String | Alphanumeric string identifying a VCL Snippet.
     name: 'name_example', # String | The name for the snippet.
     type: 'init', # String | The location in generated VCL where the snippet should be placed.
     content: 'content_example', # String | The VCL code that specifies exactly what the snippet does.
@@ -308,7 +308,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **service_id** | **String** | Alphanumeric string identifying the service. |  |
-| **snippet_id** | **String** | Alphanumeric string identifying a VCL Snippet. |  |
+| **id** | **String** | Alphanumeric string identifying a VCL Snippet. |  |
 | **name** | **String** | The name for the snippet. | [optional] |
 | **type** | **String** | The location in generated VCL where the snippet should be placed. | [optional] |
 | **content** | **String** | The VCL code that specifies exactly what the snippet does. | [optional] |

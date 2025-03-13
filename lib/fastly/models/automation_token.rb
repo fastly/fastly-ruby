@@ -25,7 +25,7 @@ module Fastly
     # A space-delimited list of authorization scope.
     attr_accessor :scope
 
-    # A UTC time-stamp of when the token expires.
+    # A UTC timestamp of when the token expires.
     attr_accessor :expires_at
 
     class EnumAttributeValidator

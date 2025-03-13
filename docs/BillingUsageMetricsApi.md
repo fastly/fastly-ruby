@@ -13,14 +13,14 @@ api_instance = Fastly::BillingUsageMetricsApi.new
 
 Method | HTTP request | Description
 ------ | ------------ | -----------
-[**get_service_level_usage**](BillingUsageMetricsApi.md#get_service_level_usage) | **GET** /billing/v2/account_customers/{customer_id}/service-usage-metrics | Retrieve service-level usage metrics for a product.
-[**get_service_level_usage_types**](BillingUsageMetricsApi.md#get_service_level_usage_types) | **GET** /billing/v2/account_customers/{customer_id}/service-usage-types | Retrieve product usage types for a customer.
+[**get_service_level_usage**](BillingUsageMetricsApi.md#get_service_level_usage) | **GET** /billing/v3/service-usage-metrics | Retrieve service-level usage metrics for services with non-zero usage units.
+[**get_usage_metrics**](BillingUsageMetricsApi.md#get_usage_metrics) | **GET** /billing/v3/usage-metrics | Get monthly usage metrics
 
 
 ## `get_service_level_usage()`
 
 ```ruby
-get_service_level_usage(opts): <Serviceusagemetrics> # Retrieve service-level usage metrics for a product.
+get_service_level_usage(opts): <Serviceusagemetrics> # Retrieve service-level usage metrics for services with non-zero usage units.
 ```
 
 Returns product usage, broken down by service.
@@ -30,20 +30,17 @@ Returns product usage, broken down by service.
 ```ruby
 api_instance = Fastly::BillingUsageMetricsApi.new
 opts = {
-    customer_id: 'customer_id_example', # String | Alphanumeric string identifying the customer.
-    product_id: 'product_id_example', # String | The product identifier for the metrics returned (e.g., `cdn_usage`). This field is not required for CSV requests.
-    usage_type_name: 'usage_type_name_example', # String | The usage type name for the metrics returned (e.g., `North America Requests`). This field is not required for CSV requests.
-    time_granularity: 'time_granularity_example', # String | 
-    start_date: '2023-01-01', # String | 
-    end_date: '2023-01-31', # String | 
+    product_id: 'product_id_example', # String | The product identifier for the metrics returned (e.g., `cdn_usage`). This should be used along with `usage_type_name`.
+    service: 'service_example', # String | The service identifier for the metrics being requested.
+    usage_type_name: 'usage_type_name_example', # String | The usage type name for the metrics returned (e.g., `North America Requests`). This should be used along with `product_id`.
     start_month: '2023-01', # String | 
     end_month: '2023-03', # String | 
-    limit: 'limit_example', # String | Number of results per page. The maximum is 100.
+    limit: 'limit_example', # String | Number of results per page. The maximum is 10000.
     cursor: 'cursor_example', # String | Cursor value from the `next_cursor` field of a previous response, used to retrieve the next page. To request the first page, this should be empty.
 }
 
 begin
-  # Retrieve service-level usage metrics for a product.
+  # Retrieve service-level usage metrics for services with non-zero usage units.
   result = api_instance.get_service_level_usage(opts)
   p result
 rescue Fastly::ApiError => e
@@ -55,15 +52,12 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **customer_id** | **String** | Alphanumeric string identifying the customer. |  |
-| **product_id** | **String** | The product identifier for the metrics returned (e.g., `cdn_usage`). This field is not required for CSV requests. |  |
-| **usage_type_name** | **String** | The usage type name for the metrics returned (e.g., `North America Requests`). This field is not required for CSV requests. |  |
-| **time_granularity** | **String** |  |  |
-| **start_date** | **String** |  | [optional] |
-| **end_date** | **String** |  | [optional] |
+| **product_id** | **String** | The product identifier for the metrics returned (e.g., `cdn_usage`). This should be used along with `usage_type_name`. | [optional] |
+| **service** | **String** | The service identifier for the metrics being requested. | [optional] |
+| **usage_type_name** | **String** | The usage type name for the metrics returned (e.g., `North America Requests`). This should be used along with `product_id`. | [optional] |
 | **start_month** | **String** |  | [optional] |
 | **end_month** | **String** |  | [optional] |
-| **limit** | **String** | Number of results per page. The maximum is 100. | [optional][default to &#39;5&#39;] |
+| **limit** | **String** | Number of results per page. The maximum is 10000. | [optional][default to &#39;1000&#39;] |
 | **cursor** | **String** | Cursor value from the `next_cursor` field of a previous response, used to retrieve the next page. To request the first page, this should be empty. | [optional] |
 
 ### Return type
@@ -72,28 +66,29 @@ end
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)
-## `get_service_level_usage_types()`
+## `get_usage_metrics()`
 
 ```ruby
-get_service_level_usage_types(opts): <Serviceusagetypes> # Retrieve product usage types for a customer.
+get_usage_metrics(opts): <Usagemetric> # Get monthly usage metrics
 ```
 
-Returns product usage types reported by the customer's services.
+Returns monthly usage metrics for customer by product.
 
 ### Examples
 
 ```ruby
 api_instance = Fastly::BillingUsageMetricsApi.new
 opts = {
-    customer_id: 'customer_id_example', # String | Alphanumeric string identifying the customer.
+    start_month: '2024-05', # String | 
+    end_month: '2024-06', # String | 
 }
 
 begin
-  # Retrieve product usage types for a customer.
-  result = api_instance.get_service_level_usage_types(opts)
+  # Get monthly usage metrics
+  result = api_instance.get_usage_metrics(opts)
   p result
 rescue Fastly::ApiError => e
-  puts "Error when calling BillingUsageMetricsApi->get_service_level_usage_types: #{e}"
+  puts "Error when calling BillingUsageMetricsApi->get_usage_metrics: #{e}"
 end
 ```
 
@@ -101,11 +96,12 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **customer_id** | **String** | Alphanumeric string identifying the customer. |  |
+| **start_month** | **String** |  |  |
+| **end_month** | **String** |  |  |
 
 ### Return type
 
-[**Serviceusagetypes**](Serviceusagetypes.md)
+[**Usagemetric**](Usagemetric.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)

@@ -45,8 +45,8 @@ opts = {
     src: 'src_example', # String | Variable to be used as a source for the header content. Does not apply to `delete` action.
     substitution: 'substitution_example', # String | Value to substitute in place of regular expression. Only applies to `regex` and `regex_repeat` actions.
     type: 'request', # String | Accepts a string value.
-    ignore_if_set: 56, # Integer | Don't add the header if it is added already. Only applies to 'set' action.
-    priority: 56, # Integer | Priority determines execution order. Lower numbers execute first.
+    ignore_if_set: 'ignore_if_set_example', # String | Don't add the header if it is added already. Only applies to 'set' action. Numerical value (\\\"0\\\" = false, \\\"1\\\" = true)
+    priority: 'priority_example', # String | Priority determines execution order. Lower numbers execute first.
 }
 
 begin
@@ -74,8 +74,8 @@ end
 | **src** | **String** | Variable to be used as a source for the header content. Does not apply to `delete` action. | [optional] |
 | **substitution** | **String** | Value to substitute in place of regular expression. Only applies to `regex` and `regex_repeat` actions. | [optional] |
 | **type** | **String** | Accepts a string value. | [optional] |
-| **ignore_if_set** | **Integer** | Don&#39;t add the header if it is added already. Only applies to &#39;set&#39; action. | [optional] |
-| **priority** | **Integer** | Priority determines execution order. Lower numbers execute first. | [optional][default to 100] |
+| **ignore_if_set** | **String** | Don&#39;t add the header if it is added already. Only applies to &#39;set&#39; action. Numerical value (\\\&quot;0\\\&quot; &#x3D; false, \\\&quot;1\\\&quot; &#x3D; true) | [optional] |
+| **priority** | **String** | Priority determines execution order. Lower numbers execute first. | [optional][default to &#39;100&#39;] |
 
 ### Return type
 
@@ -230,8 +230,8 @@ opts = {
     src: 'src_example', # String | Variable to be used as a source for the header content. Does not apply to `delete` action.
     substitution: 'substitution_example', # String | Value to substitute in place of regular expression. Only applies to `regex` and `regex_repeat` actions.
     type: 'request', # String | Accepts a string value.
-    ignore_if_set: 56, # Integer | Don't add the header if it is added already. Only applies to 'set' action.
-    priority: 56, # Integer | Priority determines execution order. Lower numbers execute first.
+    ignore_if_set: 'ignore_if_set_example', # String | Don't add the header if it is added already. Only applies to 'set' action. Numerical value (\\\"0\\\" = false, \\\"1\\\" = true)
+    priority: 'priority_example', # String | Priority determines execution order. Lower numbers execute first.
 }
 
 begin
@@ -260,8 +260,8 @@ end
 | **src** | **String** | Variable to be used as a source for the header content. Does not apply to `delete` action. | [optional] |
 | **substitution** | **String** | Value to substitute in place of regular expression. Only applies to `regex` and `regex_repeat` actions. | [optional] |
 | **type** | **String** | Accepts a string value. | [optional] |
-| **ignore_if_set** | **Integer** | Don&#39;t add the header if it is added already. Only applies to &#39;set&#39; action. | [optional] |
-| **priority** | **Integer** | Priority determines execution order. Lower numbers execute first. | [optional][default to 100] |
+| **ignore_if_set** | **String** | Don&#39;t add the header if it is added already. Only applies to &#39;set&#39; action. Numerical value (\\\&quot;0\\\&quot; &#x3D; false, \\\&quot;1\\\&quot; &#x3D; true) | [optional] |
+| **priority** | **String** | Priority determines execution order. Lower numbers execute first. | [optional][default to &#39;100&#39;] |
 
 ### Return type
 

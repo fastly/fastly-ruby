@@ -154,7 +154,6 @@ module Fastly
     def self.fastly_all_of
       [
       :'Header',
-      :'HeaderResponseAdditional',
       :'ServiceIdAndVersionString',
       :'Timestamps'
       ]

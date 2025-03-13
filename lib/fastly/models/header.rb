@@ -43,6 +43,12 @@ module Fastly
     # Accepts a string value.
     attr_accessor :type
 
+    # Don't add the header if it is added already. Only applies to 'set' action. Numerical value (\"0\" = false, \"1\" = true)
+    attr_accessor :ignore_if_set
+
+    # Priority determines execution order. Lower numbers execute first.
+    attr_accessor :priority
+
     class EnumAttributeValidator
       attr_reader :datatype
       attr_reader :allowable_values
@@ -77,7 +83,9 @@ module Fastly
         :'response_condition' => :'response_condition',
         :'src' => :'src',
         :'substitution' => :'substitution',
-        :'type' => :'type'
+        :'type' => :'type',
+        :'ignore_if_set' => :'ignore_if_set',
+        :'priority' => :'priority'
       }
     end
 
@@ -98,7 +106,9 @@ module Fastly
         :'response_condition' => :'String',
         :'src' => :'String',
         :'substitution' => :'String',
-        :'type' => :'String'
+        :'type' => :'String',
+        :'ignore_if_set' => :'String',
+        :'priority' => :'String'
       }
     end
 
@@ -168,6 +178,16 @@ module Fastly
       if attributes.key?(:'type')
         self.type = attributes[:'type']
       end
+
+      if attributes.key?(:'ignore_if_set')
+        self.ignore_if_set = attributes[:'ignore_if_set']
+      end
+
+      if attributes.key?(:'priority')
+        self.priority = attributes[:'priority']
+      else
+        self.priority = '100'
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -221,7 +241,9 @@ module Fastly
           response_condition == o.response_condition &&
           src == o.src &&
           substitution == o.substitution &&
-          type == o.type
+          type == o.type &&
+          ignore_if_set == o.ignore_if_set &&
+          priority == o.priority
     end
 
     # @see the `==` method
@@ -233,7 +255,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [action, cache_condition, dst, name, regex, request_condition, response_condition, src, substitution, type].hash
+      [action, cache_condition, dst, name, regex, request_condition, response_condition, src, substitution, type, ignore_if_set, priority].hash
     end
 
     # Builds the object from hash

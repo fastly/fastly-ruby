@@ -35,7 +35,7 @@ module Fastly
     # Attribute type mapping.
     def self.fastly_types
       {
-        :'limit' => :'String',
+        :'limit' => :'Integer',
         :'next_cursor' => :'String'
       }
     end

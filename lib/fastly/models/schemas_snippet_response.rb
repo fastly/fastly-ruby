@@ -108,6 +108,7 @@ module Fastly
     # List of attributes with nullable: true
     def self.fastly_nullable
       Set.new([
+        :'content',
         :'created_at',
         :'deleted_at',
         :'updated_at',
@@ -117,8 +118,9 @@ module Fastly
     # List of class defined in allOf (OpenAPI v3)
     def self.fastly_all_of
       [
-      :'SchemasSnippetResponseCommon',
-      :'Snippet'
+      :'Snippet',
+      :'SnippetResponseAllOf',
+      :'Timestamps'
       ]
     end
 

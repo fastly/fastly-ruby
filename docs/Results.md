@@ -114,6 +114,7 @@
 | **status_503** | **Integer** | Number of responses sent with status code 503 (Service Unavailable). | [optional] |
 | **status_504** | **Integer** | Number of responses sent with status code 504 (Gateway Timeout). | [optional] |
 | **status_505** | **Integer** | Number of responses sent with status code 505 (HTTP Version Not Supported). | [optional] |
+| **status_530** | **Integer** | Number of responses sent with status code 530. | [optional] |
 | **status_1xx** | **Integer** | Number of \&quot;Informational\&quot; category status codes delivered. | [optional] |
 | **status_2xx** | **Integer** | Number of \&quot;Success\&quot; status codes delivered. | [optional] |
 | **status_3xx** | **Integer** | Number of \&quot;Redirection\&quot; codes delivered. | [optional] |
@@ -233,13 +234,6 @@
 | **bot_challenges_failed** | **Integer** | The number of failed challenge solutions processed. For example, an incorrect CAPTCHA solution. | [optional] |
 | **ddos_action_downgrade** | **Integer** | The number of times the downgrade action was taken. The downgrade action restricts the client to http1. | [optional] |
 | **ddos_action_downgraded_connections** | **Integer** | The number of connections the downgrade action was applied to. The downgrade action restricts the connection to http1. | [optional] |
-| **vcl_on_compute_hit_requests** | **Integer** | Number of cache hits for a VCL service running on Compute. | [optional] |
-| **vcl_on_compute_miss_requests** | **Integer** | Number of cache misses for a VCL service running on Compute. | [optional] |
-| **vcl_on_compute_pass_requests** | **Integer** | Number of requests that passed through the CDN without being cached for a VCL service running on Compute. | [optional] |
-| **vcl_on_compute_error_requests** | **Integer** | Number of cache errors for a VCL service running on Compute. | [optional] |
-| **vcl_on_compute_synth_requests** | **Integer** | Number of requests that returned a synthetic response (i.e., response objects created with the `synthetic` VCL statement) for a VCL service running on Compute. | [optional] |
-| **vcl_on_compute_edge_hit_requests** | **Integer** | Number of requests sent by end users to Fastly that resulted in a hit at the edge for a VCL service running on Compute. | [optional] |
-| **vcl_on_compute_edge_miss_requests** | **Integer** | Number of requests sent by end users to Fastly that resulted in a miss at the edge for a VCL service running on Compute. | [optional] |
 | **all_hit_requests** | **Integer** | Number of cache hits for a VCL service. | [optional] |
 | **all_miss_requests** | **Integer** | Number of cache misses for a VCL service. | [optional] |
 | **all_pass_requests** | **Integer** | Number of requests that passed through the CDN without being cached for a VCL service. | [optional] |
@@ -254,6 +248,30 @@
 | **all_status_5xx** | **Integer** | Number of \&quot;Server Error\&quot; codes delivered for all sources. | [optional] |
 | **origin_offload** | **Float** | Origin Offload measures the ratio of bytes served to end users that were cached by Fastly, over the bytes served to end users, between 0 and 1. ((`edge_resp_body_bytes` + `edge_resp_header_bytes`) - (`origin_fetch_resp_body_bytes` + `origin_fetch_resp_header_bytes`)) / (`edge_resp_body_bytes` + `edge_resp_header_bytes`). | [optional] |
 | **request_denied_get_head_body** | **Integer** | Number of requests where Fastly responded with 400 due to the request being a GET or HEAD request containing a body. | [optional] |
+| **ddos_protection_requests_detect_count** | **Integer** | Number of requests classified as a DDoS attack against a customer origin or service. | [optional] |
+| **ddos_protection_requests_mitigate_count** | **Integer** | Number of requests classified as a DDoS attack against a customer origin or service that were mitigated by the Fastly platform. | [optional] |
+| **ddos_protection_requests_allow_count** | **Integer** | Number of requests analyzed for DDoS attacks against a customer origin or service, but with no DDoS detected. | [optional] |
+| **object_storage_class_a_operations_count** | **Integer** | A count of the number of Class A Object Storage operations. | [optional] |
+| **object_storage_class_b_operations_count** | **Integer** | A count of the number of Class B Object Storage operations. | [optional] |
+| **aia_requests** | **Integer** | Number of requests received by AI Accelerator. | [optional] |
+| **aia_status_1xx** | **Integer** | Number of \&quot;Informational\&quot; category status codes received from AI provider. | [optional] |
+| **aia_status_2xx** | **Integer** | Number of \&quot;Success\&quot; status codes received from AI provider. | [optional] |
+| **aia_status_3xx** | **Integer** | Number of \&quot;Redirection\&quot; received from AI provider. | [optional] |
+| **aia_status_4xx** | **Integer** | Number of \&quot;Client Error\&quot; received from AI provider. | [optional] |
+| **aia_status_5xx** | **Integer** | Number of \&quot;Server Error\&quot; received from AI provider. | [optional] |
+| **aia_response_usage_tokens** | **Integer** | The usage tokens associated with the response returned from the AI Accelerator cache. | [optional] |
+| **aia_origin_usage_tokens** | **Integer** | The number of usage tokens reported by the request to the origin from AI Accelerator. | [optional] |
+| **aia_estimated_time_saved_ms** | **Integer** | The estimated amount of time saved by responses served from the AI Accelerator semantic cache. | [optional] |
+| **request_collapse_usable_count** | **Integer** | Number of requests that were collapsed and satisfied by a usable cache object. | [optional] |
+| **request_collapse_unusable_count** | **Integer** | Number of requests that were collapsed and unable to be satisfied by the resulting cache object. | [optional] |
+| **compute_cache_operations_count** | **Integer** | Number of cache operations executed by the Compute platform. | [optional] |
+| **ngwaf_requests_total_count** | **Integer** | Total number of Next-Gen WAF (Edge WAF &amp; Core WAF) requests. | [optional] |
+| **ngwaf_requests_unknown_count** | **Integer** | Count of Edge WAF requests with an unknown outcome. | [optional] |
+| **ngwaf_requests_allowed_count** | **Integer** | Count of Edge WAF requests allowed. | [optional] |
+| **ngwaf_requests_logged_count** | **Integer** | Count of Edge WAF requests logged. | [optional] |
+| **ngwaf_requests_blocked_count** | **Integer** | Count of Edge WAF requests blocked. | [optional] |
+| **ngwaf_requests_timeout_count** | **Integer** | Count of Edge WAF requests timed outcome. | [optional] |
+| **ngwaf_requests_challenged_count** | **Integer** | Count of Edge WAF requests challenged. | [optional] |
 | **service_id** | **String** |  | [optional][readonly] |
 | **start_time** | **Integer** | Timestamp for the start of the time period being reported | [optional] |
 

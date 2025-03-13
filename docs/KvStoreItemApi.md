@@ -13,19 +13,19 @@ api_instance = Fastly::KvStoreItemApi.new
 
 Method | HTTP request | Description
 ------ | ------------ | -----------
-[**delete_key_from_store**](KvStoreItemApi.md#delete_key_from_store) | **DELETE** /resources/stores/kv/{store_id}/keys/{key_name} | Delete kv store item.
-[**get_keys**](KvStoreItemApi.md#get_keys) | **GET** /resources/stores/kv/{store_id}/keys | List kv store keys.
-[**get_value_for_key**](KvStoreItemApi.md#get_value_for_key) | **GET** /resources/stores/kv/{store_id}/keys/{key_name} | Get the value of an kv store item
-[**set_value_for_key**](KvStoreItemApi.md#set_value_for_key) | **PUT** /resources/stores/kv/{store_id}/keys/{key_name} | Insert an item into an kv store
+[**kv_store_delete_item**](KvStoreItemApi.md#kv_store_delete_item) | **DELETE** /resources/stores/kv/{store_id}/keys/{key} | Delete an item.
+[**kv_store_get_item**](KvStoreItemApi.md#kv_store_get_item) | **GET** /resources/stores/kv/{store_id}/keys/{key} | Get an item.
+[**kv_store_list_item_keys**](KvStoreItemApi.md#kv_store_list_item_keys) | **GET** /resources/stores/kv/{store_id}/keys | List item keys.
+[**kv_store_upsert_item**](KvStoreItemApi.md#kv_store_upsert_item) | **PUT** /resources/stores/kv/{store_id}/keys/{key} | Insert or update an item.
 
 
-## `delete_key_from_store()`
+## `kv_store_delete_item()`
 
 ```ruby
-delete_key_from_store(opts) # Delete kv store item.
+kv_store_delete_item(opts) # Delete an item.
 ```
 
-Delete an item from an kv store
+Delete an item.
 
 ### Examples
 
@@ -33,14 +33,16 @@ Delete an item from an kv store
 api_instance = Fastly::KvStoreItemApi.new
 opts = {
     store_id: 'store_id_example', # String | 
-    key_name: 'key_name_example', # String | 
+    key: 'key_example', # String | 
+    if_generation_match: 56, # Integer | 
+    force: true, # Boolean | 
 }
 
 begin
-  # Delete kv store item.
-  api_instance.delete_key_from_store(opts)
+  # Delete an item.
+  api_instance.kv_store_delete_item(opts)
 rescue Fastly::ApiError => e
-  puts "Error when calling KvStoreItemApi->delete_key_from_store: #{e}"
+  puts "Error when calling KvStoreItemApi->kv_store_delete_item: #{e}"
 end
 ```
 
@@ -49,7 +51,9 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **store_id** | **String** |  |  |
-| **key_name** | **String** |  |  |
+| **key** | **String** |  |  |
+| **if_generation_match** | **Integer** |  | [optional] |
+| **force** | **Boolean** |  | [optional][default to false] |
 
 ### Return type
 
@@ -57,13 +61,52 @@ nil (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)
-## `get_keys()`
+## `kv_store_get_item()`
 
 ```ruby
-get_keys(opts): <InlineResponse2004> # List kv store keys.
+kv_store_get_item(opts): String # Get an item.
 ```
 
-List the keys of all items within an kv store.
+Get an item, including its value, metadata (if any), and generation marker.
+
+### Examples
+
+```ruby
+api_instance = Fastly::KvStoreItemApi.new
+opts = {
+    store_id: 'store_id_example', # String | 
+    key: 'key_example', # String | 
+}
+
+begin
+  # Get an item.
+  result = api_instance.kv_store_get_item(opts)
+  p result
+rescue Fastly::ApiError => e
+  puts "Error when calling KvStoreItemApi->kv_store_get_item: #{e}"
+end
+```
+
+### Options
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **store_id** | **String** |  |  |
+| **key** | **String** |  |  |
+
+### Return type
+
+**String**
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+## `kv_store_list_item_keys()`
+
+```ruby
+kv_store_list_item_keys(opts): <InlineResponse2004> # List item keys.
+```
+
+Lists the matching item keys (or all item keys, if no prefix is supplied).
 
 ### Examples
 
@@ -74,14 +117,15 @@ opts = {
     cursor: 'cursor_example', # String | 
     limit: 56, # Integer | 
     prefix: 'prefix_example', # String | 
+    consistency: 'strong', # String | 
 }
 
 begin
-  # List kv store keys.
-  result = api_instance.get_keys(opts)
+  # List item keys.
+  result = api_instance.kv_store_list_item_keys(opts)
   p result
 rescue Fastly::ApiError => e
-  puts "Error when calling KvStoreItemApi->get_keys: #{e}"
+  puts "Error when calling KvStoreItemApi->kv_store_list_item_keys: #{e}"
 end
 ```
 
@@ -93,6 +137,7 @@ end
 | **cursor** | **String** |  | [optional] |
 | **limit** | **Integer** |  | [optional][default to 100] |
 | **prefix** | **String** |  | [optional] |
+| **consistency** | **String** |  | [optional][default to &#39;strong&#39;] |
 
 ### Return type
 
@@ -100,13 +145,13 @@ end
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)
-## `get_value_for_key()`
+## `kv_store_upsert_item()`
 
 ```ruby
-get_value_for_key(opts): String # Get the value of an kv store item
+kv_store_upsert_item(opts) # Insert or update an item.
 ```
 
-Get the value associated with a key.
+Inserts or updates an item's value and metadata.
 
 ### Examples
 
@@ -114,46 +159,7 @@ Get the value associated with a key.
 api_instance = Fastly::KvStoreItemApi.new
 opts = {
     store_id: 'store_id_example', # String | 
-    key_name: 'key_name_example', # String | 
-}
-
-begin
-  # Get the value of an kv store item
-  result = api_instance.get_value_for_key(opts)
-  p result
-rescue Fastly::ApiError => e
-  puts "Error when calling KvStoreItemApi->get_value_for_key: #{e}"
-end
-```
-
-### Options
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **store_id** | **String** |  |  |
-| **key_name** | **String** |  |  |
-
-### Return type
-
-**String**
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to README]](../../README.md)
-## `set_value_for_key()`
-
-```ruby
-set_value_for_key(opts): String # Insert an item into an kv store
-```
-
-Set a new value for a new or existing key in an kv store.
-
-### Examples
-
-```ruby
-api_instance = Fastly::KvStoreItemApi.new
-opts = {
-    store_id: 'store_id_example', # String | 
-    key_name: 'key_name_example', # String | 
+    key: 'key_example', # String | 
     if_generation_match: 56, # Integer | 
     time_to_live_sec: 56, # Integer | 
     metadata: 'metadata_example', # String | 
@@ -165,11 +171,10 @@ opts = {
 }
 
 begin
-  # Insert an item into an kv store
-  result = api_instance.set_value_for_key(opts)
-  p result
+  # Insert or update an item.
+  api_instance.kv_store_upsert_item(opts)
 rescue Fastly::ApiError => e
-  puts "Error when calling KvStoreItemApi->set_value_for_key: #{e}"
+  puts "Error when calling KvStoreItemApi->kv_store_upsert_item: #{e}"
 end
 ```
 
@@ -178,19 +183,19 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **store_id** | **String** |  |  |
-| **key_name** | **String** |  |  |
+| **key** | **String** |  |  |
 | **if_generation_match** | **Integer** |  | [optional] |
 | **time_to_live_sec** | **Integer** |  | [optional] |
 | **metadata** | **String** |  | [optional] |
-| **add** | **Boolean** |  | [optional] |
-| **append** | **Boolean** |  | [optional] |
-| **prepend** | **Boolean** |  | [optional] |
-| **background_fetch** | **Boolean** |  | [optional] |
+| **add** | **Boolean** |  | [optional][default to false] |
+| **append** | **Boolean** |  | [optional][default to false] |
+| **prepend** | **Boolean** |  | [optional][default to false] |
+| **background_fetch** | **Boolean** |  | [optional][default to false] |
 | **body** | **String** |  | [optional] |
 
 ### Return type
 
-**String**
+nil (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)

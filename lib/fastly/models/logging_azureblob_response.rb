@@ -71,7 +71,7 @@ module Fastly
     # A PGP public key that Fastly will use to encrypt your log files before writing them to disk.
     attr_accessor :public_key
 
-    # The maximum number of bytes for each uploaded file. A value of 0 can be used to indicate there is no limit on the size of uploaded files, otherwise the minimum value is 1048576 bytes (1 MiB.)
+    # The maximum number of bytes for each uploaded file. A value of 0 can be used to indicate there is no limit on the size of uploaded files, otherwise the minimum value is 1048576 bytes (1 MiB). Note that Microsoft Azure Storage has [block size limits](https://learn.microsoft.com/en-us/rest/api/storageservices/put-block?tabs=microsoft-entra-id#remarks).
     attr_accessor :file_max_bytes
 
     class EnumAttributeValidator

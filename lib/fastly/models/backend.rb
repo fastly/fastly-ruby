@@ -28,10 +28,10 @@ module Fastly
     # A freeform descriptive note.
     attr_accessor :comment
 
-    # Maximum duration in milliseconds to wait for a connection to this backend to be established. If exceeded, the connection is aborted and a synthethic `503` response will be presented instead. May be set at runtime using `bereq.connect_timeout`.
+    # Maximum duration in milliseconds to wait for a connection to this backend to be established. If exceeded, the connection is aborted and a synthetic `503` response will be presented instead. May be set at runtime using `bereq.connect_timeout`.
     attr_accessor :connect_timeout
 
-    # Maximum duration in milliseconds to wait for the server response to begin after a TCP connection is established and the request has been sent. If exceeded, the connection is aborted and a synthethic `503` response will be presented instead. May be set at runtime using `bereq.first_byte_timeout`.
+    # Maximum duration in milliseconds to wait for the server response to begin after a TCP connection is established and the request has been sent. If exceeded, the connection is aborted and a synthetic `503` response will be presented instead. May be set at runtime using `bereq.first_byte_timeout`.
     attr_accessor :first_byte_timeout
 
     # The name of the healthcheck to use with this backend.
@@ -46,7 +46,7 @@ module Fastly
     # IPv6 address of the backend. May be used as an alternative to `address` to set the backend location.
     attr_accessor :ipv6
 
-    # How long in seconds to keep a persistent connection to the backend between requests.
+    # How long in seconds to keep a persistent connection to the backend between requests. By default, Varnish keeps connections open as long as it can.
     attr_accessor :keepalive_time
 
     # Maximum number of concurrent connections this backend will accept.

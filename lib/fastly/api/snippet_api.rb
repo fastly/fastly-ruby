@@ -26,7 +26,7 @@ module Fastly
     # @option opts [String] :content The VCL code that specifies exactly what the snippet does.
     # @option opts [String] :priority Priority determines execution order. Lower numbers execute first. (default to '100')
     # @option opts [String] :dynamic Sets the snippet version.
-    # @return [SnippetResponsePost]
+    # @return [SnippetResponse]
     def create_snippet(opts = {})
       data, _status_code, _headers = create_snippet_with_http_info(opts)
       data
@@ -41,7 +41,7 @@ module Fastly
     # @option opts [String] :content The VCL code that specifies exactly what the snippet does.
     # @option opts [String] :priority Priority determines execution order. Lower numbers execute first. (default to '100')
     # @option opts [String] :dynamic Sets the snippet version.
-    # @return [Array<(SnippetResponsePost, Integer, Hash)>] SnippetResponsePost data, response status code and response headers
+    # @return [Array<(SnippetResponse, Integer, Hash)>] SnippetResponse data, response status code and response headers
     def create_snippet_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: SnippetApi.create_snippet ...'
@@ -93,7 +93,7 @@ module Fastly
       post_body = opts[:debug_body]
 
       # return_type
-      return_type = opts[:debug_return_type] || 'SnippetResponsePost'
+      return_type = opts[:debug_return_type] || 'SnippetResponse'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['token']
@@ -119,7 +119,7 @@ module Fastly
     # Delete a specific snippet for a particular service and version.
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
     # @option opts [Integer] :version_id Integer identifying a service version. (required)
-    # @option opts [String] :snippet_name The name for the snippet. (required)
+    # @option opts [String] :name The name for the snippet. (required)
     # @return [InlineResponse200]
     def delete_snippet(opts = {})
       data, _status_code, _headers = delete_snippet_with_http_info(opts)
@@ -130,7 +130,7 @@ module Fastly
     # Delete a specific snippet for a particular service and version.
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
     # @option opts [Integer] :version_id Integer identifying a service version. (required)
-    # @option opts [String] :snippet_name The name for the snippet. (required)
+    # @option opts [String] :name The name for the snippet. (required)
     # @return [Array<(InlineResponse200, Integer, Hash)>] InlineResponse200 data, response status code and response headers
     def delete_snippet_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -139,7 +139,7 @@ module Fastly
       # unbox the parameters from the hash
       service_id = opts[:'service_id']
       version_id = opts[:'version_id']
-      snippet_name = opts[:'snippet_name']
+      name = opts[:'name']
       # verify the required parameter 'service_id' is set
       if @api_client.config.client_side_validation && service_id.nil?
         fail ArgumentError, "Missing the required parameter 'service_id' when calling SnippetApi.delete_snippet"
@@ -148,12 +148,12 @@ module Fastly
       if @api_client.config.client_side_validation && version_id.nil?
         fail ArgumentError, "Missing the required parameter 'version_id' when calling SnippetApi.delete_snippet"
       end
-      # verify the required parameter 'snippet_name' is set
-      if @api_client.config.client_side_validation && snippet_name.nil?
-        fail ArgumentError, "Missing the required parameter 'snippet_name' when calling SnippetApi.delete_snippet"
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling SnippetApi.delete_snippet"
       end
       # resource path
-      local_var_path = '/service/{service_id}/version/{version_id}/snippet/{snippet_name}'.sub('{' + 'service_id' + '}', CGI.escape(service_id.to_s)).sub('{' + 'version_id' + '}', CGI.escape(version_id.to_s)).sub('{' + 'snippet_name' + '}', CGI.escape(snippet_name.to_s))
+      local_var_path = '/service/{service_id}/version/{version_id}/snippet/{name}'.sub('{' + 'service_id' + '}', CGI.escape(service_id.to_s)).sub('{' + 'version_id' + '}', CGI.escape(version_id.to_s)).sub('{' + 'name' + '}', CGI.escape(name.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -196,7 +196,7 @@ module Fastly
     # Get a single snippet for a particular service and version.
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
     # @option opts [Integer] :version_id Integer identifying a service version. (required)
-    # @option opts [String] :snippet_name The name for the snippet. (required)
+    # @option opts [String] :name The name for the snippet. (required)
     # @return [SnippetResponse]
     def get_snippet(opts = {})
       data, _status_code, _headers = get_snippet_with_http_info(opts)
@@ -207,7 +207,7 @@ module Fastly
     # Get a single snippet for a particular service and version.
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
     # @option opts [Integer] :version_id Integer identifying a service version. (required)
-    # @option opts [String] :snippet_name The name for the snippet. (required)
+    # @option opts [String] :name The name for the snippet. (required)
     # @return [Array<(SnippetResponse, Integer, Hash)>] SnippetResponse data, response status code and response headers
     def get_snippet_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -216,7 +216,7 @@ module Fastly
       # unbox the parameters from the hash
       service_id = opts[:'service_id']
       version_id = opts[:'version_id']
-      snippet_name = opts[:'snippet_name']
+      name = opts[:'name']
       # verify the required parameter 'service_id' is set
       if @api_client.config.client_side_validation && service_id.nil?
         fail ArgumentError, "Missing the required parameter 'service_id' when calling SnippetApi.get_snippet"
@@ -225,12 +225,12 @@ module Fastly
       if @api_client.config.client_side_validation && version_id.nil?
         fail ArgumentError, "Missing the required parameter 'version_id' when calling SnippetApi.get_snippet"
       end
-      # verify the required parameter 'snippet_name' is set
-      if @api_client.config.client_side_validation && snippet_name.nil?
-        fail ArgumentError, "Missing the required parameter 'snippet_name' when calling SnippetApi.get_snippet"
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling SnippetApi.get_snippet"
       end
       # resource path
-      local_var_path = '/service/{service_id}/version/{version_id}/snippet/{snippet_name}'.sub('{' + 'service_id' + '}', CGI.escape(service_id.to_s)).sub('{' + 'version_id' + '}', CGI.escape(version_id.to_s)).sub('{' + 'snippet_name' + '}', CGI.escape(snippet_name.to_s))
+      local_var_path = '/service/{service_id}/version/{version_id}/snippet/{name}'.sub('{' + 'service_id' + '}', CGI.escape(service_id.to_s)).sub('{' + 'version_id' + '}', CGI.escape(version_id.to_s)).sub('{' + 'name' + '}', CGI.escape(name.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -272,7 +272,7 @@ module Fastly
     # Get a dynamic snippet
     # Get a single dynamic snippet for a particular service.
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
-    # @option opts [String] :snippet_id Alphanumeric string identifying a VCL Snippet. (required)
+    # @option opts [String] :id Alphanumeric string identifying a VCL Snippet. (required)
     # @return [SnippetResponse]
     def get_snippet_dynamic(opts = {})
       data, _status_code, _headers = get_snippet_dynamic_with_http_info(opts)
@@ -282,7 +282,7 @@ module Fastly
     # Get a dynamic snippet
     # Get a single dynamic snippet for a particular service.
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
-    # @option opts [String] :snippet_id Alphanumeric string identifying a VCL Snippet. (required)
+    # @option opts [String] :id Alphanumeric string identifying a VCL Snippet. (required)
     # @return [Array<(SnippetResponse, Integer, Hash)>] SnippetResponse data, response status code and response headers
     def get_snippet_dynamic_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -290,17 +290,17 @@ module Fastly
       end
       # unbox the parameters from the hash
       service_id = opts[:'service_id']
-      snippet_id = opts[:'snippet_id']
+      id = opts[:'id']
       # verify the required parameter 'service_id' is set
       if @api_client.config.client_side_validation && service_id.nil?
         fail ArgumentError, "Missing the required parameter 'service_id' when calling SnippetApi.get_snippet_dynamic"
       end
-      # verify the required parameter 'snippet_id' is set
-      if @api_client.config.client_side_validation && snippet_id.nil?
-        fail ArgumentError, "Missing the required parameter 'snippet_id' when calling SnippetApi.get_snippet_dynamic"
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling SnippetApi.get_snippet_dynamic"
       end
       # resource path
-      local_var_path = '/service/{service_id}/snippet/{snippet_id}'.sub('{' + 'service_id' + '}', CGI.escape(service_id.to_s)).sub('{' + 'snippet_id' + '}', CGI.escape(snippet_id.to_s))
+      local_var_path = '/service/{service_id}/snippet/{id}'.sub('{' + 'service_id' + '}', CGI.escape(service_id.to_s)).sub('{' + 'id' + '}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -413,7 +413,7 @@ module Fastly
     # Update a specific snippet for a particular service and version.
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
     # @option opts [Integer] :version_id Integer identifying a service version. (required)
-    # @option opts [String] :snippet_name The name for the snippet. (required)
+    # @option opts [String] :name The name for the snippet. (required)
     # @return [SnippetResponse]
     def update_snippet(opts = {})
       data, _status_code, _headers = update_snippet_with_http_info(opts)
@@ -424,7 +424,7 @@ module Fastly
     # Update a specific snippet for a particular service and version.
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
     # @option opts [Integer] :version_id Integer identifying a service version. (required)
-    # @option opts [String] :snippet_name The name for the snippet. (required)
+    # @option opts [String] :name The name for the snippet. (required)
     # @return [Array<(SnippetResponse, Integer, Hash)>] SnippetResponse data, response status code and response headers
     def update_snippet_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -433,7 +433,7 @@ module Fastly
       # unbox the parameters from the hash
       service_id = opts[:'service_id']
       version_id = opts[:'version_id']
-      snippet_name = opts[:'snippet_name']
+      name = opts[:'name']
       # verify the required parameter 'service_id' is set
       if @api_client.config.client_side_validation && service_id.nil?
         fail ArgumentError, "Missing the required parameter 'service_id' when calling SnippetApi.update_snippet"
@@ -442,12 +442,12 @@ module Fastly
       if @api_client.config.client_side_validation && version_id.nil?
         fail ArgumentError, "Missing the required parameter 'version_id' when calling SnippetApi.update_snippet"
       end
-      # verify the required parameter 'snippet_name' is set
-      if @api_client.config.client_side_validation && snippet_name.nil?
-        fail ArgumentError, "Missing the required parameter 'snippet_name' when calling SnippetApi.update_snippet"
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling SnippetApi.update_snippet"
       end
       # resource path
-      local_var_path = '/service/{service_id}/version/{version_id}/snippet/{snippet_name}'.sub('{' + 'service_id' + '}', CGI.escape(service_id.to_s)).sub('{' + 'version_id' + '}', CGI.escape(version_id.to_s)).sub('{' + 'snippet_name' + '}', CGI.escape(snippet_name.to_s))
+      local_var_path = '/service/{service_id}/version/{version_id}/snippet/{name}'.sub('{' + 'service_id' + '}', CGI.escape(service_id.to_s)).sub('{' + 'version_id' + '}', CGI.escape(version_id.to_s)).sub('{' + 'name' + '}', CGI.escape(name.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -494,7 +494,7 @@ module Fastly
     # Update a dynamic snippet
     # Update a dynamic snippet for a particular service.
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
-    # @option opts [String] :snippet_id Alphanumeric string identifying a VCL Snippet. (required)
+    # @option opts [String] :id Alphanumeric string identifying a VCL Snippet. (required)
     # @option opts [String] :name The name for the snippet.
     # @option opts [String] :type The location in generated VCL where the snippet should be placed.
     # @option opts [String] :content The VCL code that specifies exactly what the snippet does.
@@ -509,7 +509,7 @@ module Fastly
     # Update a dynamic snippet
     # Update a dynamic snippet for a particular service.
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
-    # @option opts [String] :snippet_id Alphanumeric string identifying a VCL Snippet. (required)
+    # @option opts [String] :id Alphanumeric string identifying a VCL Snippet. (required)
     # @option opts [String] :name The name for the snippet.
     # @option opts [String] :type The location in generated VCL where the snippet should be placed.
     # @option opts [String] :content The VCL code that specifies exactly what the snippet does.
@@ -522,14 +522,14 @@ module Fastly
       end
       # unbox the parameters from the hash
       service_id = opts[:'service_id']
-      snippet_id = opts[:'snippet_id']
+      id = opts[:'id']
       # verify the required parameter 'service_id' is set
       if @api_client.config.client_side_validation && service_id.nil?
         fail ArgumentError, "Missing the required parameter 'service_id' when calling SnippetApi.update_snippet_dynamic"
       end
-      # verify the required parameter 'snippet_id' is set
-      if @api_client.config.client_side_validation && snippet_id.nil?
-        fail ArgumentError, "Missing the required parameter 'snippet_id' when calling SnippetApi.update_snippet_dynamic"
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling SnippetApi.update_snippet_dynamic"
       end
       allowable_values = ["init", "recv", "hash", "hit", "miss", "pass", "fetch", "error", "deliver", "log", "none"]
       if @api_client.config.client_side_validation && opts[:'type'] && !allowable_values.include?(opts[:'type'])
@@ -540,7 +540,7 @@ module Fastly
         fail ArgumentError, "invalid value for \"dynamic\", must be one of #{allowable_values}"
       end
       # resource path
-      local_var_path = '/service/{service_id}/snippet/{snippet_id}'.sub('{' + 'service_id' + '}', CGI.escape(service_id.to_s)).sub('{' + 'snippet_id' + '}', CGI.escape(snippet_id.to_s))
+      local_var_path = '/service/{service_id}/snippet/{id}'.sub('{' + 'service_id' + '}', CGI.escape(service_id.to_s)).sub('{' + 'id' + '}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
