@@ -181,13 +181,13 @@ module Fastly
       return false if @name.nil?
       return false if @group.nil?
       return false if @region.nil?
-      region_validator = EnumAttributeValidator.new('String', ["APAC", "Asia", "AF-West", "EU-Central", "EU-East", "EU-West", "Middle-East", "North-America", "SA-South", "SA-East", "SA-West", "SA-North", "South-Africa", "South-America", "US-Central", "US-East", "US-West", "Asia-South"])
+      region_validator = EnumAttributeValidator.new('String', ["APAC", "Asia", "AF-West", "EU-Central", "EU-East", "EU-West", "MX-North", "MX-Central", "MX-South", "Middle-East", "North-America", "SA-South", "SA-East", "SA-West", "SA-North", "South-Africa", "South-America", "US-Central", "US-East", "US-West", "Asia-South"])
       return false unless region_validator.valid?(@region)
       return false if @stats_region.nil?
-      stats_region_validator = EnumAttributeValidator.new('String', ["southamerica_std", "africa_std", "anzac", "asia", "europe", "usa", "asia_india", "asia_southkorea"])
+      stats_region_validator = EnumAttributeValidator.new('String', ["southamerica_std", "africa_std", "anzac", "asia", "europe", "usa", "asia_india", "asia_southkorea", "mexico"])
       return false unless stats_region_validator.valid?(@stats_region)
       return false if @billing_region.nil?
-      billing_region_validator = EnumAttributeValidator.new('String', ["Africa", "Australia", "Asia", "Europe", "India", "North America", "South Korea", "South America"])
+      billing_region_validator = EnumAttributeValidator.new('String', ["Africa", "Australia", "Asia", "Europe", "India", "Mexico", "North America", "South Korea", "South America"])
       return false unless billing_region_validator.valid?(@billing_region)
       true
     end
@@ -195,7 +195,7 @@ module Fastly
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] region Object to be assigned
     def region=(region)
-      validator = EnumAttributeValidator.new('String', ["APAC", "Asia", "AF-West", "EU-Central", "EU-East", "EU-West", "Middle-East", "North-America", "SA-South", "SA-East", "SA-West", "SA-North", "South-Africa", "South-America", "US-Central", "US-East", "US-West", "Asia-South"])
+      validator = EnumAttributeValidator.new('String', ["APAC", "Asia", "AF-West", "EU-Central", "EU-East", "EU-West", "MX-North", "MX-Central", "MX-South", "Middle-East", "North-America", "SA-South", "SA-East", "SA-West", "SA-North", "South-Africa", "South-America", "US-Central", "US-East", "US-West", "Asia-South"])
       unless validator.valid?(region)
         fail ArgumentError, "invalid value for \"region\", must be one of #{validator.allowable_values}."
       end
@@ -205,7 +205,7 @@ module Fastly
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] stats_region Object to be assigned
     def stats_region=(stats_region)
-      validator = EnumAttributeValidator.new('String', ["southamerica_std", "africa_std", "anzac", "asia", "europe", "usa", "asia_india", "asia_southkorea"])
+      validator = EnumAttributeValidator.new('String', ["southamerica_std", "africa_std", "anzac", "asia", "europe", "usa", "asia_india", "asia_southkorea", "mexico"])
       unless validator.valid?(stats_region)
         fail ArgumentError, "invalid value for \"stats_region\", must be one of #{validator.allowable_values}."
       end
@@ -215,7 +215,7 @@ module Fastly
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] billing_region Object to be assigned
     def billing_region=(billing_region)
-      validator = EnumAttributeValidator.new('String', ["Africa", "Australia", "Asia", "Europe", "India", "North America", "South Korea", "South America"])
+      validator = EnumAttributeValidator.new('String', ["Africa", "Australia", "Asia", "Europe", "India", "Mexico", "North America", "South Korea", "South America"])
       unless validator.valid?(billing_region)
         fail ArgumentError, "invalid value for \"billing_region\", must be one of #{validator.allowable_values}."
       end

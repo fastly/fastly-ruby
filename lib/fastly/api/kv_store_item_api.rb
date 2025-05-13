@@ -168,7 +168,7 @@ module Fastly
     # @option opts [Integer] :limit  (default to 100)
     # @option opts [String] :prefix 
     # @option opts [String] :consistency  (default to 'strong')
-    # @return [InlineResponse2004]
+    # @return [InlineResponse2006]
     def kv_store_list_item_keys(opts = {})
       data, _status_code, _headers = kv_store_list_item_keys_with_http_info(opts)
       data
@@ -181,7 +181,7 @@ module Fastly
     # @option opts [Integer] :limit  (default to 100)
     # @option opts [String] :prefix 
     # @option opts [String] :consistency  (default to 'strong')
-    # @return [Array<(InlineResponse2004, Integer, Hash)>] InlineResponse2004 data, response status code and response headers
+    # @return [Array<(InlineResponse2006, Integer, Hash)>] InlineResponse2006 data, response status code and response headers
     def kv_store_list_item_keys_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: KvStoreItemApi.kv_store_list_item_keys ...'
@@ -222,7 +222,7 @@ module Fastly
       post_body = opts[:debug_body]
 
       # return_type
-      return_type = opts[:debug_return_type] || 'InlineResponse2004'
+      return_type = opts[:debug_return_type] || 'InlineResponse2006'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['token']

@@ -400,7 +400,7 @@ module Fastly
     end
 
     # Update an ACL
-    # Update an ACL.
+    # Update an ACL entry with a new operation or action, this allows you to modify an existing entry or delete it.
     # @option opts [String] :acl_id  (required)
     # @option opts [ComputeAclUpdate] :compute_acl_update 
     # @return [nil]
@@ -410,7 +410,7 @@ module Fastly
     end
 
     # Update an ACL
-    # Update an ACL.
+    # Update an ACL entry with a new operation or action, this allows you to modify an existing entry or delete it.
     # @option opts [String] :acl_id  (required)
     # @option opts [ComputeAclUpdate] :compute_acl_update 
     # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers

@@ -53,6 +53,7 @@ opts = {
     name: 'name_example', # String | The name of the backend.
     override_host: 'override_host_example', # String | If set, will replace the client-supplied HTTP `Host` header on connections to this backend. Applied after VCL has been processed, so this setting will take precedence over changing `bereq.http.Host` in VCL.
     port: 56, # Integer | Port on which the backend server is listening for connections from Fastly. Setting `port` to 80 or 443 will also set `use_ssl` automatically (to false and true respectively), unless explicitly overridden by setting `use_ssl` in the same request.
+    prefer_ipv6: true, # Boolean | Prefer IPv6 connections for DNS hostname lookups.
     request_condition: 'request_condition_example', # String | Name of a Condition, which if satisfied, will select this backend during a request. If set, will override any `auto_loadbalance` setting. By default, the first backend added to a service is selected for all requests.
     share_key: 'share_key_example', # String | Value that when shared across backends will enable those backends to share the same health check.
     shield: 'shield_example', # String | Identifier of the POP to use as a [shield](https://docs.fastly.com/en/guides/shielding).
@@ -105,6 +106,7 @@ end
 | **name** | **String** | The name of the backend. | [optional] |
 | **override_host** | **String** | If set, will replace the client-supplied HTTP `Host` header on connections to this backend. Applied after VCL has been processed, so this setting will take precedence over changing `bereq.http.Host` in VCL. | [optional] |
 | **port** | **Integer** | Port on which the backend server is listening for connections from Fastly. Setting `port` to 80 or 443 will also set `use_ssl` automatically (to false and true respectively), unless explicitly overridden by setting `use_ssl` in the same request. | [optional] |
+| **prefer_ipv6** | **Boolean** | Prefer IPv6 connections for DNS hostname lookups. | [optional] |
 | **request_condition** | **String** | Name of a Condition, which if satisfied, will select this backend during a request. If set, will override any `auto_loadbalance` setting. By default, the first backend added to a service is selected for all requests. | [optional] |
 | **share_key** | **String** | Value that when shared across backends will enable those backends to share the same health check. | [optional] |
 | **shield** | **String** | Identifier of the POP to use as a [shield](https://docs.fastly.com/en/guides/shielding). | [optional] |
@@ -284,6 +286,7 @@ opts = {
     name: 'name_example', # String | The name of the backend.
     override_host: 'override_host_example', # String | If set, will replace the client-supplied HTTP `Host` header on connections to this backend. Applied after VCL has been processed, so this setting will take precedence over changing `bereq.http.Host` in VCL.
     port: 56, # Integer | Port on which the backend server is listening for connections from Fastly. Setting `port` to 80 or 443 will also set `use_ssl` automatically (to false and true respectively), unless explicitly overridden by setting `use_ssl` in the same request.
+    prefer_ipv6: true, # Boolean | Prefer IPv6 connections for DNS hostname lookups.
     request_condition: 'request_condition_example', # String | Name of a Condition, which if satisfied, will select this backend during a request. If set, will override any `auto_loadbalance` setting. By default, the first backend added to a service is selected for all requests.
     share_key: 'share_key_example', # String | Value that when shared across backends will enable those backends to share the same health check.
     shield: 'shield_example', # String | Identifier of the POP to use as a [shield](https://docs.fastly.com/en/guides/shielding).
@@ -337,6 +340,7 @@ end
 | **name** | **String** | The name of the backend. | [optional] |
 | **override_host** | **String** | If set, will replace the client-supplied HTTP `Host` header on connections to this backend. Applied after VCL has been processed, so this setting will take precedence over changing `bereq.http.Host` in VCL. | [optional] |
 | **port** | **Integer** | Port on which the backend server is listening for connections from Fastly. Setting `port` to 80 or 443 will also set `use_ssl` automatically (to false and true respectively), unless explicitly overridden by setting `use_ssl` in the same request. | [optional] |
+| **prefer_ipv6** | **Boolean** | Prefer IPv6 connections for DNS hostname lookups. | [optional] |
 | **request_condition** | **String** | Name of a Condition, which if satisfied, will select this backend during a request. If set, will override any `auto_loadbalance` setting. By default, the first backend added to a service is selected for all requests. | [optional] |
 | **share_key** | **String** | Value that when shared across backends will enable those backends to share the same health check. | [optional] |
 | **shield** | **String** | Identifier of the POP to use as a [shield](https://docs.fastly.com/en/guides/shielding). | [optional] |

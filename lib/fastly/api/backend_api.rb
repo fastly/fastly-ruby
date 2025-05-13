@@ -39,6 +39,7 @@ module Fastly
     # @option opts [String] :name The name of the backend.
     # @option opts [String] :override_host If set, will replace the client-supplied HTTP &#x60;Host&#x60; header on connections to this backend. Applied after VCL has been processed, so this setting will take precedence over changing &#x60;bereq.http.Host&#x60; in VCL.
     # @option opts [Integer] :port Port on which the backend server is listening for connections from Fastly. Setting &#x60;port&#x60; to 80 or 443 will also set &#x60;use_ssl&#x60; automatically (to false and true respectively), unless explicitly overridden by setting &#x60;use_ssl&#x60; in the same request.
+    # @option opts [Boolean] :prefer_ipv6 Prefer IPv6 connections for DNS hostname lookups.
     # @option opts [String] :request_condition Name of a Condition, which if satisfied, will select this backend during a request. If set, will override any &#x60;auto_loadbalance&#x60; setting. By default, the first backend added to a service is selected for all requests.
     # @option opts [String] :share_key Value that when shared across backends will enable those backends to share the same health check.
     # @option opts [String] :shield Identifier of the POP to use as a [shield](https://docs.fastly.com/en/guides/shielding).
@@ -84,6 +85,7 @@ module Fastly
     # @option opts [String] :name The name of the backend.
     # @option opts [String] :override_host If set, will replace the client-supplied HTTP &#x60;Host&#x60; header on connections to this backend. Applied after VCL has been processed, so this setting will take precedence over changing &#x60;bereq.http.Host&#x60; in VCL.
     # @option opts [Integer] :port Port on which the backend server is listening for connections from Fastly. Setting &#x60;port&#x60; to 80 or 443 will also set &#x60;use_ssl&#x60; automatically (to false and true respectively), unless explicitly overridden by setting &#x60;use_ssl&#x60; in the same request.
+    # @option opts [Boolean] :prefer_ipv6 Prefer IPv6 connections for DNS hostname lookups.
     # @option opts [String] :request_condition Name of a Condition, which if satisfied, will select this backend during a request. If set, will override any &#x60;auto_loadbalance&#x60; setting. By default, the first backend added to a service is selected for all requests.
     # @option opts [String] :share_key Value that when shared across backends will enable those backends to share the same health check.
     # @option opts [String] :shield Identifier of the POP to use as a [shield](https://docs.fastly.com/en/guides/shielding).
@@ -158,6 +160,7 @@ module Fastly
       form_params['name'] = opts[:'name'] if !opts[:'name'].nil?
       form_params['override_host'] = opts[:'override_host'] if !opts[:'override_host'].nil?
       form_params['port'] = opts[:'port'] if !opts[:'port'].nil?
+      form_params['prefer_ipv6'] = opts[:'prefer_ipv6'] if !opts[:'prefer_ipv6'].nil?
       form_params['request_condition'] = opts[:'request_condition'] if !opts[:'request_condition'].nil?
       form_params['share_key'] = opts[:'share_key'] if !opts[:'share_key'].nil?
       form_params['shield'] = opts[:'shield'] if !opts[:'shield'].nil?
@@ -449,6 +452,7 @@ module Fastly
     # @option opts [String] :name The name of the backend.
     # @option opts [String] :override_host If set, will replace the client-supplied HTTP &#x60;Host&#x60; header on connections to this backend. Applied after VCL has been processed, so this setting will take precedence over changing &#x60;bereq.http.Host&#x60; in VCL.
     # @option opts [Integer] :port Port on which the backend server is listening for connections from Fastly. Setting &#x60;port&#x60; to 80 or 443 will also set &#x60;use_ssl&#x60; automatically (to false and true respectively), unless explicitly overridden by setting &#x60;use_ssl&#x60; in the same request.
+    # @option opts [Boolean] :prefer_ipv6 Prefer IPv6 connections for DNS hostname lookups.
     # @option opts [String] :request_condition Name of a Condition, which if satisfied, will select this backend during a request. If set, will override any &#x60;auto_loadbalance&#x60; setting. By default, the first backend added to a service is selected for all requests.
     # @option opts [String] :share_key Value that when shared across backends will enable those backends to share the same health check.
     # @option opts [String] :shield Identifier of the POP to use as a [shield](https://docs.fastly.com/en/guides/shielding).
@@ -495,6 +499,7 @@ module Fastly
     # @option opts [String] :name The name of the backend.
     # @option opts [String] :override_host If set, will replace the client-supplied HTTP &#x60;Host&#x60; header on connections to this backend. Applied after VCL has been processed, so this setting will take precedence over changing &#x60;bereq.http.Host&#x60; in VCL.
     # @option opts [Integer] :port Port on which the backend server is listening for connections from Fastly. Setting &#x60;port&#x60; to 80 or 443 will also set &#x60;use_ssl&#x60; automatically (to false and true respectively), unless explicitly overridden by setting &#x60;use_ssl&#x60; in the same request.
+    # @option opts [Boolean] :prefer_ipv6 Prefer IPv6 connections for DNS hostname lookups.
     # @option opts [String] :request_condition Name of a Condition, which if satisfied, will select this backend during a request. If set, will override any &#x60;auto_loadbalance&#x60; setting. By default, the first backend added to a service is selected for all requests.
     # @option opts [String] :share_key Value that when shared across backends will enable those backends to share the same health check.
     # @option opts [String] :shield Identifier of the POP to use as a [shield](https://docs.fastly.com/en/guides/shielding).
@@ -574,6 +579,7 @@ module Fastly
       form_params['name'] = opts[:'name'] if !opts[:'name'].nil?
       form_params['override_host'] = opts[:'override_host'] if !opts[:'override_host'].nil?
       form_params['port'] = opts[:'port'] if !opts[:'port'].nil?
+      form_params['prefer_ipv6'] = opts[:'prefer_ipv6'] if !opts[:'prefer_ipv6'].nil?
       form_params['request_condition'] = opts[:'request_condition'] if !opts[:'request_condition'].nil?
       form_params['share_key'] = opts[:'share_key'] if !opts[:'share_key'].nil?
       form_params['shield'] = opts[:'shield'] if !opts[:'shield'].nil?

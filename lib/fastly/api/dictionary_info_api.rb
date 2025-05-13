@@ -17,7 +17,7 @@ module Fastly
     def initialize(api_client = ApiClient.default)
       @api_client = api_client
     end
-    # Get edge dictionary metadata
+    # Get dictionary metadata
     # Retrieve metadata for a single dictionary by ID for a version and service.
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
     # @option opts [Integer] :version_id Integer identifying a service version. (required)
@@ -28,7 +28,7 @@ module Fastly
       data
     end
 
-    # Get edge dictionary metadata
+    # Get dictionary metadata
     # Retrieve metadata for a single dictionary by ID for a version and service.
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
     # @option opts [Integer] :version_id Integer identifying a service version. (required)

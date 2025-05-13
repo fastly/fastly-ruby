@@ -250,7 +250,7 @@ end
 compute_acl_update_acls(opts) # Update an ACL
 ```
 
-Update an ACL.
+Update an ACL entry with a new operation or action, this allows you to modify an existing entry or delete it.
 
 ### Examples
 

@@ -16,7 +16,7 @@ module Fastly
     # A human readable name for the rate limiting rule.
     attr_accessor :name
 
-    # The name of an Edge Dictionary containing URIs as keys. If not defined or `null`, all origin URIs will be rate limited.
+    # The name of a Dictionary containing URIs as keys. If not defined or `null`, all origin URIs will be rate limited.
     attr_accessor :uri_dictionary_name
 
     # Array of HTTP methods to apply rate limiting to.

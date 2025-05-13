@@ -17,6 +17,7 @@ Method | HTTP request | Description
 [**enable_product_ngwaf**](ProductNgwafApi.md#enable_product_ngwaf) | **PUT** /enabled-products/v1/ngwaf/services/{service_id} | Enable product
 [**get_product_ngwaf**](ProductNgwafApi.md#get_product_ngwaf) | **GET** /enabled-products/v1/ngwaf/services/{service_id} | Get product enablement status
 [**get_product_ngwaf_configuration**](ProductNgwafApi.md#get_product_ngwaf_configuration) | **GET** /enabled-products/v1/ngwaf/services/{service_id}/configuration | Get configuration
+[**get_services_product_ngwaf**](ProductNgwafApi.md#get_services_product_ngwaf) | **GET** /enabled-products/v1/ngwaf/services | Get services with product enabled
 [**set_product_ngwaf_configuration**](ProductNgwafApi.md#set_product_ngwaf_configuration) | **PATCH** /enabled-products/v1/ngwaf/services/{service_id}/configuration | Update configuration
 
 
@@ -166,6 +167,38 @@ end
 ### Return type
 
 [**NgwafResponseConfigure**](NgwafResponseConfigure.md)
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+## `get_services_product_ngwaf()`
+
+```ruby
+get_services_product_ngwaf: <NgwafResponseBodyGetAllServices> # Get services with product enabled
+```
+
+Get all the services which have the Next-Gen WAF product enabled.
+
+### Examples
+
+```ruby
+api_instance = Fastly::ProductNgwafApi.new
+
+begin
+  # Get services with product enabled
+  result = api_instance.get_services_product_ngwaf
+  p result
+rescue Fastly::ApiError => e
+  puts "Error when calling ProductNgwafApi->get_services_product_ngwaf: #{e}"
+end
+```
+
+### Options
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**NgwafResponseBodyGetAllServices**](NgwafResponseBodyGetAllServices.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)

@@ -16,6 +16,7 @@ Method | HTTP request | Description
 [**disable_product_domain_inspector**](ProductDomainInspectorApi.md#disable_product_domain_inspector) | **DELETE** /enabled-products/v1/domain_inspector/services/{service_id} | Disable product
 [**enable_product_domain_inspector**](ProductDomainInspectorApi.md#enable_product_domain_inspector) | **PUT** /enabled-products/v1/domain_inspector/services/{service_id} | Enable product
 [**get_product_domain_inspector**](ProductDomainInspectorApi.md#get_product_domain_inspector) | **GET** /enabled-products/v1/domain_inspector/services/{service_id} | Get product enablement status
+[**get_services_product_domain_inspector**](ProductDomainInspectorApi.md#get_services_product_domain_inspector) | **GET** /enabled-products/v1/domain_inspector/services | Get services with product enabled
 
 
 ## `disable_product_domain_inspector()`
@@ -125,6 +126,38 @@ end
 ### Return type
 
 [**DomainInspectorResponseBodyEnable**](DomainInspectorResponseBodyEnable.md)
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+## `get_services_product_domain_inspector()`
+
+```ruby
+get_services_product_domain_inspector: <DomainInspectorResponseBodyGetAllServices> # Get services with product enabled
+```
+
+Get all the services which have the Domain Inspector product enabled.
+
+### Examples
+
+```ruby
+api_instance = Fastly::ProductDomainInspectorApi.new
+
+begin
+  # Get services with product enabled
+  result = api_instance.get_services_product_domain_inspector
+  p result
+rescue Fastly::ApiError => e
+  puts "Error when calling ProductDomainInspectorApi->get_services_product_domain_inspector: #{e}"
+end
+```
+
+### Options
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**DomainInspectorResponseBodyGetAllServices**](DomainInspectorResponseBodyGetAllServices.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)

@@ -13,17 +13,17 @@ api_instance = Fastly::DictionaryApi.new
 
 Method | HTTP request | Description
 ------ | ------------ | -----------
-[**create_dictionary**](DictionaryApi.md#create_dictionary) | **POST** /service/{service_id}/version/{version_id}/dictionary | Create an edge dictionary
-[**delete_dictionary**](DictionaryApi.md#delete_dictionary) | **DELETE** /service/{service_id}/version/{version_id}/dictionary/{dictionary_name} | Delete an edge dictionary
-[**get_dictionary**](DictionaryApi.md#get_dictionary) | **GET** /service/{service_id}/version/{version_id}/dictionary/{dictionary_name} | Get an edge dictionary
-[**list_dictionaries**](DictionaryApi.md#list_dictionaries) | **GET** /service/{service_id}/version/{version_id}/dictionary | List edge dictionaries
-[**update_dictionary**](DictionaryApi.md#update_dictionary) | **PUT** /service/{service_id}/version/{version_id}/dictionary/{dictionary_name} | Update an edge dictionary
+[**create_dictionary**](DictionaryApi.md#create_dictionary) | **POST** /service/{service_id}/version/{version_id}/dictionary | Create a dictionary
+[**delete_dictionary**](DictionaryApi.md#delete_dictionary) | **DELETE** /service/{service_id}/version/{version_id}/dictionary/{dictionary_name} | Delete a dictionary
+[**get_dictionary**](DictionaryApi.md#get_dictionary) | **GET** /service/{service_id}/version/{version_id}/dictionary/{dictionary_name} | Get a dictionary
+[**list_dictionaries**](DictionaryApi.md#list_dictionaries) | **GET** /service/{service_id}/version/{version_id}/dictionary | List dictionaries
+[**update_dictionary**](DictionaryApi.md#update_dictionary) | **PUT** /service/{service_id}/version/{version_id}/dictionary/{dictionary_name} | Update a dictionary
 
 
 ## `create_dictionary()`
 
 ```ruby
-create_dictionary(opts): <DictionaryResponse> # Create an edge dictionary
+create_dictionary(opts): <DictionaryResponse> # Create a dictionary
 ```
 
 Create named dictionary for a particular service and version.
@@ -40,7 +40,7 @@ opts = {
 }
 
 begin
-  # Create an edge dictionary
+  # Create a dictionary
   result = api_instance.create_dictionary(opts)
   p result
 rescue Fastly::ApiError => e
@@ -66,7 +66,7 @@ end
 ## `delete_dictionary()`
 
 ```ruby
-delete_dictionary(opts): <InlineResponse200> # Delete an edge dictionary
+delete_dictionary(opts): <InlineResponse200> # Delete a dictionary
 ```
 
 Delete named dictionary for a particular service and version.
@@ -82,7 +82,7 @@ opts = {
 }
 
 begin
-  # Delete an edge dictionary
+  # Delete a dictionary
   result = api_instance.delete_dictionary(opts)
   p result
 rescue Fastly::ApiError => e
@@ -107,7 +107,7 @@ end
 ## `get_dictionary()`
 
 ```ruby
-get_dictionary(opts): <DictionaryResponse> # Get an edge dictionary
+get_dictionary(opts): <DictionaryResponse> # Get a dictionary
 ```
 
 Retrieve a single dictionary by name for the version and service.
@@ -123,7 +123,7 @@ opts = {
 }
 
 begin
-  # Get an edge dictionary
+  # Get a dictionary
   result = api_instance.get_dictionary(opts)
   p result
 rescue Fastly::ApiError => e
@@ -148,7 +148,7 @@ end
 ## `list_dictionaries()`
 
 ```ruby
-list_dictionaries(opts): <Array<DictionaryResponse>> # List edge dictionaries
+list_dictionaries(opts): <Array<DictionaryResponse>> # List dictionaries
 ```
 
 List all dictionaries for the version of the service.
@@ -163,7 +163,7 @@ opts = {
 }
 
 begin
-  # List edge dictionaries
+  # List dictionaries
   result = api_instance.list_dictionaries(opts)
   p result
 rescue Fastly::ApiError => e
@@ -187,7 +187,7 @@ end
 ## `update_dictionary()`
 
 ```ruby
-update_dictionary(opts): <DictionaryResponse> # Update an edge dictionary
+update_dictionary(opts): <DictionaryResponse> # Update a dictionary
 ```
 
 Update named dictionary for a particular service and version.
@@ -205,7 +205,7 @@ opts = {
 }
 
 begin
-  # Update an edge dictionary
+  # Update a dictionary
   result = api_instance.update_dictionary(opts)
   p result
 rescue Fastly::ApiError => e

@@ -16,6 +16,7 @@ Method | HTTP request | Description
 [**disable_product_brotli_compression**](ProductBrotliCompressionApi.md#disable_product_brotli_compression) | **DELETE** /enabled-products/v1/brotli_compression/services/{service_id} | Disable product
 [**enable_product_brotli_compression**](ProductBrotliCompressionApi.md#enable_product_brotli_compression) | **PUT** /enabled-products/v1/brotli_compression/services/{service_id} | Enable product
 [**get_product_brotli_compression**](ProductBrotliCompressionApi.md#get_product_brotli_compression) | **GET** /enabled-products/v1/brotli_compression/services/{service_id} | Get product enablement status
+[**get_services_product_brotli_compression**](ProductBrotliCompressionApi.md#get_services_product_brotli_compression) | **GET** /enabled-products/v1/brotli_compression/services | Get services with product enabled
 
 
 ## `disable_product_brotli_compression()`
@@ -125,6 +126,38 @@ end
 ### Return type
 
 [**BrotliCompressionResponseBodyEnable**](BrotliCompressionResponseBodyEnable.md)
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+## `get_services_product_brotli_compression()`
+
+```ruby
+get_services_product_brotli_compression: <BrotliCompressionResponseBodyGetAllServices> # Get services with product enabled
+```
+
+Get all the services which have the Brotli Compression product enabled.
+
+### Examples
+
+```ruby
+api_instance = Fastly::ProductBrotliCompressionApi.new
+
+begin
+  # Get services with product enabled
+  result = api_instance.get_services_product_brotli_compression
+  p result
+rescue Fastly::ApiError => e
+  puts "Error when calling ProductBrotliCompressionApi->get_services_product_brotli_compression: #{e}"
+end
+```
+
+### Options
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**BrotliCompressionResponseBodyGetAllServices**](BrotliCompressionResponseBodyGetAllServices.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)

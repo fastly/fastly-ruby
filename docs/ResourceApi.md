@@ -36,7 +36,7 @@ opts = {
     service_id: 'service_id_example', # String | Alphanumeric string identifying the service.
     version_id: 56, # Integer | Integer identifying a service version.
     resource_id: 'resource_id_example', # String | The ID of the underlying linked resource.
-    name: 'name_example', # String | The name of the resource link.
+    name: 'name_example', # String | The name of the resource link. Note this is separate from the resource store name and might not match the store name.
 }
 
 begin
@@ -55,7 +55,7 @@ end
 | **service_id** | **String** | Alphanumeric string identifying the service. |  |
 | **version_id** | **Integer** | Integer identifying a service version. |  |
 | **resource_id** | **String** | The ID of the underlying linked resource. | [optional] |
-| **name** | **String** | The name of the resource link. | [optional] |
+| **name** | **String** | The name of the resource link. Note this is separate from the resource store name and might not match the store name. | [optional] |
 
 ### Return type
 
@@ -201,7 +201,7 @@ opts = {
     version_id: 56, # Integer | Integer identifying a service version.
     id: 'id_example', # String | An alphanumeric string identifying the resource link.
     resource_id: 'resource_id_example', # String | The ID of the underlying linked resource.
-    name: 'name_example', # String | The name of the resource link.
+    name: 'name_example', # String | The name of the resource link. Note this is separate from the resource store name and might not match the store name.
 }
 
 begin
@@ -221,7 +221,7 @@ end
 | **version_id** | **Integer** | Integer identifying a service version. |  |
 | **id** | **String** | An alphanumeric string identifying the resource link. |  |
 | **resource_id** | **String** | The ID of the underlying linked resource. | [optional] |
-| **name** | **String** | The name of the resource link. | [optional] |
+| **name** | **String** | The name of the resource link. Note this is separate from the resource store name and might not match the store name. | [optional] |
 
 ### Return type
 

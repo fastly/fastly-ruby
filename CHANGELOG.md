@@ -1,5 +1,34 @@
 # Changelog
 
+## [v12.0.0](https://github.com/fastly/fastly-ruby/releases/tag/release/v12.0.0) (2025-05-12)
+
+**Breaking Changes:**
+
+- deprecated(user): The POST /user endpoint has been deprecated.
+
+- fix(acls_in_compute): Corrected the successful `PATCH` response code from the `/resources/acls/${acl_id}/entries` endpoint.
+
+
+**Enhancements:**
+
+- feat(products): Add endpoint to each service-level product to list services that enable that product.
+- feat(observability-aggregations-for-logs): Add new Observability Aggregations API for Logs.
+- feat(observability-timeseries-for-logs): Add new Observability Timeseries API for Logs.
+- feat(pops): Add new Mexico regions.
+- feat(historical): Add new Mexico regions.
+- feat(ddos-protection): Add `ddos-protection` product.
+- feat(backend): Add the `prefer_ipv6` option to prefer IPv6 during a backend DNS hostname lookup.
+- feat(products): Added new GET endpoint for all services with product enabled on a customer.
+
+**Documentation:**
+
+- doc(kv-store): Add clarification on valid KV Store names.
+- doc(kv-store-item): Add clarification on valid KV Store keys.
+- doc(dictionary): Usages of `edge dictionary` standardized to `dictionary`.
+- doc(acls-in-compute): Add documentation on how to remove a single ACL entry using the existing
+                        `compute-acl-update-acls` operation.
+- doc(acls-in-compute): Correct documentation on `action` field of `compute-acl-update-acls` endpoint.
+
 ## [v11.0.0](https://github.com/fastly/fastly-ruby/releases/tag/release/v11.0.0) (2025-03-13)
 
 **Breaking Changes:**

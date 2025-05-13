@@ -16,7 +16,7 @@ module Fastly
     # The ID of the underlying linked resource.
     attr_accessor :resource_id
 
-    # The name of the resource link.
+    # The name of the resource link. Note this is separate from the resource store name and might not match the store name.
     attr_accessor :name
 
     # Attribute mapping from ruby-style variable name to JSON key.

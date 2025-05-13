@@ -13,13 +13,13 @@ api_instance = Fastly::DictionaryInfoApi.new
 
 Method | HTTP request | Description
 ------ | ------------ | -----------
-[**get_dictionary_info**](DictionaryInfoApi.md#get_dictionary_info) | **GET** /service/{service_id}/version/{version_id}/dictionary/{dictionary_id}/info | Get edge dictionary metadata
+[**get_dictionary_info**](DictionaryInfoApi.md#get_dictionary_info) | **GET** /service/{service_id}/version/{version_id}/dictionary/{dictionary_id}/info | Get dictionary metadata
 
 
 ## `get_dictionary_info()`
 
 ```ruby
-get_dictionary_info(opts): <DictionaryInfoResponse> # Get edge dictionary metadata
+get_dictionary_info(opts): <DictionaryInfoResponse> # Get dictionary metadata
 ```
 
 Retrieve metadata for a single dictionary by ID for a version and service.
@@ -35,7 +35,7 @@ opts = {
 }
 
 begin
-  # Get edge dictionary metadata
+  # Get dictionary metadata
   result = api_instance.get_dictionary_info(opts)
   p result
 rescue Fastly::ApiError => e

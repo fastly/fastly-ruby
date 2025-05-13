@@ -17,6 +17,7 @@ Method | HTTP request | Description
 [**enable_product_ddos_protection**](ProductDdosProtectionApi.md#enable_product_ddos_protection) | **PUT** /enabled-products/v1/ddos_protection/services/{service_id} | Enable product
 [**get_product_ddos_protection**](ProductDdosProtectionApi.md#get_product_ddos_protection) | **GET** /enabled-products/v1/ddos_protection/services/{service_id} | Get product enablement status
 [**get_product_ddos_protection_configuration**](ProductDdosProtectionApi.md#get_product_ddos_protection_configuration) | **GET** /enabled-products/v1/ddos_protection/services/{service_id}/configuration | Get configuration
+[**get_services_product_ddos_protection**](ProductDdosProtectionApi.md#get_services_product_ddos_protection) | **GET** /enabled-products/v1/ddos_protection/services | Get services with product enabled
 [**set_product_ddos_protection_configuration**](ProductDdosProtectionApi.md#set_product_ddos_protection_configuration) | **PATCH** /enabled-products/v1/ddos_protection/services/{service_id}/configuration | Update configuration
 
 
@@ -62,7 +63,7 @@ nil (empty response body)
 enable_product_ddos_protection(opts): <DdosProtectionResponseEnable> # Enable product
 ```
 
-Enable the DDoS Protection product on a service.
+Enable the DDoS Protection product on a service in 'log' mode.
 
 ### Examples
 
@@ -164,6 +165,38 @@ end
 ### Return type
 
 [**DdosProtectionResponseConfigure**](DdosProtectionResponseConfigure.md)
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+## `get_services_product_ddos_protection()`
+
+```ruby
+get_services_product_ddos_protection: <DdosProtectionResponseBodyGetAllServices> # Get services with product enabled
+```
+
+Get all the services which have the DDoS Protection product enabled.
+
+### Examples
+
+```ruby
+api_instance = Fastly::ProductDdosProtectionApi.new
+
+begin
+  # Get services with product enabled
+  result = api_instance.get_services_product_ddos_protection
+  p result
+rescue Fastly::ApiError => e
+  puts "Error when calling ProductDdosProtectionApi->get_services_product_ddos_protection: #{e}"
+end
+```
+
+### Options
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**DdosProtectionResponseBodyGetAllServices**](DdosProtectionResponseBodyGetAllServices.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)

@@ -13,19 +13,19 @@ api_instance = Fastly::DictionaryItemApi.new
 
 Method | HTTP request | Description
 ------ | ------------ | -----------
-[**bulk_update_dictionary_item**](DictionaryItemApi.md#bulk_update_dictionary_item) | **PATCH** /service/{service_id}/dictionary/{dictionary_id}/items | Update multiple entries in an edge dictionary
-[**create_dictionary_item**](DictionaryItemApi.md#create_dictionary_item) | **POST** /service/{service_id}/dictionary/{dictionary_id}/item | Create an entry in an edge dictionary
-[**delete_dictionary_item**](DictionaryItemApi.md#delete_dictionary_item) | **DELETE** /service/{service_id}/dictionary/{dictionary_id}/item/{dictionary_item_key} | Delete an item from an edge dictionary
-[**get_dictionary_item**](DictionaryItemApi.md#get_dictionary_item) | **GET** /service/{service_id}/dictionary/{dictionary_id}/item/{dictionary_item_key} | Get an item from an edge dictionary
-[**list_dictionary_items**](DictionaryItemApi.md#list_dictionary_items) | **GET** /service/{service_id}/dictionary/{dictionary_id}/items | List items in an edge dictionary
-[**update_dictionary_item**](DictionaryItemApi.md#update_dictionary_item) | **PATCH** /service/{service_id}/dictionary/{dictionary_id}/item/{dictionary_item_key} | Update an entry in an edge dictionary
-[**upsert_dictionary_item**](DictionaryItemApi.md#upsert_dictionary_item) | **PUT** /service/{service_id}/dictionary/{dictionary_id}/item/{dictionary_item_key} | Insert or update an entry in an edge dictionary
+[**bulk_update_dictionary_item**](DictionaryItemApi.md#bulk_update_dictionary_item) | **PATCH** /service/{service_id}/dictionary/{dictionary_id}/items | Update multiple entries in a dictionary
+[**create_dictionary_item**](DictionaryItemApi.md#create_dictionary_item) | **POST** /service/{service_id}/dictionary/{dictionary_id}/item | Create an entry in a dictionary
+[**delete_dictionary_item**](DictionaryItemApi.md#delete_dictionary_item) | **DELETE** /service/{service_id}/dictionary/{dictionary_id}/item/{dictionary_item_key} | Delete an item from a dictionary
+[**get_dictionary_item**](DictionaryItemApi.md#get_dictionary_item) | **GET** /service/{service_id}/dictionary/{dictionary_id}/item/{dictionary_item_key} | Get an item from a dictionary
+[**list_dictionary_items**](DictionaryItemApi.md#list_dictionary_items) | **GET** /service/{service_id}/dictionary/{dictionary_id}/items | List items in a dictionary
+[**update_dictionary_item**](DictionaryItemApi.md#update_dictionary_item) | **PATCH** /service/{service_id}/dictionary/{dictionary_id}/item/{dictionary_item_key} | Update an entry in a dictionary
+[**upsert_dictionary_item**](DictionaryItemApi.md#upsert_dictionary_item) | **PUT** /service/{service_id}/dictionary/{dictionary_id}/item/{dictionary_item_key} | Insert or update an entry in a dictionary
 
 
 ## `bulk_update_dictionary_item()`
 
 ```ruby
-bulk_update_dictionary_item(opts): <InlineResponse200> # Update multiple entries in an edge dictionary
+bulk_update_dictionary_item(opts): <InlineResponse200> # Update multiple entries in a dictionary
 ```
 
 Update multiple items in the same dictionary. For faster updates to your service, group your changes into large batches. The maximum batch size is 1000 items. [Contact support](https://support.fastly.com/) to discuss raising this limit.
@@ -41,7 +41,7 @@ opts = {
 }
 
 begin
-  # Update multiple entries in an edge dictionary
+  # Update multiple entries in a dictionary
   result = api_instance.bulk_update_dictionary_item(opts)
   p result
 rescue Fastly::ApiError => e
@@ -66,7 +66,7 @@ end
 ## `create_dictionary_item()`
 
 ```ruby
-create_dictionary_item(opts): <DictionaryItemResponse> # Create an entry in an edge dictionary
+create_dictionary_item(opts): <DictionaryItemResponse> # Create an entry in a dictionary
 ```
 
 Create DictionaryItem given service, dictionary ID, item key, and item value.
@@ -83,7 +83,7 @@ opts = {
 }
 
 begin
-  # Create an entry in an edge dictionary
+  # Create an entry in a dictionary
   result = api_instance.create_dictionary_item(opts)
   p result
 rescue Fastly::ApiError => e
@@ -109,7 +109,7 @@ end
 ## `delete_dictionary_item()`
 
 ```ruby
-delete_dictionary_item(opts): <InlineResponse200> # Delete an item from an edge dictionary
+delete_dictionary_item(opts): <InlineResponse200> # Delete an item from a dictionary
 ```
 
 Delete DictionaryItem given service, dictionary ID, and item key.
@@ -125,7 +125,7 @@ opts = {
 }
 
 begin
-  # Delete an item from an edge dictionary
+  # Delete an item from a dictionary
   result = api_instance.delete_dictionary_item(opts)
   p result
 rescue Fastly::ApiError => e
@@ -150,7 +150,7 @@ end
 ## `get_dictionary_item()`
 
 ```ruby
-get_dictionary_item(opts): <DictionaryItemResponse> # Get an item from an edge dictionary
+get_dictionary_item(opts): <DictionaryItemResponse> # Get an item from a dictionary
 ```
 
 Retrieve a single DictionaryItem given service, dictionary ID and item key.
@@ -166,7 +166,7 @@ opts = {
 }
 
 begin
-  # Get an item from an edge dictionary
+  # Get an item from a dictionary
   result = api_instance.get_dictionary_item(opts)
   p result
 rescue Fastly::ApiError => e
@@ -191,7 +191,7 @@ end
 ## `list_dictionary_items()`
 
 ```ruby
-list_dictionary_items(opts): <Array<DictionaryItemResponse>> # List items in an edge dictionary
+list_dictionary_items(opts): <Array<DictionaryItemResponse>> # List items in a dictionary
 ```
 
 List of DictionaryItems given service and dictionary ID.
@@ -210,7 +210,7 @@ opts = {
 }
 
 begin
-  # List items in an edge dictionary
+  # List items in a dictionary
   result = api_instance.list_dictionary_items(opts)
   p result
 rescue Fastly::ApiError => e
@@ -225,7 +225,7 @@ end
 | **service_id** | **String** | Alphanumeric string identifying the service. |  |
 | **dictionary_id** | **String** | Alphanumeric string identifying a Dictionary. |  |
 | **page** | **Integer** | Current page. | [optional] |
-| **per_page** | **Integer** | Number of records per page. | [optional][default to 20] |
+| **per_page** | **Integer** | Number of records per page. | [optional][default to 100] |
 | **sort** | **String** | Field on which to sort. | [optional][default to &#39;created&#39;] |
 | **direction** | **String** | Direction in which to sort results. | [optional][default to &#39;ascend&#39;] |
 
@@ -238,7 +238,7 @@ end
 ## `update_dictionary_item()`
 
 ```ruby
-update_dictionary_item(opts): <DictionaryItemResponse> # Update an entry in an edge dictionary
+update_dictionary_item(opts): <DictionaryItemResponse> # Update an entry in a dictionary
 ```
 
 Update DictionaryItem given service, dictionary ID, item key, and item value.
@@ -256,7 +256,7 @@ opts = {
 }
 
 begin
-  # Update an entry in an edge dictionary
+  # Update an entry in a dictionary
   result = api_instance.update_dictionary_item(opts)
   p result
 rescue Fastly::ApiError => e
@@ -283,7 +283,7 @@ end
 ## `upsert_dictionary_item()`
 
 ```ruby
-upsert_dictionary_item(opts): <DictionaryItemResponse> # Insert or update an entry in an edge dictionary
+upsert_dictionary_item(opts): <DictionaryItemResponse> # Insert or update an entry in a dictionary
 ```
 
 Upsert DictionaryItem given service, dictionary ID, item key, and item value.
@@ -301,7 +301,7 @@ opts = {
 }
 
 begin
-  # Insert or update an entry in an edge dictionary
+  # Insert or update an entry in a dictionary
   result = api_instance.upsert_dictionary_item(opts)
   p result
 rescue Fastly::ApiError => e

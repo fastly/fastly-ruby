@@ -79,7 +79,7 @@ module Fastly
     end
 
     # Enable product
-    # Enable the DDoS Protection product on a service.
+    # Enable the DDoS Protection product on a service in 'log' mode.
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
     # @return [DdosProtectionResponseEnable]
     def enable_product_ddos_protection(opts = {})
@@ -88,7 +88,7 @@ module Fastly
     end
 
     # Enable product
-    # Enable the DDoS Protection product on a service.
+    # Enable the DDoS Protection product on a service in &#39;log&#39; mode.
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
     # @return [Array<(DdosProtectionResponseEnable, Integer, Hash)>] DdosProtectionResponseEnable data, response status code and response headers
     def enable_product_ddos_protection_with_http_info(opts = {})
@@ -263,6 +263,62 @@ module Fastly
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: ProductDdosProtectionApi#get_product_ddos_protection_configuration\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Get services with product enabled
+    # Get all the services which have the DDoS Protection product enabled.
+    # @return [DdosProtectionResponseBodyGetAllServices]
+    def get_services_product_ddos_protection(opts = {})
+      data, _status_code, _headers = get_services_product_ddos_protection_with_http_info(opts)
+      data
+    end
+
+    # Get services with product enabled
+    # Get all the services which have the DDoS Protection product enabled.
+    # @return [Array<(DdosProtectionResponseBodyGetAllServices, Integer, Hash)>] DdosProtectionResponseBodyGetAllServices data, response status code and response headers
+    def get_services_product_ddos_protection_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ProductDdosProtectionApi.get_services_product_ddos_protection ...'
+      end
+      # unbox the parameters from the hash
+      # resource path
+      local_var_path = '/enabled-products/v1/ddos_protection/services'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'DdosProtectionResponseBodyGetAllServices'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['token']
+
+      new_options = opts.merge(
+        :operation => :"ProductDdosProtectionApi.get_services_product_ddos_protection",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ProductDdosProtectionApi#get_services_product_ddos_protection\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

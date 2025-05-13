@@ -19,7 +19,7 @@ Method | HTTP request | Description
 ## `list_domain_ownerships()`
 
 ```ruby
-list_domain_ownerships: <InlineResponse2002> # List domain-ownerships
+list_domain_ownerships: <InlineResponse2004> # List domain-ownerships
 ```
 
 List all domain-ownerships.
@@ -44,7 +44,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**InlineResponse2002**](InlineResponse2002.md)
+[**InlineResponse2004**](InlineResponse2004.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)

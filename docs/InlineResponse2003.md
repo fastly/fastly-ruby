@@ -4,7 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **data** | [**Array&lt;KvStoreDetails&gt;**](KvStoreDetails.md) |  | [optional] |
+| **data** | [**Array&lt;DdosProtectionRule&gt;**](DdosProtectionRule.md) |  | [optional] |
 | **meta** | [**PaginationCursorMeta**](PaginationCursorMeta.md) |  | [optional] |
 
 [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

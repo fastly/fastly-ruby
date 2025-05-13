@@ -22,7 +22,7 @@ module Fastly
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
     # @option opts [Integer] :version_id Integer identifying a service version. (required)
     # @option opts [String] :resource_id The ID of the underlying linked resource.
-    # @option opts [String] :name The name of the resource link.
+    # @option opts [String] :name The name of the resource link. Note this is separate from the resource store name and might not match the store name.
     # @return [ResourceResponse]
     def create_resource(opts = {})
       data, _status_code, _headers = create_resource_with_http_info(opts)
@@ -34,7 +34,7 @@ module Fastly
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
     # @option opts [Integer] :version_id Integer identifying a service version. (required)
     # @option opts [String] :resource_id The ID of the underlying linked resource.
-    # @option opts [String] :name The name of the resource link.
+    # @option opts [String] :name The name of the resource link. Note this is separate from the resource store name and might not match the store name.
     # @return [Array<(ResourceResponse, Integer, Hash)>] ResourceResponse data, response status code and response headers
     def create_resource_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -328,7 +328,7 @@ module Fastly
     # @option opts [Integer] :version_id Integer identifying a service version. (required)
     # @option opts [String] :id An alphanumeric string identifying the resource link. (required)
     # @option opts [String] :resource_id The ID of the underlying linked resource.
-    # @option opts [String] :name The name of the resource link.
+    # @option opts [String] :name The name of the resource link. Note this is separate from the resource store name and might not match the store name.
     # @return [ResourceResponse]
     def update_resource(opts = {})
       data, _status_code, _headers = update_resource_with_http_info(opts)
@@ -341,7 +341,7 @@ module Fastly
     # @option opts [Integer] :version_id Integer identifying a service version. (required)
     # @option opts [String] :id An alphanumeric string identifying the resource link. (required)
     # @option opts [String] :resource_id The ID of the underlying linked resource.
-    # @option opts [String] :name The name of the resource link.
+    # @option opts [String] :name The name of the resource link. Note this is separate from the resource store name and might not match the store name.
     # @return [Array<(ResourceResponse, Integer, Hash)>] ResourceResponse data, response status code and response headers
     def update_resource_with_http_info(opts = {})
       if @api_client.config.debugging

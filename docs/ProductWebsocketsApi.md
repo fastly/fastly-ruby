@@ -16,6 +16,7 @@ Method | HTTP request | Description
 [**disable_product_websockets**](ProductWebsocketsApi.md#disable_product_websockets) | **DELETE** /enabled-products/v1/websockets/services/{service_id} | Disable product
 [**enable_product_websockets**](ProductWebsocketsApi.md#enable_product_websockets) | **PUT** /enabled-products/v1/websockets/services/{service_id} | Enable product
 [**get_product_websockets**](ProductWebsocketsApi.md#get_product_websockets) | **GET** /enabled-products/v1/websockets/services/{service_id} | Get product enablement status
+[**get_services_product_websockets**](ProductWebsocketsApi.md#get_services_product_websockets) | **GET** /enabled-products/v1/websockets/services | Get services with product enabled
 
 
 ## `disable_product_websockets()`
@@ -125,6 +126,38 @@ end
 ### Return type
 
 [**WebsocketsResponseBodyEnable**](WebsocketsResponseBodyEnable.md)
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+## `get_services_product_websockets()`
+
+```ruby
+get_services_product_websockets: <WebsocketsResponseBodyGetAllServices> # Get services with product enabled
+```
+
+Get all the services which have the Websockets product enabled.
+
+### Examples
+
+```ruby
+api_instance = Fastly::ProductWebsocketsApi.new
+
+begin
+  # Get services with product enabled
+  result = api_instance.get_services_product_websockets
+  p result
+rescue Fastly::ApiError => e
+  puts "Error when calling ProductWebsocketsApi->get_services_product_websockets: #{e}"
+end
+```
+
+### Options
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**WebsocketsResponseBodyGetAllServices**](WebsocketsResponseBodyGetAllServices.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)

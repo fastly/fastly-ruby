@@ -16,6 +16,7 @@ Method | HTTP request | Description
 [**disable_product_bot_management**](ProductBotManagementApi.md#disable_product_bot_management) | **DELETE** /enabled-products/v1/bot_management/services/{service_id} | Disable product
 [**enable_product_bot_management**](ProductBotManagementApi.md#enable_product_bot_management) | **PUT** /enabled-products/v1/bot_management/services/{service_id} | Enable product
 [**get_product_bot_management**](ProductBotManagementApi.md#get_product_bot_management) | **GET** /enabled-products/v1/bot_management/services/{service_id} | Get product enablement status
+[**get_services_product_bot_management**](ProductBotManagementApi.md#get_services_product_bot_management) | **GET** /enabled-products/v1/bot_management/services | Get services with product enabled
 
 
 ## `disable_product_bot_management()`
@@ -125,6 +126,38 @@ end
 ### Return type
 
 [**BotManagementResponseBodyEnable**](BotManagementResponseBodyEnable.md)
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+## `get_services_product_bot_management()`
+
+```ruby
+get_services_product_bot_management: <BotManagementResponseBodyGetAllServices> # Get services with product enabled
+```
+
+Get all the services which have the Bot Management product enabled.
+
+### Examples
+
+```ruby
+api_instance = Fastly::ProductBotManagementApi.new
+
+begin
+  # Get services with product enabled
+  result = api_instance.get_services_product_bot_management
+  p result
+rescue Fastly::ApiError => e
+  puts "Error when calling ProductBotManagementApi->get_services_product_bot_management: #{e}"
+end
+```
+
+### Options
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**BotManagementResponseBodyGetAllServices**](BotManagementResponseBodyGetAllServices.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)

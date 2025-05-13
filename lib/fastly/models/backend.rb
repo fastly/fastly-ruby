@@ -67,6 +67,9 @@ module Fastly
     # Port on which the backend server is listening for connections from Fastly. Setting `port` to 80 or 443 will also set `use_ssl` automatically (to false and true respectively), unless explicitly overridden by setting `use_ssl` in the same request.
     attr_accessor :port
 
+    # Prefer IPv6 connections for DNS hostname lookups.
+    attr_accessor :prefer_ipv6
+
     # Name of a Condition, which if satisfied, will select this backend during a request. If set, will override any `auto_loadbalance` setting. By default, the first backend added to a service is selected for all requests.
     attr_accessor :request_condition
 
@@ -139,6 +142,7 @@ module Fastly
         :'name' => :'name',
         :'override_host' => :'override_host',
         :'port' => :'port',
+        :'prefer_ipv6' => :'prefer_ipv6',
         :'request_condition' => :'request_condition',
         :'share_key' => :'share_key',
         :'shield' => :'shield',
@@ -185,6 +189,7 @@ module Fastly
         :'name' => :'String',
         :'override_host' => :'String',
         :'port' => :'Integer',
+        :'prefer_ipv6' => :'Boolean',
         :'request_condition' => :'String',
         :'share_key' => :'String',
         :'shield' => :'String',
@@ -322,6 +327,10 @@ module Fastly
         self.port = attributes[:'port']
       end
 
+      if attributes.key?(:'prefer_ipv6')
+        self.prefer_ipv6 = attributes[:'prefer_ipv6']
+      end
+
       if attributes.key?(:'request_condition')
         self.request_condition = attributes[:'request_condition']
       end
@@ -446,6 +455,7 @@ module Fastly
           name == o.name &&
           override_host == o.override_host &&
           port == o.port &&
+          prefer_ipv6 == o.prefer_ipv6 &&
           request_condition == o.request_condition &&
           share_key == o.share_key &&
           shield == o.shield &&
@@ -474,7 +484,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [address, auto_loadbalance, between_bytes_timeout, client_cert, comment, connect_timeout, first_byte_timeout, healthcheck, hostname, ipv4, ipv6, keepalive_time, max_conn, max_tls_version, min_tls_version, name, override_host, port, request_condition, share_key, shield, ssl_ca_cert, ssl_cert_hostname, ssl_check_cert, ssl_ciphers, ssl_client_cert, ssl_client_key, ssl_hostname, ssl_sni_hostname, tcp_keepalive_enable, tcp_keepalive_interval, tcp_keepalive_probes, tcp_keepalive_time, use_ssl, weight].hash
+      [address, auto_loadbalance, between_bytes_timeout, client_cert, comment, connect_timeout, first_byte_timeout, healthcheck, hostname, ipv4, ipv6, keepalive_time, max_conn, max_tls_version, min_tls_version, name, override_host, port, prefer_ipv6, request_condition, share_key, shield, ssl_ca_cert, ssl_cert_hostname, ssl_check_cert, ssl_ciphers, ssl_client_cert, ssl_client_key, ssl_hostname, ssl_sni_hostname, tcp_keepalive_enable, tcp_keepalive_interval, tcp_keepalive_probes, tcp_keepalive_time, use_ssl, weight].hash
     end
 
     # Builds the object from hash

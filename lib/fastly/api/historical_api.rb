@@ -22,7 +22,7 @@ module Fastly
     # @option opts [String] :from Timestamp that defines the start of the window for which to fetch statistics, including the timestamp itself. Accepts Unix timestamps, or any form of input parsable by the [Chronic Ruby library](https://github.com/mojombo/chronic), such as &#39;yesterday&#39;, or &#39;two weeks ago&#39;. Default varies based on the value of &#x60;by&#x60;. 
     # @option opts [String] :to Timestamp that defines the end of the window for which to fetch statistics. Accepts the same formats as &#x60;from&#x60;.  (default to 'now')
     # @option opts [String] :by Duration of sample windows. One of:   * &#x60;hour&#x60; - Group data by hour.   * &#x60;minute&#x60; - Group data by minute.   * &#x60;day&#x60; - Group data by day.  (default to 'day')
-    # @option opts [String] :region Limit query to a specific geographic region. One of:   * &#x60;usa&#x60; - North America.   * &#x60;europe&#x60; - Europe.   * &#x60;anzac&#x60; - Australia and New Zealand.   * &#x60;asia&#x60; - Asia.   * &#x60;asia_india&#x60; - India.   * &#x60;asia_southkorea&#x60; - South Korea.   * &#x60;africa_std&#x60; - Africa.   * &#x60;southamerica_std&#x60; - South America. 
+    # @option opts [String] :region Limit query to a specific geographic region. One of:   * &#x60;usa&#x60; - North America.   * &#x60;europe&#x60; - Europe.   * &#x60;anzac&#x60; - Australia and New Zealand.   * &#x60;asia&#x60; - Asia.   * &#x60;asia_india&#x60; - India.   * &#x60;asia_southkorea&#x60; - South Korea.   * &#x60;africa_std&#x60; - Africa.   * &#x60;mexico&#x60; - Mexico.   * &#x60;southamerica_std&#x60; - South America. 
     # @return [HistoricalStatsByServiceResponse]
     def get_hist_stats(opts = {})
       data, _status_code, _headers = get_hist_stats_with_http_info(opts)
@@ -34,7 +34,7 @@ module Fastly
     # @option opts [String] :from Timestamp that defines the start of the window for which to fetch statistics, including the timestamp itself. Accepts Unix timestamps, or any form of input parsable by the [Chronic Ruby library](https://github.com/mojombo/chronic), such as &#39;yesterday&#39;, or &#39;two weeks ago&#39;. Default varies based on the value of &#x60;by&#x60;. 
     # @option opts [String] :to Timestamp that defines the end of the window for which to fetch statistics. Accepts the same formats as &#x60;from&#x60;.  (default to 'now')
     # @option opts [String] :by Duration of sample windows. One of:   * &#x60;hour&#x60; - Group data by hour.   * &#x60;minute&#x60; - Group data by minute.   * &#x60;day&#x60; - Group data by day.  (default to 'day')
-    # @option opts [String] :region Limit query to a specific geographic region. One of:   * &#x60;usa&#x60; - North America.   * &#x60;europe&#x60; - Europe.   * &#x60;anzac&#x60; - Australia and New Zealand.   * &#x60;asia&#x60; - Asia.   * &#x60;asia_india&#x60; - India.   * &#x60;asia_southkorea&#x60; - South Korea.   * &#x60;africa_std&#x60; - Africa.   * &#x60;southamerica_std&#x60; - South America. 
+    # @option opts [String] :region Limit query to a specific geographic region. One of:   * &#x60;usa&#x60; - North America.   * &#x60;europe&#x60; - Europe.   * &#x60;anzac&#x60; - Australia and New Zealand.   * &#x60;asia&#x60; - Asia.   * &#x60;asia_india&#x60; - India.   * &#x60;asia_southkorea&#x60; - South Korea.   * &#x60;africa_std&#x60; - Africa.   * &#x60;mexico&#x60; - Mexico.   * &#x60;southamerica_std&#x60; - South America. 
     # @return [Array<(HistoricalStatsByServiceResponse, Integer, Hash)>] HistoricalStatsByServiceResponse data, response status code and response headers
     def get_hist_stats_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -45,7 +45,7 @@ module Fastly
       if @api_client.config.client_side_validation && opts[:'by'] && !allowable_values.include?(opts[:'by'])
         fail ArgumentError, "invalid value for \"by\", must be one of #{allowable_values}"
       end
-      allowable_values = ["usa", "europe", "asia", "asia_india", "asia_southkorea", "africa_std", "southamerica_std"]
+      allowable_values = ["usa", "europe", "asia", "asia_india", "asia_southkorea", "africa_std", "mexico", "southamerica_std"]
       if @api_client.config.client_side_validation && opts[:'region'] && !allowable_values.include?(opts[:'region'])
         fail ArgumentError, "invalid value for \"region\", must be one of #{allowable_values}"
       end
@@ -98,7 +98,7 @@ module Fastly
     # @option opts [String] :from Timestamp that defines the start of the window for which to fetch statistics, including the timestamp itself. Accepts Unix timestamps, or any form of input parsable by the [Chronic Ruby library](https://github.com/mojombo/chronic), such as &#39;yesterday&#39;, or &#39;two weeks ago&#39;. Default varies based on the value of &#x60;by&#x60;. 
     # @option opts [String] :to Timestamp that defines the end of the window for which to fetch statistics. Accepts the same formats as &#x60;from&#x60;.  (default to 'now')
     # @option opts [String] :by Duration of sample windows. One of:   * &#x60;hour&#x60; - Group data by hour.   * &#x60;minute&#x60; - Group data by minute.   * &#x60;day&#x60; - Group data by day.  (default to 'day')
-    # @option opts [String] :region Limit query to a specific geographic region. One of:   * &#x60;usa&#x60; - North America.   * &#x60;europe&#x60; - Europe.   * &#x60;anzac&#x60; - Australia and New Zealand.   * &#x60;asia&#x60; - Asia.   * &#x60;asia_india&#x60; - India.   * &#x60;asia_southkorea&#x60; - South Korea.   * &#x60;africa_std&#x60; - Africa.   * &#x60;southamerica_std&#x60; - South America. 
+    # @option opts [String] :region Limit query to a specific geographic region. One of:   * &#x60;usa&#x60; - North America.   * &#x60;europe&#x60; - Europe.   * &#x60;anzac&#x60; - Australia and New Zealand.   * &#x60;asia&#x60; - Asia.   * &#x60;asia_india&#x60; - India.   * &#x60;asia_southkorea&#x60; - South Korea.   * &#x60;africa_std&#x60; - Africa.   * &#x60;mexico&#x60; - Mexico.   * &#x60;southamerica_std&#x60; - South America. 
     # @return [HistoricalStatsAggregatedResponse]
     def get_hist_stats_aggregated(opts = {})
       data, _status_code, _headers = get_hist_stats_aggregated_with_http_info(opts)
@@ -110,7 +110,7 @@ module Fastly
     # @option opts [String] :from Timestamp that defines the start of the window for which to fetch statistics, including the timestamp itself. Accepts Unix timestamps, or any form of input parsable by the [Chronic Ruby library](https://github.com/mojombo/chronic), such as &#39;yesterday&#39;, or &#39;two weeks ago&#39;. Default varies based on the value of &#x60;by&#x60;. 
     # @option opts [String] :to Timestamp that defines the end of the window for which to fetch statistics. Accepts the same formats as &#x60;from&#x60;.  (default to 'now')
     # @option opts [String] :by Duration of sample windows. One of:   * &#x60;hour&#x60; - Group data by hour.   * &#x60;minute&#x60; - Group data by minute.   * &#x60;day&#x60; - Group data by day.  (default to 'day')
-    # @option opts [String] :region Limit query to a specific geographic region. One of:   * &#x60;usa&#x60; - North America.   * &#x60;europe&#x60; - Europe.   * &#x60;anzac&#x60; - Australia and New Zealand.   * &#x60;asia&#x60; - Asia.   * &#x60;asia_india&#x60; - India.   * &#x60;asia_southkorea&#x60; - South Korea.   * &#x60;africa_std&#x60; - Africa.   * &#x60;southamerica_std&#x60; - South America. 
+    # @option opts [String] :region Limit query to a specific geographic region. One of:   * &#x60;usa&#x60; - North America.   * &#x60;europe&#x60; - Europe.   * &#x60;anzac&#x60; - Australia and New Zealand.   * &#x60;asia&#x60; - Asia.   * &#x60;asia_india&#x60; - India.   * &#x60;asia_southkorea&#x60; - South Korea.   * &#x60;africa_std&#x60; - Africa.   * &#x60;mexico&#x60; - Mexico.   * &#x60;southamerica_std&#x60; - South America. 
     # @return [Array<(HistoricalStatsAggregatedResponse, Integer, Hash)>] HistoricalStatsAggregatedResponse data, response status code and response headers
     def get_hist_stats_aggregated_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -121,7 +121,7 @@ module Fastly
       if @api_client.config.client_side_validation && opts[:'by'] && !allowable_values.include?(opts[:'by'])
         fail ArgumentError, "invalid value for \"by\", must be one of #{allowable_values}"
       end
-      allowable_values = ["usa", "europe", "asia", "asia_india", "asia_southkorea", "africa_std", "southamerica_std"]
+      allowable_values = ["usa", "europe", "asia", "asia_india", "asia_southkorea", "africa_std", "mexico", "southamerica_std"]
       if @api_client.config.client_side_validation && opts[:'region'] && !allowable_values.include?(opts[:'region'])
         fail ArgumentError, "invalid value for \"region\", must be one of #{allowable_values}"
       end
@@ -175,7 +175,7 @@ module Fastly
     # @option opts [String] :from Timestamp that defines the start of the window for which to fetch statistics, including the timestamp itself. Accepts Unix timestamps, or any form of input parsable by the [Chronic Ruby library](https://github.com/mojombo/chronic), such as &#39;yesterday&#39;, or &#39;two weeks ago&#39;. Default varies based on the value of &#x60;by&#x60;. 
     # @option opts [String] :to Timestamp that defines the end of the window for which to fetch statistics. Accepts the same formats as &#x60;from&#x60;.  (default to 'now')
     # @option opts [String] :by Duration of sample windows. One of:   * &#x60;hour&#x60; - Group data by hour.   * &#x60;minute&#x60; - Group data by minute.   * &#x60;day&#x60; - Group data by day.  (default to 'day')
-    # @option opts [String] :region Limit query to a specific geographic region. One of:   * &#x60;usa&#x60; - North America.   * &#x60;europe&#x60; - Europe.   * &#x60;anzac&#x60; - Australia and New Zealand.   * &#x60;asia&#x60; - Asia.   * &#x60;asia_india&#x60; - India.   * &#x60;asia_southkorea&#x60; - South Korea.   * &#x60;africa_std&#x60; - Africa.   * &#x60;southamerica_std&#x60; - South America. 
+    # @option opts [String] :region Limit query to a specific geographic region. One of:   * &#x60;usa&#x60; - North America.   * &#x60;europe&#x60; - Europe.   * &#x60;anzac&#x60; - Australia and New Zealand.   * &#x60;asia&#x60; - Asia.   * &#x60;asia_india&#x60; - India.   * &#x60;asia_southkorea&#x60; - South Korea.   * &#x60;africa_std&#x60; - Africa.   * &#x60;mexico&#x60; - Mexico.   * &#x60;southamerica_std&#x60; - South America. 
     # @return [HistoricalStatsByServiceResponse]
     def get_hist_stats_field(opts = {})
       data, _status_code, _headers = get_hist_stats_field_with_http_info(opts)
@@ -188,7 +188,7 @@ module Fastly
     # @option opts [String] :from Timestamp that defines the start of the window for which to fetch statistics, including the timestamp itself. Accepts Unix timestamps, or any form of input parsable by the [Chronic Ruby library](https://github.com/mojombo/chronic), such as &#39;yesterday&#39;, or &#39;two weeks ago&#39;. Default varies based on the value of &#x60;by&#x60;. 
     # @option opts [String] :to Timestamp that defines the end of the window for which to fetch statistics. Accepts the same formats as &#x60;from&#x60;.  (default to 'now')
     # @option opts [String] :by Duration of sample windows. One of:   * &#x60;hour&#x60; - Group data by hour.   * &#x60;minute&#x60; - Group data by minute.   * &#x60;day&#x60; - Group data by day.  (default to 'day')
-    # @option opts [String] :region Limit query to a specific geographic region. One of:   * &#x60;usa&#x60; - North America.   * &#x60;europe&#x60; - Europe.   * &#x60;anzac&#x60; - Australia and New Zealand.   * &#x60;asia&#x60; - Asia.   * &#x60;asia_india&#x60; - India.   * &#x60;asia_southkorea&#x60; - South Korea.   * &#x60;africa_std&#x60; - Africa.   * &#x60;southamerica_std&#x60; - South America. 
+    # @option opts [String] :region Limit query to a specific geographic region. One of:   * &#x60;usa&#x60; - North America.   * &#x60;europe&#x60; - Europe.   * &#x60;anzac&#x60; - Australia and New Zealand.   * &#x60;asia&#x60; - Asia.   * &#x60;asia_india&#x60; - India.   * &#x60;asia_southkorea&#x60; - South Korea.   * &#x60;africa_std&#x60; - Africa.   * &#x60;mexico&#x60; - Mexico.   * &#x60;southamerica_std&#x60; - South America. 
     # @return [Array<(HistoricalStatsByServiceResponse, Integer, Hash)>] HistoricalStatsByServiceResponse data, response status code and response headers
     def get_hist_stats_field_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -204,7 +204,7 @@ module Fastly
       if @api_client.config.client_side_validation && opts[:'by'] && !allowable_values.include?(opts[:'by'])
         fail ArgumentError, "invalid value for \"by\", must be one of #{allowable_values}"
       end
-      allowable_values = ["usa", "europe", "asia", "asia_india", "asia_southkorea", "africa_std", "southamerica_std"]
+      allowable_values = ["usa", "europe", "asia", "asia_india", "asia_southkorea", "africa_std", "mexico", "southamerica_std"]
       if @api_client.config.client_side_validation && opts[:'region'] && !allowable_values.include?(opts[:'region'])
         fail ArgumentError, "invalid value for \"region\", must be one of #{allowable_values}"
       end
@@ -258,7 +258,7 @@ module Fastly
     # @option opts [String] :from Timestamp that defines the start of the window for which to fetch statistics, including the timestamp itself. Accepts Unix timestamps, or any form of input parsable by the [Chronic Ruby library](https://github.com/mojombo/chronic), such as &#39;yesterday&#39;, or &#39;two weeks ago&#39;. Default varies based on the value of &#x60;by&#x60;. 
     # @option opts [String] :to Timestamp that defines the end of the window for which to fetch statistics. Accepts the same formats as &#x60;from&#x60;.  (default to 'now')
     # @option opts [String] :by Duration of sample windows. One of:   * &#x60;hour&#x60; - Group data by hour.   * &#x60;minute&#x60; - Group data by minute.   * &#x60;day&#x60; - Group data by day.  (default to 'day')
-    # @option opts [String] :region Limit query to a specific geographic region. One of:   * &#x60;usa&#x60; - North America.   * &#x60;europe&#x60; - Europe.   * &#x60;anzac&#x60; - Australia and New Zealand.   * &#x60;asia&#x60; - Asia.   * &#x60;asia_india&#x60; - India.   * &#x60;asia_southkorea&#x60; - South Korea.   * &#x60;africa_std&#x60; - Africa.   * &#x60;southamerica_std&#x60; - South America. 
+    # @option opts [String] :region Limit query to a specific geographic region. One of:   * &#x60;usa&#x60; - North America.   * &#x60;europe&#x60; - Europe.   * &#x60;anzac&#x60; - Australia and New Zealand.   * &#x60;asia&#x60; - Asia.   * &#x60;asia_india&#x60; - India.   * &#x60;asia_southkorea&#x60; - South Korea.   * &#x60;africa_std&#x60; - Africa.   * &#x60;mexico&#x60; - Mexico.   * &#x60;southamerica_std&#x60; - South America. 
     # @return [HistoricalStatsAggregatedResponse]
     def get_hist_stats_service(opts = {})
       data, _status_code, _headers = get_hist_stats_service_with_http_info(opts)
@@ -271,7 +271,7 @@ module Fastly
     # @option opts [String] :from Timestamp that defines the start of the window for which to fetch statistics, including the timestamp itself. Accepts Unix timestamps, or any form of input parsable by the [Chronic Ruby library](https://github.com/mojombo/chronic), such as &#39;yesterday&#39;, or &#39;two weeks ago&#39;. Default varies based on the value of &#x60;by&#x60;. 
     # @option opts [String] :to Timestamp that defines the end of the window for which to fetch statistics. Accepts the same formats as &#x60;from&#x60;.  (default to 'now')
     # @option opts [String] :by Duration of sample windows. One of:   * &#x60;hour&#x60; - Group data by hour.   * &#x60;minute&#x60; - Group data by minute.   * &#x60;day&#x60; - Group data by day.  (default to 'day')
-    # @option opts [String] :region Limit query to a specific geographic region. One of:   * &#x60;usa&#x60; - North America.   * &#x60;europe&#x60; - Europe.   * &#x60;anzac&#x60; - Australia and New Zealand.   * &#x60;asia&#x60; - Asia.   * &#x60;asia_india&#x60; - India.   * &#x60;asia_southkorea&#x60; - South Korea.   * &#x60;africa_std&#x60; - Africa.   * &#x60;southamerica_std&#x60; - South America. 
+    # @option opts [String] :region Limit query to a specific geographic region. One of:   * &#x60;usa&#x60; - North America.   * &#x60;europe&#x60; - Europe.   * &#x60;anzac&#x60; - Australia and New Zealand.   * &#x60;asia&#x60; - Asia.   * &#x60;asia_india&#x60; - India.   * &#x60;asia_southkorea&#x60; - South Korea.   * &#x60;africa_std&#x60; - Africa.   * &#x60;mexico&#x60; - Mexico.   * &#x60;southamerica_std&#x60; - South America. 
     # @return [Array<(HistoricalStatsAggregatedResponse, Integer, Hash)>] HistoricalStatsAggregatedResponse data, response status code and response headers
     def get_hist_stats_service_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -287,7 +287,7 @@ module Fastly
       if @api_client.config.client_side_validation && opts[:'by'] && !allowable_values.include?(opts[:'by'])
         fail ArgumentError, "invalid value for \"by\", must be one of #{allowable_values}"
       end
-      allowable_values = ["usa", "europe", "asia", "asia_india", "asia_southkorea", "africa_std", "southamerica_std"]
+      allowable_values = ["usa", "europe", "asia", "asia_india", "asia_southkorea", "africa_std", "mexico", "southamerica_std"]
       if @api_client.config.client_side_validation && opts[:'region'] && !allowable_values.include?(opts[:'region'])
         fail ArgumentError, "invalid value for \"region\", must be one of #{allowable_values}"
       end
@@ -342,7 +342,7 @@ module Fastly
     # @option opts [String] :from Timestamp that defines the start of the window for which to fetch statistics, including the timestamp itself. Accepts Unix timestamps, or any form of input parsable by the [Chronic Ruby library](https://github.com/mojombo/chronic), such as &#39;yesterday&#39;, or &#39;two weeks ago&#39;. Default varies based on the value of &#x60;by&#x60;. 
     # @option opts [String] :to Timestamp that defines the end of the window for which to fetch statistics. Accepts the same formats as &#x60;from&#x60;.  (default to 'now')
     # @option opts [String] :by Duration of sample windows. One of:   * &#x60;hour&#x60; - Group data by hour.   * &#x60;minute&#x60; - Group data by minute.   * &#x60;day&#x60; - Group data by day.  (default to 'day')
-    # @option opts [String] :region Limit query to a specific geographic region. One of:   * &#x60;usa&#x60; - North America.   * &#x60;europe&#x60; - Europe.   * &#x60;anzac&#x60; - Australia and New Zealand.   * &#x60;asia&#x60; - Asia.   * &#x60;asia_india&#x60; - India.   * &#x60;asia_southkorea&#x60; - South Korea.   * &#x60;africa_std&#x60; - Africa.   * &#x60;southamerica_std&#x60; - South America. 
+    # @option opts [String] :region Limit query to a specific geographic region. One of:   * &#x60;usa&#x60; - North America.   * &#x60;europe&#x60; - Europe.   * &#x60;anzac&#x60; - Australia and New Zealand.   * &#x60;asia&#x60; - Asia.   * &#x60;asia_india&#x60; - India.   * &#x60;asia_southkorea&#x60; - South Korea.   * &#x60;africa_std&#x60; - Africa.   * &#x60;mexico&#x60; - Mexico.   * &#x60;southamerica_std&#x60; - South America. 
     # @return [HistoricalStatsAggregatedResponse]
     def get_hist_stats_service_field(opts = {})
       data, _status_code, _headers = get_hist_stats_service_field_with_http_info(opts)
@@ -356,7 +356,7 @@ module Fastly
     # @option opts [String] :from Timestamp that defines the start of the window for which to fetch statistics, including the timestamp itself. Accepts Unix timestamps, or any form of input parsable by the [Chronic Ruby library](https://github.com/mojombo/chronic), such as &#39;yesterday&#39;, or &#39;two weeks ago&#39;. Default varies based on the value of &#x60;by&#x60;. 
     # @option opts [String] :to Timestamp that defines the end of the window for which to fetch statistics. Accepts the same formats as &#x60;from&#x60;.  (default to 'now')
     # @option opts [String] :by Duration of sample windows. One of:   * &#x60;hour&#x60; - Group data by hour.   * &#x60;minute&#x60; - Group data by minute.   * &#x60;day&#x60; - Group data by day.  (default to 'day')
-    # @option opts [String] :region Limit query to a specific geographic region. One of:   * &#x60;usa&#x60; - North America.   * &#x60;europe&#x60; - Europe.   * &#x60;anzac&#x60; - Australia and New Zealand.   * &#x60;asia&#x60; - Asia.   * &#x60;asia_india&#x60; - India.   * &#x60;asia_southkorea&#x60; - South Korea.   * &#x60;africa_std&#x60; - Africa.   * &#x60;southamerica_std&#x60; - South America. 
+    # @option opts [String] :region Limit query to a specific geographic region. One of:   * &#x60;usa&#x60; - North America.   * &#x60;europe&#x60; - Europe.   * &#x60;anzac&#x60; - Australia and New Zealand.   * &#x60;asia&#x60; - Asia.   * &#x60;asia_india&#x60; - India.   * &#x60;asia_southkorea&#x60; - South Korea.   * &#x60;africa_std&#x60; - Africa.   * &#x60;mexico&#x60; - Mexico.   * &#x60;southamerica_std&#x60; - South America. 
     # @return [Array<(HistoricalStatsAggregatedResponse, Integer, Hash)>] HistoricalStatsAggregatedResponse data, response status code and response headers
     def get_hist_stats_service_field_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -377,7 +377,7 @@ module Fastly
       if @api_client.config.client_side_validation && opts[:'by'] && !allowable_values.include?(opts[:'by'])
         fail ArgumentError, "invalid value for \"by\", must be one of #{allowable_values}"
       end
-      allowable_values = ["usa", "europe", "asia", "asia_india", "asia_southkorea", "africa_std", "southamerica_std"]
+      allowable_values = ["usa", "europe", "asia", "asia_india", "asia_southkorea", "africa_std", "mexico", "southamerica_std"]
       if @api_client.config.client_side_validation && opts[:'region'] && !allowable_values.include?(opts[:'region'])
         fail ArgumentError, "invalid value for \"region\", must be one of #{allowable_values}"
       end

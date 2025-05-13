@@ -17,7 +17,7 @@ module Fastly
     def initialize(api_client = ApiClient.default)
       @api_client = api_client
     end
-    # Create an edge dictionary
+    # Create a dictionary
     # Create named dictionary for a particular service and version.
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
     # @option opts [Integer] :version_id Integer identifying a service version. (required)
@@ -29,7 +29,7 @@ module Fastly
       data
     end
 
-    # Create an edge dictionary
+    # Create a dictionary
     # Create named dictionary for a particular service and version.
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
     # @option opts [Integer] :version_id Integer identifying a service version. (required)
@@ -98,7 +98,7 @@ module Fastly
       return data, status_code, headers
     end
 
-    # Delete an edge dictionary
+    # Delete a dictionary
     # Delete named dictionary for a particular service and version.
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
     # @option opts [Integer] :version_id Integer identifying a service version. (required)
@@ -109,7 +109,7 @@ module Fastly
       data
     end
 
-    # Delete an edge dictionary
+    # Delete a dictionary
     # Delete named dictionary for a particular service and version.
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
     # @option opts [Integer] :version_id Integer identifying a service version. (required)
@@ -175,7 +175,7 @@ module Fastly
       return data, status_code, headers
     end
 
-    # Get an edge dictionary
+    # Get a dictionary
     # Retrieve a single dictionary by name for the version and service.
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
     # @option opts [Integer] :version_id Integer identifying a service version. (required)
@@ -186,7 +186,7 @@ module Fastly
       data
     end
 
-    # Get an edge dictionary
+    # Get a dictionary
     # Retrieve a single dictionary by name for the version and service.
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
     # @option opts [Integer] :version_id Integer identifying a service version. (required)
@@ -252,7 +252,7 @@ module Fastly
       return data, status_code, headers
     end
 
-    # List edge dictionaries
+    # List dictionaries
     # List all dictionaries for the version of the service.
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
     # @option opts [Integer] :version_id Integer identifying a service version. (required)
@@ -262,7 +262,7 @@ module Fastly
       data
     end
 
-    # List edge dictionaries
+    # List dictionaries
     # List all dictionaries for the version of the service.
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
     # @option opts [Integer] :version_id Integer identifying a service version. (required)
@@ -322,7 +322,7 @@ module Fastly
       return data, status_code, headers
     end
 
-    # Update an edge dictionary
+    # Update a dictionary
     # Update named dictionary for a particular service and version.
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
     # @option opts [Integer] :version_id Integer identifying a service version. (required)
@@ -335,7 +335,7 @@ module Fastly
       data
     end
 
-    # Update an edge dictionary
+    # Update a dictionary
     # Update named dictionary for a particular service and version.
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
     # @option opts [Integer] :version_id Integer identifying a service version. (required)

@@ -140,7 +140,7 @@ end
 ## `get_secrets()`
 
 ```ruby
-get_secrets(opts): <InlineResponse2006> # List secrets within a store.
+get_secrets(opts): <InlineResponse2008> # List secrets within a store.
 ```
 
 List all secrets within a store.
@@ -174,7 +174,7 @@ end
 
 ### Return type
 
-[**InlineResponse2006**](InlineResponse2006.md)
+[**InlineResponse2008**](InlineResponse2008.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)

@@ -17,7 +17,7 @@ module Fastly
     def initialize(api_client = ApiClient.default)
       @api_client = api_client
     end
-    # Update multiple entries in an edge dictionary
+    # Update multiple entries in a dictionary
     # Update multiple items in the same dictionary. For faster updates to your service, group your changes into large batches. The maximum batch size is 1000 items. [Contact support](https://support.fastly.com/) to discuss raising this limit.
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
     # @option opts [String] :dictionary_id Alphanumeric string identifying a Dictionary. (required)
@@ -28,7 +28,7 @@ module Fastly
       data
     end
 
-    # Update multiple entries in an edge dictionary
+    # Update multiple entries in a dictionary
     # Update multiple items in the same dictionary. For faster updates to your service, group your changes into large batches. The maximum batch size is 1000 items. [Contact support](https://support.fastly.com/) to discuss raising this limit.
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
     # @option opts [String] :dictionary_id Alphanumeric string identifying a Dictionary. (required)
@@ -94,7 +94,7 @@ module Fastly
       return data, status_code, headers
     end
 
-    # Create an entry in an edge dictionary
+    # Create an entry in a dictionary
     # Create DictionaryItem given service, dictionary ID, item key, and item value.
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
     # @option opts [String] :dictionary_id Alphanumeric string identifying a Dictionary. (required)
@@ -106,7 +106,7 @@ module Fastly
       data
     end
 
-    # Create an entry in an edge dictionary
+    # Create an entry in a dictionary
     # Create DictionaryItem given service, dictionary ID, item key, and item value.
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
     # @option opts [String] :dictionary_id Alphanumeric string identifying a Dictionary. (required)
@@ -175,7 +175,7 @@ module Fastly
       return data, status_code, headers
     end
 
-    # Delete an item from an edge dictionary
+    # Delete an item from a dictionary
     # Delete DictionaryItem given service, dictionary ID, and item key.
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
     # @option opts [String] :dictionary_id Alphanumeric string identifying a Dictionary. (required)
@@ -186,7 +186,7 @@ module Fastly
       data
     end
 
-    # Delete an item from an edge dictionary
+    # Delete an item from a dictionary
     # Delete DictionaryItem given service, dictionary ID, and item key.
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
     # @option opts [String] :dictionary_id Alphanumeric string identifying a Dictionary. (required)
@@ -252,7 +252,7 @@ module Fastly
       return data, status_code, headers
     end
 
-    # Get an item from an edge dictionary
+    # Get an item from a dictionary
     # Retrieve a single DictionaryItem given service, dictionary ID and item key.
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
     # @option opts [String] :dictionary_id Alphanumeric string identifying a Dictionary. (required)
@@ -263,7 +263,7 @@ module Fastly
       data
     end
 
-    # Get an item from an edge dictionary
+    # Get an item from a dictionary
     # Retrieve a single DictionaryItem given service, dictionary ID and item key.
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
     # @option opts [String] :dictionary_id Alphanumeric string identifying a Dictionary. (required)
@@ -329,12 +329,12 @@ module Fastly
       return data, status_code, headers
     end
 
-    # List items in an edge dictionary
+    # List items in a dictionary
     # List of DictionaryItems given service and dictionary ID.
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
     # @option opts [String] :dictionary_id Alphanumeric string identifying a Dictionary. (required)
     # @option opts [Integer] :page Current page.
-    # @option opts [Integer] :per_page Number of records per page. (default to 20)
+    # @option opts [Integer] :per_page Number of records per page. (default to 100)
     # @option opts [String] :sort Field on which to sort. (default to 'created')
     # @option opts [String] :direction Direction in which to sort results. (default to 'ascend')
     # @return [Array<DictionaryItemResponse>]
@@ -343,12 +343,12 @@ module Fastly
       data
     end
 
-    # List items in an edge dictionary
+    # List items in a dictionary
     # List of DictionaryItems given service and dictionary ID.
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
     # @option opts [String] :dictionary_id Alphanumeric string identifying a Dictionary. (required)
     # @option opts [Integer] :page Current page.
-    # @option opts [Integer] :per_page Number of records per page. (default to 20)
+    # @option opts [Integer] :per_page Number of records per page. (default to 100)
     # @option opts [String] :sort Field on which to sort. (default to 'created')
     # @option opts [String] :direction Direction in which to sort results. (default to 'ascend')
     # @return [Array<(Array<DictionaryItemResponse>, Integer, Hash)>] Array<DictionaryItemResponse> data, response status code and response headers
@@ -367,8 +367,8 @@ module Fastly
       if @api_client.config.client_side_validation && dictionary_id.nil?
         fail ArgumentError, "Missing the required parameter 'dictionary_id' when calling DictionaryItemApi.list_dictionary_items"
       end
-      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] > 100
-        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling DictionaryItemApi.list_dictionary_items, must be smaller than or equal to 100.'
+      if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] > 1000
+        fail ArgumentError, 'invalid value for "opts[:"per_page"]" when calling DictionaryItemApi.list_dictionary_items, must be smaller than or equal to 1000.'
       end
 
       if @api_client.config.client_side_validation && !opts[:'per_page'].nil? && opts[:'per_page'] < 1
@@ -423,7 +423,7 @@ module Fastly
       return data, status_code, headers
     end
 
-    # Update an entry in an edge dictionary
+    # Update an entry in a dictionary
     # Update DictionaryItem given service, dictionary ID, item key, and item value.
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
     # @option opts [String] :dictionary_id Alphanumeric string identifying a Dictionary. (required)
@@ -436,7 +436,7 @@ module Fastly
       data
     end
 
-    # Update an entry in an edge dictionary
+    # Update an entry in a dictionary
     # Update DictionaryItem given service, dictionary ID, item key, and item value.
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
     # @option opts [String] :dictionary_id Alphanumeric string identifying a Dictionary. (required)
@@ -511,7 +511,7 @@ module Fastly
       return data, status_code, headers
     end
 
-    # Insert or update an entry in an edge dictionary
+    # Insert or update an entry in a dictionary
     # Upsert DictionaryItem given service, dictionary ID, item key, and item value.
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
     # @option opts [String] :dictionary_id Alphanumeric string identifying a Dictionary. (required)
@@ -524,7 +524,7 @@ module Fastly
       data
     end
 
-    # Insert or update an entry in an edge dictionary
+    # Insert or update an entry in a dictionary
     # Upsert DictionaryItem given service, dictionary ID, item key, and item value.
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
     # @option opts [String] :dictionary_id Alphanumeric string identifying a Dictionary. (required)

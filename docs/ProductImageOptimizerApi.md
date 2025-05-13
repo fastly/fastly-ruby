@@ -16,6 +16,7 @@ Method | HTTP request | Description
 [**disable_product_image_optimizer**](ProductImageOptimizerApi.md#disable_product_image_optimizer) | **DELETE** /enabled-products/v1/image_optimizer/services/{service_id} | Disable product
 [**enable_product_image_optimizer**](ProductImageOptimizerApi.md#enable_product_image_optimizer) | **PUT** /enabled-products/v1/image_optimizer/services/{service_id} | Enable product
 [**get_product_image_optimizer**](ProductImageOptimizerApi.md#get_product_image_optimizer) | **GET** /enabled-products/v1/image_optimizer/services/{service_id} | Get product enablement status
+[**get_services_product_image_optimizer**](ProductImageOptimizerApi.md#get_services_product_image_optimizer) | **GET** /enabled-products/v1/image_optimizer/services | Get services with product enabled
 
 
 ## `disable_product_image_optimizer()`
@@ -125,6 +126,38 @@ end
 ### Return type
 
 [**ImageOptimizerResponseBodyEnable**](ImageOptimizerResponseBodyEnable.md)
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+## `get_services_product_image_optimizer()`
+
+```ruby
+get_services_product_image_optimizer: <ImageOptimizerResponseBodyGetAllServices> # Get services with product enabled
+```
+
+Get all the services which have the Image Optimizer product enabled.
+
+### Examples
+
+```ruby
+api_instance = Fastly::ProductImageOptimizerApi.new
+
+begin
+  # Get services with product enabled
+  result = api_instance.get_services_product_image_optimizer
+  p result
+rescue Fastly::ApiError => e
+  puts "Error when calling ProductImageOptimizerApi->get_services_product_image_optimizer: #{e}"
+end
+```
+
+### Options
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**ImageOptimizerResponseBodyGetAllServices**](ImageOptimizerResponseBodyGetAllServices.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)

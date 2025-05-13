@@ -16,6 +16,7 @@ Method | HTTP request | Description
 [**disable_product_log_explorer_insights**](ProductLogExplorerInsightsApi.md#disable_product_log_explorer_insights) | **DELETE** /enabled-products/v1/log_explorer_insights/services/{service_id} | Disable product
 [**enable_product_log_explorer_insights**](ProductLogExplorerInsightsApi.md#enable_product_log_explorer_insights) | **PUT** /enabled-products/v1/log_explorer_insights/services/{service_id} | Enable product
 [**get_product_log_explorer_insights**](ProductLogExplorerInsightsApi.md#get_product_log_explorer_insights) | **GET** /enabled-products/v1/log_explorer_insights/services/{service_id} | Get product enablement status
+[**get_services_product_log_explorer_insights**](ProductLogExplorerInsightsApi.md#get_services_product_log_explorer_insights) | **GET** /enabled-products/v1/log_explorer_insights/services | Get services with product enabled
 
 
 ## `disable_product_log_explorer_insights()`
@@ -125,6 +126,38 @@ end
 ### Return type
 
 [**LogExplorerInsightsResponseBodyEnable**](LogExplorerInsightsResponseBodyEnable.md)
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+## `get_services_product_log_explorer_insights()`
+
+```ruby
+get_services_product_log_explorer_insights: <LogExplorerInsightsResponseBodyGetAllServices> # Get services with product enabled
+```
+
+Get all the services which have the Log Explorer & Insights product enabled.
+
+### Examples
+
+```ruby
+api_instance = Fastly::ProductLogExplorerInsightsApi.new
+
+begin
+  # Get services with product enabled
+  result = api_instance.get_services_product_log_explorer_insights
+  p result
+rescue Fastly::ApiError => e
+  puts "Error when calling ProductLogExplorerInsightsApi->get_services_product_log_explorer_insights: #{e}"
+end
+```
+
+### Options
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**LogExplorerInsightsResponseBodyGetAllServices**](LogExplorerInsightsResponseBodyGetAllServices.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)

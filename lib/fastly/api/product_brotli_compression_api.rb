@@ -203,5 +203,61 @@ module Fastly
       end
       return data, status_code, headers
     end
+
+    # Get services with product enabled
+    # Get all the services which have the Brotli Compression product enabled.
+    # @return [BrotliCompressionResponseBodyGetAllServices]
+    def get_services_product_brotli_compression(opts = {})
+      data, _status_code, _headers = get_services_product_brotli_compression_with_http_info(opts)
+      data
+    end
+
+    # Get services with product enabled
+    # Get all the services which have the Brotli Compression product enabled.
+    # @return [Array<(BrotliCompressionResponseBodyGetAllServices, Integer, Hash)>] BrotliCompressionResponseBodyGetAllServices data, response status code and response headers
+    def get_services_product_brotli_compression_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ProductBrotliCompressionApi.get_services_product_brotli_compression ...'
+      end
+      # unbox the parameters from the hash
+      # resource path
+      local_var_path = '/enabled-products/v1/brotli_compression/services'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'BrotliCompressionResponseBodyGetAllServices'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['token']
+
+      new_options = opts.merge(
+        :operation => :"ProductBrotliCompressionApi.get_services_product_brotli_compression",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ProductBrotliCompressionApi#get_services_product_brotli_compression\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
   end
 end

@@ -22,7 +22,7 @@ module Fastly
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
     # @option opts [Integer] :version_id Integer identifying a service version. (required)
     # @option opts [String] :name A human readable name for the rate limiting rule.
-    # @option opts [String] :uri_dictionary_name The name of an Edge Dictionary containing URIs as keys. If not defined or &#x60;null&#x60;, all origin URIs will be rate limited.
+    # @option opts [String] :uri_dictionary_name The name of a Dictionary containing URIs as keys. If not defined or &#x60;null&#x60;, all origin URIs will be rate limited.
     # @option opts [Array<String>] :http_methods Array of HTTP methods to apply rate limiting to.
     # @option opts [Integer] :rps_limit Upper limit of requests per second allowed by the rate limiter.
     # @option opts [Integer] :window_size Number of seconds during which the RPS limit must be exceeded in order to trigger a violation.
@@ -43,7 +43,7 @@ module Fastly
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
     # @option opts [Integer] :version_id Integer identifying a service version. (required)
     # @option opts [String] :name A human readable name for the rate limiting rule.
-    # @option opts [String] :uri_dictionary_name The name of an Edge Dictionary containing URIs as keys. If not defined or &#x60;null&#x60;, all origin URIs will be rate limited.
+    # @option opts [String] :uri_dictionary_name The name of a Dictionary containing URIs as keys. If not defined or &#x60;null&#x60;, all origin URIs will be rate limited.
     # @option opts [Array<String>] :http_methods Array of HTTP methods to apply rate limiting to.
     # @option opts [Integer] :rps_limit Upper limit of requests per second allowed by the rate limiter.
     # @option opts [Integer] :window_size Number of seconds during which the RPS limit must be exceeded in order to trigger a violation.
@@ -393,7 +393,7 @@ module Fastly
     # Update a rate limiter by its ID.
     # @option opts [String] :rate_limiter_id Alphanumeric string identifying the rate limiter. (required)
     # @option opts [String] :name A human readable name for the rate limiting rule.
-    # @option opts [String] :uri_dictionary_name The name of an Edge Dictionary containing URIs as keys. If not defined or &#x60;null&#x60;, all origin URIs will be rate limited.
+    # @option opts [String] :uri_dictionary_name The name of a Dictionary containing URIs as keys. If not defined or &#x60;null&#x60;, all origin URIs will be rate limited.
     # @option opts [Array<String>] :http_methods Array of HTTP methods to apply rate limiting to.
     # @option opts [Integer] :rps_limit Upper limit of requests per second allowed by the rate limiter.
     # @option opts [Integer] :window_size Number of seconds during which the RPS limit must be exceeded in order to trigger a violation.
@@ -413,7 +413,7 @@ module Fastly
     # Update a rate limiter by its ID.
     # @option opts [String] :rate_limiter_id Alphanumeric string identifying the rate limiter. (required)
     # @option opts [String] :name A human readable name for the rate limiting rule.
-    # @option opts [String] :uri_dictionary_name The name of an Edge Dictionary containing URIs as keys. If not defined or &#x60;null&#x60;, all origin URIs will be rate limited.
+    # @option opts [String] :uri_dictionary_name The name of a Dictionary containing URIs as keys. If not defined or &#x60;null&#x60;, all origin URIs will be rate limited.
     # @option opts [Array<String>] :http_methods Array of HTTP methods to apply rate limiting to.
     # @option opts [Integer] :rps_limit Upper limit of requests per second allowed by the rate limiter.
     # @option opts [Integer] :window_size Number of seconds during which the RPS limit must be exceeded in order to trigger a violation.

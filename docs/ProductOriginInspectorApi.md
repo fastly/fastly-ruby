@@ -16,6 +16,7 @@ Method | HTTP request | Description
 [**disable_product_origin_inspector**](ProductOriginInspectorApi.md#disable_product_origin_inspector) | **DELETE** /enabled-products/v1/origin_inspector/services/{service_id} | Disable product
 [**enable_product_origin_inspector**](ProductOriginInspectorApi.md#enable_product_origin_inspector) | **PUT** /enabled-products/v1/origin_inspector/services/{service_id} | Enable product
 [**get_product_origin_inspector**](ProductOriginInspectorApi.md#get_product_origin_inspector) | **GET** /enabled-products/v1/origin_inspector/services/{service_id} | Get product enablement status
+[**get_services_product_origin_inspector**](ProductOriginInspectorApi.md#get_services_product_origin_inspector) | **GET** /enabled-products/v1/origin_inspector/services | Get services with product enabled
 
 
 ## `disable_product_origin_inspector()`
@@ -125,6 +126,38 @@ end
 ### Return type
 
 [**OriginInspectorResponseBodyEnable**](OriginInspectorResponseBodyEnable.md)
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+## `get_services_product_origin_inspector()`
+
+```ruby
+get_services_product_origin_inspector: <OriginInspectorResponseBodyGetAllServices> # Get services with product enabled
+```
+
+Get all the services which have the Origin Inspector product enabled.
+
+### Examples
+
+```ruby
+api_instance = Fastly::ProductOriginInspectorApi.new
+
+begin
+  # Get services with product enabled
+  result = api_instance.get_services_product_origin_inspector
+  p result
+rescue Fastly::ApiError => e
+  puts "Error when calling ProductOriginInspectorApi->get_services_product_origin_inspector: #{e}"
+end
+```
+
+### Options
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**OriginInspectorResponseBodyGetAllServices**](OriginInspectorResponseBodyGetAllServices.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)
