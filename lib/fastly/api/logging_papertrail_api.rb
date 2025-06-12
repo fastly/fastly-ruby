@@ -61,7 +61,7 @@ module Fastly
       if @api_client.config.client_side_validation && version_id.nil?
         fail ArgumentError, "Missing the required parameter 'version_id' when calling LoggingPapertrailApi.create_log_papertrail"
       end
-      allowable_values = ["none", "waf_debug", "null"]
+      allowable_values = ["none", "null"]
       if @api_client.config.client_side_validation && opts[:'placement'] && !allowable_values.include?(opts[:'placement'])
         fail ArgumentError, "invalid value for \"placement\", must be one of #{allowable_values}"
       end
@@ -396,7 +396,7 @@ module Fastly
       if @api_client.config.client_side_validation && logging_papertrail_name.nil?
         fail ArgumentError, "Missing the required parameter 'logging_papertrail_name' when calling LoggingPapertrailApi.update_log_papertrail"
       end
-      allowable_values = ["none", "waf_debug", "null"]
+      allowable_values = ["none", "null"]
       if @api_client.config.client_side_validation && opts[:'placement'] && !allowable_values.include?(opts[:'placement'])
         fail ArgumentError, "invalid value for \"placement\", must be one of #{allowable_values}"
       end

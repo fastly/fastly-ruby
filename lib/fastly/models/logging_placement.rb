@@ -14,7 +14,6 @@ require 'time'
 module Fastly
   class LoggingPlacement
     NONE = "none".freeze
-    WAF_DEBUG = "waf_debug".freeze
     NULL = "null".freeze
 
     # Builds the enum from string

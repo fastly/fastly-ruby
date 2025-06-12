@@ -306,7 +306,7 @@ module Fastly
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      placement_validator = EnumAttributeValidator.new('String', ["none", "waf_debug", "null"])
+      placement_validator = EnumAttributeValidator.new('String', ["none", "null"])
       return false unless placement_validator.valid?(@placement)
       format_version_validator = EnumAttributeValidator.new('String', ["1", "2"])
       return false unless format_version_validator.valid?(@format_version)
@@ -320,7 +320,7 @@ module Fastly
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] placement Object to be assigned
     def placement=(placement)
-      validator = EnumAttributeValidator.new('String', ["none", "waf_debug", "null"])
+      validator = EnumAttributeValidator.new('String', ["none", "null"])
       unless validator.valid?(placement)
         fail ArgumentError, "invalid value for \"placement\", must be one of #{validator.allowable_values}."
       end

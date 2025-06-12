@@ -155,6 +155,7 @@ api_instance = Fastly::ServiceApi.new
 opts = {
     service_id: 'service_id_example', # String | Alphanumeric string identifying the service.
     version: 56, # Integer | Number identifying a version of the service.
+    filter_versions_active: true, # Boolean | Limits the versions array to the active versions. Accepts `true` or `false` (defaults to false).
 }
 
 begin
@@ -172,6 +173,7 @@ end
 | ---- | ---- | ----------- | ----- |
 | **service_id** | **String** | Alphanumeric string identifying the service. |  |
 | **version** | **Integer** | Number identifying a version of the service. | [optional] |
+| **filter_versions_active** | **Boolean** | Limits the versions array to the active versions. Accepts `true` or `false` (defaults to false). | [optional] |
 
 ### Return type
 

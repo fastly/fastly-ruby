@@ -224,6 +224,7 @@ module Fastly
     # List detailed information on a specified service.
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
     # @option opts [Integer] :version Number identifying a version of the service.
+    # @option opts [Boolean] :filter_versions_active Limits the versions array to the active versions. Accepts &#x60;true&#x60; or &#x60;false&#x60; (defaults to false).
     # @return [ServiceDetail]
     def get_service_detail(opts = {})
       data, _status_code, _headers = get_service_detail_with_http_info(opts)
@@ -234,6 +235,7 @@ module Fastly
     # List detailed information on a specified service.
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
     # @option opts [Integer] :version Number identifying a version of the service.
+    # @option opts [Boolean] :filter_versions_active Limits the versions array to the active versions. Accepts &#x60;true&#x60; or &#x60;false&#x60; (defaults to false).
     # @return [Array<(ServiceDetail, Integer, Hash)>] ServiceDetail data, response status code and response headers
     def get_service_detail_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -255,6 +257,7 @@ module Fastly
       # query parameters
       query_params = opts[:query_params] || {}
       query_params[:'version'] = opts[:'version'] if !opts[:'version'].nil?
+      query_params[:'filter[versions.active]'] = opts[:'filter_versions_active'] if !opts[:'filter_versions_active'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}

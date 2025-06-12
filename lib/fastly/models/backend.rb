@@ -67,7 +67,7 @@ module Fastly
     # Port on which the backend server is listening for connections from Fastly. Setting `port` to 80 or 443 will also set `use_ssl` automatically (to false and true respectively), unless explicitly overridden by setting `use_ssl` in the same request.
     attr_accessor :port
 
-    # Prefer IPv6 connections for DNS hostname lookups.
+    # Prefer IPv6 connections to origins for hostname backends.
     attr_accessor :prefer_ipv6
 
     # Name of a Condition, which if satisfied, will select this backend during a request. If set, will override any `auto_loadbalance` setting. By default, the first backend added to a service is selected for all requests.
@@ -223,6 +223,7 @@ module Fastly
         :'max_tls_version',
         :'min_tls_version',
         :'override_host',
+        :'prefer_ipv6',
         :'share_key',
         :'shield',
         :'ssl_ca_cert',

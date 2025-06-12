@@ -803,13 +803,13 @@ module Fastly
     # Count of Edge WAF requests with an unknown outcome.
     attr_accessor :ngwaf_requests_unknown_count
 
-    # Count of Edge WAF requests allowed.
+    # Count of Next-Gen WAF (Edge WAF & Core WAF) requests allowed.
     attr_accessor :ngwaf_requests_allowed_count
 
     # Count of Edge WAF requests logged.
     attr_accessor :ngwaf_requests_logged_count
 
-    # Count of Edge WAF requests blocked.
+    # Count of Next-Gen WAF (Edge WAF & Core WAF) requests blocked.
     attr_accessor :ngwaf_requests_blocked_count
 
     # Count of Edge WAF requests timed outcome.
