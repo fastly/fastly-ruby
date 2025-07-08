@@ -28,7 +28,7 @@ module Fastly
     # Basic Auth password.
     attr_accessor :password
 
-    # A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce valid JSON that Elasticsearch can ingest.
+    # A Fastly [log format string](https://www.fastly.com/documentation/guides/integrations/streaming-logs/custom-log-formats/). Must produce valid JSON that Elasticsearch can ingest.
     attr_accessor :format
 
     # Attribute mapping from ruby-style variable name to JSON key.

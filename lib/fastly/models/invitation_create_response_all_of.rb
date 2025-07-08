@@ -12,22 +12,13 @@ require 'date'
 require 'time'
 
 module Fastly
-  class LoggingGooglePubsubAdditional
-    # The Google Cloud Pub/Sub topic to which logs will be published. Required.
-    attr_accessor :topic
-
-    # A Fastly [log format string](https://www.fastly.com/documentation/guides/integrations/streaming-logs/custom-log-formats/).
-    attr_accessor :format
-
-    # Your Google Cloud Platform project ID. Required
-    attr_accessor :project_id
+  class InvitationCreateResponseAllOf
+    attr_accessor :data
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'topic' => :'topic',
-        :'format' => :'format',
-        :'project_id' => :'project_id'
+        :'data' => :'data'
       }
     end
 
@@ -39,9 +30,7 @@ module Fastly
     # Attribute type mapping.
     def self.fastly_types
       {
-        :'topic' => :'String',
-        :'format' => :'String',
-        :'project_id' => :'String'
+        :'data' => :'InvitationResponseData'
       }
     end
 
@@ -55,29 +44,19 @@ module Fastly
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Fastly::LoggingGooglePubsubAdditional` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Fastly::InvitationCreateResponseAllOf` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `Fastly::LoggingGooglePubsubAdditional`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `Fastly::InvitationCreateResponseAllOf`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'topic')
-        self.topic = attributes[:'topic']
-      end
-
-      if attributes.key?(:'format')
-        self.format = attributes[:'format']
-      else
-        self.format = '%h %l %u %t \"%r\" %&gt;s %b'
-      end
-
-      if attributes.key?(:'project_id')
-        self.project_id = attributes[:'project_id']
+      if attributes.key?(:'data')
+        self.data = attributes[:'data']
       end
     end
 
@@ -99,9 +78,7 @@ module Fastly
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          topic == o.topic &&
-          format == o.format &&
-          project_id == o.project_id
+          data == o.data
     end
 
     # @see the `==` method
@@ -113,7 +90,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [topic, format, project_id].hash
+      [data].hash
     end
 
     # Builds the object from hash

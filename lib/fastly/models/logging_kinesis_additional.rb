@@ -18,7 +18,7 @@ module Fastly
 
     attr_accessor :placement
 
-    # A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats).
+    # A Fastly [log format string](https://www.fastly.com/documentation/guides/integrations/streaming-logs/custom-log-formats/).
     attr_accessor :format
 
     # The Amazon Kinesis stream to send logs to. Required.

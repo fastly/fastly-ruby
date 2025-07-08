@@ -1,13 +1,12 @@
-# Fastly::InvitationResponseData
+# Fastly::InvitationCreateData
 
 ## Properties
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **type** | [**TypeInvitation**](TypeInvitation.md) |  | [optional][default to &#39;invitation&#39;] |
-| **attributes** | [**Timestamps**](Timestamps.md) |  | [optional] |
-| **id** | **String** |  | [optional][readonly] |
-| **relationships** | [**RelationshipsForInvitation**](RelationshipsForInvitation.md) |  | [optional] |
+| **attributes** | [**InvitationDataAttributes**](InvitationDataAttributes.md) |  | [optional] |
+| **relationships** | [**RelationshipServiceInvitationsCreate**](RelationshipServiceInvitationsCreate.md) |  | [optional] |
 
 [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
 

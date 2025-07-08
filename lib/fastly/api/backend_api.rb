@@ -39,10 +39,10 @@ module Fastly
     # @option opts [String] :name The name of the backend.
     # @option opts [String] :override_host If set, will replace the client-supplied HTTP &#x60;Host&#x60; header on connections to this backend. Applied after VCL has been processed, so this setting will take precedence over changing &#x60;bereq.http.Host&#x60; in VCL.
     # @option opts [Integer] :port Port on which the backend server is listening for connections from Fastly. Setting &#x60;port&#x60; to 80 or 443 will also set &#x60;use_ssl&#x60; automatically (to false and true respectively), unless explicitly overridden by setting &#x60;use_ssl&#x60; in the same request.
-    # @option opts [Boolean] :prefer_ipv6 Prefer IPv6 connections to origins for hostname backends.
+    # @option opts [Boolean] :prefer_ipv6 Prefer IPv6 connections to origins for hostname backends. Default is &#39;false&#39; for Delivery services and &#39;true&#39; for Compute services.
     # @option opts [String] :request_condition Name of a Condition, which if satisfied, will select this backend during a request. If set, will override any &#x60;auto_loadbalance&#x60; setting. By default, the first backend added to a service is selected for all requests.
     # @option opts [String] :share_key Value that when shared across backends will enable those backends to share the same health check.
-    # @option opts [String] :shield Identifier of the POP to use as a [shield](https://docs.fastly.com/en/guides/shielding).
+    # @option opts [String] :shield Identifier of the POP to use as a [shield](https://www.fastly.com/documentation/guides/getting-started/hosts/shielding/).
     # @option opts [String] :ssl_ca_cert CA certificate attached to origin.
     # @option opts [String] :ssl_cert_hostname Overrides &#x60;ssl_hostname&#x60;, but only for cert verification. Does not affect SNI at all.
     # @option opts [Boolean] :ssl_check_cert Be strict on checking SSL certs. (default to true)
@@ -85,10 +85,10 @@ module Fastly
     # @option opts [String] :name The name of the backend.
     # @option opts [String] :override_host If set, will replace the client-supplied HTTP &#x60;Host&#x60; header on connections to this backend. Applied after VCL has been processed, so this setting will take precedence over changing &#x60;bereq.http.Host&#x60; in VCL.
     # @option opts [Integer] :port Port on which the backend server is listening for connections from Fastly. Setting &#x60;port&#x60; to 80 or 443 will also set &#x60;use_ssl&#x60; automatically (to false and true respectively), unless explicitly overridden by setting &#x60;use_ssl&#x60; in the same request.
-    # @option opts [Boolean] :prefer_ipv6 Prefer IPv6 connections to origins for hostname backends.
+    # @option opts [Boolean] :prefer_ipv6 Prefer IPv6 connections to origins for hostname backends. Default is &#39;false&#39; for Delivery services and &#39;true&#39; for Compute services.
     # @option opts [String] :request_condition Name of a Condition, which if satisfied, will select this backend during a request. If set, will override any &#x60;auto_loadbalance&#x60; setting. By default, the first backend added to a service is selected for all requests.
     # @option opts [String] :share_key Value that when shared across backends will enable those backends to share the same health check.
-    # @option opts [String] :shield Identifier of the POP to use as a [shield](https://docs.fastly.com/en/guides/shielding).
+    # @option opts [String] :shield Identifier of the POP to use as a [shield](https://www.fastly.com/documentation/guides/getting-started/hosts/shielding/).
     # @option opts [String] :ssl_ca_cert CA certificate attached to origin.
     # @option opts [String] :ssl_cert_hostname Overrides &#x60;ssl_hostname&#x60;, but only for cert verification. Does not affect SNI at all.
     # @option opts [Boolean] :ssl_check_cert Be strict on checking SSL certs. (default to true)
@@ -452,10 +452,10 @@ module Fastly
     # @option opts [String] :name The name of the backend.
     # @option opts [String] :override_host If set, will replace the client-supplied HTTP &#x60;Host&#x60; header on connections to this backend. Applied after VCL has been processed, so this setting will take precedence over changing &#x60;bereq.http.Host&#x60; in VCL.
     # @option opts [Integer] :port Port on which the backend server is listening for connections from Fastly. Setting &#x60;port&#x60; to 80 or 443 will also set &#x60;use_ssl&#x60; automatically (to false and true respectively), unless explicitly overridden by setting &#x60;use_ssl&#x60; in the same request.
-    # @option opts [Boolean] :prefer_ipv6 Prefer IPv6 connections to origins for hostname backends.
+    # @option opts [Boolean] :prefer_ipv6 Prefer IPv6 connections to origins for hostname backends. Default is &#39;false&#39; for Delivery services and &#39;true&#39; for Compute services.
     # @option opts [String] :request_condition Name of a Condition, which if satisfied, will select this backend during a request. If set, will override any &#x60;auto_loadbalance&#x60; setting. By default, the first backend added to a service is selected for all requests.
     # @option opts [String] :share_key Value that when shared across backends will enable those backends to share the same health check.
-    # @option opts [String] :shield Identifier of the POP to use as a [shield](https://docs.fastly.com/en/guides/shielding).
+    # @option opts [String] :shield Identifier of the POP to use as a [shield](https://www.fastly.com/documentation/guides/getting-started/hosts/shielding/).
     # @option opts [String] :ssl_ca_cert CA certificate attached to origin.
     # @option opts [String] :ssl_cert_hostname Overrides &#x60;ssl_hostname&#x60;, but only for cert verification. Does not affect SNI at all.
     # @option opts [Boolean] :ssl_check_cert Be strict on checking SSL certs. (default to true)
@@ -499,10 +499,10 @@ module Fastly
     # @option opts [String] :name The name of the backend.
     # @option opts [String] :override_host If set, will replace the client-supplied HTTP &#x60;Host&#x60; header on connections to this backend. Applied after VCL has been processed, so this setting will take precedence over changing &#x60;bereq.http.Host&#x60; in VCL.
     # @option opts [Integer] :port Port on which the backend server is listening for connections from Fastly. Setting &#x60;port&#x60; to 80 or 443 will also set &#x60;use_ssl&#x60; automatically (to false and true respectively), unless explicitly overridden by setting &#x60;use_ssl&#x60; in the same request.
-    # @option opts [Boolean] :prefer_ipv6 Prefer IPv6 connections to origins for hostname backends.
+    # @option opts [Boolean] :prefer_ipv6 Prefer IPv6 connections to origins for hostname backends. Default is &#39;false&#39; for Delivery services and &#39;true&#39; for Compute services.
     # @option opts [String] :request_condition Name of a Condition, which if satisfied, will select this backend during a request. If set, will override any &#x60;auto_loadbalance&#x60; setting. By default, the first backend added to a service is selected for all requests.
     # @option opts [String] :share_key Value that when shared across backends will enable those backends to share the same health check.
-    # @option opts [String] :shield Identifier of the POP to use as a [shield](https://docs.fastly.com/en/guides/shielding).
+    # @option opts [String] :shield Identifier of the POP to use as a [shield](https://www.fastly.com/documentation/guides/getting-started/hosts/shielding/).
     # @option opts [String] :ssl_ca_cert CA certificate attached to origin.
     # @option opts [String] :ssl_cert_hostname Overrides &#x60;ssl_hostname&#x60;, but only for cert verification. Does not affect SNI at all.
     # @option opts [Boolean] :ssl_check_cert Be strict on checking SSL certs. (default to true)

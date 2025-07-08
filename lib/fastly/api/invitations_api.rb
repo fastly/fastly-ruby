@@ -20,7 +20,7 @@ module Fastly
     # Create an invitation
     # Create an invitation.
     # @option opts [Invitation] :invitation 
-    # @return [InvitationResponse]
+    # @return [InvitationCreateResponse]
     def create_invitation(opts = {})
       data, _status_code, _headers = create_invitation_with_http_info(opts)
       data
@@ -29,7 +29,7 @@ module Fastly
     # Create an invitation
     # Create an invitation.
     # @option opts [Invitation] :invitation 
-    # @return [Array<(InvitationResponse, Integer, Hash)>] InvitationResponse data, response status code and response headers
+    # @return [Array<(InvitationCreateResponse, Integer, Hash)>] InvitationCreateResponse data, response status code and response headers
     def create_invitation_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: InvitationsApi.create_invitation ...'
@@ -58,7 +58,7 @@ module Fastly
       post_body = opts[:debug_body] || @api_client.object_to_http_body(opts[:'invitation'])
 
       # return_type
-      return_type = opts[:debug_return_type] || 'InvitationResponse'
+      return_type = opts[:debug_return_type] || 'InvitationCreateResponse'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['token']

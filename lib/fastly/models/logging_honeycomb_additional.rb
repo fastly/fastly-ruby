@@ -13,7 +13,7 @@ require 'time'
 
 module Fastly
   class LoggingHoneycombAdditional
-    # A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce valid JSON that Honeycomb can ingest.
+    # A Fastly [log format string](https://www.fastly.com/documentation/guides/integrations/streaming-logs/custom-log-formats/). Must produce valid JSON that Honeycomb can ingest.
     attr_accessor :format
 
     # The Honeycomb Dataset you want to log to.

@@ -55,7 +55,7 @@ opts = {
     healthcheck: 'healthcheck_example', # String | Name of the healthcheck to use with this pool. Can be empty and could be reused across multiple backend and pools.
     comment: 'comment_example', # String | A freeform descriptive note.
     type: 'random', # String | What type of load balance group to use.
-    override_host: 'override_host_example', # String | The hostname to [override the Host header](https://docs.fastly.com/en/guides/specifying-an-override-host). Defaults to `null` meaning no override of the Host header will occur. This setting can also be added to a Server definition. If the field is set on a Server definition it will override the Pool setting.
+    override_host: 'override_host_example', # String | The hostname to [override the Host header](https://www.fastly.com/documentation/guides/full-site-delivery/domains-and-origins/specifying-an-override-host/). Defaults to `null` meaning no override of the Host header will occur. This setting can also be added to a Server definition. If the field is set on a Server definition it will override the Pool setting.
     between_bytes_timeout: 56, # Integer | Maximum duration in milliseconds that Fastly will wait while receiving no data on a download from a backend. If exceeded, the response received so far will be considered complete and the fetch will end. May be set at runtime using `bereq.between_bytes_timeout`.
     connect_timeout: 56, # Integer | How long to wait for a timeout in milliseconds. Optional.
     first_byte_timeout: 56, # Integer | How long to wait for the first byte in milliseconds. Optional.
@@ -99,7 +99,7 @@ end
 | **healthcheck** | **String** | Name of the healthcheck to use with this pool. Can be empty and could be reused across multiple backend and pools. | [optional] |
 | **comment** | **String** | A freeform descriptive note. | [optional] |
 | **type** | **String** | What type of load balance group to use. | [optional] |
-| **override_host** | **String** | The hostname to [override the Host header](https://docs.fastly.com/en/guides/specifying-an-override-host). Defaults to `null` meaning no override of the Host header will occur. This setting can also be added to a Server definition. If the field is set on a Server definition it will override the Pool setting. | [optional][default to &#39;null&#39;] |
+| **override_host** | **String** | The hostname to [override the Host header](https://www.fastly.com/documentation/guides/full-site-delivery/domains-and-origins/specifying-an-override-host/). Defaults to `null` meaning no override of the Host header will occur. This setting can also be added to a Server definition. If the field is set on a Server definition it will override the Pool setting. | [optional][default to &#39;null&#39;] |
 | **between_bytes_timeout** | **Integer** | Maximum duration in milliseconds that Fastly will wait while receiving no data on a download from a backend. If exceeded, the response received so far will be considered complete and the fetch will end. May be set at runtime using `bereq.between_bytes_timeout`. | [optional][default to 10000] |
 | **connect_timeout** | **Integer** | How long to wait for a timeout in milliseconds. Optional. | [optional] |
 | **first_byte_timeout** | **Integer** | How long to wait for the first byte in milliseconds. Optional. | [optional] |
@@ -270,7 +270,7 @@ opts = {
     healthcheck: 'healthcheck_example', # String | Name of the healthcheck to use with this pool. Can be empty and could be reused across multiple backend and pools.
     comment: 'comment_example', # String | A freeform descriptive note.
     type: 'random', # String | What type of load balance group to use.
-    override_host: 'override_host_example', # String | The hostname to [override the Host header](https://docs.fastly.com/en/guides/specifying-an-override-host). Defaults to `null` meaning no override of the Host header will occur. This setting can also be added to a Server definition. If the field is set on a Server definition it will override the Pool setting.
+    override_host: 'override_host_example', # String | The hostname to [override the Host header](https://www.fastly.com/documentation/guides/full-site-delivery/domains-and-origins/specifying-an-override-host/). Defaults to `null` meaning no override of the Host header will occur. This setting can also be added to a Server definition. If the field is set on a Server definition it will override the Pool setting.
     between_bytes_timeout: 56, # Integer | Maximum duration in milliseconds that Fastly will wait while receiving no data on a download from a backend. If exceeded, the response received so far will be considered complete and the fetch will end. May be set at runtime using `bereq.between_bytes_timeout`.
     connect_timeout: 56, # Integer | How long to wait for a timeout in milliseconds. Optional.
     first_byte_timeout: 56, # Integer | How long to wait for the first byte in milliseconds. Optional.
@@ -315,7 +315,7 @@ end
 | **healthcheck** | **String** | Name of the healthcheck to use with this pool. Can be empty and could be reused across multiple backend and pools. | [optional] |
 | **comment** | **String** | A freeform descriptive note. | [optional] |
 | **type** | **String** | What type of load balance group to use. | [optional] |
-| **override_host** | **String** | The hostname to [override the Host header](https://docs.fastly.com/en/guides/specifying-an-override-host). Defaults to `null` meaning no override of the Host header will occur. This setting can also be added to a Server definition. If the field is set on a Server definition it will override the Pool setting. | [optional][default to &#39;null&#39;] |
+| **override_host** | **String** | The hostname to [override the Host header](https://www.fastly.com/documentation/guides/full-site-delivery/domains-and-origins/specifying-an-override-host/). Defaults to `null` meaning no override of the Host header will occur. This setting can also be added to a Server definition. If the field is set on a Server definition it will override the Pool setting. | [optional][default to &#39;null&#39;] |
 | **between_bytes_timeout** | **Integer** | Maximum duration in milliseconds that Fastly will wait while receiving no data on a download from a backend. If exceeded, the response received so far will be considered complete and the fetch will end. May be set at runtime using `bereq.between_bytes_timeout`. | [optional][default to 10000] |
 | **connect_timeout** | **Integer** | How long to wait for a timeout in milliseconds. Optional. | [optional] |
 | **first_byte_timeout** | **Integer** | How long to wait for the first byte in milliseconds. Optional. | [optional] |

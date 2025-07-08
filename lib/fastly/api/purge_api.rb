@@ -94,7 +94,7 @@ module Fastly
     end
 
     # Purge everything from a service
-    # Instant Purge everything from a service.  Purge-all requests cannot be done in soft mode and will always immediately invalidate all cached content associated with the service. To do a soft-purge-all, consider applying a constant [surrogate key](https://docs.fastly.com/en/guides/getting-started-with-surrogate-keys) tag (e.g., `\"all\"`) to all objects. 
+    # Instant Purge everything from a service.  Purge-all requests cannot be done in soft mode and will always immediately invalidate all cached content associated with the service. To do a soft-purge-all, consider applying a constant [surrogate key](https://www.fastly.com/documentation/guides/full-site-delivery/purging/working-with-surrogate-keys/) tag (e.g., `\"all\"`) to all objects. 
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
     # @return [InlineResponse200]
     def purge_all(opts = {})
@@ -103,7 +103,7 @@ module Fastly
     end
 
     # Purge everything from a service
-    # Instant Purge everything from a service.  Purge-all requests cannot be done in soft mode and will always immediately invalidate all cached content associated with the service. To do a soft-purge-all, consider applying a constant [surrogate key](https://docs.fastly.com/en/guides/getting-started-with-surrogate-keys) tag (e.g., &#x60;\&quot;all\&quot;&#x60;) to all objects. 
+    # Instant Purge everything from a service.  Purge-all requests cannot be done in soft mode and will always immediately invalidate all cached content associated with the service. To do a soft-purge-all, consider applying a constant [surrogate key](https://www.fastly.com/documentation/guides/full-site-delivery/purging/working-with-surrogate-keys/) tag (e.g., &#x60;\&quot;all\&quot;&#x60;) to all objects. 
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
     # @return [Array<(InlineResponse200, Integer, Hash)>] InlineResponse200 data, response status code and response headers
     def purge_all_with_http_info(opts = {})

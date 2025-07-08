@@ -16,7 +16,7 @@ module Fastly
     # The name of the BigQuery logging object. Used as a primary key for API access.
     attr_accessor :name
 
-    # A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce JSON that matches the schema of your BigQuery table.
+    # A Fastly [log format string](https://www.fastly.com/documentation/guides/integrations/streaming-logs/custom-log-formats/). Must produce JSON that matches the schema of your BigQuery table.
     attr_accessor :format
 
     # Your BigQuery dataset.

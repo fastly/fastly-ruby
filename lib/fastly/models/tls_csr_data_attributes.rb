@@ -46,6 +46,9 @@ module Fastly
     # CSR Key Type.
     attr_accessor :key_type
 
+    # Optional. An alphanumeric string identifying the private key you've uploaded for use with your TLS certificate. If left blank, Fastly will create and manage a key for you.
+    attr_accessor :relationships_tls_private_key_id
+
     class EnumAttributeValidator
       attr_reader :datatype
       attr_reader :allowable_values
@@ -81,7 +84,8 @@ module Fastly
         :'organization' => :'organization',
         :'organizational_unit' => :'organizational_unit',
         :'email' => :'email',
-        :'key_type' => :'key_type'
+        :'key_type' => :'key_type',
+        :'relationships_tls_private_key_id' => :'relationships.tls_private_key.id'
       }
     end
 
@@ -103,7 +107,8 @@ module Fastly
         :'organization' => :'String',
         :'organizational_unit' => :'String',
         :'email' => :'String',
-        :'key_type' => :'String'
+        :'key_type' => :'String',
+        :'relationships_tls_private_key_id' => :'String'
       }
     end
 
@@ -173,6 +178,10 @@ module Fastly
       if attributes.key?(:'key_type')
         self.key_type = attributes[:'key_type']
       end
+
+      if attributes.key?(:'relationships_tls_private_key_id')
+        self.relationships_tls_private_key_id = attributes[:'relationships_tls_private_key_id']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -220,7 +229,8 @@ module Fastly
           organization == o.organization &&
           organizational_unit == o.organizational_unit &&
           email == o.email &&
-          key_type == o.key_type
+          key_type == o.key_type &&
+          relationships_tls_private_key_id == o.relationships_tls_private_key_id
     end
 
     # @see the `==` method
@@ -232,7 +242,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [sans, common_name, country, state, city, postal_code, street_address, organization, organizational_unit, email, key_type].hash
+      [sans, common_name, country, state, city, postal_code, street_address, organization, organizational_unit, email, key_type, relationships_tls_private_key_id].hash
     end
 
     # Builds the object from hash

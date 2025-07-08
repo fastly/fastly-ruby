@@ -22,8 +22,11 @@ module Fastly
     # The name of an existing condition in the configured endpoint, or leave blank to always execute.
     attr_accessor :response_condition
 
-    # A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats).
+    # A Fastly [log format string](https://www.fastly.com/documentation/guides/integrations/streaming-logs/custom-log-formats/).
     attr_accessor :format
+
+    # The geographic region where the logs will be processed before streaming. Valid values are `us`, `eu`, and `none` for global.
+    attr_accessor :log_processing_region
 
     # The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in `vcl_log` if `format_version` is set to `2` and in `vcl_deliver` if `format_version` is set to `1`. 
     attr_accessor :format_version
@@ -103,6 +106,7 @@ module Fastly
         :'placement' => :'placement',
         :'response_condition' => :'response_condition',
         :'format' => :'format',
+        :'log_processing_region' => :'log_processing_region',
         :'format_version' => :'format_version',
         :'message_type' => :'message_type',
         :'timestamp_format' => :'timestamp_format',
@@ -135,6 +139,7 @@ module Fastly
         :'placement' => :'String',
         :'response_condition' => :'String',
         :'format' => :'String',
+        :'log_processing_region' => :'String',
         :'format_version' => :'String',
         :'message_type' => :'String',
         :'timestamp_format' => :'String',
@@ -212,6 +217,12 @@ module Fastly
         self.format = attributes[:'format']
       else
         self.format = '%h %l %u %t \"%r\" %&gt;s %b'
+      end
+
+      if attributes.key?(:'log_processing_region')
+        self.log_processing_region = attributes[:'log_processing_region']
+      else
+        self.log_processing_region = 'none'
       end
 
       if attributes.key?(:'format_version')
@@ -307,6 +318,8 @@ module Fastly
     def valid?
       placement_validator = EnumAttributeValidator.new('String', ["none", "null"])
       return false unless placement_validator.valid?(@placement)
+      log_processing_region_validator = EnumAttributeValidator.new('String', ["none", "eu", "us"])
+      return false unless log_processing_region_validator.valid?(@log_processing_region)
       format_version_validator = EnumAttributeValidator.new('String', ["1", "2"])
       return false unless format_version_validator.valid?(@format_version)
       message_type_validator = EnumAttributeValidator.new('String', ["classic", "loggly", "logplex", "blank"])
@@ -326,6 +339,16 @@ module Fastly
         fail ArgumentError, "invalid value for \"placement\", must be one of #{validator.allowable_values}."
       end
       @placement = placement
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] log_processing_region Object to be assigned
+    def log_processing_region=(log_processing_region)
+      validator = EnumAttributeValidator.new('String', ["none", "eu", "us"])
+      unless validator.valid?(log_processing_region)
+        fail ArgumentError, "invalid value for \"log_processing_region\", must be one of #{validator.allowable_values}."
+      end
+      @log_processing_region = log_processing_region
     end
 
     # Custom attribute writer method checking allowed values (enum).
@@ -377,6 +400,7 @@ module Fastly
           placement == o.placement &&
           response_condition == o.response_condition &&
           format == o.format &&
+          log_processing_region == o.log_processing_region &&
           format_version == o.format_version &&
           message_type == o.message_type &&
           timestamp_format == o.timestamp_format &&
@@ -405,7 +429,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, placement, response_condition, format, format_version, message_type, timestamp_format, compression_codec, period, gzip_level, created_at, deleted_at, updated_at, service_id, version, access_key, bucket_name, path, region, public_key, user].hash
+      [name, placement, response_condition, format, log_processing_region, format_version, message_type, timestamp_format, compression_codec, period, gzip_level, created_at, deleted_at, updated_at, service_id, version, access_key, bucket_name, path, region, public_key, user].hash
     end
 
     # Builds the object from hash

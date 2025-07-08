@@ -22,8 +22,11 @@ module Fastly
     # The name of an existing condition in the configured endpoint, or leave blank to always execute.
     attr_accessor :response_condition
 
-    # A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce valid JSON that Datadog can ingest. 
+    # A Fastly [log format string](https://www.fastly.com/documentation/guides/integrations/streaming-logs/custom-log-formats/). Must produce valid JSON that Datadog can ingest. 
     attr_accessor :format
+
+    # The geographic region where the logs will be processed before streaming. Valid values are `us`, `eu`, and `none` for global.
+    attr_accessor :log_processing_region
 
     # The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in `vcl_log` if `format_version` is set to `2` and in `vcl_deliver` if `format_version` is set to `1`. 
     attr_accessor :format_version
@@ -76,6 +79,7 @@ module Fastly
         :'placement' => :'placement',
         :'response_condition' => :'response_condition',
         :'format' => :'format',
+        :'log_processing_region' => :'log_processing_region',
         :'format_version' => :'format_version',
         :'region' => :'region',
         :'token' => :'token',
@@ -99,6 +103,7 @@ module Fastly
         :'placement' => :'String',
         :'response_condition' => :'String',
         :'format' => :'String',
+        :'log_processing_region' => :'String',
         :'format_version' => :'String',
         :'region' => :'String',
         :'token' => :'String',
@@ -164,6 +169,12 @@ module Fastly
         self.format = '{\"ddsource\":\"fastly\",\"service\":\"%{req.service_id}V\",\"date\":\"%{begin:%Y-%m-%dT%H:%M:%S%Z}t\",\"time_start\":\"%{begin:%Y-%m-%dT%H:%M:%S%Z}t\",\"time_end\":\"%{end:%Y-%m-%dT%H:%M:%S%Z}t\",\"http\":{\"request_time_ms\":\"%D\",\"method\":\"%m\",\"url\":\"%{json.escape(req.url)}V\",\"useragent\":\"%{User-Agent}i\",\"referer\":\"%{Referer}i\",\"protocol\":\"%H\",\"request_x_forwarded_for\":\"%{X-Forwarded-For}i\",\"status_code\":\"%s\"},\"network\":{\"client\":{\"ip\":\"%h\",\"name\":\"%{client.as.name}V\",\"number\":\"%{client.as.number}V\",\"connection_speed\":\"%{client.geo.conn_speed}V\"},\"destination\":{\"ip\":\"%A\"},\"geoip\":{\"geo_city\":\"%{client.geo.city.utf8}V\",\"geo_country_code\":\"%{client.geo.country_code}V\",\"geo_continent_code\":\"%{client.geo.continent_code}V\",\"geo_region\":\"%{client.geo.region}V\"},\"bytes_written\":\"%B\",\"bytes_read\":\"%{req.body_bytes_read}V\"},\"host\":\"%{Fastly-Orig-Host}i\",\"origin_host\":\"%v\",\"is_ipv6\":\"%{if(req.is_ipv6, \\\"true\\\", \\\"false\\\")}V\",\"is_tls\":\"%{if(req.is_ssl, \\\"true\\\", \\\"false\\\")}V\",\"tls_client_protocol\":\"%{json.escape(tls.client.protocol)}V\",\"tls_client_servername\":\"%{json.escape(tls.client.servername)}V\",\"tls_client_cipher\":\"%{json.escape(tls.client.cipher)}V\",\"tls_client_cipher_sha\":\"%{json.escape(tls.client.ciphers_sha)}V\",\"tls_client_tlsexts_sha\":\"%{json.escape(tls.client.tlsexts_sha)}V\",\"is_h2\":\"%{if(fastly_info.is_h2, \\\"true\\\", \\\"false\\\")}V\",\"is_h2_push\":\"%{if(fastly_info.h2.is_push, \\\"true\\\", \\\"false\\\")}V\",\"h2_stream_id\":\"%{fastly_info.h2.stream_id}V\",\"request_accept_content\":\"%{Accept}i\",\"request_accept_language\":\"%{Accept-Language}i\",\"request_accept_encoding\":\"%{Accept-Encoding}i\",\"request_accept_charset\":\"%{Accept-Charset}i\",\"request_connection\":\"%{Connection}i\",\"request_dnt\":\"%{DNT}i\",\"request_forwarded\":\"%{Forwarded}i\",\"request_via\":\"%{Via}i\",\"request_cache_control\":\"%{Cache-Control}i\",\"request_x_requested_with\":\"%{X-Requested-With}i\",\"request_x_att_device_id\":\"%{X-ATT-Device-Id}i\",\"content_type\":\"%{Content-Type}o\",\"is_cacheable\":\"%{if(fastly_info.state~\\\"^(HIT|MISS)$\\\", \\\"true\\\", \\\"false\\\")}V\",\"response_age\":\"%{Age}o\",\"response_cache_control\":\"%{Cache-Control}o\",\"response_expires\":\"%{Expires}o\",\"response_last_modified\":\"%{Last-Modified}o\",\"response_tsv\":\"%{TSV}o\",\"server_datacenter\":\"%{server.datacenter}V\",\"req_header_size\":\"%{req.header_bytes_read}V\",\"resp_header_size\":\"%{resp.header_bytes_written}V\",\"socket_cwnd\":\"%{client.socket.cwnd}V\",\"socket_nexthop\":\"%{client.socket.nexthop}V\",\"socket_tcpi_rcv_mss\":\"%{client.socket.tcpi_rcv_mss}V\",\"socket_tcpi_snd_mss\":\"%{client.socket.tcpi_snd_mss}V\",\"socket_tcpi_rtt\":\"%{client.socket.tcpi_rtt}V\",\"socket_tcpi_rttvar\":\"%{client.socket.tcpi_rttvar}V\",\"socket_tcpi_rcv_rtt\":\"%{client.socket.tcpi_rcv_rtt}V\",\"socket_tcpi_rcv_space\":\"%{client.socket.tcpi_rcv_space}V\",\"socket_tcpi_last_data_sent\":\"%{client.socket.tcpi_last_data_sent}V\",\"socket_tcpi_total_retrans\":\"%{client.socket.tcpi_total_retrans}V\",\"socket_tcpi_delta_retrans\":\"%{client.socket.tcpi_delta_retrans}V\",\"socket_ploss\":\"%{client.socket.ploss}V\"}'
       end
 
+      if attributes.key?(:'log_processing_region')
+        self.log_processing_region = attributes[:'log_processing_region']
+      else
+        self.log_processing_region = 'none'
+      end
+
       if attributes.key?(:'format_version')
         self.format_version = attributes[:'format_version']
       else
@@ -213,6 +224,8 @@ module Fastly
     def valid?
       placement_validator = EnumAttributeValidator.new('String', ["none", "null"])
       return false unless placement_validator.valid?(@placement)
+      log_processing_region_validator = EnumAttributeValidator.new('String', ["none", "eu", "us"])
+      return false unless log_processing_region_validator.valid?(@log_processing_region)
       format_version_validator = EnumAttributeValidator.new('String', ["1", "2"])
       return false unless format_version_validator.valid?(@format_version)
       region_validator = EnumAttributeValidator.new('String', ["US", "US3", "US5", "EU (legacy, same as EU1)", "EU1", "AP1"])
@@ -228,6 +241,16 @@ module Fastly
         fail ArgumentError, "invalid value for \"placement\", must be one of #{validator.allowable_values}."
       end
       @placement = placement
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] log_processing_region Object to be assigned
+    def log_processing_region=(log_processing_region)
+      validator = EnumAttributeValidator.new('String', ["none", "eu", "us"])
+      unless validator.valid?(log_processing_region)
+        fail ArgumentError, "invalid value for \"log_processing_region\", must be one of #{validator.allowable_values}."
+      end
+      @log_processing_region = log_processing_region
     end
 
     # Custom attribute writer method checking allowed values (enum).
@@ -259,6 +282,7 @@ module Fastly
           placement == o.placement &&
           response_condition == o.response_condition &&
           format == o.format &&
+          log_processing_region == o.log_processing_region &&
           format_version == o.format_version &&
           region == o.region &&
           token == o.token &&
@@ -278,7 +302,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, placement, response_condition, format, format_version, region, token, created_at, deleted_at, updated_at, service_id, version].hash
+      [name, placement, response_condition, format, log_processing_region, format_version, region, token, created_at, deleted_at, updated_at, service_id, version].hash
     end
 
     # Builds the object from hash

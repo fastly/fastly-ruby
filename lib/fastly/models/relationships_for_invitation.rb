@@ -41,6 +41,7 @@ module Fastly
     # List of attributes with nullable: true
     def self.fastly_nullable
       Set.new([
+        :'service_invitations'
       ])
     end
 

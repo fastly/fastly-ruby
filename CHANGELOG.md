@@ -1,5 +1,23 @@
 # Changelog
 
+## [v13.1.0](https://github.com/fastly/fastly-ruby/releases/tag/release/v13.1.0) (2025-07-07)
+
+**Bug fixes:**
+
+- fix(backend): Marked `prefer_ipv6` as not nullable, and documented that the default value differs for Delivery and Compute services.
+- fix(invitations): Marked `service_invitations.data` under relationships as nullable, and corrected model composition.
+
+
+**Enhancements:**
+
+- feat(tls_certificates): Add `allow_untrusted_root` attribute for TLS certificate creation and update endpoints
+
+
+**Documentation:**
+
+- doc: Update redirect URLs
+
+
 ## [v13.0.0](https://github.com/fastly/fastly-ruby/releases/tag/release/v13.0.0) (2025-06-11)
 
 **Breaking Changes:**

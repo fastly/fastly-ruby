@@ -21,7 +21,7 @@ Method | HTTP request | Description
 ## `create_invitation()`
 
 ```ruby
-create_invitation(opts): <InvitationResponse> # Create an invitation
+create_invitation(opts): <InvitationCreateResponse> # Create an invitation
 ```
 
 Create an invitation.
@@ -51,7 +51,7 @@ end
 
 ### Return type
 
-[**InvitationResponse**](InvitationResponse.md)
+[**InvitationCreateResponse**](InvitationCreateResponse.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)

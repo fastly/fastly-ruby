@@ -22,8 +22,11 @@ module Fastly
     # The name of an existing condition in the configured endpoint, or leave blank to always execute.
     attr_accessor :response_condition
 
-    # A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats).
+    # A Fastly [log format string](https://www.fastly.com/documentation/guides/integrations/streaming-logs/custom-log-formats/).
     attr_accessor :format
+
+    # The geographic region where the logs will be processed before streaming. Valid values are `us`, `eu`, and `none` for global.
+    attr_accessor :log_processing_region
 
     class EnumAttributeValidator
       attr_reader :datatype
@@ -53,7 +56,8 @@ module Fastly
         :'name' => :'name',
         :'placement' => :'placement',
         :'response_condition' => :'response_condition',
-        :'format' => :'format'
+        :'format' => :'format',
+        :'log_processing_region' => :'log_processing_region'
       }
     end
 
@@ -68,7 +72,8 @@ module Fastly
         :'name' => :'String',
         :'placement' => :'String',
         :'response_condition' => :'String',
-        :'format' => :'String'
+        :'format' => :'String',
+        :'log_processing_region' => :'String'
       }
     end
 
@@ -112,6 +117,12 @@ module Fastly
       else
         self.format = '%h %l %u %t \"%r\" %&gt;s %b'
       end
+
+      if attributes.key?(:'log_processing_region')
+        self.log_processing_region = attributes[:'log_processing_region']
+      else
+        self.log_processing_region = 'none'
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -126,6 +137,8 @@ module Fastly
     def valid?
       placement_validator = EnumAttributeValidator.new('String', ["none", "null"])
       return false unless placement_validator.valid?(@placement)
+      log_processing_region_validator = EnumAttributeValidator.new('String', ["none", "eu", "us"])
+      return false unless log_processing_region_validator.valid?(@log_processing_region)
       true
     end
 
@@ -139,6 +152,16 @@ module Fastly
       @placement = placement
     end
 
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] log_processing_region Object to be assigned
+    def log_processing_region=(log_processing_region)
+      validator = EnumAttributeValidator.new('String', ["none", "eu", "us"])
+      unless validator.valid?(log_processing_region)
+        fail ArgumentError, "invalid value for \"log_processing_region\", must be one of #{validator.allowable_values}."
+      end
+      @log_processing_region = log_processing_region
+    end
+
     # Checks equality by comparing each attribute.
     # @param [Object] Object to be compared
     def ==(o)
@@ -147,7 +170,8 @@ module Fastly
           name == o.name &&
           placement == o.placement &&
           response_condition == o.response_condition &&
-          format == o.format
+          format == o.format &&
+          log_processing_region == o.log_processing_region
     end
 
     # @see the `==` method
@@ -159,7 +183,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, placement, response_condition, format].hash
+      [name, placement, response_condition, format, log_processing_region].hash
     end
 
     # Builds the object from hash

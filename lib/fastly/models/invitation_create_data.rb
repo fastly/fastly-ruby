@@ -12,13 +12,19 @@ require 'date'
 require 'time'
 
 module Fastly
-  class InvitationResponse
-    attr_accessor :data
+  class InvitationCreateData
+    attr_accessor :type
+
+    attr_accessor :attributes
+
+    attr_accessor :relationships
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'data' => :'data'
+        :'type' => :'type',
+        :'attributes' => :'attributes',
+        :'relationships' => :'relationships'
       }
     end
 
@@ -30,7 +36,9 @@ module Fastly
     # Attribute type mapping.
     def self.fastly_types
       {
-        :'data' => :'InvitationResponseData'
+        :'type' => :'TypeInvitation',
+        :'attributes' => :'InvitationDataAttributes',
+        :'relationships' => :'RelationshipServiceInvitationsCreate'
       }
     end
 
@@ -43,8 +51,8 @@ module Fastly
     # List of class defined in allOf (OpenAPI v3)
     def self.fastly_all_of
       [
-      :'Invitation',
-      :'InvitationResponseAllOf'
+      :'InvitationCreateDataAllOf',
+      :'InvitationData'
       ]
     end
 
@@ -52,19 +60,29 @@ module Fastly
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Fastly::InvitationResponse` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Fastly::InvitationCreateData` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `Fastly::InvitationResponse`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `Fastly::InvitationCreateData`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'data')
-        self.data = attributes[:'data']
+      if attributes.key?(:'type')
+        self.type = attributes[:'type']
+      else
+        self.type = 'invitation'
+      end
+
+      if attributes.key?(:'attributes')
+        self.attributes = attributes[:'attributes']
+      end
+
+      if attributes.key?(:'relationships')
+        self.relationships = attributes[:'relationships']
       end
     end
 
@@ -86,7 +104,9 @@ module Fastly
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          data == o.data
+          type == o.type &&
+          attributes == o.attributes &&
+          relationships == o.relationships
     end
 
     # @see the `==` method
@@ -98,7 +118,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [data].hash
+      [type, attributes, relationships].hash
     end
 
     # Builds the object from hash

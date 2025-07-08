@@ -17,17 +17,17 @@ module Fastly
 
     attr_accessor :attributes
 
-    attr_accessor :relationships
-
     attr_accessor :id
+
+    attr_accessor :relationships
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'type' => :'type',
         :'attributes' => :'attributes',
-        :'relationships' => :'relationships',
-        :'id' => :'id'
+        :'id' => :'id',
+        :'relationships' => :'relationships'
       }
     end
 
@@ -41,8 +41,8 @@ module Fastly
       {
         :'type' => :'TypeInvitation',
         :'attributes' => :'Timestamps',
-        :'relationships' => :'RelationshipsForInvitation',
-        :'id' => :'String'
+        :'id' => :'String',
+        :'relationships' => :'RelationshipsForInvitation'
       }
     end
 
@@ -85,12 +85,12 @@ module Fastly
         self.attributes = attributes[:'attributes']
       end
 
-      if attributes.key?(:'relationships')
-        self.relationships = attributes[:'relationships']
-      end
-
       if attributes.key?(:'id')
         self.id = attributes[:'id']
+      end
+
+      if attributes.key?(:'relationships')
+        self.relationships = attributes[:'relationships']
       end
     end
 
@@ -114,8 +114,8 @@ module Fastly
       self.class == o.class &&
           type == o.type &&
           attributes == o.attributes &&
-          relationships == o.relationships &&
-          id == o.id
+          id == o.id &&
+          relationships == o.relationships
     end
 
     # @see the `==` method
@@ -127,7 +127,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [type, attributes, relationships, id].hash
+      [type, attributes, id, relationships].hash
     end
 
     # Builds the object from hash

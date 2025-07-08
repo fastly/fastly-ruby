@@ -12,13 +12,13 @@ require 'date'
 require 'time'
 
 module Fastly
-  class InvitationResponseAllOf
-    attr_accessor :data
+  class InvitationCreateDataAllOf
+    attr_accessor :relationships
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'data' => :'data'
+        :'relationships' => :'relationships'
       }
     end
 
@@ -30,7 +30,7 @@ module Fastly
     # Attribute type mapping.
     def self.fastly_types
       {
-        :'data' => :'InvitationResponseData'
+        :'relationships' => :'RelationshipServiceInvitationsCreate'
       }
     end
 
@@ -44,19 +44,19 @@ module Fastly
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Fastly::InvitationResponseAllOf` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Fastly::InvitationCreateDataAllOf` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `Fastly::InvitationResponseAllOf`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `Fastly::InvitationCreateDataAllOf`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'data')
-        self.data = attributes[:'data']
+      if attributes.key?(:'relationships')
+        self.relationships = attributes[:'relationships']
       end
     end
 
@@ -78,7 +78,7 @@ module Fastly
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          data == o.data
+          relationships == o.relationships
     end
 
     # @see the `==` method
@@ -90,7 +90,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [data].hash
+      [relationships].hash
     end
 
     # Builds the object from hash

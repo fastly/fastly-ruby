@@ -22,8 +22,11 @@ module Fastly
     # The name of an existing condition in the configured endpoint, or leave blank to always execute.
     attr_accessor :response_condition
 
-    # A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats).
+    # A Fastly [log format string](https://www.fastly.com/documentation/guides/integrations/streaming-logs/custom-log-formats/).
     attr_accessor :format
+
+    # The geographic region where the logs will be processed before streaming. Valid values are `us`, `eu`, and `none` for global.
+    attr_accessor :log_processing_region
 
     # The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in `vcl_log` if `format_version` is set to `2` and in `vcl_deliver` if `format_version` is set to `1`. 
     attr_accessor :format_version
@@ -79,6 +82,7 @@ module Fastly
         :'placement' => :'placement',
         :'response_condition' => :'response_condition',
         :'format' => :'format',
+        :'log_processing_region' => :'log_processing_region',
         :'format_version' => :'format_version',
         :'token' => :'token',
         :'region' => :'region',
@@ -103,6 +107,7 @@ module Fastly
         :'placement' => :'String',
         :'response_condition' => :'String',
         :'format' => :'String',
+        :'log_processing_region' => :'String',
         :'format_version' => :'String',
         :'token' => :'String',
         :'region' => :'String',
@@ -170,6 +175,12 @@ module Fastly
         self.format = '{\"timestamp\":\"%{begin:%Y-%m-%dT%H:%M:%S}t\",\"time_elapsed\":\"%{time.elapsed.usec}V\",\"is_tls\":\"%{if(req.is_ssl, \\\"true\\\", \\\"false\\\")}V\",\"client_ip\":\"%{req.http.Fastly-Client-IP}V\",\"geo_city\":\"%{client.geo.city}V\",\"geo_country_code\":\"%{client.geo.country_code}V\",\"request\":\"%{req.request}V\",\"host\":\"%{req.http.Fastly-Orig-Host}V\",\"url\":\"%{json.escape(req.url)}V\",\"request_referer\":\"%{json.escape(req.http.Referer)}V\",\"request_user_agent\":\"%{json.escape(req.http.User-Agent)}V\",\"request_accept_language\":\"%{json.escape(req.http.Accept-Language)}V\",\"request_accept_charset\":\"%{json.escape(req.http.Accept-Charset)}V\",\"cache_status\":\"%{regsub(fastly_info.state, \\\"^(HIT-(SYNTH)|(HITPASS|HIT|MISS|PASS|ERROR|PIPE)).*\\\", \\\"\\\\2\\\\3\\\") }V\"}'
       end
 
+      if attributes.key?(:'log_processing_region')
+        self.log_processing_region = attributes[:'log_processing_region']
+      else
+        self.log_processing_region = 'none'
+      end
+
       if attributes.key?(:'format_version')
         self.format_version = attributes[:'format_version']
       else
@@ -225,6 +236,8 @@ module Fastly
     def valid?
       placement_validator = EnumAttributeValidator.new('String', ["none", "null"])
       return false unless placement_validator.valid?(@placement)
+      log_processing_region_validator = EnumAttributeValidator.new('String', ["none", "eu", "us"])
+      return false unless log_processing_region_validator.valid?(@log_processing_region)
       format_version_validator = EnumAttributeValidator.new('String', ["1", "2"])
       return false unless format_version_validator.valid?(@format_version)
       region_validator = EnumAttributeValidator.new('String', ["US", "EU"])
@@ -240,6 +253,16 @@ module Fastly
         fail ArgumentError, "invalid value for \"placement\", must be one of #{validator.allowable_values}."
       end
       @placement = placement
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] log_processing_region Object to be assigned
+    def log_processing_region=(log_processing_region)
+      validator = EnumAttributeValidator.new('String', ["none", "eu", "us"])
+      unless validator.valid?(log_processing_region)
+        fail ArgumentError, "invalid value for \"log_processing_region\", must be one of #{validator.allowable_values}."
+      end
+      @log_processing_region = log_processing_region
     end
 
     # Custom attribute writer method checking allowed values (enum).
@@ -271,6 +294,7 @@ module Fastly
           placement == o.placement &&
           response_condition == o.response_condition &&
           format == o.format &&
+          log_processing_region == o.log_processing_region &&
           format_version == o.format_version &&
           token == o.token &&
           region == o.region &&
@@ -291,7 +315,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, placement, response_condition, format, format_version, token, region, url, created_at, deleted_at, updated_at, service_id, version].hash
+      [name, placement, response_condition, format, log_processing_region, format_version, token, region, url, created_at, deleted_at, updated_at, service_id, version].hash
     end
 
     # Builds the object from hash

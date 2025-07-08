@@ -22,8 +22,11 @@ module Fastly
     # The name of an existing condition in the configured endpoint, or leave blank to always execute.
     attr_accessor :response_condition
 
-    # A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats).
+    # A Fastly [log format string](https://www.fastly.com/documentation/guides/integrations/streaming-logs/custom-log-formats/).
     attr_accessor :format
+
+    # The geographic region where the logs will be processed before streaming. Valid values are `us`, `eu`, and `none` for global.
+    attr_accessor :log_processing_region
 
     # The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in `vcl_log` if `format_version` is set to `2` and in `vcl_deliver` if `format_version` is set to `1`. 
     attr_accessor :format_version
@@ -111,6 +114,7 @@ module Fastly
         :'placement' => :'placement',
         :'response_condition' => :'response_condition',
         :'format' => :'format',
+        :'log_processing_region' => :'log_processing_region',
         :'format_version' => :'format_version',
         :'tls_ca_cert' => :'tls_ca_cert',
         :'tls_client_cert' => :'tls_client_cert',
@@ -146,6 +150,7 @@ module Fastly
         :'placement' => :'String',
         :'response_condition' => :'String',
         :'format' => :'String',
+        :'log_processing_region' => :'String',
         :'format_version' => :'String',
         :'tls_ca_cert' => :'String',
         :'tls_client_cert' => :'String',
@@ -227,6 +232,12 @@ module Fastly
         self.format = attributes[:'format']
       else
         self.format = '%h %l %u %t \"%r\" %&gt;s %b'
+      end
+
+      if attributes.key?(:'log_processing_region')
+        self.log_processing_region = attributes[:'log_processing_region']
+      else
+        self.log_processing_region = 'none'
       end
 
       if attributes.key?(:'format_version')
@@ -338,6 +349,8 @@ module Fastly
     def valid?
       placement_validator = EnumAttributeValidator.new('String', ["none", "null"])
       return false unless placement_validator.valid?(@placement)
+      log_processing_region_validator = EnumAttributeValidator.new('String', ["none", "eu", "us"])
+      return false unless log_processing_region_validator.valid?(@log_processing_region)
       format_version_validator = EnumAttributeValidator.new('String', ["1", "2"])
       return false unless format_version_validator.valid?(@format_version)
       compression_codec_validator = EnumAttributeValidator.new('String', ["gzip", "snappy", "lz4", "null"])
@@ -357,6 +370,16 @@ module Fastly
         fail ArgumentError, "invalid value for \"placement\", must be one of #{validator.allowable_values}."
       end
       @placement = placement
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] log_processing_region Object to be assigned
+    def log_processing_region=(log_processing_region)
+      validator = EnumAttributeValidator.new('String', ["none", "eu", "us"])
+      unless validator.valid?(log_processing_region)
+        fail ArgumentError, "invalid value for \"log_processing_region\", must be one of #{validator.allowable_values}."
+      end
+      @log_processing_region = log_processing_region
     end
 
     # Custom attribute writer method checking allowed values (enum).
@@ -408,6 +431,7 @@ module Fastly
           placement == o.placement &&
           response_condition == o.response_condition &&
           format == o.format &&
+          log_processing_region == o.log_processing_region &&
           format_version == o.format_version &&
           tls_ca_cert == o.tls_ca_cert &&
           tls_client_cert == o.tls_client_cert &&
@@ -439,7 +463,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, placement, response_condition, format, format_version, tls_ca_cert, tls_client_cert, tls_client_key, tls_hostname, created_at, deleted_at, updated_at, service_id, version, topic, brokers, compression_codec, required_acks, request_max_bytes, parse_log_keyvals, auth_method, user, password, use_tls].hash
+      [name, placement, response_condition, format, log_processing_region, format_version, tls_ca_cert, tls_client_cert, tls_client_key, tls_hostname, created_at, deleted_at, updated_at, service_id, version, topic, brokers, compression_codec, required_acks, request_max_bytes, parse_log_keyvals, auth_method, user, password, use_tls].hash
     end
 
     # Builds the object from hash

@@ -13,7 +13,7 @@ require 'time'
 
 module Fastly
   class LoggingNewrelicotlpAdditional
-    # A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats).
+    # A Fastly [log format string](https://www.fastly.com/documentation/guides/integrations/streaming-logs/custom-log-formats/).
     attr_accessor :format
 
     # The Insert API key from the Account page of your New Relic account. Required.

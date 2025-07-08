@@ -1,4 +1,4 @@
-# Fastly::InvitationResponse
+# Fastly::InvitationCreateResponseAllOf
 
 ## Properties
 

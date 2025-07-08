@@ -19,11 +19,15 @@ module Fastly
     # A customizable name for your certificate. Defaults to the certificate's Common Name or first Subject Alternative Names (SAN) entry. Optional.
     attr_accessor :name
 
+    # Indicates that the supplied certificate was not signed by a trusted CA.
+    attr_accessor :allow_untrusted_root
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'cert_blob' => :'cert_blob',
-        :'name' => :'name'
+        :'name' => :'name',
+        :'allow_untrusted_root' => :'allow_untrusted_root'
       }
     end
 
@@ -36,7 +40,8 @@ module Fastly
     def self.fastly_types
       {
         :'cert_blob' => :'String',
-        :'name' => :'String'
+        :'name' => :'String',
+        :'allow_untrusted_root' => :'Boolean'
       }
     end
 
@@ -68,6 +73,10 @@ module Fastly
       if attributes.key?(:'name')
         self.name = attributes[:'name']
       end
+
+      if attributes.key?(:'allow_untrusted_root')
+        self.allow_untrusted_root = attributes[:'allow_untrusted_root']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -89,7 +98,8 @@ module Fastly
       return true if self.equal?(o)
       self.class == o.class &&
           cert_blob == o.cert_blob &&
-          name == o.name
+          name == o.name &&
+          allow_untrusted_root == o.allow_untrusted_root
     end
 
     # @see the `==` method
@@ -101,7 +111,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [cert_blob, name].hash
+      [cert_blob, name, allow_untrusted_root].hash
     end
 
     # Builds the object from hash

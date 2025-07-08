@@ -17,14 +17,11 @@ module Fastly
 
     attr_accessor :attributes
 
-    attr_accessor :relationships
-
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'type' => :'type',
-        :'attributes' => :'attributes',
-        :'relationships' => :'relationships'
+        :'attributes' => :'attributes'
       }
     end
 
@@ -37,8 +34,7 @@ module Fastly
     def self.fastly_types
       {
         :'type' => :'TypeInvitation',
-        :'attributes' => :'InvitationDataAttributes',
-        :'relationships' => :'RelationshipServiceInvitationsCreate'
+        :'attributes' => :'InvitationDataAttributes'
       }
     end
 
@@ -72,10 +68,6 @@ module Fastly
       if attributes.key?(:'attributes')
         self.attributes = attributes[:'attributes']
       end
-
-      if attributes.key?(:'relationships')
-        self.relationships = attributes[:'relationships']
-      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -97,8 +89,7 @@ module Fastly
       return true if self.equal?(o)
       self.class == o.class &&
           type == o.type &&
-          attributes == o.attributes &&
-          relationships == o.relationships
+          attributes == o.attributes
     end
 
     # @see the `==` method
@@ -110,7 +101,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [type, attributes, relationships].hash
+      [type, attributes].hash
     end
 
     # Builds the object from hash

@@ -41,7 +41,7 @@ module Fastly
     # @option opts [String] :healthcheck Name of the healthcheck to use with this pool. Can be empty and could be reused across multiple backend and pools.
     # @option opts [String] :comment A freeform descriptive note.
     # @option opts [String] :type What type of load balance group to use.
-    # @option opts [String] :override_host The hostname to [override the Host header](https://docs.fastly.com/en/guides/specifying-an-override-host). Defaults to &#x60;null&#x60; meaning no override of the Host header will occur. This setting can also be added to a Server definition. If the field is set on a Server definition it will override the Pool setting. (default to 'null')
+    # @option opts [String] :override_host The hostname to [override the Host header](https://www.fastly.com/documentation/guides/full-site-delivery/domains-and-origins/specifying-an-override-host/). Defaults to &#x60;null&#x60; meaning no override of the Host header will occur. This setting can also be added to a Server definition. If the field is set on a Server definition it will override the Pool setting. (default to 'null')
     # @option opts [Integer] :between_bytes_timeout Maximum duration in milliseconds that Fastly will wait while receiving no data on a download from a backend. If exceeded, the response received so far will be considered complete and the fetch will end. May be set at runtime using &#x60;bereq.between_bytes_timeout&#x60;. (default to 10000)
     # @option opts [Integer] :connect_timeout How long to wait for a timeout in milliseconds. Optional.
     # @option opts [Integer] :first_byte_timeout How long to wait for the first byte in milliseconds. Optional.
@@ -78,7 +78,7 @@ module Fastly
     # @option opts [String] :healthcheck Name of the healthcheck to use with this pool. Can be empty and could be reused across multiple backend and pools.
     # @option opts [String] :comment A freeform descriptive note.
     # @option opts [String] :type What type of load balance group to use.
-    # @option opts [String] :override_host The hostname to [override the Host header](https://docs.fastly.com/en/guides/specifying-an-override-host). Defaults to &#x60;null&#x60; meaning no override of the Host header will occur. This setting can also be added to a Server definition. If the field is set on a Server definition it will override the Pool setting. (default to 'null')
+    # @option opts [String] :override_host The hostname to [override the Host header](https://www.fastly.com/documentation/guides/full-site-delivery/domains-and-origins/specifying-an-override-host/). Defaults to &#x60;null&#x60; meaning no override of the Host header will occur. This setting can also be added to a Server definition. If the field is set on a Server definition it will override the Pool setting. (default to 'null')
     # @option opts [Integer] :between_bytes_timeout Maximum duration in milliseconds that Fastly will wait while receiving no data on a download from a backend. If exceeded, the response received so far will be considered complete and the fetch will end. May be set at runtime using &#x60;bereq.between_bytes_timeout&#x60;. (default to 10000)
     # @option opts [Integer] :connect_timeout How long to wait for a timeout in milliseconds. Optional.
     # @option opts [Integer] :first_byte_timeout How long to wait for the first byte in milliseconds. Optional.
@@ -438,7 +438,7 @@ module Fastly
     # @option opts [String] :healthcheck Name of the healthcheck to use with this pool. Can be empty and could be reused across multiple backend and pools.
     # @option opts [String] :comment A freeform descriptive note.
     # @option opts [String] :type What type of load balance group to use.
-    # @option opts [String] :override_host The hostname to [override the Host header](https://docs.fastly.com/en/guides/specifying-an-override-host). Defaults to &#x60;null&#x60; meaning no override of the Host header will occur. This setting can also be added to a Server definition. If the field is set on a Server definition it will override the Pool setting. (default to 'null')
+    # @option opts [String] :override_host The hostname to [override the Host header](https://www.fastly.com/documentation/guides/full-site-delivery/domains-and-origins/specifying-an-override-host/). Defaults to &#x60;null&#x60; meaning no override of the Host header will occur. This setting can also be added to a Server definition. If the field is set on a Server definition it will override the Pool setting. (default to 'null')
     # @option opts [Integer] :between_bytes_timeout Maximum duration in milliseconds that Fastly will wait while receiving no data on a download from a backend. If exceeded, the response received so far will be considered complete and the fetch will end. May be set at runtime using &#x60;bereq.between_bytes_timeout&#x60;. (default to 10000)
     # @option opts [Integer] :connect_timeout How long to wait for a timeout in milliseconds. Optional.
     # @option opts [Integer] :first_byte_timeout How long to wait for the first byte in milliseconds. Optional.
@@ -476,7 +476,7 @@ module Fastly
     # @option opts [String] :healthcheck Name of the healthcheck to use with this pool. Can be empty and could be reused across multiple backend and pools.
     # @option opts [String] :comment A freeform descriptive note.
     # @option opts [String] :type What type of load balance group to use.
-    # @option opts [String] :override_host The hostname to [override the Host header](https://docs.fastly.com/en/guides/specifying-an-override-host). Defaults to &#x60;null&#x60; meaning no override of the Host header will occur. This setting can also be added to a Server definition. If the field is set on a Server definition it will override the Pool setting. (default to 'null')
+    # @option opts [String] :override_host The hostname to [override the Host header](https://www.fastly.com/documentation/guides/full-site-delivery/domains-and-origins/specifying-an-override-host/). Defaults to &#x60;null&#x60; meaning no override of the Host header will occur. This setting can also be added to a Server definition. If the field is set on a Server definition it will override the Pool setting. (default to 'null')
     # @option opts [Integer] :between_bytes_timeout Maximum duration in milliseconds that Fastly will wait while receiving no data on a download from a backend. If exceeded, the response received so far will be considered complete and the fetch will end. May be set at runtime using &#x60;bereq.between_bytes_timeout&#x60;. (default to 10000)
     # @option opts [Integer] :connect_timeout How long to wait for a timeout in milliseconds. Optional.
     # @option opts [Integer] :first_byte_timeout How long to wait for the first byte in milliseconds. Optional.

@@ -24,7 +24,8 @@ module Fastly
     # @option opts [String] :name The name for the real-time logging configuration.
     # @option opts [String] :placement Where in the generated VCL the logging call should be placed. If not set, endpoints with &#x60;format_version&#x60; of 2 are placed in &#x60;vcl_log&#x60; and those with &#x60;format_version&#x60; of 1 are placed in &#x60;vcl_deliver&#x60;. 
     # @option opts [String] :response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute.
-    # @option opts [String] :format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (default to '%h %l %u %t \"%r\" %&gt;s %b')
+    # @option opts [String] :format A Fastly [log format string](https://www.fastly.com/documentation/guides/integrations/streaming-logs/custom-log-formats/). (default to '%h %l %u %t \"%r\" %&gt;s %b')
+    # @option opts [String] :log_processing_region The geographic region where the logs will be processed before streaming. Valid values are &#x60;us&#x60;, &#x60;eu&#x60;, and &#x60;none&#x60; for global. (default to 'none')
     # @option opts [Integer] :format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;.  (default to FORMAT_VERSION::v2)
     # @option opts [String] :message_type How the message should be formatted. (default to 'classic')
     # @option opts [String] :timestamp_format A timestamp format
@@ -50,7 +51,8 @@ module Fastly
     # @option opts [String] :name The name for the real-time logging configuration.
     # @option opts [String] :placement Where in the generated VCL the logging call should be placed. If not set, endpoints with &#x60;format_version&#x60; of 2 are placed in &#x60;vcl_log&#x60; and those with &#x60;format_version&#x60; of 1 are placed in &#x60;vcl_deliver&#x60;. 
     # @option opts [String] :response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute.
-    # @option opts [String] :format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (default to '%h %l %u %t \"%r\" %&gt;s %b')
+    # @option opts [String] :format A Fastly [log format string](https://www.fastly.com/documentation/guides/integrations/streaming-logs/custom-log-formats/). (default to '%h %l %u %t \"%r\" %&gt;s %b')
+    # @option opts [String] :log_processing_region The geographic region where the logs will be processed before streaming. Valid values are &#x60;us&#x60;, &#x60;eu&#x60;, and &#x60;none&#x60; for global. (default to 'none')
     # @option opts [Integer] :format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;.  (default to FORMAT_VERSION::v2)
     # @option opts [String] :message_type How the message should be formatted. (default to 'classic')
     # @option opts [String] :timestamp_format A timestamp format
@@ -82,6 +84,10 @@ module Fastly
       allowable_values = ["none", "null"]
       if @api_client.config.client_side_validation && opts[:'placement'] && !allowable_values.include?(opts[:'placement'])
         fail ArgumentError, "invalid value for \"placement\", must be one of #{allowable_values}"
+      end
+      allowable_values = ["none", "eu", "us"]
+      if @api_client.config.client_side_validation && opts[:'log_processing_region'] && !allowable_values.include?(opts[:'log_processing_region'])
+        fail ArgumentError, "invalid value for \"log_processing_region\", must be one of #{allowable_values}"
       end
       allowable_values = [1, 2]
       if @api_client.config.client_side_validation && opts[:'format_version'] && !allowable_values.include?(opts[:'format_version'])
@@ -117,6 +123,7 @@ module Fastly
       form_params['placement'] = opts[:'placement'] if !opts[:'placement'].nil?
       form_params['response_condition'] = opts[:'response_condition'] if !opts[:'response_condition'].nil?
       form_params['format'] = opts[:'format'] if !opts[:'format'].nil?
+      form_params['log_processing_region'] = opts[:'log_processing_region'] if !opts[:'log_processing_region'].nil?
       form_params['format_version'] = opts[:'format_version'] if !opts[:'format_version'].nil?
       form_params['message_type'] = opts[:'message_type'] if !opts[:'message_type'].nil?
       form_params['timestamp_format'] = opts[:'timestamp_format'] if !opts[:'timestamp_format'].nil?
@@ -388,7 +395,8 @@ module Fastly
     # @option opts [String] :name The name for the real-time logging configuration.
     # @option opts [String] :placement Where in the generated VCL the logging call should be placed. If not set, endpoints with &#x60;format_version&#x60; of 2 are placed in &#x60;vcl_log&#x60; and those with &#x60;format_version&#x60; of 1 are placed in &#x60;vcl_deliver&#x60;. 
     # @option opts [String] :response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute.
-    # @option opts [String] :format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (default to '%h %l %u %t \"%r\" %&gt;s %b')
+    # @option opts [String] :format A Fastly [log format string](https://www.fastly.com/documentation/guides/integrations/streaming-logs/custom-log-formats/). (default to '%h %l %u %t \"%r\" %&gt;s %b')
+    # @option opts [String] :log_processing_region The geographic region where the logs will be processed before streaming. Valid values are &#x60;us&#x60;, &#x60;eu&#x60;, and &#x60;none&#x60; for global. (default to 'none')
     # @option opts [Integer] :format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;.  (default to FORMAT_VERSION::v2)
     # @option opts [String] :message_type How the message should be formatted. (default to 'classic')
     # @option opts [String] :timestamp_format A timestamp format
@@ -415,7 +423,8 @@ module Fastly
     # @option opts [String] :name The name for the real-time logging configuration.
     # @option opts [String] :placement Where in the generated VCL the logging call should be placed. If not set, endpoints with &#x60;format_version&#x60; of 2 are placed in &#x60;vcl_log&#x60; and those with &#x60;format_version&#x60; of 1 are placed in &#x60;vcl_deliver&#x60;. 
     # @option opts [String] :response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute.
-    # @option opts [String] :format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (default to '%h %l %u %t \"%r\" %&gt;s %b')
+    # @option opts [String] :format A Fastly [log format string](https://www.fastly.com/documentation/guides/integrations/streaming-logs/custom-log-formats/). (default to '%h %l %u %t \"%r\" %&gt;s %b')
+    # @option opts [String] :log_processing_region The geographic region where the logs will be processed before streaming. Valid values are &#x60;us&#x60;, &#x60;eu&#x60;, and &#x60;none&#x60; for global. (default to 'none')
     # @option opts [Integer] :format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;.  (default to FORMAT_VERSION::v2)
     # @option opts [String] :message_type How the message should be formatted. (default to 'classic')
     # @option opts [String] :timestamp_format A timestamp format
@@ -453,6 +462,10 @@ module Fastly
       if @api_client.config.client_side_validation && opts[:'placement'] && !allowable_values.include?(opts[:'placement'])
         fail ArgumentError, "invalid value for \"placement\", must be one of #{allowable_values}"
       end
+      allowable_values = ["none", "eu", "us"]
+      if @api_client.config.client_side_validation && opts[:'log_processing_region'] && !allowable_values.include?(opts[:'log_processing_region'])
+        fail ArgumentError, "invalid value for \"log_processing_region\", must be one of #{allowable_values}"
+      end
       allowable_values = [1, 2]
       if @api_client.config.client_side_validation && opts[:'format_version'] && !allowable_values.include?(opts[:'format_version'])
         fail ArgumentError, "invalid value for \"format_version\", must be one of #{allowable_values}"
@@ -487,6 +500,7 @@ module Fastly
       form_params['placement'] = opts[:'placement'] if !opts[:'placement'].nil?
       form_params['response_condition'] = opts[:'response_condition'] if !opts[:'response_condition'].nil?
       form_params['format'] = opts[:'format'] if !opts[:'format'].nil?
+      form_params['log_processing_region'] = opts[:'log_processing_region'] if !opts[:'log_processing_region'].nil?
       form_params['format_version'] = opts[:'format_version'] if !opts[:'format_version'].nil?
       form_params['message_type'] = opts[:'message_type'] if !opts[:'message_type'].nil?
       form_params['timestamp_format'] = opts[:'timestamp_format'] if !opts[:'timestamp_format'].nil?
