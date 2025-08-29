@@ -12,16 +12,26 @@ require 'date'
 require 'time'
 
 module Fastly
-  class LogTimeseriesGetResponse
-    attr_accessor :data
+  class AttackSource
+    # Country code of the attack source
+    attr_accessor :country_code
 
-    attr_accessor :meta
+    # Name of the country
+    attr_accessor :country_name
+
+    # Number of requests from this country
+    attr_accessor :request_count
+
+    # Total number of attacks considered
+    attr_accessor :total_count
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'data' => :'data',
-        :'meta' => :'meta'
+        :'country_code' => :'country_code',
+        :'country_name' => :'country_name',
+        :'request_count' => :'request_count',
+        :'total_count' => :'total_count'
       }
     end
 
@@ -33,8 +43,10 @@ module Fastly
     # Attribute type mapping.
     def self.fastly_types
       {
-        :'data' => :'Array<LogTimeseriesResult>',
-        :'meta' => :'LogTimeseriesGetResponseMeta'
+        :'country_code' => :'String',
+        :'country_name' => :'String',
+        :'request_count' => :'Integer',
+        :'total_count' => :'Integer'
       }
     end
 
@@ -48,25 +60,31 @@ module Fastly
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Fastly::LogTimeseriesGetResponse` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Fastly::AttackSource` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `Fastly::LogTimeseriesGetResponse`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `Fastly::AttackSource`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'data')
-        if (value = attributes[:'data']).is_a?(Array)
-          self.data = value
-        end
+      if attributes.key?(:'country_code')
+        self.country_code = attributes[:'country_code']
       end
 
-      if attributes.key?(:'meta')
-        self.meta = attributes[:'meta']
+      if attributes.key?(:'country_name')
+        self.country_name = attributes[:'country_name']
+      end
+
+      if attributes.key?(:'request_count')
+        self.request_count = attributes[:'request_count']
+      end
+
+      if attributes.key?(:'total_count')
+        self.total_count = attributes[:'total_count']
       end
     end
 
@@ -74,12 +92,32 @@ module Fastly
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+      if @country_code.nil?
+        invalid_properties.push('invalid value for "country_code", country_code cannot be nil.')
+      end
+
+      if @country_name.nil?
+        invalid_properties.push('invalid value for "country_name", country_name cannot be nil.')
+      end
+
+      if @request_count.nil?
+        invalid_properties.push('invalid value for "request_count", request_count cannot be nil.')
+      end
+
+      if @total_count.nil?
+        invalid_properties.push('invalid value for "total_count", total_count cannot be nil.')
+      end
+
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if @country_code.nil?
+      return false if @country_name.nil?
+      return false if @request_count.nil?
+      return false if @total_count.nil?
       true
     end
 
@@ -88,8 +126,10 @@ module Fastly
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          data == o.data &&
-          meta == o.meta
+          country_code == o.country_code &&
+          country_name == o.country_name &&
+          request_count == o.request_count &&
+          total_count == o.total_count
     end
 
     # @see the `==` method
@@ -101,7 +141,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [data, meta].hash
+      [country_code, country_name, request_count, total_count].hash
     end
 
     # Builds the object from hash

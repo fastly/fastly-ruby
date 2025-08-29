@@ -12,18 +12,48 @@ require 'date'
 require 'time'
 
 module Fastly
-  class DdosProtectionAttributeStats
-    # Name of an attribute type used in traffic stats. Currently, supported values are source_ip, country_code, host, asn, source_ip_prefix, user_agent, method_path.
+  class AttackReport
+    # ID of the workspace.
+    attr_accessor :id
+
+    # Name of the workspace.
     attr_accessor :name
 
-    # Values for traffic attribute.
-    attr_accessor :values
+    # Total request count
+    attr_accessor :total_count
+
+    # Blocked request count
+    attr_accessor :blocked_count
+
+    # Flagged request count
+    attr_accessor :flagged_count
+
+    # Attack request count
+    attr_accessor :attack_count
+
+    # Count of IPs that have been flagged
+    attr_accessor :all_flagged_ip_count
+
+    # Count of currently flagged IPs
+    attr_accessor :flagged_ip_count
+
+    attr_accessor :top_attack_signals
+
+    attr_accessor :top_attack_sources
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'id' => :'id',
         :'name' => :'name',
-        :'values' => :'values'
+        :'total_count' => :'total_count',
+        :'blocked_count' => :'blocked_count',
+        :'flagged_count' => :'flagged_count',
+        :'attack_count' => :'attack_count',
+        :'all_flagged_ip_count' => :'all_flagged_ip_count',
+        :'flagged_ip_count' => :'flagged_ip_count',
+        :'top_attack_signals' => :'top_attack_signals',
+        :'top_attack_sources' => :'top_attack_sources'
       }
     end
 
@@ -35,8 +65,16 @@ module Fastly
     # Attribute type mapping.
     def self.fastly_types
       {
+        :'id' => :'String',
         :'name' => :'String',
-        :'values' => :'Array<DdosProtectionAttributeValue>'
+        :'total_count' => :'Integer',
+        :'blocked_count' => :'Integer',
+        :'flagged_count' => :'Integer',
+        :'attack_count' => :'Integer',
+        :'all_flagged_ip_count' => :'Integer',
+        :'flagged_ip_count' => :'Integer',
+        :'top_attack_signals' => :'Array<AttackSignal>',
+        :'top_attack_sources' => :'Array<AttackSource>'
       }
     end
 
@@ -50,24 +88,58 @@ module Fastly
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Fastly::DdosProtectionAttributeStats` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Fastly::AttackReport` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `Fastly::DdosProtectionAttributeStats`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `Fastly::AttackReport`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
+
+      if attributes.key?(:'id')
+        self.id = attributes[:'id']
+      end
 
       if attributes.key?(:'name')
         self.name = attributes[:'name']
       end
 
-      if attributes.key?(:'values')
-        if (value = attributes[:'values']).is_a?(Array)
-          self.values = value
+      if attributes.key?(:'total_count')
+        self.total_count = attributes[:'total_count']
+      end
+
+      if attributes.key?(:'blocked_count')
+        self.blocked_count = attributes[:'blocked_count']
+      end
+
+      if attributes.key?(:'flagged_count')
+        self.flagged_count = attributes[:'flagged_count']
+      end
+
+      if attributes.key?(:'attack_count')
+        self.attack_count = attributes[:'attack_count']
+      end
+
+      if attributes.key?(:'all_flagged_ip_count')
+        self.all_flagged_ip_count = attributes[:'all_flagged_ip_count']
+      end
+
+      if attributes.key?(:'flagged_ip_count')
+        self.flagged_ip_count = attributes[:'flagged_ip_count']
+      end
+
+      if attributes.key?(:'top_attack_signals')
+        if (value = attributes[:'top_attack_signals']).is_a?(Array)
+          self.top_attack_signals = value
+        end
+      end
+
+      if attributes.key?(:'top_attack_sources')
+        if (value = attributes[:'top_attack_sources']).is_a?(Array)
+          self.top_attack_sources = value
         end
       end
     end
@@ -76,12 +148,62 @@ module Fastly
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+      if @id.nil?
+        invalid_properties.push('invalid value for "id", id cannot be nil.')
+      end
+
+      if @name.nil?
+        invalid_properties.push('invalid value for "name", name cannot be nil.')
+      end
+
+      if @total_count.nil?
+        invalid_properties.push('invalid value for "total_count", total_count cannot be nil.')
+      end
+
+      if @blocked_count.nil?
+        invalid_properties.push('invalid value for "blocked_count", blocked_count cannot be nil.')
+      end
+
+      if @flagged_count.nil?
+        invalid_properties.push('invalid value for "flagged_count", flagged_count cannot be nil.')
+      end
+
+      if @attack_count.nil?
+        invalid_properties.push('invalid value for "attack_count", attack_count cannot be nil.')
+      end
+
+      if @all_flagged_ip_count.nil?
+        invalid_properties.push('invalid value for "all_flagged_ip_count", all_flagged_ip_count cannot be nil.')
+      end
+
+      if @flagged_ip_count.nil?
+        invalid_properties.push('invalid value for "flagged_ip_count", flagged_ip_count cannot be nil.')
+      end
+
+      if @top_attack_signals.nil?
+        invalid_properties.push('invalid value for "top_attack_signals", top_attack_signals cannot be nil.')
+      end
+
+      if @top_attack_sources.nil?
+        invalid_properties.push('invalid value for "top_attack_sources", top_attack_sources cannot be nil.')
+      end
+
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if @id.nil?
+      return false if @name.nil?
+      return false if @total_count.nil?
+      return false if @blocked_count.nil?
+      return false if @flagged_count.nil?
+      return false if @attack_count.nil?
+      return false if @all_flagged_ip_count.nil?
+      return false if @flagged_ip_count.nil?
+      return false if @top_attack_signals.nil?
+      return false if @top_attack_sources.nil?
       true
     end
 
@@ -90,8 +212,16 @@ module Fastly
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          id == o.id &&
           name == o.name &&
-          values == o.values
+          total_count == o.total_count &&
+          blocked_count == o.blocked_count &&
+          flagged_count == o.flagged_count &&
+          attack_count == o.attack_count &&
+          all_flagged_ip_count == o.all_flagged_ip_count &&
+          flagged_ip_count == o.flagged_ip_count &&
+          top_attack_signals == o.top_attack_signals &&
+          top_attack_sources == o.top_attack_sources
     end
 
     # @see the `==` method
@@ -103,7 +233,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, values].hash
+      [id, name, total_count, blocked_count, flagged_count, attack_count, all_flagged_ip_count, flagged_ip_count, top_attack_signals, top_attack_sources].hash
     end
 
     # Builds the object from hash

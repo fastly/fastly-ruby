@@ -1,5 +1,30 @@
 # Changelog
 
+## [v14.0.0](https://github.com/fastly/fastly-ruby/releases/tag/release/v14.0.0) (2025-08-28)
+
+**Breaking Changes:**
+
+- removed(ddos_protection): Remove enum configs `ddos_protection_action` and ``ddos_protection_traffic_attribute`.
+- changed(backend): Added default values to `tcp_keepalive_interval`, `tcp_keepalive_probes`, and `tcp_keepalive_time` properties.
+- removed(tls_subscriptions): Remove `force` parameter from TLS subscriptions.
+
+
+**Enhancements:**
+
+- feat(ngwaf_reports): Add Get attacks report endpoint.
+- feat(kv_store): Add `name` parameter to the List KV stores endpoint.
+- feat(historical): Add `services` parameter to the Historical Stats API endpoint.
+- feat(ddos_protection): Add PATCH endpoint in the Fastly DDoS Protection Events API allowing customers to update the DDoS rules action to `log`, `block`, `default`, or `off`.
+- feat(observability_timeseries): Add Observability Timeseries API for data visualized in the Sustainability dashboard.
+
+
+**Documentation:**
+
+- doc(backend, pool): Describe difference in behavior of `between_bytes_timeout` between
+                      Deliver and Compute services.
+- doc(ddos_protection): Update GET API docs describing that they can be accessed by any user role as long as the service belongs to the customer.
+
+
 ## [v13.1.0](https://github.com/fastly/fastly-ruby/releases/tag/release/v13.1.0) (2025-07-07)
 
 **Bug fixes:**

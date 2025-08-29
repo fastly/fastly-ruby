@@ -41,6 +41,7 @@ opts = {
     to: '2020-04-09T18:14:30Z', # String | Timestamp that defines the end of the window for which to fetch statistics. Accepts the same formats as `from`. 
     by: 'hour', # String | Duration of sample windows. One of:   * `hour` - Group data by hour.   * `minute` - Group data by minute.   * `day` - Group data by day. 
     region: 'usa', # String | Limit query to a specific geographic region. One of:   * `usa` - North America.   * `europe` - Europe.   * `anzac` - Australia and New Zealand.   * `asia` - Asia.   * `asia_india` - India.   * `asia_southkorea` - South Korea.   * `africa_std` - Africa.   * `mexico` - Mexico.   * `southamerica_std` - South America. 
+    services: 'services_example', # String | Limit the query to only the specified, comma-separated list of services. 
 }
 
 begin
@@ -60,6 +61,7 @@ end
 | **to** | **String** | Timestamp that defines the end of the window for which to fetch statistics. Accepts the same formats as `from`.  | [optional][default to &#39;now&#39;] |
 | **by** | **String** | Duration of sample windows. One of:   * `hour` - Group data by hour.   * `minute` - Group data by minute.   * `day` - Group data by day.  | [optional][default to &#39;day&#39;] |
 | **region** | **String** | Limit query to a specific geographic region. One of:   * `usa` - North America.   * `europe` - Europe.   * `anzac` - Australia and New Zealand.   * `asia` - Asia.   * `asia_india` - India.   * `asia_southkorea` - South Korea.   * `africa_std` - Africa.   * `mexico` - Mexico.   * `southamerica_std` - South America.  | [optional] |
+| **services** | **String** | Limit the query to only the specified, comma-separated list of services.  | [optional] |
 
 ### Return type
 

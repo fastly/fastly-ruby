@@ -96,7 +96,6 @@ module Fastly
 
     # Create a TLS subscription
     # Create a new TLS subscription. This response includes a list of possible challenges to verify domain ownership.
-    # @option opts [Boolean] :force A flag that allows you to edit and delete a subscription with active domains. Valid to use on PATCH and DELETE actions. As a warning, removing an active domain from a subscription or forcing the deletion of a subscription may result in breaking TLS termination to that domain. 
     # @option opts [TlsSubscription] :tls_subscription 
     # @return [TlsSubscriptionResponse]
     def create_tls_sub(opts = {})
@@ -106,7 +105,6 @@ module Fastly
 
     # Create a TLS subscription
     # Create a new TLS subscription. This response includes a list of possible challenges to verify domain ownership.
-    # @option opts [Boolean] :force A flag that allows you to edit and delete a subscription with active domains. Valid to use on PATCH and DELETE actions. As a warning, removing an active domain from a subscription or forcing the deletion of a subscription may result in breaking TLS termination to that domain. 
     # @option opts [TlsSubscription] :tls_subscription 
     # @return [Array<(TlsSubscriptionResponse, Integer, Hash)>] TlsSubscriptionResponse data, response status code and response headers
     def create_tls_sub_with_http_info(opts = {})
@@ -119,7 +117,6 @@ module Fastly
 
       # query parameters
       query_params = opts[:query_params] || {}
-      query_params[:'force'] = opts[:'force'] if !opts[:'force'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}

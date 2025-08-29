@@ -12,18 +12,13 @@ require 'date'
 require 'time'
 
 module Fastly
-  class DdosProtectionAttributeStats
-    # Name of an attribute type used in traffic stats. Currently, supported values are source_ip, country_code, host, asn, source_ip_prefix, user_agent, method_path.
-    attr_accessor :name
-
-    # Values for traffic attribute.
-    attr_accessor :values
+  class ListSignalReport
+    attr_accessor :data
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'name' => :'name',
-        :'values' => :'values'
+        :'data' => :'data'
       }
     end
 
@@ -35,8 +30,7 @@ module Fastly
     # Attribute type mapping.
     def self.fastly_types
       {
-        :'name' => :'String',
-        :'values' => :'Array<DdosProtectionAttributeValue>'
+        :'data' => :'Array<SignalReport>'
       }
     end
 
@@ -50,24 +44,20 @@ module Fastly
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Fastly::DdosProtectionAttributeStats` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Fastly::ListSignalReport` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `Fastly::DdosProtectionAttributeStats`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `Fastly::ListSignalReport`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'name')
-        self.name = attributes[:'name']
-      end
-
-      if attributes.key?(:'values')
-        if (value = attributes[:'values']).is_a?(Array)
-          self.values = value
+      if attributes.key?(:'data')
+        if (value = attributes[:'data']).is_a?(Array)
+          self.data = value
         end
       end
     end
@@ -90,8 +80,7 @@ module Fastly
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          name == o.name &&
-          values == o.values
+          data == o.data
     end
 
     # @see the `==` method
@@ -103,7 +92,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, values].hash
+      [data].hash
     end
 
     # Builds the object from hash

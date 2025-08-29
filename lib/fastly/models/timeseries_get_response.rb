@@ -12,29 +12,16 @@ require 'date'
 require 'time'
 
 module Fastly
-  class LogTimeseriesGetResponseMeta
-    # ID of the service for which data was returned.
-    attr_accessor :service_id
+  class TimeseriesGetResponse
+    attr_accessor :data
 
-    # Start time for the query as supplied in the request.
-    attr_accessor :start
-
-    # End time for the query as supplied in the request.
-    attr_accessor :_end
-
-    # The granularity of the time buckets in the response.
-    attr_accessor :granularity
-
-    attr_accessor :filters
+    attr_accessor :meta
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'service_id' => :'service_id',
-        :'start' => :'start',
-        :'_end' => :'end',
-        :'granularity' => :'granularity',
-        :'filters' => :'filters'
+        :'data' => :'data',
+        :'meta' => :'meta'
       }
     end
 
@@ -46,11 +33,8 @@ module Fastly
     # Attribute type mapping.
     def self.fastly_types
       {
-        :'service_id' => :'String',
-        :'start' => :'String',
-        :'_end' => :'String',
-        :'granularity' => :'String',
-        :'filters' => :'LogTimeseriesGetResponseMetaFilters'
+        :'data' => :'Array<TimeseriesResult>',
+        :'meta' => :'TimeseriesMeta'
       }
     end
 
@@ -64,35 +48,25 @@ module Fastly
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Fastly::LogTimeseriesGetResponseMeta` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Fastly::TimeseriesGetResponse` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `Fastly::LogTimeseriesGetResponseMeta`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `Fastly::TimeseriesGetResponse`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'service_id')
-        self.service_id = attributes[:'service_id']
+      if attributes.key?(:'data')
+        if (value = attributes[:'data']).is_a?(Array)
+          self.data = value
+        end
       end
 
-      if attributes.key?(:'start')
-        self.start = attributes[:'start']
-      end
-
-      if attributes.key?(:'_end')
-        self._end = attributes[:'_end']
-      end
-
-      if attributes.key?(:'granularity')
-        self.granularity = attributes[:'granularity']
-      end
-
-      if attributes.key?(:'filters')
-        self.filters = attributes[:'filters']
+      if attributes.key?(:'meta')
+        self.meta = attributes[:'meta']
       end
     end
 
@@ -114,11 +88,8 @@ module Fastly
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          service_id == o.service_id &&
-          start == o.start &&
-          _end == o._end &&
-          granularity == o.granularity &&
-          filters == o.filters
+          data == o.data &&
+          meta == o.meta
     end
 
     # @see the `==` method
@@ -130,7 +101,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [service_id, start, _end, granularity, filters].hash
+      [data, meta].hash
     end
 
     # Builds the object from hash

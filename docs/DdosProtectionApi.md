@@ -17,6 +17,7 @@ Method | HTTP request | Description
 [**ddos_protection_event_list**](DdosProtectionApi.md#ddos_protection_event_list) | **GET** /ddos-protection/v1/events | Get events
 [**ddos_protection_event_rule_list**](DdosProtectionApi.md#ddos_protection_event_rule_list) | **GET** /ddos-protection/v1/events/{event_id}/rules | Get all rules for an event
 [**ddos_protection_rule_get**](DdosProtectionApi.md#ddos_protection_rule_get) | **GET** /ddos-protection/v1/rules/{rule_id} | Get a rule by ID
+[**ddos_protection_rule_patch**](DdosProtectionApi.md#ddos_protection_rule_patch) | **PATCH** /ddos-protection/v1/rules/{rule_id} | Update rule
 [**ddos_protection_traffic_stats_rule_get**](DdosProtectionApi.md#ddos_protection_traffic_stats_rule_get) | **GET** /ddos-protection/v1/events/{event_id}/rules/{rule_id}/traffic-stats | Get traffic stats for a rule
 
 
@@ -175,6 +176,45 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **rule_id** | **String** | Unique ID of the rule. |  |
+
+### Return type
+
+[**DdosProtectionRule**](DdosProtectionRule.md)
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+## `ddos_protection_rule_patch()`
+
+```ruby
+ddos_protection_rule_patch(opts): <DdosProtectionRule> # Update rule
+```
+
+Update rule.
+
+### Examples
+
+```ruby
+api_instance = Fastly::DdosProtectionApi.new
+opts = {
+    rule_id: 'rule_id_example', # String | Unique ID of the rule.
+    ddos_protection_rule_patch: Fastly::DdosProtectionRulePatch.new, # DdosProtectionRulePatch | 
+}
+
+begin
+  # Update rule
+  result = api_instance.ddos_protection_rule_patch(opts)
+  p result
+rescue Fastly::ApiError => e
+  puts "Error when calling DdosProtectionApi->ddos_protection_rule_patch: #{e}"
+end
+```
+
+### Options
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **rule_id** | **String** | Unique ID of the rule. |  |
+| **ddos_protection_rule_patch** | [**DdosProtectionRulePatch**](DdosProtectionRulePatch.md) |  | [optional] |
 
 ### Return type
 

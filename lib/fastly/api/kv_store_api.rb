@@ -215,6 +215,7 @@ module Fastly
     # List all KV stores.
     # @option opts [String] :cursor 
     # @option opts [Integer] :limit  (default to 1000)
+    # @option opts [String] :name Returns a one-element array containing the details for the named KV store.
     # @return [InlineResponse2005]
     def kv_store_list(opts = {})
       data, _status_code, _headers = kv_store_list_with_http_info(opts)
@@ -225,6 +226,7 @@ module Fastly
     # List all KV stores.
     # @option opts [String] :cursor 
     # @option opts [Integer] :limit  (default to 1000)
+    # @option opts [String] :name Returns a one-element array containing the details for the named KV store.
     # @return [Array<(InlineResponse2005, Integer, Hash)>] InlineResponse2005 data, response status code and response headers
     def kv_store_list_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -242,6 +244,7 @@ module Fastly
       query_params = opts[:query_params] || {}
       query_params[:'cursor'] = opts[:'cursor'] if !opts[:'cursor'].nil?
       query_params[:'limit'] = opts[:'limit'] if !opts[:'limit'].nil?
+      query_params[:'name'] = opts[:'name'] if !opts[:'name'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}

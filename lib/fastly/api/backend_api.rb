@@ -23,7 +23,7 @@ module Fastly
     # @option opts [Integer] :version_id Integer identifying a service version. (required)
     # @option opts [String] :address A hostname, IPv4, or IPv6 address for the backend. This is the preferred way to specify the location of your backend.
     # @option opts [Boolean] :auto_loadbalance Whether or not this backend should be automatically load balanced. If true, all backends with this setting that don&#39;t have a &#x60;request_condition&#x60; will be selected based on their &#x60;weight&#x60;.
-    # @option opts [Integer] :between_bytes_timeout Maximum duration in milliseconds that Fastly will wait while receiving no data on a download from a backend. If exceeded, the response received so far will be considered complete and the fetch will end. May be set at runtime using &#x60;bereq.between_bytes_timeout&#x60;.
+    # @option opts [Integer] :between_bytes_timeout Maximum duration in milliseconds that Fastly will wait while receiving no data on a download from a backend. If exceeded, for Delivery services, the response received so far will be considered complete and the fetch will end. For Compute services, timeout expiration is treated as a failure of the backend connection, and an error is generated. May be set at runtime using &#x60;bereq.between_bytes_timeout&#x60;.
     # @option opts [String] :client_cert Unused.
     # @option opts [String] :comment A freeform descriptive note.
     # @option opts [Integer] :connect_timeout Maximum duration in milliseconds to wait for a connection to this backend to be established. If exceeded, the connection is aborted and a synthetic &#x60;503&#x60; response will be presented instead. May be set at runtime using &#x60;bereq.connect_timeout&#x60;.
@@ -52,9 +52,9 @@ module Fastly
     # @option opts [String] :ssl_hostname Use &#x60;ssl_cert_hostname&#x60; and &#x60;ssl_sni_hostname&#x60; to configure certificate validation.
     # @option opts [String] :ssl_sni_hostname Overrides &#x60;ssl_hostname&#x60;, but only for SNI in the handshake. Does not affect cert validation at all.
     # @option opts [Boolean] :tcp_keepalive_enable Whether to enable TCP keepalives for backend connections. Varnish defaults to using keepalives if this is unspecified.
-    # @option opts [Integer] :tcp_keepalive_interval Interval in seconds between subsequent keepalive probes.
-    # @option opts [Integer] :tcp_keepalive_probes Number of unacknowledged probes to send before considering the connection dead.
-    # @option opts [Integer] :tcp_keepalive_time Interval in seconds between the last data packet sent and the first keepalive probe.
+    # @option opts [Integer] :tcp_keepalive_interval Interval in seconds between subsequent keepalive probes. (default to 10)
+    # @option opts [Integer] :tcp_keepalive_probes Number of unacknowledged probes to send before considering the connection dead. (default to 3)
+    # @option opts [Integer] :tcp_keepalive_time Interval in seconds between the last data packet sent and the first keepalive probe. (default to 300)
     # @option opts [Boolean] :use_ssl Whether or not to require TLS for connections to this backend.
     # @option opts [Integer] :weight Weight used to load balance this backend against others. May be any positive integer. If &#x60;auto_loadbalance&#x60; is true, the chance of this backend being selected is equal to its own weight over the sum of all weights for backends that have &#x60;auto_loadbalance&#x60; set to true.
     # @return [BackendResponse]
@@ -69,7 +69,7 @@ module Fastly
     # @option opts [Integer] :version_id Integer identifying a service version. (required)
     # @option opts [String] :address A hostname, IPv4, or IPv6 address for the backend. This is the preferred way to specify the location of your backend.
     # @option opts [Boolean] :auto_loadbalance Whether or not this backend should be automatically load balanced. If true, all backends with this setting that don&#39;t have a &#x60;request_condition&#x60; will be selected based on their &#x60;weight&#x60;.
-    # @option opts [Integer] :between_bytes_timeout Maximum duration in milliseconds that Fastly will wait while receiving no data on a download from a backend. If exceeded, the response received so far will be considered complete and the fetch will end. May be set at runtime using &#x60;bereq.between_bytes_timeout&#x60;.
+    # @option opts [Integer] :between_bytes_timeout Maximum duration in milliseconds that Fastly will wait while receiving no data on a download from a backend. If exceeded, for Delivery services, the response received so far will be considered complete and the fetch will end. For Compute services, timeout expiration is treated as a failure of the backend connection, and an error is generated. May be set at runtime using &#x60;bereq.between_bytes_timeout&#x60;.
     # @option opts [String] :client_cert Unused.
     # @option opts [String] :comment A freeform descriptive note.
     # @option opts [Integer] :connect_timeout Maximum duration in milliseconds to wait for a connection to this backend to be established. If exceeded, the connection is aborted and a synthetic &#x60;503&#x60; response will be presented instead. May be set at runtime using &#x60;bereq.connect_timeout&#x60;.
@@ -98,9 +98,9 @@ module Fastly
     # @option opts [String] :ssl_hostname Use &#x60;ssl_cert_hostname&#x60; and &#x60;ssl_sni_hostname&#x60; to configure certificate validation.
     # @option opts [String] :ssl_sni_hostname Overrides &#x60;ssl_hostname&#x60;, but only for SNI in the handshake. Does not affect cert validation at all.
     # @option opts [Boolean] :tcp_keepalive_enable Whether to enable TCP keepalives for backend connections. Varnish defaults to using keepalives if this is unspecified.
-    # @option opts [Integer] :tcp_keepalive_interval Interval in seconds between subsequent keepalive probes.
-    # @option opts [Integer] :tcp_keepalive_probes Number of unacknowledged probes to send before considering the connection dead.
-    # @option opts [Integer] :tcp_keepalive_time Interval in seconds between the last data packet sent and the first keepalive probe.
+    # @option opts [Integer] :tcp_keepalive_interval Interval in seconds between subsequent keepalive probes. (default to 10)
+    # @option opts [Integer] :tcp_keepalive_probes Number of unacknowledged probes to send before considering the connection dead. (default to 3)
+    # @option opts [Integer] :tcp_keepalive_time Interval in seconds between the last data packet sent and the first keepalive probe. (default to 300)
     # @option opts [Boolean] :use_ssl Whether or not to require TLS for connections to this backend.
     # @option opts [Integer] :weight Weight used to load balance this backend against others. May be any positive integer. If &#x60;auto_loadbalance&#x60; is true, the chance of this backend being selected is equal to its own weight over the sum of all weights for backends that have &#x60;auto_loadbalance&#x60; set to true.
     # @return [Array<(BackendResponse, Integer, Hash)>] BackendResponse data, response status code and response headers
@@ -436,7 +436,7 @@ module Fastly
     # @option opts [String] :backend_name The name of the backend. (required)
     # @option opts [String] :address A hostname, IPv4, or IPv6 address for the backend. This is the preferred way to specify the location of your backend.
     # @option opts [Boolean] :auto_loadbalance Whether or not this backend should be automatically load balanced. If true, all backends with this setting that don&#39;t have a &#x60;request_condition&#x60; will be selected based on their &#x60;weight&#x60;.
-    # @option opts [Integer] :between_bytes_timeout Maximum duration in milliseconds that Fastly will wait while receiving no data on a download from a backend. If exceeded, the response received so far will be considered complete and the fetch will end. May be set at runtime using &#x60;bereq.between_bytes_timeout&#x60;.
+    # @option opts [Integer] :between_bytes_timeout Maximum duration in milliseconds that Fastly will wait while receiving no data on a download from a backend. If exceeded, for Delivery services, the response received so far will be considered complete and the fetch will end. For Compute services, timeout expiration is treated as a failure of the backend connection, and an error is generated. May be set at runtime using &#x60;bereq.between_bytes_timeout&#x60;.
     # @option opts [String] :client_cert Unused.
     # @option opts [String] :comment A freeform descriptive note.
     # @option opts [Integer] :connect_timeout Maximum duration in milliseconds to wait for a connection to this backend to be established. If exceeded, the connection is aborted and a synthetic &#x60;503&#x60; response will be presented instead. May be set at runtime using &#x60;bereq.connect_timeout&#x60;.
@@ -465,9 +465,9 @@ module Fastly
     # @option opts [String] :ssl_hostname Use &#x60;ssl_cert_hostname&#x60; and &#x60;ssl_sni_hostname&#x60; to configure certificate validation.
     # @option opts [String] :ssl_sni_hostname Overrides &#x60;ssl_hostname&#x60;, but only for SNI in the handshake. Does not affect cert validation at all.
     # @option opts [Boolean] :tcp_keepalive_enable Whether to enable TCP keepalives for backend connections. Varnish defaults to using keepalives if this is unspecified.
-    # @option opts [Integer] :tcp_keepalive_interval Interval in seconds between subsequent keepalive probes.
-    # @option opts [Integer] :tcp_keepalive_probes Number of unacknowledged probes to send before considering the connection dead.
-    # @option opts [Integer] :tcp_keepalive_time Interval in seconds between the last data packet sent and the first keepalive probe.
+    # @option opts [Integer] :tcp_keepalive_interval Interval in seconds between subsequent keepalive probes. (default to 10)
+    # @option opts [Integer] :tcp_keepalive_probes Number of unacknowledged probes to send before considering the connection dead. (default to 3)
+    # @option opts [Integer] :tcp_keepalive_time Interval in seconds between the last data packet sent and the first keepalive probe. (default to 300)
     # @option opts [Boolean] :use_ssl Whether or not to require TLS for connections to this backend.
     # @option opts [Integer] :weight Weight used to load balance this backend against others. May be any positive integer. If &#x60;auto_loadbalance&#x60; is true, the chance of this backend being selected is equal to its own weight over the sum of all weights for backends that have &#x60;auto_loadbalance&#x60; set to true.
     # @return [BackendResponse]
@@ -483,7 +483,7 @@ module Fastly
     # @option opts [String] :backend_name The name of the backend. (required)
     # @option opts [String] :address A hostname, IPv4, or IPv6 address for the backend. This is the preferred way to specify the location of your backend.
     # @option opts [Boolean] :auto_loadbalance Whether or not this backend should be automatically load balanced. If true, all backends with this setting that don&#39;t have a &#x60;request_condition&#x60; will be selected based on their &#x60;weight&#x60;.
-    # @option opts [Integer] :between_bytes_timeout Maximum duration in milliseconds that Fastly will wait while receiving no data on a download from a backend. If exceeded, the response received so far will be considered complete and the fetch will end. May be set at runtime using &#x60;bereq.between_bytes_timeout&#x60;.
+    # @option opts [Integer] :between_bytes_timeout Maximum duration in milliseconds that Fastly will wait while receiving no data on a download from a backend. If exceeded, for Delivery services, the response received so far will be considered complete and the fetch will end. For Compute services, timeout expiration is treated as a failure of the backend connection, and an error is generated. May be set at runtime using &#x60;bereq.between_bytes_timeout&#x60;.
     # @option opts [String] :client_cert Unused.
     # @option opts [String] :comment A freeform descriptive note.
     # @option opts [Integer] :connect_timeout Maximum duration in milliseconds to wait for a connection to this backend to be established. If exceeded, the connection is aborted and a synthetic &#x60;503&#x60; response will be presented instead. May be set at runtime using &#x60;bereq.connect_timeout&#x60;.
@@ -512,9 +512,9 @@ module Fastly
     # @option opts [String] :ssl_hostname Use &#x60;ssl_cert_hostname&#x60; and &#x60;ssl_sni_hostname&#x60; to configure certificate validation.
     # @option opts [String] :ssl_sni_hostname Overrides &#x60;ssl_hostname&#x60;, but only for SNI in the handshake. Does not affect cert validation at all.
     # @option opts [Boolean] :tcp_keepalive_enable Whether to enable TCP keepalives for backend connections. Varnish defaults to using keepalives if this is unspecified.
-    # @option opts [Integer] :tcp_keepalive_interval Interval in seconds between subsequent keepalive probes.
-    # @option opts [Integer] :tcp_keepalive_probes Number of unacknowledged probes to send before considering the connection dead.
-    # @option opts [Integer] :tcp_keepalive_time Interval in seconds between the last data packet sent and the first keepalive probe.
+    # @option opts [Integer] :tcp_keepalive_interval Interval in seconds between subsequent keepalive probes. (default to 10)
+    # @option opts [Integer] :tcp_keepalive_probes Number of unacknowledged probes to send before considering the connection dead. (default to 3)
+    # @option opts [Integer] :tcp_keepalive_time Interval in seconds between the last data packet sent and the first keepalive probe. (default to 300)
     # @option opts [Boolean] :use_ssl Whether or not to require TLS for connections to this backend.
     # @option opts [Integer] :weight Weight used to load balance this backend against others. May be any positive integer. If &#x60;auto_loadbalance&#x60; is true, the chance of this backend being selected is equal to its own weight over the sum of all weights for backends that have &#x60;auto_loadbalance&#x60; set to true.
     # @return [Array<(BackendResponse, Integer, Hash)>] BackendResponse data, response status code and response headers

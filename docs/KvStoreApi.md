@@ -146,6 +146,7 @@ api_instance = Fastly::KvStoreApi.new
 opts = {
     cursor: 'cursor_example', # String | 
     limit: 56, # Integer | 
+    name: 'name_example', # String | Returns a one-element array containing the details for the named KV store.
 }
 
 begin
@@ -163,6 +164,7 @@ end
 | ---- | ---- | ----------- | ----- |
 | **cursor** | **String** |  | [optional] |
 | **limit** | **Integer** |  | [optional][default to 1000] |
+| **name** | **String** | Returns a one-element array containing the details for the named KV store. | [optional] |
 
 ### Return type
 

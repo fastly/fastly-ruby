@@ -12,14 +12,22 @@ require 'date'
 require 'time'
 
 module Fastly
-  # Echoes the filters that were supplied in the request.
-  class LogTimeseriesGetResponseMetaFilters
-    attr_accessor :filter_fields
+  class AttackSignal
+    # Name of the attack signal tag
+    attr_accessor :tag_name
+
+    # Count of requests with this attack signal
+    attr_accessor :tag_count
+
+    # Total number of attacks considered
+    attr_accessor :total_count
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'filter_fields' => :'filter_fields'
+        :'tag_name' => :'tag_name',
+        :'tag_count' => :'tag_count',
+        :'total_count' => :'total_count'
       }
     end
 
@@ -31,14 +39,15 @@ module Fastly
     # Attribute type mapping.
     def self.fastly_types
       {
-        :'filter_fields' => :'Array<LogTimeseriesFilterFieldItem>'
+        :'tag_name' => :'String',
+        :'tag_count' => :'Integer',
+        :'total_count' => :'Integer'
       }
     end
 
     # List of attributes with nullable: true
     def self.fastly_nullable
       Set.new([
-        :'filter_fields'
       ])
     end
 
@@ -46,21 +55,27 @@ module Fastly
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Fastly::LogTimeseriesGetResponseMetaFilters` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Fastly::AttackSignal` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `Fastly::LogTimeseriesGetResponseMetaFilters`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `Fastly::AttackSignal`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'filter_fields')
-        if (value = attributes[:'filter_fields']).is_a?(Array)
-          self.filter_fields = value
-        end
+      if attributes.key?(:'tag_name')
+        self.tag_name = attributes[:'tag_name']
+      end
+
+      if attributes.key?(:'tag_count')
+        self.tag_count = attributes[:'tag_count']
+      end
+
+      if attributes.key?(:'total_count')
+        self.total_count = attributes[:'total_count']
       end
     end
 
@@ -68,12 +83,27 @@ module Fastly
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+      if @tag_name.nil?
+        invalid_properties.push('invalid value for "tag_name", tag_name cannot be nil.')
+      end
+
+      if @tag_count.nil?
+        invalid_properties.push('invalid value for "tag_count", tag_count cannot be nil.')
+      end
+
+      if @total_count.nil?
+        invalid_properties.push('invalid value for "total_count", total_count cannot be nil.')
+      end
+
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if @tag_name.nil?
+      return false if @tag_count.nil?
+      return false if @total_count.nil?
       true
     end
 
@@ -82,7 +112,9 @@ module Fastly
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          filter_fields == o.filter_fields
+          tag_name == o.tag_name &&
+          tag_count == o.tag_count &&
+          total_count == o.total_count
     end
 
     # @see the `==` method
@@ -94,7 +126,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [filter_fields].hash
+      [tag_name, tag_count, total_count].hash
     end
 
     # Builds the object from hash

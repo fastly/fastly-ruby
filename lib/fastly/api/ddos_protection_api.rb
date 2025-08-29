@@ -294,6 +294,76 @@ module Fastly
       return data, status_code, headers
     end
 
+    # Update rule
+    # Update rule.
+    # @option opts [String] :rule_id Unique ID of the rule. (required)
+    # @option opts [DdosProtectionRulePatch] :ddos_protection_rule_patch 
+    # @return [DdosProtectionRule]
+    def ddos_protection_rule_patch(opts = {})
+      data, _status_code, _headers = ddos_protection_rule_patch_with_http_info(opts)
+      data
+    end
+
+    # Update rule
+    # Update rule.
+    # @option opts [String] :rule_id Unique ID of the rule. (required)
+    # @option opts [DdosProtectionRulePatch] :ddos_protection_rule_patch 
+    # @return [Array<(DdosProtectionRule, Integer, Hash)>] DdosProtectionRule data, response status code and response headers
+    def ddos_protection_rule_patch_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DdosProtectionApi.ddos_protection_rule_patch ...'
+      end
+      # unbox the parameters from the hash
+      rule_id = opts[:'rule_id']
+      # verify the required parameter 'rule_id' is set
+      if @api_client.config.client_side_validation && rule_id.nil?
+        fail ArgumentError, "Missing the required parameter 'rule_id' when calling DdosProtectionApi.ddos_protection_rule_patch"
+      end
+      # resource path
+      local_var_path = '/ddos-protection/v1/rules/{rule_id}'.sub('{' + 'rule_id' + '}', CGI.escape(rule_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json', 'application/problem+json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(opts[:'ddos_protection_rule_patch'])
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'DdosProtectionRule'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['token']
+
+      new_options = opts.merge(
+        :operation => :"DdosProtectionApi.ddos_protection_rule_patch",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PATCH, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DdosProtectionApi#ddos_protection_rule_patch\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Get traffic stats for a rule
     # Get traffic stats for a rule.
     # @option opts [String] :event_id Unique ID of the event. (required)

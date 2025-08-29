@@ -12,13 +12,23 @@ require 'date'
 require 'time'
 
 module Fastly
-  class LogTimeseriesResultDimensions
-    attr_accessor :time
+  # This object, found within the `top_workspaces` array, contains the workspace information and count for the requested signal.
+  class TopWorkspace
+    # ID of the workspace.
+    attr_accessor :id
+
+    # Name of the workspace.
+    attr_accessor :name
+
+    # Count of attacks on this workspace for the specific attack type.
+    attr_accessor :count
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'time' => :'time'
+        :'id' => :'id',
+        :'name' => :'name',
+        :'count' => :'count'
       }
     end
 
@@ -30,7 +40,9 @@ module Fastly
     # Attribute type mapping.
     def self.fastly_types
       {
-        :'time' => :'String'
+        :'id' => :'String',
+        :'name' => :'String',
+        :'count' => :'Integer'
       }
     end
 
@@ -44,19 +56,27 @@ module Fastly
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Fastly::LogTimeseriesResultDimensions` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Fastly::TopWorkspace` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `Fastly::LogTimeseriesResultDimensions`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `Fastly::TopWorkspace`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'time')
-        self.time = attributes[:'time']
+      if attributes.key?(:'id')
+        self.id = attributes[:'id']
+      end
+
+      if attributes.key?(:'name')
+        self.name = attributes[:'name']
+      end
+
+      if attributes.key?(:'count')
+        self.count = attributes[:'count']
       end
     end
 
@@ -78,7 +98,9 @@ module Fastly
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          time == o.time
+          id == o.id &&
+          name == o.name &&
+          count == o.count
     end
 
     # @see the `==` method
@@ -90,7 +112,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [time].hash
+      [id, name, count].hash
     end
 
     # Builds the object from hash

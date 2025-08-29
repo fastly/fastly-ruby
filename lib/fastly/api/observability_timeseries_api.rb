@@ -11,76 +11,71 @@ Contact: oss@fastly.com
 require 'cgi'
 
 module Fastly
-  class ObservabilityTimeseriesForLogsApi
+  class ObservabilityTimeseriesApi
     attr_accessor :api_client
 
     def initialize(api_client = ApiClient.default)
       @api_client = api_client
     end
-    # Retrieve log data as time series
-    # Retrieves log data as time series.
+    # Retrieve observability data as a time series
+    # Retrieves observability data as a time series.
     # @option opts [String] :source  (required)
-    # @option opts [String] :service_id  (required)
-    # @option opts [String] :start  (required)
-    # @option opts [String] :_end  (required)
+    # @option opts [String] :from  (required)
+    # @option opts [String] :to  (required)
     # @option opts [String] :granularity  (required)
     # @option opts [String] :series  (required)
+    # @option opts [String] :dimensions 
     # @option opts [String] :filter 
-    # @return [LogTimeseriesGetResponse]
-    def log_timeseries_get(opts = {})
-      data, _status_code, _headers = log_timeseries_get_with_http_info(opts)
+    # @return [TimeseriesGetResponse]
+    def timeseries_get(opts = {})
+      data, _status_code, _headers = timeseries_get_with_http_info(opts)
       data
     end
 
-    # Retrieve log data as time series
-    # Retrieves log data as time series.
+    # Retrieve observability data as a time series
+    # Retrieves observability data as a time series.
     # @option opts [String] :source  (required)
-    # @option opts [String] :service_id  (required)
-    # @option opts [String] :start  (required)
-    # @option opts [String] :_end  (required)
+    # @option opts [String] :from  (required)
+    # @option opts [String] :to  (required)
     # @option opts [String] :granularity  (required)
     # @option opts [String] :series  (required)
+    # @option opts [String] :dimensions 
     # @option opts [String] :filter 
-    # @return [Array<(LogTimeseriesGetResponse, Integer, Hash)>] LogTimeseriesGetResponse data, response status code and response headers
-    def log_timeseries_get_with_http_info(opts = {})
+    # @return [Array<(TimeseriesGetResponse, Integer, Hash)>] TimeseriesGetResponse data, response status code and response headers
+    def timeseries_get_with_http_info(opts = {})
       if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: ObservabilityTimeseriesForLogsApi.log_timeseries_get ...'
+        @api_client.config.logger.debug 'Calling API: ObservabilityTimeseriesApi.timeseries_get ...'
       end
       # unbox the parameters from the hash
       source = opts[:'source']
-      service_id = opts[:'service_id']
-      start = opts[:'start']
-      _end = opts[:'_end']
+      from = opts[:'from']
+      to = opts[:'to']
       granularity = opts[:'granularity']
       series = opts[:'series']
       # verify the required parameter 'source' is set
       if @api_client.config.client_side_validation && source.nil?
-        fail ArgumentError, "Missing the required parameter 'source' when calling ObservabilityTimeseriesForLogsApi.log_timeseries_get"
+        fail ArgumentError, "Missing the required parameter 'source' when calling ObservabilityTimeseriesApi.timeseries_get"
       end
-      # verify the required parameter 'service_id' is set
-      if @api_client.config.client_side_validation && service_id.nil?
-        fail ArgumentError, "Missing the required parameter 'service_id' when calling ObservabilityTimeseriesForLogsApi.log_timeseries_get"
+      # verify enum value
+      allowable_values = ["logs", "sustainability"]
+      if @api_client.config.client_side_validation && !allowable_values.include?(source)
+        fail ArgumentError, "invalid value for \"source\", must be one of #{allowable_values}"
       end
-      # verify the required parameter 'start' is set
-      if @api_client.config.client_side_validation && start.nil?
-        fail ArgumentError, "Missing the required parameter 'start' when calling ObservabilityTimeseriesForLogsApi.log_timeseries_get"
+      # verify the required parameter 'from' is set
+      if @api_client.config.client_side_validation && from.nil?
+        fail ArgumentError, "Missing the required parameter 'from' when calling ObservabilityTimeseriesApi.timeseries_get"
       end
-      # verify the required parameter '_end' is set
-      if @api_client.config.client_side_validation && _end.nil?
-        fail ArgumentError, "Missing the required parameter '_end' when calling ObservabilityTimeseriesForLogsApi.log_timeseries_get"
+      # verify the required parameter 'to' is set
+      if @api_client.config.client_side_validation && to.nil?
+        fail ArgumentError, "Missing the required parameter 'to' when calling ObservabilityTimeseriesApi.timeseries_get"
       end
       # verify the required parameter 'granularity' is set
       if @api_client.config.client_side_validation && granularity.nil?
-        fail ArgumentError, "Missing the required parameter 'granularity' when calling ObservabilityTimeseriesForLogsApi.log_timeseries_get"
-      end
-      # verify enum value
-      allowable_values = ["second", "minute", "hour", "day"]
-      if @api_client.config.client_side_validation && !allowable_values.include?(granularity)
-        fail ArgumentError, "invalid value for \"granularity\", must be one of #{allowable_values}"
+        fail ArgumentError, "Missing the required parameter 'granularity' when calling ObservabilityTimeseriesApi.timeseries_get"
       end
       # verify the required parameter 'series' is set
       if @api_client.config.client_side_validation && series.nil?
-        fail ArgumentError, "Missing the required parameter 'series' when calling ObservabilityTimeseriesForLogsApi.log_timeseries_get"
+        fail ArgumentError, "Missing the required parameter 'series' when calling ObservabilityTimeseriesApi.timeseries_get"
       end
       # resource path
       local_var_path = '/observability/timeseries'
@@ -88,11 +83,11 @@ module Fastly
       # query parameters
       query_params = opts[:query_params] || {}
       query_params[:'source'] = source
-      query_params[:'service_id'] = service_id
-      query_params[:'start'] = start
-      query_params[:'end'] = _end
+      query_params[:'from'] = from
+      query_params[:'to'] = to
       query_params[:'granularity'] = granularity
       query_params[:'series'] = series
+      query_params[:'dimensions'] = opts[:'dimensions'] if !opts[:'dimensions'].nil?
       query_params[:'filter'] = opts[:'filter'] if !opts[:'filter'].nil?
 
       # header parameters
@@ -107,13 +102,13 @@ module Fastly
       post_body = opts[:debug_body]
 
       # return_type
-      return_type = opts[:debug_return_type] || 'LogTimeseriesGetResponse'
+      return_type = opts[:debug_return_type] || 'TimeseriesGetResponse'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['token']
 
       new_options = opts.merge(
-        :operation => :"ObservabilityTimeseriesForLogsApi.log_timeseries_get",
+        :operation => :"ObservabilityTimeseriesApi.timeseries_get",
         :header_params => header_params,
         :query_params => query_params,
         :form_params => form_params,
@@ -124,7 +119,7 @@ module Fastly
 
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: ObservabilityTimeseriesForLogsApi#log_timeseries_get\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+        @api_client.config.logger.debug "API called: ObservabilityTimeseriesApi#timeseries_get\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

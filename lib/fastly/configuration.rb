@@ -770,6 +770,12 @@ module Fastly
           description: "No description provided",
           }
         ],
+        "DdosProtectionApi.ddos_protection_rule_patch": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
         "DdosProtectionApi.ddos_protection_traffic_stats_rule_get": [
           {
           url: "https://api.fastly.com",
@@ -2300,6 +2306,18 @@ module Fastly
           description: "No description provided",
           }
         ],
+        "NgwafReportsApi.get_attacks_report": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "NgwafReportsApi.get_signals_report": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
         "ObjectStorageAccessKeysApi.create_access_key": [
           {
           url: "https://api.fastly.com",
@@ -2360,7 +2378,7 @@ module Fastly
           description: "No description provided",
           }
         ],
-        "ObservabilityTimeseriesForLogsApi.log_timeseries_get": [
+        "ObservabilityTimeseriesApi.timeseries_get": [
           {
           url: "https://api.fastly.com",
           description: "No description provided",

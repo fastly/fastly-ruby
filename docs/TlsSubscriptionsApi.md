@@ -76,7 +76,6 @@ Create a new TLS subscription. This response includes a list of possible challen
 ```ruby
 api_instance = Fastly::TlsSubscriptionsApi.new
 opts = {
-    force: true, # Boolean | A flag that allows you to edit and delete a subscription with active domains. Valid to use on PATCH and DELETE actions. As a warning, removing an active domain from a subscription or forcing the deletion of a subscription may result in breaking TLS termination to that domain. 
     tls_subscription: Fastly::TlsSubscription.new, # TlsSubscription | 
 }
 
@@ -93,7 +92,6 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **force** | **Boolean** | A flag that allows you to edit and delete a subscription with active domains. Valid to use on PATCH and DELETE actions. As a warning, removing an active domain from a subscription or forcing the deletion of a subscription may result in breaking TLS termination to that domain.  | [optional] |
 | **tls_subscription** | [**TlsSubscription**](TlsSubscription.md) |  | [optional] |
 
 ### Return type

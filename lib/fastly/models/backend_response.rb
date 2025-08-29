@@ -19,7 +19,7 @@ module Fastly
     # Whether or not this backend should be automatically load balanced. If true, all backends with this setting that don't have a `request_condition` will be selected based on their `weight`.
     attr_accessor :auto_loadbalance
 
-    # Maximum duration in milliseconds that Fastly will wait while receiving no data on a download from a backend. If exceeded, the response received so far will be considered complete and the fetch will end. May be set at runtime using `bereq.between_bytes_timeout`.
+    # Maximum duration in milliseconds that Fastly will wait while receiving no data on a download from a backend. If exceeded, for Delivery services, the response received so far will be considered complete and the fetch will end. For Compute services, timeout expiration is treated as a failure of the backend connection, and an error is generated. May be set at runtime using `bereq.between_bytes_timeout`.
     attr_accessor :between_bytes_timeout
 
     # Unused.
@@ -424,14 +424,20 @@ module Fastly
 
       if attributes.key?(:'tcp_keepalive_interval')
         self.tcp_keepalive_interval = attributes[:'tcp_keepalive_interval']
+      else
+        self.tcp_keepalive_interval = 10
       end
 
       if attributes.key?(:'tcp_keepalive_probes')
         self.tcp_keepalive_probes = attributes[:'tcp_keepalive_probes']
+      else
+        self.tcp_keepalive_probes = 3
       end
 
       if attributes.key?(:'tcp_keepalive_time')
         self.tcp_keepalive_time = attributes[:'tcp_keepalive_time']
+      else
+        self.tcp_keepalive_time = 300
       end
 
       if attributes.key?(:'use_ssl')

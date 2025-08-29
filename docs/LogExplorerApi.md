@@ -29,7 +29,7 @@ Retrieves log records.
 ```ruby
 api_instance = Fastly::LogExplorerApi.new
 opts = {
-    service_id: 'service_id_example', # String | 
+    service_id: '1jlmtMz1ncwA0KC3TBGD0X', # String | 
     start: 'start_example', # String | 
     _end: '_end_example', # String | 
     limit: 8.14, # Float | 

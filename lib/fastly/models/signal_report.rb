@@ -12,18 +12,26 @@ require 'date'
 require 'time'
 
 module Fastly
-  class DdosProtectionAttributeStats
-    # Name of an attribute type used in traffic stats. Currently, supported values are source_ip, country_code, host, asn, source_ip_prefix, user_agent, method_path.
+  class SignalReport
+    # Name of the attack type.
     attr_accessor :name
 
-    # Values for traffic attribute.
-    attr_accessor :values
+    # Display name of the attack type.
+    attr_accessor :display_name
+
+    # Total count of attacks of this type.
+    attr_accessor :count
+
+    # Top workspaces affected by this attack type.
+    attr_accessor :top_workspaces
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'name' => :'name',
-        :'values' => :'values'
+        :'display_name' => :'display_name',
+        :'count' => :'count',
+        :'top_workspaces' => :'top_workspaces'
       }
     end
 
@@ -36,7 +44,9 @@ module Fastly
     def self.fastly_types
       {
         :'name' => :'String',
-        :'values' => :'Array<DdosProtectionAttributeValue>'
+        :'display_name' => :'String',
+        :'count' => :'Integer',
+        :'top_workspaces' => :'Array<TopWorkspace>'
       }
     end
 
@@ -50,13 +60,13 @@ module Fastly
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Fastly::DdosProtectionAttributeStats` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Fastly::SignalReport` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `Fastly::DdosProtectionAttributeStats`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `Fastly::SignalReport`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
@@ -65,9 +75,17 @@ module Fastly
         self.name = attributes[:'name']
       end
 
-      if attributes.key?(:'values')
-        if (value = attributes[:'values']).is_a?(Array)
-          self.values = value
+      if attributes.key?(:'display_name')
+        self.display_name = attributes[:'display_name']
+      end
+
+      if attributes.key?(:'count')
+        self.count = attributes[:'count']
+      end
+
+      if attributes.key?(:'top_workspaces')
+        if (value = attributes[:'top_workspaces']).is_a?(Array)
+          self.top_workspaces = value
         end
       end
     end
@@ -91,7 +109,9 @@ module Fastly
       return true if self.equal?(o)
       self.class == o.class &&
           name == o.name &&
-          values == o.values
+          display_name == o.display_name &&
+          count == o.count &&
+          top_workspaces == o.top_workspaces
     end
 
     # @see the `==` method
@@ -103,7 +123,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, values].hash
+      [name, display_name, count, top_workspaces].hash
     end
 
     # Builds the object from hash

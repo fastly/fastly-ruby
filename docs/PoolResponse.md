@@ -25,7 +25,7 @@
 | **comment** | **String** | A freeform descriptive note. | [optional] |
 | **type** | **String** | What type of load balance group to use. | [optional] |
 | **override_host** | **String** | The hostname to [override the Host header](https://www.fastly.com/documentation/guides/full-site-delivery/domains-and-origins/specifying-an-override-host/). Defaults to `null` meaning no override of the Host header will occur. This setting can also be added to a Server definition. If the field is set on a Server definition it will override the Pool setting. | [optional][default to &#39;null&#39;] |
-| **between_bytes_timeout** | **String** | Maximum duration in milliseconds that Fastly will wait while receiving no data on a download from a backend. If exceeded, the response received so far will be considered complete and the fetch will end. May be set at runtime using `bereq.between_bytes_timeout`. | [optional] |
+| **between_bytes_timeout** | **String** | Maximum duration in milliseconds that Fastly will wait while receiving no data on a download from a backend. If exceeded, for Delivery services, the response received so far will be considered complete and the fetch will end. For Compute services, timeout expiration is treated as a failure of the backend connection, and an error is generated. May be set at runtime using `bereq.between_bytes_timeout`. | [optional] |
 | **connect_timeout** | **String** | How long to wait for a timeout in milliseconds. | [optional] |
 | **first_byte_timeout** | **String** | How long to wait for the first byte in milliseconds. | [optional] |
 | **max_conn_default** | **String** | Maximum number of connections. | [optional][default to &#39;200&#39;] |

@@ -12,18 +12,26 @@ require 'date'
 require 'time'
 
 module Fastly
-  class DdosProtectionAttributeStats
-    # Name of an attribute type used in traffic stats. Currently, supported values are source_ip, country_code, host, asn, source_ip_prefix, user_agent, method_path.
-    attr_accessor :name
+  class TimeseriesMeta
+    # Start time for the query as supplied in the request.
+    attr_accessor :from
 
-    # Values for traffic attribute.
-    attr_accessor :values
+    # End time for the query as supplied in the request.
+    attr_accessor :to
+
+    # The granularity of the time buckets in the response.
+    attr_accessor :granularity
+
+    # Maximum number of results returned in the request.
+    attr_accessor :limit
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'name' => :'name',
-        :'values' => :'values'
+        :'from' => :'from',
+        :'to' => :'to',
+        :'granularity' => :'granularity',
+        :'limit' => :'limit'
       }
     end
 
@@ -35,8 +43,10 @@ module Fastly
     # Attribute type mapping.
     def self.fastly_types
       {
-        :'name' => :'String',
-        :'values' => :'Array<DdosProtectionAttributeValue>'
+        :'from' => :'String',
+        :'to' => :'String',
+        :'granularity' => :'String',
+        :'limit' => :'String'
       }
     end
 
@@ -50,25 +60,31 @@ module Fastly
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Fastly::DdosProtectionAttributeStats` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Fastly::TimeseriesMeta` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `Fastly::DdosProtectionAttributeStats`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `Fastly::TimeseriesMeta`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'name')
-        self.name = attributes[:'name']
+      if attributes.key?(:'from')
+        self.from = attributes[:'from']
       end
 
-      if attributes.key?(:'values')
-        if (value = attributes[:'values']).is_a?(Array)
-          self.values = value
-        end
+      if attributes.key?(:'to')
+        self.to = attributes[:'to']
+      end
+
+      if attributes.key?(:'granularity')
+        self.granularity = attributes[:'granularity']
+      end
+
+      if attributes.key?(:'limit')
+        self.limit = attributes[:'limit']
       end
     end
 
@@ -90,8 +106,10 @@ module Fastly
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          name == o.name &&
-          values == o.values
+          from == o.from &&
+          to == o.to &&
+          granularity == o.granularity &&
+          limit == o.limit
     end
 
     # @see the `==` method
@@ -103,7 +121,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, values].hash
+      [from, to, granularity, limit].hash
     end
 
     # Builds the object from hash

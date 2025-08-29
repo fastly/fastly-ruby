@@ -37,7 +37,7 @@ opts = {
     version_id: 56, # Integer | Integer identifying a service version.
     address: 'address_example', # String | A hostname, IPv4, or IPv6 address for the backend. This is the preferred way to specify the location of your backend.
     auto_loadbalance: true, # Boolean | Whether or not this backend should be automatically load balanced. If true, all backends with this setting that don't have a `request_condition` will be selected based on their `weight`.
-    between_bytes_timeout: 56, # Integer | Maximum duration in milliseconds that Fastly will wait while receiving no data on a download from a backend. If exceeded, the response received so far will be considered complete and the fetch will end. May be set at runtime using `bereq.between_bytes_timeout`.
+    between_bytes_timeout: 56, # Integer | Maximum duration in milliseconds that Fastly will wait while receiving no data on a download from a backend. If exceeded, for Delivery services, the response received so far will be considered complete and the fetch will end. For Compute services, timeout expiration is treated as a failure of the backend connection, and an error is generated. May be set at runtime using `bereq.between_bytes_timeout`.
     client_cert: 'client_cert_example', # String | Unused.
     comment: 'comment_example', # String | A freeform descriptive note.
     connect_timeout: 56, # Integer | Maximum duration in milliseconds to wait for a connection to this backend to be established. If exceeded, the connection is aborted and a synthetic `503` response will be presented instead. May be set at runtime using `bereq.connect_timeout`.
@@ -90,7 +90,7 @@ end
 | **version_id** | **Integer** | Integer identifying a service version. |  |
 | **address** | **String** | A hostname, IPv4, or IPv6 address for the backend. This is the preferred way to specify the location of your backend. | [optional] |
 | **auto_loadbalance** | **Boolean** | Whether or not this backend should be automatically load balanced. If true, all backends with this setting that don&#39;t have a `request_condition` will be selected based on their `weight`. | [optional] |
-| **between_bytes_timeout** | **Integer** | Maximum duration in milliseconds that Fastly will wait while receiving no data on a download from a backend. If exceeded, the response received so far will be considered complete and the fetch will end. May be set at runtime using `bereq.between_bytes_timeout`. | [optional] |
+| **between_bytes_timeout** | **Integer** | Maximum duration in milliseconds that Fastly will wait while receiving no data on a download from a backend. If exceeded, for Delivery services, the response received so far will be considered complete and the fetch will end. For Compute services, timeout expiration is treated as a failure of the backend connection, and an error is generated. May be set at runtime using `bereq.between_bytes_timeout`. | [optional] |
 | **client_cert** | **String** | Unused. | [optional] |
 | **comment** | **String** | A freeform descriptive note. | [optional] |
 | **connect_timeout** | **Integer** | Maximum duration in milliseconds to wait for a connection to this backend to be established. If exceeded, the connection is aborted and a synthetic `503` response will be presented instead. May be set at runtime using `bereq.connect_timeout`. | [optional] |
@@ -119,9 +119,9 @@ end
 | **ssl_hostname** | **String** | Use `ssl_cert_hostname` and `ssl_sni_hostname` to configure certificate validation. | [optional] |
 | **ssl_sni_hostname** | **String** | Overrides `ssl_hostname`, but only for SNI in the handshake. Does not affect cert validation at all. | [optional] |
 | **tcp_keepalive_enable** | **Boolean** | Whether to enable TCP keepalives for backend connections. Varnish defaults to using keepalives if this is unspecified. | [optional] |
-| **tcp_keepalive_interval** | **Integer** | Interval in seconds between subsequent keepalive probes. | [optional] |
-| **tcp_keepalive_probes** | **Integer** | Number of unacknowledged probes to send before considering the connection dead. | [optional] |
-| **tcp_keepalive_time** | **Integer** | Interval in seconds between the last data packet sent and the first keepalive probe. | [optional] |
+| **tcp_keepalive_interval** | **Integer** | Interval in seconds between subsequent keepalive probes. | [optional][default to 10] |
+| **tcp_keepalive_probes** | **Integer** | Number of unacknowledged probes to send before considering the connection dead. | [optional][default to 3] |
+| **tcp_keepalive_time** | **Integer** | Interval in seconds between the last data packet sent and the first keepalive probe. | [optional][default to 300] |
 | **use_ssl** | **Boolean** | Whether or not to require TLS for connections to this backend. | [optional] |
 | **weight** | **Integer** | Weight used to load balance this backend against others. May be any positive integer. If `auto_loadbalance` is true, the chance of this backend being selected is equal to its own weight over the sum of all weights for backends that have `auto_loadbalance` set to true. | [optional] |
 
@@ -270,7 +270,7 @@ opts = {
     backend_name: 'backend_name_example', # String | The name of the backend.
     address: 'address_example', # String | A hostname, IPv4, or IPv6 address for the backend. This is the preferred way to specify the location of your backend.
     auto_loadbalance: true, # Boolean | Whether or not this backend should be automatically load balanced. If true, all backends with this setting that don't have a `request_condition` will be selected based on their `weight`.
-    between_bytes_timeout: 56, # Integer | Maximum duration in milliseconds that Fastly will wait while receiving no data on a download from a backend. If exceeded, the response received so far will be considered complete and the fetch will end. May be set at runtime using `bereq.between_bytes_timeout`.
+    between_bytes_timeout: 56, # Integer | Maximum duration in milliseconds that Fastly will wait while receiving no data on a download from a backend. If exceeded, for Delivery services, the response received so far will be considered complete and the fetch will end. For Compute services, timeout expiration is treated as a failure of the backend connection, and an error is generated. May be set at runtime using `bereq.between_bytes_timeout`.
     client_cert: 'client_cert_example', # String | Unused.
     comment: 'comment_example', # String | A freeform descriptive note.
     connect_timeout: 56, # Integer | Maximum duration in milliseconds to wait for a connection to this backend to be established. If exceeded, the connection is aborted and a synthetic `503` response will be presented instead. May be set at runtime using `bereq.connect_timeout`.
@@ -324,7 +324,7 @@ end
 | **backend_name** | **String** | The name of the backend. |  |
 | **address** | **String** | A hostname, IPv4, or IPv6 address for the backend. This is the preferred way to specify the location of your backend. | [optional] |
 | **auto_loadbalance** | **Boolean** | Whether or not this backend should be automatically load balanced. If true, all backends with this setting that don&#39;t have a `request_condition` will be selected based on their `weight`. | [optional] |
-| **between_bytes_timeout** | **Integer** | Maximum duration in milliseconds that Fastly will wait while receiving no data on a download from a backend. If exceeded, the response received so far will be considered complete and the fetch will end. May be set at runtime using `bereq.between_bytes_timeout`. | [optional] |
+| **between_bytes_timeout** | **Integer** | Maximum duration in milliseconds that Fastly will wait while receiving no data on a download from a backend. If exceeded, for Delivery services, the response received so far will be considered complete and the fetch will end. For Compute services, timeout expiration is treated as a failure of the backend connection, and an error is generated. May be set at runtime using `bereq.between_bytes_timeout`. | [optional] |
 | **client_cert** | **String** | Unused. | [optional] |
 | **comment** | **String** | A freeform descriptive note. | [optional] |
 | **connect_timeout** | **Integer** | Maximum duration in milliseconds to wait for a connection to this backend to be established. If exceeded, the connection is aborted and a synthetic `503` response will be presented instead. May be set at runtime using `bereq.connect_timeout`. | [optional] |
@@ -353,9 +353,9 @@ end
 | **ssl_hostname** | **String** | Use `ssl_cert_hostname` and `ssl_sni_hostname` to configure certificate validation. | [optional] |
 | **ssl_sni_hostname** | **String** | Overrides `ssl_hostname`, but only for SNI in the handshake. Does not affect cert validation at all. | [optional] |
 | **tcp_keepalive_enable** | **Boolean** | Whether to enable TCP keepalives for backend connections. Varnish defaults to using keepalives if this is unspecified. | [optional] |
-| **tcp_keepalive_interval** | **Integer** | Interval in seconds between subsequent keepalive probes. | [optional] |
-| **tcp_keepalive_probes** | **Integer** | Number of unacknowledged probes to send before considering the connection dead. | [optional] |
-| **tcp_keepalive_time** | **Integer** | Interval in seconds between the last data packet sent and the first keepalive probe. | [optional] |
+| **tcp_keepalive_interval** | **Integer** | Interval in seconds between subsequent keepalive probes. | [optional][default to 10] |
+| **tcp_keepalive_probes** | **Integer** | Number of unacknowledged probes to send before considering the connection dead. | [optional][default to 3] |
+| **tcp_keepalive_time** | **Integer** | Interval in seconds between the last data packet sent and the first keepalive probe. | [optional][default to 300] |
 | **use_ssl** | **Boolean** | Whether or not to require TLS for connections to this backend. | [optional] |
 | **weight** | **Integer** | Weight used to load balance this backend against others. May be any positive integer. If `auto_loadbalance` is true, the chance of this backend being selected is equal to its own weight over the sum of all weights for backends that have `auto_loadbalance` set to true. | [optional] |
 

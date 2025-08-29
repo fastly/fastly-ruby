@@ -8,7 +8,7 @@ A Ruby client library for interacting with most facets of the [Fastly API](https
 To install via RubyGems, add the following to your project's `Gemfile`:
 
 ```ruby
-gem 'fastly', '~> 13.1.0'
+gem 'fastly', '~> 14.0.0'
 ```
 
 Then run `bundle install`.
@@ -150,6 +150,7 @@ Class | Method | Description
 [*Fastly::DdosProtectionApi*](docs/DdosProtectionApi.md) | [**ddos_protection_event_list**](docs/DdosProtectionApi.md#ddos_protection_event_list) | Get events
 [*Fastly::DdosProtectionApi*](docs/DdosProtectionApi.md) | [**ddos_protection_event_rule_list**](docs/DdosProtectionApi.md#ddos_protection_event_rule_list) | Get all rules for an event
 [*Fastly::DdosProtectionApi*](docs/DdosProtectionApi.md) | [**ddos_protection_rule_get**](docs/DdosProtectionApi.md#ddos_protection_rule_get) | Get a rule by ID
+[*Fastly::DdosProtectionApi*](docs/DdosProtectionApi.md) | [**ddos_protection_rule_patch**](docs/DdosProtectionApi.md#ddos_protection_rule_patch) | Update rule
 [*Fastly::DdosProtectionApi*](docs/DdosProtectionApi.md) | [**ddos_protection_traffic_stats_rule_get**](docs/DdosProtectionApi.md#ddos_protection_traffic_stats_rule_get) | Get traffic stats for a rule
 [*Fastly::DictionaryApi*](docs/DictionaryApi.md) | [**create_dictionary**](docs/DictionaryApi.md#create_dictionary) | Create a dictionary
 [*Fastly::DictionaryApi*](docs/DictionaryApi.md) | [**delete_dictionary**](docs/DictionaryApi.md#delete_dictionary) | Delete a dictionary
@@ -405,6 +406,8 @@ Class | Method | Description
 [*Fastly::MutualAuthenticationApi*](docs/MutualAuthenticationApi.md) | [**get_mutual_authentication**](docs/MutualAuthenticationApi.md#get_mutual_authentication) | Get a Mutual Authentication
 [*Fastly::MutualAuthenticationApi*](docs/MutualAuthenticationApi.md) | [**list_mutual_authentications**](docs/MutualAuthenticationApi.md#list_mutual_authentications) | List Mutual Authentications
 [*Fastly::MutualAuthenticationApi*](docs/MutualAuthenticationApi.md) | [**patch_mutual_authentication**](docs/MutualAuthenticationApi.md#patch_mutual_authentication) | Update a Mutual Authentication
+[*Fastly::NgwafReportsApi*](docs/NgwafReportsApi.md) | [**get_attacks_report**](docs/NgwafReportsApi.md#get_attacks_report) | Get attacks report
+[*Fastly::NgwafReportsApi*](docs/NgwafReportsApi.md) | [**get_signals_report**](docs/NgwafReportsApi.md#get_signals_report) | Get signals report
 [*Fastly::ObjectStorageAccessKeysApi*](docs/ObjectStorageAccessKeysApi.md) | [**create_access_key**](docs/ObjectStorageAccessKeysApi.md#create_access_key) | Create an access key
 [*Fastly::ObjectStorageAccessKeysApi*](docs/ObjectStorageAccessKeysApi.md) | [**delete_access_key**](docs/ObjectStorageAccessKeysApi.md#delete_access_key) | Delete an access key
 [*Fastly::ObjectStorageAccessKeysApi*](docs/ObjectStorageAccessKeysApi.md) | [**get_access_key**](docs/ObjectStorageAccessKeysApi.md#get_access_key) | Get an access key
@@ -415,7 +418,7 @@ Class | Method | Description
 [*Fastly::ObservabilityCustomDashboardsApi*](docs/ObservabilityCustomDashboardsApi.md) | [**get_dashboard**](docs/ObservabilityCustomDashboardsApi.md#get_dashboard) | Retrieve a dashboard by ID
 [*Fastly::ObservabilityCustomDashboardsApi*](docs/ObservabilityCustomDashboardsApi.md) | [**list_dashboards**](docs/ObservabilityCustomDashboardsApi.md#list_dashboards) | List all custom dashboards
 [*Fastly::ObservabilityCustomDashboardsApi*](docs/ObservabilityCustomDashboardsApi.md) | [**update_dashboard**](docs/ObservabilityCustomDashboardsApi.md#update_dashboard) | Update an existing dashboard
-[*Fastly::ObservabilityTimeseriesForLogsApi*](docs/ObservabilityTimeseriesForLogsApi.md) | [**log_timeseries_get**](docs/ObservabilityTimeseriesForLogsApi.md#log_timeseries_get) | Retrieve log data as time series
+[*Fastly::ObservabilityTimeseriesApi*](docs/ObservabilityTimeseriesApi.md) | [**timeseries_get**](docs/ObservabilityTimeseriesApi.md#timeseries_get) | Retrieve observability data as a time series
 [*Fastly::OriginInspectorHistoricalApi*](docs/OriginInspectorHistoricalApi.md) | [**get_origin_inspector_historical**](docs/OriginInspectorHistoricalApi.md#get_origin_inspector_historical) | Get historical origin data for a service
 [*Fastly::OriginInspectorRealtimeApi*](docs/OriginInspectorRealtimeApi.md) | [**get_origin_inspector_last120_seconds**](docs/OriginInspectorRealtimeApi.md#get_origin_inspector_last120_seconds) | Get real-time origin data for the last 120 seconds
 [*Fastly::OriginInspectorRealtimeApi*](docs/OriginInspectorRealtimeApi.md) | [**get_origin_inspector_last_max_entries**](docs/OriginInspectorRealtimeApi.md#get_origin_inspector_last_max_entries) | Get a limited number of real-time origin data entries
@@ -640,10 +643,17 @@ The fastly-ruby API client currently does not support the following endpoints:
 - [`/alerts/history`](https://www.fastly.com/documentation/reference/api/observability/alerts/history) (GET)
 - [`/dns/configurations/{dns_configuration_id}`](https://www.fastly.com/documentation/reference/api/) (DELETE, GET, PATCH)
 - [`/dns/configurations`](https://www.fastly.com/documentation/reference/api/) (GET, POST)
+- [`/domain-management/v1/domains/{domain_id}`](https://www.fastly.com/documentation/reference/api/) (DELETE, GET, PATCH)
+- [`/domain-management/v1/domains`](https://www.fastly.com/documentation/reference/api/) (GET, POST)
 - [`/domains/v1/tools/status`](https://www.fastly.com/documentation/reference/api/) (GET)
 - [`/domains/v1/tools/suggest`](https://www.fastly.com/documentation/reference/api/) (GET)
-- [`/domains/v1/{domain_id}`](https://www.fastly.com/documentation/reference/api/) (DELETE, GET, PATCH)
-- [`/domains/v1`](https://www.fastly.com/documentation/reference/api/) (GET, POST)
+- [`/ngwaf/v1/lists/{listId}`](https://www.fastly.com/documentation/reference/api/ngwaf/v1/lists) (DELETE, GET, PATCH)
+- [`/ngwaf/v1/lists`](https://www.fastly.com/documentation/reference/api/ngwaf/v1/lists) (GET, POST)
+- [`/ngwaf/v1/signals/{signal_id}`](https://www.fastly.com/documentation/reference/api/ngwaf/v1/signals) (DELETE, GET, PATCH)
+- [`/ngwaf/v1/signals`](https://www.fastly.com/documentation/reference/api/ngwaf/v1/signals) (GET, POST)
+- [`/ngwaf/v1/timeseries`](https://www.fastly.com/documentation/reference/api/ngwaf/v1/timeseries) (GET)
+- [`/ngwaf/v1/workspaces/{workspaceId}/lists/{listId}`](https://www.fastly.com/documentation/reference/api/ngwaf/v1/lists) (DELETE, GET, PATCH)
+- [`/ngwaf/v1/workspaces/{workspaceId}/lists`](https://www.fastly.com/documentation/reference/api/ngwaf/v1/lists) (GET, POST)
 - [`/ngwaf/v1/workspaces/{workspace_id}/alerts/{alert_id}/signing-key`](https://www.fastly.com/documentation/reference/api/ngwaf/v1/workspace_alerts) (GET, POST)
 - [`/ngwaf/v1/workspaces/{workspace_id}/alerts/{alert_id}`](https://www.fastly.com/documentation/reference/api/ngwaf/v1/workspace_alerts) (DELETE, GET, PATCH)
 - [`/ngwaf/v1/workspaces/{workspace_id}/alerts`](https://www.fastly.com/documentation/reference/api/ngwaf/v1/workspace_alerts) (GET, POST)
@@ -666,6 +676,8 @@ The fastly-ruby API client currently does not support the following endpoints:
 - [`/notifications/integrations/{integration_id}`](https://developer.fastly.com/reference/api/observability/notification) (DELETE, GET, PATCH)
 - [`/notifications/integrations`](https://developer.fastly.com/reference/api/observability/notification) (GET, POST)
 - [`/notifications/mailinglist-confirmations`](https://developer.fastly.com/reference/api/observability/notification) (POST)
+- [`/observability/timeseries`](https://www.fastly.com/documentation/reference/api/observability/timeseries/logs/) (GET)
+- [`/observability/timeseries`](https://www.fastly.com/documentation/reference/api/observability/timeseries/sustainability/) (GET)
 - [`/resources/stores/kv/{store_id}/batch`](https://www.fastly.com/documentation/reference/api/services/resources/kv-store-item) (PUT)
 - [`/security/workspaces/{workspace_id}/events/{event_id}`](https://www.fastly.com/documentation/reference/api/security/events) (GET, PATCH)
 - [`/security/workspaces/{workspace_id}/events`](https://www.fastly.com/documentation/reference/api/security/events) (GET)

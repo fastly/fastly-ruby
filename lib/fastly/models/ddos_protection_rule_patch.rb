@@ -12,44 +12,14 @@ require 'date'
 require 'time'
 
 module Fastly
-  # A filtering parameter.
-  class LogTimeseriesFilterFieldItem
-    # The log field to which this filter should be applied.
-    attr_accessor :field
-
-    # The comparison operator used for this filter.
-    attr_accessor :operator
-
-    attr_accessor :value
-
-    class EnumAttributeValidator
-      attr_reader :datatype
-      attr_reader :allowable_values
-
-      def initialize(datatype, allowable_values)
-        @allowable_values = allowable_values.map do |value|
-          case datatype.to_s
-          when /Integer/i
-            value.to_i
-          when /Float/i
-            value.to_f
-          else
-            value
-          end
-        end
-      end
-
-      def valid?(value)
-        !value || allowable_values.include?(value)
-      end
-    end
+  class DdosProtectionRulePatch
+    # Action types for a rule. Supported action values are default, block, log, off. The default action value follows the current protection mode of the associated service.
+    attr_accessor :action
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'field' => :'field',
-        :'operator' => :'operator',
-        :'value' => :'value'
+        :'action' => :'action'
       }
     end
 
@@ -61,9 +31,7 @@ module Fastly
     # Attribute type mapping.
     def self.fastly_types
       {
-        :'field' => :'String',
-        :'operator' => :'String',
-        :'value' => :'LogTimeseriesValueField'
+        :'action' => :'String'
       }
     end
 
@@ -77,27 +45,21 @@ module Fastly
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Fastly::LogTimeseriesFilterFieldItem` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Fastly::DdosProtectionRulePatch` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `Fastly::LogTimeseriesFilterFieldItem`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `Fastly::DdosProtectionRulePatch`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'field')
-        self.field = attributes[:'field']
-      end
-
-      if attributes.key?(:'operator')
-        self.operator = attributes[:'operator']
-      end
-
-      if attributes.key?(:'value')
-        self.value = attributes[:'value']
+      if attributes.key?(:'action')
+        self.action = attributes[:'action']
+      else
+        self.action = 'default'
       end
     end
 
@@ -111,19 +73,7 @@ module Fastly
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      operator_validator = EnumAttributeValidator.new('String', ["eq", "ends-with", "in", "not_in", "gt", "gte", "lt", "lte"])
-      return false unless operator_validator.valid?(@operator)
       true
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] operator Object to be assigned
-    def operator=(operator)
-      validator = EnumAttributeValidator.new('String', ["eq", "ends-with", "in", "not_in", "gt", "gte", "lt", "lte"])
-      unless validator.valid?(operator)
-        fail ArgumentError, "invalid value for \"operator\", must be one of #{validator.allowable_values}."
-      end
-      @operator = operator
     end
 
     # Checks equality by comparing each attribute.
@@ -131,9 +81,7 @@ module Fastly
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          field == o.field &&
-          operator == o.operator &&
-          value == o.value
+          action == o.action
     end
 
     # @see the `==` method
@@ -145,7 +93,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [field, operator, value].hash
+      [action].hash
     end
 
     # Builds the object from hash
