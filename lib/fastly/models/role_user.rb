@@ -14,6 +14,8 @@ require 'time'
 module Fastly
   class RoleUser
     USER = "user".freeze
+    TLS_VIEWER = "tls_viewer".freeze
+    TLS_ADMIN = "tls_admin".freeze
     BILLING = "billing".freeze
     ENGINEER = "engineer".freeze
     SUPERUSER = "superuser".freeze

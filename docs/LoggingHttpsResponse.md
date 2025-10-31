@@ -23,6 +23,7 @@
 | **header_value** | **String** | Value of the custom header sent with the request. | [optional][default to &#39;null&#39;] |
 | **method** | **String** | HTTP method used for request. | [optional][default to &#39;POST&#39;] |
 | **json_format** | **String** | Enforces valid JSON formatting for log entries. | [optional] |
+| **period** | **Integer** | How frequently, in seconds, batches of log data are sent to the HTTPS endpoint. A value of `0` sends logs at the same interval as the default, which is `5` seconds. | [optional][default to 5] |
 | **created_at** | **Time** | Date and time in ISO 8601 format. | [optional][readonly] |
 | **deleted_at** | **Time** | Date and time in ISO 8601 format. | [optional][readonly] |
 | **updated_at** | **Time** | Date and time in ISO 8601 format. | [optional][readonly] |

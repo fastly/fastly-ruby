@@ -914,6 +914,36 @@ module Fastly
           description: "No description provided",
           }
         ],
+        "DmDomainsApi.create_dm_domain": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "DmDomainsApi.delete_dm_domain": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "DmDomainsApi.get_dm_domain": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "DmDomainsApi.list_dm_domains": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "DmDomainsApi.update_dm_domain": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
         "DomainApi.check_domain": [
           {
           url: "https://api.fastly.com",
@@ -1166,49 +1196,13 @@ module Fastly
           description: "No description provided",
           }
         ],
-        "IamRolesApi.add_role_permissions": [
+        "IamRolesApi.iam_v1_roles_get": [
           {
           url: "https://api.fastly.com",
           description: "No description provided",
           }
         ],
-        "IamRolesApi.create_a_role": [
-          {
-          url: "https://api.fastly.com",
-          description: "No description provided",
-          }
-        ],
-        "IamRolesApi.delete_a_role": [
-          {
-          url: "https://api.fastly.com",
-          description: "No description provided",
-          }
-        ],
-        "IamRolesApi.get_a_role": [
-          {
-          url: "https://api.fastly.com",
-          description: "No description provided",
-          }
-        ],
-        "IamRolesApi.list_role_permissions": [
-          {
-          url: "https://api.fastly.com",
-          description: "No description provided",
-          }
-        ],
-        "IamRolesApi.list_roles": [
-          {
-          url: "https://api.fastly.com",
-          description: "No description provided",
-          }
-        ],
-        "IamRolesApi.remove_role_permissions": [
-          {
-          url: "https://api.fastly.com",
-          description: "No description provided",
-          }
-        ],
-        "IamRolesApi.update_a_role": [
+        "IamRolesApi.iam_v1_roles_list": [
           {
           url: "https://api.fastly.com",
           description: "No description provided",
@@ -2469,6 +2463,30 @@ module Fastly
           }
         ],
         "ProductAiAcceleratorApi.get_ai_accelerator": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "ProductApiDiscoveryApi.disable_product_api_discovery": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "ProductApiDiscoveryApi.enable_product_api_discovery": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "ProductApiDiscoveryApi.get_product_api_discovery": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "ProductApiDiscoveryApi.get_services_product_api_discovery": [
           {
           url: "https://api.fastly.com",
           description: "No description provided",

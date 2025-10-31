@@ -40,6 +40,7 @@ module Fastly
     # @option opts [String] :header_value Value of the custom header sent with the request. (default to 'null')
     # @option opts [String] :method HTTP method used for request. (default to 'POST')
     # @option opts [String] :json_format Enforces valid JSON formatting for log entries.
+    # @option opts [Integer] :period How frequently, in seconds, batches of log data are sent to the HTTPS endpoint. A value of &#x60;0&#x60; sends logs at the same interval as the default, which is &#x60;5&#x60; seconds. (default to 5)
     # @return [LoggingHttpsResponse]
     def create_log_https(opts = {})
       data, _status_code, _headers = create_log_https_with_http_info(opts)
@@ -69,6 +70,7 @@ module Fastly
     # @option opts [String] :header_value Value of the custom header sent with the request. (default to 'null')
     # @option opts [String] :method HTTP method used for request. (default to 'POST')
     # @option opts [String] :json_format Enforces valid JSON formatting for log entries.
+    # @option opts [Integer] :period How frequently, in seconds, batches of log data are sent to the HTTPS endpoint. A value of &#x60;0&#x60; sends logs at the same interval as the default, which is &#x60;5&#x60; seconds. (default to 5)
     # @return [Array<(LoggingHttpsResponse, Integer, Hash)>] LoggingHttpsResponse data, response status code and response headers
     def create_log_https_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -142,6 +144,7 @@ module Fastly
       form_params['header_value'] = opts[:'header_value'] if !opts[:'header_value'].nil?
       form_params['method'] = opts[:'method'] if !opts[:'method'].nil?
       form_params['json_format'] = opts[:'json_format'] if !opts[:'json_format'].nil?
+      form_params['period'] = opts[:'period'] if !opts[:'period'].nil?
 
       # http body (model)
       post_body = opts[:debug_body]
@@ -417,6 +420,7 @@ module Fastly
     # @option opts [String] :header_value Value of the custom header sent with the request. (default to 'null')
     # @option opts [String] :method HTTP method used for request. (default to 'POST')
     # @option opts [String] :json_format Enforces valid JSON formatting for log entries.
+    # @option opts [Integer] :period How frequently, in seconds, batches of log data are sent to the HTTPS endpoint. A value of &#x60;0&#x60; sends logs at the same interval as the default, which is &#x60;5&#x60; seconds. (default to 5)
     # @return [LoggingHttpsResponse]
     def update_log_https(opts = {})
       data, _status_code, _headers = update_log_https_with_http_info(opts)
@@ -447,6 +451,7 @@ module Fastly
     # @option opts [String] :header_value Value of the custom header sent with the request. (default to 'null')
     # @option opts [String] :method HTTP method used for request. (default to 'POST')
     # @option opts [String] :json_format Enforces valid JSON formatting for log entries.
+    # @option opts [Integer] :period How frequently, in seconds, batches of log data are sent to the HTTPS endpoint. A value of &#x60;0&#x60; sends logs at the same interval as the default, which is &#x60;5&#x60; seconds. (default to 5)
     # @return [Array<(LoggingHttpsResponse, Integer, Hash)>] LoggingHttpsResponse data, response status code and response headers
     def update_log_https_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -525,6 +530,7 @@ module Fastly
       form_params['header_value'] = opts[:'header_value'] if !opts[:'header_value'].nil?
       form_params['method'] = opts[:'method'] if !opts[:'method'].nil?
       form_params['json_format'] = opts[:'json_format'] if !opts[:'json_format'].nil?
+      form_params['period'] = opts[:'period'] if !opts[:'period'].nil?
 
       # http body (model)
       post_body = opts[:debug_body]

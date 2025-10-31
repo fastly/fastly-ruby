@@ -69,6 +69,9 @@ module Fastly
     # Enforces valid JSON formatting for log entries.
     attr_accessor :json_format
 
+    # How frequently, in seconds, batches of log data are sent to the HTTPS endpoint. A value of `0` sends logs at the same interval as the default, which is `5` seconds.
+    attr_accessor :period
+
     # Date and time in ISO 8601 format.
     attr_accessor :created_at
 
@@ -126,6 +129,7 @@ module Fastly
         :'header_value' => :'header_value',
         :'method' => :'method',
         :'json_format' => :'json_format',
+        :'period' => :'period',
         :'created_at' => :'created_at',
         :'deleted_at' => :'deleted_at',
         :'updated_at' => :'updated_at',
@@ -161,6 +165,7 @@ module Fastly
         :'header_value' => :'String',
         :'method' => :'String',
         :'json_format' => :'String',
+        :'period' => :'Integer',
         :'created_at' => :'Time',
         :'deleted_at' => :'Time',
         :'updated_at' => :'Time',
@@ -318,6 +323,12 @@ module Fastly
         self.json_format = attributes[:'json_format']
       end
 
+      if attributes.key?(:'period')
+        self.period = attributes[:'period']
+      else
+        self.period = 5
+      end
+
       if attributes.key?(:'created_at')
         self.created_at = attributes[:'created_at']
       end
@@ -436,6 +447,7 @@ module Fastly
           header_value == o.header_value &&
           method == o.method &&
           json_format == o.json_format &&
+          period == o.period &&
           created_at == o.created_at &&
           deleted_at == o.deleted_at &&
           updated_at == o.updated_at &&
@@ -452,7 +464,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, placement, response_condition, format, log_processing_region, format_version, tls_ca_cert, tls_client_cert, tls_client_key, tls_hostname, request_max_entries, request_max_bytes, url, content_type, header_name, message_type, header_value, method, json_format, created_at, deleted_at, updated_at, service_id, version].hash
+      [name, placement, response_condition, format, log_processing_region, format_version, tls_ca_cert, tls_client_cert, tls_client_key, tls_hostname, request_max_entries, request_max_bytes, url, content_type, header_name, message_type, header_value, method, json_format, period, created_at, deleted_at, updated_at, service_id, version].hash
     end
 
     # Builds the object from hash

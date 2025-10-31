@@ -29,6 +29,9 @@ module Fastly
 
     attr_accessor :role
 
+    # A list of role IDs assigned to the user.
+    attr_accessor :roles
+
     # Indicates if 2FA is enabled on the user.
     attr_accessor :two_factor_auth_enabled
 
@@ -60,6 +63,7 @@ module Fastly
         :'locked' => :'locked',
         :'require_new_password' => :'require_new_password',
         :'role' => :'role',
+        :'roles' => :'roles',
         :'two_factor_auth_enabled' => :'two_factor_auth_enabled',
         :'two_factor_setup_required' => :'two_factor_setup_required',
         :'created_at' => :'created_at',
@@ -85,6 +89,7 @@ module Fastly
         :'locked' => :'Boolean',
         :'require_new_password' => :'Boolean',
         :'role' => :'RoleUser',
+        :'roles' => :'Array<String>',
         :'two_factor_auth_enabled' => :'Boolean',
         :'two_factor_setup_required' => :'Boolean',
         :'created_at' => :'Time',
@@ -156,6 +161,12 @@ module Fastly
         self.role = attributes[:'role']
       end
 
+      if attributes.key?(:'roles')
+        if (value = attributes[:'roles']).is_a?(Array)
+          self.roles = value
+        end
+      end
+
       if attributes.key?(:'two_factor_auth_enabled')
         self.two_factor_auth_enabled = attributes[:'two_factor_auth_enabled']
       end
@@ -213,6 +224,7 @@ module Fastly
           locked == o.locked &&
           require_new_password == o.require_new_password &&
           role == o.role &&
+          roles == o.roles &&
           two_factor_auth_enabled == o.two_factor_auth_enabled &&
           two_factor_setup_required == o.two_factor_setup_required &&
           created_at == o.created_at &&
@@ -232,7 +244,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [login, name, limit_services, locked, require_new_password, role, two_factor_auth_enabled, two_factor_setup_required, created_at, deleted_at, updated_at, id, email_hash, customer_id].hash
+      [login, name, limit_services, locked, require_new_password, role, roles, two_factor_auth_enabled, two_factor_setup_required, created_at, deleted_at, updated_at, id, email_hash, customer_id].hash
     end
 
     # Builds the object from hash

@@ -13,7 +13,7 @@ require 'time'
 
 module Fastly
   class HealthcheckResponse
-    # How often to run the health check in milliseconds.
+    # How often to run the health check in milliseconds. Minimum 1 second, maximum 1 hour.
     attr_accessor :check_interval
 
     # A freeform descriptive note.
@@ -231,13 +231,37 @@ module Fastly
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+      if !@check_interval.nil? && @check_interval > 3600000
+        invalid_properties.push('invalid value for "check_interval", must be smaller than or equal to 3600000.')
+      end
+
+      if !@check_interval.nil? && @check_interval < 1000
+        invalid_properties.push('invalid value for "check_interval", must be greater than or equal to 1000.')
+      end
+
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if !@check_interval.nil? && @check_interval > 3600000
+      return false if !@check_interval.nil? && @check_interval < 1000
       true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] check_interval Value to be assigned
+    def check_interval=(check_interval)
+      if !check_interval.nil? && check_interval > 3600000
+        fail ArgumentError, 'invalid value for "check_interval", must be smaller than or equal to 3600000.'
+      end
+
+      if !check_interval.nil? && check_interval < 1000
+        fail ArgumentError, 'invalid value for "check_interval", must be greater than or equal to 1000.'
+      end
+
+      @check_interval = check_interval
     end
 
     # Checks equality by comparing each attribute.

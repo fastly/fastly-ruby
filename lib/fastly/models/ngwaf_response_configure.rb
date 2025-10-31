@@ -40,7 +40,7 @@ module Fastly
     def self.fastly_types
       {
         :'product' => :'NgwafResponseProductProduct',
-        :'service' => :'BotManagementResponseServiceService',
+        :'service' => :'ApiDiscoveryResponseServiceService',
         :'configuration' => :'NgwafResponseConfigurationConfiguration',
         :'_links' => :'NgwafResponseLinksLinks'
       }

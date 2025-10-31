@@ -35,7 +35,7 @@ api_instance = Fastly::HealthcheckApi.new
 opts = {
     service_id: 'service_id_example', # String | Alphanumeric string identifying the service.
     version_id: 56, # Integer | Integer identifying a service version.
-    check_interval: 56, # Integer | How often to run the health check in milliseconds.
+    check_interval: 56, # Integer | How often to run the health check in milliseconds. Minimum 1 second, maximum 1 hour.
     comment: 'comment_example', # String | A freeform descriptive note.
     expected_response: 56, # Integer | The status code expected from the host.
     headers: ['inner_example'], # Array<String> | Array of custom headers that will be added to the health check probes.
@@ -65,7 +65,7 @@ end
 | ---- | ---- | ----------- | ----- |
 | **service_id** | **String** | Alphanumeric string identifying the service. |  |
 | **version_id** | **Integer** | Integer identifying a service version. |  |
-| **check_interval** | **Integer** | How often to run the health check in milliseconds. | [optional] |
+| **check_interval** | **Integer** | How often to run the health check in milliseconds. Minimum 1 second, maximum 1 hour. | [optional] |
 | **comment** | **String** | A freeform descriptive note. | [optional] |
 | **expected_response** | **Integer** | The status code expected from the host. | [optional] |
 | **headers** | [**Array&lt;String&gt;**](String.md) | Array of custom headers that will be added to the health check probes. | [optional] |
@@ -222,7 +222,7 @@ opts = {
     service_id: 'service_id_example', # String | Alphanumeric string identifying the service.
     version_id: 56, # Integer | Integer identifying a service version.
     healthcheck_name: 'healthcheck_name_example', # String | The name of the health check.
-    check_interval: 56, # Integer | How often to run the health check in milliseconds.
+    check_interval: 56, # Integer | How often to run the health check in milliseconds. Minimum 1 second, maximum 1 hour.
     comment: 'comment_example', # String | A freeform descriptive note.
     expected_response: 56, # Integer | The status code expected from the host.
     headers: ['inner_example'], # Array<String> | Array of custom headers that will be added to the health check probes.
@@ -253,7 +253,7 @@ end
 | **service_id** | **String** | Alphanumeric string identifying the service. |  |
 | **version_id** | **Integer** | Integer identifying a service version. |  |
 | **healthcheck_name** | **String** | The name of the health check. |  |
-| **check_interval** | **Integer** | How often to run the health check in milliseconds. | [optional] |
+| **check_interval** | **Integer** | How often to run the health check in milliseconds. Minimum 1 second, maximum 1 hour. | [optional] |
 | **comment** | **String** | A freeform descriptive note. | [optional] |
 | **expected_response** | **Integer** | The status code expected from the host. | [optional] |
 | **headers** | [**Array&lt;String&gt;**](String.md) | Array of custom headers that will be added to the health check probes. | [optional] |

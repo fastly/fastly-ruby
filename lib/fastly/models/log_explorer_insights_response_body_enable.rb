@@ -37,7 +37,7 @@ module Fastly
     def self.fastly_types
       {
         :'product' => :'LogExplorerInsightsResponseProductProduct',
-        :'service' => :'BotManagementResponseServiceService',
+        :'service' => :'ApiDiscoveryResponseServiceService',
         :'_links' => :'LogExplorerInsightsResponseLinksLinks'
       }
     end

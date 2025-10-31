@@ -121,6 +121,7 @@ opts = {
     event_id: 'event_id_example', # String | Unique ID of the event.
     cursor: 'cursor_example', # String | Cursor value from the `next_cursor` field of a previous response, used to retrieve the next page. To request the first page, this should be empty.
     limit: 56, # Integer | Limit how many results are returned.
+    include: 'include_example', # String | Include relationships. Optional. Comma-separated values.
 }
 
 begin
@@ -139,6 +140,7 @@ end
 | **event_id** | **String** | Unique ID of the event. |  |
 | **cursor** | **String** | Cursor value from the `next_cursor` field of a previous response, used to retrieve the next page. To request the first page, this should be empty. | [optional] |
 | **limit** | **Integer** | Limit how many results are returned. | [optional][default to 20] |
+| **include** | **String** | Include relationships. Optional. Comma-separated values. | [optional] |
 
 ### Return type
 

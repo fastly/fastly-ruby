@@ -41,6 +41,7 @@ opts = {
     locked: true, # Boolean | Indicates whether the is account is locked for editing or not.
     require_new_password: true, # Boolean | Indicates if a new password is required at next login.
     role: Fastly::RoleUser::USER, # RoleUser | 
+    roles: ['6bKsDElwPt8vZXCArszK9x'], # Array<String> | A list of role IDs assigned to the user.
     two_factor_auth_enabled: true, # Boolean | Indicates if 2FA is enabled on the user.
     two_factor_setup_required: true, # Boolean | Indicates if 2FA is required by the user's customer account.
 }
@@ -64,6 +65,7 @@ end
 | **locked** | **Boolean** | Indicates whether the is account is locked for editing or not. | [optional] |
 | **require_new_password** | **Boolean** | Indicates if a new password is required at next login. | [optional] |
 | **role** | [**RoleUser**](RoleUser.md) |  | [optional] |
+| **roles** | [**Array&lt;String&gt;**](String.md) | A list of role IDs assigned to the user. | [optional] |
 | **two_factor_auth_enabled** | **Boolean** | Indicates if 2FA is enabled on the user. | [optional] |
 | **two_factor_setup_required** | **Boolean** | Indicates if 2FA is required by the user&#39;s customer account. | [optional] |
 
@@ -236,6 +238,7 @@ opts = {
     locked: true, # Boolean | Indicates whether the is account is locked for editing or not.
     require_new_password: true, # Boolean | Indicates if a new password is required at next login.
     role: Fastly::RoleUser::USER, # RoleUser | 
+    roles: ['6bKsDElwPt8vZXCArszK9x'], # Array<String> | A list of role IDs assigned to the user.
     two_factor_auth_enabled: true, # Boolean | Indicates if 2FA is enabled on the user.
     two_factor_setup_required: true, # Boolean | Indicates if 2FA is required by the user's customer account.
 }
@@ -260,6 +263,7 @@ end
 | **locked** | **Boolean** | Indicates whether the is account is locked for editing or not. | [optional] |
 | **require_new_password** | **Boolean** | Indicates if a new password is required at next login. | [optional] |
 | **role** | [**RoleUser**](RoleUser.md) |  | [optional] |
+| **roles** | [**Array&lt;String&gt;**](String.md) | A list of role IDs assigned to the user. | [optional] |
 | **two_factor_auth_enabled** | **Boolean** | Indicates if 2FA is enabled on the user. | [optional] |
 | **two_factor_setup_required** | **Boolean** | Indicates if 2FA is required by the user&#39;s customer account. | [optional] |
 

@@ -13,39 +13,33 @@ api_instance = Fastly::IamRolesApi.new
 
 Method | HTTP request | Description
 ------ | ------------ | -----------
-[**add_role_permissions**](IamRolesApi.md#add_role_permissions) | **POST** /roles/{role_id}/permissions | Add permissions to a role
-[**create_a_role**](IamRolesApi.md#create_a_role) | **POST** /roles | Create a role
-[**delete_a_role**](IamRolesApi.md#delete_a_role) | **DELETE** /roles/{role_id} | Delete a role
-[**get_a_role**](IamRolesApi.md#get_a_role) | **GET** /roles/{role_id} | Get a role
-[**list_role_permissions**](IamRolesApi.md#list_role_permissions) | **GET** /roles/{role_id}/permissions | List permissions in a role
-[**list_roles**](IamRolesApi.md#list_roles) | **GET** /roles | List roles
-[**remove_role_permissions**](IamRolesApi.md#remove_role_permissions) | **DELETE** /roles/{role_id}/permissions | Remove permissions from a role
-[**update_a_role**](IamRolesApi.md#update_a_role) | **PATCH** /roles/{role_id} | Update a role
+[**iam_v1_roles_get**](IamRolesApi.md#iam_v1_roles_get) | **GET** /iam/v1/roles/{role_id} | Get IAM role by ID
+[**iam_v1_roles_list**](IamRolesApi.md#iam_v1_roles_list) | **GET** /iam/v1/roles | List IAM roles
 
 
-## `add_role_permissions()`
+## `iam_v1_roles_get()`
 
 ```ruby
-add_role_permissions(opts): Object # Add permissions to a role
+iam_v1_roles_get(opts): <IamV1RoleResponse> # Get IAM role by ID
 ```
 
-Add permissions to a role.
+Retrieve a single IAM role by its unique identifier. 
 
 ### Examples
 
 ```ruby
 api_instance = Fastly::IamRolesApi.new
 opts = {
-    role_id: 'role_id_example', # String | Alphanumeric string identifying the role.
-    request_body: { key: 3.56}, # Hash<String, Object> | 
+    role_id: 'Q4rXe9vN1szK8a2fUjYtWp', # String | Alphanumeric string identifying the role.
+    include: 'permissions', # String | Include related data (i.e., permissions).
 }
 
 begin
-  # Add permissions to a role
-  result = api_instance.add_role_permissions(opts)
+  # Get IAM role by ID
+  result = api_instance.iam_v1_roles_get(opts)
   p result
 rescue Fastly::ApiError => e
-  puts "Error when calling IamRolesApi->add_role_permissions: #{e}"
+  puts "Error when calling IamRolesApi->iam_v1_roles_get: #{e}"
 end
 ```
 
@@ -54,36 +48,37 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **role_id** | **String** | Alphanumeric string identifying the role. |  |
-| **request_body** | [**Hash&lt;String, Object&gt;**](Object.md) |  | [optional] |
+| **include** | **String** | Include related data (i.e., permissions). | [optional] |
 
 ### Return type
 
-**Object**
+[**IamV1RoleResponse**](IamV1RoleResponse.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)
-## `create_a_role()`
+## `iam_v1_roles_list()`
 
 ```ruby
-create_a_role(opts): Object # Create a role
+iam_v1_roles_list(opts): <IamV1RoleListResponse> # List IAM roles
 ```
 
-Create a role.
+Retrieve a paginated list of IAM roles available in the account. 
 
 ### Examples
 
 ```ruby
 api_instance = Fastly::IamRolesApi.new
 opts = {
-    request_body: { key: 3.56}, # Hash<String, Object> | 
+    limit: 56, # Integer | Number of results per page. The maximum is 1000.
+    cursor: 'cursor_example', # String | Cursor value from the `next_cursor` field of a previous response, used to retrieve the next page. To request the first page, this should be empty.
 }
 
 begin
-  # Create a role
-  result = api_instance.create_a_role(opts)
+  # List IAM roles
+  result = api_instance.iam_v1_roles_list(opts)
   p result
 rescue Fastly::ApiError => e
-  puts "Error when calling IamRolesApi->create_a_role: #{e}"
+  puts "Error when calling IamRolesApi->iam_v1_roles_list: #{e}"
 end
 ```
 
@@ -91,237 +86,12 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **request_body** | [**Hash&lt;String, Object&gt;**](Object.md) |  | [optional] |
+| **limit** | **Integer** | Number of results per page. The maximum is 1000. | [optional][default to 100] |
+| **cursor** | **String** | Cursor value from the `next_cursor` field of a previous response, used to retrieve the next page. To request the first page, this should be empty. | [optional] |
 
 ### Return type
 
-**Object**
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to README]](../../README.md)
-## `delete_a_role()`
-
-```ruby
-delete_a_role(opts) # Delete a role
-```
-
-Delete a role.
-
-### Examples
-
-```ruby
-api_instance = Fastly::IamRolesApi.new
-opts = {
-    role_id: 'role_id_example', # String | Alphanumeric string identifying the role.
-}
-
-begin
-  # Delete a role
-  api_instance.delete_a_role(opts)
-rescue Fastly::ApiError => e
-  puts "Error when calling IamRolesApi->delete_a_role: #{e}"
-end
-```
-
-### Options
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **role_id** | **String** | Alphanumeric string identifying the role. |  |
-
-### Return type
-
-nil (empty response body)
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to README]](../../README.md)
-## `get_a_role()`
-
-```ruby
-get_a_role(opts): Object # Get a role
-```
-
-Get a role.
-
-### Examples
-
-```ruby
-api_instance = Fastly::IamRolesApi.new
-opts = {
-    role_id: 'role_id_example', # String | Alphanumeric string identifying the role.
-}
-
-begin
-  # Get a role
-  result = api_instance.get_a_role(opts)
-  p result
-rescue Fastly::ApiError => e
-  puts "Error when calling IamRolesApi->get_a_role: #{e}"
-end
-```
-
-### Options
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **role_id** | **String** | Alphanumeric string identifying the role. |  |
-
-### Return type
-
-**Object**
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to README]](../../README.md)
-## `list_role_permissions()`
-
-```ruby
-list_role_permissions(opts): Object # List permissions in a role
-```
-
-List all permissions in a role.
-
-### Examples
-
-```ruby
-api_instance = Fastly::IamRolesApi.new
-opts = {
-    role_id: 'role_id_example', # String | Alphanumeric string identifying the role.
-}
-
-begin
-  # List permissions in a role
-  result = api_instance.list_role_permissions(opts)
-  p result
-rescue Fastly::ApiError => e
-  puts "Error when calling IamRolesApi->list_role_permissions: #{e}"
-end
-```
-
-### Options
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **role_id** | **String** | Alphanumeric string identifying the role. |  |
-
-### Return type
-
-**Object**
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to README]](../../README.md)
-## `list_roles()`
-
-```ruby
-list_roles(opts): Object # List roles
-```
-
-List all roles.
-
-### Examples
-
-```ruby
-api_instance = Fastly::IamRolesApi.new
-opts = {
-    per_page: 20, # Integer | Number of records per page.
-    page: 1, # Integer | Current page.
-}
-
-begin
-  # List roles
-  result = api_instance.list_roles(opts)
-  p result
-rescue Fastly::ApiError => e
-  puts "Error when calling IamRolesApi->list_roles: #{e}"
-end
-```
-
-### Options
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **per_page** | **Integer** | Number of records per page. | [optional][default to 20] |
-| **page** | **Integer** | Current page. | [optional] |
-
-### Return type
-
-**Object**
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to README]](../../README.md)
-## `remove_role_permissions()`
-
-```ruby
-remove_role_permissions(opts) # Remove permissions from a role
-```
-
-Remove permissions from a role.
-
-### Examples
-
-```ruby
-api_instance = Fastly::IamRolesApi.new
-opts = {
-    role_id: 'role_id_example', # String | Alphanumeric string identifying the role.
-    request_body: { key: 3.56}, # Hash<String, Object> | 
-}
-
-begin
-  # Remove permissions from a role
-  api_instance.remove_role_permissions(opts)
-rescue Fastly::ApiError => e
-  puts "Error when calling IamRolesApi->remove_role_permissions: #{e}"
-end
-```
-
-### Options
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **role_id** | **String** | Alphanumeric string identifying the role. |  |
-| **request_body** | [**Hash&lt;String, Object&gt;**](Object.md) |  | [optional] |
-
-### Return type
-
-nil (empty response body)
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to README]](../../README.md)
-## `update_a_role()`
-
-```ruby
-update_a_role(opts): Object # Update a role
-```
-
-Update a role.
-
-### Examples
-
-```ruby
-api_instance = Fastly::IamRolesApi.new
-opts = {
-    role_id: 'role_id_example', # String | Alphanumeric string identifying the role.
-    request_body: { key: 3.56}, # Hash<String, Object> | 
-}
-
-begin
-  # Update a role
-  result = api_instance.update_a_role(opts)
-  p result
-rescue Fastly::ApiError => e
-  puts "Error when calling IamRolesApi->update_a_role: #{e}"
-end
-```
-
-### Options
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **role_id** | **String** | Alphanumeric string identifying the role. |  |
-| **request_body** | [**Hash&lt;String, Object&gt;**](Object.md) |  | [optional] |
-
-### Return type
-
-**Object**
+[**IamV1RoleListResponse**](IamV1RoleListResponse.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)

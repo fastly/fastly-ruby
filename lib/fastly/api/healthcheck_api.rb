@@ -21,7 +21,7 @@ module Fastly
     # Create a health check for a particular service and version.
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
     # @option opts [Integer] :version_id Integer identifying a service version. (required)
-    # @option opts [Integer] :check_interval How often to run the health check in milliseconds.
+    # @option opts [Integer] :check_interval How often to run the health check in milliseconds. Minimum 1 second, maximum 1 hour.
     # @option opts [String] :comment A freeform descriptive note.
     # @option opts [Integer] :expected_response The status code expected from the host.
     # @option opts [Array<String>] :headers Array of custom headers that will be added to the health check probes.
@@ -44,7 +44,7 @@ module Fastly
     # Create a health check for a particular service and version.
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
     # @option opts [Integer] :version_id Integer identifying a service version. (required)
-    # @option opts [Integer] :check_interval How often to run the health check in milliseconds.
+    # @option opts [Integer] :check_interval How often to run the health check in milliseconds. Minimum 1 second, maximum 1 hour.
     # @option opts [String] :comment A freeform descriptive note.
     # @option opts [Integer] :expected_response The status code expected from the host.
     # @option opts [Array<String>] :headers Array of custom headers that will be added to the health check probes.
@@ -73,6 +73,14 @@ module Fastly
       if @api_client.config.client_side_validation && version_id.nil?
         fail ArgumentError, "Missing the required parameter 'version_id' when calling HealthcheckApi.create_healthcheck"
       end
+      if @api_client.config.client_side_validation && !opts[:'check_interval'].nil? && opts[:'check_interval'] > 3600000
+        fail ArgumentError, 'invalid value for "opts[:"check_interval"]" when calling HealthcheckApi.create_healthcheck, must be smaller than or equal to 3600000.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'check_interval'].nil? && opts[:'check_interval'] < 1000
+        fail ArgumentError, 'invalid value for "opts[:"check_interval"]" when calling HealthcheckApi.create_healthcheck, must be greater than or equal to 1000.'
+      end
+
       # resource path
       local_var_path = '/service/{service_id}/version/{version_id}/healthcheck'.sub('{' + 'service_id' + '}', CGI.escape(service_id.to_s)).sub('{' + 'version_id' + '}', CGI.escape(version_id.to_s))
 
@@ -360,7 +368,7 @@ module Fastly
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
     # @option opts [Integer] :version_id Integer identifying a service version. (required)
     # @option opts [String] :healthcheck_name The name of the health check. (required)
-    # @option opts [Integer] :check_interval How often to run the health check in milliseconds.
+    # @option opts [Integer] :check_interval How often to run the health check in milliseconds. Minimum 1 second, maximum 1 hour.
     # @option opts [String] :comment A freeform descriptive note.
     # @option opts [Integer] :expected_response The status code expected from the host.
     # @option opts [Array<String>] :headers Array of custom headers that will be added to the health check probes.
@@ -384,7 +392,7 @@ module Fastly
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
     # @option opts [Integer] :version_id Integer identifying a service version. (required)
     # @option opts [String] :healthcheck_name The name of the health check. (required)
-    # @option opts [Integer] :check_interval How often to run the health check in milliseconds.
+    # @option opts [Integer] :check_interval How often to run the health check in milliseconds. Minimum 1 second, maximum 1 hour.
     # @option opts [String] :comment A freeform descriptive note.
     # @option opts [Integer] :expected_response The status code expected from the host.
     # @option opts [Array<String>] :headers Array of custom headers that will be added to the health check probes.
@@ -418,6 +426,14 @@ module Fastly
       if @api_client.config.client_side_validation && healthcheck_name.nil?
         fail ArgumentError, "Missing the required parameter 'healthcheck_name' when calling HealthcheckApi.update_healthcheck"
       end
+      if @api_client.config.client_side_validation && !opts[:'check_interval'].nil? && opts[:'check_interval'] > 3600000
+        fail ArgumentError, 'invalid value for "opts[:"check_interval"]" when calling HealthcheckApi.update_healthcheck, must be smaller than or equal to 3600000.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'check_interval'].nil? && opts[:'check_interval'] < 1000
+        fail ArgumentError, 'invalid value for "opts[:"check_interval"]" when calling HealthcheckApi.update_healthcheck, must be greater than or equal to 1000.'
+      end
+
       # resource path
       local_var_path = '/service/{service_id}/version/{version_id}/healthcheck/{healthcheck_name}'.sub('{' + 'service_id' + '}', CGI.escape(service_id.to_s)).sub('{' + 'version_id' + '}', CGI.escape(version_id.to_s)).sub('{' + 'healthcheck_name' + '}', CGI.escape(healthcheck_name.to_s))
 

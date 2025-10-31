@@ -163,6 +163,7 @@ module Fastly
     # @option opts [String] :event_id Unique ID of the event. (required)
     # @option opts [String] :cursor Cursor value from the &#x60;next_cursor&#x60; field of a previous response, used to retrieve the next page. To request the first page, this should be empty.
     # @option opts [Integer] :limit Limit how many results are returned. (default to 20)
+    # @option opts [String] :include Include relationships. Optional. Comma-separated values.
     # @return [InlineResponse2003]
     def ddos_protection_event_rule_list(opts = {})
       data, _status_code, _headers = ddos_protection_event_rule_list_with_http_info(opts)
@@ -174,6 +175,7 @@ module Fastly
     # @option opts [String] :event_id Unique ID of the event. (required)
     # @option opts [String] :cursor Cursor value from the &#x60;next_cursor&#x60; field of a previous response, used to retrieve the next page. To request the first page, this should be empty.
     # @option opts [Integer] :limit Limit how many results are returned. (default to 20)
+    # @option opts [String] :include Include relationships. Optional. Comma-separated values.
     # @return [Array<(InlineResponse2003, Integer, Hash)>] InlineResponse2003 data, response status code and response headers
     def ddos_protection_event_rule_list_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -196,6 +198,7 @@ module Fastly
       query_params = opts[:query_params] || {}
       query_params[:'cursor'] = opts[:'cursor'] if !opts[:'cursor'].nil?
       query_params[:'limit'] = opts[:'limit'] if !opts[:'limit'].nil?
+      query_params[:'include'] = opts[:'include'] if !opts[:'include'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}

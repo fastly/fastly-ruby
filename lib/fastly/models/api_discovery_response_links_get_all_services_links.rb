@@ -12,42 +12,14 @@ require 'date'
 require 'time'
 
 module Fastly
-  class IamRole
-    # Date and time in ISO 8601 format.
-    attr_accessor :created_at
-
-    # Date and time in ISO 8601 format.
-    attr_accessor :updated_at
-
-    # Alphanumeric string identifying the role.
-    attr_accessor :id
-
-    # The type of the object.
-    attr_accessor :object
-
-    # Name of the role.
-    attr_accessor :name
-
-    # Description of the role.
-    attr_accessor :description
-
-    # This attribute is set to `true` if the role is managed by the customer. It is set to `false` if the role was created by Fastly.
-    attr_accessor :custom
-
-    # Number of permissions assigned to the role.
-    attr_accessor :permissions_count
+  class ApiDiscoveryResponseLinksGetAllServicesLinks
+    # Location of resource
+    attr_accessor :_self
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'created_at' => :'created_at',
-        :'updated_at' => :'updated_at',
-        :'id' => :'id',
-        :'object' => :'object',
-        :'name' => :'name',
-        :'description' => :'description',
-        :'custom' => :'custom',
-        :'permissions_count' => :'permissions_count'
+        :'_self' => :'self'
       }
     end
 
@@ -59,78 +31,33 @@ module Fastly
     # Attribute type mapping.
     def self.fastly_types
       {
-        :'created_at' => :'Time',
-        :'updated_at' => :'Time',
-        :'id' => :'String',
-        :'object' => :'String',
-        :'name' => :'String',
-        :'description' => :'String',
-        :'custom' => :'Boolean',
-        :'permissions_count' => :'Integer'
+        :'_self' => :'String'
       }
     end
 
     # List of attributes with nullable: true
     def self.fastly_nullable
       Set.new([
-        :'created_at',
-        :'updated_at',
       ])
-    end
-
-    # List of class defined in allOf (OpenAPI v3)
-    def self.fastly_all_of
-      [
-      :'IamRoleAllOf',
-      :'TimestampsNoDelete'
-      ]
     end
 
     # Initializes the object
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Fastly::IamRole` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Fastly::ApiDiscoveryResponseLinksGetAllServicesLinks` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `Fastly::IamRole`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `Fastly::ApiDiscoveryResponseLinksGetAllServicesLinks`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'created_at')
-        self.created_at = attributes[:'created_at']
-      end
-
-      if attributes.key?(:'updated_at')
-        self.updated_at = attributes[:'updated_at']
-      end
-
-      if attributes.key?(:'id')
-        self.id = attributes[:'id']
-      end
-
-      if attributes.key?(:'object')
-        self.object = attributes[:'object']
-      end
-
-      if attributes.key?(:'name')
-        self.name = attributes[:'name']
-      end
-
-      if attributes.key?(:'description')
-        self.description = attributes[:'description']
-      end
-
-      if attributes.key?(:'custom')
-        self.custom = attributes[:'custom']
-      end
-
-      if attributes.key?(:'permissions_count')
-        self.permissions_count = attributes[:'permissions_count']
+      if attributes.key?(:'_self')
+        self._self = attributes[:'_self']
       end
     end
 
@@ -152,14 +79,7 @@ module Fastly
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          created_at == o.created_at &&
-          updated_at == o.updated_at &&
-          id == o.id &&
-          object == o.object &&
-          name == o.name &&
-          description == o.description &&
-          custom == o.custom &&
-          permissions_count == o.permissions_count
+          _self == o._self
     end
 
     # @see the `==` method
@@ -171,7 +91,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [created_at, updated_at, id, object, name, description, custom, permissions_count].hash
+      [_self].hash
     end
 
     # Builds the object from hash

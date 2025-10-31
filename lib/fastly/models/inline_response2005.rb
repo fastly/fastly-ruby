@@ -13,15 +13,13 @@ require 'time'
 
 module Fastly
   class InlineResponse2005
-    attr_accessor :data
-
-    attr_accessor :meta
+    # Time-stamp (GMT) when the domain_ownership validation will expire.
+    attr_accessor :expires_at
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'data' => :'data',
-        :'meta' => :'meta'
+        :'expires_at' => :'expires_at'
       }
     end
 
@@ -33,8 +31,7 @@ module Fastly
     # Attribute type mapping.
     def self.fastly_types
       {
-        :'data' => :'Array<KvStoreDetails>',
-        :'meta' => :'PaginationCursorMeta'
+        :'expires_at' => :'String'
       }
     end
 
@@ -59,14 +56,8 @@ module Fastly
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'data')
-        if (value = attributes[:'data']).is_a?(Array)
-          self.data = value
-        end
-      end
-
-      if attributes.key?(:'meta')
-        self.meta = attributes[:'meta']
+      if attributes.key?(:'expires_at')
+        self.expires_at = attributes[:'expires_at']
       end
     end
 
@@ -88,8 +79,7 @@ module Fastly
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          data == o.data &&
-          meta == o.meta
+          expires_at == o.expires_at
     end
 
     # @see the `==` method
@@ -101,7 +91,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [data, meta].hash
+      [expires_at].hash
     end
 
     # Builds the object from hash

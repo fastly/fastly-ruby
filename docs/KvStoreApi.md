@@ -134,7 +134,7 @@ end
 ## `kv_store_list()`
 
 ```ruby
-kv_store_list(opts): <InlineResponse2005> # List all KV stores.
+kv_store_list(opts): <InlineResponse2006> # List all KV stores.
 ```
 
 List all KV stores.
@@ -168,7 +168,7 @@ end
 
 ### Return type
 
-[**InlineResponse2005**](InlineResponse2005.md)
+[**InlineResponse2006**](InlineResponse2006.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)

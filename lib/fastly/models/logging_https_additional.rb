@@ -42,6 +42,9 @@ module Fastly
     # A Fastly [log format string](https://www.fastly.com/documentation/guides/integrations/streaming-logs/custom-log-formats/).
     attr_accessor :format
 
+    # How frequently, in seconds, batches of log data are sent to the HTTPS endpoint. A value of `0` sends logs at the same interval as the default, which is `5` seconds.
+    attr_accessor :period
+
     class EnumAttributeValidator
       attr_reader :datatype
       attr_reader :allowable_values
@@ -76,7 +79,8 @@ module Fastly
         :'header_value' => :'header_value',
         :'method' => :'method',
         :'json_format' => :'json_format',
-        :'format' => :'format'
+        :'format' => :'format',
+        :'period' => :'period'
       }
     end
 
@@ -97,7 +101,8 @@ module Fastly
         :'header_value' => :'String',
         :'method' => :'String',
         :'json_format' => :'String',
-        :'format' => :'String'
+        :'format' => :'String',
+        :'period' => :'Integer'
       }
     end
 
@@ -180,6 +185,12 @@ module Fastly
       else
         self.format = '%h %l %u %t \"%r\" %&gt;s %b'
       end
+
+      if attributes.key?(:'period')
+        self.period = attributes[:'period']
+      else
+        self.period = 5
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -233,7 +244,8 @@ module Fastly
           header_value == o.header_value &&
           method == o.method &&
           json_format == o.json_format &&
-          format == o.format
+          format == o.format &&
+          period == o.period
     end
 
     # @see the `==` method
@@ -245,7 +257,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [url, request_max_entries, request_max_bytes, content_type, header_name, message_type, header_value, method, json_format, format].hash
+      [url, request_max_entries, request_max_bytes, content_type, header_name, message_type, header_value, method, json_format, format, period].hash
     end
 
     # Builds the object from hash

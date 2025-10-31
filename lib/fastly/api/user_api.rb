@@ -25,6 +25,7 @@ module Fastly
     # @option opts [Boolean] :locked Indicates whether the is account is locked for editing or not.
     # @option opts [Boolean] :require_new_password Indicates if a new password is required at next login.
     # @option opts [RoleUser] :role 
+    # @option opts [Array<String>] :roles A list of role IDs assigned to the user.
     # @option opts [Boolean] :two_factor_auth_enabled Indicates if 2FA is enabled on the user.
     # @option opts [Boolean] :two_factor_setup_required Indicates if 2FA is required by the user&#39;s customer account.
     # @return [UserResponse]
@@ -41,6 +42,7 @@ module Fastly
     # @option opts [Boolean] :locked Indicates whether the is account is locked for editing or not.
     # @option opts [Boolean] :require_new_password Indicates if a new password is required at next login.
     # @option opts [RoleUser] :role 
+    # @option opts [Array<String>] :roles A list of role IDs assigned to the user.
     # @option opts [Boolean] :two_factor_auth_enabled Indicates if 2FA is enabled on the user.
     # @option opts [Boolean] :two_factor_setup_required Indicates if 2FA is required by the user&#39;s customer account.
     # @return [Array<(UserResponse, Integer, Hash)>] UserResponse data, response status code and response headers
@@ -73,6 +75,7 @@ module Fastly
       form_params['locked'] = opts[:'locked'] if !opts[:'locked'].nil?
       form_params['require_new_password'] = opts[:'require_new_password'] if !opts[:'require_new_password'].nil?
       form_params['role'] = opts[:'role'] if !opts[:'role'].nil?
+      form_params['roles'] = @api_client.build_collection_param(opts[:'roles'], :csv) if !opts[:'roles'].nil?
       form_params['two_factor_auth_enabled'] = opts[:'two_factor_auth_enabled'] if !opts[:'two_factor_auth_enabled'].nil?
       form_params['two_factor_setup_required'] = opts[:'two_factor_setup_required'] if !opts[:'two_factor_setup_required'].nil?
 
@@ -356,6 +359,7 @@ module Fastly
     # @option opts [Boolean] :locked Indicates whether the is account is locked for editing or not.
     # @option opts [Boolean] :require_new_password Indicates if a new password is required at next login.
     # @option opts [RoleUser] :role 
+    # @option opts [Array<String>] :roles A list of role IDs assigned to the user.
     # @option opts [Boolean] :two_factor_auth_enabled Indicates if 2FA is enabled on the user.
     # @option opts [Boolean] :two_factor_setup_required Indicates if 2FA is required by the user&#39;s customer account.
     # @return [UserResponse]
@@ -373,6 +377,7 @@ module Fastly
     # @option opts [Boolean] :locked Indicates whether the is account is locked for editing or not.
     # @option opts [Boolean] :require_new_password Indicates if a new password is required at next login.
     # @option opts [RoleUser] :role 
+    # @option opts [Array<String>] :roles A list of role IDs assigned to the user.
     # @option opts [Boolean] :two_factor_auth_enabled Indicates if 2FA is enabled on the user.
     # @option opts [Boolean] :two_factor_setup_required Indicates if 2FA is required by the user&#39;s customer account.
     # @return [Array<(UserResponse, Integer, Hash)>] UserResponse data, response status code and response headers
@@ -410,6 +415,7 @@ module Fastly
       form_params['locked'] = opts[:'locked'] if !opts[:'locked'].nil?
       form_params['require_new_password'] = opts[:'require_new_password'] if !opts[:'require_new_password'].nil?
       form_params['role'] = opts[:'role'] if !opts[:'role'].nil?
+      form_params['roles'] = @api_client.build_collection_param(opts[:'roles'], :csv) if !opts[:'roles'].nil?
       form_params['two_factor_auth_enabled'] = opts[:'two_factor_auth_enabled'] if !opts[:'two_factor_auth_enabled'].nil?
       form_params['two_factor_setup_required'] = opts[:'two_factor_setup_required'] if !opts[:'two_factor_setup_required'].nil?
 

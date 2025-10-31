@@ -12,18 +12,34 @@ require 'date'
 require 'time'
 
 module Fastly
-  class BotManagementResponseServiceService
-    # Service identifier
+  class SuccessfulResponseAsObjectAllOf
+    # Domain Identifier (UUID).
     attr_accessor :id
 
-    # Name of the object
-    attr_accessor :object
+    # The fully-qualified domain name for your domain. Can be created, but not updated.
+    attr_accessor :fqdn
+
+    # The `service_id` associated with your domain or `null` if there is no association.
+    attr_accessor :service_id
+
+    # A freeform descriptive note.
+    attr_accessor :description
+
+    # Denotes if the domain has at least one TLS activation or not.
+    attr_accessor :activated
+
+    # Denotes that the customer has proven ownership over the domain by obtaining a Fastly-managed TLS certificate for it or by providing a their own TLS certificate from a publicly-trusted CA that includes the domain or matching wildcard.     
+    attr_accessor :verified
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'id' => :'id',
-        :'object' => :'object'
+        :'fqdn' => :'fqdn',
+        :'service_id' => :'service_id',
+        :'description' => :'description',
+        :'activated' => :'activated',
+        :'verified' => :'verified'
       }
     end
 
@@ -36,13 +52,18 @@ module Fastly
     def self.fastly_types
       {
         :'id' => :'String',
-        :'object' => :'String'
+        :'fqdn' => :'String',
+        :'service_id' => :'String',
+        :'description' => :'String',
+        :'activated' => :'Boolean',
+        :'verified' => :'Boolean'
       }
     end
 
     # List of attributes with nullable: true
     def self.fastly_nullable
       Set.new([
+        :'service_id',
       ])
     end
 
@@ -50,13 +71,13 @@ module Fastly
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Fastly::BotManagementResponseServiceService` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Fastly::SuccessfulResponseAsObjectAllOf` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `Fastly::BotManagementResponseServiceService`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `Fastly::SuccessfulResponseAsObjectAllOf`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
@@ -65,8 +86,24 @@ module Fastly
         self.id = attributes[:'id']
       end
 
-      if attributes.key?(:'object')
-        self.object = attributes[:'object']
+      if attributes.key?(:'fqdn')
+        self.fqdn = attributes[:'fqdn']
+      end
+
+      if attributes.key?(:'service_id')
+        self.service_id = attributes[:'service_id']
+      end
+
+      if attributes.key?(:'description')
+        self.description = attributes[:'description']
+      end
+
+      if attributes.key?(:'activated')
+        self.activated = attributes[:'activated']
+      end
+
+      if attributes.key?(:'verified')
+        self.verified = attributes[:'verified']
       end
     end
 
@@ -89,7 +126,11 @@ module Fastly
       return true if self.equal?(o)
       self.class == o.class &&
           id == o.id &&
-          object == o.object
+          fqdn == o.fqdn &&
+          service_id == o.service_id &&
+          description == o.description &&
+          activated == o.activated &&
+          verified == o.verified
     end
 
     # @see the `==` method
@@ -101,7 +142,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, object].hash
+      [id, fqdn, service_id, description, activated, verified].hash
     end
 
     # Builds the object from hash

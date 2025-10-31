@@ -1,5 +1,28 @@
 # Changelog
 
+## [v15.0.0](https://github.com/fastly/fastly-ruby/releases/tag/release/v15.0.0) (2025-10-31)
+
+**Bug fixes:**
+
+- fix(dictionary): Correct example dictionary name to use valid characters
+
+**Enhancements:**
+
+- feat(iam_roles): Add new IAM Roles API.
+- feat(api_discovery): Add new API Discovery API.
+- feat(realtime, historical): Add new metric `api_discovery_requests_count`.
+- feat(user): Add the ability to assign multiple roles to users.
+- feat(healthcheck): Clarify the valid range for the `check_interval` parameter.
+- feat(ddos_protection): Add `traffic_percentage` field to DDoS Protection traffic statistics responses.
+- feat(ddos_protection): Update `ddos-protection-event-rule-list` with `include=traffic_stats` parameter for embedded traffic statistics.
+- feat(logging_https): Add `period` parameter to the logging HTTPS endpoint.
+
+**Documentation:**
+
+- doc(sudo): Spelling fixes.
+- doc(enabled-products): Add support for product ID `api_discovery`.
+
+
 ## [v14.0.0](https://github.com/fastly/fastly-ruby/releases/tag/release/v14.0.0) (2025-08-28)
 
 **Breaking Changes:**

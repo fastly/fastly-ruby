@@ -40,7 +40,7 @@ module Fastly
     def self.fastly_types
       {
         :'product' => :'DdosProtectionResponseProductProduct',
-        :'service' => :'BotManagementResponseServiceService',
+        :'service' => :'ApiDiscoveryResponseServiceService',
         :'configuration' => :'DdosProtectionResponseConfigurationConfiguration',
         :'_links' => :'DdosProtectionResponseLinksLinks'
       }

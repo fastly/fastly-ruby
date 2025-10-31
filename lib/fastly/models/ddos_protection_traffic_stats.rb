@@ -27,6 +27,9 @@ module Fastly
 
     attr_accessor :attributes
 
+    # Rule traffic percentage for the event.
+    attr_accessor :traffic_percentage
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -34,7 +37,8 @@ module Fastly
         :'updated_at' => :'updated_at',
         :'customer_id' => :'customer_id',
         :'service_id' => :'service_id',
-        :'attributes' => :'attributes'
+        :'attributes' => :'attributes',
+        :'traffic_percentage' => :'traffic_percentage'
       }
     end
 
@@ -50,7 +54,8 @@ module Fastly
         :'updated_at' => :'Time',
         :'customer_id' => :'String',
         :'service_id' => :'String',
-        :'attributes' => :'Array<DdosProtectionAttributeStats>'
+        :'attributes' => :'Array<DdosProtectionAttributeStats>',
+        :'traffic_percentage' => :'Float'
       }
     end
 
@@ -106,6 +111,10 @@ module Fastly
           self.attributes = value
         end
       end
+
+      if attributes.key?(:'traffic_percentage')
+        self.traffic_percentage = attributes[:'traffic_percentage']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -121,6 +130,12 @@ module Fastly
       true
     end
 
+    # Custom attribute writer method with validation
+    # @param [Object] traffic_percentage Value to be assigned
+    def traffic_percentage=(traffic_percentage)
+      @traffic_percentage = traffic_percentage
+    end
+
     # Checks equality by comparing each attribute.
     # @param [Object] Object to be compared
     def ==(o)
@@ -130,7 +145,8 @@ module Fastly
           updated_at == o.updated_at &&
           customer_id == o.customer_id &&
           service_id == o.service_id &&
-          attributes == o.attributes
+          attributes == o.attributes &&
+          traffic_percentage == o.traffic_percentage
     end
 
     # @see the `==` method
@@ -142,7 +158,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [created_at, updated_at, customer_id, service_id, attributes].hash
+      [created_at, updated_at, customer_id, service_id, attributes, traffic_percentage].hash
     end
 
     # Builds the object from hash

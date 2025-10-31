@@ -144,7 +144,7 @@ module Fastly
     # Delete service authorizations
     # Delete service authorizations.
     # @option opts [Hash<String, Object>] :request_body 
-    # @return [InlineResponse2009]
+    # @return [InlineResponse20010]
     def delete_service_authorization2(opts = {})
       data, _status_code, _headers = delete_service_authorization2_with_http_info(opts)
       data
@@ -153,7 +153,7 @@ module Fastly
     # Delete service authorizations
     # Delete service authorizations.
     # @option opts [Hash<String, Object>] :request_body 
-    # @return [Array<(InlineResponse2009, Integer, Hash)>] InlineResponse2009 data, response status code and response headers
+    # @return [Array<(InlineResponse20010, Integer, Hash)>] InlineResponse20010 data, response status code and response headers
     def delete_service_authorization2_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ServiceAuthorizationsApi.delete_service_authorization2 ...'
@@ -182,7 +182,7 @@ module Fastly
       post_body = opts[:debug_body] || @api_client.object_to_http_body(opts[:'request_body'])
 
       # return_type
-      return_type = opts[:debug_return_type] || 'InlineResponse2009'
+      return_type = opts[:debug_return_type] || 'InlineResponse20010'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['token']

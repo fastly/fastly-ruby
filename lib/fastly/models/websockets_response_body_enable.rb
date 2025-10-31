@@ -37,7 +37,7 @@ module Fastly
     def self.fastly_types
       {
         :'product' => :'WebsocketsResponseProductProduct',
-        :'service' => :'BotManagementResponseServiceService',
+        :'service' => :'ApiDiscoveryResponseServiceService',
         :'_links' => :'WebsocketsResponseLinksLinks'
       }
     end

@@ -21,6 +21,8 @@ module Fastly
 
     attr_accessor :role
 
+    attr_accessor :roles
+
     # Indicates whether or not the invitation is active.
     attr_accessor :status_code
 
@@ -52,6 +54,7 @@ module Fastly
         :'email' => :'email',
         :'limit_services' => :'limit_services',
         :'role' => :'role',
+        :'roles' => :'roles',
         :'status_code' => :'status_code'
       }
     end
@@ -67,6 +70,7 @@ module Fastly
         :'email' => :'String',
         :'limit_services' => :'Boolean',
         :'role' => :'RoleUser',
+        :'roles' => :'Array<String>',
         :'status_code' => :'Integer'
       }
     end
@@ -102,6 +106,12 @@ module Fastly
 
       if attributes.key?(:'role')
         self.role = attributes[:'role']
+      end
+
+      if attributes.key?(:'roles')
+        if (value = attributes[:'roles']).is_a?(Array)
+          self.roles = value
+        end
       end
 
       if attributes.key?(:'status_code')
@@ -142,6 +152,7 @@ module Fastly
           email == o.email &&
           limit_services == o.limit_services &&
           role == o.role &&
+          roles == o.roles &&
           status_code == o.status_code
     end
 
@@ -154,7 +165,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [email, limit_services, role, status_code].hash
+      [email, limit_services, role, roles, status_code].hash
     end
 
     # Builds the object from hash

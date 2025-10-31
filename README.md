@@ -8,7 +8,7 @@ A Ruby client library for interacting with most facets of the [Fastly API](https
 To install via RubyGems, add the following to your project's `Gemfile`:
 
 ```ruby
-gem 'fastly', '~> 14.0.0'
+gem 'fastly', '~> 15.0.0'
 ```
 
 Then run `bundle install`.
@@ -174,6 +174,11 @@ Class | Method | Description
 [*Fastly::DirectorBackendApi*](docs/DirectorBackendApi.md) | [**create_director_backend**](docs/DirectorBackendApi.md#create_director_backend) | Create a director-backend relationship
 [*Fastly::DirectorBackendApi*](docs/DirectorBackendApi.md) | [**delete_director_backend**](docs/DirectorBackendApi.md#delete_director_backend) | Delete a director-backend relationship
 [*Fastly::DirectorBackendApi*](docs/DirectorBackendApi.md) | [**get_director_backend**](docs/DirectorBackendApi.md#get_director_backend) | Get a director-backend relationship
+[*Fastly::DmDomainsApi*](docs/DmDomainsApi.md) | [**create_dm_domain**](docs/DmDomainsApi.md#create_dm_domain) | Create a domain
+[*Fastly::DmDomainsApi*](docs/DmDomainsApi.md) | [**delete_dm_domain**](docs/DmDomainsApi.md#delete_dm_domain) | Delete a domain
+[*Fastly::DmDomainsApi*](docs/DmDomainsApi.md) | [**get_dm_domain**](docs/DmDomainsApi.md#get_dm_domain) | Get a domain
+[*Fastly::DmDomainsApi*](docs/DmDomainsApi.md) | [**list_dm_domains**](docs/DmDomainsApi.md#list_dm_domains) | List domains
+[*Fastly::DmDomainsApi*](docs/DmDomainsApi.md) | [**update_dm_domain**](docs/DmDomainsApi.md#update_dm_domain) | Update a domain
 [*Fastly::DomainApi*](docs/DomainApi.md) | [**check_domain**](docs/DomainApi.md#check_domain) | Validate DNS configuration for a single domain on a service
 [*Fastly::DomainApi*](docs/DomainApi.md) | [**check_domains**](docs/DomainApi.md#check_domains) | Validate DNS configuration for all domains on a service
 [*Fastly::DomainApi*](docs/DomainApi.md) | [**create_domain**](docs/DomainApi.md#create_domain) | Add a domain name to a service
@@ -216,14 +221,8 @@ Class | Method | Description
 [*Fastly::Http3Api*](docs/Http3Api.md) | [**delete_http3**](docs/Http3Api.md#delete_http3) | Disable support for HTTP/3
 [*Fastly::Http3Api*](docs/Http3Api.md) | [**get_http3**](docs/Http3Api.md#get_http3) | Get HTTP/3 status
 [*Fastly::IamPermissionsApi*](docs/IamPermissionsApi.md) | [**list_permissions**](docs/IamPermissionsApi.md#list_permissions) | List permissions
-[*Fastly::IamRolesApi*](docs/IamRolesApi.md) | [**add_role_permissions**](docs/IamRolesApi.md#add_role_permissions) | Add permissions to a role
-[*Fastly::IamRolesApi*](docs/IamRolesApi.md) | [**create_a_role**](docs/IamRolesApi.md#create_a_role) | Create a role
-[*Fastly::IamRolesApi*](docs/IamRolesApi.md) | [**delete_a_role**](docs/IamRolesApi.md#delete_a_role) | Delete a role
-[*Fastly::IamRolesApi*](docs/IamRolesApi.md) | [**get_a_role**](docs/IamRolesApi.md#get_a_role) | Get a role
-[*Fastly::IamRolesApi*](docs/IamRolesApi.md) | [**list_role_permissions**](docs/IamRolesApi.md#list_role_permissions) | List permissions in a role
-[*Fastly::IamRolesApi*](docs/IamRolesApi.md) | [**list_roles**](docs/IamRolesApi.md#list_roles) | List roles
-[*Fastly::IamRolesApi*](docs/IamRolesApi.md) | [**remove_role_permissions**](docs/IamRolesApi.md#remove_role_permissions) | Remove permissions from a role
-[*Fastly::IamRolesApi*](docs/IamRolesApi.md) | [**update_a_role**](docs/IamRolesApi.md#update_a_role) | Update a role
+[*Fastly::IamRolesApi*](docs/IamRolesApi.md) | [**iam_v1_roles_get**](docs/IamRolesApi.md#iam_v1_roles_get) | Get IAM role by ID
+[*Fastly::IamRolesApi*](docs/IamRolesApi.md) | [**iam_v1_roles_list**](docs/IamRolesApi.md#iam_v1_roles_list) | List IAM roles
 [*Fastly::IamServiceGroupsApi*](docs/IamServiceGroupsApi.md) | [**add_service_group_services**](docs/IamServiceGroupsApi.md#add_service_group_services) | Add services in a service group
 [*Fastly::IamServiceGroupsApi*](docs/IamServiceGroupsApi.md) | [**create_a_service_group**](docs/IamServiceGroupsApi.md#create_a_service_group) | Create a service group
 [*Fastly::IamServiceGroupsApi*](docs/IamServiceGroupsApi.md) | [**delete_a_service_group**](docs/IamServiceGroupsApi.md#delete_a_service_group) | Delete a service group
@@ -434,6 +433,10 @@ Class | Method | Description
 [*Fastly::ProductAiAcceleratorApi*](docs/ProductAiAcceleratorApi.md) | [**disable_product_ai_accelerator**](docs/ProductAiAcceleratorApi.md#disable_product_ai_accelerator) | Disable product
 [*Fastly::ProductAiAcceleratorApi*](docs/ProductAiAcceleratorApi.md) | [**enable_ai_accelerator**](docs/ProductAiAcceleratorApi.md#enable_ai_accelerator) | Enable product
 [*Fastly::ProductAiAcceleratorApi*](docs/ProductAiAcceleratorApi.md) | [**get_ai_accelerator**](docs/ProductAiAcceleratorApi.md#get_ai_accelerator) | Get product enablement status
+[*Fastly::ProductApiDiscoveryApi*](docs/ProductApiDiscoveryApi.md) | [**disable_product_api_discovery**](docs/ProductApiDiscoveryApi.md#disable_product_api_discovery) | Disable product
+[*Fastly::ProductApiDiscoveryApi*](docs/ProductApiDiscoveryApi.md) | [**enable_product_api_discovery**](docs/ProductApiDiscoveryApi.md#enable_product_api_discovery) | Enable product
+[*Fastly::ProductApiDiscoveryApi*](docs/ProductApiDiscoveryApi.md) | [**get_product_api_discovery**](docs/ProductApiDiscoveryApi.md#get_product_api_discovery) | Get product enablement status
+[*Fastly::ProductApiDiscoveryApi*](docs/ProductApiDiscoveryApi.md) | [**get_services_product_api_discovery**](docs/ProductApiDiscoveryApi.md#get_services_product_api_discovery) | Get services with product enabled
 [*Fastly::ProductBotManagementApi*](docs/ProductBotManagementApi.md) | [**disable_product_bot_management**](docs/ProductBotManagementApi.md#disable_product_bot_management) | Disable product
 [*Fastly::ProductBotManagementApi*](docs/ProductBotManagementApi.md) | [**enable_product_bot_management**](docs/ProductBotManagementApi.md#enable_product_bot_management) | Enable product
 [*Fastly::ProductBotManagementApi*](docs/ProductBotManagementApi.md) | [**get_product_bot_management**](docs/ProductBotManagementApi.md#get_product_bot_management) | Get product enablement status
@@ -643,8 +646,6 @@ The fastly-ruby API client currently does not support the following endpoints:
 - [`/alerts/history`](https://www.fastly.com/documentation/reference/api/observability/alerts/history) (GET)
 - [`/dns/configurations/{dns_configuration_id}`](https://www.fastly.com/documentation/reference/api/) (DELETE, GET, PATCH)
 - [`/dns/configurations`](https://www.fastly.com/documentation/reference/api/) (GET, POST)
-- [`/domain-management/v1/domains/{domain_id}`](https://www.fastly.com/documentation/reference/api/) (DELETE, GET, PATCH)
-- [`/domain-management/v1/domains`](https://www.fastly.com/documentation/reference/api/) (GET, POST)
 - [`/domains/v1/tools/status`](https://www.fastly.com/documentation/reference/api/) (GET)
 - [`/domains/v1/tools/suggest`](https://www.fastly.com/documentation/reference/api/) (GET)
 - [`/ngwaf/v1/lists/{listId}`](https://www.fastly.com/documentation/reference/api/ngwaf/v1/lists) (DELETE, GET, PATCH)
@@ -661,6 +662,7 @@ The fastly-ruby API client currently does not support the following endpoints:
 - [`/ngwaf/v1/workspaces/{workspace_id}/events`](https://www.fastly.com/documentation/reference/api/ngwaf/events) (GET)
 - [`/ngwaf/v1/workspaces/{workspace_id}/redactions/{redaction_id}`](https://www.fastly.com/documentation/reference/api/ngwaf/v1/redactions) (DELETE, GET, PATCH)
 - [`/ngwaf/v1/workspaces/{workspace_id}/redactions`](https://www.fastly.com/documentation/reference/api/ngwaf/v1/redactions) (GET, POST)
+- [`/ngwaf/v1/workspaces/{workspace_id}/requests/{request_id}/report`](https://www.fastly.com/documentation/reference/api/ngwaf/v1/requests) (POST)
 - [`/ngwaf/v1/workspaces/{workspace_id}/requests/{request_id}`](https://www.fastly.com/documentation/reference/api/ngwaf/v1/requests) (GET)
 - [`/ngwaf/v1/workspaces/{workspace_id}/requests`](https://www.fastly.com/documentation/reference/api/ngwaf/v1/requests) (GET)
 - [`/ngwaf/v1/workspaces/{workspace_id}/rules/{rule_id}`](https://www.fastly.com/documentation/reference/api/ngwaf/v1/rules) (DELETE, GET, PATCH)

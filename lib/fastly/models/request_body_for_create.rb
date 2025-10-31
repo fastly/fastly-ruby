@@ -12,34 +12,23 @@ require 'date'
 require 'time'
 
 module Fastly
-  class IamRoleAllOf
-    # Alphanumeric string identifying the role.
-    attr_accessor :id
+  # All attributes for creating a domain
+  class RequestBodyForCreate
+    # The fully-qualified domain name for your domain. Can be created, but not updated.
+    attr_accessor :fqdn
 
-    # The type of the object.
-    attr_accessor :object
+    # The `service_id` associated with your domain or `null` if there is no association.
+    attr_accessor :service_id
 
-    # Name of the role.
-    attr_accessor :name
-
-    # Description of the role.
+    # A freeform descriptive note.
     attr_accessor :description
-
-    # This attribute is set to `true` if the role is managed by the customer. It is set to `false` if the role was created by Fastly.
-    attr_accessor :custom
-
-    # Number of permissions assigned to the role.
-    attr_accessor :permissions_count
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'id' => :'id',
-        :'object' => :'object',
-        :'name' => :'name',
-        :'description' => :'description',
-        :'custom' => :'custom',
-        :'permissions_count' => :'permissions_count'
+        :'fqdn' => :'fqdn',
+        :'service_id' => :'service_id',
+        :'description' => :'description'
       }
     end
 
@@ -51,18 +40,16 @@ module Fastly
     # Attribute type mapping.
     def self.fastly_types
       {
-        :'id' => :'String',
-        :'object' => :'String',
-        :'name' => :'String',
-        :'description' => :'String',
-        :'custom' => :'Boolean',
-        :'permissions_count' => :'Integer'
+        :'fqdn' => :'String',
+        :'service_id' => :'String',
+        :'description' => :'String'
       }
     end
 
     # List of attributes with nullable: true
     def self.fastly_nullable
       Set.new([
+        :'service_id',
       ])
     end
 
@@ -70,39 +57,27 @@ module Fastly
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Fastly::IamRoleAllOf` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Fastly::RequestBodyForCreate` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `Fastly::IamRoleAllOf`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `Fastly::RequestBodyForCreate`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'id')
-        self.id = attributes[:'id']
+      if attributes.key?(:'fqdn')
+        self.fqdn = attributes[:'fqdn']
       end
 
-      if attributes.key?(:'object')
-        self.object = attributes[:'object']
-      end
-
-      if attributes.key?(:'name')
-        self.name = attributes[:'name']
+      if attributes.key?(:'service_id')
+        self.service_id = attributes[:'service_id']
       end
 
       if attributes.key?(:'description')
         self.description = attributes[:'description']
-      end
-
-      if attributes.key?(:'custom')
-        self.custom = attributes[:'custom']
-      end
-
-      if attributes.key?(:'permissions_count')
-        self.permissions_count = attributes[:'permissions_count']
       end
     end
 
@@ -110,12 +85,17 @@ module Fastly
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+      if @fqdn.nil?
+        invalid_properties.push('invalid value for "fqdn", fqdn cannot be nil.')
+      end
+
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if @fqdn.nil?
       true
     end
 
@@ -124,12 +104,9 @@ module Fastly
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          id == o.id &&
-          object == o.object &&
-          name == o.name &&
-          description == o.description &&
-          custom == o.custom &&
-          permissions_count == o.permissions_count
+          fqdn == o.fqdn &&
+          service_id == o.service_id &&
+          description == o.description
     end
 
     # @see the `==` method
@@ -141,7 +118,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, object, name, description, custom, permissions_count].hash
+      [fqdn, service_id, description].hash
     end
 
     # Builds the object from hash
