@@ -63,7 +63,7 @@ nil (empty response body)
 enable_product_ddos_protection(opts): <DdosProtectionResponseEnable> # Enable product
 ```
 
-Enable the DDoS Protection product on a service in 'log' mode.
+Enable the DDoS Protection product on a service in default 'log' mode unless otherwise specified in the request body.
 
 ### Examples
 
@@ -71,6 +71,7 @@ Enable the DDoS Protection product on a service in 'log' mode.
 api_instance = Fastly::ProductDdosProtectionApi.new
 opts = {
     service_id: 'service_id_example', # String | Alphanumeric string identifying the service.
+    ddos_protection_request_enable_mode: Fastly::DdosProtectionRequestEnableMode.new, # DdosProtectionRequestEnableMode | 
 }
 
 begin
@@ -87,6 +88,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **service_id** | **String** | Alphanumeric string identifying the service. |  |
+| **ddos_protection_request_enable_mode** | [**DdosProtectionRequestEnableMode**](DdosProtectionRequestEnableMode.md) |  | [optional] |
 
 ### Return type
 

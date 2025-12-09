@@ -19,6 +19,12 @@ module Fastly
     # A human-readable name for the event.
     attr_accessor :name
 
+    # Number of requests classified as non-attack traffic for an event.
+    attr_accessor :requests_allowed
+
+    # Number of requests classified as DDoS attack traffic for an event.
+    attr_accessor :requests_detected
+
     # Alphanumeric string identifying the customer.
     attr_accessor :customer_id
 
@@ -36,6 +42,8 @@ module Fastly
       {
         :'id' => :'id',
         :'name' => :'name',
+        :'requests_allowed' => :'requests_allowed',
+        :'requests_detected' => :'requests_detected',
         :'customer_id' => :'customer_id',
         :'service_id' => :'service_id',
         :'started_at' => :'started_at',
@@ -53,6 +61,8 @@ module Fastly
       {
         :'id' => :'String',
         :'name' => :'String',
+        :'requests_allowed' => :'Integer',
+        :'requests_detected' => :'Integer',
         :'customer_id' => :'String',
         :'service_id' => :'String',
         :'started_at' => :'Time',
@@ -89,6 +99,14 @@ module Fastly
 
       if attributes.key?(:'name')
         self.name = attributes[:'name']
+      end
+
+      if attributes.key?(:'requests_allowed')
+        self.requests_allowed = attributes[:'requests_allowed']
+      end
+
+      if attributes.key?(:'requests_detected')
+        self.requests_detected = attributes[:'requests_detected']
       end
 
       if attributes.key?(:'customer_id')
@@ -128,6 +146,8 @@ module Fastly
       self.class == o.class &&
           id == o.id &&
           name == o.name &&
+          requests_allowed == o.requests_allowed &&
+          requests_detected == o.requests_detected &&
           customer_id == o.customer_id &&
           service_id == o.service_id &&
           started_at == o.started_at &&
@@ -143,7 +163,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, name, customer_id, service_id, started_at, ended_at].hash
+      [id, name, requests_allowed, requests_detected, customer_id, service_id, started_at, ended_at].hash
     end
 
     # Builds the object from hash

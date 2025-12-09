@@ -273,6 +273,10 @@
 | **ngwaf_requests_timeout_count** | **Integer** | Count of Edge WAF requests timed outcome. | [optional] |
 | **ngwaf_requests_challenged_count** | **Integer** | Count of Edge WAF requests challenged. | [optional] |
 | **api_discovery_requests_count** | **Integer** | Number of requests processed by the API Discovery engine. | [optional] |
+| **imgopto_compute_requests** | **Integer** | The number of Image Optimizer requests made from Compute services. | [optional] |
+| **dns_billable_responses_count** | **Integer** | Number of billable DNS responses (e.g., A, CNAME). | [optional] |
+| **dns_nonbillable_responses_count** | **Integer** | Number of non-billable DNS responses (e.g., NODATA, NXDOMAIN). | [optional] |
+| **upgrade** | **Integer** | Number of requests that resulted in a WebSocket upgrade. | [optional] |
 | **service_id** | **String** |  | [optional][readonly] |
 | **start_time** | **Integer** | Timestamp for the start of the time period being reported | [optional] |
 

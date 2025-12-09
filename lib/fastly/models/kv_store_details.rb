@@ -19,11 +19,19 @@ module Fastly
     # Name of the store.
     attr_accessor :name
 
+    # Timestamp at which the store was created.
+    attr_accessor :created_at
+
+    # Timestamp at which the store was last updated.
+    attr_accessor :updated_at
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'id' => :'id',
-        :'name' => :'name'
+        :'name' => :'name',
+        :'created_at' => :'created_at',
+        :'updated_at' => :'updated_at'
       }
     end
 
@@ -36,7 +44,9 @@ module Fastly
     def self.fastly_types
       {
         :'id' => :'String',
-        :'name' => :'String'
+        :'name' => :'String',
+        :'created_at' => :'String',
+        :'updated_at' => :'String'
       }
     end
 
@@ -68,6 +78,14 @@ module Fastly
       if attributes.key?(:'name')
         self.name = attributes[:'name']
       end
+
+      if attributes.key?(:'created_at')
+        self.created_at = attributes[:'created_at']
+      end
+
+      if attributes.key?(:'updated_at')
+        self.updated_at = attributes[:'updated_at']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -89,7 +107,9 @@ module Fastly
       return true if self.equal?(o)
       self.class == o.class &&
           id == o.id &&
-          name == o.name
+          name == o.name &&
+          created_at == o.created_at &&
+          updated_at == o.updated_at
     end
 
     # @see the `==` method
@@ -101,7 +121,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, name].hash
+      [id, name, created_at, updated_at].hash
     end
 
     # Builds the object from hash

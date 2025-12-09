@@ -1,4 +1,4 @@
-# Fastly::KvStoreRequestCreate
+# Fastly::KvStoreRequestCreateOrUpdate
 
 ## Properties
 

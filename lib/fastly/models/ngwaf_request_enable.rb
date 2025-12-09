@@ -16,10 +16,14 @@ module Fastly
     # The workspace to link.
     attr_accessor :workspace_id
 
+    # The percentage of traffic to inspect.
+    attr_accessor :traffic_ramp
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'workspace_id' => :'workspace_id'
+        :'workspace_id' => :'workspace_id',
+        :'traffic_ramp' => :'traffic_ramp'
       }
     end
 
@@ -31,7 +35,8 @@ module Fastly
     # Attribute type mapping.
     def self.fastly_types
       {
-        :'workspace_id' => :'String'
+        :'workspace_id' => :'String',
+        :'traffic_ramp' => :'String'
       }
     end
 
@@ -59,6 +64,10 @@ module Fastly
       if attributes.key?(:'workspace_id')
         self.workspace_id = attributes[:'workspace_id']
       end
+
+      if attributes.key?(:'traffic_ramp')
+        self.traffic_ramp = attributes[:'traffic_ramp']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -84,7 +93,8 @@ module Fastly
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          workspace_id == o.workspace_id
+          workspace_id == o.workspace_id &&
+          traffic_ramp == o.traffic_ramp
     end
 
     # @see the `==` method
@@ -96,7 +106,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [workspace_id].hash
+      [workspace_id, traffic_ramp].hash
     end
 
     # Builds the object from hash

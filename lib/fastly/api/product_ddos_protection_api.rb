@@ -79,8 +79,9 @@ module Fastly
     end
 
     # Enable product
-    # Enable the DDoS Protection product on a service in 'log' mode.
+    # Enable the DDoS Protection product on a service in default 'log' mode unless otherwise specified in the request body.
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
+    # @option opts [DdosProtectionRequestEnableMode] :ddos_protection_request_enable_mode 
     # @return [DdosProtectionResponseEnable]
     def enable_product_ddos_protection(opts = {})
       data, _status_code, _headers = enable_product_ddos_protection_with_http_info(opts)
@@ -88,8 +89,9 @@ module Fastly
     end
 
     # Enable product
-    # Enable the DDoS Protection product on a service in &#39;log&#39; mode.
+    # Enable the DDoS Protection product on a service in default &#39;log&#39; mode unless otherwise specified in the request body.
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
+    # @option opts [DdosProtectionRequestEnableMode] :ddos_protection_request_enable_mode 
     # @return [Array<(DdosProtectionResponseEnable, Integer, Hash)>] DdosProtectionResponseEnable data, response status code and response headers
     def enable_product_ddos_protection_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -111,12 +113,17 @@ module Fastly
       header_params = opts[:header_params] || {}
       # HTTP header 'Accept' (if needed)
       header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
 
       # form parameters
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body]
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(opts[:'ddos_protection_request_enable_mode'])
 
       # return_type
       return_type = opts[:debug_return_type] || 'DdosProtectionResponseEnable'

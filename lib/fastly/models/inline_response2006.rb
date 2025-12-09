@@ -13,15 +13,12 @@ require 'time'
 
 module Fastly
   class InlineResponse2006
-    attr_accessor :data
-
-    attr_accessor :meta
+    attr_accessor :results
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'data' => :'data',
-        :'meta' => :'meta'
+        :'results' => :'results'
       }
     end
 
@@ -33,8 +30,7 @@ module Fastly
     # Attribute type mapping.
     def self.fastly_types
       {
-        :'data' => :'Array<KvStoreDetails>',
-        :'meta' => :'PaginationCursorMeta'
+        :'results' => :'Array<Suggestion>'
       }
     end
 
@@ -59,14 +55,10 @@ module Fastly
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'data')
-        if (value = attributes[:'data']).is_a?(Array)
-          self.data = value
+      if attributes.key?(:'results')
+        if (value = attributes[:'results']).is_a?(Array)
+          self.results = value
         end
-      end
-
-      if attributes.key?(:'meta')
-        self.meta = attributes[:'meta']
       end
     end
 
@@ -88,8 +80,7 @@ module Fastly
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          data == o.data &&
-          meta == o.meta
+          results == o.results
     end
 
     # @see the `==` method
@@ -101,7 +92,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [data, meta].hash
+      [results].hash
     end
 
     # Builds the object from hash

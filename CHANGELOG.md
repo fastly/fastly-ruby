@@ -1,5 +1,27 @@
 # Changelog
 
+## [v15.1.0](https://github.com/fastly/fastly-ruby/releases/tag/release/v15.1.0) (2025-12-09)
+
+**Enhancements:**
+
+- feat(realtime, historical): Add new metrics `imgopto_compute_requests`, `dns_billable_responses_count`,
+                              `dns_nonbillable_responses_count`, and `upgrade`.
+- feat(products[ngwaf]): Add new parameter `traffic_ramp` to `enable-product-ngwaf`.
+- feat(products[ddos_protection]): Add new parameter `mode` to `enable-product-ddos-protection`.
+- feat(kv_store): Add `kv-store-put` operation.
+- feat(iam_roles): Add `DisplayName` field to model.
+- feat(domain_research): Add new Domain Research API.
+- feat(ddos_protection): Add `requests_allowed` and `requests_detected` fields to DDoS Protection event API.
+
+- feat(products): Add `domain_research` product to enablement API.
+
+
+
+**Documentation:**
+
+- doc(enabled-products): Add support for optional enablement parameters for some products.
+
+
 ## [v15.0.0](https://github.com/fastly/fastly-ruby/releases/tag/release/v15.0.0) (2025-10-31)
 
 **Bug fixes:**

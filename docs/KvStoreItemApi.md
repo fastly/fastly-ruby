@@ -103,7 +103,7 @@ end
 ## `kv_store_list_item_keys()`
 
 ```ruby
-kv_store_list_item_keys(opts): <InlineResponse2007> # List item keys.
+kv_store_list_item_keys(opts): <InlineResponse2008> # List item keys.
 ```
 
 Lists the matching item keys (or all item keys, if no prefix is supplied).
@@ -141,7 +141,7 @@ end
 
 ### Return type
 
-[**InlineResponse2007**](InlineResponse2007.md)
+[**InlineResponse2008**](InlineResponse2008.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)

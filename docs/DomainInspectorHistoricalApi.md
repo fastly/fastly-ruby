@@ -37,7 +37,7 @@ opts = {
     group_by: 'domain', # String | Dimensions to return in the query. Multiple dimensions may be separated by commas. For example, `group_by=domain` will return one timeseries for every domain, as a total across all datacenters (POPs). 
     limit: 'limit_example', # String | Number of results per page. The maximum is 200.
     cursor: 'cursor_example', # String | Cursor value from the `next_cursor` field of a previous response, used to retrieve the next page. To request the first page, this should be empty.
-    region: 'usa', # String | Limit query to one or more specific geographic regions. Values should be comma-separated. 
+    region: 'africa_std', # String | Limit query to one or more specific geographic regions. Values should be comma-separated. 
     datacenter: 'SJC,STP', # String | Limit query to one or more specific POPs. Values should be comma-separated.
     domain: 'domain_1.com,domain_2.com', # String | Limit query to one or more specific domains. Values should be comma-separated.
 }

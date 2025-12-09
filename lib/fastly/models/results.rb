@@ -821,6 +821,18 @@ module Fastly
     # Number of requests processed by the API Discovery engine.
     attr_accessor :api_discovery_requests_count
 
+    # The number of Image Optimizer requests made from Compute services.
+    attr_accessor :imgopto_compute_requests
+
+    # Number of billable DNS responses (e.g., A, CNAME).
+    attr_accessor :dns_billable_responses_count
+
+    # Number of non-billable DNS responses (e.g., NODATA, NXDOMAIN).
+    attr_accessor :dns_nonbillable_responses_count
+
+    # Number of requests that resulted in a WebSocket upgrade.
+    attr_accessor :upgrade
+
     attr_accessor :service_id
 
     # Timestamp for the start of the time period being reported
@@ -1098,6 +1110,10 @@ module Fastly
         :'ngwaf_requests_timeout_count' => :'ngwaf_requests_timeout_count',
         :'ngwaf_requests_challenged_count' => :'ngwaf_requests_challenged_count',
         :'api_discovery_requests_count' => :'api_discovery_requests_count',
+        :'imgopto_compute_requests' => :'imgopto_compute_requests',
+        :'dns_billable_responses_count' => :'dns_billable_responses_count',
+        :'dns_nonbillable_responses_count' => :'dns_nonbillable_responses_count',
+        :'upgrade' => :'upgrade',
         :'service_id' => :'service_id',
         :'start_time' => :'start_time'
       }
@@ -1380,6 +1396,10 @@ module Fastly
         :'ngwaf_requests_timeout_count' => :'Integer',
         :'ngwaf_requests_challenged_count' => :'Integer',
         :'api_discovery_requests_count' => :'Integer',
+        :'imgopto_compute_requests' => :'Integer',
+        :'dns_billable_responses_count' => :'Integer',
+        :'dns_nonbillable_responses_count' => :'Integer',
+        :'upgrade' => :'Integer',
         :'service_id' => :'String',
         :'start_time' => :'Integer'
       }
@@ -2483,6 +2503,22 @@ module Fastly
         self.api_discovery_requests_count = attributes[:'api_discovery_requests_count']
       end
 
+      if attributes.key?(:'imgopto_compute_requests')
+        self.imgopto_compute_requests = attributes[:'imgopto_compute_requests']
+      end
+
+      if attributes.key?(:'dns_billable_responses_count')
+        self.dns_billable_responses_count = attributes[:'dns_billable_responses_count']
+      end
+
+      if attributes.key?(:'dns_nonbillable_responses_count')
+        self.dns_nonbillable_responses_count = attributes[:'dns_nonbillable_responses_count']
+      end
+
+      if attributes.key?(:'upgrade')
+        self.upgrade = attributes[:'upgrade']
+      end
+
       if attributes.key?(:'service_id')
         self.service_id = attributes[:'service_id']
       end
@@ -2779,6 +2815,10 @@ module Fastly
           ngwaf_requests_timeout_count == o.ngwaf_requests_timeout_count &&
           ngwaf_requests_challenged_count == o.ngwaf_requests_challenged_count &&
           api_discovery_requests_count == o.api_discovery_requests_count &&
+          imgopto_compute_requests == o.imgopto_compute_requests &&
+          dns_billable_responses_count == o.dns_billable_responses_count &&
+          dns_nonbillable_responses_count == o.dns_nonbillable_responses_count &&
+          upgrade == o.upgrade &&
           service_id == o.service_id &&
           start_time == o.start_time
     end
@@ -2792,7 +2832,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [requests, hits, hits_time, miss, miss_time, pass, pass_time, errors, restarts, hit_ratio, bandwidth, body_size, header_size, req_body_bytes, req_header_bytes, resp_body_bytes, resp_header_bytes, bereq_body_bytes, bereq_header_bytes, uncacheable, pipe, synth, tls, tls_v10, tls_v11, tls_v12, tls_v13, edge_requests, edge_resp_header_bytes, edge_resp_body_bytes, edge_hit_requests, edge_miss_requests, origin_fetches, origin_fetch_header_bytes, origin_fetch_body_bytes, origin_fetch_resp_header_bytes, origin_fetch_resp_body_bytes, origin_revalidations, origin_cache_fetches, shield, shield_resp_body_bytes, shield_resp_header_bytes, shield_fetches, shield_fetch_header_bytes, shield_fetch_body_bytes, shield_fetch_resp_header_bytes, shield_fetch_resp_body_bytes, shield_revalidations, shield_cache_fetches, ipv6, otfp, otfp_resp_body_bytes, otfp_resp_header_bytes, otfp_shield_resp_body_bytes, otfp_shield_resp_header_bytes, otfp_manifests, otfp_deliver_time, otfp_shield_time, video, pci, log, log_bytes, http2, http3, waf_logged, waf_blocked, waf_passed, attack_req_body_bytes, attack_req_header_bytes, attack_logged_req_body_bytes, attack_logged_req_header_bytes, attack_blocked_req_body_bytes, attack_blocked_req_header_bytes, attack_passed_req_body_bytes, attack_passed_req_header_bytes, attack_resp_synth_bytes, imgopto, imgopto_resp_body_bytes, imgopto_resp_header_bytes, imgopto_shield, imgopto_shield_resp_body_bytes, imgopto_shield_resp_header_bytes, imgopto_transforms, imgvideo, imgvideo_frames, imgvideo_resp_header_bytes, imgvideo_resp_body_bytes, imgvideo_shield_resp_header_bytes, imgvideo_shield_resp_body_bytes, imgvideo_shield, imgvideo_shield_frames, status_200, status_204, status_206, status_301, status_302, status_304, status_400, status_401, status_403, status_404, status_406, status_416, status_429, status_500, status_501, status_502, status_503, status_504, status_505, status_530, status_1xx, status_2xx, status_3xx, status_4xx, status_5xx, object_size_1k, object_size_10k, object_size_100k, object_size_1m, object_size_10m, object_size_100m, object_size_1g, recv_sub_time, recv_sub_count, hash_sub_time, hash_sub_count, miss_sub_time, miss_sub_count, fetch_sub_time, fetch_sub_count, pass_sub_time, pass_sub_count, pipe_sub_time, pipe_sub_count, deliver_sub_time, deliver_sub_count, error_sub_time, error_sub_count, hit_sub_time, hit_sub_count, prehash_sub_time, prehash_sub_count, predeliver_sub_time, predeliver_sub_count, tls_handshake_sent_bytes, hit_resp_body_bytes, miss_resp_body_bytes, pass_resp_body_bytes, segblock_origin_fetches, segblock_shield_fetches, compute_requests, compute_request_time_ms, compute_request_time_billed_ms, compute_ram_used, compute_execution_time_ms, compute_req_header_bytes, compute_req_body_bytes, compute_resp_header_bytes, compute_resp_body_bytes, compute_resp_status_1xx, compute_resp_status_2xx, compute_resp_status_3xx, compute_resp_status_4xx, compute_resp_status_5xx, compute_bereq_header_bytes, compute_bereq_body_bytes, compute_beresp_header_bytes, compute_beresp_body_bytes, compute_bereqs, compute_bereq_errors, compute_resource_limit_exceeded, compute_heap_limit_exceeded, compute_stack_limit_exceeded, compute_globals_limit_exceeded, compute_guest_errors, compute_runtime_errors, edge_hit_resp_body_bytes, edge_hit_resp_header_bytes, edge_miss_resp_body_bytes, edge_miss_resp_header_bytes, origin_cache_fetch_resp_body_bytes, origin_cache_fetch_resp_header_bytes, shield_hit_requests, shield_miss_requests, shield_hit_resp_header_bytes, shield_hit_resp_body_bytes, shield_miss_resp_header_bytes, shield_miss_resp_body_bytes, websocket_req_header_bytes, websocket_req_body_bytes, websocket_resp_header_bytes, websocket_resp_body_bytes, websocket_bereq_header_bytes, websocket_bereq_body_bytes, websocket_beresp_header_bytes, websocket_beresp_body_bytes, websocket_conn_time_ms, fanout_recv_publishes, fanout_send_publishes, kv_store_class_a_operations, kv_store_class_b_operations, object_store_class_a_operations, object_store_class_b_operations, fanout_req_header_bytes, fanout_req_body_bytes, fanout_resp_header_bytes, fanout_resp_body_bytes, fanout_bereq_header_bytes, fanout_bereq_body_bytes, fanout_beresp_header_bytes, fanout_beresp_body_bytes, fanout_conn_time_ms, ddos_action_limit_streams_connections, ddos_action_limit_streams_requests, ddos_action_tarpit_accept, ddos_action_tarpit, ddos_action_close, ddos_action_blackhole, bot_challenge_starts, bot_challenge_complete_tokens_passed, bot_challenge_complete_tokens_failed, bot_challenge_complete_tokens_checked, bot_challenge_complete_tokens_disabled, bot_challenge_complete_tokens_issued, bot_challenges_issued, bot_challenges_succeeded, bot_challenges_failed, ddos_action_downgrade, ddos_action_downgraded_connections, all_hit_requests, all_miss_requests, all_pass_requests, all_error_requests, all_synth_requests, all_edge_hit_requests, all_edge_miss_requests, all_status_1xx, all_status_2xx, all_status_3xx, all_status_4xx, all_status_5xx, origin_offload, request_denied_get_head_body, ddos_protection_requests_detect_count, ddos_protection_requests_mitigate_count, ddos_protection_requests_allow_count, object_storage_class_a_operations_count, object_storage_class_b_operations_count, aia_requests, aia_status_1xx, aia_status_2xx, aia_status_3xx, aia_status_4xx, aia_status_5xx, aia_response_usage_tokens, aia_origin_usage_tokens, aia_estimated_time_saved_ms, request_collapse_usable_count, request_collapse_unusable_count, compute_cache_operations_count, ngwaf_requests_total_count, ngwaf_requests_unknown_count, ngwaf_requests_allowed_count, ngwaf_requests_logged_count, ngwaf_requests_blocked_count, ngwaf_requests_timeout_count, ngwaf_requests_challenged_count, api_discovery_requests_count, service_id, start_time].hash
+      [requests, hits, hits_time, miss, miss_time, pass, pass_time, errors, restarts, hit_ratio, bandwidth, body_size, header_size, req_body_bytes, req_header_bytes, resp_body_bytes, resp_header_bytes, bereq_body_bytes, bereq_header_bytes, uncacheable, pipe, synth, tls, tls_v10, tls_v11, tls_v12, tls_v13, edge_requests, edge_resp_header_bytes, edge_resp_body_bytes, edge_hit_requests, edge_miss_requests, origin_fetches, origin_fetch_header_bytes, origin_fetch_body_bytes, origin_fetch_resp_header_bytes, origin_fetch_resp_body_bytes, origin_revalidations, origin_cache_fetches, shield, shield_resp_body_bytes, shield_resp_header_bytes, shield_fetches, shield_fetch_header_bytes, shield_fetch_body_bytes, shield_fetch_resp_header_bytes, shield_fetch_resp_body_bytes, shield_revalidations, shield_cache_fetches, ipv6, otfp, otfp_resp_body_bytes, otfp_resp_header_bytes, otfp_shield_resp_body_bytes, otfp_shield_resp_header_bytes, otfp_manifests, otfp_deliver_time, otfp_shield_time, video, pci, log, log_bytes, http2, http3, waf_logged, waf_blocked, waf_passed, attack_req_body_bytes, attack_req_header_bytes, attack_logged_req_body_bytes, attack_logged_req_header_bytes, attack_blocked_req_body_bytes, attack_blocked_req_header_bytes, attack_passed_req_body_bytes, attack_passed_req_header_bytes, attack_resp_synth_bytes, imgopto, imgopto_resp_body_bytes, imgopto_resp_header_bytes, imgopto_shield, imgopto_shield_resp_body_bytes, imgopto_shield_resp_header_bytes, imgopto_transforms, imgvideo, imgvideo_frames, imgvideo_resp_header_bytes, imgvideo_resp_body_bytes, imgvideo_shield_resp_header_bytes, imgvideo_shield_resp_body_bytes, imgvideo_shield, imgvideo_shield_frames, status_200, status_204, status_206, status_301, status_302, status_304, status_400, status_401, status_403, status_404, status_406, status_416, status_429, status_500, status_501, status_502, status_503, status_504, status_505, status_530, status_1xx, status_2xx, status_3xx, status_4xx, status_5xx, object_size_1k, object_size_10k, object_size_100k, object_size_1m, object_size_10m, object_size_100m, object_size_1g, recv_sub_time, recv_sub_count, hash_sub_time, hash_sub_count, miss_sub_time, miss_sub_count, fetch_sub_time, fetch_sub_count, pass_sub_time, pass_sub_count, pipe_sub_time, pipe_sub_count, deliver_sub_time, deliver_sub_count, error_sub_time, error_sub_count, hit_sub_time, hit_sub_count, prehash_sub_time, prehash_sub_count, predeliver_sub_time, predeliver_sub_count, tls_handshake_sent_bytes, hit_resp_body_bytes, miss_resp_body_bytes, pass_resp_body_bytes, segblock_origin_fetches, segblock_shield_fetches, compute_requests, compute_request_time_ms, compute_request_time_billed_ms, compute_ram_used, compute_execution_time_ms, compute_req_header_bytes, compute_req_body_bytes, compute_resp_header_bytes, compute_resp_body_bytes, compute_resp_status_1xx, compute_resp_status_2xx, compute_resp_status_3xx, compute_resp_status_4xx, compute_resp_status_5xx, compute_bereq_header_bytes, compute_bereq_body_bytes, compute_beresp_header_bytes, compute_beresp_body_bytes, compute_bereqs, compute_bereq_errors, compute_resource_limit_exceeded, compute_heap_limit_exceeded, compute_stack_limit_exceeded, compute_globals_limit_exceeded, compute_guest_errors, compute_runtime_errors, edge_hit_resp_body_bytes, edge_hit_resp_header_bytes, edge_miss_resp_body_bytes, edge_miss_resp_header_bytes, origin_cache_fetch_resp_body_bytes, origin_cache_fetch_resp_header_bytes, shield_hit_requests, shield_miss_requests, shield_hit_resp_header_bytes, shield_hit_resp_body_bytes, shield_miss_resp_header_bytes, shield_miss_resp_body_bytes, websocket_req_header_bytes, websocket_req_body_bytes, websocket_resp_header_bytes, websocket_resp_body_bytes, websocket_bereq_header_bytes, websocket_bereq_body_bytes, websocket_beresp_header_bytes, websocket_beresp_body_bytes, websocket_conn_time_ms, fanout_recv_publishes, fanout_send_publishes, kv_store_class_a_operations, kv_store_class_b_operations, object_store_class_a_operations, object_store_class_b_operations, fanout_req_header_bytes, fanout_req_body_bytes, fanout_resp_header_bytes, fanout_resp_body_bytes, fanout_bereq_header_bytes, fanout_bereq_body_bytes, fanout_beresp_header_bytes, fanout_beresp_body_bytes, fanout_conn_time_ms, ddos_action_limit_streams_connections, ddos_action_limit_streams_requests, ddos_action_tarpit_accept, ddos_action_tarpit, ddos_action_close, ddos_action_blackhole, bot_challenge_starts, bot_challenge_complete_tokens_passed, bot_challenge_complete_tokens_failed, bot_challenge_complete_tokens_checked, bot_challenge_complete_tokens_disabled, bot_challenge_complete_tokens_issued, bot_challenges_issued, bot_challenges_succeeded, bot_challenges_failed, ddos_action_downgrade, ddos_action_downgraded_connections, all_hit_requests, all_miss_requests, all_pass_requests, all_error_requests, all_synth_requests, all_edge_hit_requests, all_edge_miss_requests, all_status_1xx, all_status_2xx, all_status_3xx, all_status_4xx, all_status_5xx, origin_offload, request_denied_get_head_body, ddos_protection_requests_detect_count, ddos_protection_requests_mitigate_count, ddos_protection_requests_allow_count, object_storage_class_a_operations_count, object_storage_class_b_operations_count, aia_requests, aia_status_1xx, aia_status_2xx, aia_status_3xx, aia_status_4xx, aia_status_5xx, aia_response_usage_tokens, aia_origin_usage_tokens, aia_estimated_time_saved_ms, request_collapse_usable_count, request_collapse_unusable_count, compute_cache_operations_count, ngwaf_requests_total_count, ngwaf_requests_unknown_count, ngwaf_requests_allowed_count, ngwaf_requests_logged_count, ngwaf_requests_blocked_count, ngwaf_requests_timeout_count, ngwaf_requests_challenged_count, api_discovery_requests_count, imgopto_compute_requests, dns_billable_responses_count, dns_nonbillable_responses_count, upgrade, service_id, start_time].hash
     end
 
     # Builds the object from hash

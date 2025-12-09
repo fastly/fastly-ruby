@@ -1016,6 +1016,18 @@ module Fastly
           description: "No description provided",
           }
         ],
+        "DomainResearchApi.domain_status": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "DomainResearchApi.suggest_domains": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
         "EventsApi.get_event": [
           {
           url: "https://api.fastly.com",
@@ -1395,6 +1407,12 @@ module Fastly
           }
         ],
         "KvStoreApi.kv_store_list": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "KvStoreApi.kv_store_put": [
           {
           url: "https://api.fastly.com",
           description: "No description provided",
@@ -2270,6 +2288,12 @@ module Fastly
           description: "No description provided",
           }
         ],
+        "MetricsPlatformApi.get_platform_metrics_service_historical": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
         "MutualAuthenticationApi.create_mutual_tls_authentication": [
           {
           url: "https://api.fastly.com",
@@ -2595,6 +2619,24 @@ module Fastly
           }
         ],
         "ProductDomainInspectorApi.get_services_product_domain_inspector": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "ProductDomainResearchApi.disable_product_domain_research": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "ProductDomainResearchApi.enable_domain_research": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "ProductDomainResearchApi.get_domain_research": [
           {
           url: "https://api.fastly.com",
           description: "No description provided",

@@ -12,14 +12,13 @@ require 'date'
 require 'time'
 
 module Fastly
-  class KvStoreRequestCreate
-    # A human-readable name for the store. Refer to https://docs.fastly.com/products/compute-resource-limits#kv-store for limitations on the KV store name.
-    attr_accessor :name
+  class DomainResearchResponseCustomer
+    attr_accessor :customer
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'name' => :'name'
+        :'customer' => :'customer'
       }
     end
 
@@ -31,7 +30,7 @@ module Fastly
     # Attribute type mapping.
     def self.fastly_types
       {
-        :'name' => :'String'
+        :'customer' => :'AiAcceleratorResponseCustomerCustomer'
       }
     end
 
@@ -45,19 +44,19 @@ module Fastly
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Fastly::KvStoreRequestCreate` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Fastly::DomainResearchResponseCustomer` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `Fastly::KvStoreRequestCreate`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `Fastly::DomainResearchResponseCustomer`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'name')
-        self.name = attributes[:'name']
+      if attributes.key?(:'customer')
+        self.customer = attributes[:'customer']
       end
     end
 
@@ -65,17 +64,12 @@ module Fastly
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if @name.nil?
-        invalid_properties.push('invalid value for "name", name cannot be nil.')
-      end
-
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if @name.nil?
       true
     end
 
@@ -84,7 +78,7 @@ module Fastly
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          name == o.name
+          customer == o.customer
     end
 
     # @see the `==` method
@@ -96,7 +90,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name].hash
+      [customer].hash
     end
 
     # Builds the object from hash

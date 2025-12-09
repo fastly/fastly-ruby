@@ -18,6 +18,8 @@ module Fastly
 
     attr_accessor :name
 
+    attr_accessor :display_name
+
     attr_accessor :description
 
     # The set of permissions granted to this role.
@@ -28,6 +30,7 @@ module Fastly
       {
         :'id' => :'id',
         :'name' => :'name',
+        :'display_name' => :'display_name',
         :'description' => :'description',
         :'permissions' => :'permissions'
       }
@@ -43,6 +46,7 @@ module Fastly
       {
         :'id' => :'String',
         :'name' => :'String',
+        :'display_name' => :'String',
         :'description' => :'String',
         :'permissions' => :'Array<String>'
       }
@@ -77,6 +81,10 @@ module Fastly
         self.name = attributes[:'name']
       end
 
+      if attributes.key?(:'display_name')
+        self.display_name = attributes[:'display_name']
+      end
+
       if attributes.key?(:'description')
         self.description = attributes[:'description']
       end
@@ -108,6 +116,7 @@ module Fastly
       self.class == o.class &&
           id == o.id &&
           name == o.name &&
+          display_name == o.display_name &&
           description == o.description &&
           permissions == o.permissions
     end
@@ -121,7 +130,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, name, description, permissions].hash
+      [id, name, display_name, description, permissions].hash
     end
 
     # Builds the object from hash

@@ -20,7 +20,7 @@ module Fastly
     # Create a KV store.
     # Create a KV store.
     # @option opts [String] :location 
-    # @option opts [KvStoreRequestCreate] :kv_store_request_create 
+    # @option opts [KvStoreRequestCreateOrUpdate] :kv_store_request_create_or_update 
     # @return [KvStoreDetails]
     def kv_store_create(opts = {})
       data, _status_code, _headers = kv_store_create_with_http_info(opts)
@@ -30,7 +30,7 @@ module Fastly
     # Create a KV store.
     # Create a KV store.
     # @option opts [String] :location 
-    # @option opts [KvStoreRequestCreate] :kv_store_request_create 
+    # @option opts [KvStoreRequestCreateOrUpdate] :kv_store_request_create_or_update 
     # @return [Array<(KvStoreDetails, Integer, Hash)>] KvStoreDetails data, response status code and response headers
     def kv_store_create_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -62,7 +62,7 @@ module Fastly
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(opts[:'kv_store_request_create'])
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(opts[:'kv_store_request_create_or_update'])
 
       # return_type
       return_type = opts[:debug_return_type] || 'KvStoreDetails'
@@ -216,7 +216,7 @@ module Fastly
     # @option opts [String] :cursor 
     # @option opts [Integer] :limit  (default to 1000)
     # @option opts [String] :name Returns a one-element array containing the details for the named KV store.
-    # @return [InlineResponse2006]
+    # @return [InlineResponse2007]
     def kv_store_list(opts = {})
       data, _status_code, _headers = kv_store_list_with_http_info(opts)
       data
@@ -227,7 +227,7 @@ module Fastly
     # @option opts [String] :cursor 
     # @option opts [Integer] :limit  (default to 1000)
     # @option opts [String] :name Returns a one-element array containing the details for the named KV store.
-    # @return [Array<(InlineResponse2006, Integer, Hash)>] InlineResponse2006 data, response status code and response headers
+    # @return [Array<(InlineResponse2007, Integer, Hash)>] InlineResponse2007 data, response status code and response headers
     def kv_store_list_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: KvStoreApi.kv_store_list ...'
@@ -258,7 +258,7 @@ module Fastly
       post_body = opts[:debug_body]
 
       # return_type
-      return_type = opts[:debug_return_type] || 'InlineResponse2006'
+      return_type = opts[:debug_return_type] || 'InlineResponse2007'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['token']
@@ -276,6 +276,74 @@ module Fastly
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: KvStoreApi#kv_store_list\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Update a KV store.
+    # Update the name of a KV store.
+    # @option opts [String] :store_id  (required)
+    # @option opts [KvStoreRequestCreateOrUpdate] :kv_store_request_create_or_update 
+    # @return [nil]
+    def kv_store_put(opts = {})
+      kv_store_put_with_http_info(opts)
+      nil
+    end
+
+    # Update a KV store.
+    # Update the name of a KV store.
+    # @option opts [String] :store_id  (required)
+    # @option opts [KvStoreRequestCreateOrUpdate] :kv_store_request_create_or_update 
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    def kv_store_put_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: KvStoreApi.kv_store_put ...'
+      end
+      # unbox the parameters from the hash
+      store_id = opts[:'store_id']
+      # verify the required parameter 'store_id' is set
+      if @api_client.config.client_side_validation && store_id.nil?
+        fail ArgumentError, "Missing the required parameter 'store_id' when calling KvStoreApi.kv_store_put"
+      end
+      # resource path
+      local_var_path = '/resources/stores/kv/{store_id}'.sub('{' + 'store_id' + '}', CGI.escape(store_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(opts[:'kv_store_request_create_or_update'])
+
+      # return_type
+      return_type = opts[:debug_return_type]
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['token']
+
+      new_options = opts.merge(
+        :operation => :"KvStoreApi.kv_store_put",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: KvStoreApi#kv_store_put\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

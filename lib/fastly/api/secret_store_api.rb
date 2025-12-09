@@ -265,7 +265,7 @@ module Fastly
     # @option opts [String] :cursor Cursor value from the &#x60;next_cursor&#x60; field of a previous response, used to retrieve the next page. To request the first page, this should be empty.
     # @option opts [String] :limit Number of results per page. The maximum is 200. (default to '100')
     # @option opts [String] :name Returns a one-element array containing the details for the named secret store.
-    # @return [InlineResponse2008]
+    # @return [InlineResponse2009]
     def get_secret_stores(opts = {})
       data, _status_code, _headers = get_secret_stores_with_http_info(opts)
       data
@@ -276,7 +276,7 @@ module Fastly
     # @option opts [String] :cursor Cursor value from the &#x60;next_cursor&#x60; field of a previous response, used to retrieve the next page. To request the first page, this should be empty.
     # @option opts [String] :limit Number of results per page. The maximum is 200. (default to '100')
     # @option opts [String] :name Returns a one-element array containing the details for the named secret store.
-    # @return [Array<(InlineResponse2008, Integer, Hash)>] InlineResponse2008 data, response status code and response headers
+    # @return [Array<(InlineResponse2009, Integer, Hash)>] InlineResponse2009 data, response status code and response headers
     def get_secret_stores_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: SecretStoreApi.get_secret_stores ...'
@@ -303,7 +303,7 @@ module Fastly
       post_body = opts[:debug_body]
 
       # return_type
-      return_type = opts[:debug_return_type] || 'InlineResponse2008'
+      return_type = opts[:debug_return_type] || 'InlineResponse2009'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['token']

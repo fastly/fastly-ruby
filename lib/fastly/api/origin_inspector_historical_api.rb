@@ -68,7 +68,7 @@ module Fastly
       if @api_client.config.client_side_validation && opts[:'group_by'] && !allowable_values.include?(opts[:'group_by'])
         fail ArgumentError, "invalid value for \"group_by\", must be one of #{allowable_values}"
       end
-      allowable_values = ["usa", "europe", "asia", "asia_india", "asia_southkorea", "africa_std", "southamerica_std"]
+      allowable_values = ["africa_std", "anzac", "asia", "asia_india", "asia_southkorea", "europe", "mexico", "southamerica_std", "usa"]
       if @api_client.config.client_side_validation && opts[:'region'] && !allowable_values.include?(opts[:'region'])
         fail ArgumentError, "invalid value for \"region\", must be one of #{allowable_values}"
       end
