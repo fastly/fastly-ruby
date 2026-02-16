@@ -68,6 +68,69 @@
 | **origin_status_3xx** | **Integer** | Number of \&quot;Redirection\&quot; codes received from origin. | [optional] |
 | **origin_status_4xx** | **Integer** | Number of \&quot;Client Error\&quot; codes received from origin. | [optional] |
 | **origin_status_5xx** | **Integer** | Number of \&quot;Server Error\&quot; codes received from origin. | [optional] |
+| **compute_bereq_body_bytes** | **Integer** | Total body bytes sent to backends (origins) by the Compute platform. | [optional] |
+| **compute_bereq_errors** | **Integer** | Number of backend request errors, including timeouts, by the Compute platform. | [optional] |
+| **compute_bereq_header_bytes** | **Integer** | Total header bytes sent to backends (origins) by the Compute platform. | [optional] |
+| **compute_bereqs** | **Integer** | Number of backend requests started by the Compute platform. | [optional] |
+| **compute_beresp_body_bytes** | **Integer** | Total body bytes received from backends (origins) by the Compute platform. | [optional] |
+| **compute_beresp_header_bytes** | **Integer** | Total header bytes received from backends (origins) by the Compute platform. | [optional] |
+| **compute_execution_time_ms** | **Integer** | The amount of active CPU time used to process your requests (in milliseconds). | [optional] |
+| **compute_origin_status_1xx** | **Integer** | Number of \&quot;Informational\&quot; category status codes received from origin by the Compute platform. | [optional] |
+| **compute_origin_status_200** | **Integer** | Number of responses received from origin with status code 200 (Success) by the Compute platform. | [optional] |
+| **compute_origin_status_204** | **Integer** | Number of responses received from origin with status code 204 (No Content) by the Compute platform. | [optional] |
+| **compute_origin_status_206** | **Integer** | Number of responses received from origin with status code 206 (Partial Content) by the Compute platform. | [optional] |
+| **compute_origin_status_2xx** | **Integer** | Number of \&quot;Success\&quot; status codes received from origin by the Compute platform. | [optional] |
+| **compute_origin_status_301** | **Integer** | Number of responses received from origin with status code 301 (Moved Permanently) by the Compute platform. | [optional] |
+| **compute_origin_status_302** | **Integer** | Number of responses received from origin with status code 302 (Found) by the Compute platform. | [optional] |
+| **compute_origin_status_304** | **Integer** | Number of responses received from origin with status code 304 (Not Modified) by the Compute platform. | [optional] |
+| **compute_origin_status_3xx** | **Integer** | Number of \&quot;Redirection\&quot; codes received from origin by the Compute platform. | [optional] |
+| **compute_origin_status_400** | **Integer** | Number of responses received from origin with status code 400 (Bad Request) by the Compute platform. | [optional] |
+| **compute_origin_status_401** | **Integer** | Number of responses received from origin with status code 401 (Unauthorized) by the Compute platform. | [optional] |
+| **compute_origin_status_403** | **Integer** | Number of responses received from origin with status code 403 (Forbidden) by the Compute platform. | [optional] |
+| **compute_origin_status_404** | **Integer** | Number of responses received from origin with status code 404 (Not Found) by the Compute platform. | [optional] |
+| **compute_origin_status_416** | **Integer** | Number of responses received from origin with status code 416 (Range Not Satisfiable) by the Compute platform. | [optional] |
+| **compute_origin_status_429** | **Integer** | Number of responses received from origin with status code 429 (Too Many Requests) by the Compute platform. | [optional] |
+| **compute_origin_status_4xx** | **Integer** | Number of \&quot;Client Error\&quot; codes received from origin by the Compute platform. | [optional] |
+| **compute_origin_status_500** | **Integer** | Number of responses received from origin with status code 500 (Internal Server Error) by the Compute platform. | [optional] |
+| **compute_origin_status_501** | **Integer** | Number of responses received from origin with status code 501 (Not Implemented) by the Compute platform. | [optional] |
+| **compute_origin_status_502** | **Integer** | Number of responses received from origin with status code 502 (Bad Gateway) by the Compute platform. | [optional] |
+| **compute_origin_status_503** | **Integer** | Number of responses received from origin with status code 503 (Service Unavailable) by the Compute platform. | [optional] |
+| **compute_origin_status_504** | **Integer** | Number of responses received from origin with status code 504 (Gateway Timeout) by the Compute platform. | [optional] |
+| **compute_origin_status_505** | **Integer** | Number of responses received from origin with status code 505 (HTTP Version Not Supported) by the Compute platform. | [optional] |
+| **compute_origin_status_530** | **Integer** | Number of responses received from origin with status code 530 by the Compute platform. | [optional] |
+| **compute_origin_status_5xx** | **Integer** | Number of \&quot;Server Error\&quot; codes received from origin by the Compute platform. | [optional] |
+| **compute_req_body_bytes** | **Integer** | Total body bytes received by the Compute platform. | [optional] |
+| **compute_req_header_bytes** | **Integer** | Total header bytes received by the Compute platform. | [optional] |
+| **compute_request_time_billed_ms** | **Integer** | The total amount of request processing time you will be billed for, measured in 50 millisecond increments. | [optional] |
+| **compute_request_time_ms** | **Integer** | The total amount of time used to process your requests, including active CPU time (in milliseconds). | [optional] |
+| **compute_request** | **Integer** | The total number of requests that were received by the Compute platform. | [optional] |
+| **compute_resp_body_bytes** | **Integer** | Total body bytes sent from Compute to the end user. | [optional] |
+| **compute_resp_header_bytes** | **Integer** | Total header bytes sent from Compute to the end user. | [optional] |
+| **compute_resp_status_103** | **Integer** | Number of responses delivered with status code 103 (Early Hints) by the Compute platform. | [optional] |
+| **compute_resp_status_1xx** | **Integer** | Number of 1xx \&quot;Informational\&quot; category status codes delivered by the Compute platform. | [optional] |
+| **compute_resp_status_200** | **Integer** | Number of responses delivered with status code 200 (Success) by the Compute platform. | [optional] |
+| **compute_resp_status_204** | **Integer** | Number of responses delivered with status code 204 (No Content) by the Compute platform. | [optional] |
+| **compute_resp_status_206** | **Integer** | Number of responses delivered with status code 206 (Partial Content) by the Compute platform. | [optional] |
+| **compute_resp_status_2xx** | **Integer** | Number of 2xx \&quot;Success\&quot; status codes delivered by the Compute platform. | [optional] |
+| **compute_resp_status_301** | **Integer** | Number of responses delivered with status code 301 (Moved Permanently) by the Compute platform. | [optional] |
+| **compute_resp_status_302** | **Integer** | Number of responses delivered with status code 302 (Found) by the Compute platform. | [optional] |
+| **compute_resp_status_304** | **Integer** | Number of responses delivered with status code 304 (Not Modified) by the Compute platform. | [optional] |
+| **compute_resp_status_3xx** | **Integer** | Number of 3xx \&quot;Redirection\&quot; codes delivered by the Compute platform. | [optional] |
+| **compute_resp_status_400** | **Integer** | Number of responses delivered with status code 400 (Bad Request) by the Compute platform. | [optional] |
+| **compute_resp_status_401** | **Integer** | Number of responses delivered with status code 401 (Unauthorized) by the Compute platform. | [optional] |
+| **compute_resp_status_403** | **Integer** | Number of responses delivered with status code 403 (Forbidden) by the Compute platform. | [optional] |
+| **compute_resp_status_404** | **Integer** | Number of responses delivered with status code 404 (Not Found) by the Compute platform. | [optional] |
+| **compute_resp_status_416** | **Integer** | Number of responses delivered with status code 416 (Range Not Satisfiable) by the Compute platform. | [optional] |
+| **compute_resp_status_429** | **Integer** | Number of responses delivered with status code 429 (Too Many Requests) by the Compute platform. | [optional] |
+| **compute_resp_status_4xx** | **Integer** | Number of 4xx \&quot;Client Error\&quot; codes delivered by the Compute platform. | [optional] |
+| **compute_resp_status_500** | **Integer** | Number of responses delivered with status code 500 (Internal Server Error) by the Compute platform. | [optional] |
+| **compute_resp_status_501** | **Integer** | Number of responses delivered with status code 501 (Not Implemented) by the Compute platform. | [optional] |
+| **compute_resp_status_502** | **Integer** | Number of responses delivered with status code 502 (Bad Gateway) by the Compute platform. | [optional] |
+| **compute_resp_status_503** | **Integer** | Number of responses delivered with status code 503 (Service Unavailable) by the Compute platform. | [optional] |
+| **compute_resp_status_504** | **Integer** | Number of responses delivered with status code 504 (Gateway Timeout) by the Compute platform. | [optional] |
+| **compute_resp_status_505** | **Integer** | Number of responses delivered with status code 505 (HTTP Version Not Supported) by the Compute platform. | [optional] |
+| **compute_resp_status_530** | **Integer** | Number of responses delivered with status code 530 by the Compute platform. | [optional] |
+| **compute_resp_status_5xx** | **Integer** | Number of \&quot;Server Error\&quot; category status codes delivered by the Compute platform. | [optional] |
 
 [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
 

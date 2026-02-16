@@ -213,7 +213,7 @@ module Fastly
     # @option opts [Boolean] :verified 
     # @option opts [String] :cursor Cursor value from the &#x60;next_cursor&#x60; field of a previous response, used to retrieve the next page. To request the first page, this should be empty.
     # @option opts [Integer] :limit Limit how many results are returned. (default to 20)
-    # @return [InlineResponse2004]
+    # @return [InlineResponse2007]
     def list_dm_domains(opts = {})
       data, _status_code, _headers = list_dm_domains_with_http_info(opts)
       data
@@ -228,7 +228,7 @@ module Fastly
     # @option opts [Boolean] :verified 
     # @option opts [String] :cursor Cursor value from the &#x60;next_cursor&#x60; field of a previous response, used to retrieve the next page. To request the first page, this should be empty.
     # @option opts [Integer] :limit Limit how many results are returned. (default to 20)
-    # @return [Array<(InlineResponse2004, Integer, Hash)>] InlineResponse2004 data, response status code and response headers
+    # @return [Array<(InlineResponse2007, Integer, Hash)>] InlineResponse2007 data, response status code and response headers
     def list_dm_domains_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DmDomainsApi.list_dm_domains ...'
@@ -267,7 +267,7 @@ module Fastly
       post_body = opts[:debug_body]
 
       # return_type
-      return_type = opts[:debug_return_type] || 'InlineResponse2004'
+      return_type = opts[:debug_return_type] || 'InlineResponse2007'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['token']

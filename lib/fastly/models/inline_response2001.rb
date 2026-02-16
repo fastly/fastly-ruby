@@ -13,12 +13,15 @@ require 'time'
 
 module Fastly
   class InlineResponse2001
-    # The service IDs of the services the token will have access to. Separate service IDs with a space.
+    attr_accessor :meta
+
+    # The discovered operations returned by the request.
     attr_accessor :data
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'meta' => :'meta',
         :'data' => :'data'
       }
     end
@@ -31,7 +34,8 @@ module Fastly
     # Attribute type mapping.
     def self.fastly_types
       {
-        :'data' => :'Array<String>'
+        :'meta' => :'Meta',
+        :'data' => :'Array<DiscoveredOperationGet>'
       }
     end
 
@@ -55,6 +59,10 @@ module Fastly
         end
         h[k.to_sym] = v
       }
+
+      if attributes.key?(:'meta')
+        self.meta = attributes[:'meta']
+      end
 
       if attributes.key?(:'data')
         if (value = attributes[:'data']).is_a?(Array)
@@ -81,6 +89,7 @@ module Fastly
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          meta == o.meta &&
           data == o.data
     end
 
@@ -93,7 +102,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [data].hash
+      [meta, data].hash
     end
 
     # Builds the object from hash

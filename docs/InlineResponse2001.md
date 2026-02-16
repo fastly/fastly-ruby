@@ -4,7 +4,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **data** | **Array&lt;String&gt;** | The service IDs of the services the token will have access to. Separate service IDs with a space. | [optional] |
+| **meta** | [**Meta**](Meta.md) |  | [optional] |
+| **data** | [**Array&lt;DiscoveredOperationGet&gt;**](DiscoveredOperationGet.md) | The discovered operations returned by the request. | [optional] |
 
 [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
 

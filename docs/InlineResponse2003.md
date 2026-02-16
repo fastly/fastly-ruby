@@ -4,8 +4,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **data** | [**Array&lt;DdosProtectionRuleWithStats&gt;**](DdosProtectionRuleWithStats.md) |  |  |
-| **meta** | [**PaginationCursorMeta**](PaginationCursorMeta.md) |  |  |
+| **meta** | [**Meta**](Meta.md) |  | [optional] |
+| **data** | [**Array&lt;TagGet&gt;**](TagGet.md) | The operation tags returned by the request. | [optional] |
 
 [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
 

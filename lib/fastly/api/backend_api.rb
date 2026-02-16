@@ -28,6 +28,7 @@ module Fastly
     # @option opts [String] :comment A freeform descriptive note.
     # @option opts [Integer] :connect_timeout Maximum duration in milliseconds to wait for a connection to this backend to be established. If exceeded, the connection is aborted and a synthetic &#x60;503&#x60; response will be presented instead. May be set at runtime using &#x60;bereq.connect_timeout&#x60;.
     # @option opts [Integer] :first_byte_timeout Maximum duration in milliseconds to wait for the server response to begin after a TCP connection is established and the request has been sent. If exceeded, the connection is aborted and a synthetic &#x60;503&#x60; response will be presented instead. May be set at runtime using &#x60;bereq.first_byte_timeout&#x60;.
+    # @option opts [Integer] :fetch_timeout Maximum duration in milliseconds to wait for the entire response to be received after a TCP connection is established and the request has been sent. If exceeded, the connection is aborted and a synthetic &#x60;503&#x60; response will be presented instead. May be set at runtime using &#x60;bereq.fetch_timeout&#x60;.
     # @option opts [String] :healthcheck The name of the healthcheck to use with this backend.
     # @option opts [String] :hostname The hostname of the backend. May be used as an alternative to &#x60;address&#x60; to set the backend location.
     # @option opts [String] :ipv4 IPv4 address of the backend. May be used as an alternative to &#x60;address&#x60; to set the backend location.
@@ -74,6 +75,7 @@ module Fastly
     # @option opts [String] :comment A freeform descriptive note.
     # @option opts [Integer] :connect_timeout Maximum duration in milliseconds to wait for a connection to this backend to be established. If exceeded, the connection is aborted and a synthetic &#x60;503&#x60; response will be presented instead. May be set at runtime using &#x60;bereq.connect_timeout&#x60;.
     # @option opts [Integer] :first_byte_timeout Maximum duration in milliseconds to wait for the server response to begin after a TCP connection is established and the request has been sent. If exceeded, the connection is aborted and a synthetic &#x60;503&#x60; response will be presented instead. May be set at runtime using &#x60;bereq.first_byte_timeout&#x60;.
+    # @option opts [Integer] :fetch_timeout Maximum duration in milliseconds to wait for the entire response to be received after a TCP connection is established and the request has been sent. If exceeded, the connection is aborted and a synthetic &#x60;503&#x60; response will be presented instead. May be set at runtime using &#x60;bereq.fetch_timeout&#x60;.
     # @option opts [String] :healthcheck The name of the healthcheck to use with this backend.
     # @option opts [String] :hostname The hostname of the backend. May be used as an alternative to &#x60;address&#x60; to set the backend location.
     # @option opts [String] :ipv4 IPv4 address of the backend. May be used as an alternative to &#x60;address&#x60; to set the backend location.
@@ -149,6 +151,7 @@ module Fastly
       form_params['comment'] = opts[:'comment'] if !opts[:'comment'].nil?
       form_params['connect_timeout'] = opts[:'connect_timeout'] if !opts[:'connect_timeout'].nil?
       form_params['first_byte_timeout'] = opts[:'first_byte_timeout'] if !opts[:'first_byte_timeout'].nil?
+      form_params['fetch_timeout'] = opts[:'fetch_timeout'] if !opts[:'fetch_timeout'].nil?
       form_params['healthcheck'] = opts[:'healthcheck'] if !opts[:'healthcheck'].nil?
       form_params['hostname'] = opts[:'hostname'] if !opts[:'hostname'].nil?
       form_params['ipv4'] = opts[:'ipv4'] if !opts[:'ipv4'].nil?
@@ -441,6 +444,7 @@ module Fastly
     # @option opts [String] :comment A freeform descriptive note.
     # @option opts [Integer] :connect_timeout Maximum duration in milliseconds to wait for a connection to this backend to be established. If exceeded, the connection is aborted and a synthetic &#x60;503&#x60; response will be presented instead. May be set at runtime using &#x60;bereq.connect_timeout&#x60;.
     # @option opts [Integer] :first_byte_timeout Maximum duration in milliseconds to wait for the server response to begin after a TCP connection is established and the request has been sent. If exceeded, the connection is aborted and a synthetic &#x60;503&#x60; response will be presented instead. May be set at runtime using &#x60;bereq.first_byte_timeout&#x60;.
+    # @option opts [Integer] :fetch_timeout Maximum duration in milliseconds to wait for the entire response to be received after a TCP connection is established and the request has been sent. If exceeded, the connection is aborted and a synthetic &#x60;503&#x60; response will be presented instead. May be set at runtime using &#x60;bereq.fetch_timeout&#x60;.
     # @option opts [String] :healthcheck The name of the healthcheck to use with this backend.
     # @option opts [String] :hostname The hostname of the backend. May be used as an alternative to &#x60;address&#x60; to set the backend location.
     # @option opts [String] :ipv4 IPv4 address of the backend. May be used as an alternative to &#x60;address&#x60; to set the backend location.
@@ -488,6 +492,7 @@ module Fastly
     # @option opts [String] :comment A freeform descriptive note.
     # @option opts [Integer] :connect_timeout Maximum duration in milliseconds to wait for a connection to this backend to be established. If exceeded, the connection is aborted and a synthetic &#x60;503&#x60; response will be presented instead. May be set at runtime using &#x60;bereq.connect_timeout&#x60;.
     # @option opts [Integer] :first_byte_timeout Maximum duration in milliseconds to wait for the server response to begin after a TCP connection is established and the request has been sent. If exceeded, the connection is aborted and a synthetic &#x60;503&#x60; response will be presented instead. May be set at runtime using &#x60;bereq.first_byte_timeout&#x60;.
+    # @option opts [Integer] :fetch_timeout Maximum duration in milliseconds to wait for the entire response to be received after a TCP connection is established and the request has been sent. If exceeded, the connection is aborted and a synthetic &#x60;503&#x60; response will be presented instead. May be set at runtime using &#x60;bereq.fetch_timeout&#x60;.
     # @option opts [String] :healthcheck The name of the healthcheck to use with this backend.
     # @option opts [String] :hostname The hostname of the backend. May be used as an alternative to &#x60;address&#x60; to set the backend location.
     # @option opts [String] :ipv4 IPv4 address of the backend. May be used as an alternative to &#x60;address&#x60; to set the backend location.
@@ -568,6 +573,7 @@ module Fastly
       form_params['comment'] = opts[:'comment'] if !opts[:'comment'].nil?
       form_params['connect_timeout'] = opts[:'connect_timeout'] if !opts[:'connect_timeout'].nil?
       form_params['first_byte_timeout'] = opts[:'first_byte_timeout'] if !opts[:'first_byte_timeout'].nil?
+      form_params['fetch_timeout'] = opts[:'fetch_timeout'] if !opts[:'fetch_timeout'].nil?
       form_params['healthcheck'] = opts[:'healthcheck'] if !opts[:'healthcheck'].nil?
       form_params['hostname'] = opts[:'hostname'] if !opts[:'hostname'].nil?
       form_params['ipv4'] = opts[:'ipv4'] if !opts[:'ipv4'].nil?

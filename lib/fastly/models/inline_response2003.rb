@@ -13,15 +13,16 @@ require 'time'
 
 module Fastly
   class InlineResponse2003
-    attr_accessor :data
-
     attr_accessor :meta
+
+    # The operation tags returned by the request.
+    attr_accessor :data
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'data' => :'data',
-        :'meta' => :'meta'
+        :'meta' => :'meta',
+        :'data' => :'data'
       }
     end
 
@@ -33,8 +34,8 @@ module Fastly
     # Attribute type mapping.
     def self.fastly_types
       {
-        :'data' => :'Array<DdosProtectionRuleWithStats>',
-        :'meta' => :'PaginationCursorMeta'
+        :'meta' => :'Meta',
+        :'data' => :'Array<TagGet>'
       }
     end
 
@@ -59,14 +60,14 @@ module Fastly
         h[k.to_sym] = v
       }
 
+      if attributes.key?(:'meta')
+        self.meta = attributes[:'meta']
+      end
+
       if attributes.key?(:'data')
         if (value = attributes[:'data']).is_a?(Array)
           self.data = value
         end
-      end
-
-      if attributes.key?(:'meta')
-        self.meta = attributes[:'meta']
       end
     end
 
@@ -74,22 +75,12 @@ module Fastly
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if @data.nil?
-        invalid_properties.push('invalid value for "data", data cannot be nil.')
-      end
-
-      if @meta.nil?
-        invalid_properties.push('invalid value for "meta", meta cannot be nil.')
-      end
-
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if @data.nil?
-      return false if @meta.nil?
       true
     end
 
@@ -98,8 +89,8 @@ module Fastly
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          data == o.data &&
-          meta == o.meta
+          meta == o.meta &&
+          data == o.data
     end
 
     # @see the `==` method
@@ -111,7 +102,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [data, meta].hash
+      [meta, data].hash
     end
 
     # Builds the object from hash

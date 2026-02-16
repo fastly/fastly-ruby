@@ -19,7 +19,7 @@ module Fastly
     end
     # List domain-ownerships
     # List all domain-ownerships.
-    # @return [InlineResponse2005]
+    # @return [InlineResponse2008]
     def list_domain_ownerships(opts = {})
       data, _status_code, _headers = list_domain_ownerships_with_http_info(opts)
       data
@@ -27,7 +27,7 @@ module Fastly
 
     # List domain-ownerships
     # List all domain-ownerships.
-    # @return [Array<(InlineResponse2005, Integer, Hash)>] InlineResponse2005 data, response status code and response headers
+    # @return [Array<(InlineResponse2008, Integer, Hash)>] InlineResponse2008 data, response status code and response headers
     def list_domain_ownerships_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DomainOwnershipsApi.list_domain_ownerships ...'
@@ -51,7 +51,7 @@ module Fastly
       post_body = opts[:debug_body]
 
       # return_type
-      return_type = opts[:debug_return_type] || 'InlineResponse2005'
+      return_type = opts[:debug_return_type] || 'InlineResponse2008'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['token']

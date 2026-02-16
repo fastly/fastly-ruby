@@ -800,6 +800,66 @@ module Fastly
     # Number of requests processed by the API Discovery engine.
     attr_accessor :api_discovery_requests_count
 
+    # Number of responses delivered with status code 103 (Early Hints) by the Compute platform.
+    attr_accessor :compute_resp_status_103
+
+    # Number of responses delivered with status code 200 (Success) by the Compute platform.
+    attr_accessor :compute_resp_status_200
+
+    # Number of responses delivered with status code 204 (No Content) by the Compute platform.
+    attr_accessor :compute_resp_status_204
+
+    # Number of responses delivered with status code 206 (Partial Content) by the Compute platform.
+    attr_accessor :compute_resp_status_206
+
+    # Number of responses delivered with status code 301 (Moved Permanently) by the Compute platform.
+    attr_accessor :compute_resp_status_301
+
+    # Number of responses delivered with status code 302 (Found) by the Compute platform.
+    attr_accessor :compute_resp_status_302
+
+    # Number of responses delivered with status code 304 (Not Modified) by the Compute platform.
+    attr_accessor :compute_resp_status_304
+
+    # Number of responses delivered with status code 400 (Bad Request) by the Compute platform.
+    attr_accessor :compute_resp_status_400
+
+    # Number of responses delivered with status code 401 (Unauthorized) by the Compute platform.
+    attr_accessor :compute_resp_status_401
+
+    # Number of responses delivered with status code 403 (Forbidden) by the Compute platform.
+    attr_accessor :compute_resp_status_403
+
+    # Number of responses delivered with status code 404 (Not Found) by the Compute platform.
+    attr_accessor :compute_resp_status_404
+
+    # Number of responses delivered with status code 416 (Range Not Satisfiable) by the Compute platform.
+    attr_accessor :compute_resp_status_416
+
+    # Number of responses delivered with status code 429 (Too Many Requests) by the Compute platform.
+    attr_accessor :compute_resp_status_429
+
+    # Number of responses delivered with status code 500 (Internal Server Error) by the Compute platform.
+    attr_accessor :compute_resp_status_500
+
+    # Number of responses delivered with status code 501 (Not Implemented) by the Compute platform.
+    attr_accessor :compute_resp_status_501
+
+    # Number of responses delivered with status code 502 (Bad Gateway) by the Compute platform.
+    attr_accessor :compute_resp_status_502
+
+    # Number of responses delivered with status code 503 (Service Unavailable) by the Compute platform.
+    attr_accessor :compute_resp_status_503
+
+    # Number of responses delivered with status code 504 (Gateway Timeout) by the Compute platform.
+    attr_accessor :compute_resp_status_504
+
+    # Number of responses delivered with status code 505 (HTTP Version Not Supported) by the Compute platform.
+    attr_accessor :compute_resp_status_505
+
+    # Number of responses delivered with status code 530 by the Compute platform.
+    attr_accessor :compute_resp_status_530
+
     # The number of Image Optimizer requests made from Compute services.
     attr_accessor :imgopto_compute_requests
 
@@ -811,6 +871,9 @@ module Fastly
 
     # Number of requests that resulted in a WebSocket upgrade.
     attr_accessor :upgrade
+
+    # Count of Next-Gen WAF Bot Management requests.
+    attr_accessor :ngwaf_bot_analysis_request_count
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -1077,10 +1140,31 @@ module Fastly
         :'request_collapse_unusable_count' => :'request_collapse_unusable_count',
         :'compute_cache_operations_count' => :'compute_cache_operations_count',
         :'api_discovery_requests_count' => :'api_discovery_requests_count',
+        :'compute_resp_status_103' => :'compute_resp_status_103',
+        :'compute_resp_status_200' => :'compute_resp_status_200',
+        :'compute_resp_status_204' => :'compute_resp_status_204',
+        :'compute_resp_status_206' => :'compute_resp_status_206',
+        :'compute_resp_status_301' => :'compute_resp_status_301',
+        :'compute_resp_status_302' => :'compute_resp_status_302',
+        :'compute_resp_status_304' => :'compute_resp_status_304',
+        :'compute_resp_status_400' => :'compute_resp_status_400',
+        :'compute_resp_status_401' => :'compute_resp_status_401',
+        :'compute_resp_status_403' => :'compute_resp_status_403',
+        :'compute_resp_status_404' => :'compute_resp_status_404',
+        :'compute_resp_status_416' => :'compute_resp_status_416',
+        :'compute_resp_status_429' => :'compute_resp_status_429',
+        :'compute_resp_status_500' => :'compute_resp_status_500',
+        :'compute_resp_status_501' => :'compute_resp_status_501',
+        :'compute_resp_status_502' => :'compute_resp_status_502',
+        :'compute_resp_status_503' => :'compute_resp_status_503',
+        :'compute_resp_status_504' => :'compute_resp_status_504',
+        :'compute_resp_status_505' => :'compute_resp_status_505',
+        :'compute_resp_status_530' => :'compute_resp_status_530',
         :'imgopto_compute_requests' => :'imgopto_compute_requests',
         :'dns_billable_responses_count' => :'dns_billable_responses_count',
         :'dns_nonbillable_responses_count' => :'dns_nonbillable_responses_count',
-        :'upgrade' => :'upgrade'
+        :'upgrade' => :'upgrade',
+        :'ngwaf_bot_analysis_request_count' => :'ngwaf_bot_analysis_request_count'
       }
     end
 
@@ -1354,10 +1438,31 @@ module Fastly
         :'request_collapse_unusable_count' => :'Integer',
         :'compute_cache_operations_count' => :'Integer',
         :'api_discovery_requests_count' => :'Integer',
+        :'compute_resp_status_103' => :'Integer',
+        :'compute_resp_status_200' => :'Integer',
+        :'compute_resp_status_204' => :'Integer',
+        :'compute_resp_status_206' => :'Integer',
+        :'compute_resp_status_301' => :'Integer',
+        :'compute_resp_status_302' => :'Integer',
+        :'compute_resp_status_304' => :'Integer',
+        :'compute_resp_status_400' => :'Integer',
+        :'compute_resp_status_401' => :'Integer',
+        :'compute_resp_status_403' => :'Integer',
+        :'compute_resp_status_404' => :'Integer',
+        :'compute_resp_status_416' => :'Integer',
+        :'compute_resp_status_429' => :'Integer',
+        :'compute_resp_status_500' => :'Integer',
+        :'compute_resp_status_501' => :'Integer',
+        :'compute_resp_status_502' => :'Integer',
+        :'compute_resp_status_503' => :'Integer',
+        :'compute_resp_status_504' => :'Integer',
+        :'compute_resp_status_505' => :'Integer',
+        :'compute_resp_status_530' => :'Integer',
         :'imgopto_compute_requests' => :'Integer',
         :'dns_billable_responses_count' => :'Integer',
         :'dns_nonbillable_responses_count' => :'Integer',
-        :'upgrade' => :'Integer'
+        :'upgrade' => :'Integer',
+        :'ngwaf_bot_analysis_request_count' => :'Integer'
       }
     end
 
@@ -2432,6 +2537,86 @@ module Fastly
         self.api_discovery_requests_count = attributes[:'api_discovery_requests_count']
       end
 
+      if attributes.key?(:'compute_resp_status_103')
+        self.compute_resp_status_103 = attributes[:'compute_resp_status_103']
+      end
+
+      if attributes.key?(:'compute_resp_status_200')
+        self.compute_resp_status_200 = attributes[:'compute_resp_status_200']
+      end
+
+      if attributes.key?(:'compute_resp_status_204')
+        self.compute_resp_status_204 = attributes[:'compute_resp_status_204']
+      end
+
+      if attributes.key?(:'compute_resp_status_206')
+        self.compute_resp_status_206 = attributes[:'compute_resp_status_206']
+      end
+
+      if attributes.key?(:'compute_resp_status_301')
+        self.compute_resp_status_301 = attributes[:'compute_resp_status_301']
+      end
+
+      if attributes.key?(:'compute_resp_status_302')
+        self.compute_resp_status_302 = attributes[:'compute_resp_status_302']
+      end
+
+      if attributes.key?(:'compute_resp_status_304')
+        self.compute_resp_status_304 = attributes[:'compute_resp_status_304']
+      end
+
+      if attributes.key?(:'compute_resp_status_400')
+        self.compute_resp_status_400 = attributes[:'compute_resp_status_400']
+      end
+
+      if attributes.key?(:'compute_resp_status_401')
+        self.compute_resp_status_401 = attributes[:'compute_resp_status_401']
+      end
+
+      if attributes.key?(:'compute_resp_status_403')
+        self.compute_resp_status_403 = attributes[:'compute_resp_status_403']
+      end
+
+      if attributes.key?(:'compute_resp_status_404')
+        self.compute_resp_status_404 = attributes[:'compute_resp_status_404']
+      end
+
+      if attributes.key?(:'compute_resp_status_416')
+        self.compute_resp_status_416 = attributes[:'compute_resp_status_416']
+      end
+
+      if attributes.key?(:'compute_resp_status_429')
+        self.compute_resp_status_429 = attributes[:'compute_resp_status_429']
+      end
+
+      if attributes.key?(:'compute_resp_status_500')
+        self.compute_resp_status_500 = attributes[:'compute_resp_status_500']
+      end
+
+      if attributes.key?(:'compute_resp_status_501')
+        self.compute_resp_status_501 = attributes[:'compute_resp_status_501']
+      end
+
+      if attributes.key?(:'compute_resp_status_502')
+        self.compute_resp_status_502 = attributes[:'compute_resp_status_502']
+      end
+
+      if attributes.key?(:'compute_resp_status_503')
+        self.compute_resp_status_503 = attributes[:'compute_resp_status_503']
+      end
+
+      if attributes.key?(:'compute_resp_status_504')
+        self.compute_resp_status_504 = attributes[:'compute_resp_status_504']
+      end
+
+      if attributes.key?(:'compute_resp_status_505')
+        self.compute_resp_status_505 = attributes[:'compute_resp_status_505']
+      end
+
+      if attributes.key?(:'compute_resp_status_530')
+        self.compute_resp_status_530 = attributes[:'compute_resp_status_530']
+      end
+
       if attributes.key?(:'imgopto_compute_requests')
         self.imgopto_compute_requests = attributes[:'imgopto_compute_requests']
       end
@@ -2446,6 +2631,10 @@ module Fastly
 
       if attributes.key?(:'upgrade')
         self.upgrade = attributes[:'upgrade']
+      end
+
+      if attributes.key?(:'ngwaf_bot_analysis_request_count')
+        self.ngwaf_bot_analysis_request_count = attributes[:'ngwaf_bot_analysis_request_count']
       end
     end
 
@@ -2729,10 +2918,31 @@ module Fastly
           request_collapse_unusable_count == o.request_collapse_unusable_count &&
           compute_cache_operations_count == o.compute_cache_operations_count &&
           api_discovery_requests_count == o.api_discovery_requests_count &&
+          compute_resp_status_103 == o.compute_resp_status_103 &&
+          compute_resp_status_200 == o.compute_resp_status_200 &&
+          compute_resp_status_204 == o.compute_resp_status_204 &&
+          compute_resp_status_206 == o.compute_resp_status_206 &&
+          compute_resp_status_301 == o.compute_resp_status_301 &&
+          compute_resp_status_302 == o.compute_resp_status_302 &&
+          compute_resp_status_304 == o.compute_resp_status_304 &&
+          compute_resp_status_400 == o.compute_resp_status_400 &&
+          compute_resp_status_401 == o.compute_resp_status_401 &&
+          compute_resp_status_403 == o.compute_resp_status_403 &&
+          compute_resp_status_404 == o.compute_resp_status_404 &&
+          compute_resp_status_416 == o.compute_resp_status_416 &&
+          compute_resp_status_429 == o.compute_resp_status_429 &&
+          compute_resp_status_500 == o.compute_resp_status_500 &&
+          compute_resp_status_501 == o.compute_resp_status_501 &&
+          compute_resp_status_502 == o.compute_resp_status_502 &&
+          compute_resp_status_503 == o.compute_resp_status_503 &&
+          compute_resp_status_504 == o.compute_resp_status_504 &&
+          compute_resp_status_505 == o.compute_resp_status_505 &&
+          compute_resp_status_530 == o.compute_resp_status_530 &&
           imgopto_compute_requests == o.imgopto_compute_requests &&
           dns_billable_responses_count == o.dns_billable_responses_count &&
           dns_nonbillable_responses_count == o.dns_nonbillable_responses_count &&
-          upgrade == o.upgrade
+          upgrade == o.upgrade &&
+          ngwaf_bot_analysis_request_count == o.ngwaf_bot_analysis_request_count
     end
 
     # @see the `==` method
@@ -2744,7 +2954,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [requests, logging, log, resp_header_bytes, header_size, resp_body_bytes, body_size, hits, miss, pass, synth, errors, hits_time, miss_time, miss_histogram, compute_requests, compute_execution_time_ms, compute_ram_used, compute_request_time_ms, compute_request_time_billed_ms, shield, ipv6, imgopto, imgopto_shield, imgopto_transforms, otfp, otfp_shield, otfp_manifests, video, pci, http2, http3, restarts, req_header_bytes, req_body_bytes, bereq_header_bytes, bereq_body_bytes, waf_blocked, waf_logged, waf_passed, attack_req_header_bytes, attack_req_body_bytes, attack_resp_synth_bytes, attack_logged_req_header_bytes, attack_logged_req_body_bytes, attack_blocked_req_header_bytes, attack_blocked_req_body_bytes, attack_passed_req_header_bytes, attack_passed_req_body_bytes, shield_resp_header_bytes, shield_resp_body_bytes, otfp_resp_header_bytes, otfp_resp_body_bytes, otfp_shield_resp_header_bytes, otfp_shield_resp_body_bytes, otfp_shield_time, otfp_deliver_time, imgopto_resp_header_bytes, imgopto_resp_body_bytes, imgopto_shield_resp_header_bytes, imgopto_shield_resp_body_bytes, status_1xx, status_2xx, status_3xx, status_4xx, status_5xx, status_200, status_204, status_206, status_301, status_302, status_304, status_400, status_401, status_403, status_404, status_406, status_416, status_429, status_500, status_501, status_502, status_503, status_504, status_505, status_530, uncacheable, pass_time, tls, tls_v10, tls_v11, tls_v12, tls_v13, object_size_1k, object_size_10k, object_size_100k, object_size_1m, object_size_10m, object_size_100m, object_size_1g, object_size_other, recv_sub_time, recv_sub_count, hash_sub_time, hash_sub_count, miss_sub_time, miss_sub_count, fetch_sub_time, fetch_sub_count, pass_sub_time, pass_sub_count, pipe_sub_time, pipe_sub_count, deliver_sub_time, deliver_sub_count, error_sub_time, error_sub_count, hit_sub_time, hit_sub_count, prehash_sub_time, prehash_sub_count, predeliver_sub_time, predeliver_sub_count, hit_resp_body_bytes, miss_resp_body_bytes, pass_resp_body_bytes, compute_req_header_bytes, compute_req_body_bytes, compute_resp_header_bytes, compute_resp_body_bytes, imgvideo, imgvideo_frames, imgvideo_resp_header_bytes, imgvideo_resp_body_bytes, imgvideo_shield, imgvideo_shield_frames, imgvideo_shield_resp_header_bytes, imgvideo_shield_resp_body_bytes, log_bytes, edge_requests, edge_resp_header_bytes, edge_resp_body_bytes, origin_revalidations, origin_fetches, origin_fetch_header_bytes, origin_fetch_body_bytes, origin_fetch_resp_header_bytes, origin_fetch_resp_body_bytes, shield_revalidations, shield_fetches, shield_fetch_header_bytes, shield_fetch_body_bytes, shield_fetch_resp_header_bytes, shield_fetch_resp_body_bytes, segblock_origin_fetches, segblock_shield_fetches, compute_resp_status_1xx, compute_resp_status_2xx, compute_resp_status_3xx, compute_resp_status_4xx, compute_resp_status_5xx, edge_hit_requests, edge_miss_requests, compute_bereq_header_bytes, compute_bereq_body_bytes, compute_beresp_header_bytes, compute_beresp_body_bytes, origin_cache_fetches, shield_cache_fetches, compute_bereqs, compute_bereq_errors, compute_resource_limit_exceeded, compute_heap_limit_exceeded, compute_stack_limit_exceeded, compute_globals_limit_exceeded, compute_guest_errors, compute_runtime_errors, edge_hit_resp_body_bytes, edge_hit_resp_header_bytes, edge_miss_resp_body_bytes, edge_miss_resp_header_bytes, origin_cache_fetch_resp_body_bytes, origin_cache_fetch_resp_header_bytes, shield_hit_requests, shield_miss_requests, shield_hit_resp_header_bytes, shield_hit_resp_body_bytes, shield_miss_resp_header_bytes, shield_miss_resp_body_bytes, websocket_req_header_bytes, websocket_req_body_bytes, websocket_resp_header_bytes, websocket_bereq_header_bytes, websocket_bereq_body_bytes, websocket_beresp_header_bytes, websocket_beresp_body_bytes, websocket_conn_time_ms, websocket_resp_body_bytes, fanout_recv_publishes, fanout_send_publishes, kv_store_class_a_operations, kv_store_class_b_operations, object_store_class_a_operations, object_store_class_b_operations, fanout_req_header_bytes, fanout_req_body_bytes, fanout_resp_header_bytes, fanout_resp_body_bytes, fanout_bereq_header_bytes, fanout_bereq_body_bytes, fanout_beresp_header_bytes, fanout_beresp_body_bytes, fanout_conn_time_ms, ddos_action_limit_streams_connections, ddos_action_limit_streams_requests, ddos_action_tarpit_accept, ddos_action_tarpit, ddos_action_close, ddos_action_blackhole, bot_challenge_starts, bot_challenge_complete_tokens_passed, bot_challenge_complete_tokens_failed, bot_challenge_complete_tokens_checked, bot_challenge_complete_tokens_disabled, bot_challenges_issued, bot_challenges_succeeded, bot_challenges_failed, bot_challenge_complete_tokens_issued, ddos_action_downgrade, ddos_action_downgraded_connections, all_hit_requests, all_miss_requests, all_pass_requests, all_error_requests, all_synth_requests, all_edge_hit_requests, all_edge_miss_requests, all_status_1xx, all_status_2xx, all_status_3xx, all_status_4xx, all_status_5xx, origin_offload, request_denied_get_head_body, ddos_protection_requests_detect_count, ddos_protection_requests_mitigate_count, ddos_protection_requests_allow_count, object_storage_class_a_operations_count, object_storage_class_b_operations_count, aia_requests, aia_status_1xx, aia_status_2xx, aia_status_3xx, aia_status_4xx, aia_status_5xx, aia_response_usage_tokens, aia_origin_usage_tokens, aia_estimated_time_saved_ms, request_collapse_usable_count, request_collapse_unusable_count, compute_cache_operations_count, api_discovery_requests_count, imgopto_compute_requests, dns_billable_responses_count, dns_nonbillable_responses_count, upgrade].hash
+      [requests, logging, log, resp_header_bytes, header_size, resp_body_bytes, body_size, hits, miss, pass, synth, errors, hits_time, miss_time, miss_histogram, compute_requests, compute_execution_time_ms, compute_ram_used, compute_request_time_ms, compute_request_time_billed_ms, shield, ipv6, imgopto, imgopto_shield, imgopto_transforms, otfp, otfp_shield, otfp_manifests, video, pci, http2, http3, restarts, req_header_bytes, req_body_bytes, bereq_header_bytes, bereq_body_bytes, waf_blocked, waf_logged, waf_passed, attack_req_header_bytes, attack_req_body_bytes, attack_resp_synth_bytes, attack_logged_req_header_bytes, attack_logged_req_body_bytes, attack_blocked_req_header_bytes, attack_blocked_req_body_bytes, attack_passed_req_header_bytes, attack_passed_req_body_bytes, shield_resp_header_bytes, shield_resp_body_bytes, otfp_resp_header_bytes, otfp_resp_body_bytes, otfp_shield_resp_header_bytes, otfp_shield_resp_body_bytes, otfp_shield_time, otfp_deliver_time, imgopto_resp_header_bytes, imgopto_resp_body_bytes, imgopto_shield_resp_header_bytes, imgopto_shield_resp_body_bytes, status_1xx, status_2xx, status_3xx, status_4xx, status_5xx, status_200, status_204, status_206, status_301, status_302, status_304, status_400, status_401, status_403, status_404, status_406, status_416, status_429, status_500, status_501, status_502, status_503, status_504, status_505, status_530, uncacheable, pass_time, tls, tls_v10, tls_v11, tls_v12, tls_v13, object_size_1k, object_size_10k, object_size_100k, object_size_1m, object_size_10m, object_size_100m, object_size_1g, object_size_other, recv_sub_time, recv_sub_count, hash_sub_time, hash_sub_count, miss_sub_time, miss_sub_count, fetch_sub_time, fetch_sub_count, pass_sub_time, pass_sub_count, pipe_sub_time, pipe_sub_count, deliver_sub_time, deliver_sub_count, error_sub_time, error_sub_count, hit_sub_time, hit_sub_count, prehash_sub_time, prehash_sub_count, predeliver_sub_time, predeliver_sub_count, hit_resp_body_bytes, miss_resp_body_bytes, pass_resp_body_bytes, compute_req_header_bytes, compute_req_body_bytes, compute_resp_header_bytes, compute_resp_body_bytes, imgvideo, imgvideo_frames, imgvideo_resp_header_bytes, imgvideo_resp_body_bytes, imgvideo_shield, imgvideo_shield_frames, imgvideo_shield_resp_header_bytes, imgvideo_shield_resp_body_bytes, log_bytes, edge_requests, edge_resp_header_bytes, edge_resp_body_bytes, origin_revalidations, origin_fetches, origin_fetch_header_bytes, origin_fetch_body_bytes, origin_fetch_resp_header_bytes, origin_fetch_resp_body_bytes, shield_revalidations, shield_fetches, shield_fetch_header_bytes, shield_fetch_body_bytes, shield_fetch_resp_header_bytes, shield_fetch_resp_body_bytes, segblock_origin_fetches, segblock_shield_fetches, compute_resp_status_1xx, compute_resp_status_2xx, compute_resp_status_3xx, compute_resp_status_4xx, compute_resp_status_5xx, edge_hit_requests, edge_miss_requests, compute_bereq_header_bytes, compute_bereq_body_bytes, compute_beresp_header_bytes, compute_beresp_body_bytes, origin_cache_fetches, shield_cache_fetches, compute_bereqs, compute_bereq_errors, compute_resource_limit_exceeded, compute_heap_limit_exceeded, compute_stack_limit_exceeded, compute_globals_limit_exceeded, compute_guest_errors, compute_runtime_errors, edge_hit_resp_body_bytes, edge_hit_resp_header_bytes, edge_miss_resp_body_bytes, edge_miss_resp_header_bytes, origin_cache_fetch_resp_body_bytes, origin_cache_fetch_resp_header_bytes, shield_hit_requests, shield_miss_requests, shield_hit_resp_header_bytes, shield_hit_resp_body_bytes, shield_miss_resp_header_bytes, shield_miss_resp_body_bytes, websocket_req_header_bytes, websocket_req_body_bytes, websocket_resp_header_bytes, websocket_bereq_header_bytes, websocket_bereq_body_bytes, websocket_beresp_header_bytes, websocket_beresp_body_bytes, websocket_conn_time_ms, websocket_resp_body_bytes, fanout_recv_publishes, fanout_send_publishes, kv_store_class_a_operations, kv_store_class_b_operations, object_store_class_a_operations, object_store_class_b_operations, fanout_req_header_bytes, fanout_req_body_bytes, fanout_resp_header_bytes, fanout_resp_body_bytes, fanout_bereq_header_bytes, fanout_bereq_body_bytes, fanout_beresp_header_bytes, fanout_beresp_body_bytes, fanout_conn_time_ms, ddos_action_limit_streams_connections, ddos_action_limit_streams_requests, ddos_action_tarpit_accept, ddos_action_tarpit, ddos_action_close, ddos_action_blackhole, bot_challenge_starts, bot_challenge_complete_tokens_passed, bot_challenge_complete_tokens_failed, bot_challenge_complete_tokens_checked, bot_challenge_complete_tokens_disabled, bot_challenges_issued, bot_challenges_succeeded, bot_challenges_failed, bot_challenge_complete_tokens_issued, ddos_action_downgrade, ddos_action_downgraded_connections, all_hit_requests, all_miss_requests, all_pass_requests, all_error_requests, all_synth_requests, all_edge_hit_requests, all_edge_miss_requests, all_status_1xx, all_status_2xx, all_status_3xx, all_status_4xx, all_status_5xx, origin_offload, request_denied_get_head_body, ddos_protection_requests_detect_count, ddos_protection_requests_mitigate_count, ddos_protection_requests_allow_count, object_storage_class_a_operations_count, object_storage_class_b_operations_count, aia_requests, aia_status_1xx, aia_status_2xx, aia_status_3xx, aia_status_4xx, aia_status_5xx, aia_response_usage_tokens, aia_origin_usage_tokens, aia_estimated_time_saved_ms, request_collapse_usable_count, request_collapse_unusable_count, compute_cache_operations_count, api_discovery_requests_count, compute_resp_status_103, compute_resp_status_200, compute_resp_status_204, compute_resp_status_206, compute_resp_status_301, compute_resp_status_302, compute_resp_status_304, compute_resp_status_400, compute_resp_status_401, compute_resp_status_403, compute_resp_status_404, compute_resp_status_416, compute_resp_status_429, compute_resp_status_500, compute_resp_status_501, compute_resp_status_502, compute_resp_status_503, compute_resp_status_504, compute_resp_status_505, compute_resp_status_530, imgopto_compute_requests, dns_billable_responses_count, dns_nonbillable_responses_count, upgrade, ngwaf_bot_analysis_request_count].hash
     end
 
     # Builds the object from hash

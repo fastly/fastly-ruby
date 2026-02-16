@@ -8,7 +8,7 @@ A Ruby client library for interacting with most facets of the [Fastly API](https
 To install via RubyGems, add the following to your project's `Gemfile`:
 
 ```ruby
-gem 'fastly', '~> 15.1.0'
+gem 'fastly', '~> 16.0.0'
 ```
 
 Then run `bundle install`.
@@ -91,6 +91,17 @@ Class | Method | Description
 [*Fastly::ApexRedirectApi*](docs/ApexRedirectApi.md) | [**get_apex_redirect**](docs/ApexRedirectApi.md#get_apex_redirect) | Get an apex redirect
 [*Fastly::ApexRedirectApi*](docs/ApexRedirectApi.md) | [**list_apex_redirects**](docs/ApexRedirectApi.md#list_apex_redirects) | List apex redirects
 [*Fastly::ApexRedirectApi*](docs/ApexRedirectApi.md) | [**update_apex_redirect**](docs/ApexRedirectApi.md#update_apex_redirect) | Update an apex redirect
+[*Fastly::ApisecurityOperationsApi*](docs/ApisecurityOperationsApi.md) | [**api_security_create_operation**](docs/ApisecurityOperationsApi.md#api_security_create_operation) | Create operation
+[*Fastly::ApisecurityOperationsApi*](docs/ApisecurityOperationsApi.md) | [**api_security_create_operation_tag**](docs/ApisecurityOperationsApi.md#api_security_create_operation_tag) | Create operation tag
+[*Fastly::ApisecurityOperationsApi*](docs/ApisecurityOperationsApi.md) | [**api_security_delete_operation**](docs/ApisecurityOperationsApi.md#api_security_delete_operation) | Delete operation
+[*Fastly::ApisecurityOperationsApi*](docs/ApisecurityOperationsApi.md) | [**api_security_delete_operation_tag**](docs/ApisecurityOperationsApi.md#api_security_delete_operation_tag) | Delete operation tag
+[*Fastly::ApisecurityOperationsApi*](docs/ApisecurityOperationsApi.md) | [**api_security_get_operation**](docs/ApisecurityOperationsApi.md#api_security_get_operation) | Retrieve operation
+[*Fastly::ApisecurityOperationsApi*](docs/ApisecurityOperationsApi.md) | [**api_security_get_operation_tag**](docs/ApisecurityOperationsApi.md#api_security_get_operation_tag) | Retrieve operation tag
+[*Fastly::ApisecurityOperationsApi*](docs/ApisecurityOperationsApi.md) | [**api_security_list_discovered_operations**](docs/ApisecurityOperationsApi.md#api_security_list_discovered_operations) | List discovered operations
+[*Fastly::ApisecurityOperationsApi*](docs/ApisecurityOperationsApi.md) | [**api_security_list_operation_tags**](docs/ApisecurityOperationsApi.md#api_security_list_operation_tags) | List operation tags
+[*Fastly::ApisecurityOperationsApi*](docs/ApisecurityOperationsApi.md) | [**api_security_list_operations**](docs/ApisecurityOperationsApi.md#api_security_list_operations) | List operations
+[*Fastly::ApisecurityOperationsApi*](docs/ApisecurityOperationsApi.md) | [**api_security_update_operation**](docs/ApisecurityOperationsApi.md#api_security_update_operation) | Update operation
+[*Fastly::ApisecurityOperationsApi*](docs/ApisecurityOperationsApi.md) | [**api_security_update_operation_tag**](docs/ApisecurityOperationsApi.md#api_security_update_operation_tag) | Update operation tag
 [*Fastly::AutomationTokensApi*](docs/AutomationTokensApi.md) | [**create_automation_token**](docs/AutomationTokensApi.md#create_automation_token) | Create Automation Token
 [*Fastly::AutomationTokensApi*](docs/AutomationTokensApi.md) | [**get_automation_token_id**](docs/AutomationTokensApi.md#get_automation_token_id) | Retrieve an Automation Token by ID
 [*Fastly::AutomationTokensApi*](docs/AutomationTokensApi.md) | [**get_automation_tokens_id_services**](docs/AutomationTokensApi.md#get_automation_tokens_id_services) | List Automation Token Services
@@ -653,6 +664,11 @@ The fastly-ruby API client currently does not support the following endpoints:
 - [`/alerts/history`](https://www.fastly.com/documentation/reference/api/observability/alerts/history) (GET)
 - [`/dns/configurations/{dns_configuration_id}`](https://www.fastly.com/documentation/reference/api/) (DELETE, GET, PATCH)
 - [`/dns/configurations`](https://www.fastly.com/documentation/reference/api/) (GET, POST)
+- [`/dns/v1/tsig-keys/{tsig_key_id}`](https://www.fastly.com/documentation/reference/api/) (DELETE, GET, PATCH)
+- [`/dns/v1/tsig-keys`](https://www.fastly.com/documentation/reference/api/) (GET, POST)
+- [`/dns/v1/zones/{zone_id}`](https://www.fastly.com/documentation/reference/api/) (DELETE, GET, PATCH)
+- [`/dns/v1/zones`](https://www.fastly.com/documentation/reference/api/) (GET, POST)
+- [`/ngwaf/v1/default-dashboards`](https://www.fastly.com/documentation/reference/api/ngwaf/v1/custom-dashboards) (GET)
 - [`/ngwaf/v1/lists/{listId}`](https://www.fastly.com/documentation/reference/api/ngwaf/v1/lists) (DELETE, GET, PATCH)
 - [`/ngwaf/v1/lists`](https://www.fastly.com/documentation/reference/api/ngwaf/v1/lists) (GET, POST)
 - [`/ngwaf/v1/signals/{signal_id}`](https://www.fastly.com/documentation/reference/api/ngwaf/v1/signals) (DELETE, GET, PATCH)
@@ -663,6 +679,9 @@ The fastly-ruby API client currently does not support the following endpoints:
 - [`/ngwaf/v1/workspaces/{workspace_id}/alerts/{alert_id}/signing-key`](https://www.fastly.com/documentation/reference/api/ngwaf/v1/workspace_alerts) (GET, POST)
 - [`/ngwaf/v1/workspaces/{workspace_id}/alerts/{alert_id}`](https://www.fastly.com/documentation/reference/api/ngwaf/v1/workspace_alerts) (DELETE, GET, PATCH)
 - [`/ngwaf/v1/workspaces/{workspace_id}/alerts`](https://www.fastly.com/documentation/reference/api/ngwaf/v1/workspace_alerts) (GET, POST)
+- [`/ngwaf/v1/workspaces/{workspace_id}/dashboards/{dashboard_id}`](https://www.fastly.com/documentation/reference/api/ngwaf/v1/custom-dashboards) (DELETE, GET, PATCH)
+- [`/ngwaf/v1/workspaces/{workspace_id}/dashboards`](https://www.fastly.com/documentation/reference/api/ngwaf/v1/custom-dashboards) (GET, POST)
+- [`/ngwaf/v1/workspaces/{workspace_id}/default-dashboard`](https://www.fastly.com/documentation/reference/api/ngwaf/v1/custom-dashboards) (GET, PUT)
 - [`/ngwaf/v1/workspaces/{workspace_id}/events/{event_id}`](https://www.fastly.com/documentation/reference/api/ngwaf/events) (GET, PATCH)
 - [`/ngwaf/v1/workspaces/{workspace_id}/events`](https://www.fastly.com/documentation/reference/api/ngwaf/events) (GET)
 - [`/ngwaf/v1/workspaces/{workspace_id}/header-links/{header_link_id}`](https://www.fastly.com/documentation/reference/api/ngwaf/v1/header-links) (DELETE, GET, PUT)
@@ -674,7 +693,10 @@ The fastly-ruby API client currently does not support the following endpoints:
 - [`/ngwaf/v1/workspaces/{workspace_id}/requests`](https://www.fastly.com/documentation/reference/api/ngwaf/v1/requests) (GET)
 - [`/ngwaf/v1/workspaces/{workspace_id}/rules/{rule_id}`](https://www.fastly.com/documentation/reference/api/ngwaf/v1/rules) (DELETE, GET, PATCH)
 - [`/ngwaf/v1/workspaces/{workspace_id}/rules`](https://www.fastly.com/documentation/reference/api/ngwaf/v1/rules) (GET, POST)
+- [`/ngwaf/v1/workspaces/{workspace_id}/thresholds/{threshold_id}`](https://www.fastly.com/documentation/reference/api/ngwaf/v1/thresholds) (DELETE, GET, PATCH)
+- [`/ngwaf/v1/workspaces/{workspace_id}/thresholds`](https://www.fastly.com/documentation/reference/api/ngwaf/v1/thresholds) (GET, POST)
 - [`/ngwaf/v1/workspaces/{workspace_id}/timeseries`](https://www.fastly.com/documentation/reference/api/ngwaf/v1/timeseries) (GET)
+- [`/ngwaf/v1/workspaces/{workspace_id}/top-attacks`](https://www.fastly.com/documentation/reference/api/ngwaf/workspaces) (GET)
 - [`/ngwaf/v1/workspaces/{workspace_id}/virtual-patches/{virtual_patch_id}`](https://www.fastly.com/documentation/reference/api/ngwaf/v1/virtual-patches) (GET, PATCH)
 - [`/ngwaf/v1/workspaces/{workspace_id}/virtual-patches`](https://www.fastly.com/documentation/reference/api/ngwaf/v1/virtual-patches) (GET)
 - [`/ngwaf/v1/workspaces/{workspace_id}`](https://www.fastly.com/documentation/reference/api/ngwaf/workspaces) (DELETE, GET, PATCH)

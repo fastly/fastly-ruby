@@ -30,9 +30,9 @@ Retrieves statistics from sampled log records.
 api_instance = Fastly::InsightsApi.new
 opts = {
     visualization: 'top-url-by-bandwidth', # String | 
-    service_id: 'service_id_example', # String | 
-    start: 'start_example', # String | 
-    _end: '_end_example', # String | 
+    service_id: '1jlmtMz1ncwA0KC3TBGD0X', # String | 
+    start: '2024-01-01T14:30:23Z', # String | 
+    _end: '2024-01-05T14:30:23Z', # String | 
     pops: 'pops_example', # String | 
     domain: 'domain_example', # String | 
     domain_exact_match: true, # Boolean | 

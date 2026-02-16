@@ -206,6 +206,195 @@ module Fastly
     # Number of \"Server Error\" codes received from origin.
     attr_accessor :origin_status_5xx
 
+    # Total body bytes sent to backends (origins) by the Compute platform.
+    attr_accessor :compute_bereq_body_bytes
+
+    # Number of backend request errors, including timeouts, by the Compute platform.
+    attr_accessor :compute_bereq_errors
+
+    # Total header bytes sent to backends (origins) by the Compute platform.
+    attr_accessor :compute_bereq_header_bytes
+
+    # Number of backend requests started by the Compute platform.
+    attr_accessor :compute_bereqs
+
+    # Total body bytes received from backends (origins) by the Compute platform.
+    attr_accessor :compute_beresp_body_bytes
+
+    # Total header bytes received from backends (origins) by the Compute platform.
+    attr_accessor :compute_beresp_header_bytes
+
+    # The amount of active CPU time used to process your requests (in milliseconds).
+    attr_accessor :compute_execution_time_ms
+
+    # Number of \"Informational\" category status codes received from origin by the Compute platform.
+    attr_accessor :compute_origin_status_1xx
+
+    # Number of responses received from origin with status code 200 (Success) by the Compute platform.
+    attr_accessor :compute_origin_status_200
+
+    # Number of responses received from origin with status code 204 (No Content) by the Compute platform.
+    attr_accessor :compute_origin_status_204
+
+    # Number of responses received from origin with status code 206 (Partial Content) by the Compute platform.
+    attr_accessor :compute_origin_status_206
+
+    # Number of \"Success\" status codes received from origin by the Compute platform.
+    attr_accessor :compute_origin_status_2xx
+
+    # Number of responses received from origin with status code 301 (Moved Permanently) by the Compute platform.
+    attr_accessor :compute_origin_status_301
+
+    # Number of responses received from origin with status code 302 (Found) by the Compute platform.
+    attr_accessor :compute_origin_status_302
+
+    # Number of responses received from origin with status code 304 (Not Modified) by the Compute platform.
+    attr_accessor :compute_origin_status_304
+
+    # Number of \"Redirection\" codes received from origin by the Compute platform.
+    attr_accessor :compute_origin_status_3xx
+
+    # Number of responses received from origin with status code 400 (Bad Request) by the Compute platform.
+    attr_accessor :compute_origin_status_400
+
+    # Number of responses received from origin with status code 401 (Unauthorized) by the Compute platform.
+    attr_accessor :compute_origin_status_401
+
+    # Number of responses received from origin with status code 403 (Forbidden) by the Compute platform.
+    attr_accessor :compute_origin_status_403
+
+    # Number of responses received from origin with status code 404 (Not Found) by the Compute platform.
+    attr_accessor :compute_origin_status_404
+
+    # Number of responses received from origin with status code 416 (Range Not Satisfiable) by the Compute platform.
+    attr_accessor :compute_origin_status_416
+
+    # Number of responses received from origin with status code 429 (Too Many Requests) by the Compute platform.
+    attr_accessor :compute_origin_status_429
+
+    # Number of \"Client Error\" codes received from origin by the Compute platform.
+    attr_accessor :compute_origin_status_4xx
+
+    # Number of responses received from origin with status code 500 (Internal Server Error) by the Compute platform.
+    attr_accessor :compute_origin_status_500
+
+    # Number of responses received from origin with status code 501 (Not Implemented) by the Compute platform.
+    attr_accessor :compute_origin_status_501
+
+    # Number of responses received from origin with status code 502 (Bad Gateway) by the Compute platform.
+    attr_accessor :compute_origin_status_502
+
+    # Number of responses received from origin with status code 503 (Service Unavailable) by the Compute platform.
+    attr_accessor :compute_origin_status_503
+
+    # Number of responses received from origin with status code 504 (Gateway Timeout) by the Compute platform.
+    attr_accessor :compute_origin_status_504
+
+    # Number of responses received from origin with status code 505 (HTTP Version Not Supported) by the Compute platform.
+    attr_accessor :compute_origin_status_505
+
+    # Number of responses received from origin with status code 530 by the Compute platform.
+    attr_accessor :compute_origin_status_530
+
+    # Number of \"Server Error\" codes received from origin by the Compute platform.
+    attr_accessor :compute_origin_status_5xx
+
+    # Total body bytes received by the Compute platform.
+    attr_accessor :compute_req_body_bytes
+
+    # Total header bytes received by the Compute platform.
+    attr_accessor :compute_req_header_bytes
+
+    # The total amount of request processing time you will be billed for, measured in 50 millisecond increments.
+    attr_accessor :compute_request_time_billed_ms
+
+    # The total amount of time used to process your requests, including active CPU time (in milliseconds).
+    attr_accessor :compute_request_time_ms
+
+    # The total number of requests that were received by the Compute platform.
+    attr_accessor :compute_request
+
+    # Total body bytes sent from Compute to the end user.
+    attr_accessor :compute_resp_body_bytes
+
+    # Total header bytes sent from Compute to the end user.
+    attr_accessor :compute_resp_header_bytes
+
+    # Number of responses delivered with status code 103 (Early Hints) by the Compute platform.
+    attr_accessor :compute_resp_status_103
+
+    # Number of 1xx \"Informational\" category status codes delivered by the Compute platform.
+    attr_accessor :compute_resp_status_1xx
+
+    # Number of responses delivered with status code 200 (Success) by the Compute platform.
+    attr_accessor :compute_resp_status_200
+
+    # Number of responses delivered with status code 204 (No Content) by the Compute platform.
+    attr_accessor :compute_resp_status_204
+
+    # Number of responses delivered with status code 206 (Partial Content) by the Compute platform.
+    attr_accessor :compute_resp_status_206
+
+    # Number of 2xx \"Success\" status codes delivered by the Compute platform.
+    attr_accessor :compute_resp_status_2xx
+
+    # Number of responses delivered with status code 301 (Moved Permanently) by the Compute platform.
+    attr_accessor :compute_resp_status_301
+
+    # Number of responses delivered with status code 302 (Found) by the Compute platform.
+    attr_accessor :compute_resp_status_302
+
+    # Number of responses delivered with status code 304 (Not Modified) by the Compute platform.
+    attr_accessor :compute_resp_status_304
+
+    # Number of 3xx \"Redirection\" codes delivered by the Compute platform.
+    attr_accessor :compute_resp_status_3xx
+
+    # Number of responses delivered with status code 400 (Bad Request) by the Compute platform.
+    attr_accessor :compute_resp_status_400
+
+    # Number of responses delivered with status code 401 (Unauthorized) by the Compute platform.
+    attr_accessor :compute_resp_status_401
+
+    # Number of responses delivered with status code 403 (Forbidden) by the Compute platform.
+    attr_accessor :compute_resp_status_403
+
+    # Number of responses delivered with status code 404 (Not Found) by the Compute platform.
+    attr_accessor :compute_resp_status_404
+
+    # Number of responses delivered with status code 416 (Range Not Satisfiable) by the Compute platform.
+    attr_accessor :compute_resp_status_416
+
+    # Number of responses delivered with status code 429 (Too Many Requests) by the Compute platform.
+    attr_accessor :compute_resp_status_429
+
+    # Number of 4xx \"Client Error\" codes delivered by the Compute platform.
+    attr_accessor :compute_resp_status_4xx
+
+    # Number of responses delivered with status code 500 (Internal Server Error) by the Compute platform.
+    attr_accessor :compute_resp_status_500
+
+    # Number of responses delivered with status code 501 (Not Implemented) by the Compute platform.
+    attr_accessor :compute_resp_status_501
+
+    # Number of responses delivered with status code 502 (Bad Gateway) by the Compute platform.
+    attr_accessor :compute_resp_status_502
+
+    # Number of responses delivered with status code 503 (Service Unavailable) by the Compute platform.
+    attr_accessor :compute_resp_status_503
+
+    # Number of responses delivered with status code 504 (Gateway Timeout) by the Compute platform.
+    attr_accessor :compute_resp_status_504
+
+    # Number of responses delivered with status code 505 (HTTP Version Not Supported) by the Compute platform.
+    attr_accessor :compute_resp_status_505
+
+    # Number of responses delivered with status code 530 by the Compute platform.
+    attr_accessor :compute_resp_status_530
+
+    # Number of \"Server Error\" category status codes delivered by the Compute platform.
+    attr_accessor :compute_resp_status_5xx
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -272,7 +461,70 @@ module Fastly
         :'origin_status_2xx' => :'origin_status_2xx',
         :'origin_status_3xx' => :'origin_status_3xx',
         :'origin_status_4xx' => :'origin_status_4xx',
-        :'origin_status_5xx' => :'origin_status_5xx'
+        :'origin_status_5xx' => :'origin_status_5xx',
+        :'compute_bereq_body_bytes' => :'compute_bereq_body_bytes',
+        :'compute_bereq_errors' => :'compute_bereq_errors',
+        :'compute_bereq_header_bytes' => :'compute_bereq_header_bytes',
+        :'compute_bereqs' => :'compute_bereqs',
+        :'compute_beresp_body_bytes' => :'compute_beresp_body_bytes',
+        :'compute_beresp_header_bytes' => :'compute_beresp_header_bytes',
+        :'compute_execution_time_ms' => :'compute_execution_time_ms',
+        :'compute_origin_status_1xx' => :'compute_origin_status_1xx',
+        :'compute_origin_status_200' => :'compute_origin_status_200',
+        :'compute_origin_status_204' => :'compute_origin_status_204',
+        :'compute_origin_status_206' => :'compute_origin_status_206',
+        :'compute_origin_status_2xx' => :'compute_origin_status_2xx',
+        :'compute_origin_status_301' => :'compute_origin_status_301',
+        :'compute_origin_status_302' => :'compute_origin_status_302',
+        :'compute_origin_status_304' => :'compute_origin_status_304',
+        :'compute_origin_status_3xx' => :'compute_origin_status_3xx',
+        :'compute_origin_status_400' => :'compute_origin_status_400',
+        :'compute_origin_status_401' => :'compute_origin_status_401',
+        :'compute_origin_status_403' => :'compute_origin_status_403',
+        :'compute_origin_status_404' => :'compute_origin_status_404',
+        :'compute_origin_status_416' => :'compute_origin_status_416',
+        :'compute_origin_status_429' => :'compute_origin_status_429',
+        :'compute_origin_status_4xx' => :'compute_origin_status_4xx',
+        :'compute_origin_status_500' => :'compute_origin_status_500',
+        :'compute_origin_status_501' => :'compute_origin_status_501',
+        :'compute_origin_status_502' => :'compute_origin_status_502',
+        :'compute_origin_status_503' => :'compute_origin_status_503',
+        :'compute_origin_status_504' => :'compute_origin_status_504',
+        :'compute_origin_status_505' => :'compute_origin_status_505',
+        :'compute_origin_status_530' => :'compute_origin_status_530',
+        :'compute_origin_status_5xx' => :'compute_origin_status_5xx',
+        :'compute_req_body_bytes' => :'compute_req_body_bytes',
+        :'compute_req_header_bytes' => :'compute_req_header_bytes',
+        :'compute_request_time_billed_ms' => :'compute_request_time_billed_ms',
+        :'compute_request_time_ms' => :'compute_request_time_ms',
+        :'compute_request' => :'compute_request',
+        :'compute_resp_body_bytes' => :'compute_resp_body_bytes',
+        :'compute_resp_header_bytes' => :'compute_resp_header_bytes',
+        :'compute_resp_status_103' => :'compute_resp_status_103',
+        :'compute_resp_status_1xx' => :'compute_resp_status_1xx',
+        :'compute_resp_status_200' => :'compute_resp_status_200',
+        :'compute_resp_status_204' => :'compute_resp_status_204',
+        :'compute_resp_status_206' => :'compute_resp_status_206',
+        :'compute_resp_status_2xx' => :'compute_resp_status_2xx',
+        :'compute_resp_status_301' => :'compute_resp_status_301',
+        :'compute_resp_status_302' => :'compute_resp_status_302',
+        :'compute_resp_status_304' => :'compute_resp_status_304',
+        :'compute_resp_status_3xx' => :'compute_resp_status_3xx',
+        :'compute_resp_status_400' => :'compute_resp_status_400',
+        :'compute_resp_status_401' => :'compute_resp_status_401',
+        :'compute_resp_status_403' => :'compute_resp_status_403',
+        :'compute_resp_status_404' => :'compute_resp_status_404',
+        :'compute_resp_status_416' => :'compute_resp_status_416',
+        :'compute_resp_status_429' => :'compute_resp_status_429',
+        :'compute_resp_status_4xx' => :'compute_resp_status_4xx',
+        :'compute_resp_status_500' => :'compute_resp_status_500',
+        :'compute_resp_status_501' => :'compute_resp_status_501',
+        :'compute_resp_status_502' => :'compute_resp_status_502',
+        :'compute_resp_status_503' => :'compute_resp_status_503',
+        :'compute_resp_status_504' => :'compute_resp_status_504',
+        :'compute_resp_status_505' => :'compute_resp_status_505',
+        :'compute_resp_status_530' => :'compute_resp_status_530',
+        :'compute_resp_status_5xx' => :'compute_resp_status_5xx'
       }
     end
 
@@ -347,7 +599,70 @@ module Fastly
         :'origin_status_2xx' => :'Integer',
         :'origin_status_3xx' => :'Integer',
         :'origin_status_4xx' => :'Integer',
-        :'origin_status_5xx' => :'Integer'
+        :'origin_status_5xx' => :'Integer',
+        :'compute_bereq_body_bytes' => :'Integer',
+        :'compute_bereq_errors' => :'Integer',
+        :'compute_bereq_header_bytes' => :'Integer',
+        :'compute_bereqs' => :'Integer',
+        :'compute_beresp_body_bytes' => :'Integer',
+        :'compute_beresp_header_bytes' => :'Integer',
+        :'compute_execution_time_ms' => :'Integer',
+        :'compute_origin_status_1xx' => :'Integer',
+        :'compute_origin_status_200' => :'Integer',
+        :'compute_origin_status_204' => :'Integer',
+        :'compute_origin_status_206' => :'Integer',
+        :'compute_origin_status_2xx' => :'Integer',
+        :'compute_origin_status_301' => :'Integer',
+        :'compute_origin_status_302' => :'Integer',
+        :'compute_origin_status_304' => :'Integer',
+        :'compute_origin_status_3xx' => :'Integer',
+        :'compute_origin_status_400' => :'Integer',
+        :'compute_origin_status_401' => :'Integer',
+        :'compute_origin_status_403' => :'Integer',
+        :'compute_origin_status_404' => :'Integer',
+        :'compute_origin_status_416' => :'Integer',
+        :'compute_origin_status_429' => :'Integer',
+        :'compute_origin_status_4xx' => :'Integer',
+        :'compute_origin_status_500' => :'Integer',
+        :'compute_origin_status_501' => :'Integer',
+        :'compute_origin_status_502' => :'Integer',
+        :'compute_origin_status_503' => :'Integer',
+        :'compute_origin_status_504' => :'Integer',
+        :'compute_origin_status_505' => :'Integer',
+        :'compute_origin_status_530' => :'Integer',
+        :'compute_origin_status_5xx' => :'Integer',
+        :'compute_req_body_bytes' => :'Integer',
+        :'compute_req_header_bytes' => :'Integer',
+        :'compute_request_time_billed_ms' => :'Integer',
+        :'compute_request_time_ms' => :'Integer',
+        :'compute_request' => :'Integer',
+        :'compute_resp_body_bytes' => :'Integer',
+        :'compute_resp_header_bytes' => :'Integer',
+        :'compute_resp_status_103' => :'Integer',
+        :'compute_resp_status_1xx' => :'Integer',
+        :'compute_resp_status_200' => :'Integer',
+        :'compute_resp_status_204' => :'Integer',
+        :'compute_resp_status_206' => :'Integer',
+        :'compute_resp_status_2xx' => :'Integer',
+        :'compute_resp_status_301' => :'Integer',
+        :'compute_resp_status_302' => :'Integer',
+        :'compute_resp_status_304' => :'Integer',
+        :'compute_resp_status_3xx' => :'Integer',
+        :'compute_resp_status_400' => :'Integer',
+        :'compute_resp_status_401' => :'Integer',
+        :'compute_resp_status_403' => :'Integer',
+        :'compute_resp_status_404' => :'Integer',
+        :'compute_resp_status_416' => :'Integer',
+        :'compute_resp_status_429' => :'Integer',
+        :'compute_resp_status_4xx' => :'Integer',
+        :'compute_resp_status_500' => :'Integer',
+        :'compute_resp_status_501' => :'Integer',
+        :'compute_resp_status_502' => :'Integer',
+        :'compute_resp_status_503' => :'Integer',
+        :'compute_resp_status_504' => :'Integer',
+        :'compute_resp_status_505' => :'Integer',
+        :'compute_resp_status_530' => :'Integer',
+        :'compute_resp_status_5xx' => :'Integer'
       }
     end
 
@@ -627,6 +942,258 @@ module Fastly
       if attributes.key?(:'origin_status_5xx')
         self.origin_status_5xx = attributes[:'origin_status_5xx']
       end
+
+      if attributes.key?(:'compute_bereq_body_bytes')
+        self.compute_bereq_body_bytes = attributes[:'compute_bereq_body_bytes']
+      end
+
+      if attributes.key?(:'compute_bereq_errors')
+        self.compute_bereq_errors = attributes[:'compute_bereq_errors']
+      end
+
+      if attributes.key?(:'compute_bereq_header_bytes')
+        self.compute_bereq_header_bytes = attributes[:'compute_bereq_header_bytes']
+      end
+
+      if attributes.key?(:'compute_bereqs')
+        self.compute_bereqs = attributes[:'compute_bereqs']
+      end
+
+      if attributes.key?(:'compute_beresp_body_bytes')
+        self.compute_beresp_body_bytes = attributes[:'compute_beresp_body_bytes']
+      end
+
+      if attributes.key?(:'compute_beresp_header_bytes')
+        self.compute_beresp_header_bytes = attributes[:'compute_beresp_header_bytes']
+      end
+
+      if attributes.key?(:'compute_execution_time_ms')
+        self.compute_execution_time_ms = attributes[:'compute_execution_time_ms']
+      end
+
+      if attributes.key?(:'compute_origin_status_1xx')
+        self.compute_origin_status_1xx = attributes[:'compute_origin_status_1xx']
+      end
+
+      if attributes.key?(:'compute_origin_status_200')
+        self.compute_origin_status_200 = attributes[:'compute_origin_status_200']
+      end
+
+      if attributes.key?(:'compute_origin_status_204')
+        self.compute_origin_status_204 = attributes[:'compute_origin_status_204']
+      end
+
+      if attributes.key?(:'compute_origin_status_206')
+        self.compute_origin_status_206 = attributes[:'compute_origin_status_206']
+      end
+
+      if attributes.key?(:'compute_origin_status_2xx')
+        self.compute_origin_status_2xx = attributes[:'compute_origin_status_2xx']
+      end
+
+      if attributes.key?(:'compute_origin_status_301')
+        self.compute_origin_status_301 = attributes[:'compute_origin_status_301']
+      end
+
+      if attributes.key?(:'compute_origin_status_302')
+        self.compute_origin_status_302 = attributes[:'compute_origin_status_302']
+      end
+
+      if attributes.key?(:'compute_origin_status_304')
+        self.compute_origin_status_304 = attributes[:'compute_origin_status_304']
+      end
+
+      if attributes.key?(:'compute_origin_status_3xx')
+        self.compute_origin_status_3xx = attributes[:'compute_origin_status_3xx']
+      end
+
+      if attributes.key?(:'compute_origin_status_400')
+        self.compute_origin_status_400 = attributes[:'compute_origin_status_400']
+      end
+
+      if attributes.key?(:'compute_origin_status_401')
+        self.compute_origin_status_401 = attributes[:'compute_origin_status_401']
+      end
+
+      if attributes.key?(:'compute_origin_status_403')
+        self.compute_origin_status_403 = attributes[:'compute_origin_status_403']
+      end
+
+      if attributes.key?(:'compute_origin_status_404')
+        self.compute_origin_status_404 = attributes[:'compute_origin_status_404']
+      end
+
+      if attributes.key?(:'compute_origin_status_416')
+        self.compute_origin_status_416 = attributes[:'compute_origin_status_416']
+      end
+
+      if attributes.key?(:'compute_origin_status_429')
+        self.compute_origin_status_429 = attributes[:'compute_origin_status_429']
+      end
+
+      if attributes.key?(:'compute_origin_status_4xx')
+        self.compute_origin_status_4xx = attributes[:'compute_origin_status_4xx']
+      end
+
+      if attributes.key?(:'compute_origin_status_500')
+        self.compute_origin_status_500 = attributes[:'compute_origin_status_500']
+      end
+
+      if attributes.key?(:'compute_origin_status_501')
+        self.compute_origin_status_501 = attributes[:'compute_origin_status_501']
+      end
+
+      if attributes.key?(:'compute_origin_status_502')
+        self.compute_origin_status_502 = attributes[:'compute_origin_status_502']
+      end
+
+      if attributes.key?(:'compute_origin_status_503')
+        self.compute_origin_status_503 = attributes[:'compute_origin_status_503']
+      end
+
+      if attributes.key?(:'compute_origin_status_504')
+        self.compute_origin_status_504 = attributes[:'compute_origin_status_504']
+      end
+
+      if attributes.key?(:'compute_origin_status_505')
+        self.compute_origin_status_505 = attributes[:'compute_origin_status_505']
+      end
+
+      if attributes.key?(:'compute_origin_status_530')
+        self.compute_origin_status_530 = attributes[:'compute_origin_status_530']
+      end
+
+      if attributes.key?(:'compute_origin_status_5xx')
+        self.compute_origin_status_5xx = attributes[:'compute_origin_status_5xx']
+      end
+
+      if attributes.key?(:'compute_req_body_bytes')
+        self.compute_req_body_bytes = attributes[:'compute_req_body_bytes']
+      end
+
+      if attributes.key?(:'compute_req_header_bytes')
+        self.compute_req_header_bytes = attributes[:'compute_req_header_bytes']
+      end
+
+      if attributes.key?(:'compute_request_time_billed_ms')
+        self.compute_request_time_billed_ms = attributes[:'compute_request_time_billed_ms']
+      end
+
+      if attributes.key?(:'compute_request_time_ms')
+        self.compute_request_time_ms = attributes[:'compute_request_time_ms']
+      end
+
+      if attributes.key?(:'compute_request')
+        self.compute_request = attributes[:'compute_request']
+      end
+
+      if attributes.key?(:'compute_resp_body_bytes')
+        self.compute_resp_body_bytes = attributes[:'compute_resp_body_bytes']
+      end
+
+      if attributes.key?(:'compute_resp_header_bytes')
+        self.compute_resp_header_bytes = attributes[:'compute_resp_header_bytes']
+      end
+
+      if attributes.key?(:'compute_resp_status_103')
+        self.compute_resp_status_103 = attributes[:'compute_resp_status_103']
+      end
+
+      if attributes.key?(:'compute_resp_status_1xx')
+        self.compute_resp_status_1xx = attributes[:'compute_resp_status_1xx']
+      end
+
+      if attributes.key?(:'compute_resp_status_200')
+        self.compute_resp_status_200 = attributes[:'compute_resp_status_200']
+      end
+
+      if attributes.key?(:'compute_resp_status_204')
+        self.compute_resp_status_204 = attributes[:'compute_resp_status_204']
+      end
+
+      if attributes.key?(:'compute_resp_status_206')
+        self.compute_resp_status_206 = attributes[:'compute_resp_status_206']
+      end
+
+      if attributes.key?(:'compute_resp_status_2xx')
+        self.compute_resp_status_2xx = attributes[:'compute_resp_status_2xx']
+      end
+
+      if attributes.key?(:'compute_resp_status_301')
+        self.compute_resp_status_301 = attributes[:'compute_resp_status_301']
+      end
+
+      if attributes.key?(:'compute_resp_status_302')
+        self.compute_resp_status_302 = attributes[:'compute_resp_status_302']
+      end
+
+      if attributes.key?(:'compute_resp_status_304')
+        self.compute_resp_status_304 = attributes[:'compute_resp_status_304']
+      end
+
+      if attributes.key?(:'compute_resp_status_3xx')
+        self.compute_resp_status_3xx = attributes[:'compute_resp_status_3xx']
+      end
+
+      if attributes.key?(:'compute_resp_status_400')
+        self.compute_resp_status_400 = attributes[:'compute_resp_status_400']
+      end
+
+      if attributes.key?(:'compute_resp_status_401')
+        self.compute_resp_status_401 = attributes[:'compute_resp_status_401']
+      end
+
+      if attributes.key?(:'compute_resp_status_403')
+        self.compute_resp_status_403 = attributes[:'compute_resp_status_403']
+      end
+
+      if attributes.key?(:'compute_resp_status_404')
+        self.compute_resp_status_404 = attributes[:'compute_resp_status_404']
+      end
+
+      if attributes.key?(:'compute_resp_status_416')
+        self.compute_resp_status_416 = attributes[:'compute_resp_status_416']
+      end
+
+      if attributes.key?(:'compute_resp_status_429')
+        self.compute_resp_status_429 = attributes[:'compute_resp_status_429']
+      end
+
+      if attributes.key?(:'compute_resp_status_4xx')
+        self.compute_resp_status_4xx = attributes[:'compute_resp_status_4xx']
+      end
+
+      if attributes.key?(:'compute_resp_status_500')
+        self.compute_resp_status_500 = attributes[:'compute_resp_status_500']
+      end
+
+      if attributes.key?(:'compute_resp_status_501')
+        self.compute_resp_status_501 = attributes[:'compute_resp_status_501']
+      end
+
+      if attributes.key?(:'compute_resp_status_502')
+        self.compute_resp_status_502 = attributes[:'compute_resp_status_502']
+      end
+
+      if attributes.key?(:'compute_resp_status_503')
+        self.compute_resp_status_503 = attributes[:'compute_resp_status_503']
+      end
+
+      if attributes.key?(:'compute_resp_status_504')
+        self.compute_resp_status_504 = attributes[:'compute_resp_status_504']
+      end
+
+      if attributes.key?(:'compute_resp_status_505')
+        self.compute_resp_status_505 = attributes[:'compute_resp_status_505']
+      end
+
+      if attributes.key?(:'compute_resp_status_530')
+        self.compute_resp_status_530 = attributes[:'compute_resp_status_530']
+      end
+
+      if attributes.key?(:'compute_resp_status_5xx')
+        self.compute_resp_status_5xx = attributes[:'compute_resp_status_5xx']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -710,7 +1277,70 @@ module Fastly
           origin_status_2xx == o.origin_status_2xx &&
           origin_status_3xx == o.origin_status_3xx &&
           origin_status_4xx == o.origin_status_4xx &&
-          origin_status_5xx == o.origin_status_5xx
+          origin_status_5xx == o.origin_status_5xx &&
+          compute_bereq_body_bytes == o.compute_bereq_body_bytes &&
+          compute_bereq_errors == o.compute_bereq_errors &&
+          compute_bereq_header_bytes == o.compute_bereq_header_bytes &&
+          compute_bereqs == o.compute_bereqs &&
+          compute_beresp_body_bytes == o.compute_beresp_body_bytes &&
+          compute_beresp_header_bytes == o.compute_beresp_header_bytes &&
+          compute_execution_time_ms == o.compute_execution_time_ms &&
+          compute_origin_status_1xx == o.compute_origin_status_1xx &&
+          compute_origin_status_200 == o.compute_origin_status_200 &&
+          compute_origin_status_204 == o.compute_origin_status_204 &&
+          compute_origin_status_206 == o.compute_origin_status_206 &&
+          compute_origin_status_2xx == o.compute_origin_status_2xx &&
+          compute_origin_status_301 == o.compute_origin_status_301 &&
+          compute_origin_status_302 == o.compute_origin_status_302 &&
+          compute_origin_status_304 == o.compute_origin_status_304 &&
+          compute_origin_status_3xx == o.compute_origin_status_3xx &&
+          compute_origin_status_400 == o.compute_origin_status_400 &&
+          compute_origin_status_401 == o.compute_origin_status_401 &&
+          compute_origin_status_403 == o.compute_origin_status_403 &&
+          compute_origin_status_404 == o.compute_origin_status_404 &&
+          compute_origin_status_416 == o.compute_origin_status_416 &&
+          compute_origin_status_429 == o.compute_origin_status_429 &&
+          compute_origin_status_4xx == o.compute_origin_status_4xx &&
+          compute_origin_status_500 == o.compute_origin_status_500 &&
+          compute_origin_status_501 == o.compute_origin_status_501 &&
+          compute_origin_status_502 == o.compute_origin_status_502 &&
+          compute_origin_status_503 == o.compute_origin_status_503 &&
+          compute_origin_status_504 == o.compute_origin_status_504 &&
+          compute_origin_status_505 == o.compute_origin_status_505 &&
+          compute_origin_status_530 == o.compute_origin_status_530 &&
+          compute_origin_status_5xx == o.compute_origin_status_5xx &&
+          compute_req_body_bytes == o.compute_req_body_bytes &&
+          compute_req_header_bytes == o.compute_req_header_bytes &&
+          compute_request_time_billed_ms == o.compute_request_time_billed_ms &&
+          compute_request_time_ms == o.compute_request_time_ms &&
+          compute_request == o.compute_request &&
+          compute_resp_body_bytes == o.compute_resp_body_bytes &&
+          compute_resp_header_bytes == o.compute_resp_header_bytes &&
+          compute_resp_status_103 == o.compute_resp_status_103 &&
+          compute_resp_status_1xx == o.compute_resp_status_1xx &&
+          compute_resp_status_200 == o.compute_resp_status_200 &&
+          compute_resp_status_204 == o.compute_resp_status_204 &&
+          compute_resp_status_206 == o.compute_resp_status_206 &&
+          compute_resp_status_2xx == o.compute_resp_status_2xx &&
+          compute_resp_status_301 == o.compute_resp_status_301 &&
+          compute_resp_status_302 == o.compute_resp_status_302 &&
+          compute_resp_status_304 == o.compute_resp_status_304 &&
+          compute_resp_status_3xx == o.compute_resp_status_3xx &&
+          compute_resp_status_400 == o.compute_resp_status_400 &&
+          compute_resp_status_401 == o.compute_resp_status_401 &&
+          compute_resp_status_403 == o.compute_resp_status_403 &&
+          compute_resp_status_404 == o.compute_resp_status_404 &&
+          compute_resp_status_416 == o.compute_resp_status_416 &&
+          compute_resp_status_429 == o.compute_resp_status_429 &&
+          compute_resp_status_4xx == o.compute_resp_status_4xx &&
+          compute_resp_status_500 == o.compute_resp_status_500 &&
+          compute_resp_status_501 == o.compute_resp_status_501 &&
+          compute_resp_status_502 == o.compute_resp_status_502 &&
+          compute_resp_status_503 == o.compute_resp_status_503 &&
+          compute_resp_status_504 == o.compute_resp_status_504 &&
+          compute_resp_status_505 == o.compute_resp_status_505 &&
+          compute_resp_status_530 == o.compute_resp_status_530 &&
+          compute_resp_status_5xx == o.compute_resp_status_5xx
     end
 
     # @see the `==` method
@@ -722,7 +1352,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [edge_requests, edge_resp_header_bytes, edge_resp_body_bytes, status_1xx, status_2xx, status_3xx, status_4xx, status_5xx, status_200, status_204, status_206, status_301, status_302, status_304, status_400, status_401, status_403, status_404, status_416, status_429, status_500, status_501, status_502, status_503, status_504, status_505, status_530, requests, resp_header_bytes, resp_body_bytes, bereq_header_bytes, bereq_body_bytes, edge_hit_requests, edge_miss_requests, origin_fetches, origin_fetch_resp_header_bytes, origin_fetch_resp_body_bytes, bandwidth, edge_hit_ratio, origin_offload, origin_status_200, origin_status_204, origin_status_206, origin_status_301, origin_status_302, origin_status_304, origin_status_400, origin_status_401, origin_status_403, origin_status_404, origin_status_416, origin_status_429, origin_status_500, origin_status_501, origin_status_502, origin_status_503, origin_status_504, origin_status_505, origin_status_530, origin_status_1xx, origin_status_2xx, origin_status_3xx, origin_status_4xx, origin_status_5xx].hash
+      [edge_requests, edge_resp_header_bytes, edge_resp_body_bytes, status_1xx, status_2xx, status_3xx, status_4xx, status_5xx, status_200, status_204, status_206, status_301, status_302, status_304, status_400, status_401, status_403, status_404, status_416, status_429, status_500, status_501, status_502, status_503, status_504, status_505, status_530, requests, resp_header_bytes, resp_body_bytes, bereq_header_bytes, bereq_body_bytes, edge_hit_requests, edge_miss_requests, origin_fetches, origin_fetch_resp_header_bytes, origin_fetch_resp_body_bytes, bandwidth, edge_hit_ratio, origin_offload, origin_status_200, origin_status_204, origin_status_206, origin_status_301, origin_status_302, origin_status_304, origin_status_400, origin_status_401, origin_status_403, origin_status_404, origin_status_416, origin_status_429, origin_status_500, origin_status_501, origin_status_502, origin_status_503, origin_status_504, origin_status_505, origin_status_530, origin_status_1xx, origin_status_2xx, origin_status_3xx, origin_status_4xx, origin_status_5xx, compute_bereq_body_bytes, compute_bereq_errors, compute_bereq_header_bytes, compute_bereqs, compute_beresp_body_bytes, compute_beresp_header_bytes, compute_execution_time_ms, compute_origin_status_1xx, compute_origin_status_200, compute_origin_status_204, compute_origin_status_206, compute_origin_status_2xx, compute_origin_status_301, compute_origin_status_302, compute_origin_status_304, compute_origin_status_3xx, compute_origin_status_400, compute_origin_status_401, compute_origin_status_403, compute_origin_status_404, compute_origin_status_416, compute_origin_status_429, compute_origin_status_4xx, compute_origin_status_500, compute_origin_status_501, compute_origin_status_502, compute_origin_status_503, compute_origin_status_504, compute_origin_status_505, compute_origin_status_530, compute_origin_status_5xx, compute_req_body_bytes, compute_req_header_bytes, compute_request_time_billed_ms, compute_request_time_ms, compute_request, compute_resp_body_bytes, compute_resp_header_bytes, compute_resp_status_103, compute_resp_status_1xx, compute_resp_status_200, compute_resp_status_204, compute_resp_status_206, compute_resp_status_2xx, compute_resp_status_301, compute_resp_status_302, compute_resp_status_304, compute_resp_status_3xx, compute_resp_status_400, compute_resp_status_401, compute_resp_status_403, compute_resp_status_404, compute_resp_status_416, compute_resp_status_429, compute_resp_status_4xx, compute_resp_status_500, compute_resp_status_501, compute_resp_status_502, compute_resp_status_503, compute_resp_status_504, compute_resp_status_505, compute_resp_status_530, compute_resp_status_5xx].hash
     end
 
     # Builds the object from hash

@@ -13,12 +13,15 @@ require 'time'
 
 module Fastly
   class InlineResponse2006
-    attr_accessor :results
+    attr_accessor :data
+
+    attr_accessor :meta
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'results' => :'results'
+        :'data' => :'data',
+        :'meta' => :'meta'
       }
     end
 
@@ -30,7 +33,8 @@ module Fastly
     # Attribute type mapping.
     def self.fastly_types
       {
-        :'results' => :'Array<Suggestion>'
+        :'data' => :'Array<DdosProtectionRuleWithStats>',
+        :'meta' => :'PaginationCursorMeta'
       }
     end
 
@@ -55,10 +59,14 @@ module Fastly
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'results')
-        if (value = attributes[:'results']).is_a?(Array)
-          self.results = value
+      if attributes.key?(:'data')
+        if (value = attributes[:'data']).is_a?(Array)
+          self.data = value
         end
+      end
+
+      if attributes.key?(:'meta')
+        self.meta = attributes[:'meta']
       end
     end
 
@@ -66,12 +74,22 @@ module Fastly
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+      if @data.nil?
+        invalid_properties.push('invalid value for "data", data cannot be nil.')
+      end
+
+      if @meta.nil?
+        invalid_properties.push('invalid value for "meta", meta cannot be nil.')
+      end
+
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if @data.nil?
+      return false if @meta.nil?
       true
     end
 
@@ -80,7 +98,8 @@ module Fastly
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          results == o.results
+          data == o.data &&
+          meta == o.meta
     end
 
     # @see the `==` method
@@ -92,7 +111,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [results].hash
+      [data, meta].hash
     end
 
     # Builds the object from hash

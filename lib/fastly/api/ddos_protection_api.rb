@@ -88,7 +88,7 @@ module Fastly
     # @option opts [Time] :from Represents the start of a date-time range expressed in RFC 3339 format.
     # @option opts [Time] :to Represents the end of a date-time range expressed in RFC 3339 format.
     # @option opts [String] :name 
-    # @return [InlineResponse2002]
+    # @return [InlineResponse2005]
     def ddos_protection_event_list(opts = {})
       data, _status_code, _headers = ddos_protection_event_list_with_http_info(opts)
       data
@@ -102,7 +102,7 @@ module Fastly
     # @option opts [Time] :from Represents the start of a date-time range expressed in RFC 3339 format.
     # @option opts [Time] :to Represents the end of a date-time range expressed in RFC 3339 format.
     # @option opts [String] :name 
-    # @return [Array<(InlineResponse2002, Integer, Hash)>] InlineResponse2002 data, response status code and response headers
+    # @return [Array<(InlineResponse2005, Integer, Hash)>] InlineResponse2005 data, response status code and response headers
     def ddos_protection_event_list_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DdosProtectionApi.ddos_protection_event_list ...'
@@ -136,7 +136,7 @@ module Fastly
       post_body = opts[:debug_body]
 
       # return_type
-      return_type = opts[:debug_return_type] || 'InlineResponse2002'
+      return_type = opts[:debug_return_type] || 'InlineResponse2005'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['token']
@@ -164,7 +164,7 @@ module Fastly
     # @option opts [String] :cursor Cursor value from the &#x60;next_cursor&#x60; field of a previous response, used to retrieve the next page. To request the first page, this should be empty.
     # @option opts [Integer] :limit Limit how many results are returned. (default to 20)
     # @option opts [String] :include Include relationships. Optional. Comma-separated values.
-    # @return [InlineResponse2003]
+    # @return [InlineResponse2006]
     def ddos_protection_event_rule_list(opts = {})
       data, _status_code, _headers = ddos_protection_event_rule_list_with_http_info(opts)
       data
@@ -176,7 +176,7 @@ module Fastly
     # @option opts [String] :cursor Cursor value from the &#x60;next_cursor&#x60; field of a previous response, used to retrieve the next page. To request the first page, this should be empty.
     # @option opts [Integer] :limit Limit how many results are returned. (default to 20)
     # @option opts [String] :include Include relationships. Optional. Comma-separated values.
-    # @return [Array<(InlineResponse2003, Integer, Hash)>] InlineResponse2003 data, response status code and response headers
+    # @return [Array<(InlineResponse2006, Integer, Hash)>] InlineResponse2006 data, response status code and response headers
     def ddos_protection_event_rule_list_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DdosProtectionApi.ddos_protection_event_rule_list ...'
@@ -212,7 +212,7 @@ module Fastly
       post_body = opts[:debug_body]
 
       # return_type
-      return_type = opts[:debug_return_type] || 'InlineResponse2003'
+      return_type = opts[:debug_return_type] || 'InlineResponse2006'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['token']

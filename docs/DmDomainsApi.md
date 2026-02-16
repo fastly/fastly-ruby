@@ -133,7 +133,7 @@ end
 ## `list_dm_domains()`
 
 ```ruby
-list_dm_domains(opts): <InlineResponse2004> # List domains
+list_dm_domains(opts): <InlineResponse2007> # List domains
 ```
 
 List all domains
@@ -175,7 +175,7 @@ end
 
 ### Return type
 
-[**InlineResponse2004**](InlineResponse2004.md)
+[**InlineResponse2007**](InlineResponse2007.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)

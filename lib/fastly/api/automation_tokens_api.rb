@@ -148,7 +148,7 @@ module Fastly
     # @option opts [String] :id  (required)
     # @option opts [Integer] :per_page 
     # @option opts [Integer] :page 
-    # @return [InlineResponse2001]
+    # @return [InlineResponse2004]
     def get_automation_tokens_id_services(opts = {})
       data, _status_code, _headers = get_automation_tokens_id_services_with_http_info(opts)
       data
@@ -159,7 +159,7 @@ module Fastly
     # @option opts [String] :id  (required)
     # @option opts [Integer] :per_page 
     # @option opts [Integer] :page 
-    # @return [Array<(InlineResponse2001, Integer, Hash)>] InlineResponse2001 data, response status code and response headers
+    # @return [Array<(InlineResponse2004, Integer, Hash)>] InlineResponse2004 data, response status code and response headers
     def get_automation_tokens_id_services_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: AutomationTokensApi.get_automation_tokens_id_services ...'
@@ -190,7 +190,7 @@ module Fastly
       post_body = opts[:debug_body]
 
       # return_type
-      return_type = opts[:debug_return_type] || 'InlineResponse2001'
+      return_type = opts[:debug_return_type] || 'InlineResponse2004'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['token']

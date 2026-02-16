@@ -273,10 +273,31 @@
 | **ngwaf_requests_timeout_count** | **Integer** | Count of Edge WAF requests timed outcome. | [optional] |
 | **ngwaf_requests_challenged_count** | **Integer** | Count of Edge WAF requests challenged. | [optional] |
 | **api_discovery_requests_count** | **Integer** | Number of requests processed by the API Discovery engine. | [optional] |
+| **compute_resp_status_103** | **Integer** | Number of responses delivered with status code 103 (Early Hints) by the Compute platform. | [optional] |
+| **compute_resp_status_200** | **Integer** | Number of responses delivered with status code 200 (Success) by the Compute platform. | [optional] |
+| **compute_resp_status_204** | **Integer** | Number of responses delivered with status code 204 (No Content) by the Compute platform. | [optional] |
+| **compute_resp_status_206** | **Integer** | Number of responses delivered with status code 206 (Partial Content) by the Compute platform. | [optional] |
+| **compute_resp_status_301** | **Integer** | Number of responses delivered with status code 301 (Moved Permanently) by the Compute platform. | [optional] |
+| **compute_resp_status_302** | **Integer** | Number of responses delivered with status code 302 (Found) by the Compute platform. | [optional] |
+| **compute_resp_status_304** | **Integer** | Number of responses delivered with status code 304 (Not Modified) by the Compute platform. | [optional] |
+| **compute_resp_status_400** | **Integer** | Number of responses delivered with status code 400 (Bad Request) by the Compute platform. | [optional] |
+| **compute_resp_status_401** | **Integer** | Number of responses delivered with status code 401 (Unauthorized) by the Compute platform. | [optional] |
+| **compute_resp_status_403** | **Integer** | Number of responses delivered with status code 403 (Forbidden) by the Compute platform. | [optional] |
+| **compute_resp_status_404** | **Integer** | Number of responses delivered with status code 404 (Not Found) by the Compute platform. | [optional] |
+| **compute_resp_status_416** | **Integer** | Number of responses delivered with status code 416 (Range Not Satisfiable) by the Compute platform. | [optional] |
+| **compute_resp_status_429** | **Integer** | Number of responses delivered with status code 429 (Too Many Requests) by the Compute platform. | [optional] |
+| **compute_resp_status_500** | **Integer** | Number of responses delivered with status code 500 (Internal Server Error) by the Compute platform. | [optional] |
+| **compute_resp_status_501** | **Integer** | Number of responses delivered with status code 501 (Not Implemented) by the Compute platform. | [optional] |
+| **compute_resp_status_502** | **Integer** | Number of responses delivered with status code 502 (Bad Gateway) by the Compute platform. | [optional] |
+| **compute_resp_status_503** | **Integer** | Number of responses delivered with status code 503 (Service Unavailable) by the Compute platform. | [optional] |
+| **compute_resp_status_504** | **Integer** | Number of responses delivered with status code 504 (Gateway Timeout) by the Compute platform. | [optional] |
+| **compute_resp_status_505** | **Integer** | Number of responses delivered with status code 505 (HTTP Version Not Supported) by the Compute platform. | [optional] |
+| **compute_resp_status_530** | **Integer** | Number of responses delivered with status code 530 by the Compute platform. | [optional] |
 | **imgopto_compute_requests** | **Integer** | The number of Image Optimizer requests made from Compute services. | [optional] |
 | **dns_billable_responses_count** | **Integer** | Number of billable DNS responses (e.g., A, CNAME). | [optional] |
 | **dns_nonbillable_responses_count** | **Integer** | Number of non-billable DNS responses (e.g., NODATA, NXDOMAIN). | [optional] |
 | **upgrade** | **Integer** | Number of requests that resulted in a WebSocket upgrade. | [optional] |
+| **ngwaf_bot_analysis_request_count** | **Integer** | Count of Next-Gen WAF Bot Management requests. | [optional] |
 | **service_id** | **String** |  | [optional][readonly] |
 | **start_time** | **Integer** | Timestamp for the start of the time period being reported | [optional] |
 

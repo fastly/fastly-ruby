@@ -61,7 +61,7 @@ end
 ## `ddos_protection_event_list()`
 
 ```ruby
-ddos_protection_event_list(opts): <InlineResponse2002> # Get events
+ddos_protection_event_list(opts): <InlineResponse2005> # Get events
 ```
 
 Get events.
@@ -101,14 +101,14 @@ end
 
 ### Return type
 
-[**InlineResponse2002**](InlineResponse2002.md)
+[**InlineResponse2005**](InlineResponse2005.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)
 ## `ddos_protection_event_rule_list()`
 
 ```ruby
-ddos_protection_event_rule_list(opts): <InlineResponse2003> # Get all rules for an event
+ddos_protection_event_rule_list(opts): <InlineResponse2006> # Get all rules for an event
 ```
 
 Get all rules for an event.
@@ -144,7 +144,7 @@ end
 
 ### Return type
 
-[**InlineResponse2003**](InlineResponse2003.md)
+[**InlineResponse2006**](InlineResponse2006.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)

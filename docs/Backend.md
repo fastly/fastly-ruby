@@ -11,6 +11,7 @@
 | **comment** | **String** | A freeform descriptive note. | [optional] |
 | **connect_timeout** | **Integer** | Maximum duration in milliseconds to wait for a connection to this backend to be established. If exceeded, the connection is aborted and a synthetic `503` response will be presented instead. May be set at runtime using `bereq.connect_timeout`. | [optional] |
 | **first_byte_timeout** | **Integer** | Maximum duration in milliseconds to wait for the server response to begin after a TCP connection is established and the request has been sent. If exceeded, the connection is aborted and a synthetic `503` response will be presented instead. May be set at runtime using `bereq.first_byte_timeout`. | [optional] |
+| **fetch_timeout** | **Integer** | Maximum duration in milliseconds to wait for the entire response to be received after a TCP connection is established and the request has been sent. If exceeded, the connection is aborted and a synthetic `503` response will be presented instead. May be set at runtime using `bereq.fetch_timeout`. | [optional] |
 | **healthcheck** | **String** | The name of the healthcheck to use with this backend. | [optional] |
 | **hostname** | **String** | The hostname of the backend. May be used as an alternative to `address` to set the backend location. | [optional] |
 | **ipv4** | **String** | IPv4 address of the backend. May be used as an alternative to `address` to set the backend location. | [optional] |

@@ -34,6 +34,9 @@ module Fastly
     # Maximum duration in milliseconds to wait for the server response to begin after a TCP connection is established and the request has been sent. If exceeded, the connection is aborted and a synthetic `503` response will be presented instead. May be set at runtime using `bereq.first_byte_timeout`.
     attr_accessor :first_byte_timeout
 
+    # Maximum duration in milliseconds to wait for the entire response to be received after a TCP connection is established and the request has been sent. If exceeded, the connection is aborted and a synthetic `503` response will be presented instead. May be set at runtime using `bereq.fetch_timeout`.
+    attr_accessor :fetch_timeout
+
     # The name of the healthcheck to use with this backend.
     attr_accessor :healthcheck
 
@@ -147,6 +150,7 @@ module Fastly
         :'comment' => :'comment',
         :'connect_timeout' => :'connect_timeout',
         :'first_byte_timeout' => :'first_byte_timeout',
+        :'fetch_timeout' => :'fetch_timeout',
         :'healthcheck' => :'healthcheck',
         :'hostname' => :'hostname',
         :'ipv4' => :'ipv4',
@@ -200,6 +204,7 @@ module Fastly
         :'comment' => :'String',
         :'connect_timeout' => :'Integer',
         :'first_byte_timeout' => :'Integer',
+        :'fetch_timeout' => :'Integer',
         :'healthcheck' => :'String',
         :'hostname' => :'String',
         :'ipv4' => :'String',
@@ -322,6 +327,10 @@ module Fastly
 
       if attributes.key?(:'first_byte_timeout')
         self.first_byte_timeout = attributes[:'first_byte_timeout']
+      end
+
+      if attributes.key?(:'fetch_timeout')
+        self.fetch_timeout = attributes[:'fetch_timeout']
       end
 
       if attributes.key?(:'healthcheck')
@@ -515,6 +524,7 @@ module Fastly
           comment == o.comment &&
           connect_timeout == o.connect_timeout &&
           first_byte_timeout == o.first_byte_timeout &&
+          fetch_timeout == o.fetch_timeout &&
           healthcheck == o.healthcheck &&
           hostname == o.hostname &&
           ipv4 == o.ipv4 &&
@@ -561,7 +571,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [address, auto_loadbalance, between_bytes_timeout, client_cert, comment, connect_timeout, first_byte_timeout, healthcheck, hostname, ipv4, ipv6, keepalive_time, max_conn, max_tls_version, min_tls_version, name, override_host, port, prefer_ipv6, request_condition, share_key, shield, ssl_ca_cert, ssl_cert_hostname, ssl_check_cert, ssl_ciphers, ssl_client_cert, ssl_client_key, ssl_hostname, ssl_sni_hostname, tcp_keepalive_enable, tcp_keepalive_interval, tcp_keepalive_probes, tcp_keepalive_time, use_ssl, weight, created_at, deleted_at, updated_at, service_id, version, locked].hash
+      [address, auto_loadbalance, between_bytes_timeout, client_cert, comment, connect_timeout, first_byte_timeout, fetch_timeout, healthcheck, hostname, ipv4, ipv6, keepalive_time, max_conn, max_tls_version, min_tls_version, name, override_host, port, prefer_ipv6, request_condition, share_key, shield, ssl_ca_cert, ssl_cert_hostname, ssl_check_cert, ssl_ciphers, ssl_client_cert, ssl_client_key, ssl_hostname, ssl_sni_hostname, tcp_keepalive_enable, tcp_keepalive_interval, tcp_keepalive_probes, tcp_keepalive_time, use_ssl, weight, created_at, deleted_at, updated_at, service_id, version, locked].hash
     end
 
     # Builds the object from hash

@@ -23,6 +23,7 @@ module Fastly
     # @option opts [String] :to Timestamp that defines the end of the window for which to fetch statistics. Accepts the same formats as &#x60;from&#x60;.  (default to 'now')
     # @option opts [String] :by Duration of sample windows. One of:   * &#x60;hour&#x60; - Group data by hour.   * &#x60;minute&#x60; - Group data by minute.   * &#x60;day&#x60; - Group data by day.  (default to 'day')
     # @option opts [String] :region Limit query to a specific geographic region. One of:   * &#x60;usa&#x60; - North America.   * &#x60;europe&#x60; - Europe.   * &#x60;anzac&#x60; - Australia and New Zealand.   * &#x60;asia&#x60; - Asia.   * &#x60;asia_india&#x60; - India.   * &#x60;asia_southkorea&#x60; - South Korea.   * &#x60;africa_std&#x60; - Africa.   * &#x60;mexico&#x60; - Mexico.   * &#x60;southamerica_std&#x60; - South America. 
+    # @option opts [String] :datacenter Limit query to one or more Fastly POPs. For multiple POPs use a comma-seperated list of POPs. These must be all uppercase and be valid codes. A full list of POPs can be obtained from the [POPs endpoint](https://www.fastly.com/documentation/reference/api/utils/pops/). 
     # @option opts [String] :services Limit the query to only the specified, comma-separated list of services. 
     # @return [HistoricalStatsByServiceResponse]
     def get_hist_stats(opts = {})
@@ -36,6 +37,7 @@ module Fastly
     # @option opts [String] :to Timestamp that defines the end of the window for which to fetch statistics. Accepts the same formats as &#x60;from&#x60;.  (default to 'now')
     # @option opts [String] :by Duration of sample windows. One of:   * &#x60;hour&#x60; - Group data by hour.   * &#x60;minute&#x60; - Group data by minute.   * &#x60;day&#x60; - Group data by day.  (default to 'day')
     # @option opts [String] :region Limit query to a specific geographic region. One of:   * &#x60;usa&#x60; - North America.   * &#x60;europe&#x60; - Europe.   * &#x60;anzac&#x60; - Australia and New Zealand.   * &#x60;asia&#x60; - Asia.   * &#x60;asia_india&#x60; - India.   * &#x60;asia_southkorea&#x60; - South Korea.   * &#x60;africa_std&#x60; - Africa.   * &#x60;mexico&#x60; - Mexico.   * &#x60;southamerica_std&#x60; - South America. 
+    # @option opts [String] :datacenter Limit query to one or more Fastly POPs. For multiple POPs use a comma-seperated list of POPs. These must be all uppercase and be valid codes. A full list of POPs can be obtained from the [POPs endpoint](https://www.fastly.com/documentation/reference/api/utils/pops/). 
     # @option opts [String] :services Limit the query to only the specified, comma-separated list of services. 
     # @return [Array<(HistoricalStatsByServiceResponse, Integer, Hash)>] HistoricalStatsByServiceResponse data, response status code and response headers
     def get_hist_stats_with_http_info(opts = {})
@@ -60,6 +62,7 @@ module Fastly
       query_params[:'to'] = opts[:'to'] if !opts[:'to'].nil?
       query_params[:'by'] = opts[:'by'] if !opts[:'by'].nil?
       query_params[:'region'] = opts[:'region'] if !opts[:'region'].nil?
+      query_params[:'datacenter'] = opts[:'datacenter'] if !opts[:'datacenter'].nil?
       query_params[:'services'] = opts[:'services'] if !opts[:'services'].nil?
 
       # header parameters
@@ -179,6 +182,7 @@ module Fastly
     # @option opts [String] :to Timestamp that defines the end of the window for which to fetch statistics. Accepts the same formats as &#x60;from&#x60;.  (default to 'now')
     # @option opts [String] :by Duration of sample windows. One of:   * &#x60;hour&#x60; - Group data by hour.   * &#x60;minute&#x60; - Group data by minute.   * &#x60;day&#x60; - Group data by day.  (default to 'day')
     # @option opts [String] :region Limit query to a specific geographic region. One of:   * &#x60;usa&#x60; - North America.   * &#x60;europe&#x60; - Europe.   * &#x60;anzac&#x60; - Australia and New Zealand.   * &#x60;asia&#x60; - Asia.   * &#x60;asia_india&#x60; - India.   * &#x60;asia_southkorea&#x60; - South Korea.   * &#x60;africa_std&#x60; - Africa.   * &#x60;mexico&#x60; - Mexico.   * &#x60;southamerica_std&#x60; - South America. 
+    # @option opts [String] :datacenter Limit query to one or more Fastly POPs. For multiple POPs use a comma-seperated list of POPs. These must be all uppercase and be valid codes. A full list of POPs can be obtained from the [POPs endpoint](https://www.fastly.com/documentation/reference/api/utils/pops/). 
     # @return [HistoricalStatsByServiceResponse]
     def get_hist_stats_field(opts = {})
       data, _status_code, _headers = get_hist_stats_field_with_http_info(opts)
@@ -192,6 +196,7 @@ module Fastly
     # @option opts [String] :to Timestamp that defines the end of the window for which to fetch statistics. Accepts the same formats as &#x60;from&#x60;.  (default to 'now')
     # @option opts [String] :by Duration of sample windows. One of:   * &#x60;hour&#x60; - Group data by hour.   * &#x60;minute&#x60; - Group data by minute.   * &#x60;day&#x60; - Group data by day.  (default to 'day')
     # @option opts [String] :region Limit query to a specific geographic region. One of:   * &#x60;usa&#x60; - North America.   * &#x60;europe&#x60; - Europe.   * &#x60;anzac&#x60; - Australia and New Zealand.   * &#x60;asia&#x60; - Asia.   * &#x60;asia_india&#x60; - India.   * &#x60;asia_southkorea&#x60; - South Korea.   * &#x60;africa_std&#x60; - Africa.   * &#x60;mexico&#x60; - Mexico.   * &#x60;southamerica_std&#x60; - South America. 
+    # @option opts [String] :datacenter Limit query to one or more Fastly POPs. For multiple POPs use a comma-seperated list of POPs. These must be all uppercase and be valid codes. A full list of POPs can be obtained from the [POPs endpoint](https://www.fastly.com/documentation/reference/api/utils/pops/). 
     # @return [Array<(HistoricalStatsByServiceResponse, Integer, Hash)>] HistoricalStatsByServiceResponse data, response status code and response headers
     def get_hist_stats_field_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -220,6 +225,7 @@ module Fastly
       query_params[:'to'] = opts[:'to'] if !opts[:'to'].nil?
       query_params[:'by'] = opts[:'by'] if !opts[:'by'].nil?
       query_params[:'region'] = opts[:'region'] if !opts[:'region'].nil?
+      query_params[:'datacenter'] = opts[:'datacenter'] if !opts[:'datacenter'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}
@@ -262,6 +268,7 @@ module Fastly
     # @option opts [String] :to Timestamp that defines the end of the window for which to fetch statistics. Accepts the same formats as &#x60;from&#x60;.  (default to 'now')
     # @option opts [String] :by Duration of sample windows. One of:   * &#x60;hour&#x60; - Group data by hour.   * &#x60;minute&#x60; - Group data by minute.   * &#x60;day&#x60; - Group data by day.  (default to 'day')
     # @option opts [String] :region Limit query to a specific geographic region. One of:   * &#x60;usa&#x60; - North America.   * &#x60;europe&#x60; - Europe.   * &#x60;anzac&#x60; - Australia and New Zealand.   * &#x60;asia&#x60; - Asia.   * &#x60;asia_india&#x60; - India.   * &#x60;asia_southkorea&#x60; - South Korea.   * &#x60;africa_std&#x60; - Africa.   * &#x60;mexico&#x60; - Mexico.   * &#x60;southamerica_std&#x60; - South America. 
+    # @option opts [String] :datacenter Limit query to one or more Fastly POPs. For multiple POPs use a comma-seperated list of POPs. These must be all uppercase and be valid codes. A full list of POPs can be obtained from the [POPs endpoint](https://www.fastly.com/documentation/reference/api/utils/pops/). 
     # @return [HistoricalStatsAggregatedResponse]
     def get_hist_stats_service(opts = {})
       data, _status_code, _headers = get_hist_stats_service_with_http_info(opts)
@@ -275,6 +282,7 @@ module Fastly
     # @option opts [String] :to Timestamp that defines the end of the window for which to fetch statistics. Accepts the same formats as &#x60;from&#x60;.  (default to 'now')
     # @option opts [String] :by Duration of sample windows. One of:   * &#x60;hour&#x60; - Group data by hour.   * &#x60;minute&#x60; - Group data by minute.   * &#x60;day&#x60; - Group data by day.  (default to 'day')
     # @option opts [String] :region Limit query to a specific geographic region. One of:   * &#x60;usa&#x60; - North America.   * &#x60;europe&#x60; - Europe.   * &#x60;anzac&#x60; - Australia and New Zealand.   * &#x60;asia&#x60; - Asia.   * &#x60;asia_india&#x60; - India.   * &#x60;asia_southkorea&#x60; - South Korea.   * &#x60;africa_std&#x60; - Africa.   * &#x60;mexico&#x60; - Mexico.   * &#x60;southamerica_std&#x60; - South America. 
+    # @option opts [String] :datacenter Limit query to one or more Fastly POPs. For multiple POPs use a comma-seperated list of POPs. These must be all uppercase and be valid codes. A full list of POPs can be obtained from the [POPs endpoint](https://www.fastly.com/documentation/reference/api/utils/pops/). 
     # @return [Array<(HistoricalStatsAggregatedResponse, Integer, Hash)>] HistoricalStatsAggregatedResponse data, response status code and response headers
     def get_hist_stats_service_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -303,6 +311,7 @@ module Fastly
       query_params[:'to'] = opts[:'to'] if !opts[:'to'].nil?
       query_params[:'by'] = opts[:'by'] if !opts[:'by'].nil?
       query_params[:'region'] = opts[:'region'] if !opts[:'region'].nil?
+      query_params[:'datacenter'] = opts[:'datacenter'] if !opts[:'datacenter'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}
@@ -346,6 +355,7 @@ module Fastly
     # @option opts [String] :to Timestamp that defines the end of the window for which to fetch statistics. Accepts the same formats as &#x60;from&#x60;.  (default to 'now')
     # @option opts [String] :by Duration of sample windows. One of:   * &#x60;hour&#x60; - Group data by hour.   * &#x60;minute&#x60; - Group data by minute.   * &#x60;day&#x60; - Group data by day.  (default to 'day')
     # @option opts [String] :region Limit query to a specific geographic region. One of:   * &#x60;usa&#x60; - North America.   * &#x60;europe&#x60; - Europe.   * &#x60;anzac&#x60; - Australia and New Zealand.   * &#x60;asia&#x60; - Asia.   * &#x60;asia_india&#x60; - India.   * &#x60;asia_southkorea&#x60; - South Korea.   * &#x60;africa_std&#x60; - Africa.   * &#x60;mexico&#x60; - Mexico.   * &#x60;southamerica_std&#x60; - South America. 
+    # @option opts [String] :datacenter Limit query to one or more Fastly POPs. For multiple POPs use a comma-seperated list of POPs. These must be all uppercase and be valid codes. A full list of POPs can be obtained from the [POPs endpoint](https://www.fastly.com/documentation/reference/api/utils/pops/). 
     # @return [HistoricalStatsAggregatedResponse]
     def get_hist_stats_service_field(opts = {})
       data, _status_code, _headers = get_hist_stats_service_field_with_http_info(opts)
@@ -360,6 +370,7 @@ module Fastly
     # @option opts [String] :to Timestamp that defines the end of the window for which to fetch statistics. Accepts the same formats as &#x60;from&#x60;.  (default to 'now')
     # @option opts [String] :by Duration of sample windows. One of:   * &#x60;hour&#x60; - Group data by hour.   * &#x60;minute&#x60; - Group data by minute.   * &#x60;day&#x60; - Group data by day.  (default to 'day')
     # @option opts [String] :region Limit query to a specific geographic region. One of:   * &#x60;usa&#x60; - North America.   * &#x60;europe&#x60; - Europe.   * &#x60;anzac&#x60; - Australia and New Zealand.   * &#x60;asia&#x60; - Asia.   * &#x60;asia_india&#x60; - India.   * &#x60;asia_southkorea&#x60; - South Korea.   * &#x60;africa_std&#x60; - Africa.   * &#x60;mexico&#x60; - Mexico.   * &#x60;southamerica_std&#x60; - South America. 
+    # @option opts [String] :datacenter Limit query to one or more Fastly POPs. For multiple POPs use a comma-seperated list of POPs. These must be all uppercase and be valid codes. A full list of POPs can be obtained from the [POPs endpoint](https://www.fastly.com/documentation/reference/api/utils/pops/). 
     # @return [Array<(HistoricalStatsAggregatedResponse, Integer, Hash)>] HistoricalStatsAggregatedResponse data, response status code and response headers
     def get_hist_stats_service_field_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -393,6 +404,7 @@ module Fastly
       query_params[:'to'] = opts[:'to'] if !opts[:'to'].nil?
       query_params[:'by'] = opts[:'by'] if !opts[:'by'].nil?
       query_params[:'region'] = opts[:'region'] if !opts[:'region'].nil?
+      query_params[:'datacenter'] = opts[:'datacenter'] if !opts[:'datacenter'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}

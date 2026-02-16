@@ -216,7 +216,7 @@ module Fastly
     # @option opts [String] :cursor 
     # @option opts [Integer] :limit  (default to 1000)
     # @option opts [String] :name Returns a one-element array containing the details for the named KV store.
-    # @return [InlineResponse2007]
+    # @return [InlineResponse20010]
     def kv_store_list(opts = {})
       data, _status_code, _headers = kv_store_list_with_http_info(opts)
       data
@@ -227,7 +227,7 @@ module Fastly
     # @option opts [String] :cursor 
     # @option opts [Integer] :limit  (default to 1000)
     # @option opts [String] :name Returns a one-element array containing the details for the named KV store.
-    # @return [Array<(InlineResponse2007, Integer, Hash)>] InlineResponse2007 data, response status code and response headers
+    # @return [Array<(InlineResponse20010, Integer, Hash)>] InlineResponse20010 data, response status code and response headers
     def kv_store_list_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: KvStoreApi.kv_store_list ...'
@@ -258,7 +258,7 @@ module Fastly
       post_body = opts[:debug_body]
 
       # return_type
-      return_type = opts[:debug_return_type] || 'InlineResponse2007'
+      return_type = opts[:debug_return_type] || 'InlineResponse20010'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['token']

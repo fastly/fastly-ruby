@@ -38,7 +38,7 @@ module Fastly
       {
         :'dimensions' => :'LogInsightsDimensions',
         :'dimension_attributes' => :'LogInsightsDimensionAttributes',
-        :'values' => :'LogInsightsValues'
+        :'values' => :'Array<LogInsightsValues>'
       }
     end
 
@@ -72,7 +72,9 @@ module Fastly
       end
 
       if attributes.key?(:'values')
-        self.values = attributes[:'values']
+        if (value = attributes[:'values']).is_a?(Array)
+          self.values = value
+        end
       end
     end
 

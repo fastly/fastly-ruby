@@ -15,6 +15,7 @@ module Fastly
   class InlineResponse2007
     attr_accessor :data
 
+    # Meta for the pagination.
     attr_accessor :meta
 
     # Attribute mapping from ruby-style variable name to JSON key.
@@ -33,14 +34,15 @@ module Fastly
     # Attribute type mapping.
     def self.fastly_types
       {
-        :'data' => :'Array<KvStoreDetails>',
-        :'meta' => :'PaginationCursorMeta'
+        :'data' => :'Array<SuccessfulResponseAsObject>',
+        :'meta' => :'Object'
       }
     end
 
     # List of attributes with nullable: true
     def self.fastly_nullable
       Set.new([
+        :'meta'
       ])
     end
 

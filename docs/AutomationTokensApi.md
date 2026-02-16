@@ -97,7 +97,7 @@ end
 ## `get_automation_tokens_id_services()`
 
 ```ruby
-get_automation_tokens_id_services(opts): <InlineResponse2001> # List Automation Token Services
+get_automation_tokens_id_services(opts): <InlineResponse2004> # List Automation Token Services
 ```
 
 List of services associated with the automation token.
@@ -131,7 +131,7 @@ end
 
 ### Return type
 
-[**InlineResponse2001**](InlineResponse2001.md)
+[**InlineResponse2004**](InlineResponse2004.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)

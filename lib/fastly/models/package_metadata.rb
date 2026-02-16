@@ -26,10 +26,10 @@ module Fastly
     # The language of the Compute package.
     attr_accessor :language
 
-    # Size of the Compute package in bytes.
+    # Size of the Compute package in bytes. This is deprecated along with `hashsum`.
     attr_accessor :size
 
-    # Hash of the Compute package.
+    # Hash of the Compute package. This is deprecated in favor of `files_hash`.
     attr_accessor :hashsum
 
     # Hash of the files within the Compute package.

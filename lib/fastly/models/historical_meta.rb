@@ -22,13 +22,16 @@ module Fastly
 
     attr_accessor :region
 
+    attr_accessor :datacenter
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'to' => :'to',
         :'from' => :'from',
         :'by' => :'by',
-        :'region' => :'region'
+        :'region' => :'region',
+        :'datacenter' => :'datacenter'
       }
     end
 
@@ -43,7 +46,8 @@ module Fastly
         :'to' => :'String',
         :'from' => :'String',
         :'by' => :'String',
-        :'region' => :'String'
+        :'region' => :'String',
+        :'datacenter' => :'String'
       }
     end
 
@@ -83,6 +87,10 @@ module Fastly
       if attributes.key?(:'region')
         self.region = attributes[:'region']
       end
+
+      if attributes.key?(:'datacenter')
+        self.datacenter = attributes[:'datacenter']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -106,7 +114,8 @@ module Fastly
           to == o.to &&
           from == o.from &&
           by == o.by &&
-          region == o.region
+          region == o.region &&
+          datacenter == o.datacenter
     end
 
     # @see the `==` method
@@ -118,7 +127,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [to, from, by, region].hash
+      [to, from, by, region, datacenter].hash
     end
 
     # Builds the object from hash

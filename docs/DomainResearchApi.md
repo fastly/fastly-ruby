@@ -59,7 +59,7 @@ end
 ## `suggest_domains()`
 
 ```ruby
-suggest_domains(opts): <InlineResponse2006> # Suggest domains
+suggest_domains(opts): <InlineResponse2009> # Suggest domains
 ```
 
 The `Suggest` method performs a real-time query of the search term(s) against the [known zone database](http://zonedb.org), making recommendations, stemming, and applying Unicode folding, IDN normalization, registrar supported-zone restrictions, and other refinements. **Note:** `Suggest` method responses do not include domain availability status. 
@@ -97,7 +97,7 @@ end
 
 ### Return type
 
-[**InlineResponse2006**](InlineResponse2006.md)
+[**InlineResponse2009**](InlineResponse2009.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)

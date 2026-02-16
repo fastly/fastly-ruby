@@ -416,6 +416,72 @@ module Fastly
           description: "No description provided",
           }
         ],
+        "ApisecurityOperationsApi.api_security_create_operation": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "ApisecurityOperationsApi.api_security_create_operation_tag": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "ApisecurityOperationsApi.api_security_delete_operation": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "ApisecurityOperationsApi.api_security_delete_operation_tag": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "ApisecurityOperationsApi.api_security_get_operation": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "ApisecurityOperationsApi.api_security_get_operation_tag": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "ApisecurityOperationsApi.api_security_list_discovered_operations": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "ApisecurityOperationsApi.api_security_list_operation_tags": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "ApisecurityOperationsApi.api_security_list_operations": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "ApisecurityOperationsApi.api_security_update_operation": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "ApisecurityOperationsApi.api_security_update_operation_tag": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
         "AutomationTokensApi.create_automation_token": [
           {
           url: "https://api.fastly.com",
