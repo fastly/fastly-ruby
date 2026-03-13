@@ -1,59 +1,174 @@
 name: Release CI
+
 on:
   push:
     tags:
-      # This looks like a regex, but it's actually a filter pattern
-      # see https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#filter-pattern-cheat-sheet
-      - 'release/v?[0-9]*'
-
-env:
-  GITHUB_REF_NAME: ${{ github.ref_name }}
+      - "release/v*"
 
 jobs:
-  publish:
-    name: Publish to RubyGems
+  prepare_release:
+    name: Prepare release metadata
     runs-on: ubuntu-latest
+
+    outputs:
+      version: ${{ steps.meta.outputs.version }}
+      dry_run: ${{ steps.meta.outputs.dry_run }}
+      prerelease: ${{ steps.meta.outputs.prerelease }}
+      publish_tag: ${{ steps.meta.outputs.publish_tag }}
+
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v5
         with:
           path: main
-      - name: Set up environment variables
-        run: ./.github/scripts/publish_env.sh >> $GITHUB_ENV
-        working-directory: ./main
-        shell: bash
+
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.1'
+          ruby-version: "3.1"
           bundler-cache: true
-      - name: Pack API client
-        run: ./.github/scripts/pack.sh
+
+      - name: Compute and validate release metadata
+        id: meta
         working-directory: ./main
         shell: bash
-      - name: Auth with RubyGems
         run: |
-          mkdir -p ~/.gem
-          echo ":rubygems_api_key: ${{ secrets.RUBYGEMS_PUBLISH_TOKEN }}" > ~/.gem/credentials
-          chmod 600 ~/.gem/credentials
-        shell: bash
-      - name: Publish API client
-        run: ./.github/scripts/publish.sh
+          set -euo pipefail
+
+          TAG="${GITHUB_REF_NAME#release/}"
+          TAG_VALUE="${TAG#v}"
+          VERSION="${TAG_VALUE%-dry}"
+
+          DRY_RUN=0
+          if [ "${TAG_VALUE}" != "${VERSION}" ]; then
+            DRY_RUN=1
+          fi
+
+          RUBY_VERSION="$(ruby -Ilib -e 'require "fastly/version"; print Fastly::VERSION')"
+
+          echo "Tag version:  ${VERSION}"
+          echo "Ruby version: ${RUBY_VERSION}"
+
+          if [ "${VERSION}" != "${RUBY_VERSION}" ]; then
+            echo "Tag version (${VERSION}) does not match Fastly::VERSION (${RUBY_VERSION})" >&2
+            exit 1
+          fi
+
+          if [[ "${VERSION}" == *-* ]]; then
+            PRERELEASE=true
+          else
+            PRERELEASE=false
+          fi
+
+          PUBLISH_TAG="$(npx -y semver-parser-cli@0.2.0 "${VERSION}" --field preid)"
+          if [ "${PUBLISH_TAG}" == "undefined" ] || [ -z "${PUBLISH_TAG}" ]; then
+            if [ "${PRERELEASE}" == "true" ]; then
+              PUBLISH_TAG=unnamed
+            else
+              PUBLISH_TAG=latest
+            fi
+          fi
+
+          echo "version=${VERSION}" >> "$GITHUB_OUTPUT"
+          echo "dry_run=${DRY_RUN}" >> "$GITHUB_OUTPUT"
+          echo "prerelease=${PRERELEASE}" >> "$GITHUB_OUTPUT"
+          echo "publish_tag=${PUBLISH_TAG}" >> "$GITHUB_OUTPUT"
+
+  publish_rubygems:
+    name: Publish to RubyGems
+    runs-on: ubuntu-latest
+    needs: prepare_release
+    if: ${{ needs.prepare_release.outputs.dry_run != '1' }}
+
+    permissions:
+      contents: write
+      id-token: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v5
+        with:
+          persist-credentials: false
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.1"
+          bundler-cache: true
+
+      - name: Publish gem with trusted publishing
+        uses: rubygems/release-gem@v1
+
+  create_github_release:
+    name: Create GitHub release
+    runs-on: ubuntu-latest
+    needs:
+      - prepare_release
+      - publish_rubygems
+    if: ${{ needs.prepare_release.outputs.dry_run != '1' }}
+
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v5
+        with:
+          path: main
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.1"
+          bundler-cache: true
+
+      - name: Fetch published gem from RubyGems
+        id: fetch
         working-directory: ./main
         shell: bash
+        env:
+          VERSION: ${{ needs.prepare_release.outputs.version }}
+        run: |
+          set -euo pipefail
+
+          for i in 1 2 3 4 5; do
+            if gem fetch fastly --version "${VERSION}"; then
+              break
+            fi
+            echo "Fetch attempt ${i} failed; retrying..."
+            sleep 10
+          done
+
+          PACKAGE_FILENAME="$(ls -1 fastly-"${VERSION}"*.gem | head -n 1)"
+          if [ -z "${PACKAGE_FILENAME}" ]; then
+            echo "Failed to fetch published gem for version ${VERSION}" >&2
+            exit 1
+          fi
+
+          mkdir -p "${GITHUB_WORKSPACE}/dist"
+          mv "${PACKAGE_FILENAME}" "${GITHUB_WORKSPACE}/dist/${PACKAGE_FILENAME}"
+
+          echo "package_filename=${PACKAGE_FILENAME}" >> "$GITHUB_OUTPUT"
+
       - name: Write release body file
-        run: CODE_PATH=./main ./main/.github/scripts/release_body.sh > ./dist/release_body.txt
         shell: bash
-      - name: Create release (dry run)
-        if: ${{ env.DRY_RUN == '1' }}
-        run: cat ./dist/release_body.txt
+        env:
+          API_CLIENT_NAME: Ruby
+          PACKAGE_REPO_NAME: RubyGems
+          VERSION: ${{ needs.prepare_release.outputs.version }}
+          DRY_RUN: "0"
+          PUBLISH_TAG: ${{ needs.prepare_release.outputs.publish_tag }}
+          PACKAGE_FILENAME: ${{ steps.fetch.outputs.package_filename }}
+        run: |
+          set -euo pipefail
+          CODE_PATH=./main ./main/.github/scripts/release_body.sh > ./dist/release_body.txt
+
       - name: Create GitHub release
-        if: ${{ env.DRY_RUN != '1' }}
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v2
         with:
-          name: v${{ env.VERSION }}
+          tag_name: ${{ github.ref_name }}
+          name: v${{ needs.prepare_release.outputs.version }}
           body_path: ./dist/release_body.txt
-          files: |
-            ./dist/${{ env.PACKAGE_FILENAME }}
+          files: ./dist/${{ steps.fetch.outputs.package_filename }}
           draft: false
-          prerelease: ${{ env.PUBLISH_TAG != 'latest' }}
+          prerelease: ${{ needs.prepare_release.outputs.prerelease == 'true' }}
