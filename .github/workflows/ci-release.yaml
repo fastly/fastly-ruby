@@ -39,6 +39,11 @@ jobs:
           TAG_VALUE="${TAG#v}"
           VERSION="${TAG_VALUE%-dry}"
 
+          if [[ ! "${VERSION}" =~ ^[0-9]+\.[0-9]+\.[0-9]+([.][[:alpha:]][[:alnum:]]*([.][0-9]+)?)?$ ]]; then
+            echo "Tag version (${VERSION}) is not a valid RubyGems version" >&2
+            exit 1
+          fi
+
           DRY_RUN=0
           if [ "${TAG_VALUE}" != "${VERSION}" ]; then
             DRY_RUN=1
@@ -54,19 +59,16 @@ jobs:
             exit 1
           fi
 
-          if [[ "${VERSION}" == *-* ]]; then
+          # RubyGems prerelease versions contain letters, e.g. 16.0.1.beta.0
+          if [[ "${VERSION}" =~ [[:alpha:]] ]]; then
             PRERELEASE=true
           else
             PRERELEASE=false
           fi
 
-          PUBLISH_TAG="$(npx -y semver-parser-cli@0.2.0 "${VERSION}" --field preid)"
-          if [ "${PUBLISH_TAG}" == "undefined" ] || [ -z "${PUBLISH_TAG}" ]; then
-            if [ "${PRERELEASE}" == "true" ]; then
-              PUBLISH_TAG=unnamed
-            else
-              PUBLISH_TAG=latest
-            fi
+          PUBLISH_TAG=latest
+          if [[ "${VERSION}" =~ ^[0-9]+\.[0-9]+\.[0-9]+\.([[:alpha:]][[:alnum:]]*)(\.[0-9]+)?$ ]]; then
+            PUBLISH_TAG="${BASH_REMATCH[1]}"
           fi
 
           echo "version=${VERSION}" >> "$GITHUB_OUTPUT"
@@ -128,11 +130,17 @@ jobs:
         shell: bash
         env:
           VERSION: ${{ needs.prepare_release.outputs.version }}
+          PRERELEASE: ${{ needs.prepare_release.outputs.prerelease }}
         run: |
           set -euo pipefail
 
+          FETCH_ARGS=(fastly --version "${VERSION}")
+          if [ "${PRERELEASE}" = "true" ]; then
+            FETCH_ARGS+=(--prerelease)
+          fi
+
           for i in 1 2 3 4 5; do
-            if gem fetch fastly --version "${VERSION}"; then
+            if gem fetch "${FETCH_ARGS[@]}"; then
               break
             fi
             echo "Fetch attempt ${i} failed; retrying..."
