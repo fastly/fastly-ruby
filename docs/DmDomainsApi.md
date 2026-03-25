@@ -144,6 +144,7 @@ List all domains
 api_instance = Fastly::DmDomainsApi.new
 opts = {
     fqdn: 'fqdn_example', # String | 
+    fqdn_match: 'contains', # String | (Optional) Filter fully-qualified domain name (FQDN) specifically by match type. If used, requires filtering by FQDN.
     service_id: 'service_id_example', # String | Filter results based on a service_id.
     sort: 'fqdn', # String | The order in which to list the results.
     activated: true, # Boolean | 
@@ -166,6 +167,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **fqdn** | **String** |  | [optional] |
+| **fqdn_match** | **String** | (Optional) Filter fully-qualified domain name (FQDN) specifically by match type. If used, requires filtering by FQDN. | [optional][default to &#39;contains&#39;] |
 | **service_id** | **String** | Filter results based on a service_id. | [optional] |
 | **sort** | **String** | The order in which to list the results. | [optional][default to &#39;fqdn&#39;] |
 | **activated** | **Boolean** |  | [optional] |

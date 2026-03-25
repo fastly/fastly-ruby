@@ -12,56 +12,14 @@ require 'date'
 require 'time'
 
 module Fastly
-  class OperationUpdate
-    # The HTTP method for the operation.
-    attr_accessor :method
-
-    # The domain for the operation.
-    attr_accessor :domain
-
-    # The path for the operation, which may include path parameters.
-    attr_accessor :path
-
-    # A description of what the operation does.
-    attr_accessor :description
-
-    # An array of operation tag IDs associated with this operation.
-    attr_accessor :tag_ids
-
-    # The status of the operation.
-    attr_accessor :status
-
-    class EnumAttributeValidator
-      attr_reader :datatype
-      attr_reader :allowable_values
-
-      def initialize(datatype, allowable_values)
-        @allowable_values = allowable_values.map do |value|
-          case datatype.to_s
-          when /Integer/i
-            value.to_i
-          when /Float/i
-            value.to_f
-          else
-            value
-          end
-        end
-      end
-
-      def valid?(value)
-        !value || allowable_values.include?(value)
-      end
-    end
+  class InlineResponse207
+    # Results for each operation in the request.
+    attr_accessor :data
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'method' => :'method',
-        :'domain' => :'domain',
-        :'path' => :'path',
-        :'description' => :'description',
-        :'tag_ids' => :'tag_ids',
-        :'status' => :'status'
+        :'data' => :'data'
       }
     end
 
@@ -73,12 +31,7 @@ module Fastly
     # Attribute type mapping.
     def self.fastly_types
       {
-        :'method' => :'String',
-        :'domain' => :'String',
-        :'path' => :'String',
-        :'description' => :'String',
-        :'tag_ids' => :'Array<String>',
-        :'status' => :'String'
+        :'data' => :'Array<BulkOperationResult>'
       }
     end
 
@@ -92,41 +45,21 @@ module Fastly
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Fastly::OperationUpdate` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Fastly::InlineResponse207` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `Fastly::OperationUpdate`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `Fastly::InlineResponse207`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'method')
-        self.method = attributes[:'method']
-      end
-
-      if attributes.key?(:'domain')
-        self.domain = attributes[:'domain']
-      end
-
-      if attributes.key?(:'path')
-        self.path = attributes[:'path']
-      end
-
-      if attributes.key?(:'description')
-        self.description = attributes[:'description']
-      end
-
-      if attributes.key?(:'tag_ids')
-        if (value = attributes[:'tag_ids']).is_a?(Array)
-          self.tag_ids = value
+      if attributes.key?(:'data')
+        if (value = attributes[:'data']).is_a?(Array)
+          self.data = value
         end
-      end
-
-      if attributes.key?(:'status')
-        self.status = attributes[:'status']
       end
     end
 
@@ -134,52 +67,13 @@ module Fastly
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if !@description.nil? && @description.to_s.length > 140
-        invalid_properties.push('invalid value for "description", the character length must be smaller than or equal to 140.')
-      end
-
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      method_validator = EnumAttributeValidator.new('String', ["GET", "POST", "PUT", "PATCH", "DELETE", "HEAD", "OPTIONS", "CONNECT", "TRACE"])
-      return false unless method_validator.valid?(@method)
-      return false if !@description.nil? && @description.to_s.length > 140
-      status_validator = EnumAttributeValidator.new('String', ["SAVED", "IGNORED"])
-      return false unless status_validator.valid?(@status)
       true
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] method Object to be assigned
-    def method=(method)
-      validator = EnumAttributeValidator.new('String', ["GET", "POST", "PUT", "PATCH", "DELETE", "HEAD", "OPTIONS", "CONNECT", "TRACE"])
-      unless validator.valid?(method)
-        fail ArgumentError, "invalid value for \"method\", must be one of #{validator.allowable_values}."
-      end
-      @method = method
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] description Value to be assigned
-    def description=(description)
-      if !description.nil? && description.to_s.length > 140
-        fail ArgumentError, 'invalid value for "description", the character length must be smaller than or equal to 140.'
-      end
-
-      @description = description
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] status Object to be assigned
-    def status=(status)
-      validator = EnumAttributeValidator.new('String', ["SAVED", "IGNORED"])
-      unless validator.valid?(status)
-        fail ArgumentError, "invalid value for \"status\", must be one of #{validator.allowable_values}."
-      end
-      @status = status
     end
 
     # Checks equality by comparing each attribute.
@@ -187,12 +81,7 @@ module Fastly
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          method == o.method &&
-          domain == o.domain &&
-          path == o.path &&
-          description == o.description &&
-          tag_ids == o.tag_ids &&
-          status == o.status
+          data == o.data
     end
 
     # @see the `==` method
@@ -204,7 +93,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [method, domain, path, description, tag_ids, status].hash
+      [data].hash
     end
 
     # Builds the object from hash

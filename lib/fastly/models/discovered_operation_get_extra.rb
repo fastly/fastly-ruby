@@ -13,8 +13,8 @@ require 'time'
 
 module Fastly
   class DiscoveredOperationGetExtra
-    # The current status of the operation.
-    attr_accessor :status
+    # The unique identifier of the discovered operation.
+    attr_accessor :id
 
     # The timestamp when the operation was last updated.
     attr_accessor :updated_at
@@ -22,34 +22,16 @@ module Fastly
     # The timestamp when the operation was last seen in traffic.
     attr_accessor :last_seen_at
 
-    class EnumAttributeValidator
-      attr_reader :datatype
-      attr_reader :allowable_values
-
-      def initialize(datatype, allowable_values)
-        @allowable_values = allowable_values.map do |value|
-          case datatype.to_s
-          when /Integer/i
-            value.to_i
-          when /Float/i
-            value.to_f
-          else
-            value
-          end
-        end
-      end
-
-      def valid?(value)
-        !value || allowable_values.include?(value)
-      end
-    end
+    # Requests per second observed for this operation.
+    attr_accessor :rps
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'status' => :'status',
+        :'id' => :'id',
         :'updated_at' => :'updated_at',
-        :'last_seen_at' => :'last_seen_at'
+        :'last_seen_at' => :'last_seen_at',
+        :'rps' => :'rps'
       }
     end
 
@@ -61,9 +43,10 @@ module Fastly
     # Attribute type mapping.
     def self.fastly_types
       {
-        :'status' => :'String',
+        :'id' => :'String',
         :'updated_at' => :'Time',
-        :'last_seen_at' => :'Time'
+        :'last_seen_at' => :'Time',
+        :'rps' => :'Float'
       }
     end
 
@@ -88,8 +71,8 @@ module Fastly
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'status')
-        self.status = attributes[:'status']
+      if attributes.key?(:'id')
+        self.id = attributes[:'id']
       end
 
       if attributes.key?(:'updated_at')
@@ -99,31 +82,28 @@ module Fastly
       if attributes.key?(:'last_seen_at')
         self.last_seen_at = attributes[:'last_seen_at']
       end
+
+      if attributes.key?(:'rps')
+        self.rps = attributes[:'rps']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+      if @id.nil?
+        invalid_properties.push('invalid value for "id", id cannot be nil.')
+      end
+
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      status_validator = EnumAttributeValidator.new('String', ["DISCOVERED", "SAVED", "IGNORED"])
-      return false unless status_validator.valid?(@status)
+      return false if @id.nil?
       true
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] status Object to be assigned
-    def status=(status)
-      validator = EnumAttributeValidator.new('String', ["DISCOVERED", "SAVED", "IGNORED"])
-      unless validator.valid?(status)
-        fail ArgumentError, "invalid value for \"status\", must be one of #{validator.allowable_values}."
-      end
-      @status = status
     end
 
     # Checks equality by comparing each attribute.
@@ -131,9 +111,10 @@ module Fastly
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          status == o.status &&
+          id == o.id &&
           updated_at == o.updated_at &&
-          last_seen_at == o.last_seen_at
+          last_seen_at == o.last_seen_at &&
+          rps == o.rps
     end
 
     # @see the `==` method
@@ -145,7 +126,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [status, updated_at, last_seen_at].hash
+      [id, updated_at, last_seen_at, rps].hash
     end
 
     # Builds the object from hash

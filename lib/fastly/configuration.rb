@@ -416,6 +416,24 @@ module Fastly
           description: "No description provided",
           }
         ],
+        "ApisecurityOperationsApi.api_security_bulk_add_tags_to_operations": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "ApisecurityOperationsApi.api_security_bulk_create_operations": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "ApisecurityOperationsApi.api_security_bulk_delete_operations": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
         "ApisecurityOperationsApi.api_security_create_operation": [
           {
           url: "https://api.fastly.com",

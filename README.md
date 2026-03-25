@@ -2,13 +2,19 @@
 
 A Ruby client library for interacting with most facets of the [Fastly API](https://www.fastly.com/documentation/reference/api/).
 
+> ⚠️ This client library (`16.1.0.rc.0`)  is an early-access release. Features may change without notice. Use at your own risk.
+
+**We strongly recommend that you do not install alpha and beta releases on live production services.** No official support is provided for such releases. Please try out the library in a test environment, see what breaks without worrying about consequences, and give us [feedback](#issues).
+
+Read about the [Fastly Product Lifecycle](https://docs.fastly.com/products/fastly-product-lifecycle).
+
 
 ## Installation
 
 To install via RubyGems, add the following to your project's `Gemfile`:
 
 ```ruby
-gem 'fastly', '~> 16.0.0'
+gem 'fastly', '~> 16.1.0.rc.0'
 ```
 
 Then run `bundle install`.
@@ -91,6 +97,9 @@ Class | Method | Description
 [*Fastly::ApexRedirectApi*](docs/ApexRedirectApi.md) | [**get_apex_redirect**](docs/ApexRedirectApi.md#get_apex_redirect) | Get an apex redirect
 [*Fastly::ApexRedirectApi*](docs/ApexRedirectApi.md) | [**list_apex_redirects**](docs/ApexRedirectApi.md#list_apex_redirects) | List apex redirects
 [*Fastly::ApexRedirectApi*](docs/ApexRedirectApi.md) | [**update_apex_redirect**](docs/ApexRedirectApi.md#update_apex_redirect) | Update an apex redirect
+[*Fastly::ApisecurityOperationsApi*](docs/ApisecurityOperationsApi.md) | [**api_security_bulk_add_tags_to_operations**](docs/ApisecurityOperationsApi.md#api_security_bulk_add_tags_to_operations) | Bulk add tags to operations
+[*Fastly::ApisecurityOperationsApi*](docs/ApisecurityOperationsApi.md) | [**api_security_bulk_create_operations**](docs/ApisecurityOperationsApi.md#api_security_bulk_create_operations) | Bulk create operations
+[*Fastly::ApisecurityOperationsApi*](docs/ApisecurityOperationsApi.md) | [**api_security_bulk_delete_operations**](docs/ApisecurityOperationsApi.md#api_security_bulk_delete_operations) | Bulk delete operations
 [*Fastly::ApisecurityOperationsApi*](docs/ApisecurityOperationsApi.md) | [**api_security_create_operation**](docs/ApisecurityOperationsApi.md#api_security_create_operation) | Create operation
 [*Fastly::ApisecurityOperationsApi*](docs/ApisecurityOperationsApi.md) | [**api_security_create_operation_tag**](docs/ApisecurityOperationsApi.md#api_security_create_operation_tag) | Create operation tag
 [*Fastly::ApisecurityOperationsApi*](docs/ApisecurityOperationsApi.md) | [**api_security_delete_operation**](docs/ApisecurityOperationsApi.md#api_security_delete_operation) | Delete operation
@@ -671,21 +680,27 @@ The fastly-ruby API client currently does not support the following endpoints:
 - [`/ngwaf/v1/default-dashboards`](https://www.fastly.com/documentation/reference/api/ngwaf/v1/custom-dashboards) (GET)
 - [`/ngwaf/v1/lists/{listId}`](https://www.fastly.com/documentation/reference/api/ngwaf/v1/lists) (DELETE, GET, PATCH)
 - [`/ngwaf/v1/lists`](https://www.fastly.com/documentation/reference/api/ngwaf/v1/lists) (GET, POST)
+- [`/ngwaf/v1/rules/{rule_id}`](https://www.fastly.com/documentation/reference/api/ngwaf/v1/rules) (DELETE, GET, PATCH)
+- [`/ngwaf/v1/rules`](https://www.fastly.com/documentation/reference/api/ngwaf/v1/rules) (GET, POST)
 - [`/ngwaf/v1/signals/{signal_id}`](https://www.fastly.com/documentation/reference/api/ngwaf/v1/signals) (DELETE, GET, PATCH)
 - [`/ngwaf/v1/signals`](https://www.fastly.com/documentation/reference/api/ngwaf/v1/signals) (GET, POST)
 - [`/ngwaf/v1/timeseries`](https://www.fastly.com/documentation/reference/api/ngwaf/v1/timeseries) (GET)
 - [`/ngwaf/v1/workspaces/{workspaceId}/lists/{listId}`](https://www.fastly.com/documentation/reference/api/ngwaf/v1/lists) (DELETE, GET, PATCH)
 - [`/ngwaf/v1/workspaces/{workspaceId}/lists`](https://www.fastly.com/documentation/reference/api/ngwaf/v1/lists) (GET, POST)
 - [`/ngwaf/v1/workspaces/{workspace_id}/alerts/{alert_id}/signing-key`](https://www.fastly.com/documentation/reference/api/ngwaf/v1/workspace_alerts) (GET, POST)
+- [`/ngwaf/v1/workspaces/{workspace_id}/alerts/{alert_id}/test`](https://www.fastly.com/documentation/reference/api/ngwaf/v1/workspace_alerts) (POST)
 - [`/ngwaf/v1/workspaces/{workspace_id}/alerts/{alert_id}`](https://www.fastly.com/documentation/reference/api/ngwaf/v1/workspace_alerts) (DELETE, GET, PATCH)
 - [`/ngwaf/v1/workspaces/{workspace_id}/alerts`](https://www.fastly.com/documentation/reference/api/ngwaf/v1/workspace_alerts) (GET, POST)
 - [`/ngwaf/v1/workspaces/{workspace_id}/dashboards/{dashboard_id}`](https://www.fastly.com/documentation/reference/api/ngwaf/v1/custom-dashboards) (DELETE, GET, PATCH)
 - [`/ngwaf/v1/workspaces/{workspace_id}/dashboards`](https://www.fastly.com/documentation/reference/api/ngwaf/v1/custom-dashboards) (GET, POST)
 - [`/ngwaf/v1/workspaces/{workspace_id}/default-dashboard`](https://www.fastly.com/documentation/reference/api/ngwaf/v1/custom-dashboards) (GET, PUT)
+- [`/ngwaf/v1/workspaces/{workspace_id}/events/{event_id}/expire`](https://www.fastly.com/documentation/reference/api/ngwaf/events) (POST)
 - [`/ngwaf/v1/workspaces/{workspace_id}/events/{event_id}`](https://www.fastly.com/documentation/reference/api/ngwaf/events) (GET, PATCH)
 - [`/ngwaf/v1/workspaces/{workspace_id}/events`](https://www.fastly.com/documentation/reference/api/ngwaf/events) (GET)
 - [`/ngwaf/v1/workspaces/{workspace_id}/header-links/{header_link_id}`](https://www.fastly.com/documentation/reference/api/ngwaf/v1/header-links) (DELETE, GET, PUT)
 - [`/ngwaf/v1/workspaces/{workspace_id}/header-links`](https://www.fastly.com/documentation/reference/api/ngwaf/v1/header-links) (GET, POST)
+- [`/ngwaf/v1/workspaces/{workspace_id}/rate-limited-sources/{source_id}`](https://www.fastly.com/documentation/reference/api/ngwaf/v1/rate-limited-sources) (DELETE, GET)
+- [`/ngwaf/v1/workspaces/{workspace_id}/rate-limited-sources`](https://www.fastly.com/documentation/reference/api/ngwaf/v1/rate-limited-sources) (DELETE, GET)
 - [`/ngwaf/v1/workspaces/{workspace_id}/redactions/{redaction_id}`](https://www.fastly.com/documentation/reference/api/ngwaf/v1/redactions) (DELETE, GET, PATCH)
 - [`/ngwaf/v1/workspaces/{workspace_id}/redactions`](https://www.fastly.com/documentation/reference/api/ngwaf/v1/redactions) (GET, POST)
 - [`/ngwaf/v1/workspaces/{workspace_id}/requests/{request_id}/report`](https://www.fastly.com/documentation/reference/api/ngwaf/v1/requests) (POST)
@@ -693,8 +708,11 @@ The fastly-ruby API client currently does not support the following endpoints:
 - [`/ngwaf/v1/workspaces/{workspace_id}/requests`](https://www.fastly.com/documentation/reference/api/ngwaf/v1/requests) (GET)
 - [`/ngwaf/v1/workspaces/{workspace_id}/rules/{rule_id}`](https://www.fastly.com/documentation/reference/api/ngwaf/v1/rules) (DELETE, GET, PATCH)
 - [`/ngwaf/v1/workspaces/{workspace_id}/rules`](https://www.fastly.com/documentation/reference/api/ngwaf/v1/rules) (GET, POST)
+- [`/ngwaf/v1/workspaces/{workspace_id}/signals/{signal_id}`](https://www.fastly.com/documentation/reference/api/ngwaf/v1/signals) (DELETE, GET, PATCH)
+- [`/ngwaf/v1/workspaces/{workspace_id}/signals`](https://www.fastly.com/documentation/reference/api/ngwaf/v1/signals) (GET, POST)
 - [`/ngwaf/v1/workspaces/{workspace_id}/thresholds/{threshold_id}`](https://www.fastly.com/documentation/reference/api/ngwaf/v1/thresholds) (DELETE, GET, PATCH)
 - [`/ngwaf/v1/workspaces/{workspace_id}/thresholds`](https://www.fastly.com/documentation/reference/api/ngwaf/v1/thresholds) (GET, POST)
+- [`/ngwaf/v1/workspaces/{workspace_id}/timeseries/agents/{agent_id}`](https://www.fastly.com/documentation/reference/api/ngwaf/v1/timeseries) (GET)
 - [`/ngwaf/v1/workspaces/{workspace_id}/timeseries`](https://www.fastly.com/documentation/reference/api/ngwaf/v1/timeseries) (GET)
 - [`/ngwaf/v1/workspaces/{workspace_id}/top-attacks`](https://www.fastly.com/documentation/reference/api/ngwaf/workspaces) (GET)
 - [`/ngwaf/v1/workspaces/{workspace_id}/virtual-patches/{virtual_patch_id}`](https://www.fastly.com/documentation/reference/api/ngwaf/v1/virtual-patches) (GET, PATCH)

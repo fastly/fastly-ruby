@@ -207,6 +207,7 @@ module Fastly
     # List domains
     # List all domains
     # @option opts [String] :fqdn 
+    # @option opts [String] :fqdn_match (Optional) Filter fully-qualified domain name (FQDN) specifically by match type. If used, requires filtering by FQDN. (default to 'contains')
     # @option opts [String] :service_id Filter results based on a service_id.
     # @option opts [String] :sort The order in which to list the results. (default to 'fqdn')
     # @option opts [Boolean] :activated 
@@ -222,6 +223,7 @@ module Fastly
     # List domains
     # List all domains
     # @option opts [String] :fqdn 
+    # @option opts [String] :fqdn_match (Optional) Filter fully-qualified domain name (FQDN) specifically by match type. If used, requires filtering by FQDN. (default to 'contains')
     # @option opts [String] :service_id Filter results based on a service_id.
     # @option opts [String] :sort The order in which to list the results. (default to 'fqdn')
     # @option opts [Boolean] :activated 
@@ -234,6 +236,10 @@ module Fastly
         @api_client.config.logger.debug 'Calling API: DmDomainsApi.list_dm_domains ...'
       end
       # unbox the parameters from the hash
+      allowable_values = ["contains", "exact", "starts_with", "ends_with"]
+      if @api_client.config.client_side_validation && opts[:'fqdn_match'] && !allowable_values.include?(opts[:'fqdn_match'])
+        fail ArgumentError, "invalid value for \"fqdn_match\", must be one of #{allowable_values}"
+      end
       allowable_values = ["fqdn", "-fqdn"]
       if @api_client.config.client_side_validation && opts[:'sort'] && !allowable_values.include?(opts[:'sort'])
         fail ArgumentError, "invalid value for \"sort\", must be one of #{allowable_values}"
@@ -248,6 +254,7 @@ module Fastly
       # query parameters
       query_params = opts[:query_params] || {}
       query_params[:'fqdn'] = opts[:'fqdn'] if !opts[:'fqdn'].nil?
+      query_params[:'fqdn_match'] = opts[:'fqdn_match'] if !opts[:'fqdn_match'].nil?
       query_params[:'service_id'] = opts[:'service_id'] if !opts[:'service_id'].nil?
       query_params[:'sort'] = opts[:'sort'] if !opts[:'sort'].nil?
       query_params[:'activated'] = opts[:'activated'] if !opts[:'activated'].nil?

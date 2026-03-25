@@ -13,6 +13,9 @@ api_instance = Fastly::ApisecurityOperationsApi.new
 
 Method | HTTP request | Description
 ------ | ------------ | -----------
+[**api_security_bulk_add_tags_to_operations**](ApisecurityOperationsApi.md#api_security_bulk_add_tags_to_operations) | **POST** /api-security/v1/services/{service_id}/operations-bulk-tags | Bulk add tags to operations
+[**api_security_bulk_create_operations**](ApisecurityOperationsApi.md#api_security_bulk_create_operations) | **POST** /api-security/v1/services/{service_id}/operations-bulk | Bulk create operations
+[**api_security_bulk_delete_operations**](ApisecurityOperationsApi.md#api_security_bulk_delete_operations) | **DELETE** /api-security/v1/services/{service_id}/operations-bulk | Bulk delete operations
 [**api_security_create_operation**](ApisecurityOperationsApi.md#api_security_create_operation) | **POST** /api-security/v1/services/{service_id}/operations | Create operation
 [**api_security_create_operation_tag**](ApisecurityOperationsApi.md#api_security_create_operation_tag) | **POST** /api-security/v1/services/{service_id}/tags | Create operation tag
 [**api_security_delete_operation**](ApisecurityOperationsApi.md#api_security_delete_operation) | **DELETE** /api-security/v1/services/{service_id}/operations/{operation_id} | Delete operation
@@ -26,6 +29,123 @@ Method | HTTP request | Description
 [**api_security_update_operation_tag**](ApisecurityOperationsApi.md#api_security_update_operation_tag) | **PATCH** /api-security/v1/services/{service_id}/tags/{tag_id} | Update operation tag
 
 
+## `api_security_bulk_add_tags_to_operations()`
+
+```ruby
+api_security_bulk_add_tags_to_operations(opts): <InlineResponse2071> # Bulk add tags to operations
+```
+
+Add tags to multiple operations in a single request.
+
+### Examples
+
+```ruby
+api_instance = Fastly::ApisecurityOperationsApi.new
+opts = {
+    service_id: '3NeCFuZNP1v0iyJ2vmYQI6', # String | The unique identifier of the service.
+    operation_bulk_add_tags: Fastly::OperationBulkAddTags.new({operation_ids: ['op_abc123def456'], tag_ids: ['tag_abc123def456']}), # OperationBulkAddTags | 
+}
+
+begin
+  # Bulk add tags to operations
+  result = api_instance.api_security_bulk_add_tags_to_operations(opts)
+  p result
+rescue Fastly::ApiError => e
+  puts "Error when calling ApisecurityOperationsApi->api_security_bulk_add_tags_to_operations: #{e}"
+end
+```
+
+### Options
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **service_id** | **String** | The unique identifier of the service. |  |
+| **operation_bulk_add_tags** | [**OperationBulkAddTags**](OperationBulkAddTags.md) |  | [optional] |
+
+### Return type
+
+[**InlineResponse2071**](InlineResponse2071.md)
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+## `api_security_bulk_create_operations()`
+
+```ruby
+api_security_bulk_create_operations(opts): <InlineResponse207> # Bulk create operations
+```
+
+Create multiple operations associated with a specific service in a single request.
+
+### Examples
+
+```ruby
+api_instance = Fastly::ApisecurityOperationsApi.new
+opts = {
+    service_id: '3NeCFuZNP1v0iyJ2vmYQI6', # String | The unique identifier of the service.
+    operation_bulk_create: Fastly::OperationBulkCreate.new({operations: [Fastly::OperationBulkCreateOperations.new({method: 'GET', domain: 'www.example.com', path: '/api/v1/users/{var1}'})]}), # OperationBulkCreate | 
+}
+
+begin
+  # Bulk create operations
+  result = api_instance.api_security_bulk_create_operations(opts)
+  p result
+rescue Fastly::ApiError => e
+  puts "Error when calling ApisecurityOperationsApi->api_security_bulk_create_operations: #{e}"
+end
+```
+
+### Options
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **service_id** | **String** | The unique identifier of the service. |  |
+| **operation_bulk_create** | [**OperationBulkCreate**](OperationBulkCreate.md) |  | [optional] |
+
+### Return type
+
+[**InlineResponse207**](InlineResponse207.md)
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+## `api_security_bulk_delete_operations()`
+
+```ruby
+api_security_bulk_delete_operations(opts): <InlineResponse2071> # Bulk delete operations
+```
+
+Delete multiple operations in a single request.
+
+### Examples
+
+```ruby
+api_instance = Fastly::ApisecurityOperationsApi.new
+opts = {
+    service_id: '3NeCFuZNP1v0iyJ2vmYQI6', # String | The unique identifier of the service.
+    operation_bulk_delete: Fastly::OperationBulkDelete.new({operation_ids: ['op_abc123def456']}), # OperationBulkDelete | 
+}
+
+begin
+  # Bulk delete operations
+  result = api_instance.api_security_bulk_delete_operations(opts)
+  p result
+rescue Fastly::ApiError => e
+  puts "Error when calling ApisecurityOperationsApi->api_security_bulk_delete_operations: #{e}"
+end
+```
+
+### Options
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **service_id** | **String** | The unique identifier of the service. |  |
+| **operation_bulk_delete** | [**OperationBulkDelete**](OperationBulkDelete.md) |  | [optional] |
+
+### Return type
+
+[**InlineResponse2071**](InlineResponse2071.md)
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
 ## `api_security_create_operation()`
 
 ```ruby
@@ -40,7 +160,7 @@ Create a new operation associated with a specific service.
 api_instance = Fastly::ApisecurityOperationsApi.new
 opts = {
     service_id: '3NeCFuZNP1v0iyJ2vmYQI6', # String | The unique identifier of the service.
-    operation_create: Fastly::OperationCreate.new, # OperationCreate | 
+    operation_create: Fastly::OperationCreate.new({method: 'GET', domain: 'www.example.com', path: '/api/v1/users/{var1}'}), # OperationCreate | 
 }
 
 begin
@@ -272,7 +392,9 @@ List all discovered operations associated with a specific service. Optionally fi
 api_instance = Fastly::ApisecurityOperationsApi.new
 opts = {
     service_id: '3NeCFuZNP1v0iyJ2vmYQI6', # String | The unique identifier of the service.
-    status: 'DISCOVERED', # String | Filter operations by status. Only operations with this status will be returned.
+    method: ['GET'], # Array<String> | Filter operations by HTTP method.
+    domain: ['inner_example'], # Array<String> | Filter operations by fully-qualified domain name (exact match).
+    path: '/api/v1/users', # String | Filter operations by path (exact match).
     limit: 100, # Integer | The maximum number of operations to return per page.
     page: 1, # Integer | The page number to return.
 }
@@ -291,7 +413,9 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **service_id** | **String** | The unique identifier of the service. |  |
-| **status** | **String** | Filter operations by status. Only operations with this status will be returned. | [optional] |
+| **method** | [**Array&lt;String&gt;**](String.md) | Filter operations by HTTP method. | [optional] |
+| **domain** | [**Array&lt;String&gt;**](String.md) | Filter operations by fully-qualified domain name (exact match). | [optional] |
+| **path** | **String** | Filter operations by path (exact match). | [optional] |
 | **limit** | **Integer** | The maximum number of operations to return per page. | [optional][default to 100] |
 | **page** | **Integer** | The page number to return. | [optional][default to 0] |
 
@@ -315,6 +439,8 @@ List all operation tags associated with a specific service.
 api_instance = Fastly::ApisecurityOperationsApi.new
 opts = {
     service_id: '3NeCFuZNP1v0iyJ2vmYQI6', # String | The unique identifier of the service.
+    limit: 100, # Integer | The maximum number of operations to return per page.
+    page: 1, # Integer | The page number to return.
 }
 
 begin
@@ -331,6 +457,8 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **service_id** | **String** | The unique identifier of the service. |  |
+| **limit** | **Integer** | The maximum number of operations to return per page. | [optional][default to 100] |
+| **page** | **Integer** | The page number to return. | [optional][default to 0] |
 
 ### Return type
 
@@ -353,6 +481,10 @@ api_instance = Fastly::ApisecurityOperationsApi.new
 opts = {
     service_id: '3NeCFuZNP1v0iyJ2vmYQI6', # String | The unique identifier of the service.
     tag_id: 'tag_abc123def456', # String | Filter operations by operation tag ID. Only operations associated with this operation tag will be returned.
+    status: 'SAVED', # String | Filter operations by status. Defaults to SAVED if omitted.
+    method: ['GET'], # Array<String> | Filter operations by HTTP method.
+    domain: ['inner_example'], # Array<String> | Filter operations by fully-qualified domain name (exact match).
+    path: '/api/v1/users', # String | Filter operations by path (exact match).
     limit: 100, # Integer | The maximum number of operations to return per page.
     page: 1, # Integer | The page number to return.
 }
@@ -372,6 +504,10 @@ end
 | ---- | ---- | ----------- | ----- |
 | **service_id** | **String** | The unique identifier of the service. |  |
 | **tag_id** | **String** | Filter operations by operation tag ID. Only operations associated with this operation tag will be returned. | [optional] |
+| **status** | **String** | Filter operations by status. Defaults to SAVED if omitted. | [optional][default to &#39;SAVED&#39;] |
+| **method** | [**Array&lt;String&gt;**](String.md) | Filter operations by HTTP method. | [optional] |
+| **domain** | [**Array&lt;String&gt;**](String.md) | Filter operations by fully-qualified domain name (exact match). | [optional] |
+| **path** | **String** | Filter operations by path (exact match). | [optional] |
 | **limit** | **Integer** | The maximum number of operations to return per page. | [optional][default to 100] |
 | **page** | **Integer** | The page number to return. | [optional][default to 0] |
 

@@ -527,11 +527,17 @@ module Fastly
     # Number of backend request errors, including timeouts.
     attr_accessor :compute_bereq_errors
 
+    # Number of backend request errors, including timeouts.
+    attr_accessor :compute_service_bereq_error
+
     # Number of times a guest exceeded its resource limit, includes heap, stack, globals, and code execution timeout.
     attr_accessor :compute_resource_limit_exceeded
 
     # Number of times a guest exceeded its heap limit.
     attr_accessor :compute_heap_limit_exceeded
+
+    # Number of times a guest exceeded its heap limit.
+    attr_accessor :compute_service_memory_exceeded_error
 
     # Number of times a guest exceeded its stack limit.
     attr_accessor :compute_stack_limit_exceeded
@@ -896,6 +902,54 @@ module Fastly
     # Count of Next-Gen WAF Bot Management requests.
     attr_accessor :ngwaf_bot_analysis_request_count
 
+    # Count of AVIF images delivered to end user by Image Optimizer.
+    attr_accessor :imgopto_avif_count
+
+    # Count of JPEG images delivered to end user by Image Optimizer.
+    attr_accessor :imgopto_jpeg_count
+
+    # Count of PNG images delivered to end user by Image Optimizer.
+    attr_accessor :imgopto_png_count
+
+    # Count of GIF images delivered to end user by Image Optimizer.
+    attr_accessor :imgopto_gif_count
+
+    # Count of WebP images delivered to end user by Image Optimizer.
+    attr_accessor :imgopto_webp_count
+
+    # Count of JPEGXL images delivered to end user by Image Optimizer.
+    attr_accessor :imgopto_jpegxl_count
+
+    # Count of SVG images delivered to end user by Image Optimizer.
+    attr_accessor :imgopto_svg_count
+
+    # Count of MP4s delivered to end user by Image Optimizer.
+    attr_accessor :imgopto_mp4_count
+
+    # Aggregate of fatal errors caused by exceeding allocated resource limits, specifically runtime duration, vCPU usage, and heap memory limits.
+    attr_accessor :compute_service_resource_limits_error
+
+    # Fatal errors caused by service logic faults, including stack overflows, unreachable code traps, illegal memory access, or attempts to send multiple responses.
+    attr_accessor :compute_service_runtime_error
+
+    # Fatal errors caused by the service path exceeding hop or service limits, or where a forwarding loop is detected via CDN-Loop headers.
+    attr_accessor :compute_service_chain_error
+
+    # Fatal errors caused by internal errors in Fastly’s Compute platform.
+    attr_accessor :compute_platform_internal_error
+
+    # Fatal errors caused by exceeding the per-request runtime limit.
+    attr_accessor :compute_service_timeout_error
+
+    # Fatal errors caused by exceeding the per-request vCPU time limit.
+    attr_accessor :compute_service_vcpu_exceeded_error
+
+    # Non-fatal errors caused by attempts to exceed defined operational limits, such as simultaneous backend requests or cache transactions.
+    attr_accessor :compute_service_limits_error
+
+    # Fatal errors caused by unprocessable requests to the service, such as requests with malformed CDN-Loop headers or invalid purge credentials.
+    attr_accessor :compute_platform_invalid_request_error
+
     attr_accessor :service_id
 
     # Timestamp for the start of the time period being reported
@@ -1075,8 +1129,10 @@ module Fastly
         :'compute_beresp_body_bytes' => :'compute_beresp_body_bytes',
         :'compute_bereqs' => :'compute_bereqs',
         :'compute_bereq_errors' => :'compute_bereq_errors',
+        :'compute_service_bereq_error' => :'compute_service_bereq_error',
         :'compute_resource_limit_exceeded' => :'compute_resource_limit_exceeded',
         :'compute_heap_limit_exceeded' => :'compute_heap_limit_exceeded',
+        :'compute_service_memory_exceeded_error' => :'compute_service_memory_exceeded_error',
         :'compute_stack_limit_exceeded' => :'compute_stack_limit_exceeded',
         :'compute_globals_limit_exceeded' => :'compute_globals_limit_exceeded',
         :'compute_guest_errors' => :'compute_guest_errors',
@@ -1198,6 +1254,22 @@ module Fastly
         :'dns_nonbillable_responses_count' => :'dns_nonbillable_responses_count',
         :'upgrade' => :'upgrade',
         :'ngwaf_bot_analysis_request_count' => :'ngwaf_bot_analysis_request_count',
+        :'imgopto_avif_count' => :'imgopto_avif_count',
+        :'imgopto_jpeg_count' => :'imgopto_jpeg_count',
+        :'imgopto_png_count' => :'imgopto_png_count',
+        :'imgopto_gif_count' => :'imgopto_gif_count',
+        :'imgopto_webp_count' => :'imgopto_webp_count',
+        :'imgopto_jpegxl_count' => :'imgopto_jpegxl_count',
+        :'imgopto_svg_count' => :'imgopto_svg_count',
+        :'imgopto_mp4_count' => :'imgopto_mp4_count',
+        :'compute_service_resource_limits_error' => :'compute_service_resource_limits_error',
+        :'compute_service_runtime_error' => :'compute_service_runtime_error',
+        :'compute_service_chain_error' => :'compute_service_chain_error',
+        :'compute_platform_internal_error' => :'compute_platform_internal_error',
+        :'compute_service_timeout_error' => :'compute_service_timeout_error',
+        :'compute_service_vcpu_exceeded_error' => :'compute_service_vcpu_exceeded_error',
+        :'compute_service_limits_error' => :'compute_service_limits_error',
+        :'compute_platform_invalid_request_error' => :'compute_platform_invalid_request_error',
         :'service_id' => :'service_id',
         :'start_time' => :'start_time'
       }
@@ -1382,8 +1454,10 @@ module Fastly
         :'compute_beresp_body_bytes' => :'Integer',
         :'compute_bereqs' => :'Integer',
         :'compute_bereq_errors' => :'Integer',
+        :'compute_service_bereq_error' => :'Integer',
         :'compute_resource_limit_exceeded' => :'Integer',
         :'compute_heap_limit_exceeded' => :'Integer',
+        :'compute_service_memory_exceeded_error' => :'Integer',
         :'compute_stack_limit_exceeded' => :'Integer',
         :'compute_globals_limit_exceeded' => :'Integer',
         :'compute_guest_errors' => :'Integer',
@@ -1505,6 +1579,22 @@ module Fastly
         :'dns_nonbillable_responses_count' => :'Integer',
         :'upgrade' => :'Integer',
         :'ngwaf_bot_analysis_request_count' => :'Integer',
+        :'imgopto_avif_count' => :'Integer',
+        :'imgopto_jpeg_count' => :'Integer',
+        :'imgopto_png_count' => :'Integer',
+        :'imgopto_gif_count' => :'Integer',
+        :'imgopto_webp_count' => :'Integer',
+        :'imgopto_jpegxl_count' => :'Integer',
+        :'imgopto_svg_count' => :'Integer',
+        :'imgopto_mp4_count' => :'Integer',
+        :'compute_service_resource_limits_error' => :'Integer',
+        :'compute_service_runtime_error' => :'Integer',
+        :'compute_service_chain_error' => :'Integer',
+        :'compute_platform_internal_error' => :'Integer',
+        :'compute_service_timeout_error' => :'Integer',
+        :'compute_service_vcpu_exceeded_error' => :'Integer',
+        :'compute_service_limits_error' => :'Integer',
+        :'compute_platform_invalid_request_error' => :'Integer',
         :'service_id' => :'String',
         :'start_time' => :'Integer'
       }
@@ -2216,12 +2306,20 @@ module Fastly
         self.compute_bereq_errors = attributes[:'compute_bereq_errors']
       end
 
+      if attributes.key?(:'compute_service_bereq_error')
+        self.compute_service_bereq_error = attributes[:'compute_service_bereq_error']
+      end
+
       if attributes.key?(:'compute_resource_limit_exceeded')
         self.compute_resource_limit_exceeded = attributes[:'compute_resource_limit_exceeded']
       end
 
       if attributes.key?(:'compute_heap_limit_exceeded')
         self.compute_heap_limit_exceeded = attributes[:'compute_heap_limit_exceeded']
+      end
+
+      if attributes.key?(:'compute_service_memory_exceeded_error')
+        self.compute_service_memory_exceeded_error = attributes[:'compute_service_memory_exceeded_error']
       end
 
       if attributes.key?(:'compute_stack_limit_exceeded')
@@ -2708,6 +2806,70 @@ module Fastly
         self.ngwaf_bot_analysis_request_count = attributes[:'ngwaf_bot_analysis_request_count']
       end
 
+      if attributes.key?(:'imgopto_avif_count')
+        self.imgopto_avif_count = attributes[:'imgopto_avif_count']
+      end
+
+      if attributes.key?(:'imgopto_jpeg_count')
+        self.imgopto_jpeg_count = attributes[:'imgopto_jpeg_count']
+      end
+
+      if attributes.key?(:'imgopto_png_count')
+        self.imgopto_png_count = attributes[:'imgopto_png_count']
+      end
+
+      if attributes.key?(:'imgopto_gif_count')
+        self.imgopto_gif_count = attributes[:'imgopto_gif_count']
+      end
+
+      if attributes.key?(:'imgopto_webp_count')
+        self.imgopto_webp_count = attributes[:'imgopto_webp_count']
+      end
+
+      if attributes.key?(:'imgopto_jpegxl_count')
+        self.imgopto_jpegxl_count = attributes[:'imgopto_jpegxl_count']
+      end
+
+      if attributes.key?(:'imgopto_svg_count')
+        self.imgopto_svg_count = attributes[:'imgopto_svg_count']
+      end
+
+      if attributes.key?(:'imgopto_mp4_count')
+        self.imgopto_mp4_count = attributes[:'imgopto_mp4_count']
+      end
+
+      if attributes.key?(:'compute_service_resource_limits_error')
+        self.compute_service_resource_limits_error = attributes[:'compute_service_resource_limits_error']
+      end
+
+      if attributes.key?(:'compute_service_runtime_error')
+        self.compute_service_runtime_error = attributes[:'compute_service_runtime_error']
+      end
+
+      if attributes.key?(:'compute_service_chain_error')
+        self.compute_service_chain_error = attributes[:'compute_service_chain_error']
+      end
+
+      if attributes.key?(:'compute_platform_internal_error')
+        self.compute_platform_internal_error = attributes[:'compute_platform_internal_error']
+      end
+
+      if attributes.key?(:'compute_service_timeout_error')
+        self.compute_service_timeout_error = attributes[:'compute_service_timeout_error']
+      end
+
+      if attributes.key?(:'compute_service_vcpu_exceeded_error')
+        self.compute_service_vcpu_exceeded_error = attributes[:'compute_service_vcpu_exceeded_error']
+      end
+
+      if attributes.key?(:'compute_service_limits_error')
+        self.compute_service_limits_error = attributes[:'compute_service_limits_error']
+      end
+
+      if attributes.key?(:'compute_platform_invalid_request_error')
+        self.compute_platform_invalid_request_error = attributes[:'compute_platform_invalid_request_error']
+      end
+
       if attributes.key?(:'service_id')
         self.service_id = attributes[:'service_id']
       end
@@ -2906,8 +3068,10 @@ module Fastly
           compute_beresp_body_bytes == o.compute_beresp_body_bytes &&
           compute_bereqs == o.compute_bereqs &&
           compute_bereq_errors == o.compute_bereq_errors &&
+          compute_service_bereq_error == o.compute_service_bereq_error &&
           compute_resource_limit_exceeded == o.compute_resource_limit_exceeded &&
           compute_heap_limit_exceeded == o.compute_heap_limit_exceeded &&
+          compute_service_memory_exceeded_error == o.compute_service_memory_exceeded_error &&
           compute_stack_limit_exceeded == o.compute_stack_limit_exceeded &&
           compute_globals_limit_exceeded == o.compute_globals_limit_exceeded &&
           compute_guest_errors == o.compute_guest_errors &&
@@ -3029,6 +3193,22 @@ module Fastly
           dns_nonbillable_responses_count == o.dns_nonbillable_responses_count &&
           upgrade == o.upgrade &&
           ngwaf_bot_analysis_request_count == o.ngwaf_bot_analysis_request_count &&
+          imgopto_avif_count == o.imgopto_avif_count &&
+          imgopto_jpeg_count == o.imgopto_jpeg_count &&
+          imgopto_png_count == o.imgopto_png_count &&
+          imgopto_gif_count == o.imgopto_gif_count &&
+          imgopto_webp_count == o.imgopto_webp_count &&
+          imgopto_jpegxl_count == o.imgopto_jpegxl_count &&
+          imgopto_svg_count == o.imgopto_svg_count &&
+          imgopto_mp4_count == o.imgopto_mp4_count &&
+          compute_service_resource_limits_error == o.compute_service_resource_limits_error &&
+          compute_service_runtime_error == o.compute_service_runtime_error &&
+          compute_service_chain_error == o.compute_service_chain_error &&
+          compute_platform_internal_error == o.compute_platform_internal_error &&
+          compute_service_timeout_error == o.compute_service_timeout_error &&
+          compute_service_vcpu_exceeded_error == o.compute_service_vcpu_exceeded_error &&
+          compute_service_limits_error == o.compute_service_limits_error &&
+          compute_platform_invalid_request_error == o.compute_platform_invalid_request_error &&
           service_id == o.service_id &&
           start_time == o.start_time
     end
@@ -3042,7 +3222,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [requests, hits, hits_time, miss, miss_time, pass, pass_time, errors, restarts, hit_ratio, bandwidth, body_size, header_size, req_body_bytes, req_header_bytes, resp_body_bytes, resp_header_bytes, bereq_body_bytes, bereq_header_bytes, uncacheable, pipe, synth, tls, tls_v10, tls_v11, tls_v12, tls_v13, edge_requests, edge_resp_header_bytes, edge_resp_body_bytes, edge_hit_requests, edge_miss_requests, origin_fetches, origin_fetch_header_bytes, origin_fetch_body_bytes, origin_fetch_resp_header_bytes, origin_fetch_resp_body_bytes, origin_revalidations, origin_cache_fetches, shield, shield_resp_body_bytes, shield_resp_header_bytes, shield_fetches, shield_fetch_header_bytes, shield_fetch_body_bytes, shield_fetch_resp_header_bytes, shield_fetch_resp_body_bytes, shield_revalidations, shield_cache_fetches, ipv6, otfp, otfp_resp_body_bytes, otfp_resp_header_bytes, otfp_shield_resp_body_bytes, otfp_shield_resp_header_bytes, otfp_manifests, otfp_deliver_time, otfp_shield_time, video, pci, log, log_bytes, http2, http3, waf_logged, waf_blocked, waf_passed, attack_req_body_bytes, attack_req_header_bytes, attack_logged_req_body_bytes, attack_logged_req_header_bytes, attack_blocked_req_body_bytes, attack_blocked_req_header_bytes, attack_passed_req_body_bytes, attack_passed_req_header_bytes, attack_resp_synth_bytes, imgopto, imgopto_resp_body_bytes, imgopto_resp_header_bytes, imgopto_shield, imgopto_shield_resp_body_bytes, imgopto_shield_resp_header_bytes, imgopto_transforms, imgvideo, imgvideo_frames, imgvideo_resp_header_bytes, imgvideo_resp_body_bytes, imgvideo_shield_resp_header_bytes, imgvideo_shield_resp_body_bytes, imgvideo_shield, imgvideo_shield_frames, status_200, status_204, status_206, status_301, status_302, status_304, status_400, status_401, status_403, status_404, status_406, status_416, status_429, status_500, status_501, status_502, status_503, status_504, status_505, status_530, status_1xx, status_2xx, status_3xx, status_4xx, status_5xx, object_size_1k, object_size_10k, object_size_100k, object_size_1m, object_size_10m, object_size_100m, object_size_1g, recv_sub_time, recv_sub_count, hash_sub_time, hash_sub_count, miss_sub_time, miss_sub_count, fetch_sub_time, fetch_sub_count, pass_sub_time, pass_sub_count, pipe_sub_time, pipe_sub_count, deliver_sub_time, deliver_sub_count, error_sub_time, error_sub_count, hit_sub_time, hit_sub_count, prehash_sub_time, prehash_sub_count, predeliver_sub_time, predeliver_sub_count, tls_handshake_sent_bytes, hit_resp_body_bytes, miss_resp_body_bytes, pass_resp_body_bytes, segblock_origin_fetches, segblock_shield_fetches, compute_requests, compute_request_time_ms, compute_request_time_billed_ms, compute_ram_used, compute_execution_time_ms, compute_req_header_bytes, compute_req_body_bytes, compute_resp_header_bytes, compute_resp_body_bytes, compute_resp_status_1xx, compute_resp_status_2xx, compute_resp_status_3xx, compute_resp_status_4xx, compute_resp_status_5xx, compute_bereq_header_bytes, compute_bereq_body_bytes, compute_beresp_header_bytes, compute_beresp_body_bytes, compute_bereqs, compute_bereq_errors, compute_resource_limit_exceeded, compute_heap_limit_exceeded, compute_stack_limit_exceeded, compute_globals_limit_exceeded, compute_guest_errors, compute_runtime_errors, edge_hit_resp_body_bytes, edge_hit_resp_header_bytes, edge_miss_resp_body_bytes, edge_miss_resp_header_bytes, origin_cache_fetch_resp_body_bytes, origin_cache_fetch_resp_header_bytes, shield_hit_requests, shield_miss_requests, shield_hit_resp_header_bytes, shield_hit_resp_body_bytes, shield_miss_resp_header_bytes, shield_miss_resp_body_bytes, websocket_req_header_bytes, websocket_req_body_bytes, websocket_resp_header_bytes, websocket_resp_body_bytes, websocket_bereq_header_bytes, websocket_bereq_body_bytes, websocket_beresp_header_bytes, websocket_beresp_body_bytes, websocket_conn_time_ms, fanout_recv_publishes, fanout_send_publishes, kv_store_class_a_operations, kv_store_class_b_operations, object_store_class_a_operations, object_store_class_b_operations, fanout_req_header_bytes, fanout_req_body_bytes, fanout_resp_header_bytes, fanout_resp_body_bytes, fanout_bereq_header_bytes, fanout_bereq_body_bytes, fanout_beresp_header_bytes, fanout_beresp_body_bytes, fanout_conn_time_ms, ddos_action_limit_streams_connections, ddos_action_limit_streams_requests, ddos_action_tarpit_accept, ddos_action_tarpit, ddos_action_close, ddos_action_blackhole, bot_challenge_starts, bot_challenge_complete_tokens_passed, bot_challenge_complete_tokens_failed, bot_challenge_complete_tokens_checked, bot_challenge_complete_tokens_disabled, bot_challenge_complete_tokens_issued, bot_challenges_issued, bot_challenges_succeeded, bot_challenges_failed, ddos_action_downgrade, ddos_action_downgraded_connections, all_hit_requests, all_miss_requests, all_pass_requests, all_error_requests, all_synth_requests, all_edge_hit_requests, all_edge_miss_requests, all_status_1xx, all_status_2xx, all_status_3xx, all_status_4xx, all_status_5xx, origin_offload, request_denied_get_head_body, ddos_protection_requests_detect_count, ddos_protection_requests_mitigate_count, ddos_protection_requests_allow_count, object_storage_class_a_operations_count, object_storage_class_b_operations_count, aia_requests, aia_status_1xx, aia_status_2xx, aia_status_3xx, aia_status_4xx, aia_status_5xx, aia_response_usage_tokens, aia_origin_usage_tokens, aia_estimated_time_saved_ms, request_collapse_usable_count, request_collapse_unusable_count, compute_cache_operations_count, ngwaf_requests_total_count, ngwaf_requests_unknown_count, ngwaf_requests_allowed_count, ngwaf_requests_logged_count, ngwaf_requests_blocked_count, ngwaf_requests_timeout_count, ngwaf_requests_challenged_count, api_discovery_requests_count, compute_resp_status_103, compute_resp_status_200, compute_resp_status_204, compute_resp_status_206, compute_resp_status_301, compute_resp_status_302, compute_resp_status_304, compute_resp_status_400, compute_resp_status_401, compute_resp_status_403, compute_resp_status_404, compute_resp_status_416, compute_resp_status_429, compute_resp_status_500, compute_resp_status_501, compute_resp_status_502, compute_resp_status_503, compute_resp_status_504, compute_resp_status_505, compute_resp_status_530, imgopto_compute_requests, dns_billable_responses_count, dns_nonbillable_responses_count, upgrade, ngwaf_bot_analysis_request_count, service_id, start_time].hash
+      [requests, hits, hits_time, miss, miss_time, pass, pass_time, errors, restarts, hit_ratio, bandwidth, body_size, header_size, req_body_bytes, req_header_bytes, resp_body_bytes, resp_header_bytes, bereq_body_bytes, bereq_header_bytes, uncacheable, pipe, synth, tls, tls_v10, tls_v11, tls_v12, tls_v13, edge_requests, edge_resp_header_bytes, edge_resp_body_bytes, edge_hit_requests, edge_miss_requests, origin_fetches, origin_fetch_header_bytes, origin_fetch_body_bytes, origin_fetch_resp_header_bytes, origin_fetch_resp_body_bytes, origin_revalidations, origin_cache_fetches, shield, shield_resp_body_bytes, shield_resp_header_bytes, shield_fetches, shield_fetch_header_bytes, shield_fetch_body_bytes, shield_fetch_resp_header_bytes, shield_fetch_resp_body_bytes, shield_revalidations, shield_cache_fetches, ipv6, otfp, otfp_resp_body_bytes, otfp_resp_header_bytes, otfp_shield_resp_body_bytes, otfp_shield_resp_header_bytes, otfp_manifests, otfp_deliver_time, otfp_shield_time, video, pci, log, log_bytes, http2, http3, waf_logged, waf_blocked, waf_passed, attack_req_body_bytes, attack_req_header_bytes, attack_logged_req_body_bytes, attack_logged_req_header_bytes, attack_blocked_req_body_bytes, attack_blocked_req_header_bytes, attack_passed_req_body_bytes, attack_passed_req_header_bytes, attack_resp_synth_bytes, imgopto, imgopto_resp_body_bytes, imgopto_resp_header_bytes, imgopto_shield, imgopto_shield_resp_body_bytes, imgopto_shield_resp_header_bytes, imgopto_transforms, imgvideo, imgvideo_frames, imgvideo_resp_header_bytes, imgvideo_resp_body_bytes, imgvideo_shield_resp_header_bytes, imgvideo_shield_resp_body_bytes, imgvideo_shield, imgvideo_shield_frames, status_200, status_204, status_206, status_301, status_302, status_304, status_400, status_401, status_403, status_404, status_406, status_416, status_429, status_500, status_501, status_502, status_503, status_504, status_505, status_530, status_1xx, status_2xx, status_3xx, status_4xx, status_5xx, object_size_1k, object_size_10k, object_size_100k, object_size_1m, object_size_10m, object_size_100m, object_size_1g, recv_sub_time, recv_sub_count, hash_sub_time, hash_sub_count, miss_sub_time, miss_sub_count, fetch_sub_time, fetch_sub_count, pass_sub_time, pass_sub_count, pipe_sub_time, pipe_sub_count, deliver_sub_time, deliver_sub_count, error_sub_time, error_sub_count, hit_sub_time, hit_sub_count, prehash_sub_time, prehash_sub_count, predeliver_sub_time, predeliver_sub_count, tls_handshake_sent_bytes, hit_resp_body_bytes, miss_resp_body_bytes, pass_resp_body_bytes, segblock_origin_fetches, segblock_shield_fetches, compute_requests, compute_request_time_ms, compute_request_time_billed_ms, compute_ram_used, compute_execution_time_ms, compute_req_header_bytes, compute_req_body_bytes, compute_resp_header_bytes, compute_resp_body_bytes, compute_resp_status_1xx, compute_resp_status_2xx, compute_resp_status_3xx, compute_resp_status_4xx, compute_resp_status_5xx, compute_bereq_header_bytes, compute_bereq_body_bytes, compute_beresp_header_bytes, compute_beresp_body_bytes, compute_bereqs, compute_bereq_errors, compute_service_bereq_error, compute_resource_limit_exceeded, compute_heap_limit_exceeded, compute_service_memory_exceeded_error, compute_stack_limit_exceeded, compute_globals_limit_exceeded, compute_guest_errors, compute_runtime_errors, edge_hit_resp_body_bytes, edge_hit_resp_header_bytes, edge_miss_resp_body_bytes, edge_miss_resp_header_bytes, origin_cache_fetch_resp_body_bytes, origin_cache_fetch_resp_header_bytes, shield_hit_requests, shield_miss_requests, shield_hit_resp_header_bytes, shield_hit_resp_body_bytes, shield_miss_resp_header_bytes, shield_miss_resp_body_bytes, websocket_req_header_bytes, websocket_req_body_bytes, websocket_resp_header_bytes, websocket_resp_body_bytes, websocket_bereq_header_bytes, websocket_bereq_body_bytes, websocket_beresp_header_bytes, websocket_beresp_body_bytes, websocket_conn_time_ms, fanout_recv_publishes, fanout_send_publishes, kv_store_class_a_operations, kv_store_class_b_operations, object_store_class_a_operations, object_store_class_b_operations, fanout_req_header_bytes, fanout_req_body_bytes, fanout_resp_header_bytes, fanout_resp_body_bytes, fanout_bereq_header_bytes, fanout_bereq_body_bytes, fanout_beresp_header_bytes, fanout_beresp_body_bytes, fanout_conn_time_ms, ddos_action_limit_streams_connections, ddos_action_limit_streams_requests, ddos_action_tarpit_accept, ddos_action_tarpit, ddos_action_close, ddos_action_blackhole, bot_challenge_starts, bot_challenge_complete_tokens_passed, bot_challenge_complete_tokens_failed, bot_challenge_complete_tokens_checked, bot_challenge_complete_tokens_disabled, bot_challenge_complete_tokens_issued, bot_challenges_issued, bot_challenges_succeeded, bot_challenges_failed, ddos_action_downgrade, ddos_action_downgraded_connections, all_hit_requests, all_miss_requests, all_pass_requests, all_error_requests, all_synth_requests, all_edge_hit_requests, all_edge_miss_requests, all_status_1xx, all_status_2xx, all_status_3xx, all_status_4xx, all_status_5xx, origin_offload, request_denied_get_head_body, ddos_protection_requests_detect_count, ddos_protection_requests_mitigate_count, ddos_protection_requests_allow_count, object_storage_class_a_operations_count, object_storage_class_b_operations_count, aia_requests, aia_status_1xx, aia_status_2xx, aia_status_3xx, aia_status_4xx, aia_status_5xx, aia_response_usage_tokens, aia_origin_usage_tokens, aia_estimated_time_saved_ms, request_collapse_usable_count, request_collapse_unusable_count, compute_cache_operations_count, ngwaf_requests_total_count, ngwaf_requests_unknown_count, ngwaf_requests_allowed_count, ngwaf_requests_logged_count, ngwaf_requests_blocked_count, ngwaf_requests_timeout_count, ngwaf_requests_challenged_count, api_discovery_requests_count, compute_resp_status_103, compute_resp_status_200, compute_resp_status_204, compute_resp_status_206, compute_resp_status_301, compute_resp_status_302, compute_resp_status_304, compute_resp_status_400, compute_resp_status_401, compute_resp_status_403, compute_resp_status_404, compute_resp_status_416, compute_resp_status_429, compute_resp_status_500, compute_resp_status_501, compute_resp_status_502, compute_resp_status_503, compute_resp_status_504, compute_resp_status_505, compute_resp_status_530, imgopto_compute_requests, dns_billable_responses_count, dns_nonbillable_responses_count, upgrade, ngwaf_bot_analysis_request_count, imgopto_avif_count, imgopto_jpeg_count, imgopto_png_count, imgopto_gif_count, imgopto_webp_count, imgopto_jpegxl_count, imgopto_svg_count, imgopto_mp4_count, compute_service_resource_limits_error, compute_service_runtime_error, compute_service_chain_error, compute_platform_internal_error, compute_service_timeout_error, compute_service_vcpu_exceeded_error, compute_service_limits_error, compute_platform_invalid_request_error, service_id, start_time].hash
     end
 
     # Builds the object from hash

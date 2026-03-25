@@ -13,6 +13,8 @@
 | **tag_ids** | **Array&lt;String&gt;** | An array of operation tag IDs associated with this operation. | [optional] |
 | **created_at** | **Time** | The timestamp when the operation was created. | [optional][readonly] |
 | **last_seen_at** | **Time** | The timestamp when the operation was last seen in traffic. | [optional][readonly] |
+| **rps** | **Float** | Requests per second observed for this operation. | [optional][readonly] |
+| **status** | **String** | The status of the operation. | [optional][readonly] |
 
 [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
 

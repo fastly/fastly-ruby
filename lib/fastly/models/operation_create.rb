@@ -28,6 +28,9 @@ module Fastly
     # An array of operation tag IDs associated with this operation.
     attr_accessor :tag_ids
 
+    # The status to assign to the operation. Defaults to SAVED if omitted.
+    attr_accessor :status
+
     class EnumAttributeValidator
       attr_reader :datatype
       attr_reader :allowable_values
@@ -57,7 +60,8 @@ module Fastly
         :'domain' => :'domain',
         :'path' => :'path',
         :'description' => :'description',
-        :'tag_ids' => :'tag_ids'
+        :'tag_ids' => :'tag_ids',
+        :'status' => :'status'
       }
     end
 
@@ -73,7 +77,8 @@ module Fastly
         :'domain' => :'String',
         :'path' => :'String',
         :'description' => :'String',
-        :'tag_ids' => :'Array<String>'
+        :'tag_ids' => :'Array<String>',
+        :'status' => :'String'
       }
     end
 
@@ -86,7 +91,8 @@ module Fastly
     # List of class defined in allOf (OpenAPI v3)
     def self.fastly_all_of
       [
-      :'OperationBase'
+      :'OperationBase',
+      :'OperationCreateExtra'
       ]
     end
 
@@ -126,12 +132,30 @@ module Fastly
           self.tag_ids = value
         end
       end
+
+      if attributes.key?(:'status')
+        self.status = attributes[:'status']
+      else
+        self.status = 'SAVED'
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+      if @method.nil?
+        invalid_properties.push('invalid value for "method", method cannot be nil.')
+      end
+
+      if @domain.nil?
+        invalid_properties.push('invalid value for "domain", domain cannot be nil.')
+      end
+
+      if @path.nil?
+        invalid_properties.push('invalid value for "path", path cannot be nil.')
+      end
+
       if !@description.nil? && @description.to_s.length > 140
         invalid_properties.push('invalid value for "description", the character length must be smaller than or equal to 140.')
       end
@@ -142,9 +166,14 @@ module Fastly
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if @method.nil?
       method_validator = EnumAttributeValidator.new('String', ["GET", "POST", "PUT", "PATCH", "DELETE", "HEAD", "OPTIONS", "CONNECT", "TRACE"])
       return false unless method_validator.valid?(@method)
+      return false if @domain.nil?
+      return false if @path.nil?
       return false if !@description.nil? && @description.to_s.length > 140
+      status_validator = EnumAttributeValidator.new('String', ["SAVED", "IGNORED"])
+      return false unless status_validator.valid?(@status)
       true
     end
 
@@ -168,6 +197,16 @@ module Fastly
       @description = description
     end
 
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] status Object to be assigned
+    def status=(status)
+      validator = EnumAttributeValidator.new('String', ["SAVED", "IGNORED"])
+      unless validator.valid?(status)
+        fail ArgumentError, "invalid value for \"status\", must be one of #{validator.allowable_values}."
+      end
+      @status = status
+    end
+
     # Checks equality by comparing each attribute.
     # @param [Object] Object to be compared
     def ==(o)
@@ -177,7 +216,8 @@ module Fastly
           domain == o.domain &&
           path == o.path &&
           description == o.description &&
-          tag_ids == o.tag_ids
+          tag_ids == o.tag_ids &&
+          status == o.status
     end
 
     # @see the `==` method
@@ -189,7 +229,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [method, domain, path, description, tag_ids].hash
+      [method, domain, path, description, tag_ids, status].hash
     end
 
     # Builds the object from hash

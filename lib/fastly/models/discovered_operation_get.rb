@@ -22,14 +22,17 @@ module Fastly
     # The path for the operation, which may include path parameters.
     attr_accessor :path
 
-    # The current status of the operation.
-    attr_accessor :status
+    # The unique identifier of the discovered operation.
+    attr_accessor :id
 
     # The timestamp when the operation was last updated.
     attr_accessor :updated_at
 
     # The timestamp when the operation was last seen in traffic.
     attr_accessor :last_seen_at
+
+    # Requests per second observed for this operation.
+    attr_accessor :rps
 
     class EnumAttributeValidator
       attr_reader :datatype
@@ -59,9 +62,10 @@ module Fastly
         :'method' => :'method',
         :'domain' => :'domain',
         :'path' => :'path',
-        :'status' => :'status',
+        :'id' => :'id',
         :'updated_at' => :'updated_at',
-        :'last_seen_at' => :'last_seen_at'
+        :'last_seen_at' => :'last_seen_at',
+        :'rps' => :'rps'
       }
     end
 
@@ -76,9 +80,10 @@ module Fastly
         :'method' => :'String',
         :'domain' => :'String',
         :'path' => :'String',
-        :'status' => :'String',
+        :'id' => :'String',
         :'updated_at' => :'Time',
-        :'last_seen_at' => :'Time'
+        :'last_seen_at' => :'Time',
+        :'rps' => :'Float'
       }
     end
 
@@ -123,8 +128,8 @@ module Fastly
         self.path = attributes[:'path']
       end
 
-      if attributes.key?(:'status')
-        self.status = attributes[:'status']
+      if attributes.key?(:'id')
+        self.id = attributes[:'id']
       end
 
       if attributes.key?(:'updated_at')
@@ -133,6 +138,10 @@ module Fastly
 
       if attributes.key?(:'last_seen_at')
         self.last_seen_at = attributes[:'last_seen_at']
+      end
+
+      if attributes.key?(:'rps')
+        self.rps = attributes[:'rps']
       end
     end
 
@@ -152,6 +161,10 @@ module Fastly
         invalid_properties.push('invalid value for "path", path cannot be nil.')
       end
 
+      if @id.nil?
+        invalid_properties.push('invalid value for "id", id cannot be nil.')
+      end
+
       invalid_properties
     end
 
@@ -163,8 +176,7 @@ module Fastly
       return false unless method_validator.valid?(@method)
       return false if @domain.nil?
       return false if @path.nil?
-      status_validator = EnumAttributeValidator.new('String', ["DISCOVERED", "SAVED", "IGNORED"])
-      return false unless status_validator.valid?(@status)
+      return false if @id.nil?
       true
     end
 
@@ -178,16 +190,6 @@ module Fastly
       @method = method
     end
 
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] status Object to be assigned
-    def status=(status)
-      validator = EnumAttributeValidator.new('String', ["DISCOVERED", "SAVED", "IGNORED"])
-      unless validator.valid?(status)
-        fail ArgumentError, "invalid value for \"status\", must be one of #{validator.allowable_values}."
-      end
-      @status = status
-    end
-
     # Checks equality by comparing each attribute.
     # @param [Object] Object to be compared
     def ==(o)
@@ -196,9 +198,10 @@ module Fastly
           method == o.method &&
           domain == o.domain &&
           path == o.path &&
-          status == o.status &&
+          id == o.id &&
           updated_at == o.updated_at &&
-          last_seen_at == o.last_seen_at
+          last_seen_at == o.last_seen_at &&
+          rps == o.rps
     end
 
     # @see the `==` method
@@ -210,7 +213,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [method, domain, path, status, updated_at, last_seen_at].hash
+      [method, domain, path, id, updated_at, last_seen_at, rps].hash
     end
 
     # Builds the object from hash
