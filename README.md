@@ -2,7 +2,7 @@
 
 A Ruby client library for interacting with most facets of the [Fastly API](https://www.fastly.com/documentation/reference/api/).
 
-> ⚠️ This client library (`16.1.0.rc.0`)  is an early-access release. Features may change without notice. Use at your own risk.
+> ⚠️ This client library (`16.1.0.rc.1`)  is an early-access release. Features may change without notice. Use at your own risk.
 
 **We strongly recommend that you do not install alpha and beta releases on live production services.** No official support is provided for such releases. Please try out the library in a test environment, see what breaks without worrying about consequences, and give us [feedback](#issues).
 
@@ -14,7 +14,7 @@ Read about the [Fastly Product Lifecycle](https://docs.fastly.com/products/fastl
 To install via RubyGems, add the following to your project's `Gemfile`:
 
 ```ruby
-gem 'fastly', '~> 16.1.0.rc.0'
+gem 'fastly', '~> 16.1.0.rc.1'
 ```
 
 Then run `bundle install`.
