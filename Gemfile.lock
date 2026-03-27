@@ -10,10 +10,14 @@ GEM
     ast (2.4.2)
     byebug (11.1.3)
     coderay (1.1.3)
-    ethon (0.15.0)
+    ethon (0.18.0)
       ffi (>= 1.15.0)
-    ffi (1.15.5)
-    jaro_winkler (1.5.4)
+      logger
+    ffi (1.17.3)
+    ffi (1.17.3-arm64-darwin)
+    ffi (1.17.3-x86_64-linux-gnu)
+    jaro_winkler (1.5.5)
+    logger (1.7.0)
     method_source (1.0.0)
     parallel (1.21.0)
     parser (3.1.0.0)
@@ -38,14 +42,14 @@ GEM
       unicode-display_width (>= 1.4.0, < 1.6)
     ruby-progressbar (1.11.0)
     stringio (3.0.1)
-    typhoeus (1.4.0)
-      ethon (>= 0.9.0)
+    typhoeus (1.6.0)
+      ethon (>= 0.18.0)
     unicode-display_width (1.5.0)
 
 PLATFORMS
+  arm64-darwin-21
   ruby
   x86_64-linux
-  arm64-darwin-21
 
 DEPENDENCIES
   fastly!
