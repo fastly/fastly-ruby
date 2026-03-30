@@ -25,8 +25,9 @@ jobs:
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: "3.1"
+          ruby-version: "3.4"
           bundler-cache: true
+          rubygems: latest
 
       - name: Compute and validate release metadata
         id: meta
@@ -95,8 +96,9 @@ jobs:
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: "3.1"
+          ruby-version: "3.4"
           bundler-cache: true
+          rubygems: latest
 
       - name: Publish gem with trusted publishing
         uses: rubygems/release-gem@v1
@@ -121,8 +123,9 @@ jobs:
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: "3.1"
+          ruby-version: "3.4"
           bundler-cache: true
+          rubygems: latest
 
       - name: Fetch published gem from RubyGems
         id: fetch
