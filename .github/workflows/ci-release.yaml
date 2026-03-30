@@ -97,6 +97,7 @@ jobs:
         with:
           ruby-version: "3.1"
           bundler-cache: true
+          rubygems: latest
 
       - name: Publish gem with trusted publishing
         uses: rubygems/release-gem@v1
