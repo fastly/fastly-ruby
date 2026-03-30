@@ -27,7 +27,11 @@ Gem::Specification.new do |s|
 
   s.add_runtime_dependency 'typhoeus', '~> 1.0', '>= 1.0.1'
 
-  s.files         = `find *`.split("\n").uniq.sort.select { |f| !f.empty? }
+  s.files = Dir.chdir(__dir__) do
+    `git ls-files -z`.split("\x0").select { |f| File.file?(f) }.reject do |f|
+      f.start_with?('.')
+    end
+  end
   s.executables   = []
   s.require_paths = ["lib"]
 end

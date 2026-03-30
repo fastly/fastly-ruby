@@ -1,5 +1,9 @@
 # Changelog
 
+## [v16.1.0.rc.4](https://github.com/fastly/fastly-ruby/releases/tag/release/v16.1.0.rc.4) (2026-03-30)
+
+- No notable changes in this release.
+
 ## [v16.1.0.rc.3](https://github.com/fastly/fastly-ruby/releases/tag/release/v16.1.0.rc.3) (2026-03-30)
 
 - No notable changes in this release.
