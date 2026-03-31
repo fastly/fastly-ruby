@@ -1,5 +1,24 @@
 # Changelog
 
+## [v16.1.0](https://github.com/fastly/fastly-ruby/releases/tag/release/v16.1.0) (2026-03-30)
+
+**Enhancements:**
+
+- feat(historical, realtime): Deprecated metrics `compute_bereq_errors`, `compute_resource_limit_exceeded`,
+                              `compute_heap_limit_exceeded`, `compute_stack_limit_exceeded`, `compute_globals_limit_exceeded`,
+                              `compute_guest_errors`, and `compute_runtime_errors`.
+- feat(historical, realtime): Added metrics `compute_service_bereq_error`, `compute_service_memory_exceeded_error`.
+                              `imgopto_avif_count`, `imgopto_jpeg_count`, `imgopto_png_count`, `imgopto_gif_count`,
+                              `imgopto_webp_count`, `imgopto_jpegxl_count`, `imgopto_svg_count`, `imgopto_mp4_count`,
+                              `compute_service_resource_limits_error`, `compute_service_runtime_error`, `compute_service_chain_error`
+                              `compute_platform_internal_error`, `compute_service_timeout_error`, `compute_service_vcpu_exceeded_error`
+                              `compute_service_limits_error`, and `compute_platform_invalid_request_error`.
+- feat(domains): Add new Domain Management Domains API.
+- feat(apisecurity-operations): Results include support for `rps` and `id`.
+- feat(apisecurity-operations): List endpoints add support for new parameters `method`, `domain`, and `path`.
+- feat(apisecurity-operations): Add new bulk operations endpoints.
+
+
 ## [v16.0.0](https://github.com/fastly/fastly-ruby/releases/tag/release/v16.0.0) (2026-02-16)
 
 **Breaking Changes:**

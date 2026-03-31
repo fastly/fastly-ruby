@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    fastly (16.1.0.rc.5)
+    fastly (16.1.0)
       typhoeus (~> 1.0, >= 1.0.1)
 
 GEM
