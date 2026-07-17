@@ -27,7 +27,7 @@ module Fastly
     # @option opts [String] :format A Fastly [log format string](https://www.fastly.com/documentation/guides/integrations/streaming-logs/custom-log-formats/). (default to '%h %l %u %t \"%r\" %&gt;s %b')
     # @option opts [String] :log_processing_region The geographic region where the logs will be processed before streaming. Valid values are &#x60;us&#x60;, &#x60;eu&#x60;, and &#x60;none&#x60; for global. (default to 'none')
     # @option opts [Integer] :format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;.  (default to FORMAT_VERSION::v2)
-    # @option opts [LoggingMessageType] :message_type  (default to 'classic')
+    # @option opts [LoggingMessageType] :message_type  (default to 'blank')
     # @option opts [String] :url The URL to post logs to.
     # @return [LoggingSumologicResponse]
     def create_log_sumologic(opts = {})
@@ -45,7 +45,7 @@ module Fastly
     # @option opts [String] :format A Fastly [log format string](https://www.fastly.com/documentation/guides/integrations/streaming-logs/custom-log-formats/). (default to '%h %l %u %t \"%r\" %&gt;s %b')
     # @option opts [String] :log_processing_region The geographic region where the logs will be processed before streaming. Valid values are &#x60;us&#x60;, &#x60;eu&#x60;, and &#x60;none&#x60; for global. (default to 'none')
     # @option opts [Integer] :format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;.  (default to FORMAT_VERSION::v2)
-    # @option opts [LoggingMessageType] :message_type  (default to 'classic')
+    # @option opts [LoggingMessageType] :message_type  (default to 'blank')
     # @option opts [String] :url The URL to post logs to.
     # @return [Array<(LoggingSumologicResponse, Integer, Hash)>] LoggingSumologicResponse data, response status code and response headers
     def create_log_sumologic_with_http_info(opts = {})
@@ -363,7 +363,7 @@ module Fastly
     # @option opts [String] :format A Fastly [log format string](https://www.fastly.com/documentation/guides/integrations/streaming-logs/custom-log-formats/). (default to '%h %l %u %t \"%r\" %&gt;s %b')
     # @option opts [String] :log_processing_region The geographic region where the logs will be processed before streaming. Valid values are &#x60;us&#x60;, &#x60;eu&#x60;, and &#x60;none&#x60; for global. (default to 'none')
     # @option opts [Integer] :format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;.  (default to FORMAT_VERSION::v2)
-    # @option opts [LoggingMessageType] :message_type  (default to 'classic')
+    # @option opts [LoggingMessageType] :message_type  (default to 'blank')
     # @option opts [String] :url The URL to post logs to.
     # @return [LoggingSumologicResponse]
     def update_log_sumologic(opts = {})
@@ -382,7 +382,7 @@ module Fastly
     # @option opts [String] :format A Fastly [log format string](https://www.fastly.com/documentation/guides/integrations/streaming-logs/custom-log-formats/). (default to '%h %l %u %t \"%r\" %&gt;s %b')
     # @option opts [String] :log_processing_region The geographic region where the logs will be processed before streaming. Valid values are &#x60;us&#x60;, &#x60;eu&#x60;, and &#x60;none&#x60; for global. (default to 'none')
     # @option opts [Integer] :format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;.  (default to FORMAT_VERSION::v2)
-    # @option opts [LoggingMessageType] :message_type  (default to 'classic')
+    # @option opts [LoggingMessageType] :message_type  (default to 'blank')
     # @option opts [String] :url The URL to post logs to.
     # @return [Array<(LoggingSumologicResponse, Integer, Hash)>] LoggingSumologicResponse data, response status code and response headers
     def update_log_sumologic_with_http_info(opts = {})

@@ -91,7 +91,7 @@ module Fastly
     # @option opts [String] :keywords 
     # @option opts [String] :location 
     # @option opts [String] :vendor 
-    # @return [InlineResponse2009]
+    # @return [InlineResponse20016]
     def suggest_domains(opts = {})
       data, _status_code, _headers = suggest_domains_with_http_info(opts)
       data
@@ -104,7 +104,7 @@ module Fastly
     # @option opts [String] :keywords 
     # @option opts [String] :location 
     # @option opts [String] :vendor 
-    # @return [Array<(InlineResponse2009, Integer, Hash)>] InlineResponse2009 data, response status code and response headers
+    # @return [Array<(InlineResponse20016, Integer, Hash)>] InlineResponse20016 data, response status code and response headers
     def suggest_domains_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DomainResearchApi.suggest_domains ...'
@@ -138,7 +138,7 @@ module Fastly
       post_body = opts[:debug_body]
 
       # return_type
-      return_type = opts[:debug_return_type] || 'InlineResponse2009'
+      return_type = opts[:debug_return_type] || 'InlineResponse20016'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['token']

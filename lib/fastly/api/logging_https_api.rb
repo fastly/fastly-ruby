@@ -36,7 +36,7 @@ module Fastly
     # @option opts [String] :url The URL to send logs to. Must use HTTPS. Required.
     # @option opts [String] :content_type Content type of the header sent with the request. (default to 'null')
     # @option opts [String] :header_name Name of the custom header sent with the request. (default to 'null')
-    # @option opts [LoggingMessageType] :message_type  (default to 'classic')
+    # @option opts [LoggingMessageType] :message_type  (default to 'blank')
     # @option opts [String] :header_value Value of the custom header sent with the request. (default to 'null')
     # @option opts [String] :method HTTP method used for request. (default to 'POST')
     # @option opts [String] :json_format Enforces valid JSON formatting for log entries.
@@ -66,7 +66,7 @@ module Fastly
     # @option opts [String] :url The URL to send logs to. Must use HTTPS. Required.
     # @option opts [String] :content_type Content type of the header sent with the request. (default to 'null')
     # @option opts [String] :header_name Name of the custom header sent with the request. (default to 'null')
-    # @option opts [LoggingMessageType] :message_type  (default to 'classic')
+    # @option opts [LoggingMessageType] :message_type  (default to 'blank')
     # @option opts [String] :header_value Value of the custom header sent with the request. (default to 'null')
     # @option opts [String] :method HTTP method used for request. (default to 'POST')
     # @option opts [String] :json_format Enforces valid JSON formatting for log entries.
@@ -416,7 +416,7 @@ module Fastly
     # @option opts [String] :url The URL to send logs to. Must use HTTPS. Required.
     # @option opts [String] :content_type Content type of the header sent with the request. (default to 'null')
     # @option opts [String] :header_name Name of the custom header sent with the request. (default to 'null')
-    # @option opts [LoggingMessageType] :message_type  (default to 'classic')
+    # @option opts [LoggingMessageType] :message_type  (default to 'blank')
     # @option opts [String] :header_value Value of the custom header sent with the request. (default to 'null')
     # @option opts [String] :method HTTP method used for request. (default to 'POST')
     # @option opts [String] :json_format Enforces valid JSON formatting for log entries.
@@ -447,7 +447,7 @@ module Fastly
     # @option opts [String] :url The URL to send logs to. Must use HTTPS. Required.
     # @option opts [String] :content_type Content type of the header sent with the request. (default to 'null')
     # @option opts [String] :header_name Name of the custom header sent with the request. (default to 'null')
-    # @option opts [LoggingMessageType] :message_type  (default to 'classic')
+    # @option opts [LoggingMessageType] :message_type  (default to 'blank')
     # @option opts [String] :header_value Value of the custom header sent with the request. (default to 'null')
     # @option opts [String] :method HTTP method used for request. (default to 'POST')
     # @option opts [String] :json_format Enforces valid JSON formatting for log entries.

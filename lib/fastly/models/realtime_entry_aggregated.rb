@@ -125,15 +125,6 @@ module Fastly
     # Total body bytes sent to origin.
     attr_accessor :bereq_body_bytes
 
-    # Number of requests that triggered a WAF rule and were blocked.
-    attr_accessor :waf_blocked
-
-    # Number of requests that triggered a WAF rule and were logged.
-    attr_accessor :waf_logged
-
-    # Number of requests that triggered a WAF rule and were passed.
-    attr_accessor :waf_passed
-
     # Total header bytes received from requests that triggered a WAF rule.
     attr_accessor :attack_req_header_bytes
 
@@ -929,6 +920,108 @@ module Fastly
     # Fatal errors caused by unprocessable requests to the service, such as requests with malformed CDN-Loop headers or invalid purge credentials.
     attr_accessor :compute_platform_invalid_request_error
 
+    # Number of WebAssembly (Wasm) sandboxes created.
+    attr_accessor :compute_sandboxes
+
+    # Total number of Bot Management requests across all deployments.
+    attr_accessor :bot_requests_total_count
+
+    # Count of edge requests where bot detection analysis was performed.
+    attr_accessor :bot_edge_requests_analyzed_count
+
+    # Count of edge requests where a bot was detected.
+    attr_accessor :bot_edge_requests_detected_count
+
+    # Count of edge requests where a verified bot was detected.
+    attr_accessor :bot_edge_requests_verified_count
+
+    # Count of edge requests where an AI crawler was detected.
+    attr_accessor :bot_edge_requests_ai_crawler_count
+
+    # Count of edge requests where an AI fetcher was detected.
+    attr_accessor :bot_edge_requests_ai_fetcher_count
+
+    # Count of edge requests where an accessibility bot was detected.
+    attr_accessor :bot_edge_requests_accessibility_count
+
+    # Count of edge requests where a content fetcher was detected.
+    attr_accessor :bot_edge_requests_content_fetcher_count
+
+    # Count of edge requests where a monitoring and site tool was detected.
+    attr_accessor :bot_edge_requests_monitoring_count
+
+    # Count of edge requests where an online marketing bot was detected.
+    attr_accessor :bot_edge_requests_online_marketing_count
+
+    # Count of edge requests where a page preview bot was detected.
+    attr_accessor :bot_edge_requests_page_preview_count
+
+    # Count of edge requests where a platform integration was detected.
+    attr_accessor :bot_edge_requests_platform_integrations_count
+
+    # Count of edge requests where a research bot was detected.
+    attr_accessor :bot_edge_requests_research_count
+
+    # Count of edge requests where a search engine crawler was detected.
+    attr_accessor :bot_edge_requests_search_engine_crawler_count
+
+    # Count of edge requests where a search engine optimization bot was detected.
+    attr_accessor :bot_edge_requests_search_engine_optimization_count
+
+    # Count of edge requests where a security tool was detected.
+    attr_accessor :bot_edge_requests_security_tools_count
+
+    # The number of times Compute has handed off a request to the Fanout proxy or WebSocket proxy.
+    attr_accessor :compute_handoff
+
+    # Number of backend requests from a Compute service that failed during DNS resolution.
+    attr_accessor :compute_service_bereq_dns_error
+
+    # Number of backend requests from a Compute service where the connection to the origin timed out before being established.
+    attr_accessor :compute_service_bereq_conn_timeout_error
+
+    # Number of backend requests from a Compute service where the origin actively refused the connection.
+    attr_accessor :compute_service_bereq_conn_refused_error
+
+    # Number of backend requests from a Compute service that failed due to a connection error not classified as a timeout or refusal.
+    attr_accessor :compute_service_bereq_conn_other_error
+
+    # Number of backend requests from a Compute service that failed due to a TLS certificate validation error (e.g., expired, untrusted CA, hostname mismatch).
+    attr_accessor :compute_service_bereq_tls_server_cert_error
+
+    # Number of backend requests from a Compute service that failed due to a TLS error not classified as a certificate error.
+    attr_accessor :compute_service_bereq_tls_other_error
+
+    # Number of backend requests from a Compute service that failed due to an HTTP/1.x protocol violation after the request was transmitted.
+    attr_accessor :compute_service_bereq_http_proto_v1_error
+
+    # Number of backend requests from a Compute service that failed due to an HTTP/2 protocol error, typically a `RST_STREAM` or `GO_AWAY` from the origin.
+    attr_accessor :compute_service_bereq_http_proto_v2_error
+
+    # Number of backend requests from a Compute service where the origin sent an incomplete HTTP response.
+    attr_accessor :compute_service_bereq_http_incomplete_error
+
+    # Number of backend requests from a Compute service where the origin did not respond within the configured timeout period.
+    attr_accessor :compute_service_bereq_http_timeout_error
+
+    # Number of backend requests from a Compute service that failed due to an HTTP-level error not classified in any category.
+    attr_accessor :compute_service_bereq_http_other_error
+
+    # Number of backend requests from a Compute service that failed due to an error not classified into the DNS, connection, TLS, or HTTP categories.
+    attr_accessor :compute_service_bereq_other_error
+
+    # Number of backend requests from a Compute service where the origin returned a 5xx status code.
+    attr_accessor :compute_service_bereq_5xx_error
+
+    # Number of backend requests from a Compute service that failed at the TCP connection level. Sum of `compute_service_bereq_conn_timeout_error`, `compute_service_bereq_conn_refused_error`, and `compute_service_bereq_conn_other_error`.
+    attr_accessor :compute_service_bereq_conn_error
+
+    # Number of backend requests from a Compute service that failed during the TLS handshake or session with the origin. Sum of `compute_service_bereq_tls_server_cert_error` and `compute_service_bereq_tls_other_error`.
+    attr_accessor :compute_service_bereq_tls_error
+
+    # Number of backend requests from a Compute service that failed at the HTTP protocol level. Sum of `compute_service_bereq_http_proto_v1_error`, `compute_service_bereq_http_proto_v2_error`, `compute_service_bereq_http_incomplete_error`, `compute_service_bereq_http_timeout_error`, and `compute_service_bereq_http_other_error`.
+    attr_accessor :compute_service_bereq_http_error
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -969,9 +1062,6 @@ module Fastly
         :'req_body_bytes' => :'req_body_bytes',
         :'bereq_header_bytes' => :'bereq_header_bytes',
         :'bereq_body_bytes' => :'bereq_body_bytes',
-        :'waf_blocked' => :'waf_blocked',
-        :'waf_logged' => :'waf_logged',
-        :'waf_passed' => :'waf_passed',
         :'attack_req_header_bytes' => :'attack_req_header_bytes',
         :'attack_req_body_bytes' => :'attack_req_body_bytes',
         :'attack_resp_synth_bytes' => :'attack_resp_synth_bytes',
@@ -1236,7 +1326,41 @@ module Fastly
         :'compute_service_timeout_error' => :'compute_service_timeout_error',
         :'compute_service_vcpu_exceeded_error' => :'compute_service_vcpu_exceeded_error',
         :'compute_service_limits_error' => :'compute_service_limits_error',
-        :'compute_platform_invalid_request_error' => :'compute_platform_invalid_request_error'
+        :'compute_platform_invalid_request_error' => :'compute_platform_invalid_request_error',
+        :'compute_sandboxes' => :'compute_sandboxes',
+        :'bot_requests_total_count' => :'bot_requests_total_count',
+        :'bot_edge_requests_analyzed_count' => :'bot_edge_requests_analyzed_count',
+        :'bot_edge_requests_detected_count' => :'bot_edge_requests_detected_count',
+        :'bot_edge_requests_verified_count' => :'bot_edge_requests_verified_count',
+        :'bot_edge_requests_ai_crawler_count' => :'bot_edge_requests_ai_crawler_count',
+        :'bot_edge_requests_ai_fetcher_count' => :'bot_edge_requests_ai_fetcher_count',
+        :'bot_edge_requests_accessibility_count' => :'bot_edge_requests_accessibility_count',
+        :'bot_edge_requests_content_fetcher_count' => :'bot_edge_requests_content_fetcher_count',
+        :'bot_edge_requests_monitoring_count' => :'bot_edge_requests_monitoring_count',
+        :'bot_edge_requests_online_marketing_count' => :'bot_edge_requests_online_marketing_count',
+        :'bot_edge_requests_page_preview_count' => :'bot_edge_requests_page_preview_count',
+        :'bot_edge_requests_platform_integrations_count' => :'bot_edge_requests_platform_integrations_count',
+        :'bot_edge_requests_research_count' => :'bot_edge_requests_research_count',
+        :'bot_edge_requests_search_engine_crawler_count' => :'bot_edge_requests_search_engine_crawler_count',
+        :'bot_edge_requests_search_engine_optimization_count' => :'bot_edge_requests_search_engine_optimization_count',
+        :'bot_edge_requests_security_tools_count' => :'bot_edge_requests_security_tools_count',
+        :'compute_handoff' => :'compute_handoff',
+        :'compute_service_bereq_dns_error' => :'compute_service_bereq_dns_error',
+        :'compute_service_bereq_conn_timeout_error' => :'compute_service_bereq_conn_timeout_error',
+        :'compute_service_bereq_conn_refused_error' => :'compute_service_bereq_conn_refused_error',
+        :'compute_service_bereq_conn_other_error' => :'compute_service_bereq_conn_other_error',
+        :'compute_service_bereq_tls_server_cert_error' => :'compute_service_bereq_tls_server_cert_error',
+        :'compute_service_bereq_tls_other_error' => :'compute_service_bereq_tls_other_error',
+        :'compute_service_bereq_http_proto_v1_error' => :'compute_service_bereq_http_proto_v1_error',
+        :'compute_service_bereq_http_proto_v2_error' => :'compute_service_bereq_http_proto_v2_error',
+        :'compute_service_bereq_http_incomplete_error' => :'compute_service_bereq_http_incomplete_error',
+        :'compute_service_bereq_http_timeout_error' => :'compute_service_bereq_http_timeout_error',
+        :'compute_service_bereq_http_other_error' => :'compute_service_bereq_http_other_error',
+        :'compute_service_bereq_other_error' => :'compute_service_bereq_other_error',
+        :'compute_service_bereq_5xx_error' => :'compute_service_bereq_5xx_error',
+        :'compute_service_bereq_conn_error' => :'compute_service_bereq_conn_error',
+        :'compute_service_bereq_tls_error' => :'compute_service_bereq_tls_error',
+        :'compute_service_bereq_http_error' => :'compute_service_bereq_http_error'
       }
     end
 
@@ -1285,9 +1409,6 @@ module Fastly
         :'req_body_bytes' => :'Integer',
         :'bereq_header_bytes' => :'Integer',
         :'bereq_body_bytes' => :'Integer',
-        :'waf_blocked' => :'Integer',
-        :'waf_logged' => :'Integer',
-        :'waf_passed' => :'Integer',
         :'attack_req_header_bytes' => :'Integer',
         :'attack_req_body_bytes' => :'Integer',
         :'attack_resp_synth_bytes' => :'Integer',
@@ -1552,7 +1673,41 @@ module Fastly
         :'compute_service_timeout_error' => :'Integer',
         :'compute_service_vcpu_exceeded_error' => :'Integer',
         :'compute_service_limits_error' => :'Integer',
-        :'compute_platform_invalid_request_error' => :'Integer'
+        :'compute_platform_invalid_request_error' => :'Integer',
+        :'compute_sandboxes' => :'Integer',
+        :'bot_requests_total_count' => :'Integer',
+        :'bot_edge_requests_analyzed_count' => :'Integer',
+        :'bot_edge_requests_detected_count' => :'Integer',
+        :'bot_edge_requests_verified_count' => :'Integer',
+        :'bot_edge_requests_ai_crawler_count' => :'Integer',
+        :'bot_edge_requests_ai_fetcher_count' => :'Integer',
+        :'bot_edge_requests_accessibility_count' => :'Integer',
+        :'bot_edge_requests_content_fetcher_count' => :'Integer',
+        :'bot_edge_requests_monitoring_count' => :'Integer',
+        :'bot_edge_requests_online_marketing_count' => :'Integer',
+        :'bot_edge_requests_page_preview_count' => :'Integer',
+        :'bot_edge_requests_platform_integrations_count' => :'Integer',
+        :'bot_edge_requests_research_count' => :'Integer',
+        :'bot_edge_requests_search_engine_crawler_count' => :'Integer',
+        :'bot_edge_requests_search_engine_optimization_count' => :'Integer',
+        :'bot_edge_requests_security_tools_count' => :'Integer',
+        :'compute_handoff' => :'Integer',
+        :'compute_service_bereq_dns_error' => :'Integer',
+        :'compute_service_bereq_conn_timeout_error' => :'Integer',
+        :'compute_service_bereq_conn_refused_error' => :'Integer',
+        :'compute_service_bereq_conn_other_error' => :'Integer',
+        :'compute_service_bereq_tls_server_cert_error' => :'Integer',
+        :'compute_service_bereq_tls_other_error' => :'Integer',
+        :'compute_service_bereq_http_proto_v1_error' => :'Integer',
+        :'compute_service_bereq_http_proto_v2_error' => :'Integer',
+        :'compute_service_bereq_http_incomplete_error' => :'Integer',
+        :'compute_service_bereq_http_timeout_error' => :'Integer',
+        :'compute_service_bereq_http_other_error' => :'Integer',
+        :'compute_service_bereq_other_error' => :'Integer',
+        :'compute_service_bereq_5xx_error' => :'Integer',
+        :'compute_service_bereq_conn_error' => :'Integer',
+        :'compute_service_bereq_tls_error' => :'Integer',
+        :'compute_service_bereq_http_error' => :'Integer'
       }
     end
 
@@ -1732,18 +1887,6 @@ module Fastly
 
       if attributes.key?(:'bereq_body_bytes')
         self.bereq_body_bytes = attributes[:'bereq_body_bytes']
-      end
-
-      if attributes.key?(:'waf_blocked')
-        self.waf_blocked = attributes[:'waf_blocked']
-      end
-
-      if attributes.key?(:'waf_logged')
-        self.waf_logged = attributes[:'waf_logged']
-      end
-
-      if attributes.key?(:'waf_passed')
-        self.waf_passed = attributes[:'waf_passed']
       end
 
       if attributes.key?(:'attack_req_header_bytes')
@@ -2805,6 +2948,142 @@ module Fastly
       if attributes.key?(:'compute_platform_invalid_request_error')
         self.compute_platform_invalid_request_error = attributes[:'compute_platform_invalid_request_error']
       end
+
+      if attributes.key?(:'compute_sandboxes')
+        self.compute_sandboxes = attributes[:'compute_sandboxes']
+      end
+
+      if attributes.key?(:'bot_requests_total_count')
+        self.bot_requests_total_count = attributes[:'bot_requests_total_count']
+      end
+
+      if attributes.key?(:'bot_edge_requests_analyzed_count')
+        self.bot_edge_requests_analyzed_count = attributes[:'bot_edge_requests_analyzed_count']
+      end
+
+      if attributes.key?(:'bot_edge_requests_detected_count')
+        self.bot_edge_requests_detected_count = attributes[:'bot_edge_requests_detected_count']
+      end
+
+      if attributes.key?(:'bot_edge_requests_verified_count')
+        self.bot_edge_requests_verified_count = attributes[:'bot_edge_requests_verified_count']
+      end
+
+      if attributes.key?(:'bot_edge_requests_ai_crawler_count')
+        self.bot_edge_requests_ai_crawler_count = attributes[:'bot_edge_requests_ai_crawler_count']
+      end
+
+      if attributes.key?(:'bot_edge_requests_ai_fetcher_count')
+        self.bot_edge_requests_ai_fetcher_count = attributes[:'bot_edge_requests_ai_fetcher_count']
+      end
+
+      if attributes.key?(:'bot_edge_requests_accessibility_count')
+        self.bot_edge_requests_accessibility_count = attributes[:'bot_edge_requests_accessibility_count']
+      end
+
+      if attributes.key?(:'bot_edge_requests_content_fetcher_count')
+        self.bot_edge_requests_content_fetcher_count = attributes[:'bot_edge_requests_content_fetcher_count']
+      end
+
+      if attributes.key?(:'bot_edge_requests_monitoring_count')
+        self.bot_edge_requests_monitoring_count = attributes[:'bot_edge_requests_monitoring_count']
+      end
+
+      if attributes.key?(:'bot_edge_requests_online_marketing_count')
+        self.bot_edge_requests_online_marketing_count = attributes[:'bot_edge_requests_online_marketing_count']
+      end
+
+      if attributes.key?(:'bot_edge_requests_page_preview_count')
+        self.bot_edge_requests_page_preview_count = attributes[:'bot_edge_requests_page_preview_count']
+      end
+
+      if attributes.key?(:'bot_edge_requests_platform_integrations_count')
+        self.bot_edge_requests_platform_integrations_count = attributes[:'bot_edge_requests_platform_integrations_count']
+      end
+
+      if attributes.key?(:'bot_edge_requests_research_count')
+        self.bot_edge_requests_research_count = attributes[:'bot_edge_requests_research_count']
+      end
+
+      if attributes.key?(:'bot_edge_requests_search_engine_crawler_count')
+        self.bot_edge_requests_search_engine_crawler_count = attributes[:'bot_edge_requests_search_engine_crawler_count']
+      end
+
+      if attributes.key?(:'bot_edge_requests_search_engine_optimization_count')
+        self.bot_edge_requests_search_engine_optimization_count = attributes[:'bot_edge_requests_search_engine_optimization_count']
+      end
+
+      if attributes.key?(:'bot_edge_requests_security_tools_count')
+        self.bot_edge_requests_security_tools_count = attributes[:'bot_edge_requests_security_tools_count']
+      end
+
+      if attributes.key?(:'compute_handoff')
+        self.compute_handoff = attributes[:'compute_handoff']
+      end
+
+      if attributes.key?(:'compute_service_bereq_dns_error')
+        self.compute_service_bereq_dns_error = attributes[:'compute_service_bereq_dns_error']
+      end
+
+      if attributes.key?(:'compute_service_bereq_conn_timeout_error')
+        self.compute_service_bereq_conn_timeout_error = attributes[:'compute_service_bereq_conn_timeout_error']
+      end
+
+      if attributes.key?(:'compute_service_bereq_conn_refused_error')
+        self.compute_service_bereq_conn_refused_error = attributes[:'compute_service_bereq_conn_refused_error']
+      end
+
+      if attributes.key?(:'compute_service_bereq_conn_other_error')
+        self.compute_service_bereq_conn_other_error = attributes[:'compute_service_bereq_conn_other_error']
+      end
+
+      if attributes.key?(:'compute_service_bereq_tls_server_cert_error')
+        self.compute_service_bereq_tls_server_cert_error = attributes[:'compute_service_bereq_tls_server_cert_error']
+      end
+
+      if attributes.key?(:'compute_service_bereq_tls_other_error')
+        self.compute_service_bereq_tls_other_error = attributes[:'compute_service_bereq_tls_other_error']
+      end
+
+      if attributes.key?(:'compute_service_bereq_http_proto_v1_error')
+        self.compute_service_bereq_http_proto_v1_error = attributes[:'compute_service_bereq_http_proto_v1_error']
+      end
+
+      if attributes.key?(:'compute_service_bereq_http_proto_v2_error')
+        self.compute_service_bereq_http_proto_v2_error = attributes[:'compute_service_bereq_http_proto_v2_error']
+      end
+
+      if attributes.key?(:'compute_service_bereq_http_incomplete_error')
+        self.compute_service_bereq_http_incomplete_error = attributes[:'compute_service_bereq_http_incomplete_error']
+      end
+
+      if attributes.key?(:'compute_service_bereq_http_timeout_error')
+        self.compute_service_bereq_http_timeout_error = attributes[:'compute_service_bereq_http_timeout_error']
+      end
+
+      if attributes.key?(:'compute_service_bereq_http_other_error')
+        self.compute_service_bereq_http_other_error = attributes[:'compute_service_bereq_http_other_error']
+      end
+
+      if attributes.key?(:'compute_service_bereq_other_error')
+        self.compute_service_bereq_other_error = attributes[:'compute_service_bereq_other_error']
+      end
+
+      if attributes.key?(:'compute_service_bereq_5xx_error')
+        self.compute_service_bereq_5xx_error = attributes[:'compute_service_bereq_5xx_error']
+      end
+
+      if attributes.key?(:'compute_service_bereq_conn_error')
+        self.compute_service_bereq_conn_error = attributes[:'compute_service_bereq_conn_error']
+      end
+
+      if attributes.key?(:'compute_service_bereq_tls_error')
+        self.compute_service_bereq_tls_error = attributes[:'compute_service_bereq_tls_error']
+      end
+
+      if attributes.key?(:'compute_service_bereq_http_error')
+        self.compute_service_bereq_http_error = attributes[:'compute_service_bereq_http_error']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -2862,9 +3141,6 @@ module Fastly
           req_body_bytes == o.req_body_bytes &&
           bereq_header_bytes == o.bereq_header_bytes &&
           bereq_body_bytes == o.bereq_body_bytes &&
-          waf_blocked == o.waf_blocked &&
-          waf_logged == o.waf_logged &&
-          waf_passed == o.waf_passed &&
           attack_req_header_bytes == o.attack_req_header_bytes &&
           attack_req_body_bytes == o.attack_req_body_bytes &&
           attack_resp_synth_bytes == o.attack_resp_synth_bytes &&
@@ -3129,7 +3405,41 @@ module Fastly
           compute_service_timeout_error == o.compute_service_timeout_error &&
           compute_service_vcpu_exceeded_error == o.compute_service_vcpu_exceeded_error &&
           compute_service_limits_error == o.compute_service_limits_error &&
-          compute_platform_invalid_request_error == o.compute_platform_invalid_request_error
+          compute_platform_invalid_request_error == o.compute_platform_invalid_request_error &&
+          compute_sandboxes == o.compute_sandboxes &&
+          bot_requests_total_count == o.bot_requests_total_count &&
+          bot_edge_requests_analyzed_count == o.bot_edge_requests_analyzed_count &&
+          bot_edge_requests_detected_count == o.bot_edge_requests_detected_count &&
+          bot_edge_requests_verified_count == o.bot_edge_requests_verified_count &&
+          bot_edge_requests_ai_crawler_count == o.bot_edge_requests_ai_crawler_count &&
+          bot_edge_requests_ai_fetcher_count == o.bot_edge_requests_ai_fetcher_count &&
+          bot_edge_requests_accessibility_count == o.bot_edge_requests_accessibility_count &&
+          bot_edge_requests_content_fetcher_count == o.bot_edge_requests_content_fetcher_count &&
+          bot_edge_requests_monitoring_count == o.bot_edge_requests_monitoring_count &&
+          bot_edge_requests_online_marketing_count == o.bot_edge_requests_online_marketing_count &&
+          bot_edge_requests_page_preview_count == o.bot_edge_requests_page_preview_count &&
+          bot_edge_requests_platform_integrations_count == o.bot_edge_requests_platform_integrations_count &&
+          bot_edge_requests_research_count == o.bot_edge_requests_research_count &&
+          bot_edge_requests_search_engine_crawler_count == o.bot_edge_requests_search_engine_crawler_count &&
+          bot_edge_requests_search_engine_optimization_count == o.bot_edge_requests_search_engine_optimization_count &&
+          bot_edge_requests_security_tools_count == o.bot_edge_requests_security_tools_count &&
+          compute_handoff == o.compute_handoff &&
+          compute_service_bereq_dns_error == o.compute_service_bereq_dns_error &&
+          compute_service_bereq_conn_timeout_error == o.compute_service_bereq_conn_timeout_error &&
+          compute_service_bereq_conn_refused_error == o.compute_service_bereq_conn_refused_error &&
+          compute_service_bereq_conn_other_error == o.compute_service_bereq_conn_other_error &&
+          compute_service_bereq_tls_server_cert_error == o.compute_service_bereq_tls_server_cert_error &&
+          compute_service_bereq_tls_other_error == o.compute_service_bereq_tls_other_error &&
+          compute_service_bereq_http_proto_v1_error == o.compute_service_bereq_http_proto_v1_error &&
+          compute_service_bereq_http_proto_v2_error == o.compute_service_bereq_http_proto_v2_error &&
+          compute_service_bereq_http_incomplete_error == o.compute_service_bereq_http_incomplete_error &&
+          compute_service_bereq_http_timeout_error == o.compute_service_bereq_http_timeout_error &&
+          compute_service_bereq_http_other_error == o.compute_service_bereq_http_other_error &&
+          compute_service_bereq_other_error == o.compute_service_bereq_other_error &&
+          compute_service_bereq_5xx_error == o.compute_service_bereq_5xx_error &&
+          compute_service_bereq_conn_error == o.compute_service_bereq_conn_error &&
+          compute_service_bereq_tls_error == o.compute_service_bereq_tls_error &&
+          compute_service_bereq_http_error == o.compute_service_bereq_http_error
     end
 
     # @see the `==` method
@@ -3141,7 +3451,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [requests, logging, log, resp_header_bytes, header_size, resp_body_bytes, body_size, hits, miss, pass, synth, errors, hits_time, miss_time, miss_histogram, compute_requests, compute_execution_time_ms, compute_ram_used, compute_request_time_ms, compute_request_time_billed_ms, shield, ipv6, imgopto, imgopto_shield, imgopto_transforms, otfp, otfp_shield, otfp_manifests, video, pci, http2, http3, restarts, req_header_bytes, req_body_bytes, bereq_header_bytes, bereq_body_bytes, waf_blocked, waf_logged, waf_passed, attack_req_header_bytes, attack_req_body_bytes, attack_resp_synth_bytes, attack_logged_req_header_bytes, attack_logged_req_body_bytes, attack_blocked_req_header_bytes, attack_blocked_req_body_bytes, attack_passed_req_header_bytes, attack_passed_req_body_bytes, shield_resp_header_bytes, shield_resp_body_bytes, otfp_resp_header_bytes, otfp_resp_body_bytes, otfp_shield_resp_header_bytes, otfp_shield_resp_body_bytes, otfp_shield_time, otfp_deliver_time, imgopto_resp_header_bytes, imgopto_resp_body_bytes, imgopto_shield_resp_header_bytes, imgopto_shield_resp_body_bytes, status_1xx, status_2xx, status_3xx, status_4xx, status_5xx, status_200, status_204, status_206, status_301, status_302, status_304, status_400, status_401, status_403, status_404, status_406, status_416, status_429, status_500, status_501, status_502, status_503, status_504, status_505, status_530, uncacheable, pass_time, tls, tls_v10, tls_v11, tls_v12, tls_v13, object_size_1k, object_size_10k, object_size_100k, object_size_1m, object_size_10m, object_size_100m, object_size_1g, object_size_other, recv_sub_time, recv_sub_count, hash_sub_time, hash_sub_count, miss_sub_time, miss_sub_count, fetch_sub_time, fetch_sub_count, pass_sub_time, pass_sub_count, pipe_sub_time, pipe_sub_count, deliver_sub_time, deliver_sub_count, error_sub_time, error_sub_count, hit_sub_time, hit_sub_count, prehash_sub_time, prehash_sub_count, predeliver_sub_time, predeliver_sub_count, hit_resp_body_bytes, miss_resp_body_bytes, pass_resp_body_bytes, compute_req_header_bytes, compute_req_body_bytes, compute_resp_header_bytes, compute_resp_body_bytes, imgvideo, imgvideo_frames, imgvideo_resp_header_bytes, imgvideo_resp_body_bytes, imgvideo_shield, imgvideo_shield_frames, imgvideo_shield_resp_header_bytes, imgvideo_shield_resp_body_bytes, log_bytes, edge_requests, edge_resp_header_bytes, edge_resp_body_bytes, origin_revalidations, origin_fetches, origin_fetch_header_bytes, origin_fetch_body_bytes, origin_fetch_resp_header_bytes, origin_fetch_resp_body_bytes, shield_revalidations, shield_fetches, shield_fetch_header_bytes, shield_fetch_body_bytes, shield_fetch_resp_header_bytes, shield_fetch_resp_body_bytes, segblock_origin_fetches, segblock_shield_fetches, compute_resp_status_1xx, compute_resp_status_2xx, compute_resp_status_3xx, compute_resp_status_4xx, compute_resp_status_5xx, edge_hit_requests, edge_miss_requests, compute_bereq_header_bytes, compute_bereq_body_bytes, compute_beresp_header_bytes, compute_beresp_body_bytes, origin_cache_fetches, shield_cache_fetches, compute_bereqs, compute_bereq_errors, compute_service_bereq_error, compute_resource_limit_exceeded, compute_heap_limit_exceeded, compute_service_memory_exceeded_error, compute_stack_limit_exceeded, compute_globals_limit_exceeded, compute_guest_errors, compute_runtime_errors, edge_hit_resp_body_bytes, edge_hit_resp_header_bytes, edge_miss_resp_body_bytes, edge_miss_resp_header_bytes, origin_cache_fetch_resp_body_bytes, origin_cache_fetch_resp_header_bytes, shield_hit_requests, shield_miss_requests, shield_hit_resp_header_bytes, shield_hit_resp_body_bytes, shield_miss_resp_header_bytes, shield_miss_resp_body_bytes, websocket_req_header_bytes, websocket_req_body_bytes, websocket_resp_header_bytes, websocket_bereq_header_bytes, websocket_bereq_body_bytes, websocket_beresp_header_bytes, websocket_beresp_body_bytes, websocket_conn_time_ms, websocket_resp_body_bytes, fanout_recv_publishes, fanout_send_publishes, kv_store_class_a_operations, kv_store_class_b_operations, object_store_class_a_operations, object_store_class_b_operations, fanout_req_header_bytes, fanout_req_body_bytes, fanout_resp_header_bytes, fanout_resp_body_bytes, fanout_bereq_header_bytes, fanout_bereq_body_bytes, fanout_beresp_header_bytes, fanout_beresp_body_bytes, fanout_conn_time_ms, ddos_action_limit_streams_connections, ddos_action_limit_streams_requests, ddos_action_tarpit_accept, ddos_action_tarpit, ddos_action_close, ddos_action_blackhole, bot_challenge_starts, bot_challenge_complete_tokens_passed, bot_challenge_complete_tokens_failed, bot_challenge_complete_tokens_checked, bot_challenge_complete_tokens_disabled, bot_challenges_issued, bot_challenges_succeeded, bot_challenges_failed, bot_challenge_complete_tokens_issued, ddos_action_downgrade, ddos_action_downgraded_connections, all_hit_requests, all_miss_requests, all_pass_requests, all_error_requests, all_synth_requests, all_edge_hit_requests, all_edge_miss_requests, all_status_1xx, all_status_2xx, all_status_3xx, all_status_4xx, all_status_5xx, origin_offload, request_denied_get_head_body, ddos_protection_requests_detect_count, ddos_protection_requests_mitigate_count, ddos_protection_requests_allow_count, object_storage_class_a_operations_count, object_storage_class_b_operations_count, aia_requests, aia_status_1xx, aia_status_2xx, aia_status_3xx, aia_status_4xx, aia_status_5xx, aia_response_usage_tokens, aia_origin_usage_tokens, aia_estimated_time_saved_ms, request_collapse_usable_count, request_collapse_unusable_count, compute_cache_operations_count, api_discovery_requests_count, compute_resp_status_103, compute_resp_status_200, compute_resp_status_204, compute_resp_status_206, compute_resp_status_301, compute_resp_status_302, compute_resp_status_304, compute_resp_status_400, compute_resp_status_401, compute_resp_status_403, compute_resp_status_404, compute_resp_status_416, compute_resp_status_429, compute_resp_status_500, compute_resp_status_501, compute_resp_status_502, compute_resp_status_503, compute_resp_status_504, compute_resp_status_505, compute_resp_status_530, imgopto_compute_requests, dns_billable_responses_count, dns_nonbillable_responses_count, upgrade, ngwaf_bot_analysis_request_count, imgopto_avif_count, imgopto_jpeg_count, imgopto_png_count, imgopto_gif_count, imgopto_webp_count, imgopto_jpegxl_count, imgopto_svg_count, imgopto_mp4_count, compute_service_resource_limits_error, compute_service_runtime_error, compute_service_chain_error, compute_platform_internal_error, compute_service_timeout_error, compute_service_vcpu_exceeded_error, compute_service_limits_error, compute_platform_invalid_request_error].hash
+      [requests, logging, log, resp_header_bytes, header_size, resp_body_bytes, body_size, hits, miss, pass, synth, errors, hits_time, miss_time, miss_histogram, compute_requests, compute_execution_time_ms, compute_ram_used, compute_request_time_ms, compute_request_time_billed_ms, shield, ipv6, imgopto, imgopto_shield, imgopto_transforms, otfp, otfp_shield, otfp_manifests, video, pci, http2, http3, restarts, req_header_bytes, req_body_bytes, bereq_header_bytes, bereq_body_bytes, attack_req_header_bytes, attack_req_body_bytes, attack_resp_synth_bytes, attack_logged_req_header_bytes, attack_logged_req_body_bytes, attack_blocked_req_header_bytes, attack_blocked_req_body_bytes, attack_passed_req_header_bytes, attack_passed_req_body_bytes, shield_resp_header_bytes, shield_resp_body_bytes, otfp_resp_header_bytes, otfp_resp_body_bytes, otfp_shield_resp_header_bytes, otfp_shield_resp_body_bytes, otfp_shield_time, otfp_deliver_time, imgopto_resp_header_bytes, imgopto_resp_body_bytes, imgopto_shield_resp_header_bytes, imgopto_shield_resp_body_bytes, status_1xx, status_2xx, status_3xx, status_4xx, status_5xx, status_200, status_204, status_206, status_301, status_302, status_304, status_400, status_401, status_403, status_404, status_406, status_416, status_429, status_500, status_501, status_502, status_503, status_504, status_505, status_530, uncacheable, pass_time, tls, tls_v10, tls_v11, tls_v12, tls_v13, object_size_1k, object_size_10k, object_size_100k, object_size_1m, object_size_10m, object_size_100m, object_size_1g, object_size_other, recv_sub_time, recv_sub_count, hash_sub_time, hash_sub_count, miss_sub_time, miss_sub_count, fetch_sub_time, fetch_sub_count, pass_sub_time, pass_sub_count, pipe_sub_time, pipe_sub_count, deliver_sub_time, deliver_sub_count, error_sub_time, error_sub_count, hit_sub_time, hit_sub_count, prehash_sub_time, prehash_sub_count, predeliver_sub_time, predeliver_sub_count, hit_resp_body_bytes, miss_resp_body_bytes, pass_resp_body_bytes, compute_req_header_bytes, compute_req_body_bytes, compute_resp_header_bytes, compute_resp_body_bytes, imgvideo, imgvideo_frames, imgvideo_resp_header_bytes, imgvideo_resp_body_bytes, imgvideo_shield, imgvideo_shield_frames, imgvideo_shield_resp_header_bytes, imgvideo_shield_resp_body_bytes, log_bytes, edge_requests, edge_resp_header_bytes, edge_resp_body_bytes, origin_revalidations, origin_fetches, origin_fetch_header_bytes, origin_fetch_body_bytes, origin_fetch_resp_header_bytes, origin_fetch_resp_body_bytes, shield_revalidations, shield_fetches, shield_fetch_header_bytes, shield_fetch_body_bytes, shield_fetch_resp_header_bytes, shield_fetch_resp_body_bytes, segblock_origin_fetches, segblock_shield_fetches, compute_resp_status_1xx, compute_resp_status_2xx, compute_resp_status_3xx, compute_resp_status_4xx, compute_resp_status_5xx, edge_hit_requests, edge_miss_requests, compute_bereq_header_bytes, compute_bereq_body_bytes, compute_beresp_header_bytes, compute_beresp_body_bytes, origin_cache_fetches, shield_cache_fetches, compute_bereqs, compute_bereq_errors, compute_service_bereq_error, compute_resource_limit_exceeded, compute_heap_limit_exceeded, compute_service_memory_exceeded_error, compute_stack_limit_exceeded, compute_globals_limit_exceeded, compute_guest_errors, compute_runtime_errors, edge_hit_resp_body_bytes, edge_hit_resp_header_bytes, edge_miss_resp_body_bytes, edge_miss_resp_header_bytes, origin_cache_fetch_resp_body_bytes, origin_cache_fetch_resp_header_bytes, shield_hit_requests, shield_miss_requests, shield_hit_resp_header_bytes, shield_hit_resp_body_bytes, shield_miss_resp_header_bytes, shield_miss_resp_body_bytes, websocket_req_header_bytes, websocket_req_body_bytes, websocket_resp_header_bytes, websocket_bereq_header_bytes, websocket_bereq_body_bytes, websocket_beresp_header_bytes, websocket_beresp_body_bytes, websocket_conn_time_ms, websocket_resp_body_bytes, fanout_recv_publishes, fanout_send_publishes, kv_store_class_a_operations, kv_store_class_b_operations, object_store_class_a_operations, object_store_class_b_operations, fanout_req_header_bytes, fanout_req_body_bytes, fanout_resp_header_bytes, fanout_resp_body_bytes, fanout_bereq_header_bytes, fanout_bereq_body_bytes, fanout_beresp_header_bytes, fanout_beresp_body_bytes, fanout_conn_time_ms, ddos_action_limit_streams_connections, ddos_action_limit_streams_requests, ddos_action_tarpit_accept, ddos_action_tarpit, ddos_action_close, ddos_action_blackhole, bot_challenge_starts, bot_challenge_complete_tokens_passed, bot_challenge_complete_tokens_failed, bot_challenge_complete_tokens_checked, bot_challenge_complete_tokens_disabled, bot_challenges_issued, bot_challenges_succeeded, bot_challenges_failed, bot_challenge_complete_tokens_issued, ddos_action_downgrade, ddos_action_downgraded_connections, all_hit_requests, all_miss_requests, all_pass_requests, all_error_requests, all_synth_requests, all_edge_hit_requests, all_edge_miss_requests, all_status_1xx, all_status_2xx, all_status_3xx, all_status_4xx, all_status_5xx, origin_offload, request_denied_get_head_body, ddos_protection_requests_detect_count, ddos_protection_requests_mitigate_count, ddos_protection_requests_allow_count, object_storage_class_a_operations_count, object_storage_class_b_operations_count, aia_requests, aia_status_1xx, aia_status_2xx, aia_status_3xx, aia_status_4xx, aia_status_5xx, aia_response_usage_tokens, aia_origin_usage_tokens, aia_estimated_time_saved_ms, request_collapse_usable_count, request_collapse_unusable_count, compute_cache_operations_count, api_discovery_requests_count, compute_resp_status_103, compute_resp_status_200, compute_resp_status_204, compute_resp_status_206, compute_resp_status_301, compute_resp_status_302, compute_resp_status_304, compute_resp_status_400, compute_resp_status_401, compute_resp_status_403, compute_resp_status_404, compute_resp_status_416, compute_resp_status_429, compute_resp_status_500, compute_resp_status_501, compute_resp_status_502, compute_resp_status_503, compute_resp_status_504, compute_resp_status_505, compute_resp_status_530, imgopto_compute_requests, dns_billable_responses_count, dns_nonbillable_responses_count, upgrade, ngwaf_bot_analysis_request_count, imgopto_avif_count, imgopto_jpeg_count, imgopto_png_count, imgopto_gif_count, imgopto_webp_count, imgopto_jpegxl_count, imgopto_svg_count, imgopto_mp4_count, compute_service_resource_limits_error, compute_service_runtime_error, compute_service_chain_error, compute_platform_internal_error, compute_service_timeout_error, compute_service_vcpu_exceeded_error, compute_service_limits_error, compute_platform_invalid_request_error, compute_sandboxes, bot_requests_total_count, bot_edge_requests_analyzed_count, bot_edge_requests_detected_count, bot_edge_requests_verified_count, bot_edge_requests_ai_crawler_count, bot_edge_requests_ai_fetcher_count, bot_edge_requests_accessibility_count, bot_edge_requests_content_fetcher_count, bot_edge_requests_monitoring_count, bot_edge_requests_online_marketing_count, bot_edge_requests_page_preview_count, bot_edge_requests_platform_integrations_count, bot_edge_requests_research_count, bot_edge_requests_search_engine_crawler_count, bot_edge_requests_search_engine_optimization_count, bot_edge_requests_security_tools_count, compute_handoff, compute_service_bereq_dns_error, compute_service_bereq_conn_timeout_error, compute_service_bereq_conn_refused_error, compute_service_bereq_conn_other_error, compute_service_bereq_tls_server_cert_error, compute_service_bereq_tls_other_error, compute_service_bereq_http_proto_v1_error, compute_service_bereq_http_proto_v2_error, compute_service_bereq_http_incomplete_error, compute_service_bereq_http_timeout_error, compute_service_bereq_http_other_error, compute_service_bereq_other_error, compute_service_bereq_5xx_error, compute_service_bereq_conn_error, compute_service_bereq_tls_error, compute_service_bereq_http_error].hash
     end
 
     # Builds the object from hash

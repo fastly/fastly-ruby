@@ -27,7 +27,7 @@ module Fastly
     # @option opts [String] :format A Fastly [log format string](https://www.fastly.com/documentation/guides/integrations/streaming-logs/custom-log-formats/). (default to '%h %l %u %t \"%r\" %&gt;s %b')
     # @option opts [String] :log_processing_region The geographic region where the logs will be processed before streaming. Valid values are &#x60;us&#x60;, &#x60;eu&#x60;, and &#x60;none&#x60; for global. (default to 'none')
     # @option opts [Integer] :format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;.  (default to FORMAT_VERSION::v2)
-    # @option opts [String] :message_type How the message should be formatted. (default to 'classic')
+    # @option opts [String] :message_type How the message should be formatted. (default to 'blank')
     # @option opts [String] :timestamp_format A timestamp format
     # @option opts [String] :compression_codec The codec used for compressing your logs. Valid values are &#x60;zstd&#x60;, &#x60;snappy&#x60;, and &#x60;gzip&#x60;. Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error.
     # @option opts [Integer] :period How frequently log files are finalized so they can be available for reading (in seconds). (default to 3600)
@@ -60,7 +60,7 @@ module Fastly
     # @option opts [String] :format A Fastly [log format string](https://www.fastly.com/documentation/guides/integrations/streaming-logs/custom-log-formats/). (default to '%h %l %u %t \"%r\" %&gt;s %b')
     # @option opts [String] :log_processing_region The geographic region where the logs will be processed before streaming. Valid values are &#x60;us&#x60;, &#x60;eu&#x60;, and &#x60;none&#x60; for global. (default to 'none')
     # @option opts [Integer] :format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;.  (default to FORMAT_VERSION::v2)
-    # @option opts [String] :message_type How the message should be formatted. (default to 'classic')
+    # @option opts [String] :message_type How the message should be formatted. (default to 'blank')
     # @option opts [String] :timestamp_format A timestamp format
     # @option opts [String] :compression_codec The codec used for compressing your logs. Valid values are &#x60;zstd&#x60;, &#x60;snappy&#x60;, and &#x60;gzip&#x60;. Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error.
     # @option opts [Integer] :period How frequently log files are finalized so they can be available for reading (in seconds). (default to 3600)
@@ -105,7 +105,7 @@ module Fastly
       if @api_client.config.client_side_validation && opts[:'format_version'] && !allowable_values.include?(opts[:'format_version'])
         fail ArgumentError, "invalid value for \"format_version\", must be one of #{allowable_values}"
       end
-      allowable_values = ["classic", "loggly", "logplex", "blank"]
+      allowable_values = ["blank", "classic", "loggly", "logplex"]
       if @api_client.config.client_side_validation && opts[:'message_type'] && !allowable_values.include?(opts[:'message_type'])
         fail ArgumentError, "invalid value for \"message_type\", must be one of #{allowable_values}"
       end
@@ -420,7 +420,7 @@ module Fastly
     # @option opts [String] :format A Fastly [log format string](https://www.fastly.com/documentation/guides/integrations/streaming-logs/custom-log-formats/). (default to '%h %l %u %t \"%r\" %&gt;s %b')
     # @option opts [String] :log_processing_region The geographic region where the logs will be processed before streaming. Valid values are &#x60;us&#x60;, &#x60;eu&#x60;, and &#x60;none&#x60; for global. (default to 'none')
     # @option opts [Integer] :format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;.  (default to FORMAT_VERSION::v2)
-    # @option opts [String] :message_type How the message should be formatted. (default to 'classic')
+    # @option opts [String] :message_type How the message should be formatted. (default to 'blank')
     # @option opts [String] :timestamp_format A timestamp format
     # @option opts [String] :compression_codec The codec used for compressing your logs. Valid values are &#x60;zstd&#x60;, &#x60;snappy&#x60;, and &#x60;gzip&#x60;. Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error.
     # @option opts [Integer] :period How frequently log files are finalized so they can be available for reading (in seconds). (default to 3600)
@@ -454,7 +454,7 @@ module Fastly
     # @option opts [String] :format A Fastly [log format string](https://www.fastly.com/documentation/guides/integrations/streaming-logs/custom-log-formats/). (default to '%h %l %u %t \"%r\" %&gt;s %b')
     # @option opts [String] :log_processing_region The geographic region where the logs will be processed before streaming. Valid values are &#x60;us&#x60;, &#x60;eu&#x60;, and &#x60;none&#x60; for global. (default to 'none')
     # @option opts [Integer] :format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;.  (default to FORMAT_VERSION::v2)
-    # @option opts [String] :message_type How the message should be formatted. (default to 'classic')
+    # @option opts [String] :message_type How the message should be formatted. (default to 'blank')
     # @option opts [String] :timestamp_format A timestamp format
     # @option opts [String] :compression_codec The codec used for compressing your logs. Valid values are &#x60;zstd&#x60;, &#x60;snappy&#x60;, and &#x60;gzip&#x60;. Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error.
     # @option opts [Integer] :period How frequently log files are finalized so they can be available for reading (in seconds). (default to 3600)
@@ -504,7 +504,7 @@ module Fastly
       if @api_client.config.client_side_validation && opts[:'format_version'] && !allowable_values.include?(opts[:'format_version'])
         fail ArgumentError, "invalid value for \"format_version\", must be one of #{allowable_values}"
       end
-      allowable_values = ["classic", "loggly", "logplex", "blank"]
+      allowable_values = ["blank", "classic", "loggly", "logplex"]
       if @api_client.config.client_side_validation && opts[:'message_type'] && !allowable_values.include?(opts[:'message_type'])
         fail ArgumentError, "invalid value for \"message_type\", must be one of #{allowable_values}"
       end

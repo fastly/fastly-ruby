@@ -4,8 +4,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **data** | [**Array&lt;DdosProtectionRuleWithStats&gt;**](DdosProtectionRuleWithStats.md) |  |  |
-| **meta** | [**PaginationCursorMeta**](PaginationCursorMeta.md) |  |  |
+| **data** | [**Array&lt;Page&gt;**](Page.md) |  | [optional] |
+| **meta** | [**PaginationMeta**](PaginationMeta.md) |  | [optional] |
 
 [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
 

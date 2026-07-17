@@ -29,6 +29,9 @@ module Fastly
     # The `service_id` associated with your domain or `null` if there is no association.
     attr_accessor :service_id
 
+    # The `routing_configuration_id` associated with your domain or `null` if there is no association.
+    attr_accessor :routing_configuration_id
+
     # A freeform descriptive note.
     attr_accessor :description
 
@@ -46,6 +49,7 @@ module Fastly
         :'id' => :'id',
         :'fqdn' => :'fqdn',
         :'service_id' => :'service_id',
+        :'routing_configuration_id' => :'routing_configuration_id',
         :'description' => :'description',
         :'activated' => :'activated',
         :'verified' => :'verified'
@@ -65,6 +69,7 @@ module Fastly
         :'id' => :'String',
         :'fqdn' => :'String',
         :'service_id' => :'String',
+        :'routing_configuration_id' => :'String',
         :'description' => :'String',
         :'activated' => :'Boolean',
         :'verified' => :'Boolean'
@@ -77,6 +82,7 @@ module Fastly
         :'created_at',
         :'updated_at',
         :'service_id',
+        :'routing_configuration_id',
       ])
     end
 
@@ -123,6 +129,10 @@ module Fastly
         self.service_id = attributes[:'service_id']
       end
 
+      if attributes.key?(:'routing_configuration_id')
+        self.routing_configuration_id = attributes[:'routing_configuration_id']
+      end
+
       if attributes.key?(:'description')
         self.description = attributes[:'description']
       end
@@ -159,6 +169,7 @@ module Fastly
           id == o.id &&
           fqdn == o.fqdn &&
           service_id == o.service_id &&
+          routing_configuration_id == o.routing_configuration_id &&
           description == o.description &&
           activated == o.activated &&
           verified == o.verified
@@ -173,7 +184,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [created_at, updated_at, id, fqdn, service_id, description, activated, verified].hash
+      [created_at, updated_at, id, fqdn, service_id, routing_configuration_id, description, activated, verified].hash
     end
 
     # Builds the object from hash

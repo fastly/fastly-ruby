@@ -15,10 +15,14 @@ module Fastly
   class InlineResponse20014
     attr_accessor :data
 
+    # Meta for the pagination.
+    attr_accessor :meta
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'data' => :'data'
+        :'data' => :'data',
+        :'meta' => :'meta'
       }
     end
 
@@ -30,13 +34,15 @@ module Fastly
     # Attribute type mapping.
     def self.fastly_types
       {
-        :'data' => :'Array<ServiceAuthorizationResponseData>'
+        :'data' => :'Array<SuccessfulResponseAsObject>',
+        :'meta' => :'Object'
       }
     end
 
     # List of attributes with nullable: true
     def self.fastly_nullable
       Set.new([
+        :'meta'
       ])
     end
 
@@ -60,6 +66,10 @@ module Fastly
           self.data = value
         end
       end
+
+      if attributes.key?(:'meta')
+        self.meta = attributes[:'meta']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -80,7 +90,8 @@ module Fastly
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          data == o.data
+          data == o.data &&
+          meta == o.meta
     end
 
     # @see the `==` method
@@ -92,7 +103,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [data].hash
+      [data, meta].hash
     end
 
     # Builds the object from hash

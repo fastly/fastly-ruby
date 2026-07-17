@@ -18,7 +18,6 @@ module Fastly
 
     attr_accessor :aggregated
 
-    # Groups [measurements](#measurements-data-model) by POP. See the [POPs API](https://www.fastly.com/documentation/reference/api/utils/pops/) for details of POP identifiers.
     attr_accessor :datacenter
 
     # Attribute mapping from ruby-style variable name to JSON key.
@@ -40,7 +39,7 @@ module Fastly
       {
         :'recorded' => :'RealtimeEntryRecorded',
         :'aggregated' => :'RealtimeEntryAggregated',
-        :'datacenter' => :'Hash<String, RealtimeMeasurements>'
+        :'datacenter' => :'RealtimeEntryDatacenter'
       }
     end
 
@@ -74,9 +73,7 @@ module Fastly
       end
 
       if attributes.key?(:'datacenter')
-        if (value = attributes[:'datacenter']).is_a?(Hash)
-          self.datacenter = value
-        end
+        self.datacenter = attributes[:'datacenter']
       end
     end
 

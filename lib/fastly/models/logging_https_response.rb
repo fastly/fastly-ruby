@@ -304,7 +304,7 @@ module Fastly
       if attributes.key?(:'message_type')
         self.message_type = attributes[:'message_type']
       else
-        self.message_type = 'classic'
+        self.message_type = 'blank'
       end
 
       if attributes.key?(:'header_value')

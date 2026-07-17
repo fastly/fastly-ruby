@@ -33,7 +33,7 @@ module Fastly
     # @option opts [String] :tls_hostname The hostname to verify the server&#39;s certificate. This should be one of the Subject Alternative Name (SAN) fields for the certificate. Common Names (CN) are not supported. (default to 'null')
     # @option opts [String] :address A hostname or IPv4 address.
     # @option opts [Integer] :port The port number. (default to 514)
-    # @option opts [LoggingMessageType] :message_type  (default to 'classic')
+    # @option opts [LoggingMessageType] :message_type  (default to 'blank')
     # @option opts [String] :hostname The hostname used for the syslog endpoint.
     # @option opts [String] :ipv4 The IPv4 address used for the syslog endpoint.
     # @option opts [String] :token Whether to prepend each message with a specific token. (default to 'null')
@@ -60,7 +60,7 @@ module Fastly
     # @option opts [String] :tls_hostname The hostname to verify the server&#39;s certificate. This should be one of the Subject Alternative Name (SAN) fields for the certificate. Common Names (CN) are not supported. (default to 'null')
     # @option opts [String] :address A hostname or IPv4 address.
     # @option opts [Integer] :port The port number. (default to 514)
-    # @option opts [LoggingMessageType] :message_type  (default to 'classic')
+    # @option opts [LoggingMessageType] :message_type  (default to 'blank')
     # @option opts [String] :hostname The hostname used for the syslog endpoint.
     # @option opts [String] :ipv4 The IPv4 address used for the syslog endpoint.
     # @option opts [String] :token Whether to prepend each message with a specific token. (default to 'null')
@@ -396,7 +396,7 @@ module Fastly
     # @option opts [String] :tls_hostname The hostname to verify the server&#39;s certificate. This should be one of the Subject Alternative Name (SAN) fields for the certificate. Common Names (CN) are not supported. (default to 'null')
     # @option opts [String] :address A hostname or IPv4 address.
     # @option opts [Integer] :port The port number. (default to 514)
-    # @option opts [LoggingMessageType] :message_type  (default to 'classic')
+    # @option opts [LoggingMessageType] :message_type  (default to 'blank')
     # @option opts [String] :hostname The hostname used for the syslog endpoint.
     # @option opts [String] :ipv4 The IPv4 address used for the syslog endpoint.
     # @option opts [String] :token Whether to prepend each message with a specific token. (default to 'null')
@@ -424,7 +424,7 @@ module Fastly
     # @option opts [String] :tls_hostname The hostname to verify the server&#39;s certificate. This should be one of the Subject Alternative Name (SAN) fields for the certificate. Common Names (CN) are not supported. (default to 'null')
     # @option opts [String] :address A hostname or IPv4 address.
     # @option opts [Integer] :port The port number. (default to 514)
-    # @option opts [LoggingMessageType] :message_type  (default to 'classic')
+    # @option opts [LoggingMessageType] :message_type  (default to 'blank')
     # @option opts [String] :hostname The hostname used for the syslog endpoint.
     # @option opts [String] :ipv4 The IPv4 address used for the syslog endpoint.
     # @option opts [String] :token Whether to prepend each message with a specific token. (default to 'null')

@@ -644,6 +644,126 @@ module Fastly
           description: "No description provided",
           }
         ],
+        "ClientSideProtectionApi.csp_create_page": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "ClientSideProtectionApi.csp_create_policy": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "ClientSideProtectionApi.csp_create_website": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "ClientSideProtectionApi.csp_delete_page": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "ClientSideProtectionApi.csp_delete_website": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "ClientSideProtectionApi.csp_get_page": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "ClientSideProtectionApi.csp_get_policy": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "ClientSideProtectionApi.csp_get_script": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "ClientSideProtectionApi.csp_get_website": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "ClientSideProtectionApi.csp_list_header_events": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "ClientSideProtectionApi.csp_list_headers": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "ClientSideProtectionApi.csp_list_pages": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "ClientSideProtectionApi.csp_list_policies": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "ClientSideProtectionApi.csp_list_policy_reports": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "ClientSideProtectionApi.csp_list_scripts": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "ClientSideProtectionApi.csp_list_websites": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "ClientSideProtectionApi.csp_update_page": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "ClientSideProtectionApi.csp_update_policy": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "ClientSideProtectionApi.csp_update_script": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "ClientSideProtectionApi.csp_update_website": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
         "ConditionApi.create_condition": [
           {
           url: "https://api.fastly.com",
@@ -1023,6 +1143,138 @@ module Fastly
           }
         ],
         "DmDomainsApi.update_dm_domain": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "DmRoutingConfigsApi.activate_dm_routing_config_draft": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "DmRoutingConfigsApi.create_dm_routing_config": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "DmRoutingConfigsApi.create_dm_routing_config_path": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "DmRoutingConfigsApi.create_dm_routing_config_rule": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "DmRoutingConfigsApi.deactivate_dm_routing_config": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "DmRoutingConfigsApi.delete_dm_routing_config": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "DmRoutingConfigsApi.delete_dm_routing_config_inactive_versions": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "DmRoutingConfigsApi.delete_dm_routing_config_path": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "DmRoutingConfigsApi.delete_dm_routing_config_rule": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "DmRoutingConfigsApi.discard_dm_routing_config_draft": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "DmRoutingConfigsApi.get_dm_routing_config": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "DmRoutingConfigsApi.get_dm_routing_config_draft_diff": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "DmRoutingConfigsApi.get_dm_routing_config_path": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "DmRoutingConfigsApi.get_dm_routing_config_rule": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "DmRoutingConfigsApi.list_dm_routing_config_paths": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "DmRoutingConfigsApi.list_dm_routing_config_rules": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "DmRoutingConfigsApi.list_dm_routing_config_versions": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "DmRoutingConfigsApi.list_dm_routing_configs": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "DmRoutingConfigsApi.reactivate_dm_routing_config_version": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "DmRoutingConfigsApi.update_dm_routing_config_draft": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "DmRoutingConfigsApi.update_dm_routing_config_path": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "DmRoutingConfigsApi.update_dm_routing_config_rule": [
           {
           url: "https://api.fastly.com",
           description: "No description provided",
@@ -2408,6 +2660,12 @@ module Fastly
           description: "No description provided",
           }
         ],
+        "NgwafAgentKeysApi.ngwaf_list_agent_keys": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
         "NgwafReportsApi.get_attacks_report": [
           {
           url: "https://api.fastly.com",
@@ -2415,6 +2673,12 @@ module Fastly
           }
         ],
         "NgwafReportsApi.get_signals_report": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "NgwafSimulateApi.ngwaf_simulate_waf_request": [
           {
           url: "https://api.fastly.com",
           description: "No description provided",
@@ -2618,7 +2882,19 @@ module Fastly
           description: "No description provided",
           }
         ],
+        "ProductBotManagementApi.get_product_bot_management_configuration": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
         "ProductBotManagementApi.get_services_product_bot_management": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "ProductBotManagementApi.set_product_bot_management_configuration": [
           {
           url: "https://api.fastly.com",
           description: "No description provided",
@@ -2769,6 +3045,24 @@ module Fastly
           }
         ],
         "ProductImageOptimizerApi.get_services_product_image_optimizer": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "ProductKvStoreApi.disable_product_kv_store": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "ProductKvStoreApi.enable_kv_store": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "ProductKvStoreApi.get_kv_store": [
           {
           url: "https://api.fastly.com",
           description: "No description provided",

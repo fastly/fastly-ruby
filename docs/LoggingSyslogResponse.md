@@ -16,7 +16,7 @@
 | **tls_hostname** | **String** | The hostname to verify the server&#39;s certificate. This should be one of the Subject Alternative Name (SAN) fields for the certificate. Common Names (CN) are not supported. | [optional][default to &#39;null&#39;] |
 | **address** | **String** | A hostname or IPv4 address. | [optional] |
 | **port** | **Integer** | The port number. | [optional][default to 514] |
-| **message_type** | [**LoggingMessageType**](LoggingMessageType.md) |  | [optional][default to &#39;classic&#39;] |
+| **message_type** | [**LoggingMessageType**](LoggingMessageType.md) |  | [optional][default to &#39;blank&#39;] |
 | **hostname** | **String** | The hostname used for the syslog endpoint. | [optional] |
 | **ipv4** | **String** | The IPv4 address used for the syslog endpoint. | [optional] |
 | **token** | **String** | Whether to prepend each message with a specific token. | [optional][default to &#39;null&#39;] |

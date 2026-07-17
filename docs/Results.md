@@ -68,9 +68,6 @@
 | **log_bytes** | **Integer** | Total log bytes sent. | [optional] |
 | **http2** | **Integer** | Number of requests received over HTTP/2. | [optional] |
 | **http3** | **Integer** | Number of requests received over HTTP/3. | [optional] |
-| **waf_logged** | **Integer** | Number of requests that triggered a WAF rule and were logged. | [optional] |
-| **waf_blocked** | **Integer** | Number of requests that triggered a WAF rule and were blocked. | [optional] |
-| **waf_passed** | **Integer** | Number of requests that triggered a WAF rule and were passed. | [optional] |
 | **attack_req_body_bytes** | **Integer** | Total body bytes received from requests that triggered a WAF rule. | [optional] |
 | **attack_req_header_bytes** | **Integer** | Total header bytes received from requests that triggered a WAF rule. | [optional] |
 | **attack_logged_req_body_bytes** | **Integer** | Total body bytes received from requests that triggered a WAF rule that was logged. | [optional] |
@@ -316,6 +313,40 @@
 | **compute_service_vcpu_exceeded_error** | **Integer** | Fatal errors caused by exceeding the per-request vCPU time limit. | [optional] |
 | **compute_service_limits_error** | **Integer** | Non-fatal errors caused by attempts to exceed defined operational limits, such as simultaneous backend requests or cache transactions. | [optional] |
 | **compute_platform_invalid_request_error** | **Integer** | Fatal errors caused by unprocessable requests to the service, such as requests with malformed CDN-Loop headers or invalid purge credentials. | [optional] |
+| **compute_sandboxes** | **Integer** | Number of WebAssembly (Wasm) sandboxes created. | [optional] |
+| **bot_requests_total_count** | **Integer** | Total number of Bot Management requests across all deployments. | [optional] |
+| **bot_edge_requests_analyzed_count** | **Integer** | Count of edge requests where bot detection analysis was performed. | [optional] |
+| **bot_edge_requests_detected_count** | **Integer** | Count of edge requests where a bot was detected. | [optional] |
+| **bot_edge_requests_verified_count** | **Integer** | Count of edge requests where a verified bot was detected. | [optional] |
+| **bot_edge_requests_ai_crawler_count** | **Integer** | Count of edge requests where an AI crawler was detected. | [optional] |
+| **bot_edge_requests_ai_fetcher_count** | **Integer** | Count of edge requests where an AI fetcher was detected. | [optional] |
+| **bot_edge_requests_accessibility_count** | **Integer** | Count of edge requests where an accessibility bot was detected. | [optional] |
+| **bot_edge_requests_content_fetcher_count** | **Integer** | Count of edge requests where a content fetcher was detected. | [optional] |
+| **bot_edge_requests_monitoring_count** | **Integer** | Count of edge requests where a monitoring and site tool was detected. | [optional] |
+| **bot_edge_requests_online_marketing_count** | **Integer** | Count of edge requests where an online marketing bot was detected. | [optional] |
+| **bot_edge_requests_page_preview_count** | **Integer** | Count of edge requests where a page preview bot was detected. | [optional] |
+| **bot_edge_requests_platform_integrations_count** | **Integer** | Count of edge requests where a platform integration was detected. | [optional] |
+| **bot_edge_requests_research_count** | **Integer** | Count of edge requests where a research bot was detected. | [optional] |
+| **bot_edge_requests_search_engine_crawler_count** | **Integer** | Count of edge requests where a search engine crawler was detected. | [optional] |
+| **bot_edge_requests_search_engine_optimization_count** | **Integer** | Count of edge requests where a search engine optimization bot was detected. | [optional] |
+| **bot_edge_requests_security_tools_count** | **Integer** | Count of edge requests where a security tool was detected. | [optional] |
+| **compute_handoff** | **Integer** | The number of times Compute has handed off a request to the Fanout proxy or WebSocket proxy. | [optional] |
+| **compute_service_bereq_dns_error** | **Integer** | Number of backend requests from a Compute service that failed during DNS resolution. | [optional] |
+| **compute_service_bereq_conn_timeout_error** | **Integer** | Number of backend requests from a Compute service where the connection to the origin timed out before being established. | [optional] |
+| **compute_service_bereq_conn_refused_error** | **Integer** | Number of backend requests from a Compute service where the origin actively refused the connection. | [optional] |
+| **compute_service_bereq_conn_other_error** | **Integer** | Number of backend requests from a Compute service that failed due to a connection error not classified as a timeout or refusal. | [optional] |
+| **compute_service_bereq_tls_server_cert_error** | **Integer** | Number of backend requests from a Compute service that failed due to a TLS certificate validation error (e.g., expired, untrusted CA, hostname mismatch). | [optional] |
+| **compute_service_bereq_tls_other_error** | **Integer** | Number of backend requests from a Compute service that failed due to a TLS error not classified as a certificate error. | [optional] |
+| **compute_service_bereq_http_proto_v1_error** | **Integer** | Number of backend requests from a Compute service that failed due to an HTTP/1.x protocol violation after the request was transmitted. | [optional] |
+| **compute_service_bereq_http_proto_v2_error** | **Integer** | Number of backend requests from a Compute service that failed due to an HTTP/2 protocol error, typically a `RST_STREAM` or `GO_AWAY` from the origin. | [optional] |
+| **compute_service_bereq_http_incomplete_error** | **Integer** | Number of backend requests from a Compute service where the origin sent an incomplete HTTP response. | [optional] |
+| **compute_service_bereq_http_timeout_error** | **Integer** | Number of backend requests from a Compute service where the origin did not respond within the configured timeout period. | [optional] |
+| **compute_service_bereq_http_other_error** | **Integer** | Number of backend requests from a Compute service that failed due to an HTTP-level error not classified in any category. | [optional] |
+| **compute_service_bereq_other_error** | **Integer** | Number of backend requests from a Compute service that failed due to an error not classified into the DNS, connection, TLS, or HTTP categories. | [optional] |
+| **compute_service_bereq_5xx_error** | **Integer** | Number of backend requests from a Compute service where the origin returned a 5xx status code. | [optional] |
+| **compute_service_bereq_conn_error** | **Integer** | Number of backend requests from a Compute service that failed at the TCP connection level. Sum of `compute_service_bereq_conn_timeout_error`, `compute_service_bereq_conn_refused_error`, and `compute_service_bereq_conn_other_error`. | [optional] |
+| **compute_service_bereq_tls_error** | **Integer** | Number of backend requests from a Compute service that failed during the TLS handshake or session with the origin. Sum of `compute_service_bereq_tls_server_cert_error` and `compute_service_bereq_tls_other_error`. | [optional] |
+| **compute_service_bereq_http_error** | **Integer** | Number of backend requests from a Compute service that failed at the HTTP protocol level. Sum of `compute_service_bereq_http_proto_v1_error`, `compute_service_bereq_http_proto_v2_error`, `compute_service_bereq_http_incomplete_error`, `compute_service_bereq_http_timeout_error`, and `compute_service_bereq_http_other_error`. | [optional] |
 | **service_id** | **String** |  | [optional][readonly] |
 | **start_time** | **Integer** | Timestamp for the start of the time period being reported | [optional] |
 

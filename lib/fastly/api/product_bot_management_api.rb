@@ -204,6 +204,69 @@ module Fastly
       return data, status_code, headers
     end
 
+    # Get configuration
+    # Get the configuration of the Bot Management product on a service.
+    # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
+    # @return [BotManagementResponseConfigure]
+    def get_product_bot_management_configuration(opts = {})
+      data, _status_code, _headers = get_product_bot_management_configuration_with_http_info(opts)
+      data
+    end
+
+    # Get configuration
+    # Get the configuration of the Bot Management product on a service.
+    # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
+    # @return [Array<(BotManagementResponseConfigure, Integer, Hash)>] BotManagementResponseConfigure data, response status code and response headers
+    def get_product_bot_management_configuration_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ProductBotManagementApi.get_product_bot_management_configuration ...'
+      end
+      # unbox the parameters from the hash
+      service_id = opts[:'service_id']
+      # verify the required parameter 'service_id' is set
+      if @api_client.config.client_side_validation && service_id.nil?
+        fail ArgumentError, "Missing the required parameter 'service_id' when calling ProductBotManagementApi.get_product_bot_management_configuration"
+      end
+      # resource path
+      local_var_path = '/enabled-products/v1/bot_management/services/{service_id}/configuration'.sub('{' + 'service_id' + '}', CGI.escape(service_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'BotManagementResponseConfigure'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['token']
+
+      new_options = opts.merge(
+        :operation => :"ProductBotManagementApi.get_product_bot_management_configuration",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ProductBotManagementApi#get_product_bot_management_configuration\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Get services with product enabled
     # Get all the services which have the Bot Management product enabled.
     # @return [BotManagementResponseBodyGetAllServices]
@@ -256,6 +319,76 @@ module Fastly
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: ProductBotManagementApi#get_services_product_bot_management\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Update configuration
+    # Update the configuration of the Bot Management product on a service.
+    # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
+    # @option opts [BotManagementRequestUpdateConfiguration] :bot_management_request_update_configuration 
+    # @return [BotManagementResponseConfigure]
+    def set_product_bot_management_configuration(opts = {})
+      data, _status_code, _headers = set_product_bot_management_configuration_with_http_info(opts)
+      data
+    end
+
+    # Update configuration
+    # Update the configuration of the Bot Management product on a service.
+    # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
+    # @option opts [BotManagementRequestUpdateConfiguration] :bot_management_request_update_configuration 
+    # @return [Array<(BotManagementResponseConfigure, Integer, Hash)>] BotManagementResponseConfigure data, response status code and response headers
+    def set_product_bot_management_configuration_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ProductBotManagementApi.set_product_bot_management_configuration ...'
+      end
+      # unbox the parameters from the hash
+      service_id = opts[:'service_id']
+      # verify the required parameter 'service_id' is set
+      if @api_client.config.client_side_validation && service_id.nil?
+        fail ArgumentError, "Missing the required parameter 'service_id' when calling ProductBotManagementApi.set_product_bot_management_configuration"
+      end
+      # resource path
+      local_var_path = '/enabled-products/v1/bot_management/services/{service_id}/configuration'.sub('{' + 'service_id' + '}', CGI.escape(service_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(opts[:'bot_management_request_update_configuration'])
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'BotManagementResponseConfigure'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['token']
+
+      new_options = opts.merge(
+        :operation => :"ProductBotManagementApi.set_product_bot_management_configuration",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PATCH, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ProductBotManagementApi#set_product_bot_management_configuration\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

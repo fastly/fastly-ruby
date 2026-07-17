@@ -50,7 +50,7 @@ opts = {
     url: 'url_example', # String | The URL to send logs to. Must use HTTPS. Required.
     content_type: 'content_type_example', # String | Content type of the header sent with the request.
     header_name: 'header_name_example', # String | Name of the custom header sent with the request.
-    message_type: Fastly::LoggingMessageType::CLASSIC, # LoggingMessageType | 
+    message_type: Fastly::LoggingMessageType::BLANK, # LoggingMessageType | 
     header_value: 'header_value_example', # String | Value of the custom header sent with the request.
     method: 'POST', # String | HTTP method used for request.
     json_format: '0', # String | Enforces valid JSON formatting for log entries.
@@ -87,7 +87,7 @@ end
 | **url** | **String** | The URL to send logs to. Must use HTTPS. Required. | [optional] |
 | **content_type** | **String** | Content type of the header sent with the request. | [optional][default to &#39;null&#39;] |
 | **header_name** | **String** | Name of the custom header sent with the request. | [optional][default to &#39;null&#39;] |
-| **message_type** | [**LoggingMessageType**](LoggingMessageType.md) |  | [optional][default to &#39;classic&#39;] |
+| **message_type** | [**LoggingMessageType**](LoggingMessageType.md) |  | [optional][default to &#39;blank&#39;] |
 | **header_value** | **String** | Value of the custom header sent with the request. | [optional][default to &#39;null&#39;] |
 | **method** | **String** | HTTP method used for request. | [optional][default to &#39;POST&#39;] |
 | **json_format** | **String** | Enforces valid JSON formatting for log entries. | [optional] |
@@ -251,7 +251,7 @@ opts = {
     url: 'url_example', # String | The URL to send logs to. Must use HTTPS. Required.
     content_type: 'content_type_example', # String | Content type of the header sent with the request.
     header_name: 'header_name_example', # String | Name of the custom header sent with the request.
-    message_type: Fastly::LoggingMessageType::CLASSIC, # LoggingMessageType | 
+    message_type: Fastly::LoggingMessageType::BLANK, # LoggingMessageType | 
     header_value: 'header_value_example', # String | Value of the custom header sent with the request.
     method: 'POST', # String | HTTP method used for request.
     json_format: '0', # String | Enforces valid JSON formatting for log entries.
@@ -289,7 +289,7 @@ end
 | **url** | **String** | The URL to send logs to. Must use HTTPS. Required. | [optional] |
 | **content_type** | **String** | Content type of the header sent with the request. | [optional][default to &#39;null&#39;] |
 | **header_name** | **String** | Name of the custom header sent with the request. | [optional][default to &#39;null&#39;] |
-| **message_type** | [**LoggingMessageType**](LoggingMessageType.md) |  | [optional][default to &#39;classic&#39;] |
+| **message_type** | [**LoggingMessageType**](LoggingMessageType.md) |  | [optional][default to &#39;blank&#39;] |
 | **header_value** | **String** | Value of the custom header sent with the request. | [optional][default to &#39;null&#39;] |
 | **method** | **String** | HTTP method used for request. | [optional][default to &#39;POST&#39;] |
 | **json_format** | **String** | Enforces valid JSON formatting for log entries. | [optional] |

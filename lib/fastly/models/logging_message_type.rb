@@ -13,10 +13,10 @@ require 'time'
 
 module Fastly
   class LoggingMessageType
+    BLANK = "blank".freeze
     CLASSIC = "classic".freeze
     LOGGLY = "loggly".freeze
     LOGPLEX = "logplex".freeze
-    BLANK = "blank".freeze
 
     # Builds the enum from string
     # @param [String] The enum value in the form of the string

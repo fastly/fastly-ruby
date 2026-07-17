@@ -4,7 +4,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **expires_at** | **String** | Time-stamp (GMT) when the domain_ownership validation will expire. | [optional][readonly] |
+| **data** | [**Array&lt;Policy&gt;**](Policy.md) |  | [optional] |
+| **meta** | [**PaginationMeta**](PaginationMeta.md) |  | [optional] |
 
 [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
 

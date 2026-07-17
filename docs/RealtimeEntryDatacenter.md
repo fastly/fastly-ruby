@@ -1,0 +1,345 @@
+# Fastly::RealtimeEntryDatacenter
+
+## Properties
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **requests** | **Integer** | Number of requests processed. | [optional] |
+| **logging** | **Integer** | Number of log lines sent (alias for `log`). | [optional] |
+| **log** | **Integer** | Number of log lines sent. | [optional] |
+| **resp_header_bytes** | **Integer** | Total header bytes delivered (edge_resp_header_bytes + shield_resp_header_bytes). | [optional] |
+| **header_size** | **Integer** | Total header bytes delivered (alias for resp_header_bytes). | [optional] |
+| **resp_body_bytes** | **Integer** | Total body bytes delivered (edge_resp_body_bytes + shield_resp_body_bytes). | [optional] |
+| **body_size** | **Integer** | Total body bytes delivered (alias for resp_body_bytes). | [optional] |
+| **hits** | **Integer** | Number of cache hits. | [optional] |
+| **miss** | **Integer** | Number of cache misses. | [optional] |
+| **pass** | **Integer** | Number of requests that passed through the CDN without being cached. | [optional] |
+| **synth** | **Integer** | Number of requests that returned a synthetic response (i.e., response objects created with the `synthetic` VCL statement). | [optional] |
+| **errors** | **Integer** | Number of cache errors. | [optional] |
+| **hits_time** | **Float** | Total amount of time spent processing cache hits (in seconds). | [optional] |
+| **miss_time** | **Float** | Total amount of time spent processing cache misses (in seconds). | [optional] |
+| **miss_histogram** | **Hash&lt;String, Object&gt;** | A histogram. The value in each bucket is the number of requests to the origin whose responses arrived during the time period represented by the bucket. The key of each bucket represents the upper bound (in response time) of that bucket. The buckets vary in width and cover the time periods 0-10ms (in 1ms increments), 10-250ms (in 10ms increments), 250-1,000ms (in 50ms increments), 1,000-3,000ms (in 100ms increments), 3,000-10,000ms (in 500 ms increments), 10,000-20,000ms (in 1,000ms increments), 20,000-60,000ms (in 5,000ms increments), and 60,000ms through infinity (in a single bucket). | [optional] |
+| **compute_requests** | **Integer** | The total number of requests that were received for your service by Fastly. | [optional] |
+| **compute_execution_time_ms** | **Float** | The amount of active CPU time used to process your requests (in milliseconds). | [optional] |
+| **compute_ram_used** | **Integer** | The amount of RAM used for your service by Fastly (in bytes). | [optional] |
+| **compute_request_time_ms** | **Float** | The total, actual amount of time used to process your requests, including active CPU time (in milliseconds). | [optional] |
+| **compute_request_time_billed_ms** | **Float** | The total amount of request processing time you will be billed for, measured in 50 millisecond increments. | [optional] |
+| **shield** | **Integer** | Number of requests from edge to the shield POP. | [optional] |
+| **ipv6** | **Integer** | Number of requests that were received over IPv6. | [optional] |
+| **imgopto** | **Integer** | Number of responses that came from the Fastly Image Optimizer service. If the service receives 10 requests for an image, this stat will be 10 regardless of how many times the image was transformed. | [optional] |
+| **imgopto_shield** | **Integer** | Number of responses that came from the Fastly Image Optimizer service via a shield. | [optional] |
+| **imgopto_transforms** | **Integer** | Number of transforms performed by the Fastly Image Optimizer service. | [optional] |
+| **otfp** | **Integer** | Number of responses that came from the Fastly On-the-Fly Packaging service for video-on-demand. | [optional] |
+| **otfp_shield** | **Integer** | Number of responses that came from the Fastly On-the-Fly Packaging service for video-on-demand via a shield. | [optional] |
+| **otfp_manifests** | **Integer** | Number of responses that were manifest files from the Fastly On-the-Fly Packaging service for video-on-demand. | [optional] |
+| **video** | **Integer** | Number of responses with the video segment or video manifest MIME type (i.e., application/x-mpegurl, application/vnd.apple.mpegurl, application/f4m, application/dash+xml, application/vnd.ms-sstr+xml, ideo/mp2t, audio/aac, video/f4f, video/x-flv, video/mp4, audio/mp4). | [optional] |
+| **pci** | **Integer** | Number of responses with the PCI flag turned on. | [optional] |
+| **http2** | **Integer** | Number of requests received over HTTP/2. | [optional] |
+| **http3** | **Integer** | Number of requests received over HTTP/3. | [optional] |
+| **restarts** | **Integer** | Number of restarts performed. | [optional] |
+| **req_header_bytes** | **Integer** | Total header bytes received. | [optional] |
+| **req_body_bytes** | **Integer** | Total body bytes received. | [optional] |
+| **bereq_header_bytes** | **Integer** | Total header bytes sent to origin. | [optional] |
+| **bereq_body_bytes** | **Integer** | Total body bytes sent to origin. | [optional] |
+| **attack_req_header_bytes** | **Integer** | Total header bytes received from requests that triggered a WAF rule. | [optional] |
+| **attack_req_body_bytes** | **Integer** | Total body bytes received from requests that triggered a WAF rule. | [optional] |
+| **attack_resp_synth_bytes** | **Integer** | Total bytes delivered for requests that triggered a WAF rule and returned a synthetic response. | [optional] |
+| **attack_logged_req_header_bytes** | **Integer** | Total header bytes received from requests that triggered a WAF rule that was logged. | [optional] |
+| **attack_logged_req_body_bytes** | **Integer** | Total body bytes received from requests that triggered a WAF rule that was logged. | [optional] |
+| **attack_blocked_req_header_bytes** | **Integer** | Total header bytes received from requests that triggered a WAF rule that was blocked. | [optional] |
+| **attack_blocked_req_body_bytes** | **Integer** | Total body bytes received from requests that triggered a WAF rule that was blocked. | [optional] |
+| **attack_passed_req_header_bytes** | **Integer** | Total header bytes received from requests that triggered a WAF rule that was passed. | [optional] |
+| **attack_passed_req_body_bytes** | **Integer** | Total body bytes received from requests that triggered a WAF rule that was passed. | [optional] |
+| **shield_resp_header_bytes** | **Integer** | Total header bytes delivered via a shield. | [optional] |
+| **shield_resp_body_bytes** | **Integer** | Total body bytes delivered via a shield. | [optional] |
+| **otfp_resp_header_bytes** | **Integer** | Total header bytes delivered from the Fastly On-the-Fly Packaging service for video-on-demand. | [optional] |
+| **otfp_resp_body_bytes** | **Integer** | Total body bytes delivered from the Fastly On-the-Fly Packaging service for video-on-demand. | [optional] |
+| **otfp_shield_resp_header_bytes** | **Integer** | Total header bytes delivered via a shield for the Fastly On-the-Fly Packaging service for video-on-demand. | [optional] |
+| **otfp_shield_resp_body_bytes** | **Integer** | Total body bytes delivered via a shield for the Fastly On-the-Fly Packaging service for video-on-demand. | [optional] |
+| **otfp_shield_time** | **Float** | Total amount of time spent delivering a response via a shield from the Fastly On-the-Fly Packaging service for video-on-demand (in seconds). | [optional] |
+| **otfp_deliver_time** | **Float** | Total amount of time spent delivering a response from the Fastly On-the-Fly Packaging service for video-on-demand (in seconds). | [optional] |
+| **imgopto_resp_header_bytes** | **Integer** | Total header bytes delivered from the Fastly Image Optimizer service, including shield traffic. | [optional] |
+| **imgopto_resp_body_bytes** | **Integer** | Total body bytes delivered from the Fastly Image Optimizer service, including shield traffic. | [optional] |
+| **imgopto_shield_resp_header_bytes** | **Integer** | Total header bytes delivered via a shield from the Fastly Image Optimizer service. | [optional] |
+| **imgopto_shield_resp_body_bytes** | **Integer** | Total body bytes delivered via a shield from the Fastly Image Optimizer service. | [optional] |
+| **status_1xx** | **Integer** | Number of \&quot;Informational\&quot; category status codes delivered. | [optional] |
+| **status_2xx** | **Integer** | Number of \&quot;Success\&quot; status codes delivered. | [optional] |
+| **status_3xx** | **Integer** | Number of \&quot;Redirection\&quot; codes delivered. | [optional] |
+| **status_4xx** | **Integer** | Number of \&quot;Client Error\&quot; codes delivered. | [optional] |
+| **status_5xx** | **Integer** | Number of \&quot;Server Error\&quot; codes delivered. | [optional] |
+| **status_200** | **Integer** | Number of responses sent with status code 200 (Success). | [optional] |
+| **status_204** | **Integer** | Number of responses sent with status code 204 (No Content). | [optional] |
+| **status_206** | **Integer** | Number of responses sent with status code 206 (Partial Content). | [optional] |
+| **status_301** | **Integer** | Number of responses sent with status code 301 (Moved Permanently). | [optional] |
+| **status_302** | **Integer** | Number of responses sent with status code 302 (Found). | [optional] |
+| **status_304** | **Integer** | Number of responses sent with status code 304 (Not Modified). | [optional] |
+| **status_400** | **Integer** | Number of responses sent with status code 400 (Bad Request). | [optional] |
+| **status_401** | **Integer** | Number of responses sent with status code 401 (Unauthorized). | [optional] |
+| **status_403** | **Integer** | Number of responses sent with status code 403 (Forbidden). | [optional] |
+| **status_404** | **Integer** | Number of responses sent with status code 404 (Not Found). | [optional] |
+| **status_406** | **Integer** | Number of responses sent with status code 406 (Not Acceptable). | [optional] |
+| **status_416** | **Integer** | Number of responses sent with status code 416 (Range Not Satisfiable). | [optional] |
+| **status_429** | **Integer** | Number of responses sent with status code 429 (Too Many Requests). | [optional] |
+| **status_500** | **Integer** | Number of responses sent with status code 500 (Internal Server Error). | [optional] |
+| **status_501** | **Integer** | Number of responses sent with status code 501 (Not Implemented). | [optional] |
+| **status_502** | **Integer** | Number of responses sent with status code 502 (Bad Gateway). | [optional] |
+| **status_503** | **Integer** | Number of responses sent with status code 503 (Service Unavailable). | [optional] |
+| **status_504** | **Integer** | Number of responses sent with status code 504 (Gateway Timeout). | [optional] |
+| **status_505** | **Integer** | Number of responses sent with status code 505 (HTTP Version Not Supported). | [optional] |
+| **status_530** | **Integer** | Number of responses sent with status code 530. | [optional] |
+| **uncacheable** | **Integer** | Number of requests that were designated uncachable. | [optional] |
+| **pass_time** | **Float** | Total amount of time spent processing cache passes (in seconds). | [optional] |
+| **tls** | **Integer** | Number of requests that were received over TLS. | [optional] |
+| **tls_v10** | **Integer** | Number of requests received over TLS 1.0. | [optional] |
+| **tls_v11** | **Integer** | Number of requests received over TLS 1.1. | [optional] |
+| **tls_v12** | **Integer** | Number of requests received over TLS 1.2. | [optional] |
+| **tls_v13** | **Integer** | Number of requests received over TLS 1.3. | [optional] |
+| **object_size_1k** | **Integer** | Number of objects served that were under 1KB in size. | [optional] |
+| **object_size_10k** | **Integer** | Number of objects served that were between 1KB and 10KB in size. | [optional] |
+| **object_size_100k** | **Integer** | Number of objects served that were between 10KB and 100KB in size. | [optional] |
+| **object_size_1m** | **Integer** | Number of objects served that were between 100KB and 1MB in size. | [optional] |
+| **object_size_10m** | **Integer** | Number of objects served that were between 1MB and 10MB in size. | [optional] |
+| **object_size_100m** | **Integer** | Number of objects served that were between 10MB and 100MB in size. | [optional] |
+| **object_size_1g** | **Integer** | Number of objects served that were between 100MB and 1GB in size. | [optional] |
+| **object_size_other** | **Integer** | Number of objects served that were larger than 1GB in size. | [optional] |
+| **recv_sub_time** | **Float** | Time spent inside the `vcl_recv` Varnish subroutine (in nanoseconds). | [optional] |
+| **recv_sub_count** | **Integer** | Number of executions of the `vcl_recv` Varnish subroutine. | [optional] |
+| **hash_sub_time** | **Float** | Time spent inside the `vcl_hash` Varnish subroutine (in nanoseconds). | [optional] |
+| **hash_sub_count** | **Integer** | Number of executions of the `vcl_hash` Varnish subroutine. | [optional] |
+| **miss_sub_time** | **Float** | Time spent inside the `vcl_miss` Varnish subroutine (in nanoseconds). | [optional] |
+| **miss_sub_count** | **Integer** | Number of executions of the `vcl_miss` Varnish subroutine. | [optional] |
+| **fetch_sub_time** | **Float** | Time spent inside the `vcl_fetch` Varnish subroutine (in nanoseconds). | [optional] |
+| **fetch_sub_count** | **Integer** | Number of executions of the `vcl_fetch` Varnish subroutine. | [optional] |
+| **pass_sub_time** | **Float** | Time spent inside the `vcl_pass` Varnish subroutine (in nanoseconds). | [optional] |
+| **pass_sub_count** | **Integer** | Number of executions of the `vcl_pass` Varnish subroutine. | [optional] |
+| **pipe_sub_time** | **Float** | Time spent inside the `vcl_pipe` Varnish subroutine (in nanoseconds). | [optional] |
+| **pipe_sub_count** | **Integer** | Number of executions of the `vcl_pipe` Varnish subroutine. | [optional] |
+| **deliver_sub_time** | **Float** | Time spent inside the `vcl_deliver` Varnish subroutine (in nanoseconds). | [optional] |
+| **deliver_sub_count** | **Integer** | Number of executions of the `vcl_deliver` Varnish subroutine. | [optional] |
+| **error_sub_time** | **Float** | Time spent inside the `vcl_error` Varnish subroutine (in nanoseconds). | [optional] |
+| **error_sub_count** | **Integer** | Number of executions of the `vcl_error` Varnish subroutine. | [optional] |
+| **hit_sub_time** | **Float** | Time spent inside the `vcl_hit` Varnish subroutine (in nanoseconds). | [optional] |
+| **hit_sub_count** | **Integer** | Number of executions of the `vcl_hit` Varnish subroutine. | [optional] |
+| **prehash_sub_time** | **Float** | Time spent inside the `vcl_prehash` Varnish subroutine (in nanoseconds). | [optional] |
+| **prehash_sub_count** | **Integer** | Number of executions of the `vcl_prehash` Varnish subroutine. | [optional] |
+| **predeliver_sub_time** | **Float** | Time spent inside the `vcl_predeliver` Varnish subroutine (in nanoseconds). | [optional] |
+| **predeliver_sub_count** | **Integer** | Number of executions of the `vcl_predeliver` Varnish subroutine. | [optional] |
+| **hit_resp_body_bytes** | **Integer** | Total body bytes delivered for cache hits. | [optional] |
+| **miss_resp_body_bytes** | **Integer** | Total body bytes delivered for cache misses. | [optional] |
+| **pass_resp_body_bytes** | **Integer** | Total body bytes delivered for cache passes. | [optional] |
+| **compute_req_header_bytes** | **Integer** | Total header bytes received by the Compute platform. | [optional] |
+| **compute_req_body_bytes** | **Integer** | Total body bytes received by the Compute platform. | [optional] |
+| **compute_resp_header_bytes** | **Integer** | Total header bytes sent from Compute to end user. | [optional] |
+| **compute_resp_body_bytes** | **Integer** | Total body bytes sent from Compute to end user. | [optional] |
+| **imgvideo** | **Integer** | Number of video responses that came from the Fastly Image Optimizer service. | [optional] |
+| **imgvideo_frames** | **Integer** | Number of video frames that came from the Fastly Image Optimizer service. A video frame is an individual image within a sequence of video. | [optional] |
+| **imgvideo_resp_header_bytes** | **Integer** | Total header bytes of video delivered from the Fastly Image Optimizer service. | [optional] |
+| **imgvideo_resp_body_bytes** | **Integer** | Total body bytes of video delivered from the Fastly Image Optimizer service. | [optional] |
+| **imgvideo_shield** | **Integer** | Number of video responses delivered via a shield that came from the Fastly Image Optimizer service. | [optional] |
+| **imgvideo_shield_frames** | **Integer** | Number of video frames delivered via a shield that came from the Fastly Image Optimizer service. A video frame is an individual image within a sequence of video. | [optional] |
+| **imgvideo_shield_resp_header_bytes** | **Integer** | Total header bytes of video delivered via a shield from the Fastly Image Optimizer service. | [optional] |
+| **imgvideo_shield_resp_body_bytes** | **Integer** | Total body bytes of video delivered via a shield from the Fastly Image Optimizer service. | [optional] |
+| **log_bytes** | **Integer** | Total log bytes sent. | [optional] |
+| **edge_requests** | **Integer** | Number of requests sent by end users to Fastly. | [optional] |
+| **edge_resp_header_bytes** | **Integer** | Total header bytes delivered from Fastly to the end user. | [optional] |
+| **edge_resp_body_bytes** | **Integer** | Total body bytes delivered from Fastly to the end user. | [optional] |
+| **origin_revalidations** | **Integer** | Number of responses received from origin with a `304` status code in response to an `If-Modified-Since` or `If-None-Match` request. Under regular scenarios, a revalidation will imply a cache hit. However, if using Fastly Image Optimizer or segmented caching this may result in a cache miss. | [optional] |
+| **origin_fetches** | **Integer** | Number of requests sent to origin. | [optional] |
+| **origin_fetch_header_bytes** | **Integer** | Total request header bytes sent to origin. | [optional] |
+| **origin_fetch_body_bytes** | **Integer** | Total request body bytes sent to origin. | [optional] |
+| **origin_fetch_resp_header_bytes** | **Integer** | Total header bytes received from origin. | [optional] |
+| **origin_fetch_resp_body_bytes** | **Integer** | Total body bytes received from origin. | [optional] |
+| **shield_revalidations** | **Integer** | Number of responses received from origin with a `304` status code, in response to an `If-Modified-Since` or `If-None-Match` request to a shield. Under regular scenarios, a revalidation will imply a cache hit. However, if using segmented caching this may result in a cache miss. | [optional] |
+| **shield_fetches** | **Integer** | Number of requests made from one Fastly POP to another, as part of shielding. | [optional] |
+| **shield_fetch_header_bytes** | **Integer** | Total request header bytes sent to a shield. | [optional] |
+| **shield_fetch_body_bytes** | **Integer** | Total request body bytes sent to a shield. | [optional] |
+| **shield_fetch_resp_header_bytes** | **Integer** | Total response header bytes sent from a shield to the edge. | [optional] |
+| **shield_fetch_resp_body_bytes** | **Integer** | Total response body bytes sent from a shield to the edge. | [optional] |
+| **segblock_origin_fetches** | **Integer** | Number of `Range` requests to origin for segments of resources when using segmented caching. | [optional] |
+| **segblock_shield_fetches** | **Integer** | Number of `Range` requests to a shield for segments of resources when using segmented caching. | [optional] |
+| **compute_resp_status_1xx** | **Integer** | Number of \&quot;Informational\&quot; category status codes delivered by the Compute platform. | [optional] |
+| **compute_resp_status_2xx** | **Integer** | Number of \&quot;Success\&quot; category status codes delivered by the Compute platform. | [optional] |
+| **compute_resp_status_3xx** | **Integer** | Number of \&quot;Redirection\&quot; category status codes delivered by the Compute platform. | [optional] |
+| **compute_resp_status_4xx** | **Integer** | Number of \&quot;Client Error\&quot; category status codes delivered by the Compute platform. | [optional] |
+| **compute_resp_status_5xx** | **Integer** | Number of \&quot;Server Error\&quot; category status codes delivered by the Compute platform. | [optional] |
+| **edge_hit_requests** | **Integer** | Number of requests sent by end users to Fastly that resulted in a hit at the edge. | [optional] |
+| **edge_miss_requests** | **Integer** | Number of requests sent by end users to Fastly that resulted in a miss at the edge. | [optional] |
+| **compute_bereq_header_bytes** | **Integer** | Total header bytes sent to backends (origins) by the Compute platform. | [optional] |
+| **compute_bereq_body_bytes** | **Integer** | Total body bytes sent to backends (origins) by the Compute platform. | [optional] |
+| **compute_beresp_header_bytes** | **Integer** | Total header bytes received from backends (origins) by the Compute platform. | [optional] |
+| **compute_beresp_body_bytes** | **Integer** | Total body bytes received from backends (origins) by the Compute platform. | [optional] |
+| **origin_cache_fetches** | **Integer** | The total number of completed requests made to backends (origins) that returned cacheable content. | [optional] |
+| **shield_cache_fetches** | **Integer** | The total number of completed requests made to shields that returned cacheable content. | [optional] |
+| **compute_bereqs** | **Integer** | Number of backend requests started. | [optional] |
+| **compute_bereq_errors** | **Integer** | Number of backend request errors, including timeouts. | [optional] |
+| **compute_service_bereq_error** | **Integer** | Number of backend request errors, including timeouts. | [optional] |
+| **compute_resource_limit_exceeded** | **Integer** | Number of times a guest exceeded its resource limit, includes heap, stack, globals, and code execution timeout. | [optional] |
+| **compute_heap_limit_exceeded** | **Integer** | Number of times a guest exceeded its heap limit. | [optional] |
+| **compute_service_memory_exceeded_error** | **Integer** | Number of times a guest exceeded its heap limit. | [optional] |
+| **compute_stack_limit_exceeded** | **Integer** | Number of times a guest exceeded its stack limit. | [optional] |
+| **compute_globals_limit_exceeded** | **Integer** | Number of times a guest exceeded its globals limit. | [optional] |
+| **compute_guest_errors** | **Integer** | Number of times a service experienced a guest code error. | [optional] |
+| **compute_runtime_errors** | **Integer** | Number of times a service experienced a guest runtime error. | [optional] |
+| **edge_hit_resp_body_bytes** | **Integer** | Body bytes delivered for edge hits. | [optional] |
+| **edge_hit_resp_header_bytes** | **Integer** | Header bytes delivered for edge hits. | [optional] |
+| **edge_miss_resp_body_bytes** | **Integer** | Body bytes delivered for edge misses. | [optional] |
+| **edge_miss_resp_header_bytes** | **Integer** | Header bytes delivered for edge misses. | [optional] |
+| **origin_cache_fetch_resp_body_bytes** | **Integer** | Body bytes received from origin for cacheable content. | [optional] |
+| **origin_cache_fetch_resp_header_bytes** | **Integer** | Header bytes received from an origin for cacheable content. | [optional] |
+| **shield_hit_requests** | **Integer** | Number of requests that resulted in a hit at a shield. | [optional] |
+| **shield_miss_requests** | **Integer** | Number of requests that resulted in a miss at a shield. | [optional] |
+| **shield_hit_resp_header_bytes** | **Integer** | Header bytes delivered for shield hits. | [optional] |
+| **shield_hit_resp_body_bytes** | **Integer** | Body bytes delivered for shield hits. | [optional] |
+| **shield_miss_resp_header_bytes** | **Integer** | Header bytes delivered for shield misses. | [optional] |
+| **shield_miss_resp_body_bytes** | **Integer** | Body bytes delivered for shield misses. | [optional] |
+| **websocket_req_header_bytes** | **Integer** | Total header bytes received from end users over passthrough WebSocket connections. | [optional] |
+| **websocket_req_body_bytes** | **Integer** | Total message content bytes received from end users over passthrough WebSocket connections. | [optional] |
+| **websocket_resp_header_bytes** | **Integer** | Total header bytes sent to end users over passthrough WebSocket connections. | [optional] |
+| **websocket_bereq_header_bytes** | **Integer** | Total header bytes sent to backends over passthrough WebSocket connections. | [optional] |
+| **websocket_bereq_body_bytes** | **Integer** | Total message content bytes sent to backends over passthrough WebSocket connections. | [optional] |
+| **websocket_beresp_header_bytes** | **Integer** | Total header bytes received from backends over passthrough WebSocket connections. | [optional] |
+| **websocket_beresp_body_bytes** | **Integer** | Total message content bytes received from backends over passthrough WebSocket connections. | [optional] |
+| **websocket_conn_time_ms** | **Integer** | Total duration of passthrough WebSocket connections with end users. | [optional] |
+| **websocket_resp_body_bytes** | **Integer** | Total message content bytes sent to end users over passthrough WebSocket connections. | [optional] |
+| **fanout_recv_publishes** | **Integer** | Total published messages received from the publish API endpoint. | [optional] |
+| **fanout_send_publishes** | **Integer** | Total published messages sent to end users. | [optional] |
+| **kv_store_class_a_operations** | **Integer** | The total number of class a operations for the KV store. | [optional] |
+| **kv_store_class_b_operations** | **Integer** | The total number of class b operations for the KV store. | [optional] |
+| **object_store_class_a_operations** | **Integer** | Use kv_store_class_a_operations. | [optional] |
+| **object_store_class_b_operations** | **Integer** | Use kv_store_class_b_operations. | [optional] |
+| **fanout_req_header_bytes** | **Integer** | Total header bytes received from end users over Fanout connections. | [optional] |
+| **fanout_req_body_bytes** | **Integer** | Total body or message content bytes received from end users over Fanout connections. | [optional] |
+| **fanout_resp_header_bytes** | **Integer** | Total header bytes sent to end users over Fanout connections. | [optional] |
+| **fanout_resp_body_bytes** | **Integer** | Total body or message content bytes sent to end users over Fanout connections, excluding published message content. | [optional] |
+| **fanout_bereq_header_bytes** | **Integer** | Total header bytes sent to backends over Fanout connections. | [optional] |
+| **fanout_bereq_body_bytes** | **Integer** | Total body or message content bytes sent to backends over Fanout connections. | [optional] |
+| **fanout_beresp_header_bytes** | **Integer** | Total header bytes received from backends over Fanout connections. | [optional] |
+| **fanout_beresp_body_bytes** | **Integer** | Total body or message content bytes received from backends over Fanout connections. | [optional] |
+| **fanout_conn_time_ms** | **Integer** | Total duration of Fanout connections with end users. | [optional] |
+| **ddos_action_limit_streams_connections** | **Integer** | For HTTP/2, the number of connections the limit-streams action was applied to. The limit-streams action caps the allowed number of concurrent streams in a connection. | [optional] |
+| **ddos_action_limit_streams_requests** | **Integer** | For HTTP/2, the number of requests made on a connection for which the limit-streams action was taken. The limit-streams action caps the allowed number of concurrent streams in a connection. | [optional] |
+| **ddos_action_tarpit_accept** | **Integer** | The number of times the tarpit-accept action was taken. The tarpit-accept action adds a delay when accepting future connections. | [optional] |
+| **ddos_action_tarpit** | **Integer** | The number of times the tarpit action was taken. The tarpit action delays writing the response to the client. | [optional] |
+| **ddos_action_close** | **Integer** | The number of times the close action was taken. The close action aborts the connection as soon as possible. The close action takes effect either right after accept, right after the client hello, or right after the response was sent. | [optional] |
+| **ddos_action_blackhole** | **Integer** | The number of times the blackhole action was taken. The blackhole action quietly closes a TCP connection without sending a reset. The blackhole action quietly closes a TCP connection without notifying its peer (all TCP state is dropped). | [optional] |
+| **bot_challenge_starts** | **Integer** | The number of challenge-start tokens created. | [optional] |
+| **bot_challenge_complete_tokens_passed** | **Integer** | The number of challenge-complete tokens that passed validation. | [optional] |
+| **bot_challenge_complete_tokens_failed** | **Integer** | The number of challenge-complete tokens that failed validation. | [optional] |
+| **bot_challenge_complete_tokens_checked** | **Integer** | The number of challenge-complete tokens checked. | [optional] |
+| **bot_challenge_complete_tokens_disabled** | **Integer** | The number of challenge-complete tokens not checked because the feature was disabled. | [optional] |
+| **bot_challenges_issued** | **Integer** | The number of challenges issued. For example, the issuance of a CAPTCHA challenge. | [optional] |
+| **bot_challenges_succeeded** | **Integer** | The number of successful challenge solutions processed. For example, a correct CAPTCHA solution. | [optional] |
+| **bot_challenges_failed** | **Integer** | The number of failed challenge solutions processed. For example, an incorrect CAPTCHA solution. | [optional] |
+| **bot_challenge_complete_tokens_issued** | **Integer** | The number of challenge-complete tokens issued. For example, issuing a challenge-complete token after a series of CAPTCHA challenges ending in success. | [optional] |
+| **ddos_action_downgrade** | **Integer** | The number of times the downgrade action was taken. The downgrade action restricts the client to http1. | [optional] |
+| **ddos_action_downgraded_connections** | **Integer** | The number of connections the downgrade action was applied to. The downgrade action restricts the connection to http1. | [optional] |
+| **all_hit_requests** | **Integer** | Number of cache hits for a VCL service. | [optional] |
+| **all_miss_requests** | **Integer** | Number of cache misses for a VCL service. | [optional] |
+| **all_pass_requests** | **Integer** | Number of requests that passed through the CDN without being cached for a VCL service. | [optional] |
+| **all_error_requests** | **Integer** | Number of cache errors for a VCL service. | [optional] |
+| **all_synth_requests** | **Integer** | Number of requests that returned a synthetic response (i.e., response objects created with the `synthetic` VCL statement) for a VCL service. | [optional] |
+| **all_edge_hit_requests** | **Integer** | Number of requests sent by end users to Fastly that resulted in a hit at the edge for a VCL service. | [optional] |
+| **all_edge_miss_requests** | **Integer** | Number of requests sent by end users to Fastly that resulted in a miss at the edge for a VCL service. | [optional] |
+| **all_status_1xx** | **Integer** | Number of \&quot;Informational\&quot; category status codes delivered for all sources. | [optional] |
+| **all_status_2xx** | **Integer** | Number of \&quot;Success\&quot; status codes delivered for all sources. | [optional] |
+| **all_status_3xx** | **Integer** | Number of \&quot;Redirection\&quot; codes delivered for all sources. | [optional] |
+| **all_status_4xx** | **Integer** | Number of \&quot;Client Error\&quot; codes delivered for all sources. | [optional] |
+| **all_status_5xx** | **Integer** | Number of \&quot;Server Error\&quot; codes delivered for all sources. | [optional] |
+| **origin_offload** | **Float** | Origin Offload measures the ratio of bytes served to end users that were cached by Fastly, over the bytes served to end users, between 0 and 1. ((`edge_resp_body_bytes` + `edge_resp_header_bytes`) - (`origin_fetch_resp_body_bytes` + `origin_fetch_resp_header_bytes`)) / (`edge_resp_body_bytes` + `edge_resp_header_bytes`). | [optional] |
+| **request_denied_get_head_body** | **Integer** | Number of requests where Fastly responded with 400 due to the request being a GET or HEAD request containing a body. | [optional] |
+| **ddos_protection_requests_detect_count** | **Integer** | Number of requests classified as a DDoS attack against a customer origin or service. | [optional] |
+| **ddos_protection_requests_mitigate_count** | **Integer** | Number of requests classified as a DDoS attack against a customer origin or service that were mitigated by the Fastly platform. | [optional] |
+| **ddos_protection_requests_allow_count** | **Integer** | Number of requests analyzed for DDoS attacks against a customer origin or service, but with no DDoS detected. | [optional] |
+| **object_storage_class_a_operations_count** | **Integer** | A count of the number of Class A Object Storage operations. | [optional] |
+| **object_storage_class_b_operations_count** | **Integer** | A count of the number of Class B Object Storage operations. | [optional] |
+| **aia_requests** | **Integer** | Number of requests received by AI Accelerator. | [optional] |
+| **aia_status_1xx** | **Integer** | Number of \&quot;Informational\&quot; category status codes received from AI provider. | [optional] |
+| **aia_status_2xx** | **Integer** | Number of \&quot;Success\&quot; status codes received from AI provider. | [optional] |
+| **aia_status_3xx** | **Integer** | Number of \&quot;Redirection\&quot; received from AI provider. | [optional] |
+| **aia_status_4xx** | **Integer** | Number of \&quot;Client Error\&quot; received from AI provider. | [optional] |
+| **aia_status_5xx** | **Integer** | Number of \&quot;Server Error\&quot; received from AI provider. | [optional] |
+| **aia_response_usage_tokens** | **Integer** | The usage tokens associated with the response returned from the AI Accelerator cache. | [optional] |
+| **aia_origin_usage_tokens** | **Integer** | The number of usage tokens reported by the request to the origin from AI Accelerator. | [optional] |
+| **aia_estimated_time_saved_ms** | **Integer** | The estimated amount of time saved by responses served from the AI Accelerator semantic cache. | [optional] |
+| **request_collapse_usable_count** | **Integer** | Number of requests that were collapsed and satisfied by a usable cache object. | [optional] |
+| **request_collapse_unusable_count** | **Integer** | Number of requests that were collapsed and unable to be satisfied by the resulting cache object. | [optional] |
+| **compute_cache_operations_count** | **Integer** | Number of cache operations executed by the Compute platform. | [optional] |
+| **api_discovery_requests_count** | **Integer** | Number of requests processed by the API Discovery engine. | [optional] |
+| **compute_resp_status_103** | **Integer** | Number of responses delivered with status code 103 (Early Hints) by the Compute platform. | [optional] |
+| **compute_resp_status_200** | **Integer** | Number of responses delivered with status code 200 (Success) by the Compute platform. | [optional] |
+| **compute_resp_status_204** | **Integer** | Number of responses delivered with status code 204 (No Content) by the Compute platform. | [optional] |
+| **compute_resp_status_206** | **Integer** | Number of responses delivered with status code 206 (Partial Content) by the Compute platform. | [optional] |
+| **compute_resp_status_301** | **Integer** | Number of responses delivered with status code 301 (Moved Permanently) by the Compute platform. | [optional] |
+| **compute_resp_status_302** | **Integer** | Number of responses delivered with status code 302 (Found) by the Compute platform. | [optional] |
+| **compute_resp_status_304** | **Integer** | Number of responses delivered with status code 304 (Not Modified) by the Compute platform. | [optional] |
+| **compute_resp_status_400** | **Integer** | Number of responses delivered with status code 400 (Bad Request) by the Compute platform. | [optional] |
+| **compute_resp_status_401** | **Integer** | Number of responses delivered with status code 401 (Unauthorized) by the Compute platform. | [optional] |
+| **compute_resp_status_403** | **Integer** | Number of responses delivered with status code 403 (Forbidden) by the Compute platform. | [optional] |
+| **compute_resp_status_404** | **Integer** | Number of responses delivered with status code 404 (Not Found) by the Compute platform. | [optional] |
+| **compute_resp_status_416** | **Integer** | Number of responses delivered with status code 416 (Range Not Satisfiable) by the Compute platform. | [optional] |
+| **compute_resp_status_429** | **Integer** | Number of responses delivered with status code 429 (Too Many Requests) by the Compute platform. | [optional] |
+| **compute_resp_status_500** | **Integer** | Number of responses delivered with status code 500 (Internal Server Error) by the Compute platform. | [optional] |
+| **compute_resp_status_501** | **Integer** | Number of responses delivered with status code 501 (Not Implemented) by the Compute platform. | [optional] |
+| **compute_resp_status_502** | **Integer** | Number of responses delivered with status code 502 (Bad Gateway) by the Compute platform. | [optional] |
+| **compute_resp_status_503** | **Integer** | Number of responses delivered with status code 503 (Service Unavailable) by the Compute platform. | [optional] |
+| **compute_resp_status_504** | **Integer** | Number of responses delivered with status code 504 (Gateway Timeout) by the Compute platform. | [optional] |
+| **compute_resp_status_505** | **Integer** | Number of responses delivered with status code 505 (HTTP Version Not Supported) by the Compute platform. | [optional] |
+| **compute_resp_status_530** | **Integer** | Number of responses delivered with status code 530 by the Compute platform. | [optional] |
+| **imgopto_compute_requests** | **Integer** | The number of Image Optimizer requests made from Compute services. | [optional] |
+| **dns_billable_responses_count** | **Integer** | Number of billable DNS responses (e.g., A, CNAME). | [optional] |
+| **dns_nonbillable_responses_count** | **Integer** | Number of non-billable DNS responses (e.g., NODATA, NXDOMAIN). | [optional] |
+| **upgrade** | **Integer** | Number of requests that resulted in a WebSocket upgrade. | [optional] |
+| **ngwaf_bot_analysis_request_count** | **Integer** | Count of Next-Gen WAF Bot Management requests. | [optional] |
+| **imgopto_avif_count** | **Integer** | Count of AVIF images delivered to end user by Image Optimizer. | [optional] |
+| **imgopto_jpeg_count** | **Integer** | Count of JPEG images delivered to end user by Image Optimizer. | [optional] |
+| **imgopto_png_count** | **Integer** | Count of PNG images delivered to end user by Image Optimizer. | [optional] |
+| **imgopto_gif_count** | **Integer** | Count of GIF images delivered to end user by Image Optimizer. | [optional] |
+| **imgopto_webp_count** | **Integer** | Count of WebP images delivered to end user by Image Optimizer. | [optional] |
+| **imgopto_jpegxl_count** | **Integer** | Count of JPEGXL images delivered to end user by Image Optimizer. | [optional] |
+| **imgopto_svg_count** | **Integer** | Count of SVG images delivered to end user by Image Optimizer. | [optional] |
+| **imgopto_mp4_count** | **Integer** | Count of MP4s delivered to end user by Image Optimizer. | [optional] |
+| **compute_service_resource_limits_error** | **Integer** | Aggregate of fatal errors caused by exceeding allocated resource limits, specifically runtime duration, vCPU usage, and heap memory limits. | [optional] |
+| **compute_service_runtime_error** | **Integer** | Fatal errors caused by service logic faults, including stack overflows, unreachable code traps, illegal memory access, or attempts to send multiple responses. | [optional] |
+| **compute_service_chain_error** | **Integer** | Fatal errors caused by the service path exceeding hop or service limits, or where a forwarding loop is detected via CDN-Loop headers. | [optional] |
+| **compute_platform_internal_error** | **Integer** | Fatal errors caused by internal errors in Fastly’s Compute platform. | [optional] |
+| **compute_service_timeout_error** | **Integer** | Fatal errors caused by exceeding the per-request runtime limit. | [optional] |
+| **compute_service_vcpu_exceeded_error** | **Integer** | Fatal errors caused by exceeding the per-request vCPU time limit. | [optional] |
+| **compute_service_limits_error** | **Integer** | Non-fatal errors caused by attempts to exceed defined operational limits, such as simultaneous backend requests or cache transactions. | [optional] |
+| **compute_platform_invalid_request_error** | **Integer** | Fatal errors caused by unprocessable requests to the service, such as requests with malformed CDN-Loop headers or invalid purge credentials. | [optional] |
+| **compute_sandboxes** | **Integer** | Number of WebAssembly (Wasm) sandboxes created. | [optional] |
+| **bot_requests_total_count** | **Integer** | Total number of Bot Management requests across all deployments. | [optional] |
+| **bot_edge_requests_analyzed_count** | **Integer** | Count of edge requests where bot detection analysis was performed. | [optional] |
+| **bot_edge_requests_detected_count** | **Integer** | Count of edge requests where a bot was detected. | [optional] |
+| **bot_edge_requests_verified_count** | **Integer** | Count of edge requests where a verified bot was detected. | [optional] |
+| **bot_edge_requests_ai_crawler_count** | **Integer** | Count of edge requests where an AI crawler was detected. | [optional] |
+| **bot_edge_requests_ai_fetcher_count** | **Integer** | Count of edge requests where an AI fetcher was detected. | [optional] |
+| **bot_edge_requests_accessibility_count** | **Integer** | Count of edge requests where an accessibility bot was detected. | [optional] |
+| **bot_edge_requests_content_fetcher_count** | **Integer** | Count of edge requests where a content fetcher was detected. | [optional] |
+| **bot_edge_requests_monitoring_count** | **Integer** | Count of edge requests where a monitoring and site tool was detected. | [optional] |
+| **bot_edge_requests_online_marketing_count** | **Integer** | Count of edge requests where an online marketing bot was detected. | [optional] |
+| **bot_edge_requests_page_preview_count** | **Integer** | Count of edge requests where a page preview bot was detected. | [optional] |
+| **bot_edge_requests_platform_integrations_count** | **Integer** | Count of edge requests where a platform integration was detected. | [optional] |
+| **bot_edge_requests_research_count** | **Integer** | Count of edge requests where a research bot was detected. | [optional] |
+| **bot_edge_requests_search_engine_crawler_count** | **Integer** | Count of edge requests where a search engine crawler was detected. | [optional] |
+| **bot_edge_requests_search_engine_optimization_count** | **Integer** | Count of edge requests where a search engine optimization bot was detected. | [optional] |
+| **bot_edge_requests_security_tools_count** | **Integer** | Count of edge requests where a security tool was detected. | [optional] |
+| **compute_handoff** | **Integer** | The number of times Compute has handed off a request to the Fanout proxy or WebSocket proxy. | [optional] |
+| **compute_service_bereq_dns_error** | **Integer** | Number of backend requests from a Compute service that failed during DNS resolution. | [optional] |
+| **compute_service_bereq_conn_timeout_error** | **Integer** | Number of backend requests from a Compute service where the connection to the origin timed out before being established. | [optional] |
+| **compute_service_bereq_conn_refused_error** | **Integer** | Number of backend requests from a Compute service where the origin actively refused the connection. | [optional] |
+| **compute_service_bereq_conn_other_error** | **Integer** | Number of backend requests from a Compute service that failed due to a connection error not classified as a timeout or refusal. | [optional] |
+| **compute_service_bereq_tls_server_cert_error** | **Integer** | Number of backend requests from a Compute service that failed due to a TLS certificate validation error (e.g., expired, untrusted CA, hostname mismatch). | [optional] |
+| **compute_service_bereq_tls_other_error** | **Integer** | Number of backend requests from a Compute service that failed due to a TLS error not classified as a certificate error. | [optional] |
+| **compute_service_bereq_http_proto_v1_error** | **Integer** | Number of backend requests from a Compute service that failed due to an HTTP/1.x protocol violation after the request was transmitted. | [optional] |
+| **compute_service_bereq_http_proto_v2_error** | **Integer** | Number of backend requests from a Compute service that failed due to an HTTP/2 protocol error, typically a `RST_STREAM` or `GO_AWAY` from the origin. | [optional] |
+| **compute_service_bereq_http_incomplete_error** | **Integer** | Number of backend requests from a Compute service where the origin sent an incomplete HTTP response. | [optional] |
+| **compute_service_bereq_http_timeout_error** | **Integer** | Number of backend requests from a Compute service where the origin did not respond within the configured timeout period. | [optional] |
+| **compute_service_bereq_http_other_error** | **Integer** | Number of backend requests from a Compute service that failed due to an HTTP-level error not classified in any category. | [optional] |
+| **compute_service_bereq_other_error** | **Integer** | Number of backend requests from a Compute service that failed due to an error not classified into the DNS, connection, TLS, or HTTP categories. | [optional] |
+| **compute_service_bereq_5xx_error** | **Integer** | Number of backend requests from a Compute service where the origin returned a 5xx status code. | [optional] |
+| **compute_service_bereq_conn_error** | **Integer** | Number of backend requests from a Compute service that failed at the TCP connection level. Sum of `compute_service_bereq_conn_timeout_error`, `compute_service_bereq_conn_refused_error`, and `compute_service_bereq_conn_other_error`. | [optional] |
+| **compute_service_bereq_tls_error** | **Integer** | Number of backend requests from a Compute service that failed during the TLS handshake or session with the origin. Sum of `compute_service_bereq_tls_server_cert_error` and `compute_service_bereq_tls_other_error`. | [optional] |
+| **compute_service_bereq_http_error** | **Integer** | Number of backend requests from a Compute service that failed at the HTTP protocol level. Sum of `compute_service_bereq_http_proto_v1_error`, `compute_service_bereq_http_proto_v2_error`, `compute_service_bereq_http_incomplete_error`, `compute_service_bereq_http_timeout_error`, and `compute_service_bereq_http_other_error`. | [optional] |
+
+[[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
+

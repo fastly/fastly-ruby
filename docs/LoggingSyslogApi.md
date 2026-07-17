@@ -47,7 +47,7 @@ opts = {
     tls_hostname: 'tls_hostname_example', # String | The hostname to verify the server's certificate. This should be one of the Subject Alternative Name (SAN) fields for the certificate. Common Names (CN) are not supported.
     address: 'address_example', # String | A hostname or IPv4 address.
     port: 56, # Integer | The port number.
-    message_type: Fastly::LoggingMessageType::CLASSIC, # LoggingMessageType | 
+    message_type: Fastly::LoggingMessageType::BLANK, # LoggingMessageType | 
     hostname: 'hostname_example', # String | The hostname used for the syslog endpoint.
     ipv4: 'ipv4_example', # String | The IPv4 address used for the syslog endpoint.
     token: 'token_example', # String | Whether to prepend each message with a specific token.
@@ -81,7 +81,7 @@ end
 | **tls_hostname** | **String** | The hostname to verify the server&#39;s certificate. This should be one of the Subject Alternative Name (SAN) fields for the certificate. Common Names (CN) are not supported. | [optional][default to &#39;null&#39;] |
 | **address** | **String** | A hostname or IPv4 address. | [optional] |
 | **port** | **Integer** | The port number. | [optional][default to 514] |
-| **message_type** | [**LoggingMessageType**](LoggingMessageType.md) |  | [optional][default to &#39;classic&#39;] |
+| **message_type** | [**LoggingMessageType**](LoggingMessageType.md) |  | [optional][default to &#39;blank&#39;] |
 | **hostname** | **String** | The hostname used for the syslog endpoint. | [optional] |
 | **ipv4** | **String** | The IPv4 address used for the syslog endpoint. | [optional] |
 | **token** | **String** | Whether to prepend each message with a specific token. | [optional][default to &#39;null&#39;] |
@@ -242,7 +242,7 @@ opts = {
     tls_hostname: 'tls_hostname_example', # String | The hostname to verify the server's certificate. This should be one of the Subject Alternative Name (SAN) fields for the certificate. Common Names (CN) are not supported.
     address: 'address_example', # String | A hostname or IPv4 address.
     port: 56, # Integer | The port number.
-    message_type: Fastly::LoggingMessageType::CLASSIC, # LoggingMessageType | 
+    message_type: Fastly::LoggingMessageType::BLANK, # LoggingMessageType | 
     hostname: 'hostname_example', # String | The hostname used for the syslog endpoint.
     ipv4: 'ipv4_example', # String | The IPv4 address used for the syslog endpoint.
     token: 'token_example', # String | Whether to prepend each message with a specific token.
@@ -277,7 +277,7 @@ end
 | **tls_hostname** | **String** | The hostname to verify the server&#39;s certificate. This should be one of the Subject Alternative Name (SAN) fields for the certificate. Common Names (CN) are not supported. | [optional][default to &#39;null&#39;] |
 | **address** | **String** | A hostname or IPv4 address. | [optional] |
 | **port** | **Integer** | The port number. | [optional][default to 514] |
-| **message_type** | [**LoggingMessageType**](LoggingMessageType.md) |  | [optional][default to &#39;classic&#39;] |
+| **message_type** | [**LoggingMessageType**](LoggingMessageType.md) |  | [optional][default to &#39;blank&#39;] |
 | **hostname** | **String** | The hostname used for the syslog endpoint. | [optional] |
 | **ipv4** | **String** | The IPv4 address used for the syslog endpoint. | [optional] |
 | **token** | **String** | Whether to prepend each message with a specific token. | [optional][default to &#39;null&#39;] |

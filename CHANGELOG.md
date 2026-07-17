@@ -1,5 +1,63 @@
 # Changelog
 
+## [v17.0.0](https://github.com/fastly/fastly-ruby/releases/tag/release/v17.0.0) (2026-07-17)
+
+**Breaking Changes:**
+
+- changed(properties): Changed the default value of `logging_message_type` from `classic` to `blank` for the Sumologic, HTTPS, and Syslog logging endpoints.
+
+- changed(notifications): Added Datadog, Jira Issue, Jira Service Management, OpsGenie, and Splunk On-Call to the `integration_type` enum.
+- changed(ngwaf_requests): Renamed the workspace-level search requests operation and response schema (`ngwafSearchRequests`/`searchRequests` -> `ngwafSearchWorkspaceRequests`/`searchWorkspaceRequests`) to disambiguate it from the new account-level search operation.
+
+- removed(historical, realtime, observability_dashboard_metrics_edge): Removed metrics `waf_logged`, `waf_blocked`, and `waf_passed`.
+
+
+**Bug fixes:**
+
+- fix(realtime): Corrected the `realtime_entry_datacenter` schema to use `allOf` instead of `additionalProperties`, so generated models match the actual API response shape.
+
+
+**Enhancements:**
+
+- feat(ngwaf_simulate): Increased the WAF simulation request body size limit from 100 KB to 200 KB.
+- feat(ngwaf_simulate): Add `detector_scope` field to WAF simulation signal responses.
+
+- feat(historical, realtime): Add new Compute backend request error metrics: `compute_service_bereq_dns_error`, `compute_service_bereq_conn_timeout_error`, `compute_service_bereq_conn_refused_error`, `compute_service_bereq_conn_other_error`, `compute_service_bereq_tls_server_cert_error`, `compute_service_bereq_tls_other_error`, `compute_service_bereq_http_incomplete_error`, `compute_service_bereq_http_timeout_error`, `compute_service_bereq_http_other_error`, `compute_service_bereq_other_error`, `compute_service_bereq_conn_error`, `compute_service_bereq_tls_error`, and `compute_service_bereq_http_error`.
+
+- feat(notification-service): Add Event Mappings API for creating and managing audit event notification mappings with support for `account`, `vcl`, `wasm`, and `ngwaf` scope types.
+- feat(routing-configs): Add new Domain Management Routing Configs API for defining path-based routing rules, with support for paths, rules, versions, drafts, and activation.
+- feat(domains): Add `routing_configuration_id` field and query filter for associating domains with a routing configuration.
+
+- feat(ngwaf_requests): Add account-level `GET /ngwaf/v1/requests` endpoint for searching requests across all workspaces in an account.
+
+- feat(ngwaf_workspaces): Add `workspace_uid` field to workspace responses.
+
+- feat(ngwaf_thresholds): Add `block_immediately` action to the thresholds endpoints.
+
+- feat(ngwaf_signals): Increased the maximum length of custom signal names from 25 to 128 characters.
+
+- feat(backend): Add `max_lifetime` and `max_use` fields for controlling pooled HTTP keepalive connection reuse.
+
+- feat(historical, realtime): Add new metric `compute_handoff`.
+
+- feat(ngwaf): Add WAF simulate endpoint for testing WAF rule behavior against sample HTTP requests.
+
+- feat(products): Add `kv_store` product to enablement API.
+
+- feat(ngwaf_agents): Add new NGWAF Agents API for listing and retrieving agents.
+
+- feat(enabled-products): Add ContentGuard support for `bot_management`
+- feat(historical, realtime): Add new bot-classification metrics: `bot_requests_total_count`, `bot_edge_requests_analyzed_count`, `bot_edge_requests_detected_count`, `bot_edge_requests_verified_count`, `bot_edge_requests_ai_crawler_count`, `bot_edge_requests_ai_fetcher_count`, `bot_edge_requests_accessibility_count`, `bot_edge_requests_content_fetcher_count`, `bot_edge_requests_monitoring_count`, `bot_edge_requests_online_marketing_count`, `bot_edge_requests_page_preview_count`, `bot_edge_requests_platform_integrations_count`, `bot_edge_requests_research_count`, `bot_edge_requests_search_engine_crawler_count`, `bot_edge_requests_search_engine_optimization_count`, and `bot_edge_requests_security_tools_count`.
+
+- feat(client_side_protection): Add new Client-Side Protection API for managing websites, pages, scripts, policies, and security headers.
+- feat(historical, realtime): Add new metric `compute_sandboxes`.
+- feat(ngwaf_agent_keys): Add new NGWAF Agent Keys API for listing agent keys within a workspace.
+
+**Documentation:**
+
+- doc(notifications): Document that deleting an integration removes it from all audit log event mappings. Any audit log event mappings whose `integration_ids` list becomes empty as a result are automatically set to `inactive`.
+
+
 ## [v16.1.0](https://github.com/fastly/fastly-ruby/releases/tag/release/v16.1.0) (2026-03-30)
 
 **Enhancements:**

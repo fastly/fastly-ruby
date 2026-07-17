@@ -233,7 +233,7 @@ module Fastly
       if attributes.key?(:'message_type')
         self.message_type = attributes[:'message_type']
       else
-        self.message_type = 'classic'
+        self.message_type = 'blank'
       end
 
       if attributes.key?(:'timestamp_format')
@@ -325,7 +325,7 @@ module Fastly
       return false unless log_processing_region_validator.valid?(@log_processing_region)
       format_version_validator = EnumAttributeValidator.new('String', ["1", "2"])
       return false unless format_version_validator.valid?(@format_version)
-      message_type_validator = EnumAttributeValidator.new('String', ["classic", "loggly", "logplex", "blank"])
+      message_type_validator = EnumAttributeValidator.new('String', ["blank", "classic", "loggly", "logplex"])
       return false unless message_type_validator.valid?(@message_type)
       compression_codec_validator = EnumAttributeValidator.new('String', ["zstd", "snappy", "gzip"])
       return false unless compression_codec_validator.valid?(@compression_codec)
@@ -366,7 +366,7 @@ module Fastly
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] message_type Object to be assigned
     def message_type=(message_type)
-      validator = EnumAttributeValidator.new('String', ["classic", "loggly", "logplex", "blank"])
+      validator = EnumAttributeValidator.new('String', ["blank", "classic", "loggly", "logplex"])
       unless validator.valid?(message_type)
         fail ArgumentError, "invalid value for \"message_type\", must be one of #{validator.allowable_values}."
       end

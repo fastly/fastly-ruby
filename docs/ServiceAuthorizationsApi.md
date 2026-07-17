@@ -98,7 +98,7 @@ nil (empty response body)
 ## `delete_service_authorization2()`
 
 ```ruby
-delete_service_authorization2(opts): <InlineResponse20014> # Delete service authorizations
+delete_service_authorization2(opts): <InlineResponse20022> # Delete service authorizations
 ```
 
 Delete service authorizations.
@@ -128,7 +128,7 @@ end
 
 ### Return type
 
-[**InlineResponse20014**](InlineResponse20014.md)
+[**InlineResponse20022**](InlineResponse20022.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)

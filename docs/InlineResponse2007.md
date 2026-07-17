@@ -4,8 +4,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **data** | [**Array&lt;SuccessfulResponseAsObject&gt;**](SuccessfulResponseAsObject.md) |  | [optional] |
-| **meta** | **Object** | Meta for the pagination. | [optional] |
+| **data** | [**Array&lt;Script&gt;**](Script.md) |  | [optional] |
+| **meta** | [**PaginationMeta**](PaginationMeta.md) |  | [optional] |
 
 [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
 

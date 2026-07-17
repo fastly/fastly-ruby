@@ -10,7 +10,7 @@
 | **format** | **String** | A Fastly [log format string](https://www.fastly.com/documentation/guides/integrations/streaming-logs/custom-log-formats/). | [optional][default to &#39;%h %l %u %t \&quot;%r\&quot; %&amp;gt;s %b&#39;] |
 | **log_processing_region** | **String** | The geographic region where the logs will be processed before streaming. Valid values are `us`, `eu`, and `none` for global. | [optional][default to &#39;none&#39;] |
 | **format_version** | **String** | The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in `vcl_log` if `format_version` is set to `2` and in `vcl_deliver` if `format_version` is set to `1`.  | [optional][default to &#39;2&#39;] |
-| **message_type** | [**LoggingMessageType**](LoggingMessageType.md) |  | [optional][default to &#39;classic&#39;] |
+| **message_type** | [**LoggingMessageType**](LoggingMessageType.md) |  | [optional][default to &#39;blank&#39;] |
 | **url** | **String** | The URL to post logs to. | [optional] |
 | **created_at** | **Time** | Date and time in ISO 8601 format. | [optional][readonly] |
 | **deleted_at** | **Time** | Date and time in ISO 8601 format. | [optional][readonly] |

@@ -17,6 +17,9 @@ module Fastly
     # The `service_id` associated with your domain or `null` if there is no association.
     attr_accessor :service_id
 
+    # The `routing_configuration_id` associated with your domain or `null` if there is no association.
+    attr_accessor :routing_configuration_id
+
     # A freeform descriptive note.
     attr_accessor :description
 
@@ -24,6 +27,7 @@ module Fastly
     def self.attribute_map
       {
         :'service_id' => :'service_id',
+        :'routing_configuration_id' => :'routing_configuration_id',
         :'description' => :'description'
       }
     end
@@ -37,6 +41,7 @@ module Fastly
     def self.fastly_types
       {
         :'service_id' => :'String',
+        :'routing_configuration_id' => :'String',
         :'description' => :'String'
       }
     end
@@ -45,6 +50,7 @@ module Fastly
     def self.fastly_nullable
       Set.new([
         :'service_id',
+        :'routing_configuration_id',
       ])
     end
 
@@ -65,6 +71,10 @@ module Fastly
 
       if attributes.key?(:'service_id')
         self.service_id = attributes[:'service_id']
+      end
+
+      if attributes.key?(:'routing_configuration_id')
+        self.routing_configuration_id = attributes[:'routing_configuration_id']
       end
 
       if attributes.key?(:'description')
@@ -91,6 +101,7 @@ module Fastly
       return true if self.equal?(o)
       self.class == o.class &&
           service_id == o.service_id &&
+          routing_configuration_id == o.routing_configuration_id &&
           description == o.description
     end
 
@@ -103,7 +114,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [service_id, description].hash
+      [service_id, routing_configuration_id, description].hash
     end
 
     # Builds the object from hash

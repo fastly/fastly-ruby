@@ -33,8 +33,8 @@ module Fastly
     # Attribute type mapping.
     def self.fastly_types
       {
-        :'data' => :'Array<DdosProtectionEvent>',
-        :'meta' => :'PaginationCursorMeta'
+        :'data' => :'Array<Website>',
+        :'meta' => :'PaginationMeta'
       }
     end
 

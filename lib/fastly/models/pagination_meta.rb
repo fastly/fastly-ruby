@@ -12,26 +12,27 @@ require 'date'
 require 'time'
 
 module Fastly
+  # Cursor-based pagination metadata.
   class PaginationMeta
-    # Current page.
-    attr_accessor :current_page
+    # The number of records returned per page.
+    attr_accessor :limit
 
-    # Number of records per page.
-    attr_accessor :per_page
+    # Cursor value used to retrieve the next page of results. Empty if there are no more results.
+    attr_accessor :next_cursor
 
-    # Total records in result set.
-    attr_accessor :record_count
+    # Cursor value used to retrieve the previous page of results. Empty if there is no previous page.
+    attr_accessor :previous_cursor
 
-    # Total pages in result set.
-    attr_accessor :total_pages
+    # The sort order applied to the results.
+    attr_accessor :sort
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'current_page' => :'current_page',
-        :'per_page' => :'per_page',
-        :'record_count' => :'record_count',
-        :'total_pages' => :'total_pages'
+        :'limit' => :'limit',
+        :'next_cursor' => :'next_cursor',
+        :'previous_cursor' => :'previous_cursor',
+        :'sort' => :'sort'
       }
     end
 
@@ -43,10 +44,10 @@ module Fastly
     # Attribute type mapping.
     def self.fastly_types
       {
-        :'current_page' => :'Integer',
-        :'per_page' => :'Integer',
-        :'record_count' => :'Integer',
-        :'total_pages' => :'Integer'
+        :'limit' => :'Integer',
+        :'next_cursor' => :'String',
+        :'previous_cursor' => :'String',
+        :'sort' => :'String'
       }
     end
 
@@ -71,22 +72,20 @@ module Fastly
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'current_page')
-        self.current_page = attributes[:'current_page']
+      if attributes.key?(:'limit')
+        self.limit = attributes[:'limit']
       end
 
-      if attributes.key?(:'per_page')
-        self.per_page = attributes[:'per_page']
-      else
-        self.per_page = 20
+      if attributes.key?(:'next_cursor')
+        self.next_cursor = attributes[:'next_cursor']
       end
 
-      if attributes.key?(:'record_count')
-        self.record_count = attributes[:'record_count']
+      if attributes.key?(:'previous_cursor')
+        self.previous_cursor = attributes[:'previous_cursor']
       end
 
-      if attributes.key?(:'total_pages')
-        self.total_pages = attributes[:'total_pages']
+      if attributes.key?(:'sort')
+        self.sort = attributes[:'sort']
       end
     end
 
@@ -94,37 +93,13 @@ module Fastly
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if !@per_page.nil? && @per_page > 100
-        invalid_properties.push('invalid value for "per_page", must be smaller than or equal to 100.')
-      end
-
-      if !@per_page.nil? && @per_page < 1
-        invalid_properties.push('invalid value for "per_page", must be greater than or equal to 1.')
-      end
-
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if !@per_page.nil? && @per_page > 100
-      return false if !@per_page.nil? && @per_page < 1
       true
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] per_page Value to be assigned
-    def per_page=(per_page)
-      if !per_page.nil? && per_page > 100
-        fail ArgumentError, 'invalid value for "per_page", must be smaller than or equal to 100.'
-      end
-
-      if !per_page.nil? && per_page < 1
-        fail ArgumentError, 'invalid value for "per_page", must be greater than or equal to 1.'
-      end
-
-      @per_page = per_page
     end
 
     # Checks equality by comparing each attribute.
@@ -132,10 +107,10 @@ module Fastly
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          current_page == o.current_page &&
-          per_page == o.per_page &&
-          record_count == o.record_count &&
-          total_pages == o.total_pages
+          limit == o.limit &&
+          next_cursor == o.next_cursor &&
+          previous_cursor == o.previous_cursor &&
+          sort == o.sort
     end
 
     # @see the `==` method
@@ -147,7 +122,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [current_page, per_page, record_count, total_pages].hash
+      [limit, next_cursor, previous_cursor, sort].hash
     end
 
     # Builds the object from hash

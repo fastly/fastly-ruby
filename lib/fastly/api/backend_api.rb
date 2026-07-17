@@ -33,10 +33,12 @@ module Fastly
     # @option opts [String] :hostname The hostname of the backend. May be used as an alternative to &#x60;address&#x60; to set the backend location.
     # @option opts [String] :ipv4 IPv4 address of the backend. May be used as an alternative to &#x60;address&#x60; to set the backend location.
     # @option opts [String] :ipv6 IPv6 address of the backend. May be used as an alternative to &#x60;address&#x60; to set the backend location.
-    # @option opts [Integer] :keepalive_time How long in seconds to keep a persistent connection to the backend between requests. By default, Varnish keeps connections open as long as it can.
+    # @option opts [Integer] :keepalive_time How long (in seconds) to keep a persistent connection to the backend between requests. By default, Fastly keeps connections open as long as it can.
     # @option opts [Integer] :max_conn Maximum number of concurrent connections this backend will accept.
+    # @option opts [Integer] :max_lifetime Maximum time from creation (in milliseconds) that a pooled HTTP keepalive connection will be eligible for reuse; 0 is treated as unlimited.
     # @option opts [String] :max_tls_version Maximum allowed TLS version on SSL connections to this backend. If your backend server is not able to negotiate a connection meeting this constraint, a synthetic &#x60;503&#x60; error response will be generated.
     # @option opts [String] :min_tls_version Minimum allowed TLS version on SSL connections to this backend. If your backend server is not able to negotiate a connection meeting this constraint, a synthetic &#x60;503&#x60; error response will be generated.
+    # @option opts [Integer] :max_use Maximum number of requests allowed over a single, pooled HTTP keepalive connection to this backend; 0 is treated as unlimited.
     # @option opts [String] :name The name of the backend.
     # @option opts [String] :override_host If set, will replace the client-supplied HTTP &#x60;Host&#x60; header on connections to this backend. Applied after VCL has been processed, so this setting will take precedence over changing &#x60;bereq.http.Host&#x60; in VCL.
     # @option opts [Integer] :port Port on which the backend server is listening for connections from Fastly. Setting &#x60;port&#x60; to 80 or 443 will also set &#x60;use_ssl&#x60; automatically (to false and true respectively), unless explicitly overridden by setting &#x60;use_ssl&#x60; in the same request.
@@ -80,10 +82,12 @@ module Fastly
     # @option opts [String] :hostname The hostname of the backend. May be used as an alternative to &#x60;address&#x60; to set the backend location.
     # @option opts [String] :ipv4 IPv4 address of the backend. May be used as an alternative to &#x60;address&#x60; to set the backend location.
     # @option opts [String] :ipv6 IPv6 address of the backend. May be used as an alternative to &#x60;address&#x60; to set the backend location.
-    # @option opts [Integer] :keepalive_time How long in seconds to keep a persistent connection to the backend between requests. By default, Varnish keeps connections open as long as it can.
+    # @option opts [Integer] :keepalive_time How long (in seconds) to keep a persistent connection to the backend between requests. By default, Fastly keeps connections open as long as it can.
     # @option opts [Integer] :max_conn Maximum number of concurrent connections this backend will accept.
+    # @option opts [Integer] :max_lifetime Maximum time from creation (in milliseconds) that a pooled HTTP keepalive connection will be eligible for reuse; 0 is treated as unlimited.
     # @option opts [String] :max_tls_version Maximum allowed TLS version on SSL connections to this backend. If your backend server is not able to negotiate a connection meeting this constraint, a synthetic &#x60;503&#x60; error response will be generated.
     # @option opts [String] :min_tls_version Minimum allowed TLS version on SSL connections to this backend. If your backend server is not able to negotiate a connection meeting this constraint, a synthetic &#x60;503&#x60; error response will be generated.
+    # @option opts [Integer] :max_use Maximum number of requests allowed over a single, pooled HTTP keepalive connection to this backend; 0 is treated as unlimited.
     # @option opts [String] :name The name of the backend.
     # @option opts [String] :override_host If set, will replace the client-supplied HTTP &#x60;Host&#x60; header on connections to this backend. Applied after VCL has been processed, so this setting will take precedence over changing &#x60;bereq.http.Host&#x60; in VCL.
     # @option opts [Integer] :port Port on which the backend server is listening for connections from Fastly. Setting &#x60;port&#x60; to 80 or 443 will also set &#x60;use_ssl&#x60; automatically (to false and true respectively), unless explicitly overridden by setting &#x60;use_ssl&#x60; in the same request.
@@ -158,8 +162,10 @@ module Fastly
       form_params['ipv6'] = opts[:'ipv6'] if !opts[:'ipv6'].nil?
       form_params['keepalive_time'] = opts[:'keepalive_time'] if !opts[:'keepalive_time'].nil?
       form_params['max_conn'] = opts[:'max_conn'] if !opts[:'max_conn'].nil?
+      form_params['max_lifetime'] = opts[:'max_lifetime'] if !opts[:'max_lifetime'].nil?
       form_params['max_tls_version'] = opts[:'max_tls_version'] if !opts[:'max_tls_version'].nil?
       form_params['min_tls_version'] = opts[:'min_tls_version'] if !opts[:'min_tls_version'].nil?
+      form_params['max_use'] = opts[:'max_use'] if !opts[:'max_use'].nil?
       form_params['name'] = opts[:'name'] if !opts[:'name'].nil?
       form_params['override_host'] = opts[:'override_host'] if !opts[:'override_host'].nil?
       form_params['port'] = opts[:'port'] if !opts[:'port'].nil?
@@ -449,10 +455,12 @@ module Fastly
     # @option opts [String] :hostname The hostname of the backend. May be used as an alternative to &#x60;address&#x60; to set the backend location.
     # @option opts [String] :ipv4 IPv4 address of the backend. May be used as an alternative to &#x60;address&#x60; to set the backend location.
     # @option opts [String] :ipv6 IPv6 address of the backend. May be used as an alternative to &#x60;address&#x60; to set the backend location.
-    # @option opts [Integer] :keepalive_time How long in seconds to keep a persistent connection to the backend between requests. By default, Varnish keeps connections open as long as it can.
+    # @option opts [Integer] :keepalive_time How long (in seconds) to keep a persistent connection to the backend between requests. By default, Fastly keeps connections open as long as it can.
     # @option opts [Integer] :max_conn Maximum number of concurrent connections this backend will accept.
+    # @option opts [Integer] :max_lifetime Maximum time from creation (in milliseconds) that a pooled HTTP keepalive connection will be eligible for reuse; 0 is treated as unlimited.
     # @option opts [String] :max_tls_version Maximum allowed TLS version on SSL connections to this backend. If your backend server is not able to negotiate a connection meeting this constraint, a synthetic &#x60;503&#x60; error response will be generated.
     # @option opts [String] :min_tls_version Minimum allowed TLS version on SSL connections to this backend. If your backend server is not able to negotiate a connection meeting this constraint, a synthetic &#x60;503&#x60; error response will be generated.
+    # @option opts [Integer] :max_use Maximum number of requests allowed over a single, pooled HTTP keepalive connection to this backend; 0 is treated as unlimited.
     # @option opts [String] :name The name of the backend.
     # @option opts [String] :override_host If set, will replace the client-supplied HTTP &#x60;Host&#x60; header on connections to this backend. Applied after VCL has been processed, so this setting will take precedence over changing &#x60;bereq.http.Host&#x60; in VCL.
     # @option opts [Integer] :port Port on which the backend server is listening for connections from Fastly. Setting &#x60;port&#x60; to 80 or 443 will also set &#x60;use_ssl&#x60; automatically (to false and true respectively), unless explicitly overridden by setting &#x60;use_ssl&#x60; in the same request.
@@ -497,10 +505,12 @@ module Fastly
     # @option opts [String] :hostname The hostname of the backend. May be used as an alternative to &#x60;address&#x60; to set the backend location.
     # @option opts [String] :ipv4 IPv4 address of the backend. May be used as an alternative to &#x60;address&#x60; to set the backend location.
     # @option opts [String] :ipv6 IPv6 address of the backend. May be used as an alternative to &#x60;address&#x60; to set the backend location.
-    # @option opts [Integer] :keepalive_time How long in seconds to keep a persistent connection to the backend between requests. By default, Varnish keeps connections open as long as it can.
+    # @option opts [Integer] :keepalive_time How long (in seconds) to keep a persistent connection to the backend between requests. By default, Fastly keeps connections open as long as it can.
     # @option opts [Integer] :max_conn Maximum number of concurrent connections this backend will accept.
+    # @option opts [Integer] :max_lifetime Maximum time from creation (in milliseconds) that a pooled HTTP keepalive connection will be eligible for reuse; 0 is treated as unlimited.
     # @option opts [String] :max_tls_version Maximum allowed TLS version on SSL connections to this backend. If your backend server is not able to negotiate a connection meeting this constraint, a synthetic &#x60;503&#x60; error response will be generated.
     # @option opts [String] :min_tls_version Minimum allowed TLS version on SSL connections to this backend. If your backend server is not able to negotiate a connection meeting this constraint, a synthetic &#x60;503&#x60; error response will be generated.
+    # @option opts [Integer] :max_use Maximum number of requests allowed over a single, pooled HTTP keepalive connection to this backend; 0 is treated as unlimited.
     # @option opts [String] :name The name of the backend.
     # @option opts [String] :override_host If set, will replace the client-supplied HTTP &#x60;Host&#x60; header on connections to this backend. Applied after VCL has been processed, so this setting will take precedence over changing &#x60;bereq.http.Host&#x60; in VCL.
     # @option opts [Integer] :port Port on which the backend server is listening for connections from Fastly. Setting &#x60;port&#x60; to 80 or 443 will also set &#x60;use_ssl&#x60; automatically (to false and true respectively), unless explicitly overridden by setting &#x60;use_ssl&#x60; in the same request.
@@ -580,8 +590,10 @@ module Fastly
       form_params['ipv6'] = opts[:'ipv6'] if !opts[:'ipv6'].nil?
       form_params['keepalive_time'] = opts[:'keepalive_time'] if !opts[:'keepalive_time'].nil?
       form_params['max_conn'] = opts[:'max_conn'] if !opts[:'max_conn'].nil?
+      form_params['max_lifetime'] = opts[:'max_lifetime'] if !opts[:'max_lifetime'].nil?
       form_params['max_tls_version'] = opts[:'max_tls_version'] if !opts[:'max_tls_version'].nil?
       form_params['min_tls_version'] = opts[:'min_tls_version'] if !opts[:'min_tls_version'].nil?
+      form_params['max_use'] = opts[:'max_use'] if !opts[:'max_use'].nil?
       form_params['name'] = opts[:'name'] if !opts[:'name'].nil?
       form_params['override_host'] = opts[:'override_host'] if !opts[:'override_host'].nil?
       form_params['port'] = opts[:'port'] if !opts[:'port'].nil?

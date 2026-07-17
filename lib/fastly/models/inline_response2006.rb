@@ -33,8 +33,8 @@ module Fastly
     # Attribute type mapping.
     def self.fastly_types
       {
-        :'data' => :'Array<DdosProtectionRuleWithStats>',
-        :'meta' => :'PaginationCursorMeta'
+        :'data' => :'Array<Page>',
+        :'meta' => :'PaginationMeta'
       }
     end
 
@@ -74,22 +74,12 @@ module Fastly
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if @data.nil?
-        invalid_properties.push('invalid value for "data", data cannot be nil.')
-      end
-
-      if @meta.nil?
-        invalid_properties.push('invalid value for "meta", meta cannot be nil.')
-      end
-
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if @data.nil?
-      return false if @meta.nil?
       true
     end
 

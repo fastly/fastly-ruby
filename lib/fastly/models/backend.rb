@@ -49,17 +49,23 @@ module Fastly
     # IPv6 address of the backend. May be used as an alternative to `address` to set the backend location.
     attr_accessor :ipv6
 
-    # How long in seconds to keep a persistent connection to the backend between requests. By default, Varnish keeps connections open as long as it can.
+    # How long (in seconds) to keep a persistent connection to the backend between requests. By default, Fastly keeps connections open as long as it can.
     attr_accessor :keepalive_time
 
     # Maximum number of concurrent connections this backend will accept.
     attr_accessor :max_conn
+
+    # Maximum time from creation (in milliseconds) that a pooled HTTP keepalive connection will be eligible for reuse; 0 is treated as unlimited.
+    attr_accessor :max_lifetime
 
     # Maximum allowed TLS version on SSL connections to this backend. If your backend server is not able to negotiate a connection meeting this constraint, a synthetic `503` error response will be generated.
     attr_accessor :max_tls_version
 
     # Minimum allowed TLS version on SSL connections to this backend. If your backend server is not able to negotiate a connection meeting this constraint, a synthetic `503` error response will be generated.
     attr_accessor :min_tls_version
+
+    # Maximum number of requests allowed over a single, pooled HTTP keepalive connection to this backend; 0 is treated as unlimited.
+    attr_accessor :max_use
 
     # The name of the backend.
     attr_accessor :name
@@ -141,8 +147,10 @@ module Fastly
         :'ipv6' => :'ipv6',
         :'keepalive_time' => :'keepalive_time',
         :'max_conn' => :'max_conn',
+        :'max_lifetime' => :'max_lifetime',
         :'max_tls_version' => :'max_tls_version',
         :'min_tls_version' => :'min_tls_version',
+        :'max_use' => :'max_use',
         :'name' => :'name',
         :'override_host' => :'override_host',
         :'port' => :'port',
@@ -189,8 +197,10 @@ module Fastly
         :'ipv6' => :'String',
         :'keepalive_time' => :'Integer',
         :'max_conn' => :'Integer',
+        :'max_lifetime' => :'Integer',
         :'max_tls_version' => :'String',
         :'min_tls_version' => :'String',
+        :'max_use' => :'Integer',
         :'name' => :'String',
         :'override_host' => :'String',
         :'port' => :'Integer',
@@ -225,8 +235,10 @@ module Fastly
         :'ipv4',
         :'ipv6',
         :'keepalive_time',
+        :'max_lifetime',
         :'max_tls_version',
         :'min_tls_version',
+        :'max_use',
         :'override_host',
         :'share_key',
         :'shield',
@@ -316,12 +328,20 @@ module Fastly
         self.max_conn = attributes[:'max_conn']
       end
 
+      if attributes.key?(:'max_lifetime')
+        self.max_lifetime = attributes[:'max_lifetime']
+      end
+
       if attributes.key?(:'max_tls_version')
         self.max_tls_version = attributes[:'max_tls_version']
       end
 
       if attributes.key?(:'min_tls_version')
         self.min_tls_version = attributes[:'min_tls_version']
+      end
+
+      if attributes.key?(:'max_use')
+        self.max_use = attributes[:'max_use']
       end
 
       if attributes.key?(:'name')
@@ -466,8 +486,10 @@ module Fastly
           ipv6 == o.ipv6 &&
           keepalive_time == o.keepalive_time &&
           max_conn == o.max_conn &&
+          max_lifetime == o.max_lifetime &&
           max_tls_version == o.max_tls_version &&
           min_tls_version == o.min_tls_version &&
+          max_use == o.max_use &&
           name == o.name &&
           override_host == o.override_host &&
           port == o.port &&
@@ -500,7 +522,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [address, auto_loadbalance, between_bytes_timeout, client_cert, comment, connect_timeout, first_byte_timeout, fetch_timeout, healthcheck, hostname, ipv4, ipv6, keepalive_time, max_conn, max_tls_version, min_tls_version, name, override_host, port, prefer_ipv6, request_condition, share_key, shield, ssl_ca_cert, ssl_cert_hostname, ssl_check_cert, ssl_ciphers, ssl_client_cert, ssl_client_key, ssl_hostname, ssl_sni_hostname, tcp_keepalive_enable, tcp_keepalive_interval, tcp_keepalive_probes, tcp_keepalive_time, use_ssl, weight].hash
+      [address, auto_loadbalance, between_bytes_timeout, client_cert, comment, connect_timeout, first_byte_timeout, fetch_timeout, healthcheck, hostname, ipv4, ipv6, keepalive_time, max_conn, max_lifetime, max_tls_version, min_tls_version, max_use, name, override_host, port, prefer_ipv6, request_condition, share_key, shield, ssl_ca_cert, ssl_cert_hostname, ssl_check_cert, ssl_ciphers, ssl_client_cert, ssl_client_key, ssl_hostname, ssl_sni_hostname, tcp_keepalive_enable, tcp_keepalive_interval, tcp_keepalive_probes, tcp_keepalive_time, use_ssl, weight].hash
     end
 
     # Builds the object from hash

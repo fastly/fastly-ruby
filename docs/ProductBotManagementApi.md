@@ -16,7 +16,9 @@ Method | HTTP request | Description
 [**disable_product_bot_management**](ProductBotManagementApi.md#disable_product_bot_management) | **DELETE** /enabled-products/v1/bot_management/services/{service_id} | Disable product
 [**enable_product_bot_management**](ProductBotManagementApi.md#enable_product_bot_management) | **PUT** /enabled-products/v1/bot_management/services/{service_id} | Enable product
 [**get_product_bot_management**](ProductBotManagementApi.md#get_product_bot_management) | **GET** /enabled-products/v1/bot_management/services/{service_id} | Get product enablement status
+[**get_product_bot_management_configuration**](ProductBotManagementApi.md#get_product_bot_management_configuration) | **GET** /enabled-products/v1/bot_management/services/{service_id}/configuration | Get configuration
 [**get_services_product_bot_management**](ProductBotManagementApi.md#get_services_product_bot_management) | **GET** /enabled-products/v1/bot_management/services | Get services with product enabled
+[**set_product_bot_management_configuration**](ProductBotManagementApi.md#set_product_bot_management_configuration) | **PATCH** /enabled-products/v1/bot_management/services/{service_id}/configuration | Update configuration
 
 
 ## `disable_product_bot_management()`
@@ -129,6 +131,43 @@ end
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)
+## `get_product_bot_management_configuration()`
+
+```ruby
+get_product_bot_management_configuration(opts): <BotManagementResponseConfigure> # Get configuration
+```
+
+Get the configuration of the Bot Management product on a service.
+
+### Examples
+
+```ruby
+api_instance = Fastly::ProductBotManagementApi.new
+opts = {
+    service_id: 'service_id_example', # String | Alphanumeric string identifying the service.
+}
+
+begin
+  # Get configuration
+  result = api_instance.get_product_bot_management_configuration(opts)
+  p result
+rescue Fastly::ApiError => e
+  puts "Error when calling ProductBotManagementApi->get_product_bot_management_configuration: #{e}"
+end
+```
+
+### Options
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **service_id** | **String** | Alphanumeric string identifying the service. |  |
+
+### Return type
+
+[**BotManagementResponseConfigure**](BotManagementResponseConfigure.md)
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
 ## `get_services_product_bot_management()`
 
 ```ruby
@@ -158,6 +197,45 @@ This endpoint does not need any parameter.
 ### Return type
 
 [**BotManagementResponseBodyGetAllServices**](BotManagementResponseBodyGetAllServices.md)
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+## `set_product_bot_management_configuration()`
+
+```ruby
+set_product_bot_management_configuration(opts): <BotManagementResponseConfigure> # Update configuration
+```
+
+Update the configuration of the Bot Management product on a service.
+
+### Examples
+
+```ruby
+api_instance = Fastly::ProductBotManagementApi.new
+opts = {
+    service_id: 'service_id_example', # String | Alphanumeric string identifying the service.
+    bot_management_request_update_configuration: Fastly::BotManagementRequestUpdateConfiguration.new({contentguard: 'false'}), # BotManagementRequestUpdateConfiguration | 
+}
+
+begin
+  # Update configuration
+  result = api_instance.set_product_bot_management_configuration(opts)
+  p result
+rescue Fastly::ApiError => e
+  puts "Error when calling ProductBotManagementApi->set_product_bot_management_configuration: #{e}"
+end
+```
+
+### Options
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **service_id** | **String** | Alphanumeric string identifying the service. |  |
+| **bot_management_request_update_configuration** | [**BotManagementRequestUpdateConfiguration**](BotManagementRequestUpdateConfiguration.md) |  | [optional] |
+
+### Return type
+
+[**BotManagementResponseConfigure**](BotManagementResponseConfigure.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)

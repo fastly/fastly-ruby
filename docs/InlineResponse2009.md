@@ -4,7 +4,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **results** | [**Array&lt;Suggestion&gt;**](Suggestion.md) |  | [optional] |
+| **data** | [**Array&lt;Report&gt;**](Report.md) |  | [optional] |
+| **meta** | [**PaginationMeta**](PaginationMeta.md) |  | [optional] |
 
 [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
 

@@ -34,7 +34,7 @@ module Fastly
     def self.fastly_types
       {
         :'links' => :'PaginationLinks',
-        :'meta' => :'PaginationMeta'
+        :'meta' => :'PaginationMeta1'
       }
     end
 

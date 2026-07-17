@@ -33,8 +33,8 @@ module Fastly
     # Attribute type mapping.
     def self.fastly_types
       {
-        :'data' => :'Array<String>',
-        :'meta' => :'PaginationCursorMeta'
+        :'data' => :'Array<HeaderEvent>',
+        :'meta' => :'PaginationMeta'
       }
     end
 

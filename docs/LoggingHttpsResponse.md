@@ -19,7 +19,7 @@
 | **url** | **String** | The URL to send logs to. Must use HTTPS. Required. | [optional] |
 | **content_type** | **String** | Content type of the header sent with the request. | [optional][default to &#39;null&#39;] |
 | **header_name** | **String** | Name of the custom header sent with the request. | [optional][default to &#39;null&#39;] |
-| **message_type** | [**LoggingMessageType**](LoggingMessageType.md) |  | [optional][default to &#39;classic&#39;] |
+| **message_type** | [**LoggingMessageType**](LoggingMessageType.md) |  | [optional][default to &#39;blank&#39;] |
 | **header_value** | **String** | Value of the custom header sent with the request. | [optional][default to &#39;null&#39;] |
 | **method** | **String** | HTTP method used for request. | [optional][default to &#39;POST&#39;] |
 | **json_format** | **String** | Enforces valid JSON formatting for log entries. | [optional] |

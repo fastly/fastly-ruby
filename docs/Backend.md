@@ -16,10 +16,12 @@
 | **hostname** | **String** | The hostname of the backend. May be used as an alternative to `address` to set the backend location. | [optional] |
 | **ipv4** | **String** | IPv4 address of the backend. May be used as an alternative to `address` to set the backend location. | [optional] |
 | **ipv6** | **String** | IPv6 address of the backend. May be used as an alternative to `address` to set the backend location. | [optional] |
-| **keepalive_time** | **Integer** | How long in seconds to keep a persistent connection to the backend between requests. By default, Varnish keeps connections open as long as it can. | [optional] |
+| **keepalive_time** | **Integer** | How long (in seconds) to keep a persistent connection to the backend between requests. By default, Fastly keeps connections open as long as it can. | [optional] |
 | **max_conn** | **Integer** | Maximum number of concurrent connections this backend will accept. | [optional] |
+| **max_lifetime** | **Integer** | Maximum time from creation (in milliseconds) that a pooled HTTP keepalive connection will be eligible for reuse; 0 is treated as unlimited. | [optional] |
 | **max_tls_version** | **String** | Maximum allowed TLS version on SSL connections to this backend. If your backend server is not able to negotiate a connection meeting this constraint, a synthetic `503` error response will be generated. | [optional] |
 | **min_tls_version** | **String** | Minimum allowed TLS version on SSL connections to this backend. If your backend server is not able to negotiate a connection meeting this constraint, a synthetic `503` error response will be generated. | [optional] |
+| **max_use** | **Integer** | Maximum number of requests allowed over a single, pooled HTTP keepalive connection to this backend; 0 is treated as unlimited. | [optional] |
 | **name** | **String** | The name of the backend. | [optional] |
 | **override_host** | **String** | If set, will replace the client-supplied HTTP `Host` header on connections to this backend. Applied after VCL has been processed, so this setting will take precedence over changing `bereq.http.Host` in VCL. | [optional] |
 | **port** | **Integer** | Port on which the backend server is listening for connections from Fastly. Setting `port` to 80 or 443 will also set `use_ssl` automatically (to false and true respectively), unless explicitly overridden by setting `use_ssl` in the same request. | [optional] |
