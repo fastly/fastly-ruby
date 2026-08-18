@@ -8,7 +8,7 @@ A Ruby client library for interacting with most facets of the [Fastly API](https
 To install via RubyGems, add the following to your project's `Gemfile`:
 
 ```ruby
-gem 'fastly', '~> 17.0.0'
+gem 'fastly', '~> 17.1.0'
 ```
 
 Then run `bundle install`.
@@ -349,6 +349,7 @@ Class | Method | Description
 [*Fastly::LoggingElasticsearchApi*](docs/LoggingElasticsearchApi.md) | [**get_log_elasticsearch**](docs/LoggingElasticsearchApi.md#get_log_elasticsearch) | Get an Elasticsearch log endpoint
 [*Fastly::LoggingElasticsearchApi*](docs/LoggingElasticsearchApi.md) | [**list_log_elasticsearch**](docs/LoggingElasticsearchApi.md#list_log_elasticsearch) | List Elasticsearch log endpoints
 [*Fastly::LoggingElasticsearchApi*](docs/LoggingElasticsearchApi.md) | [**update_log_elasticsearch**](docs/LoggingElasticsearchApi.md#update_log_elasticsearch) | Update an Elasticsearch log endpoint
+[*Fastly::LoggingEndpointErrorsApi*](docs/LoggingEndpointErrorsApi.md) | [**get_log_endpoint_errors**](docs/LoggingEndpointErrorsApi.md#get_log_endpoint_errors) | Stream Log Endpoint Errors
 [*Fastly::LoggingFtpApi*](docs/LoggingFtpApi.md) | [**create_log_ftp**](docs/LoggingFtpApi.md#create_log_ftp) | Create an FTP log endpoint
 [*Fastly::LoggingFtpApi*](docs/LoggingFtpApi.md) | [**delete_log_ftp**](docs/LoggingFtpApi.md#delete_log_ftp) | Delete an FTP log endpoint
 [*Fastly::LoggingFtpApi*](docs/LoggingFtpApi.md) | [**get_log_ftp**](docs/LoggingFtpApi.md#get_log_ftp) | Get an FTP log endpoint

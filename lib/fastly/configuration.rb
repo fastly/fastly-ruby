@@ -1964,6 +1964,12 @@ module Fastly
           description: "No description provided",
           }
         ],
+        "LoggingEndpointErrorsApi.get_log_endpoint_errors": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
         "LoggingFtpApi.create_log_ftp": [
           {
           url: "https://api.fastly.com",

@@ -131,6 +131,12 @@
 | **compute_resp_status_505** | **Integer** | Number of responses delivered with status code 505 (HTTP Version Not Supported) by the Compute platform. | [optional] |
 | **compute_resp_status_530** | **Integer** | Number of responses delivered with status code 530 by the Compute platform. | [optional] |
 | **compute_resp_status_5xx** | **Integer** | Number of \&quot;Server Error\&quot; category status codes delivered by the Compute platform. | [optional] |
+| **http2** | **Integer** | Number of requests received over HTTP/2. | [optional] |
+| **http3** | **Integer** | Number of requests received over HTTP/3. | [optional] |
+| **tls_v10** | **Integer** | Number of requests received over TLS 1.0. | [optional] |
+| **tls_v11** | **Integer** | Number of requests received over TLS 1.1. | [optional] |
+| **tls_v12** | **Integer** | Number of requests received over TLS 1.2. | [optional] |
+| **tls_v13** | **Integer** | Number of requests received over TLS 1.3. | [optional] |
 
 [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
 
