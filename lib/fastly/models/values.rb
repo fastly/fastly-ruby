@@ -413,6 +413,9 @@ module Fastly
     # Number of requests received over TLS 1.3.
     attr_accessor :tls_v13
 
+    # Number of responses sent with status code 499 (Client Disconnected).
+    attr_accessor :status_499
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -548,7 +551,8 @@ module Fastly
         :'tls_v10' => :'tls_v10',
         :'tls_v11' => :'tls_v11',
         :'tls_v12' => :'tls_v12',
-        :'tls_v13' => :'tls_v13'
+        :'tls_v13' => :'tls_v13',
+        :'status_499' => :'status_499'
       }
     end
 
@@ -692,7 +696,8 @@ module Fastly
         :'tls_v10' => :'Integer',
         :'tls_v11' => :'Integer',
         :'tls_v12' => :'Integer',
-        :'tls_v13' => :'Integer'
+        :'tls_v13' => :'Integer',
+        :'status_499' => :'Integer'
       }
     end
 
@@ -1248,6 +1253,10 @@ module Fastly
       if attributes.key?(:'tls_v13')
         self.tls_v13 = attributes[:'tls_v13']
       end
+
+      if attributes.key?(:'status_499')
+        self.status_499 = attributes[:'status_499']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -1400,7 +1409,8 @@ module Fastly
           tls_v10 == o.tls_v10 &&
           tls_v11 == o.tls_v11 &&
           tls_v12 == o.tls_v12 &&
-          tls_v13 == o.tls_v13
+          tls_v13 == o.tls_v13 &&
+          status_499 == o.status_499
     end
 
     # @see the `==` method
@@ -1412,7 +1422,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [edge_requests, edge_resp_header_bytes, edge_resp_body_bytes, status_1xx, status_2xx, status_3xx, status_4xx, status_5xx, status_200, status_204, status_206, status_301, status_302, status_304, status_400, status_401, status_403, status_404, status_416, status_429, status_500, status_501, status_502, status_503, status_504, status_505, status_530, requests, resp_header_bytes, resp_body_bytes, bereq_header_bytes, bereq_body_bytes, edge_hit_requests, edge_miss_requests, origin_fetches, origin_fetch_resp_header_bytes, origin_fetch_resp_body_bytes, bandwidth, edge_hit_ratio, origin_offload, origin_status_200, origin_status_204, origin_status_206, origin_status_301, origin_status_302, origin_status_304, origin_status_400, origin_status_401, origin_status_403, origin_status_404, origin_status_416, origin_status_429, origin_status_500, origin_status_501, origin_status_502, origin_status_503, origin_status_504, origin_status_505, origin_status_530, origin_status_1xx, origin_status_2xx, origin_status_3xx, origin_status_4xx, origin_status_5xx, compute_bereq_body_bytes, compute_bereq_errors, compute_bereq_header_bytes, compute_bereqs, compute_beresp_body_bytes, compute_beresp_header_bytes, compute_execution_time_ms, compute_origin_status_1xx, compute_origin_status_200, compute_origin_status_204, compute_origin_status_206, compute_origin_status_2xx, compute_origin_status_301, compute_origin_status_302, compute_origin_status_304, compute_origin_status_3xx, compute_origin_status_400, compute_origin_status_401, compute_origin_status_403, compute_origin_status_404, compute_origin_status_416, compute_origin_status_429, compute_origin_status_4xx, compute_origin_status_500, compute_origin_status_501, compute_origin_status_502, compute_origin_status_503, compute_origin_status_504, compute_origin_status_505, compute_origin_status_530, compute_origin_status_5xx, compute_req_body_bytes, compute_req_header_bytes, compute_request_time_billed_ms, compute_request_time_ms, compute_request, compute_resp_body_bytes, compute_resp_header_bytes, compute_resp_status_103, compute_resp_status_1xx, compute_resp_status_200, compute_resp_status_204, compute_resp_status_206, compute_resp_status_2xx, compute_resp_status_301, compute_resp_status_302, compute_resp_status_304, compute_resp_status_3xx, compute_resp_status_400, compute_resp_status_401, compute_resp_status_403, compute_resp_status_404, compute_resp_status_416, compute_resp_status_429, compute_resp_status_4xx, compute_resp_status_500, compute_resp_status_501, compute_resp_status_502, compute_resp_status_503, compute_resp_status_504, compute_resp_status_505, compute_resp_status_530, compute_resp_status_5xx, http2, http3, tls_v10, tls_v11, tls_v12, tls_v13].hash
+      [edge_requests, edge_resp_header_bytes, edge_resp_body_bytes, status_1xx, status_2xx, status_3xx, status_4xx, status_5xx, status_200, status_204, status_206, status_301, status_302, status_304, status_400, status_401, status_403, status_404, status_416, status_429, status_500, status_501, status_502, status_503, status_504, status_505, status_530, requests, resp_header_bytes, resp_body_bytes, bereq_header_bytes, bereq_body_bytes, edge_hit_requests, edge_miss_requests, origin_fetches, origin_fetch_resp_header_bytes, origin_fetch_resp_body_bytes, bandwidth, edge_hit_ratio, origin_offload, origin_status_200, origin_status_204, origin_status_206, origin_status_301, origin_status_302, origin_status_304, origin_status_400, origin_status_401, origin_status_403, origin_status_404, origin_status_416, origin_status_429, origin_status_500, origin_status_501, origin_status_502, origin_status_503, origin_status_504, origin_status_505, origin_status_530, origin_status_1xx, origin_status_2xx, origin_status_3xx, origin_status_4xx, origin_status_5xx, compute_bereq_body_bytes, compute_bereq_errors, compute_bereq_header_bytes, compute_bereqs, compute_beresp_body_bytes, compute_beresp_header_bytes, compute_execution_time_ms, compute_origin_status_1xx, compute_origin_status_200, compute_origin_status_204, compute_origin_status_206, compute_origin_status_2xx, compute_origin_status_301, compute_origin_status_302, compute_origin_status_304, compute_origin_status_3xx, compute_origin_status_400, compute_origin_status_401, compute_origin_status_403, compute_origin_status_404, compute_origin_status_416, compute_origin_status_429, compute_origin_status_4xx, compute_origin_status_500, compute_origin_status_501, compute_origin_status_502, compute_origin_status_503, compute_origin_status_504, compute_origin_status_505, compute_origin_status_530, compute_origin_status_5xx, compute_req_body_bytes, compute_req_header_bytes, compute_request_time_billed_ms, compute_request_time_ms, compute_request, compute_resp_body_bytes, compute_resp_header_bytes, compute_resp_status_103, compute_resp_status_1xx, compute_resp_status_200, compute_resp_status_204, compute_resp_status_206, compute_resp_status_2xx, compute_resp_status_301, compute_resp_status_302, compute_resp_status_304, compute_resp_status_3xx, compute_resp_status_400, compute_resp_status_401, compute_resp_status_403, compute_resp_status_404, compute_resp_status_416, compute_resp_status_429, compute_resp_status_4xx, compute_resp_status_500, compute_resp_status_501, compute_resp_status_502, compute_resp_status_503, compute_resp_status_504, compute_resp_status_505, compute_resp_status_530, compute_resp_status_5xx, http2, http3, tls_v10, tls_v11, tls_v12, tls_v13, status_499].hash
     end
 
     # Builds the object from hash

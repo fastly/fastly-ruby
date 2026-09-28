@@ -78,6 +78,8 @@
 | **attack_passed_req_header_bytes** | **Integer** | Total header bytes received from requests that triggered a WAF rule that was passed. | [optional] |
 | **attack_resp_synth_bytes** | **Integer** | Total bytes delivered for requests that triggered a WAF rule and returned a synthetic response. | [optional] |
 | **imgopto** | **Integer** | Number of responses that came from the Fastly Image Optimizer service. If the service receives 10 requests for an image, this stat will be 10 regardless of how many times the image was transformed. | [optional] |
+| **imgopto_input_image_bytes** | **Integer** | The total image bytes that would have been delivered if the images had not been transformed by the Fastly Image Optimizer. Bytes are counted once per client request. Byte counts exclude shield traffic and requests where Fastly Image Optimizer proxied a request without attempting to transform it (e.g., file types that are not supported by Image Optimizer). | [optional] |
+| **imgopto_output_image_bytes** | **Integer** | The total image bytes delivered that have been transformed by the Fastly Image Optimizer. Bytes are counted once per client request. Byte counts exclude shield traffic and requests where Fastly Image Optimizer proxied a request without attempting to transform it (e.g., file types that are not supported by Image Optimizer). | [optional] |
 | **imgopto_resp_body_bytes** | **Integer** | Total body bytes delivered from the Fastly Image Optimizer service, including shield traffic. | [optional] |
 | **imgopto_resp_header_bytes** | **Integer** | Total header bytes delivered from the Fastly Image Optimizer service, including shield traffic. | [optional] |
 | **imgopto_shield** | **Integer** | Number of responses that came from the Fastly Image Optimizer service via a shield. | [optional] |
@@ -349,6 +351,19 @@
 | **compute_service_bereq_http_error** | **Integer** | Number of backend requests from a Compute service that failed at the HTTP protocol level. Sum of `compute_service_bereq_http_proto_v1_error`, `compute_service_bereq_http_proto_v2_error`, `compute_service_bereq_http_incomplete_error`, `compute_service_bereq_http_timeout_error`, and `compute_service_bereq_http_other_error`. | [optional] |
 | **bot_challenges_pats_issued** | **Integer** | Number of Private Access Token challenges issued. | [optional] |
 | **bot_challenges_pats_succeeded** | **Integer** | Number of successful Private Access Token challenge solutions processed. | [optional] |
+| **bot_edge_requests_headless_count** | **Integer** | Number of edge requests where a headless bot was detected. | [optional] |
+| **status_499** | **Integer** | Number of responses sent with status code 499 (Client Disconnected). | [optional] |
+| **arc_requests** | **Integer** | Number of requests received by AI Runtime Control. | [optional] |
+| **ddos_challenge_complete_tokens_checked** | **Integer** | The number of challenge-complete tokens checked while enforcing DDoS protection rules. | [optional] |
+| **ddos_challenge_complete_tokens_passed** | **Integer** | The number of challenge-complete tokens that passed validation while enforcing DDoS protection rules. | [optional] |
+| **ddos_challenge_complete_tokens_failed** | **Integer** | The number of challenge-complete tokens that failed validation while enforcing DDoS protection rules. | [optional] |
+| **ddos_challenge_starts** | **Integer** | The number of challenge-start tokens created while enforcing DDoS protection rules. | [optional] |
+| **ddos_challenge_complete_tokens_issued** | **Integer** | Number of challenge-complete tokens issued as a result of a DDoS action. For example, issuing a challenge-complete token after a series of CAPTCHA challenges ending in success. | [optional] |
+| **ddos_challenges_issued** | **Integer** | Number of challenges issued from a DDoS action. | [optional] |
+| **ddos_challenges_succeeded** | **Integer** | Number of successful challenge solutions processed as a result of a DDoS action. For example, a correct CAPTCHA solution. | [optional] |
+| **ddos_challenges_failed** | **Integer** | Number of failed challenge solutions processed as a result of a DDoS action. For example, an incorrect CAPTCHA solution. | [optional] |
+| **ddos_challenges_pats_issued** | **Integer** | Number of Private Access Token challenges issued as a result of a DDoS action. | [optional] |
+| **ddos_challenges_pats_succeeded** | **Integer** | Number of successful Private Access Token challenge solutions processed as a result of a DDoS action. | [optional] |
 | **service_id** | **String** |  | [optional][readonly] |
 | **start_time** | **Integer** | Timestamp for the start of the time period being reported | [optional] |
 
