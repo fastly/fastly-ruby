@@ -21,6 +21,7 @@ module Fastly
     # Instant Purge a particular service of items tagged with surrogate keys. Up to 256 surrogate keys can be purged in one batch request. As an alternative to sending the keys in a JSON object in the body of the request, this endpoint also supports listing keys in a <code>Surrogate-Key</code> request header, e.g. <code>Surrogate-Key: key_1 key_2 key_3</code>. 
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
     # @option opts [Integer] :fastly_soft_purge If present, this header triggers the purge to be &#39;soft&#39;, which marks the affected object as stale rather than making it inaccessible.  Typically set to \&quot;1\&quot; when used, but the value is not important.
+    # @option opts [String] :fastly_purge_environment Set to &#x60;staging&#x60; to purge the cache of the service&#39;s [staging environment](https://www.fastly.com/documentation/guides/getting-started/services/working-with-staging/) instead of its production environment. If this header is not present, the purge applies to the production environment.
     # @option opts [String] :surrogate_key Purge multiple surrogate key tags using a request header. Not required if a JSON POST body is specified.
     # @option opts [PurgeResponse] :purge_response 
     # @return [Hash<String, String>]
@@ -33,6 +34,7 @@ module Fastly
     # Instant Purge a particular service of items tagged with surrogate keys. Up to 256 surrogate keys can be purged in one batch request. As an alternative to sending the keys in a JSON object in the body of the request, this endpoint also supports listing keys in a &lt;code&gt;Surrogate-Key&lt;/code&gt; request header, e.g. &lt;code&gt;Surrogate-Key: key_1 key_2 key_3&lt;/code&gt;. 
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
     # @option opts [Integer] :fastly_soft_purge If present, this header triggers the purge to be &#39;soft&#39;, which marks the affected object as stale rather than making it inaccessible.  Typically set to \&quot;1\&quot; when used, but the value is not important.
+    # @option opts [String] :fastly_purge_environment Set to &#x60;staging&#x60; to purge the cache of the service&#39;s [staging environment](https://www.fastly.com/documentation/guides/getting-started/services/working-with-staging/) instead of its production environment. If this header is not present, the purge applies to the production environment.
     # @option opts [String] :surrogate_key Purge multiple surrogate key tags using a request header. Not required if a JSON POST body is specified.
     # @option opts [PurgeResponse] :purge_response 
     # @return [Array<(Hash<String, String>, Integer, Hash)>] Hash<String, String> data, response status code and response headers
@@ -42,6 +44,10 @@ module Fastly
       end
       # unbox the parameters from the hash
       service_id = opts[:'service_id']
+      allowable_values = ["staging"]
+      if @api_client.config.client_side_validation && opts[:'fastly_purge_environment'] && !allowable_values.include?(opts[:'fastly_purge_environment'])
+        fail ArgumentError, "invalid value for \"fastly_purge_environment\", must be one of #{allowable_values}"
+      end
       # verify the required parameter 'service_id' is set
       if @api_client.config.client_side_validation && service_id.nil?
         fail ArgumentError, "Missing the required parameter 'service_id' when calling PurgeApi.bulk_purge_tag"
@@ -62,6 +68,7 @@ module Fastly
           header_params['Content-Type'] = content_type
       end
       header_params[:'fastly-soft-purge'] = opts[:'fastly_soft_purge'] if !opts[:'fastly_soft_purge'].nil?
+      header_params[:'fastly-purge-environment'] = opts[:'fastly_purge_environment'] if !opts[:'fastly_purge_environment'].nil?
       header_params[:'surrogate-key'] = opts[:'surrogate_key'] if !opts[:'surrogate_key'].nil?
 
       # form parameters
@@ -96,6 +103,7 @@ module Fastly
     # Purge everything from a service
     # Instant Purge everything from a service.  Purge-all requests cannot be done in soft mode and will always immediately invalidate all cached content associated with the service. To do a soft-purge-all, consider applying a constant [surrogate key](https://www.fastly.com/documentation/guides/full-site-delivery/purging/working-with-surrogate-keys/) tag (e.g., `\"all\"`) to all objects. 
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
+    # @option opts [String] :fastly_purge_environment Set to &#x60;staging&#x60; to purge the cache of the service&#39;s [staging environment](https://www.fastly.com/documentation/guides/getting-started/services/working-with-staging/) instead of its production environment. If this header is not present, the purge applies to the production environment.
     # @return [InlineResponse200]
     def purge_all(opts = {})
       data, _status_code, _headers = purge_all_with_http_info(opts)
@@ -105,6 +113,7 @@ module Fastly
     # Purge everything from a service
     # Instant Purge everything from a service.  Purge-all requests cannot be done in soft mode and will always immediately invalidate all cached content associated with the service. To do a soft-purge-all, consider applying a constant [surrogate key](https://www.fastly.com/documentation/guides/full-site-delivery/purging/working-with-surrogate-keys/) tag (e.g., &#x60;\&quot;all\&quot;&#x60;) to all objects. 
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
+    # @option opts [String] :fastly_purge_environment Set to &#x60;staging&#x60; to purge the cache of the service&#39;s [staging environment](https://www.fastly.com/documentation/guides/getting-started/services/working-with-staging/) instead of its production environment. If this header is not present, the purge applies to the production environment.
     # @return [Array<(InlineResponse200, Integer, Hash)>] InlineResponse200 data, response status code and response headers
     def purge_all_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -116,6 +125,10 @@ module Fastly
       if @api_client.config.client_side_validation && service_id.nil?
         fail ArgumentError, "Missing the required parameter 'service_id' when calling PurgeApi.purge_all"
       end
+      allowable_values = ["staging"]
+      if @api_client.config.client_side_validation && opts[:'fastly_purge_environment'] && !allowable_values.include?(opts[:'fastly_purge_environment'])
+        fail ArgumentError, "invalid value for \"fastly_purge_environment\", must be one of #{allowable_values}"
+      end
       # resource path
       local_var_path = '/service/{service_id}/purge_all'.sub('{' + 'service_id' + '}', CGI.escape(service_id.to_s))
 
@@ -126,6 +139,7 @@ module Fastly
       header_params = opts[:header_params] || {}
       # HTTP header 'Accept' (if needed)
       header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      header_params[:'fastly-purge-environment'] = opts[:'fastly_purge_environment'] if !opts[:'fastly_purge_environment'].nil?
 
       # form parameters
       form_params = opts[:form_params] || {}
@@ -227,6 +241,7 @@ module Fastly
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
     # @option opts [String] :surrogate_key Surrogate keys are used to efficiently purge content from cache. Instead of purging your entire site or individual URLs, you can tag related assets (like all images and descriptions associated with a single product) with surrogate keys, and these grouped URLs can be purged in a single request. (required)
     # @option opts [Integer] :fastly_soft_purge If present, this header triggers the purge to be &#39;soft&#39;, which marks the affected object as stale rather than making it inaccessible.  Typically set to \&quot;1\&quot; when used, but the value is not important.
+    # @option opts [String] :fastly_purge_environment Set to &#x60;staging&#x60; to purge the cache of the service&#39;s [staging environment](https://www.fastly.com/documentation/guides/getting-started/services/working-with-staging/) instead of its production environment. If this header is not present, the purge applies to the production environment.
     # @return [PurgeResponse]
     def purge_tag(opts = {})
       data, _status_code, _headers = purge_tag_with_http_info(opts)
@@ -238,6 +253,7 @@ module Fastly
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
     # @option opts [String] :surrogate_key Surrogate keys are used to efficiently purge content from cache. Instead of purging your entire site or individual URLs, you can tag related assets (like all images and descriptions associated with a single product) with surrogate keys, and these grouped URLs can be purged in a single request. (required)
     # @option opts [Integer] :fastly_soft_purge If present, this header triggers the purge to be &#39;soft&#39;, which marks the affected object as stale rather than making it inaccessible.  Typically set to \&quot;1\&quot; when used, but the value is not important.
+    # @option opts [String] :fastly_purge_environment Set to &#x60;staging&#x60; to purge the cache of the service&#39;s [staging environment](https://www.fastly.com/documentation/guides/getting-started/services/working-with-staging/) instead of its production environment. If this header is not present, the purge applies to the production environment.
     # @return [Array<(PurgeResponse, Integer, Hash)>] PurgeResponse data, response status code and response headers
     def purge_tag_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -254,6 +270,10 @@ module Fastly
       if @api_client.config.client_side_validation && surrogate_key.nil?
         fail ArgumentError, "Missing the required parameter 'surrogate_key' when calling PurgeApi.purge_tag"
       end
+      allowable_values = ["staging"]
+      if @api_client.config.client_side_validation && opts[:'fastly_purge_environment'] && !allowable_values.include?(opts[:'fastly_purge_environment'])
+        fail ArgumentError, "invalid value for \"fastly_purge_environment\", must be one of #{allowable_values}"
+      end
       # resource path
       local_var_path = '/service/{service_id}/purge/{surrogate_key}'.sub('{' + 'service_id' + '}', CGI.escape(service_id.to_s)).sub('{' + 'surrogate_key' + '}', surrogate_key.to_s)
 
@@ -265,6 +285,7 @@ module Fastly
       # HTTP header 'Accept' (if needed)
       header_params['Accept'] = @api_client.select_header_accept(['application/json'])
       header_params[:'fastly-soft-purge'] = opts[:'fastly_soft_purge'] if !opts[:'fastly_soft_purge'].nil?
+      header_params[:'fastly-purge-environment'] = opts[:'fastly_purge_environment'] if !opts[:'fastly_purge_environment'].nil?
 
       # form parameters
       form_params = opts[:form_params] || {}

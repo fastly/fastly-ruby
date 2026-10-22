@@ -93,7 +93,7 @@ module Fastly
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      mode_validator = EnumAttributeValidator.new('String', ["false", "log", "block"])
+      mode_validator = EnumAttributeValidator.new('String', ["false", "log", "block", "client_challenge"])
       return false unless mode_validator.valid?(@mode)
       true
     end
@@ -101,7 +101,7 @@ module Fastly
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] mode Object to be assigned
     def mode=(mode)
-      validator = EnumAttributeValidator.new('String', ["false", "log", "block"])
+      validator = EnumAttributeValidator.new('String', ["false", "log", "block", "client_challenge"])
       unless validator.valid?(mode)
         fail ArgumentError, "invalid value for \"mode\", must be one of #{validator.allowable_values}."
       end

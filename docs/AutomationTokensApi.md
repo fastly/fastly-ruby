@@ -16,6 +16,7 @@ Method | HTTP request | Description
 [**create_automation_token**](AutomationTokensApi.md#create_automation_token) | **POST** /automation-tokens | Create Automation Token
 [**get_automation_token_id**](AutomationTokensApi.md#get_automation_token_id) | **GET** /automation-tokens/{id} | Retrieve an Automation Token by ID
 [**get_automation_tokens_id_services**](AutomationTokensApi.md#get_automation_tokens_id_services) | **GET** /automation-tokens/{id}/services | List Automation Token Services
+[**get_automation_tokens_id_workspaces**](AutomationTokensApi.md#get_automation_tokens_id_workspaces) | **GET** /automation-tokens/{id}/workspaces | List Automation Token Workspaces
 [**list_automation_tokens**](AutomationTokensApi.md#list_automation_tokens) | **GET** /automation-tokens | List Customer Automation Tokens
 [**revoke_automation_token_id**](AutomationTokensApi.md#revoke_automation_token_id) | **DELETE** /automation-tokens/{id} | Revoke an Automation Token by ID
 
@@ -33,7 +34,7 @@ Creates a new automation token.
 ```ruby
 api_instance = Fastly::AutomationTokensApi.new
 opts = {
-    automation_token_create_request: Fastly::AutomationTokenCreateRequest.new, # AutomationTokenCreateRequest | 
+    automation_token_create_request: Fastly::AutomationTokenCreateRequest.new({name: 'name_example', expires_at: Time.now}), # AutomationTokenCreateRequest | 
 }
 
 begin
@@ -132,6 +133,47 @@ end
 ### Return type
 
 [**InlineResponse2004**](InlineResponse2004.md)
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to README]](../../README.md)
+## `get_automation_tokens_id_workspaces()`
+
+```ruby
+get_automation_tokens_id_workspaces(opts): <AutomationTokenWorkspacesResponse> # List Automation Token Workspaces
+```
+
+Lists the Next-Gen WAF workspaces accessible by an automation token. Only applicable for tokens with roles that support workspace access (such as Next-Gen WAF roles).
+
+### Examples
+
+```ruby
+api_instance = Fastly::AutomationTokensApi.new
+opts = {
+    id: 'id_example', # String | The alphanumeric string identifying the automation token.
+    limit: 56, # Integer | Maximum number of workspaces to return per page.
+    cursor: 'cursor_example', # String | Pagination cursor from a previous response. Pass the `next_cursor` value to retrieve the next page, or `previous_cursor` to go back.
+}
+
+begin
+  # List Automation Token Workspaces
+  result = api_instance.get_automation_tokens_id_workspaces(opts)
+  p result
+rescue Fastly::ApiError => e
+  puts "Error when calling AutomationTokensApi->get_automation_tokens_id_workspaces: #{e}"
+end
+```
+
+### Options
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **String** | The alphanumeric string identifying the automation token. |  |
+| **limit** | **Integer** | Maximum number of workspaces to return per page. | [optional][default to 20] |
+| **cursor** | **String** | Pagination cursor from a previous response. Pass the `next_cursor` value to retrieve the next page, or `previous_cursor` to go back. | [optional] |
+
+### Return type
+
+[**AutomationTokenWorkspacesResponse**](AutomationTokenWorkspacesResponse.md)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to README]](../../README.md)

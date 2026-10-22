@@ -12,6 +12,7 @@ require 'date'
 require 'time'
 
 module Fastly
+  # Error response format used by automation token endpoints.
   class AutomationTokenErrorResponse
     attr_accessor :detail
 

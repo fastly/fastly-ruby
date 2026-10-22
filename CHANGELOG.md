@@ -1,5 +1,65 @@
 # Changelog
 
+## [v18.0.0](https://github.com/fastly/fastly-ruby/releases/tag/release/v18.0.0) (2026-10-21)
+
+**Breaking Changes:**
+
+- removed(metrics-platform): Removed the `get-platform-metrics-service-historical` operation (`GET /metrics/platform/services/{service_id}/{granularity}`). Use `get-platform-metrics-entity-historical` instead.
+- removed(metrics-platform): Removed the `ttfb_*` fields (`ttfb_edge_p25_us` to `ttfb_edge_p99_us`, `ttfb_origin_*`, and `ttfb_shield_*`) from `platform_values`, and the `ttfb` value from the `metric_set` parameter.
+- changed(automation-tokens): Removed the `attributes` wrapper object from `automation_token_create_request`. `name`, `role`, `services`, `scope`, `expires_at`, and `tls_access` are now top-level fields, and `role` is no longer required.
+- changed(automation-tokens): Added `ngwaf_user_imported`, `ngwaf_admin_imported`, `ngwaf_owner_imported`, `ngwaf_observer_imported`, `tls_admin`, and `tls_viewer` to the `role` enum of token responses.
+- changed(products[ddos_protection]): Added `client_challenge` to the allowed `mode` values for `enable-product-ddos-protection` and `set-product-ddos-protection-configuration`.
+
+
+**Bug fixes:**
+
+- fix(logging_datadog): Correct `request_time_ms` in the default Datadog log format to report elapsed time in milliseconds as a number, rather than microseconds as a string.
+
+
+**Enhancements:**
+
+- feat(metrics-platform): Add the `get-platform-metrics-entity-historical` (`/metrics/v2/platform/entities/{entity_id}/{granularity}`) and `get-platform-metrics-aggregate-historical` (`/metrics/v2/platform/aggregate/{granularity}`) operations, with pagination, metric sets, and flexible grouping.
+- feat(metrics-platform): Add `metric_set` values `delivery_traffic_flow`, `delivery_cache_performance`, `delivery_errors`, `compute_traffic_flow`, `compute_performance`, `compute_errors`, `content_guard`, `content_security`, `ddos`, `domain_api`, `fanout`, `image_opto`, `ngwaf`, `object_storage`, and `websockets`, and add the corresponding metric fields to `platform_values`.
+- feat(bot-requests-metrics): Add the bot request metrics API (`get-bot-request-metrics-service-historical`), which returns historical time series of ContentGuard bot-request metrics for a service, broken down by bot.
+- feat(automation-tokens): Add support for multiple roles with the `roles`, `limit_services`, `limit_workspaces`, and `workspaces` fields on token create requests and token responses.
+- feat(automation-tokens): Add the `get-automation-tokens-id-workspaces` operation to list the Next-Gen WAF workspaces that an automation token can access.
+- feat(historical, realtime): Add new API Enforcement metrics: `api_enforcement_allowed_requests_count` and `api_enforcement_flagged_requests_count`.
+- feat(historical, realtime): Add new Network Protect metrics: `netprotect_gre_sent_bytes`, `netprotect_gre_sent_packets`, `netprotect_received_bytes`, `netprotect_received_packets`, `netprotect_firewall_dropped_bytes`, and `netprotect_firewall_dropped_packets`.
+- feat(historical, realtime): Add new ContentGuard challenge metrics: `bot_edge_challenge_complete_tokens_issued`, `bot_edge_challenges_issued`, `bot_edge_challenges_succeeded`, `bot_edge_challenges_failed`, `bot_edge_challenges_pats_issued`, and `bot_edge_challenges_pats_succeeded`.
+- feat(historical, realtime): Add new AI Runtime Control AI Firewall metrics: `arc_ai_firewall_requests` and `arc_ai_firewall_blocked`.
+
+- feat(purge): Add the optional `Fastly-Purge-Environment` header to `purge-all`, `purge-tag`, and `bulk-purge-tag`.
+  Set it to `staging` to purge the cache of a service's staging environment.
+
+- feat(network-protect): Add the Network Protect API for managing protected networks, GRE delivery endpoints, prefix lists, and traffic-filtering rule sets.
+
+- feat(products): Add `ai_runtime_control` product to enablement API.
+- feat(ai-runtime-control-virtual-keys): Add virtual keys API for AI Runtime Control, covering create/list/get/update/delete/rotate and per-key failover policies.
+- feat(ai-runtime-control-provider-connections): Add provider connections API for AI Runtime Control, supporting API-key and AWS IAM (Bedrock) authentication.
+- feat(ai-runtime-control-providers): Add providers API for AI Runtime Control, covering supported providers, provider models, and Bedrock setup information.
+- feat(ai-runtime-control-usage-metrics): Add usage metrics API for AI Runtime Control, including a CSV export endpoint.
+- feat(ai-runtime-control-sessions): Add session logs API for AI Runtime Control.
+
+- feat(historical, realtime): Add new metric `bot_edge_requests_headless_count`, the number of edge requests where a headless bot was detected.
+- feat(historical, realtime, domain_inspector_historical, domain_inspector_realtime): Add new metric `status_499`, the number of responses sent with status code 499 (Client Disconnected).
+- feat(historical, realtime): Add new metrics `imgopto_input_image_bytes` and `imgopto_output_image_bytes`, describing the total image bytes before and after transformation by the Fastly Image Optimizer.
+- feat(historical, realtime): Add new metric `arc_requests`, the number of requests received by AI Runtime Control.
+- feat(historical, realtime): Add new DDoS protection challenge metrics: `ddos_challenge_complete_tokens_checked`, `ddos_challenge_complete_tokens_passed`, `ddos_challenge_complete_tokens_failed`, `ddos_challenge_starts`, `ddos_challenge_complete_tokens_issued`, `ddos_challenges_issued`, `ddos_challenges_succeeded`, `ddos_challenges_failed`, `ddos_challenges_pats_issued`, and `ddos_challenges_pats_succeeded`.
+
+- feat(bot-management): Add the Bot Management API for configuring ContentGuard, covering workspace protection mode, category actions, per-bot action overrides, and a workspace-wide bot listing.
+
+- feat(events): Add 37 `ngwaf.*` values to `event_type`, covering Next-Gen WAF workspaces, rules, lists, custom signals, redactions, virtual patches, thresholds, workspace alerts, header links, rate limited sources, custom dashboards, request reports, and agent keys.
+
+
+**Documentation:**
+
+- doc(dictionary-item): Correct the documented maximum length of `item_key` from 256 to 255 characters.
+
+- doc(ddos-protection): Add `client_challenge` to the list of supported action values for DDoS protection rules.
+
+- doc(events): Mark the `security.*` Next-Gen WAF `event_type` values as deprecated. They are no longer recorded, and are superseded by their `ngwaf.*` equivalents.
+
+
 ## [v17.1.0](https://github.com/fastly/fastly-ruby/releases/tag/release/v17.1.0) (2026-08-18)
 
 **Enhancements:**

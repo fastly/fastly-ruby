@@ -13,7 +13,7 @@ require 'time'
 
 module Fastly
   class DictionaryItemResponse
-    # Item key, maximum 256 characters.
+    # Item key, maximum 255 characters.
     attr_accessor :item_key
 
     # Item value, maximum 8000 characters.

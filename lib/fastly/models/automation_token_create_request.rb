@@ -13,12 +13,70 @@ require 'time'
 
 module Fastly
   class AutomationTokenCreateRequest
-    attr_accessor :attributes
+    # The name of the token.
+    attr_accessor :name
+
+    # A UTC timestamp of when the token will expire.
+    attr_accessor :expires_at
+
+    # The role for the token. The `roles` field is the preferred way to assign roles. This field is supported for backwards compatibility with single-role tokens.
+    attr_accessor :role
+
+    # Array of role IDs to assign to the token. Use this field for tokens with multiple roles. When provided, this takes precedence over the `role` field. To get available role IDs, use [GET /roles](https://www.fastly.com/documentation/reference/api/account/roles/).
+    attr_accessor :roles
+
+    # List of service IDs the token can access. Only used when `limit_services` is `true`.
+    attr_accessor :services
+
+    # When `true`, restricts the token to only the services specified in the `services` array. When `false` (default), the token has access to all services.
+    attr_accessor :limit_services
+
+    # When `true` (default), restricts the token to only the workspaces specified in the `workspaces` array. When `false`, the token has access to all workspaces. Only applies to roles that support workspace access (such as Next-Gen WAF roles). For roles without workspace support, this field has no effect.
+    attr_accessor :limit_workspaces
+
+    # List of workspace IDs the token can access. Only used when `limit_workspaces` is `true` and the token has roles that support workspace access.
+    attr_accessor :workspaces
+
+    attr_accessor :scope
+
+    # Indicates whether TLS access is enabled for the token. Only applicable when using the single-role `role` field. For tokens with multiple roles, assign TLS roles (`tls_admin` or `tls_viewer`) via the `roles` field instead.
+    attr_accessor :tls_access
+
+    class EnumAttributeValidator
+      attr_reader :datatype
+      attr_reader :allowable_values
+
+      def initialize(datatype, allowable_values)
+        @allowable_values = allowable_values.map do |value|
+          case datatype.to_s
+          when /Integer/i
+            value.to_i
+          when /Float/i
+            value.to_f
+          else
+            value
+          end
+        end
+      end
+
+      def valid?(value)
+        !value || allowable_values.include?(value)
+      end
+    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'attributes' => :'attributes'
+        :'name' => :'name',
+        :'expires_at' => :'expires_at',
+        :'role' => :'role',
+        :'roles' => :'roles',
+        :'services' => :'services',
+        :'limit_services' => :'limit_services',
+        :'limit_workspaces' => :'limit_workspaces',
+        :'workspaces' => :'workspaces',
+        :'scope' => :'scope',
+        :'tls_access' => :'tls_access'
       }
     end
 
@@ -30,13 +88,23 @@ module Fastly
     # Attribute type mapping.
     def self.fastly_types
       {
-        :'attributes' => :'AutomationTokenCreateRequestAttributes'
+        :'name' => :'String',
+        :'expires_at' => :'Time',
+        :'role' => :'String',
+        :'roles' => :'Array<String>',
+        :'services' => :'Array<String>',
+        :'limit_services' => :'Boolean',
+        :'limit_workspaces' => :'Boolean',
+        :'workspaces' => :'Array<String>',
+        :'scope' => :'String',
+        :'tls_access' => :'Boolean'
       }
     end
 
     # List of attributes with nullable: true
     def self.fastly_nullable
       Set.new([
+        :'expires_at',
       ])
     end
 
@@ -55,8 +123,56 @@ module Fastly
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'attributes')
-        self.attributes = attributes[:'attributes']
+      if attributes.key?(:'name')
+        self.name = attributes[:'name']
+      end
+
+      if attributes.key?(:'expires_at')
+        self.expires_at = attributes[:'expires_at']
+      end
+
+      if attributes.key?(:'role')
+        self.role = attributes[:'role']
+      end
+
+      if attributes.key?(:'roles')
+        if (value = attributes[:'roles']).is_a?(Array)
+          self.roles = value
+        end
+      end
+
+      if attributes.key?(:'services')
+        if (value = attributes[:'services']).is_a?(Array)
+          self.services = value
+        end
+      end
+
+      if attributes.key?(:'limit_services')
+        self.limit_services = attributes[:'limit_services']
+      else
+        self.limit_services = false
+      end
+
+      if attributes.key?(:'limit_workspaces')
+        self.limit_workspaces = attributes[:'limit_workspaces']
+      else
+        self.limit_workspaces = true
+      end
+
+      if attributes.key?(:'workspaces')
+        if (value = attributes[:'workspaces']).is_a?(Array)
+          self.workspaces = value
+        end
+      end
+
+      if attributes.key?(:'scope')
+        self.scope = attributes[:'scope']
+      else
+        self.scope = 'global'
+      end
+
+      if attributes.key?(:'tls_access')
+        self.tls_access = attributes[:'tls_access']
       end
     end
 
@@ -64,13 +180,42 @@ module Fastly
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+      if @name.nil?
+        invalid_properties.push('invalid value for "name", name cannot be nil.')
+      end
+
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if @name.nil?
+      role_validator = EnumAttributeValidator.new('String', ["engineer", "billing", "user"])
+      return false unless role_validator.valid?(@role)
+      scope_validator = EnumAttributeValidator.new('String', ["global", "global:read", "purge_all", "purge_select"])
+      return false unless scope_validator.valid?(@scope)
       true
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] role Object to be assigned
+    def role=(role)
+      validator = EnumAttributeValidator.new('String', ["engineer", "billing", "user"])
+      unless validator.valid?(role)
+        fail ArgumentError, "invalid value for \"role\", must be one of #{validator.allowable_values}."
+      end
+      @role = role
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] scope Object to be assigned
+    def scope=(scope)
+      validator = EnumAttributeValidator.new('String', ["global", "global:read", "purge_all", "purge_select"])
+      unless validator.valid?(scope)
+        fail ArgumentError, "invalid value for \"scope\", must be one of #{validator.allowable_values}."
+      end
+      @scope = scope
     end
 
     # Checks equality by comparing each attribute.
@@ -78,7 +223,16 @@ module Fastly
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          attributes == o.attributes
+          name == o.name &&
+          expires_at == o.expires_at &&
+          role == o.role &&
+          roles == o.roles &&
+          services == o.services &&
+          limit_services == o.limit_services &&
+          limit_workspaces == o.limit_workspaces &&
+          workspaces == o.workspaces &&
+          scope == o.scope &&
+          tls_access == o.tls_access
     end
 
     # @see the `==` method
@@ -90,7 +244,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [attributes].hash
+      [name, expires_at, role, roles, services, limit_services, limit_workspaces, workspaces, scope, tls_access].hash
     end
 
     # Builds the object from hash

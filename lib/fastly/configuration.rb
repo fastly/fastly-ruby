@@ -386,6 +386,120 @@ module Fastly
           description: "No description provided",
           }
         ],
+        "AiRuntimeControlProviderConnectionsApi.arc_create_provider_connection": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "AiRuntimeControlProviderConnectionsApi.arc_delete_provider_connection": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "AiRuntimeControlProviderConnectionsApi.arc_get_provider_connection": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "AiRuntimeControlProviderConnectionsApi.arc_list_provider_connections": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "AiRuntimeControlProviderConnectionsApi.arc_update_provider_connection": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "AiRuntimeControlProvidersApi.arc_get_bedrock_setup": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "AiRuntimeControlProvidersApi.arc_get_models_for_provider": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "AiRuntimeControlProvidersApi.arc_get_supported_providers": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "AiRuntimeControlSessionsApi.arc_get_session_logs": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "AiRuntimeControlUsageMetricsApi.arc_export_usage_metrics": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "AiRuntimeControlUsageMetricsApi.arc_get_usage_metrics": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "AiRuntimeControlVirtualKeysApi.arc_create_virtual_key": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "AiRuntimeControlVirtualKeysApi.arc_delete_virtual_key": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "AiRuntimeControlVirtualKeysApi.arc_get_virtual_key": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "AiRuntimeControlVirtualKeysApi.arc_get_virtual_key_failover": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "AiRuntimeControlVirtualKeysApi.arc_list_virtual_keys": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "AiRuntimeControlVirtualKeysApi.arc_rotate_virtual_key": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "AiRuntimeControlVirtualKeysApi.arc_update_virtual_key": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "AiRuntimeControlVirtualKeysApi.arc_update_virtual_key_failover": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
         "ApexRedirectApi.create_apex_redirect": [
           {
           url: "https://api.fastly.com",
@@ -518,6 +632,12 @@ module Fastly
           description: "No description provided",
           }
         ],
+        "AutomationTokensApi.get_automation_tokens_id_workspaces": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
         "AutomationTokensApi.list_automation_tokens": [
           {
           url: "https://api.fastly.com",
@@ -609,6 +729,72 @@ module Fastly
           }
         ],
         "BillingUsageMetricsApi.get_usage_metrics": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "BotManagementApi.bot_management_get_bot": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "BotManagementApi.bot_management_get_category": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "BotManagementApi.bot_management_get_workspace": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "BotManagementApi.bot_management_list_bots": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "BotManagementApi.bot_management_list_categories": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "BotManagementApi.bot_management_list_category_bots": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "BotManagementApi.bot_management_list_workspaces": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "BotManagementApi.bot_management_update_bot": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "BotManagementApi.bot_management_update_category": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "BotManagementApi.bot_management_update_workspace": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "BotRequestsMetricsApi.get_bot_request_metrics_service_historical": [
           {
           url: "https://api.fastly.com",
           description: "No description provided",
@@ -2630,7 +2816,13 @@ module Fastly
           description: "No description provided",
           }
         ],
-        "MetricsPlatformApi.get_platform_metrics_service_historical": [
+        "MetricsPlatformApi.get_platform_metrics_aggregate_historical": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "MetricsPlatformApi.get_platform_metrics_entity_historical": [
           {
           url: "https://api.fastly.com",
           description: "No description provided",
@@ -2661,6 +2853,126 @@ module Fastly
           }
         ],
         "MutualAuthenticationApi.patch_mutual_authentication": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "NetworkProtectApi.create_network_protect_endpoint": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "NetworkProtectApi.create_network_protect_network": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "NetworkProtectApi.create_network_protect_prefix_list": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "NetworkProtectApi.create_network_protect_rule_set": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "NetworkProtectApi.delete_network_protect_endpoint": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "NetworkProtectApi.delete_network_protect_network": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "NetworkProtectApi.delete_network_protect_prefix_list": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "NetworkProtectApi.delete_network_protect_rule_set": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "NetworkProtectApi.get_network_protect_endpoint": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "NetworkProtectApi.get_network_protect_network": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "NetworkProtectApi.get_network_protect_prefix_list": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "NetworkProtectApi.get_network_protect_rule_set": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "NetworkProtectApi.list_network_protect_endpoints": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "NetworkProtectApi.list_network_protect_networks": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "NetworkProtectApi.list_network_protect_prefix_lists": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "NetworkProtectApi.list_network_protect_rule_sets": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "NetworkProtectApi.update_network_protect_endpoint": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "NetworkProtectApi.update_network_protect_network": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "NetworkProtectApi.update_network_protect_prefix_list": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "NetworkProtectApi.update_network_protect_rule_set": [
           {
           url: "https://api.fastly.com",
           description: "No description provided",
@@ -2841,6 +3153,24 @@ module Fastly
           }
         ],
         "ProductAiAcceleratorApi.get_ai_accelerator": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "ProductAiRuntimeControlApi.disable_product_ai_runtime_control": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "ProductAiRuntimeControlApi.enable_product_ai_runtime_control": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
+        "ProductAiRuntimeControlApi.get_product_ai_runtime_control": [
           {
           url: "https://api.fastly.com",
           description: "No description provided",

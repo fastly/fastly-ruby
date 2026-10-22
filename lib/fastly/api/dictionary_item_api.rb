@@ -98,7 +98,7 @@ module Fastly
     # Create DictionaryItem given service, dictionary ID, item key, and item value.
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
     # @option opts [String] :dictionary_id Alphanumeric string identifying a Dictionary. (required)
-    # @option opts [String] :item_key Item key, maximum 256 characters.
+    # @option opts [String] :item_key Item key, maximum 255 characters.
     # @option opts [String] :item_value Item value, maximum 8000 characters.
     # @return [DictionaryItemResponse]
     def create_dictionary_item(opts = {})
@@ -110,7 +110,7 @@ module Fastly
     # Create DictionaryItem given service, dictionary ID, item key, and item value.
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
     # @option opts [String] :dictionary_id Alphanumeric string identifying a Dictionary. (required)
-    # @option opts [String] :item_key Item key, maximum 256 characters.
+    # @option opts [String] :item_key Item key, maximum 255 characters.
     # @option opts [String] :item_value Item value, maximum 8000 characters.
     # @return [Array<(DictionaryItemResponse, Integer, Hash)>] DictionaryItemResponse data, response status code and response headers
     def create_dictionary_item_with_http_info(opts = {})
@@ -179,7 +179,7 @@ module Fastly
     # Delete DictionaryItem given service, dictionary ID, and item key.
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
     # @option opts [String] :dictionary_id Alphanumeric string identifying a Dictionary. (required)
-    # @option opts [String] :dictionary_item_key Item key, maximum 256 characters. (required)
+    # @option opts [String] :dictionary_item_key Item key, maximum 255 characters. (required)
     # @return [InlineResponse200]
     def delete_dictionary_item(opts = {})
       data, _status_code, _headers = delete_dictionary_item_with_http_info(opts)
@@ -190,7 +190,7 @@ module Fastly
     # Delete DictionaryItem given service, dictionary ID, and item key.
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
     # @option opts [String] :dictionary_id Alphanumeric string identifying a Dictionary. (required)
-    # @option opts [String] :dictionary_item_key Item key, maximum 256 characters. (required)
+    # @option opts [String] :dictionary_item_key Item key, maximum 255 characters. (required)
     # @return [Array<(InlineResponse200, Integer, Hash)>] InlineResponse200 data, response status code and response headers
     def delete_dictionary_item_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -256,7 +256,7 @@ module Fastly
     # Retrieve a single DictionaryItem given service, dictionary ID and item key.
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
     # @option opts [String] :dictionary_id Alphanumeric string identifying a Dictionary. (required)
-    # @option opts [String] :dictionary_item_key Item key, maximum 256 characters. (required)
+    # @option opts [String] :dictionary_item_key Item key, maximum 255 characters. (required)
     # @return [DictionaryItemResponse]
     def get_dictionary_item(opts = {})
       data, _status_code, _headers = get_dictionary_item_with_http_info(opts)
@@ -267,7 +267,7 @@ module Fastly
     # Retrieve a single DictionaryItem given service, dictionary ID and item key.
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
     # @option opts [String] :dictionary_id Alphanumeric string identifying a Dictionary. (required)
-    # @option opts [String] :dictionary_item_key Item key, maximum 256 characters. (required)
+    # @option opts [String] :dictionary_item_key Item key, maximum 255 characters. (required)
     # @return [Array<(DictionaryItemResponse, Integer, Hash)>] DictionaryItemResponse data, response status code and response headers
     def get_dictionary_item_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -427,8 +427,8 @@ module Fastly
     # Update DictionaryItem given service, dictionary ID, item key, and item value.
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
     # @option opts [String] :dictionary_id Alphanumeric string identifying a Dictionary. (required)
-    # @option opts [String] :dictionary_item_key Item key, maximum 256 characters. (required)
-    # @option opts [String] :item_key Item key, maximum 256 characters.
+    # @option opts [String] :dictionary_item_key Item key, maximum 255 characters. (required)
+    # @option opts [String] :item_key Item key, maximum 255 characters.
     # @option opts [String] :item_value Item value, maximum 8000 characters.
     # @return [DictionaryItemResponse]
     def update_dictionary_item(opts = {})
@@ -440,8 +440,8 @@ module Fastly
     # Update DictionaryItem given service, dictionary ID, item key, and item value.
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
     # @option opts [String] :dictionary_id Alphanumeric string identifying a Dictionary. (required)
-    # @option opts [String] :dictionary_item_key Item key, maximum 256 characters. (required)
-    # @option opts [String] :item_key Item key, maximum 256 characters.
+    # @option opts [String] :dictionary_item_key Item key, maximum 255 characters. (required)
+    # @option opts [String] :item_key Item key, maximum 255 characters.
     # @option opts [String] :item_value Item value, maximum 8000 characters.
     # @return [Array<(DictionaryItemResponse, Integer, Hash)>] DictionaryItemResponse data, response status code and response headers
     def update_dictionary_item_with_http_info(opts = {})
@@ -515,8 +515,8 @@ module Fastly
     # Upsert DictionaryItem given service, dictionary ID, item key, and item value.
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
     # @option opts [String] :dictionary_id Alphanumeric string identifying a Dictionary. (required)
-    # @option opts [String] :dictionary_item_key Item key, maximum 256 characters. (required)
-    # @option opts [String] :item_key Item key, maximum 256 characters.
+    # @option opts [String] :dictionary_item_key Item key, maximum 255 characters. (required)
+    # @option opts [String] :item_key Item key, maximum 255 characters.
     # @option opts [String] :item_value Item value, maximum 8000 characters.
     # @return [DictionaryItemResponse]
     def upsert_dictionary_item(opts = {})
@@ -528,8 +528,8 @@ module Fastly
     # Upsert DictionaryItem given service, dictionary ID, item key, and item value.
     # @option opts [String] :service_id Alphanumeric string identifying the service. (required)
     # @option opts [String] :dictionary_id Alphanumeric string identifying a Dictionary. (required)
-    # @option opts [String] :dictionary_item_key Item key, maximum 256 characters. (required)
-    # @option opts [String] :item_key Item key, maximum 256 characters.
+    # @option opts [String] :dictionary_item_key Item key, maximum 255 characters. (required)
+    # @option opts [String] :item_key Item key, maximum 255 characters.
     # @option opts [String] :item_value Item value, maximum 8000 characters.
     # @return [Array<(DictionaryItemResponse, Integer, Hash)>] DictionaryItemResponse data, response status code and response headers
     def upsert_dictionary_item_with_http_info(opts = {})

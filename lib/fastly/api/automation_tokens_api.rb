@@ -44,7 +44,7 @@ module Fastly
       # header parameters
       header_params = opts[:header_params] || {}
       # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      header_params['Accept'] = @api_client.select_header_accept(['application/json', 'application/problem+json'])
       # HTTP header 'Content-Type'
       content_type = @api_client.select_header_content_type(['application/json'])
       if !content_type.nil?
@@ -208,6 +208,83 @@ module Fastly
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: AutomationTokensApi#get_automation_tokens_id_services\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # List Automation Token Workspaces
+    # Lists the Next-Gen WAF workspaces accessible by an automation token. Only applicable for tokens with roles that support workspace access (such as Next-Gen WAF roles).
+    # @option opts [String] :id The alphanumeric string identifying the automation token. (required)
+    # @option opts [Integer] :limit Maximum number of workspaces to return per page. (default to 20)
+    # @option opts [String] :cursor Pagination cursor from a previous response. Pass the &#x60;next_cursor&#x60; value to retrieve the next page, or &#x60;previous_cursor&#x60; to go back.
+    # @return [AutomationTokenWorkspacesResponse]
+    def get_automation_tokens_id_workspaces(opts = {})
+      data, _status_code, _headers = get_automation_tokens_id_workspaces_with_http_info(opts)
+      data
+    end
+
+    # List Automation Token Workspaces
+    # Lists the Next-Gen WAF workspaces accessible by an automation token. Only applicable for tokens with roles that support workspace access (such as Next-Gen WAF roles).
+    # @option opts [String] :id The alphanumeric string identifying the automation token. (required)
+    # @option opts [Integer] :limit Maximum number of workspaces to return per page. (default to 20)
+    # @option opts [String] :cursor Pagination cursor from a previous response. Pass the &#x60;next_cursor&#x60; value to retrieve the next page, or &#x60;previous_cursor&#x60; to go back.
+    # @return [Array<(AutomationTokenWorkspacesResponse, Integer, Hash)>] AutomationTokenWorkspacesResponse data, response status code and response headers
+    def get_automation_tokens_id_workspaces_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: AutomationTokensApi.get_automation_tokens_id_workspaces ...'
+      end
+      # unbox the parameters from the hash
+      id = opts[:'id']
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling AutomationTokensApi.get_automation_tokens_id_workspaces"
+      end
+      if @api_client.config.client_side_validation && !opts[:'limit'].nil? && opts[:'limit'] > 100
+        fail ArgumentError, 'invalid value for "opts[:"limit"]" when calling AutomationTokensApi.get_automation_tokens_id_workspaces, must be smaller than or equal to 100.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'limit'].nil? && opts[:'limit'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"limit"]" when calling AutomationTokensApi.get_automation_tokens_id_workspaces, must be greater than or equal to 1.'
+      end
+
+      # resource path
+      local_var_path = '/automation-tokens/{id}/workspaces'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'limit'] = opts[:'limit'] if !opts[:'limit'].nil?
+      query_params[:'cursor'] = opts[:'cursor'] if !opts[:'cursor'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json', 'application/problem+json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'AutomationTokenWorkspacesResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['token']
+
+      new_options = opts.merge(
+        :operation => :"AutomationTokensApi.get_automation_tokens_id_workspaces",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: AutomationTokensApi#get_automation_tokens_id_workspaces\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

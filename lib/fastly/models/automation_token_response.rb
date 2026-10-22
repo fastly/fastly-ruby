@@ -18,8 +18,20 @@ module Fastly
 
     attr_accessor :role
 
-    # (Optional) The service IDs of the services the token will have access to. Separate service IDs with a space. If no services are specified, the token will have access to all services on the account. 
+    # All roles assigned to the token. Each role includes an `id` and `name`.
+    attr_accessor :roles
+
+    # The service IDs of the services the token has access to. Empty when `limit_services` is `false` (full access) or when the token has no service access.
     attr_accessor :services
+
+    # When `true`, the token is restricted to only the services in the `services` array. When `false`, the token has access to all services.
+    attr_accessor :limit_services
+
+    # When `true`, the token is restricted to only the workspaces in the `workspaces` array. When `false`, the token has access to all workspaces. Only applies to roles that support workspace access.
+    attr_accessor :limit_workspaces
+
+    # The workspace IDs of the workspaces the token has access to. Returns an empty array for tokens without workspace access.
+    attr_accessor :workspaces
 
     # A space-delimited list of authorization scope.
     attr_accessor :scope
@@ -73,7 +85,11 @@ module Fastly
       {
         :'name' => :'name',
         :'role' => :'role',
+        :'roles' => :'roles',
         :'services' => :'services',
+        :'limit_services' => :'limit_services',
+        :'limit_workspaces' => :'limit_workspaces',
+        :'workspaces' => :'workspaces',
         :'scope' => :'scope',
         :'expires_at' => :'expires_at',
         :'id' => :'id',
@@ -96,7 +112,11 @@ module Fastly
       {
         :'name' => :'String',
         :'role' => :'String',
+        :'roles' => :'Array<AutomationTokenRole>',
         :'services' => :'Array<String>',
+        :'limit_services' => :'Boolean',
+        :'limit_workspaces' => :'Boolean',
+        :'workspaces' => :'Array<String>',
         :'scope' => :'String',
         :'expires_at' => :'String',
         :'id' => :'ReadOnlyId',
@@ -146,9 +166,29 @@ module Fastly
         self.role = attributes[:'role']
       end
 
+      if attributes.key?(:'roles')
+        if (value = attributes[:'roles']).is_a?(Array)
+          self.roles = value
+        end
+      end
+
       if attributes.key?(:'services')
         if (value = attributes[:'services']).is_a?(Array)
           self.services = value
+        end
+      end
+
+      if attributes.key?(:'limit_services')
+        self.limit_services = attributes[:'limit_services']
+      end
+
+      if attributes.key?(:'limit_workspaces')
+        self.limit_workspaces = attributes[:'limit_workspaces']
+      end
+
+      if attributes.key?(:'workspaces')
+        if (value = attributes[:'workspaces']).is_a?(Array)
+          self.workspaces = value
         end
       end
 
@@ -223,7 +263,11 @@ module Fastly
       self.class == o.class &&
           name == o.name &&
           role == o.role &&
+          roles == o.roles &&
           services == o.services &&
+          limit_services == o.limit_services &&
+          limit_workspaces == o.limit_workspaces &&
+          workspaces == o.workspaces &&
           scope == o.scope &&
           expires_at == o.expires_at &&
           id == o.id &&
@@ -244,7 +288,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, role, services, scope, expires_at, id, customer_id, ip, user_agent, tls_access, last_used_at, created_at].hash
+      [name, role, roles, services, limit_services, limit_workspaces, workspaces, scope, expires_at, id, customer_id, ip, user_agent, tls_access, last_used_at, created_at].hash
     end
 
     # Builds the object from hash

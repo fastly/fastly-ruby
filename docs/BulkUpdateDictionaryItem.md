@@ -4,7 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **item_key** | **String** | Item key, maximum 256 characters. | [optional] |
+| **item_key** | **String** | Item key, maximum 255 characters. | [optional] |
 | **item_value** | **String** | Item value, maximum 8000 characters. | [optional] |
 | **op** | **String** |  | [optional] |
 

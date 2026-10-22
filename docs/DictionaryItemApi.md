@@ -78,7 +78,7 @@ api_instance = Fastly::DictionaryItemApi.new
 opts = {
     service_id: 'service_id_example', # String | Alphanumeric string identifying the service.
     dictionary_id: 'dictionary_id_example', # String | Alphanumeric string identifying a Dictionary.
-    item_key: 'item_key_example', # String | Item key, maximum 256 characters.
+    item_key: 'item_key_example', # String | Item key, maximum 255 characters.
     item_value: 'item_value_example', # String | Item value, maximum 8000 characters.
 }
 
@@ -97,7 +97,7 @@ end
 | ---- | ---- | ----------- | ----- |
 | **service_id** | **String** | Alphanumeric string identifying the service. |  |
 | **dictionary_id** | **String** | Alphanumeric string identifying a Dictionary. |  |
-| **item_key** | **String** | Item key, maximum 256 characters. | [optional] |
+| **item_key** | **String** | Item key, maximum 255 characters. | [optional] |
 | **item_value** | **String** | Item value, maximum 8000 characters. | [optional] |
 
 ### Return type
@@ -121,7 +121,7 @@ api_instance = Fastly::DictionaryItemApi.new
 opts = {
     service_id: 'service_id_example', # String | Alphanumeric string identifying the service.
     dictionary_id: 'dictionary_id_example', # String | Alphanumeric string identifying a Dictionary.
-    dictionary_item_key: 'dictionary_item_key_example', # String | Item key, maximum 256 characters.
+    dictionary_item_key: 'dictionary_item_key_example', # String | Item key, maximum 255 characters.
 }
 
 begin
@@ -139,7 +139,7 @@ end
 | ---- | ---- | ----------- | ----- |
 | **service_id** | **String** | Alphanumeric string identifying the service. |  |
 | **dictionary_id** | **String** | Alphanumeric string identifying a Dictionary. |  |
-| **dictionary_item_key** | **String** | Item key, maximum 256 characters. |  |
+| **dictionary_item_key** | **String** | Item key, maximum 255 characters. |  |
 
 ### Return type
 
@@ -162,7 +162,7 @@ api_instance = Fastly::DictionaryItemApi.new
 opts = {
     service_id: 'service_id_example', # String | Alphanumeric string identifying the service.
     dictionary_id: 'dictionary_id_example', # String | Alphanumeric string identifying a Dictionary.
-    dictionary_item_key: 'dictionary_item_key_example', # String | Item key, maximum 256 characters.
+    dictionary_item_key: 'dictionary_item_key_example', # String | Item key, maximum 255 characters.
 }
 
 begin
@@ -180,7 +180,7 @@ end
 | ---- | ---- | ----------- | ----- |
 | **service_id** | **String** | Alphanumeric string identifying the service. |  |
 | **dictionary_id** | **String** | Alphanumeric string identifying a Dictionary. |  |
-| **dictionary_item_key** | **String** | Item key, maximum 256 characters. |  |
+| **dictionary_item_key** | **String** | Item key, maximum 255 characters. |  |
 
 ### Return type
 
@@ -250,8 +250,8 @@ api_instance = Fastly::DictionaryItemApi.new
 opts = {
     service_id: 'service_id_example', # String | Alphanumeric string identifying the service.
     dictionary_id: 'dictionary_id_example', # String | Alphanumeric string identifying a Dictionary.
-    dictionary_item_key: 'dictionary_item_key_example', # String | Item key, maximum 256 characters.
-    item_key: 'item_key_example', # String | Item key, maximum 256 characters.
+    dictionary_item_key: 'dictionary_item_key_example', # String | Item key, maximum 255 characters.
+    item_key: 'item_key_example', # String | Item key, maximum 255 characters.
     item_value: 'item_value_example', # String | Item value, maximum 8000 characters.
 }
 
@@ -270,8 +270,8 @@ end
 | ---- | ---- | ----------- | ----- |
 | **service_id** | **String** | Alphanumeric string identifying the service. |  |
 | **dictionary_id** | **String** | Alphanumeric string identifying a Dictionary. |  |
-| **dictionary_item_key** | **String** | Item key, maximum 256 characters. |  |
-| **item_key** | **String** | Item key, maximum 256 characters. | [optional] |
+| **dictionary_item_key** | **String** | Item key, maximum 255 characters. |  |
+| **item_key** | **String** | Item key, maximum 255 characters. | [optional] |
 | **item_value** | **String** | Item value, maximum 8000 characters. | [optional] |
 
 ### Return type
@@ -295,8 +295,8 @@ api_instance = Fastly::DictionaryItemApi.new
 opts = {
     service_id: 'service_id_example', # String | Alphanumeric string identifying the service.
     dictionary_id: 'dictionary_id_example', # String | Alphanumeric string identifying a Dictionary.
-    dictionary_item_key: 'dictionary_item_key_example', # String | Item key, maximum 256 characters.
-    item_key: 'item_key_example', # String | Item key, maximum 256 characters.
+    dictionary_item_key: 'dictionary_item_key_example', # String | Item key, maximum 255 characters.
+    item_key: 'item_key_example', # String | Item key, maximum 255 characters.
     item_value: 'item_value_example', # String | Item value, maximum 8000 characters.
 }
 
@@ -315,8 +315,8 @@ end
 | ---- | ---- | ----------- | ----- |
 | **service_id** | **String** | Alphanumeric string identifying the service. |  |
 | **dictionary_id** | **String** | Alphanumeric string identifying a Dictionary. |  |
-| **dictionary_item_key** | **String** | Item key, maximum 256 characters. |  |
-| **item_key** | **String** | Item key, maximum 256 characters. | [optional] |
+| **dictionary_item_key** | **String** | Item key, maximum 255 characters. |  |
+| **item_key** | **String** | Item key, maximum 255 characters. | [optional] |
 | **item_value** | **String** | Item value, maximum 8000 characters. | [optional] |
 
 ### Return type

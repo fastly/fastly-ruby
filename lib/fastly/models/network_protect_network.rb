@@ -12,54 +12,35 @@ require 'date'
 require 'time'
 
 module Fastly
-  class AutomationTokenCreateRequestAttributes
-    # name of the token
+  # Shared Network Protect network attributes.
+  class NetworkProtectNetwork
+    # A human-readable name, unique within the customer.
     attr_accessor :name
 
-    attr_accessor :role
+    # The CIDR block to protect, masked to its network address. It cannot be changed after creation.
+    attr_accessor :prefix
 
-    # List of service ids to limit the token
-    attr_accessor :services
+    # Complete endpoint policy configuration. A network has at most one policy per region and may have no policies.
+    attr_accessor :endpoint_policies
 
-    attr_accessor :scope
+    # Desired advertisement state, which is not the same as observed route state. Enabling it requires approved LOA, valid ROA, and a ready default-region delivery policy. A later ROA failure does not turn an existing advertisement off; losing LOA approval or the last ready default endpoint does.
+    attr_accessor :advertise
 
-    # A UTC timestamp of when the token will expire.
-    attr_accessor :expires_at
+    # Optional descriptive text for the network. This metadata does not change traffic handling. Null clears it on update.
+    attr_accessor :description
 
-    # Indicates whether TLS access is enabled for the token.
-    attr_accessor :tls_access
-
-    class EnumAttributeValidator
-      attr_reader :datatype
-      attr_reader :allowable_values
-
-      def initialize(datatype, allowable_values)
-        @allowable_values = allowable_values.map do |value|
-          case datatype.to_s
-          when /Integer/i
-            value.to_i
-          when /Float/i
-            value.to_f
-          else
-            value
-          end
-        end
-      end
-
-      def valid?(value)
-        !value || allowable_values.include?(value)
-      end
-    end
+    # The backend-assigned rule set applied to this network.
+    attr_accessor :rule_set_id
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'name' => :'name',
-        :'role' => :'role',
-        :'services' => :'services',
-        :'scope' => :'scope',
-        :'expires_at' => :'expires_at',
-        :'tls_access' => :'tls_access'
+        :'prefix' => :'prefix',
+        :'endpoint_policies' => :'endpoint_policies',
+        :'advertise' => :'advertise',
+        :'description' => :'description',
+        :'rule_set_id' => :'rule_set_id'
       }
     end
 
@@ -72,18 +53,19 @@ module Fastly
     def self.fastly_types
       {
         :'name' => :'String',
-        :'role' => :'String',
-        :'services' => :'Array<String>',
-        :'scope' => :'String',
-        :'expires_at' => :'Time',
-        :'tls_access' => :'Boolean'
+        :'prefix' => :'String',
+        :'endpoint_policies' => :'Array<NetworkProtectEndpointPolicy>',
+        :'advertise' => :'Boolean',
+        :'description' => :'String',
+        :'rule_set_id' => :'String'
       }
     end
 
     # List of attributes with nullable: true
     def self.fastly_nullable
       Set.new([
-        :'expires_at',
+        :'description',
+        :'rule_set_id'
       ])
     end
 
@@ -91,13 +73,13 @@ module Fastly
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Fastly::AutomationTokenCreateRequestAttributes` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Fastly::NetworkProtectNetwork` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `Fastly::AutomationTokenCreateRequestAttributes`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `Fastly::NetworkProtectNetwork`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
@@ -106,28 +88,28 @@ module Fastly
         self.name = attributes[:'name']
       end
 
-      if attributes.key?(:'role')
-        self.role = attributes[:'role']
+      if attributes.key?(:'prefix')
+        self.prefix = attributes[:'prefix']
       end
 
-      if attributes.key?(:'services')
-        if (value = attributes[:'services']).is_a?(Array)
-          self.services = value
+      if attributes.key?(:'endpoint_policies')
+        if (value = attributes[:'endpoint_policies']).is_a?(Array)
+          self.endpoint_policies = value
         end
       end
 
-      if attributes.key?(:'scope')
-        self.scope = attributes[:'scope']
+      if attributes.key?(:'advertise')
+        self.advertise = attributes[:'advertise']
       else
-        self.scope = 'global'
+        self.advertise = false
       end
 
-      if attributes.key?(:'expires_at')
-        self.expires_at = attributes[:'expires_at']
+      if attributes.key?(:'description')
+        self.description = attributes[:'description']
       end
 
-      if attributes.key?(:'tls_access')
-        self.tls_access = attributes[:'tls_access']
+      if attributes.key?(:'rule_set_id')
+        self.rule_set_id = attributes[:'rule_set_id']
       end
     end
 
@@ -135,37 +117,102 @@ module Fastly
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+      if @name.nil?
+        invalid_properties.push('invalid value for "name", name cannot be nil.')
+      end
+
+      if @name.to_s.length > 255
+        invalid_properties.push('invalid value for "name", the character length must be smaller than or equal to 255.')
+      end
+
+      if @name.to_s.length < 1
+        invalid_properties.push('invalid value for "name", the character length must be great than or equal to 1.')
+      end
+
+      if @prefix.nil?
+        invalid_properties.push('invalid value for "prefix", prefix cannot be nil.')
+      end
+
+      if @endpoint_policies.nil?
+        invalid_properties.push('invalid value for "endpoint_policies", endpoint_policies cannot be nil.')
+      end
+
+      if @advertise.nil?
+        invalid_properties.push('invalid value for "advertise", advertise cannot be nil.')
+      end
+
+      if !@description.nil? && @description.to_s.length > 1024
+        invalid_properties.push('invalid value for "description", the character length must be smaller than or equal to 1024.')
+      end
+
+      if !@description.nil? && @description.to_s.length < 1
+        invalid_properties.push('invalid value for "description", the character length must be great than or equal to 1.')
+      end
+
+      pattern = Regexp.new(/^[A-Za-z0-9]{19,22}$/)
+      if !@rule_set_id.nil? && @rule_set_id !~ pattern
+        invalid_properties.push("invalid value for \"rule_set_id\", must conform to the pattern #{pattern}.")
+      end
+
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      role_validator = EnumAttributeValidator.new('String', ["engineer", "billing", "user"])
-      return false unless role_validator.valid?(@role)
-      scope_validator = EnumAttributeValidator.new('String', ["global", "global:read", "purge_all", "purge_select"])
-      return false unless scope_validator.valid?(@scope)
+      return false if @name.nil?
+      return false if @name.to_s.length > 255
+      return false if @name.to_s.length < 1
+      return false if @prefix.nil?
+      return false if @endpoint_policies.nil?
+      return false if @advertise.nil?
+      return false if !@description.nil? && @description.to_s.length > 1024
+      return false if !@description.nil? && @description.to_s.length < 1
+      return false if !@rule_set_id.nil? && @rule_set_id !~ Regexp.new(/^[A-Za-z0-9]{19,22}$/)
       true
     end
 
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] role Object to be assigned
-    def role=(role)
-      validator = EnumAttributeValidator.new('String', ["engineer", "billing", "user"])
-      unless validator.valid?(role)
-        fail ArgumentError, "invalid value for \"role\", must be one of #{validator.allowable_values}."
+    # Custom attribute writer method with validation
+    # @param [Object] name Value to be assigned
+    def name=(name)
+      if name.nil?
+        fail ArgumentError, 'name cannot be nil'
       end
-      @role = role
+
+      if name.to_s.length > 255
+        fail ArgumentError, 'invalid value for "name", the character length must be smaller than or equal to 255.'
+      end
+
+      if name.to_s.length < 1
+        fail ArgumentError, 'invalid value for "name", the character length must be great than or equal to 1.'
+      end
+
+      @name = name
     end
 
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] scope Object to be assigned
-    def scope=(scope)
-      validator = EnumAttributeValidator.new('String', ["global", "global:read", "purge_all", "purge_select"])
-      unless validator.valid?(scope)
-        fail ArgumentError, "invalid value for \"scope\", must be one of #{validator.allowable_values}."
+    # Custom attribute writer method with validation
+    # @param [Object] description Value to be assigned
+    def description=(description)
+      if !description.nil? && description.to_s.length > 1024
+        fail ArgumentError, 'invalid value for "description", the character length must be smaller than or equal to 1024.'
       end
-      @scope = scope
+
+      if !description.nil? && description.to_s.length < 1
+        fail ArgumentError, 'invalid value for "description", the character length must be great than or equal to 1.'
+      end
+
+      @description = description
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] rule_set_id Value to be assigned
+    def rule_set_id=(rule_set_id)
+      pattern = Regexp.new(/^[A-Za-z0-9]{19,22}$/)
+      if !rule_set_id.nil? && rule_set_id !~ pattern
+        fail ArgumentError, "invalid value for \"rule_set_id\", must conform to the pattern #{pattern}."
+      end
+
+      @rule_set_id = rule_set_id
     end
 
     # Checks equality by comparing each attribute.
@@ -174,11 +221,11 @@ module Fastly
       return true if self.equal?(o)
       self.class == o.class &&
           name == o.name &&
-          role == o.role &&
-          services == o.services &&
-          scope == o.scope &&
-          expires_at == o.expires_at &&
-          tls_access == o.tls_access
+          prefix == o.prefix &&
+          endpoint_policies == o.endpoint_policies &&
+          advertise == o.advertise &&
+          description == o.description &&
+          rule_set_id == o.rule_set_id
     end
 
     # @see the `==` method
@@ -190,7 +237,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, role, services, scope, expires_at, tls_access].hash
+      [name, prefix, endpoint_policies, advertise, description, rule_set_id].hash
     end
 
     # Builds the object from hash
