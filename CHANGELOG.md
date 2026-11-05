@@ -11,11 +11,6 @@
 - changed(products[ddos_protection]): Added `client_challenge` to the allowed `mode` values for `enable-product-ddos-protection` and `set-product-ddos-protection-configuration`.
 
 
-**Bug fixes:**
-
-- fix(logging_datadog): Correct `request_time_ms` in the default Datadog log format to report elapsed time in milliseconds as a number, rather than microseconds as a string.
-
-
 **Enhancements:**
 
 - feat(metrics-platform): Add the `get-platform-metrics-entity-historical` (`/metrics/v2/platform/entities/{entity_id}/{granularity}`) and `get-platform-metrics-aggregate-historical` (`/metrics/v2/platform/aggregate/{granularity}`) operations, with pagination, metric sets, and flexible grouping.
@@ -40,12 +35,6 @@
 - feat(ai-runtime-control-usage-metrics): Add usage metrics API for AI Runtime Control, including a CSV export endpoint.
 - feat(ai-runtime-control-sessions): Add session logs API for AI Runtime Control.
 
-- feat(historical, realtime): Add new metric `bot_edge_requests_headless_count`, the number of edge requests where a headless bot was detected.
-- feat(historical, realtime, domain_inspector_historical, domain_inspector_realtime): Add new metric `status_499`, the number of responses sent with status code 499 (Client Disconnected).
-- feat(historical, realtime): Add new metrics `imgopto_input_image_bytes` and `imgopto_output_image_bytes`, describing the total image bytes before and after transformation by the Fastly Image Optimizer.
-- feat(historical, realtime): Add new metric `arc_requests`, the number of requests received by AI Runtime Control.
-- feat(historical, realtime): Add new DDoS protection challenge metrics: `ddos_challenge_complete_tokens_checked`, `ddos_challenge_complete_tokens_passed`, `ddos_challenge_complete_tokens_failed`, `ddos_challenge_starts`, `ddos_challenge_complete_tokens_issued`, `ddos_challenges_issued`, `ddos_challenges_succeeded`, `ddos_challenges_failed`, `ddos_challenges_pats_issued`, and `ddos_challenges_pats_succeeded`.
-
 - feat(bot-management): Add the Bot Management API for configuring ContentGuard, covering workspace protection mode, category actions, per-bot action overrides, and a workspace-wide bot listing.
 
 - feat(events): Add 37 `ngwaf.*` values to `event_type`, covering Next-Gen WAF workspaces, rules, lists, custom signals, redactions, virtual patches, thresholds, workspace alerts, header links, rate limited sources, custom dashboards, request reports, and agent keys.
@@ -58,6 +47,22 @@
 - doc(ddos-protection): Add `client_challenge` to the list of supported action values for DDoS protection rules.
 
 - doc(events): Mark the `security.*` Next-Gen WAF `event_type` values as deprecated. They are no longer recorded, and are superseded by their `ngwaf.*` equivalents.
+
+
+## [v17.2.0](https://github.com/fastly/fastly-ruby/releases/tag/release/v17.2.0) (2026-09-27)
+
+**Bug fixes:**
+
+- fix(logging_datadog): Correct `request_time_ms` in the default Datadog log format to report elapsed time in milliseconds as a number, rather than microseconds as a string.
+
+
+**Enhancements:**
+
+- feat(historical, realtime): Add new metric `bot_edge_requests_headless_count`, the number of edge requests where a headless bot was detected.
+- feat(historical, realtime, domain_inspector_historical, domain_inspector_realtime): Add new metric `status_499`, the number of responses sent with status code 499 (Client Disconnected).
+- feat(historical, realtime): Add new metrics `imgopto_input_image_bytes` and `imgopto_output_image_bytes`, describing the total image bytes before and after transformation by the Fastly Image Optimizer.
+- feat(historical, realtime): Add new metric `arc_requests`, the number of requests received by AI Runtime Control.
+- feat(historical, realtime): Add new DDoS protection challenge metrics: `ddos_challenge_complete_tokens_checked`, `ddos_challenge_complete_tokens_passed`, `ddos_challenge_complete_tokens_failed`, `ddos_challenge_starts`, `ddos_challenge_complete_tokens_issued`, `ddos_challenges_issued`, `ddos_challenges_succeeded`, `ddos_challenges_failed`, `ddos_challenges_pats_issued`, and `ddos_challenges_pats_succeeded`.
 
 
 ## [v17.1.0](https://github.com/fastly/fastly-ruby/releases/tag/release/v17.1.0) (2026-08-18)
