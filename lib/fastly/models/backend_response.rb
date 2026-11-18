@@ -43,6 +43,21 @@ module Fastly
     # The hostname of the backend. May be used as an alternative to `address` to set the backend location.
     attr_accessor :hostname
 
+    # If the backend is using IAM authentication and the IAM system policy requires a matching external identifier, it should match this value. Your Fastly customer ID will be used if this attribute is not set.
+    attr_accessor :iam_external_id
+
+    # If the backend is using IAM authentication, the IAM signature will use this as the product element.
+    attr_accessor :iam_product
+
+    # If the backend is using IAM authentication, this region will be used for signing and access.
+    attr_accessor :iam_region
+
+    # If the backend is using IAM authentication, the fully qualified role string supplied by the storage vendor.
+    attr_accessor :iam_role
+
+    # A label that identifies the storage vendor. Providing a value in this field enables IAM usage, and all other IAM fields depend on its value.
+    attr_accessor :iam_vendor
+
     # IPv4 address of the backend. May be used as an alternative to `address` to set the backend location.
     attr_accessor :ipv4
 
@@ -146,6 +161,28 @@ module Fastly
     # Indicates whether the version of the service this backend is attached to accepts edits.
     attr_accessor :locked
 
+    class EnumAttributeValidator
+      attr_reader :datatype
+      attr_reader :allowable_values
+
+      def initialize(datatype, allowable_values)
+        @allowable_values = allowable_values.map do |value|
+          case datatype.to_s
+          when /Integer/i
+            value.to_i
+          when /Float/i
+            value.to_f
+          else
+            value
+          end
+        end
+      end
+
+      def valid?(value)
+        !value || allowable_values.include?(value)
+      end
+    end
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -159,6 +196,11 @@ module Fastly
         :'fetch_timeout' => :'fetch_timeout',
         :'healthcheck' => :'healthcheck',
         :'hostname' => :'hostname',
+        :'iam_external_id' => :'iam_external_id',
+        :'iam_product' => :'iam_product',
+        :'iam_region' => :'iam_region',
+        :'iam_role' => :'iam_role',
+        :'iam_vendor' => :'iam_vendor',
         :'ipv4' => :'ipv4',
         :'ipv6' => :'ipv6',
         :'keepalive_time' => :'keepalive_time',
@@ -215,6 +257,11 @@ module Fastly
         :'fetch_timeout' => :'Integer',
         :'healthcheck' => :'String',
         :'hostname' => :'String',
+        :'iam_external_id' => :'String',
+        :'iam_product' => :'String',
+        :'iam_region' => :'String',
+        :'iam_role' => :'String',
+        :'iam_vendor' => :'String',
         :'ipv4' => :'String',
         :'ipv6' => :'String',
         :'keepalive_time' => :'Integer',
@@ -260,6 +307,11 @@ module Fastly
         :'comment',
         :'healthcheck',
         :'hostname',
+        :'iam_external_id',
+        :'iam_product',
+        :'iam_region',
+        :'iam_role',
+        :'iam_vendor',
         :'ipv4',
         :'ipv6',
         :'keepalive_time',
@@ -351,6 +403,26 @@ module Fastly
 
       if attributes.key?(:'hostname')
         self.hostname = attributes[:'hostname']
+      end
+
+      if attributes.key?(:'iam_external_id')
+        self.iam_external_id = attributes[:'iam_external_id']
+      end
+
+      if attributes.key?(:'iam_product')
+        self.iam_product = attributes[:'iam_product']
+      end
+
+      if attributes.key?(:'iam_region')
+        self.iam_region = attributes[:'iam_region']
+      end
+
+      if attributes.key?(:'iam_role')
+        self.iam_role = attributes[:'iam_role']
+      end
+
+      if attributes.key?(:'iam_vendor')
+        self.iam_vendor = attributes[:'iam_vendor']
       end
 
       if attributes.key?(:'ipv4')
@@ -517,8 +589,20 @@ module Fastly
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      iam_vendor_validator = EnumAttributeValidator.new('String', ["aws"])
+      return false unless iam_vendor_validator.valid?(@iam_vendor)
       return false if !@share_key.nil? && @share_key !~ Regexp.new(/^[A-Za-z0-9]+$/)
       true
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] iam_vendor Object to be assigned
+    def iam_vendor=(iam_vendor)
+      validator = EnumAttributeValidator.new('String', ["aws"])
+      unless validator.valid?(iam_vendor)
+        fail ArgumentError, "invalid value for \"iam_vendor\", must be one of #{validator.allowable_values}."
+      end
+      @iam_vendor = iam_vendor
     end
 
     # Custom attribute writer method with validation
@@ -547,6 +631,11 @@ module Fastly
           fetch_timeout == o.fetch_timeout &&
           healthcheck == o.healthcheck &&
           hostname == o.hostname &&
+          iam_external_id == o.iam_external_id &&
+          iam_product == o.iam_product &&
+          iam_region == o.iam_region &&
+          iam_role == o.iam_role &&
+          iam_vendor == o.iam_vendor &&
           ipv4 == o.ipv4 &&
           ipv6 == o.ipv6 &&
           keepalive_time == o.keepalive_time &&
@@ -593,7 +682,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [address, auto_loadbalance, between_bytes_timeout, client_cert, comment, connect_timeout, first_byte_timeout, fetch_timeout, healthcheck, hostname, ipv4, ipv6, keepalive_time, max_conn, max_lifetime, max_tls_version, min_tls_version, max_use, name, override_host, port, prefer_ipv6, request_condition, share_key, shield, ssl_ca_cert, ssl_cert_hostname, ssl_check_cert, ssl_ciphers, ssl_client_cert, ssl_client_key, ssl_hostname, ssl_sni_hostname, tcp_keepalive_enable, tcp_keepalive_interval, tcp_keepalive_probes, tcp_keepalive_time, use_ssl, weight, created_at, deleted_at, updated_at, service_id, version, locked].hash
+      [address, auto_loadbalance, between_bytes_timeout, client_cert, comment, connect_timeout, first_byte_timeout, fetch_timeout, healthcheck, hostname, iam_external_id, iam_product, iam_region, iam_role, iam_vendor, ipv4, ipv6, keepalive_time, max_conn, max_lifetime, max_tls_version, min_tls_version, max_use, name, override_host, port, prefer_ipv6, request_condition, share_key, shield, ssl_ca_cert, ssl_cert_hostname, ssl_check_cert, ssl_ciphers, ssl_client_cert, ssl_client_key, ssl_hostname, ssl_sni_hostname, tcp_keepalive_enable, tcp_keepalive_interval, tcp_keepalive_probes, tcp_keepalive_time, use_ssl, weight, created_at, deleted_at, updated_at, service_id, version, locked].hash
     end
 
     # Builds the object from hash

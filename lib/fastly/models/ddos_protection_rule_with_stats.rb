@@ -49,6 +49,9 @@ module Fastly
     # Source IP prefix attribute.
     attr_accessor :source_ip_prefix
 
+    # URL path attribute.
+    attr_accessor :path
+
     # Attribute category for additional, unlisted attributes used in a rule.
     attr_accessor :additional_attributes
 
@@ -69,6 +72,7 @@ module Fastly
         :'host' => :'host',
         :'asn' => :'asn',
         :'source_ip_prefix' => :'source_ip_prefix',
+        :'path' => :'path',
         :'additional_attributes' => :'additional_attributes',
         :'traffic_stats' => :'traffic_stats'
       }
@@ -94,6 +98,7 @@ module Fastly
         :'host' => :'String',
         :'asn' => :'String',
         :'source_ip_prefix' => :'String',
+        :'path' => :'String',
         :'additional_attributes' => :'Array<String>',
         :'traffic_stats' => :'DdosProtectionTrafficStats'
       }
@@ -109,6 +114,7 @@ module Fastly
         :'host',
         :'asn',
         :'source_ip_prefix',
+        :'path',
       ])
     end
 
@@ -185,6 +191,10 @@ module Fastly
         self.source_ip_prefix = attributes[:'source_ip_prefix']
       end
 
+      if attributes.key?(:'path')
+        self.path = attributes[:'path']
+      end
+
       if attributes.key?(:'additional_attributes')
         if (value = attributes[:'additional_attributes']).is_a?(Array)
           self.additional_attributes = value
@@ -226,6 +236,7 @@ module Fastly
           host == o.host &&
           asn == o.asn &&
           source_ip_prefix == o.source_ip_prefix &&
+          path == o.path &&
           additional_attributes == o.additional_attributes &&
           traffic_stats == o.traffic_stats
     end
@@ -239,7 +250,7 @@ module Fastly
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [created_at, updated_at, id, name, action, customer_id, service_id, source_ip, country_code, host, asn, source_ip_prefix, additional_attributes, traffic_stats].hash
+      [created_at, updated_at, id, name, action, customer_id, service_id, source_ip, country_code, host, asn, source_ip_prefix, path, additional_attributes, traffic_stats].hash
     end
 
     # Builds the object from hash

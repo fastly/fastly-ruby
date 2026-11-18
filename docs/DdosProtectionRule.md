@@ -16,6 +16,7 @@
 | **host** | **String** | Host attribute. | [optional] |
 | **asn** | **String** | ASN attribute. | [optional] |
 | **source_ip_prefix** | **String** | Source IP prefix attribute. | [optional] |
+| **path** | **String** | URL path attribute. | [optional] |
 | **additional_attributes** | **Array&lt;String&gt;** | Attribute category for additional, unlisted attributes used in a rule. | [optional] |
 
 [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

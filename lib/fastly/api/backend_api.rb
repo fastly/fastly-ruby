@@ -31,6 +31,11 @@ module Fastly
     # @option opts [Integer] :fetch_timeout Maximum duration in milliseconds to wait for the entire response to be received after a TCP connection is established and the request has been sent. If exceeded, the connection is aborted and a synthetic &#x60;503&#x60; response will be presented instead. May be set at runtime using &#x60;bereq.fetch_timeout&#x60;.
     # @option opts [String] :healthcheck The name of the healthcheck to use with this backend.
     # @option opts [String] :hostname The hostname of the backend. May be used as an alternative to &#x60;address&#x60; to set the backend location.
+    # @option opts [String] :iam_external_id If the backend is using IAM authentication and the IAM system policy requires a matching external identifier, it should match this value. Your Fastly customer ID will be used if this attribute is not set.
+    # @option opts [String] :iam_product If the backend is using IAM authentication, the IAM signature will use this as the product element.
+    # @option opts [String] :iam_region If the backend is using IAM authentication, this region will be used for signing and access.
+    # @option opts [String] :iam_role If the backend is using IAM authentication, the fully qualified role string supplied by the storage vendor.
+    # @option opts [String] :iam_vendor A label that identifies the storage vendor. Providing a value in this field enables IAM usage, and all other IAM fields depend on its value.
     # @option opts [String] :ipv4 IPv4 address of the backend. May be used as an alternative to &#x60;address&#x60; to set the backend location.
     # @option opts [String] :ipv6 IPv6 address of the backend. May be used as an alternative to &#x60;address&#x60; to set the backend location.
     # @option opts [Integer] :keepalive_time How long (in seconds) to keep a persistent connection to the backend between requests. By default, Fastly keeps connections open as long as it can.
@@ -80,6 +85,11 @@ module Fastly
     # @option opts [Integer] :fetch_timeout Maximum duration in milliseconds to wait for the entire response to be received after a TCP connection is established and the request has been sent. If exceeded, the connection is aborted and a synthetic &#x60;503&#x60; response will be presented instead. May be set at runtime using &#x60;bereq.fetch_timeout&#x60;.
     # @option opts [String] :healthcheck The name of the healthcheck to use with this backend.
     # @option opts [String] :hostname The hostname of the backend. May be used as an alternative to &#x60;address&#x60; to set the backend location.
+    # @option opts [String] :iam_external_id If the backend is using IAM authentication and the IAM system policy requires a matching external identifier, it should match this value. Your Fastly customer ID will be used if this attribute is not set.
+    # @option opts [String] :iam_product If the backend is using IAM authentication, the IAM signature will use this as the product element.
+    # @option opts [String] :iam_region If the backend is using IAM authentication, this region will be used for signing and access.
+    # @option opts [String] :iam_role If the backend is using IAM authentication, the fully qualified role string supplied by the storage vendor.
+    # @option opts [String] :iam_vendor A label that identifies the storage vendor. Providing a value in this field enables IAM usage, and all other IAM fields depend on its value.
     # @option opts [String] :ipv4 IPv4 address of the backend. May be used as an alternative to &#x60;address&#x60; to set the backend location.
     # @option opts [String] :ipv6 IPv6 address of the backend. May be used as an alternative to &#x60;address&#x60; to set the backend location.
     # @option opts [Integer] :keepalive_time How long (in seconds) to keep a persistent connection to the backend between requests. By default, Fastly keeps connections open as long as it can.
@@ -125,6 +135,10 @@ module Fastly
       if @api_client.config.client_side_validation && version_id.nil?
         fail ArgumentError, "Missing the required parameter 'version_id' when calling BackendApi.create_backend"
       end
+      allowable_values = ["aws"]
+      if @api_client.config.client_side_validation && opts[:'iam_vendor'] && !allowable_values.include?(opts[:'iam_vendor'])
+        fail ArgumentError, "invalid value for \"iam_vendor\", must be one of #{allowable_values}"
+      end
       pattern = Regexp.new(/^[A-Za-z0-9]+$/)
       if @api_client.config.client_side_validation && !opts[:'share_key'].nil? && opts[:'share_key'] !~ pattern
         fail ArgumentError, "invalid value for 'opts[:\"share_key\"]' when calling BackendApi.create_backend, must conform to the pattern #{pattern}."
@@ -158,6 +172,11 @@ module Fastly
       form_params['fetch_timeout'] = opts[:'fetch_timeout'] if !opts[:'fetch_timeout'].nil?
       form_params['healthcheck'] = opts[:'healthcheck'] if !opts[:'healthcheck'].nil?
       form_params['hostname'] = opts[:'hostname'] if !opts[:'hostname'].nil?
+      form_params['iam_external_id'] = opts[:'iam_external_id'] if !opts[:'iam_external_id'].nil?
+      form_params['iam_product'] = opts[:'iam_product'] if !opts[:'iam_product'].nil?
+      form_params['iam_region'] = opts[:'iam_region'] if !opts[:'iam_region'].nil?
+      form_params['iam_role'] = opts[:'iam_role'] if !opts[:'iam_role'].nil?
+      form_params['iam_vendor'] = opts[:'iam_vendor'] if !opts[:'iam_vendor'].nil?
       form_params['ipv4'] = opts[:'ipv4'] if !opts[:'ipv4'].nil?
       form_params['ipv6'] = opts[:'ipv6'] if !opts[:'ipv6'].nil?
       form_params['keepalive_time'] = opts[:'keepalive_time'] if !opts[:'keepalive_time'].nil?
@@ -453,6 +472,11 @@ module Fastly
     # @option opts [Integer] :fetch_timeout Maximum duration in milliseconds to wait for the entire response to be received after a TCP connection is established and the request has been sent. If exceeded, the connection is aborted and a synthetic &#x60;503&#x60; response will be presented instead. May be set at runtime using &#x60;bereq.fetch_timeout&#x60;.
     # @option opts [String] :healthcheck The name of the healthcheck to use with this backend.
     # @option opts [String] :hostname The hostname of the backend. May be used as an alternative to &#x60;address&#x60; to set the backend location.
+    # @option opts [String] :iam_external_id If the backend is using IAM authentication and the IAM system policy requires a matching external identifier, it should match this value. Your Fastly customer ID will be used if this attribute is not set.
+    # @option opts [String] :iam_product If the backend is using IAM authentication, the IAM signature will use this as the product element.
+    # @option opts [String] :iam_region If the backend is using IAM authentication, this region will be used for signing and access.
+    # @option opts [String] :iam_role If the backend is using IAM authentication, the fully qualified role string supplied by the storage vendor.
+    # @option opts [String] :iam_vendor A label that identifies the storage vendor. Providing a value in this field enables IAM usage, and all other IAM fields depend on its value.
     # @option opts [String] :ipv4 IPv4 address of the backend. May be used as an alternative to &#x60;address&#x60; to set the backend location.
     # @option opts [String] :ipv6 IPv6 address of the backend. May be used as an alternative to &#x60;address&#x60; to set the backend location.
     # @option opts [Integer] :keepalive_time How long (in seconds) to keep a persistent connection to the backend between requests. By default, Fastly keeps connections open as long as it can.
@@ -503,6 +527,11 @@ module Fastly
     # @option opts [Integer] :fetch_timeout Maximum duration in milliseconds to wait for the entire response to be received after a TCP connection is established and the request has been sent. If exceeded, the connection is aborted and a synthetic &#x60;503&#x60; response will be presented instead. May be set at runtime using &#x60;bereq.fetch_timeout&#x60;.
     # @option opts [String] :healthcheck The name of the healthcheck to use with this backend.
     # @option opts [String] :hostname The hostname of the backend. May be used as an alternative to &#x60;address&#x60; to set the backend location.
+    # @option opts [String] :iam_external_id If the backend is using IAM authentication and the IAM system policy requires a matching external identifier, it should match this value. Your Fastly customer ID will be used if this attribute is not set.
+    # @option opts [String] :iam_product If the backend is using IAM authentication, the IAM signature will use this as the product element.
+    # @option opts [String] :iam_region If the backend is using IAM authentication, this region will be used for signing and access.
+    # @option opts [String] :iam_role If the backend is using IAM authentication, the fully qualified role string supplied by the storage vendor.
+    # @option opts [String] :iam_vendor A label that identifies the storage vendor. Providing a value in this field enables IAM usage, and all other IAM fields depend on its value.
     # @option opts [String] :ipv4 IPv4 address of the backend. May be used as an alternative to &#x60;address&#x60; to set the backend location.
     # @option opts [String] :ipv6 IPv6 address of the backend. May be used as an alternative to &#x60;address&#x60; to set the backend location.
     # @option opts [Integer] :keepalive_time How long (in seconds) to keep a persistent connection to the backend between requests. By default, Fastly keeps connections open as long as it can.
@@ -553,6 +582,10 @@ module Fastly
       if @api_client.config.client_side_validation && backend_name.nil?
         fail ArgumentError, "Missing the required parameter 'backend_name' when calling BackendApi.update_backend"
       end
+      allowable_values = ["aws"]
+      if @api_client.config.client_side_validation && opts[:'iam_vendor'] && !allowable_values.include?(opts[:'iam_vendor'])
+        fail ArgumentError, "invalid value for \"iam_vendor\", must be one of #{allowable_values}"
+      end
       pattern = Regexp.new(/^[A-Za-z0-9]+$/)
       if @api_client.config.client_side_validation && !opts[:'share_key'].nil? && opts[:'share_key'] !~ pattern
         fail ArgumentError, "invalid value for 'opts[:\"share_key\"]' when calling BackendApi.update_backend, must conform to the pattern #{pattern}."
@@ -586,6 +619,11 @@ module Fastly
       form_params['fetch_timeout'] = opts[:'fetch_timeout'] if !opts[:'fetch_timeout'].nil?
       form_params['healthcheck'] = opts[:'healthcheck'] if !opts[:'healthcheck'].nil?
       form_params['hostname'] = opts[:'hostname'] if !opts[:'hostname'].nil?
+      form_params['iam_external_id'] = opts[:'iam_external_id'] if !opts[:'iam_external_id'].nil?
+      form_params['iam_product'] = opts[:'iam_product'] if !opts[:'iam_product'].nil?
+      form_params['iam_region'] = opts[:'iam_region'] if !opts[:'iam_region'].nil?
+      form_params['iam_role'] = opts[:'iam_role'] if !opts[:'iam_role'].nil?
+      form_params['iam_vendor'] = opts[:'iam_vendor'] if !opts[:'iam_vendor'].nil?
       form_params['ipv4'] = opts[:'ipv4'] if !opts[:'ipv4'].nil?
       form_params['ipv6'] = opts[:'ipv6'] if !opts[:'ipv6'].nil?
       form_params['keepalive_time'] = opts[:'keepalive_time'] if !opts[:'keepalive_time'].nil?

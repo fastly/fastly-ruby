@@ -305,7 +305,7 @@ module Fastly
     end
 
     # List categories
-    # List all bot categories in a workspace's policy. Each category has an action that applies to every bot in the category. To list the bots themselves, use [list all bots in a workspace](#bot-management-list-bots) or [list bots in a category](#bot-management-list-category-bots).
+    # List all bot categories in a workspace's policy. Each category has an action that applies to every bot in the category that is set to `inherit`. To list the bots themselves, use [list all bots in a workspace](#bot-management-list-bots) or [list bots in a category](#bot-management-list-category-bots).
     # @option opts [String] :workspace_id The ID of the bot management workspace. (required)
     # @option opts [Integer] :limit Limit how many results are returned. (default to 100)
     # @option opts [String] :cursor Cursor for pagination. Use the &#x60;next_cursor&#x60; value from a previous response to request the next page of results.
@@ -316,7 +316,7 @@ module Fastly
     end
 
     # List categories
-    # List all bot categories in a workspace&#39;s policy. Each category has an action that applies to every bot in the category. To list the bots themselves, use [list all bots in a workspace](#bot-management-list-bots) or [list bots in a category](#bot-management-list-category-bots).
+    # List all bot categories in a workspace&#39;s policy. Each category has an action that applies to every bot in the category that is set to &#x60;inherit&#x60;. To list the bots themselves, use [list all bots in a workspace](#bot-management-list-bots) or [list bots in a category](#bot-management-list-category-bots).
     # @option opts [String] :workspace_id The ID of the bot management workspace. (required)
     # @option opts [Integer] :limit Limit how many results are returned. (default to 100)
     # @option opts [String] :cursor Cursor for pagination. Use the &#x60;next_cursor&#x60; value from a previous response to request the next page of results.
@@ -628,7 +628,7 @@ module Fastly
     end
 
     # Set a category action
-    # Set the action for a bot category. Every bot in the category configured with the 'inherit' action uses the action set for the category.
+    # Set the default action for a bot category. Bots set to `inherit` follow this action. Bots with their own action keep it. To remove every bot's own action in the category, use [set the action for all bots in a category](#bot-management-update-category-bots).
     # @option opts [String] :workspace_id The ID of the bot management workspace. (required)
     # @option opts [String] :category_id The ID of the bot category. (required)
     # @option opts [BotManagementCategory] :bot_management_category  (required)
@@ -639,7 +639,7 @@ module Fastly
     end
 
     # Set a category action
-    # Set the action for a bot category. Every bot in the category configured with the &#39;inherit&#39; action uses the action set for the category.
+    # Set the default action for a bot category. Bots set to &#x60;inherit&#x60; follow this action. Bots with their own action keep it. To remove every bot&#39;s own action in the category, use [set the action for all bots in a category](#bot-management-update-category-bots).
     # @option opts [String] :workspace_id The ID of the bot management workspace. (required)
     # @option opts [String] :category_id The ID of the bot category. (required)
     # @option opts [BotManagementCategory] :bot_management_category  (required)
@@ -705,6 +705,88 @@ module Fastly
       data, status_code, headers = @api_client.call_api(:PATCH, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: BotManagementApi#bot_management_update_category\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Set the action for all bots in a category
+    # Set the action for every bot in a category. Setting `inherit` removes each bot's own action, so every bot follows the category's action. The category's own action is unchanged. The update applies to every bot in the category or to none, and repeating it gives the same result. The response lists every bot in the category, including bots that already inherited, and is not paginated.
+    # @option opts [String] :workspace_id The ID of the bot management workspace. (required)
+    # @option opts [String] :category_id The ID of the bot category. (required)
+    # @option opts [BotManagementCategoryBots] :bot_management_category_bots  (required)
+    # @return [BotManagementBotsResponse]
+    def bot_management_update_category_bots(opts = {})
+      data, _status_code, _headers = bot_management_update_category_bots_with_http_info(opts)
+      data
+    end
+
+    # Set the action for all bots in a category
+    # Set the action for every bot in a category. Setting &#x60;inherit&#x60; removes each bot&#39;s own action, so every bot follows the category&#39;s action. The category&#39;s own action is unchanged. The update applies to every bot in the category or to none, and repeating it gives the same result. The response lists every bot in the category, including bots that already inherited, and is not paginated.
+    # @option opts [String] :workspace_id The ID of the bot management workspace. (required)
+    # @option opts [String] :category_id The ID of the bot category. (required)
+    # @option opts [BotManagementCategoryBots] :bot_management_category_bots  (required)
+    # @return [Array<(BotManagementBotsResponse, Integer, Hash)>] BotManagementBotsResponse data, response status code and response headers
+    def bot_management_update_category_bots_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: BotManagementApi.bot_management_update_category_bots ...'
+      end
+      # unbox the parameters from the hash
+      workspace_id = opts[:'workspace_id']
+      category_id = opts[:'category_id']
+      bot_management_category_bots = opts[:'bot_management_category_bots']
+      # verify the required parameter 'workspace_id' is set
+      if @api_client.config.client_side_validation && workspace_id.nil?
+        fail ArgumentError, "Missing the required parameter 'workspace_id' when calling BotManagementApi.bot_management_update_category_bots"
+      end
+      # verify the required parameter 'category_id' is set
+      if @api_client.config.client_side_validation && category_id.nil?
+        fail ArgumentError, "Missing the required parameter 'category_id' when calling BotManagementApi.bot_management_update_category_bots"
+      end
+      # verify the required parameter 'bot_management_category_bots' is set
+      if @api_client.config.client_side_validation && bot_management_category_bots.nil?
+        fail ArgumentError, "Missing the required parameter 'bot_management_category_bots' when calling BotManagementApi.bot_management_update_category_bots"
+      end
+      # resource path
+      local_var_path = '/bot-management/v1/workspaces/{workspace_id}/policy/categories/{category_id}/bots'.sub('{' + 'workspace_id' + '}', CGI.escape(workspace_id.to_s)).sub('{' + 'category_id' + '}', CGI.escape(category_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json', 'application/problem+json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(bot_management_category_bots)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'BotManagementBotsResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['token']
+
+      new_options = opts.merge(
+        :operation => :"BotManagementApi.bot_management_update_category_bots",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PATCH, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: BotManagementApi#bot_management_update_category_bots\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

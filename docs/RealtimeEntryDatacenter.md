@@ -373,6 +373,8 @@
 | **netprotect_firewall_dropped_packets** | **Integer** | Number of packets dropped by network protection firewall. | [optional] |
 | **api_enforcement_allowed_requests_count** | **Integer** | Number of requests allowed after evaluation by the API Enforcement engine. | [optional] |
 | **api_enforcement_flagged_requests_count** | **Integer** | Number of requests flagged after evaluation by the API Enforcement engine. | [optional] |
+| **origin_fetch_iam_success_count** | **Integer** | Count of successful IAM authenticated backend requests. | [optional] |
+| **origin_fetch_iam_failure_count** | **Integer** | Count of failed IAM authenticated backend requests. | [optional] |
 
 [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
 

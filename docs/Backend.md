@@ -14,6 +14,11 @@
 | **fetch_timeout** | **Integer** | Maximum duration in milliseconds to wait for the entire response to be received after a TCP connection is established and the request has been sent. If exceeded, the connection is aborted and a synthetic `503` response will be presented instead. May be set at runtime using `bereq.fetch_timeout`. | [optional] |
 | **healthcheck** | **String** | The name of the healthcheck to use with this backend. | [optional] |
 | **hostname** | **String** | The hostname of the backend. May be used as an alternative to `address` to set the backend location. | [optional] |
+| **iam_external_id** | **String** | If the backend is using IAM authentication and the IAM system policy requires a matching external identifier, it should match this value. Your Fastly customer ID will be used if this attribute is not set. | [optional] |
+| **iam_product** | **String** | If the backend is using IAM authentication, the IAM signature will use this as the product element. | [optional] |
+| **iam_region** | **String** | If the backend is using IAM authentication, this region will be used for signing and access. | [optional] |
+| **iam_role** | **String** | If the backend is using IAM authentication, the fully qualified role string supplied by the storage vendor. | [optional] |
+| **iam_vendor** | **String** | A label that identifies the storage vendor. Providing a value in this field enables IAM usage, and all other IAM fields depend on its value. | [optional] |
 | **ipv4** | **String** | IPv4 address of the backend. May be used as an alternative to `address` to set the backend location. | [optional] |
 | **ipv6** | **String** | IPv6 address of the backend. May be used as an alternative to `address` to set the backend location. | [optional] |
 | **keepalive_time** | **Integer** | How long (in seconds) to keep a persistent connection to the backend between requests. By default, Fastly keeps connections open as long as it can. | [optional] |

@@ -1,5 +1,30 @@
 # Changelog
 
+## [v18.1.0](https://github.com/fastly/fastly-ruby/releases/tag/release/v18.1.0) (2026-11-18)
+
+**Bug fixes:**
+
+- fix(historical): Add the missing `anzac` value to the `region` filter.
+
+
+**Enhancements:**
+
+- feat(backend): Add the `iam_external_id`, `iam_product`, `iam_region`, `iam_role`, and `iam_vendor` fields, which configure IAM authentication to a storage vendor.
+- feat(historical, realtime): Add new IAM metrics: `origin_fetch_iam_success_count` and `origin_fetch_iam_failure_count`.
+- feat(historical): Add the `saudi_arabia` value to the `region` filter.
+- feat(domain-inspector-historical, origin-inspector-historical, metrics-platform, bot-requests-metrics): Add the `saudi_arabia` value to the `region` filter.
+- feat(pop): Add the `KSA-Central` region, the `saudi_arabia` stats region, and the `Saudi Arabia` billing region.
+
+- feat(bot-management): Add the `bot-management-update-category-bots` operation (`PATCH /bot-management/v1/workspaces/{workspace_id}/policy/categories/{category_id}/bots`), which sets every bot in a category to `inherit`.
+
+- feat(ddos-protection): Add a path attribute
+
+
+**Documentation:**
+
+- doc(bot-management): Clarify that setting a category action keeps the actions set on individual bots, and only applies to bots set to `inherit`.
+
+
 ## [v18.0.0](https://github.com/fastly/fastly-ruby/releases/tag/release/v18.0.0) (2026-10-21)
 
 **Breaking Changes:**

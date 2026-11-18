@@ -788,6 +788,12 @@ module Fastly
           description: "No description provided",
           }
         ],
+        "BotManagementApi.bot_management_update_category_bots": [
+          {
+          url: "https://api.fastly.com",
+          description: "No description provided",
+          }
+        ],
         "BotManagementApi.bot_management_update_workspace": [
           {
           url: "https://api.fastly.com",

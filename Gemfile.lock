@@ -1,13 +1,13 @@
 PATH
   remote: .
   specs:
-    fastly (18.0.0)
+    fastly (18.1.0)
       typhoeus (~> 1.0, >= 1.0.1)
 
 GEM
   remote: https://rubygems.org/
   specs:
-    ethon (0.18.0)
+    ethon (0.19.2)
       ffi (>= 1.15.0)
       logger
     ffi (1.17.4)
@@ -15,8 +15,8 @@ GEM
     ffi (1.17.4-x86_64-linux-gnu)
     logger (1.7.0)
     rake (13.0.6)
-    typhoeus (1.6.0)
-      ethon (>= 0.18.0)
+    typhoeus (1.7.1)
+      ethon (>= 0.19.1, < 0.20.0)
 
 PLATFORMS
   arm64-darwin-21
